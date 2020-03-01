@@ -1,0 +1,45 @@
+name: Push development
+
+on:
+  push:
+    branches: 
+      - 'Prod-Dev-CI'
+      - dev
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2 
+      with:
+        ref: dev
+
+    - name: Push the production artifact
+      run: |
+        # Open the SSH Agent
+        eval $(ssh-agent -s)
+        mkdir -m 0700 -p ~/.ssh/
+        ssh-keyscan 51.254.117.36 >> ~/.ssh/known_hosts
+        # Add the private key
+        ssh-add - <<< "$SSH_PRIVATE_KEY"
+        echo "Added the host and then the key"
+        
+        # Add the remote git server
+        git remote add live ssh://root@51.254.117.36/var/www/prod-web.git
+        # This fixes the error of pull
+        git fetch --unshallow
+        git push -fv live dev
+        
+      env:
+        SSH_PRIVATE_KEY: "-----BEGIN RSA PRIVATE KEY-----\nMIIEpQIBAAKCAQEA6r3mcpiGR1pxBziYFtC6YMBpNjtXXdDrc4vfDbIykoHeeNdI\n2y5C2geICMGJGZXBoaYPzvYECEYQ2+VGM8sz+5raPfp9Mw998Tv1oan4jk3AVrQv\nAqAguBw7qwVYW7gNmi2S4XnxGHS0Rw15sFrXSwdWrycGZsUNTfsmcbeD46vbkzY+\nygcvLkPfOMLS/Ux7LhofOrMSl1MNge3DkXOWGCkIC93mYoEcJgOhkairMNEkN+UK\nuEqbEBdDsYzMASrDTGJosE2vOkEWALRlcjcrI2ROFE2iS2L7l+Rq8I/65PSahJgB\nuxtD1JR3Ssk0n09o0RwyZNSixEoNQji38ojQeQIDAQABAoIBAF+tdzhOIq0Cl/8x\negwSl2TICBoqpbl/Zfh6kjeq4iIE/QCT/wYXHPhxCWlIOPFMsNeKL/dTHuGgbU6z\nbKG/uThcLYgFiPI+5j5lCgESnlSiLDsqxd50FeH03/0c+J6priGhYbS1Vyd4qeIs\nA+V1oTrbiuFpLprExl96dnjzK7anlbsoaySBoBqqj5Vc9EXO6KwM8vtgWNwkVXx1\nKVxgxgR/d4s8BRRx7bXtp+WZSMaG1nLbPM+6PPqUH6wzDgyvoaOFMTZbey0ueMxL\n2hqM4WsTxqKxUS2WOsqOx24o5CZEtHmhzggAdn147hktj0YzN+EqaXiz2I6QehgE\noBb6sAECgYEA+xocObpEK4SJK45xmuSnVjsKMS+sUlRsKXoBezc4py6qWymKU5B2\nznHzgJwwskl07nob6fVesJlDcUu0lUSCshty9ub9HK/qV9lKbNF5aJbvvY68Xkjt\nhNKFZ3+Ek8bCijfuzqj/vvZdXm8CQx45czpPN5e4aAWTUxLzkFYY6LkCgYEA71IY\nMiw8uLcyl3ObufK9YvJlHn7EAgA56Iv/2rM5JZqMlykilB6Q6jABbdPMoZQtZMzf\nmGoSDWEejZ8+eDcexJFln61wTIjdxwVnnBpZXIBx8PyiyTH/7PzxDNMaGetumz2m\ncU8mpou5ZrwT1rXjJU/vm+5VfVkKNthDKQiDxcECgYEAme63vuvhPoxRStJX8oyZ\nyNMIvH5tNUtrw0F4BwEjSdnhtWER24iETKqui/k0IRfHByr0UciJ89kA70NpwNfv\nByCsqY+ROzTchF5AsdT4iJV/AsWt1F8AvJwSDBCwRadjOzhuvWH85iRBuNJ0oJC2\nx1zHk1z/P0WruxGzHpipTIECgYEAy7hqeGtH1UW9f0ceTQ/hP5VvlqH6YGmo4dgr\nGBRwlR4Wh6awlL3gRjpPPRqKmxD0A1aTD79bVqBRzeS83MCvJE1Q4LhXXA82GvDy\n3eNgJmoAlE+6kuJJJYe7+lrJYT8UjHnScaobELLoRBfeG2wBzAVbxrT/eRCOrVky\n8n8ZDQECgYEA80OYb0LQEuiJ+bdB5rfxVk+zr/iaVqXCje728I83OIN0P5OOWCJF\njnuEodwpNTsg1vJJGUc4PHGPVelEf4TqHickda1Pm+NeT8z6n2kY62ySnBeWS7rS\naWqJfBgEOtc4ZffZcRxQ21P6cJ+T3TyJ73Wri8QX61kzRr2pwphqZHg=\n-----END RSA PRIVATE KEY-----\n"
+        SSH_PUBLIC_KEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqveZymIZHWnEHOJgW0LpgwGk2O1dd0Otzi98NsjKSgd5410jbLkLaB4gIwYkZlcGhpg/O9gQIRhDb5UYzyzP7mto9+n0zD33xO/WhqfiOTcBWtC8CoCC4HDurBVhbuA2aLZLhefEYdLRHDXmwWtdLB1avJwZmxQ1N+yZxt4Pjq9uTNj7KBy8uQ984wtL9THsuGh86sxKXUw2B7cORc5YYKQgL3eZigRwmA6GRqKsw0SQ35Qq4SpsQF0OxjMwBKsNMYmiwTa86QRYAtGVyNysjZE4UTaJLYvuX5Grwj/rk9JqEmAG7G0PUlHdKyTSfT2jRHDJk1KLESg1COLfyiNB5 root@bcf67cc1bb39" 
+
+    - name: Use Node.js 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - run: npm install
+    - run: npm run build
