@@ -30,7 +30,7 @@ jobs:
         git remote add live ssh://root@51.254.117.36/var/www/prod-web.git
         # This fixes the error of pull
         git fetch --unshallow
-        git push -fv live dev
+        git push -fv live master
         
       env:
         SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
