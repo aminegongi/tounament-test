@@ -1,0 +1,363 @@
+.html,
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+.login_container {
+    display: grid;
+    grid-template-columns: 468px auto;
+    row-gap: 124px;
+
+    .modal_container {
+        position: fixed;
+        width: 100vw;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+
+        a {
+            color : #191616;
+            text-decoration: none;
+        }
+        .modal {
+            width: 80%;
+            position: relative;
+            top: 20%;
+            height: 60%;
+            margin: auto;
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(3, 33.3%);
+            align-items: center;
+
+            .modal_item {
+                justify-self: center;
+                text-align: center;
+                align-self: center;
+                cursor: pointer;
+
+                h2 {
+                    font-size: 2.125rem;
+                    font-weight: bold;
+                    margin-top: 18.5px;
+                    margin-bottom: 21px;
+                }
+            }
+        }
+    }
+
+    .left_side {
+        padding: 0 38px;
+        min-height: 100vh;
+        background-size: cover;
+        background-image: url(../../public/loginBgColor.svg);
+
+        .logo {
+            margin-bottom: 55px;
+            margin-top: 48px;
+
+        }
+
+        .slider_title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-align: center;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .slider_card_container {
+            margin: auto;
+            margin-bottom: 27px;
+            background: white;
+            border-radius: 20px;
+            min-height: 413px;
+            width: 292px;
+
+            .booking_images {
+                width: 100%;
+                height: 181px;
+                background-size: cover;
+                background-position: center;
+                border-top-left-radius: 18px;
+                border-top-right-radius: 18px;
+            }
+
+            .card_body {
+                padding: 15px 23px 15px 20px;
+
+                h4 {
+                    font-size: 1.125rem;
+                    font-weight: bold;
+                    margin: 0;
+                }
+
+                p {
+                    font-size: 0.8125rem;
+                }
+
+                div {
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        color: #A7A7A7;
+                        font-size: 0.8125rem;
+                        margin-left: 7px;
+                    }
+                }
+            }
+
+            .card_footer {
+                display: flex;
+                justify-content: center;
+
+            }
+        }
+
+        .slider_dots {
+            display: flex;
+            justify-content: center;
+
+            div {
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                border: 1px solid white;
+                margin-right: 6px;
+            }
+
+            .active_dot {
+                background: white;
+            }
+        }
+    }
+
+    button {
+        border-radius: 180px;
+        cursor: pointer;
+        padding: 12px 19px;
+        font-size: 1rem;
+        border: none;
+
+        color: #ffffff;
+
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .light_button {
+        background-color: transparent;
+        border: 1px solid #019DA9;
+        color: #019DA9;
+        margin-right: 10px;
+
+
+    }
+
+    .primary_button {
+        background-color: #019da9;
+
+    }
+
+    .right_side {
+        .top_section_container {
+            display: grid;
+            justify-content: end;
+            padding-right: 33px;
+            padding-top: 28px;
+            margin-bottom: 46px;
+
+            .top_section {
+                .text {
+                    margin-right: 19px;
+                    font-weight: bold;
+                }
+
+                .se_connecter {
+                    border-radius: 180px !important;
+                    color: #242424;
+                    border: 1px solid #242424;
+                    background: transparent;
+                    padding: 14px 23px;
+                    font-size: 0.6875rem;
+                }
+            }
+        }
+
+        .page_title {
+            font-size: 2.875rem;
+            font-weight: bold;
+            color: #302727;
+            margin-bottom: 25px;
+            text-align: center;
+
+        }
+
+        .social_media_buttons {
+            display: flex;
+            justify-content: center;
+
+            .social_media {
+                display: inline-block;
+                padding: 8px 35px;
+                background: #4261B4;
+                border-radius: 180px;
+                margin-right: 11px;
+
+                img {
+                    height: 12px;
+                }
+            }
+
+            .social_media2 {
+                display: inline-block;
+                padding: 8px 35px;
+                background: #F1F1F1;
+                border-radius: 180px;
+                margin-right: 11px;
+
+                img {
+                    height: 12px;
+                }
+            }
+            .social_media1 {
+                display: inline-block;
+                padding: 8px 35px;
+                background: #019da9;
+                border-radius: 180px;
+                margin-right: 11px;
+
+                img {
+                    height: 12px;
+                }
+            }
+        }
+
+        p {
+            margin: 0;
+            margin-top: 38px;
+            margin-bottom: 25px;
+            color: #C4C4C4;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .input {
+            border: solid 1px #F6F6F6;
+            background: transparent;
+            padding: 15px;
+            display: block;
+            margin: auto;
+            width: 390px;
+            margin-bottom: 15px;
+            background: #F6F6F6;
+            font-size: 0.9375rem;
+            color: #717171;
+        }
+
+        .signup_btn_container {
+            display: flex;
+            justify-content: center;
+            margin-top: 38px;
+
+        }
+
+
+
+    }
+
+
+}
+
+.mobile_navbar {
+    display: none;
+}
+
+
+@media only screen and (max-width : 992px) {
+    .signup_btn_container {
+        padding-bottom: 20px !important;
+
+    }
+   
+
+
+    .login_container {
+        display: unset;
+
+        .left_side {
+            display: none;
+        }
+
+        .right_side {
+            min-height: 100vh;
+            .social_media_buttons, p {
+                // display: none !important;
+            }
+            .input {
+                width: unset;
+            }
+
+            .page_title {
+                font-size: 24px;
+            }
+
+            .top_section_container {
+                padding-right: 10px;
+            }
+        }
+
+    }
+
+    .mobile_navbar {
+        padding-top: 21px;
+        display: block;
+
+        .mobile_navbar {
+            padding: 0 10px !important;
+        }
+    }
+}
+
+@media only screen and (max-width : 800px) {
+
+    .login_container {
+        .right_side {
+            min-height: calc(100vh - 78px);
+            padding-bottom: 20px;
+        }
+
+        .modal_container {
+            min-height: 100vh;
+            height: unset;
+            position: absolute;
+
+            h2 {
+                font-size: 22px !important;
+            }
+
+            .modal {
+                grid-template-columns: unset;
+                grid-template-rows: repeat(3, 33.3%);
+                position: relative;
+                padding-bottom: 50px;
+
+                @media screen and (max-width : 992px) and (min-width : 750px) {
+                    top: 50px;
+                }
+
+                img {
+                    width: 150px;
+                }
+
+                .modal_item {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}

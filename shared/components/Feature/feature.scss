@@ -1,0 +1,91 @@
+.feature_container {
+    display: grid;
+    grid-template-columns: 36% 53%;
+    align-items: center;
+    max-width: 1380px;
+    margin: auto;
+
+    margin-top: 52px;
+    padding-right: 7.2%;
+    padding-left: 7.2%;
+
+    .content {
+        background-color: #ffffff;
+        padding: 77px 28px 44px 35px;
+        height: fit-content;
+        position: relative;
+        right: -10%;
+        width: 470px;
+
+        .content_img {
+            width: 84px;
+            height: 84px;
+        }   
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.21;
+            margin-top: 28px;
+        }
+
+        .p {
+            color: #393c40;
+            line-height: 1.8;
+            font-size: 20px;
+            margin-bottom: 47px;
+            padding-right: 35px;
+            font-weight: 400;
+        }
+
+
+    }
+
+    .sport_img {
+        justify-self: center;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .feature_container {
+        display: grid;
+        grid-template-columns: unset;
+        padding: 0;
+        margin-top: 0;
+        .sport_img {
+            width: 100%;
+            grid-row: 1;
+        }
+        .content {
+            width: 100%;
+            right: unset;
+            padding: 77px 0 44px 0;
+
+            .content_img  {
+                padding: 0 53px 0 45px;
+
+            }
+
+            button {
+                margin-left: 45px;
+                padding: 20px 10px !important;
+            }
+
+            .title  {
+                margin-top: 28px;
+                padding: 0 53px 0 45px;
+                font-size: 22px;
+                font-weight: 600;
+                line-height: 1.36;
+            }
+            .p {
+                margin-top: 10px;
+                padding: 0 53px 0 45px;
+                font-size: 16px;
+                color: #393c40;
+                line-height: 1.75;
+
+            }
+        }
+    }
+}

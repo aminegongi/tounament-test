@@ -1,0 +1,188 @@
+.clubProfileContainer {
+    padding: 45px 25px 35px 37px;
+    max-width: 770px;
+    margin: auto;
+    background: white;
+    min-height: calc(100vh - 80px);
+
+    .leftSide,
+    .rightSide {
+        display: grid;
+        row-gap: 32px;
+    }
+
+    .goBack {
+        font-size: 14px;
+        color: #A7A7A7;
+
+        span {
+            vertical-align: middle;
+
+        }
+
+        img {
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+            transform: rotate(180deg);
+        }
+    }
+
+
+    img {
+        width: 163px;
+        height: 115px;
+    }
+
+    .goBack {
+        margin-bottom: 87px;
+        cursor: pointer;
+    }
+
+    .body {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: 115px auto auto 52px 52px;
+        row-gap: 32px;
+
+    }
+
+
+
+    .downloadSection,
+    .creationDate {
+        align-self: center;
+    }
+
+    .profileName {
+        font-size: 38px;
+        color: #393C40;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .email {
+        font-size: 18px;
+        color: #393C40;
+        font-weight: 300;
+        margin-top: 10px;
+    }
+
+    .withLabel {
+        .label {
+            color: #717171;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        .value {
+            font-size: 18px;
+            font-weight: 300;
+            margin-top: 8px;
+
+            img {
+                width: 20px;
+                height: 20px;
+
+                &:first-of-type {
+                    background-color: #019DA9;
+                    margin-right: 10px;
+                }
+            }
+
+        }
+    }
+
+    .downloadSection {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        column-gap: 20px;
+    }
+
+    .creationDate {
+        font-size: 16px;
+        color: #019DA9;
+        text-align: center;
+        letter-spacing: 3px;
+        font-weight: 400;
+    }
+
+    button {
+        border-radius: 3px;
+        font-size: 16px;
+        padding: 23px 29px !important;
+    }
+
+    .footer {
+        margin-top: 96px;
+        text-align: center;
+
+        span {
+            vertical-align: middle;
+        }
+
+        img {
+            vertical-align: middle;
+            margin-left: 10px;
+            height: 34px;
+            width: 100px;
+        }
+    }
+    .creationDateWithImg {
+        display: none;
+    }
+
+}
+
+
+@media only screen and (max-width : 830px) {
+    .clubProfileContainer {
+        padding: 30px 12px !important;
+            .goBack {
+                margin-bottom: 26px !important;
+            }
+
+        .body {
+            grid-template-columns: unset !important;
+            grid-template-rows: repeat(2,auto);
+            .rightSide {
+                grid-row: 1;
+            }
+            .downloadSection {
+                grid-row: 1;
+                grid-template-columns: repeat(2,48%) !important;
+                column-gap: 2% !important;
+            }
+            .creationDate {
+                display: none !important;
+            }
+            .creationDateWithImg {
+                display: block !important;
+                font-size: 12px;
+                font-weight: 400;
+                text-align: center;
+                color: #019DA9;
+                align-self: center;
+            }
+            .logo {
+                display: grid !important;
+                grid-template-columns: repeat(2,50%) !important;
+            }
+            .profileName {
+                font-size: 32px;
+            }
+            .email {
+                font-size: 16px;
+            }
+            button {
+                font-size: 10px;
+            }
+            button {
+                padding: 23px 22px !important;
+            }
+        }
+        .footer {
+            text-align: right !important;
+        }
+    }
+}

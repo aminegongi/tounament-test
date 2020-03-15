@@ -1,0 +1,48 @@
+.experience_item {
+    display: grid;
+    grid-template-columns: 23px auto;
+    column-gap: 53px;
+    .leftSide {
+        .line {
+            position: relative;
+            top: -5px;
+            left: 1px;
+            height: calc(100% - 21px );
+            display: flex;
+            justify-content: center;
+            div {
+                height: 100%;
+                border-left: 1px solid #E5E5E5;
+                width: 1px;
+            }
+        }
+    }
+    .rightSide {
+        .itemTitle {
+            font-size: 24px;
+            color: #242424;
+            font-weight: 500;
+            margin-bottom: 10px;
+            .date {
+                font-size: 13px;
+                font-weight: normal;
+            }
+        }   
+        .itemDescription {
+            font-size: 14px;
+            margin-bottom: 21px;
+            color: #717171;
+        }                 
+    }
+}
+@media only screen and (max-width : 700px) {
+    .experience_item {
+        column-gap: 20px !important;
+        .itemTitle {
+            span {
+                display: inline-block;
+            }
+        }
+    }
+
+}

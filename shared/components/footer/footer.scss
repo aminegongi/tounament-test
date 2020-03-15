@@ -1,0 +1,23 @@
+.footer_container {
+
+    max-width: 1380px;
+    margin: auto;
+    height: 98px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    align-items: center;
+
+    .social_media {
+        justify-self: end;
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+        column-gap: 25px;
+    }
+
+}
+
+@media only screen and (max-width : 1500px) {
+    .footer_container {
+        padding: 0 7.2%;
+    }
+}

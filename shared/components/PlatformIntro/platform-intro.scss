@@ -1,0 +1,131 @@
+.platform_intro_container {
+
+    max-width: 1380px;
+    margin: auto;
+
+    padding-right: 7.2%;
+    padding-left: 7.2%;
+    padding-top: 42px;
+    display: grid;
+    grid-template-columns: auto max-content;
+    align-items: center;
+    column-gap: 50px;
+
+    .left_side {
+        .title {
+            font-size: 58px;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            margin-top: 0;
+            max-width: 671px;
+            color: #393c40;
+        }
+
+        .description {
+            font-size: 24px;
+            color: #393c40;
+            margin: 0;
+
+        }
+
+        .buttons_container {
+            margin-top: 38px;
+
+            A:nth-of-type(2) {
+                margin-left: 21px;
+
+            }
+        }
+    }
+
+    .right_side {
+        position: relative;
+
+        img {
+            width: 400px;
+            height: 520px;
+            position: relative;
+            right: 20px;
+            -webkit-box-shadow: 20px 20px 0px 0px rgba(255, 224, 200, 1);
+            -moz-box-shadow: 20px 20px 0px 0px rgba(255, 224, 200, 1);
+            box-shadow: 20px 20px 0px 0px rgba(255, 224, 200, 1);
+        }
+
+        .counter {
+            z-index: 99;
+            position: absolute;
+            display: grid;
+            column-gap: 10px;
+            grid-template-columns: repeat(3, auto);
+            align-items: center;
+            color: white;
+            bottom: 20px;
+            right: 40px;
+
+            .line {
+                width: 34px;
+                height: 1px;
+                background: #cccccc;
+                display: inline-block;
+
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width : 992px) {
+    .platform_intro_container {
+        display: block;
+        grid-template: unset;
+        margin-top: 46px;
+        padding: 0;
+
+        .left_side {
+            padding: 0 5.6% !important;
+
+            .title {
+                font-size: 30px !important;
+                text-align: center;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .description {
+                font-size: 16px !important;
+                text-align: center;
+
+            }
+
+            .buttons_container {
+                display: grid;
+                grid-template-columns: repeat(2, auto);
+                column-gap: 12px;
+
+                a {
+                    margin-left: 0 !important;
+                }
+                
+                button {
+                    height: 100% !important;
+                    font-size: 14px;
+                    padding: 20px 16px !important;
+                    width: 100%;
+                    
+                }
+            }
+        }
+
+        .right_side {
+            padding: 26px 24px 0;
+
+            img {
+                width: 100%;
+                height: auto;
+                right: 10px;
+            }
+        }
+
+    }
+}

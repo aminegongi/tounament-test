@@ -1,0 +1,72 @@
+// @import url('https://rsms.me/inter/inter.css');
+
+html {
+    font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+
+}
+
+* {
+    font-family: 'Inter', sans-serif !important;
+
+}
+
+button:focus {
+    outline: none;
+}
+
+input:focus {
+    outline-color: #019da9;
+}
+
+.global_primary_button {
+    cursor: pointer;
+    padding: 20px 32px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+
+    color: #ffffff;
+    background-color: #019da9;
+
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.global_light_button {
+    cursor: pointer;
+    padding: 20px 32px;
+    font-size: 16px;
+    border-radius: 3px;
+
+
+    color: #019da9;
+    background-color: transparent;
+    border: solid 1px #019da9;
+
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .global_primary_button {
+        padding: 23px 12px !important;
+        font-size: 11px !important;
+    }
+}
