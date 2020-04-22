@@ -3,5 +3,305 @@
         font-weight: 500 !important;
         padding: 20px 25px !important;
     }
-    
+    .gerer_button{
+        
+        height: 60px;
+        border-radius: 8px;
+        background-color: #26beb5;
+    }
+    .gerer_equipe{
+        padding:20px 15px 20px 15px ;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        
+        line-height: 1.38;
+        text-align: center;
+        color: #ffffff;
+    }
+    .gerer_equipe_img{
+        margin-left:67.6px;
+        margin-top:79.6px;
+    .gerer_equipe_title {
+       
+        font-family: Inter;
+        font-size: 44px;
+        font-weight: bold;
+        line-height: 1.18;
+        text-align: left;
+        color: #2e3034;
+       }
+    .ispoit_gagne_text{
+        margin-top:13.3px;
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.39;
+        letter-spacing: normal;
+        text-align: left;
+        color: #2e3034;
+    }
+    .gerer_button{
+        margin-top: 36.1px;
+        // width: 270px;
+        height: 60px;
+        border-radius: 8px;
+        background-color: #26beb5;
+    }
+  
+    .for_windows{
+       margin-left:35.4px;
+        margin-top:10px;
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.83;
+        letter-spacing: normal;
+        color: #a7a7a7;
+    }
+
+    }
+    .gerer_iluustateur{
+        display: flex;
+        height: 626px;
+        object-fit: contain;
+        background-color: #ffffff;
+        .img_illustration{
+            
+            margin-left: 185.1px;
+            margin-top:66.7px;
+            margin-right: 38.3px;
+        }
+    }
+    .clubs{
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 0.22;
+        text-align: center;
+        color: #2e3034;
+        margin-top:56px;
+    }
+    .img_club{
+        margin-top:43px;
+        margin-left: 268px;
+        margin-right: 267px;
+        display: flex;
+
+        justify-content: space-between;
+        .servicetitan{
+            padding-top:4px;
+            padding-bottom: 4px;
+        }
+        .Grudhub{
+            padding-top:4px;
+            padding-bottom: 4px;
+        }
+        .cognizant{
+            padding-top:4px;
+            padding-bottom: 4px;
+        }
+           
+    }
+    .regagnez_temps{
+        margin-top:137px;
+       
+        font-family: Inter;
+        font-size: 46px;
+        font-weight: bold;
+        line-height: 0.83;
+        text-align: center;
+        color: #2e3034;
+    }
+    .plannings{
+    margin-top:20px;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    text-align: center;
+    color: #2e3034;
+    }
+    .gagnant_block{
+        margin-left:177px;
+        display: flex;
+        margin-top:72px;
+        
+        // .gagnant_semaine{
+        //     .montre{
+        //     }
+        // }
+        .gagnant_plus_text{
+            margin-top:23px;
+            font-family: Inter;
+            font-size: 38px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.26;
+            letter-spacing: normal;
+            text-align: left;
+            color: #2e3034;
+        }
+        .gagnant_plateforme{
+            margin-top:15px;
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.75;
+            letter-spacing: normal;
+            text-align: left;
+            color: #2e3034;
+        }
+        .gerer_button{
+            margin-top:25px;
+        }
+        .Image_gagnant{
+            margin-left: 227.1px;
+        }
+    }
+    .gagnant_Accroissez{
+        display: flex;
+        margin-top:161px;
+        .img_platforme{
+            width: 620.9px;
+            height: 492px;
+        }
+        .accroissez{
+            margin-left: 268px;
+         }
+         .flech{
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+         }
+        .accroissez_revenus{
+           margin-top:23px;
+            font-family: Inter;
+            font-size: 38px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.26;
+            letter-spacing: normal;
+            text-align: left;
+            color: #2e3034;
+        }
+        .accroissez_gagnera_visiblite{
+            margin-top:15px;
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            line-height: 1.75;
+            letter-spacing: normal;
+            text-align: left;
+            color: #2e3034;
+            margin-bottom: 25px;
+        }
+    }
+    .meilleurs_fonctionnalite{
+        margin-top:137px;
+        font-family: Inter;
+        font-size: 46px;
+        font-weight: bold;
+        line-height: 1.17;
+        letter-spacing: normal;
+        text-align: center;
+        color: #2e3034;
+    }
+    .carrere_joueurs{
+        margin-top:16px;
+        font-family: Inter;
+        font-size: 18px;
+        
+        line-height: 1.67;
+        letter-spacing: normal;
+        text-align: center;
+        color: #2e3034;
+    }
+    .gestion_club {
+          margin-left:99px;
+          margin-top:78px;
+          display: flex;
+
+        justify-content: space-between;
+          .system_performance{
+            justify-content: space-between;
+            .performance_gestion_mobile{
+                margin-top:47.8px;
+            }
+            .performance__mobile{
+                margin-top:65.8px;
+
+            }
+        
+        }
+                .gestion_club_title{
+                    margin-top:23px;
+                    font-family: Inter;
+                    font-size: 20px;
+                    font-weight: 600;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #2e3034;
+                }
+                .gestion_club_text{
+                    margin-top:14.4px;
+                    font-family: Inter;
+                    font-size: 15px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.47;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #2e3034;
+                }
+            
+        
+
+    }
+    .gerer_equipe{
+        height: 60px;
+        border-radius: 8px;
+        background-color: #26beb5;
+        margin-top:30.8px;
+        font-size: 14px;
+        padding:20px 19px 20px 19x ;
+
+    }
+    .question_souvent_posee{
+        margin-top:150px;
+        font-family: Inter;
+        font-size: 46px;
+        font-weight: bold; 
+        line-height: 0.83;
+        letter-spacing: normal;
+        text-align: center;
+        color: #2e3034;
+    }
+        .question_reponsese_necessaires{
+            margin-top:16px;
+            font-family: Inter;
+            font-size: 18px;
+            line-height: 1.67;
+            letter-spacing: normal;
+            text-align: center;
+            color: #2e3034;
+    }
 }
