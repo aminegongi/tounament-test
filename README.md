@@ -9,7 +9,7 @@ Linked to isporit.com
 
 Linked to dev.isporit.com
 
-## tun the website ( master ) with yarn
+## Run the website ( master ) with yarn
 
 ##### yarn install
 ##### yarn upgrate ( if necessary  )
