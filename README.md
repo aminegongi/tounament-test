@@ -8,3 +8,9 @@ Linked to isporit.com
 ##### dev (Development branch)
 
 Linked to dev.isporit.com
+
+## tun the website ( master ) with yarn
+
+##### yarn install
+##### yarn upgrate ( if necessary  )
+##### yarn run dev 
