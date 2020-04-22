@@ -84,6 +84,9 @@ const Index = (props) => {
             calendriers, événements et plus encore.
           </div>
           <button className={css.gerer_button}>
+            {/* 
+              @review dont use span in button when you have only one to text to display 
+            */}
             <span className={css.gerer_equipe}>
               Gérer mon équipe gratuitement
 
