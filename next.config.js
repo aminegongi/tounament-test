@@ -3,14 +3,13 @@ const withSass = require('@zeit/next-sass')
 const withImages = require('next-images')
 const withOffline = require('next-offline')
 const withManifest = require('next-manifest');
-const withLess = require('@zeit/next-less')
 const withCss = require('@zeit/next-css')
 
 if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
 }
 
-module.exports = withLess(withSass(withCss(withImages({
+module.exports = withSass(withCss(withImages({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
@@ -23,4 +22,4 @@ module.exports = withLess(withSass(withCss(withImages({
     return config
   },
 })
-)))
+))
