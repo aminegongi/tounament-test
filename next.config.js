@@ -9,14 +9,14 @@ if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
 }
 
-module.exports = withSass(withCss(withImages({
+module.exports = withCss(withSass(withImages({
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: "[local]___[hash:base64:5]",
   },
   lessLoaderOptions: {
-    javascriptEnabled: true
+    // javascriptEnabled: true
   },
   webpack(config, options) {
     return config
