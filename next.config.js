@@ -4,6 +4,7 @@ const withImages = require('next-images')
 const withOffline = require('next-offline')
 const withManifest = require('next-manifest');
 const antdLessLoader = require("next-antd-aza-less")
+
 if (typeof require !== 'undefined') {
   require.extensions['.less'] = (file) => {}
 }
