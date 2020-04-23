@@ -8,9 +8,9 @@ import TrustUs from '../shared/components/TrustUs/TrustUs';
 import InterfacesExample from '../shared/components/InterfacesExample/InterfacesExample';
 import Feature from '../shared/components/Feature/Feature';
 import BecomePartner from '../shared/components/BecomePartner/BecomePartner';
-import Title from '../shared/components/title/title';
-import Demo from '../shared/components/palatformedemo/demo';
-import Fonctionnalitesclub from '../shared/components/fonctionnalitesclub/fonctionnalitesclub';
+import Title from '../shared/components/TitleSection/TitleSection';
+import Demo from '../shared/components/DemoSection/DemoSection';
+import Functionclub from '../shared/components/Functionclub/Functionclub';
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
@@ -78,17 +78,17 @@ const Index = (props) => {
       <div className={css.gerer_iluustateur}>
         <div className={css.gerer_equipe_img}>
           <div className={css.gerer_equipe_title}>
-            Gérez vos équipes <br />
-            sportives efficacement<br />
-            et simplement n'importe<br />
-            où vous soyez
+           <div> Gérez vos équipes </div>
+           <div> sportives efficacement</div>
+           <div> et simplement n'importe</div>
+           <div> où vous soyez</div>
           </div>
-          <div className={css.ispoit_gagne_text}>
-            iSporit vous fera gagner du temps pour gérer la <br />
-            présence de vos groupes, l'organisation de vos <br />
-            calendriers, événements et plus encore.
+          <div className={css.gerer_time_title}>
+            <div>iSporit vous fera gagner du temps pour gérer la</div>
+            <div>présence de vos groupes, l'organisation de vos</div>
+            <div>calendriers, événements et plus encore.</div>
           </div>
-          <button className={css.gerer_equipe}>
+          <button className={css.gerer_team}>
            
               Gérer mon équipe gratuitement
 
@@ -120,7 +120,7 @@ const Index = (props) => {
                 "
 />
    
-  <div className={css.presenter_gagnant}>
+  <div className={css.presenter_winner}>
      <div className={css.presenter_block}>
         <Demo img={montre} title="Gagnez plus" 
               title_two="de 10h par semaine" 
@@ -138,7 +138,7 @@ const Index = (props) => {
    
       <div className={css.revenus_gagnant}>
         <div className={css.presenter_block}>
-            <img className={css.img_platforme1} src={img_platforme} alt="" />
+            <img className={css.img_platforme} src={img_platforme} alt="" />
             <Demo img={flech} 
               title="Accroissez" 
               title_two="vos revenus" 
@@ -150,13 +150,9 @@ const Index = (props) => {
 
         </div>
         </div>
-
-
-
-
          <Title title="  Les meilleures fonctionnalités" 
          title_two=" pour révolutionner la gestion de votre club"
-       sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
+         sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
         dès leur première 
        inscription dans votre organisation."
          />
@@ -167,7 +163,7 @@ const Index = (props) => {
       <div className={css.system_performance}>
         <div className={css.system}>
         
-               <Fonctionnalitesclub  
+               <Functionclub  
                 img={system}
                 title="Système de communication" 
                 sub_title="Grâce aux alertes mobile et messages"
@@ -177,7 +173,7 @@ const Index = (props) => {
         </div>
        
         <div className={css.system_performance}>
-              <Fonctionnalitesclub  
+              <Functionclub  
               className={css.system_mobile}
                 img={mobile}
                 title="SMulti-accessibilité" 
@@ -186,7 +182,7 @@ const Index = (props) => {
                sub_title_there="ordinateur, tablette et smartphone. "
                />
      
-        <button className={css.gerer_equipe}>
+        <button className={css.gerer_team}>
                 Demander une démo
         </button>
         </div>
@@ -194,7 +190,7 @@ const Index = (props) => {
       
     
       <div className={css.system_performance}>
-              <Fonctionnalitesclub  
+              <Functionclub  
                 img={performance}
                 title="Performance et statistiques" 
                 sub_title=" Ceux-ci aident les entraîneurs et joueurs"
@@ -206,8 +202,8 @@ const Index = (props) => {
 
     
         <div className={css.system_performance}>
-        <Fonctionnalitesclub  
-                      className={css.system_gestion}
+        <Functionclub  
+                className={css.system_gestion}
 
                 img={gestion}
                 title="Gestion du staff et groupes" 
@@ -253,12 +249,12 @@ const Index = (props) => {
 
 
 
-<div className={css.rejoigner}>
-     <div className={css.rejoigner_communaute}>
+<div className={css.join}>
+     <div className={css.join_community}>
         Rejoignez notre communauté <br />
         et faîtes partie des meilleurs
      </div>
-     <div className={css.rejoingner_button}>
+     <div className={css.join_button}>
         <button className={css.buttom_connexion}>
           Connexion
         </button>
