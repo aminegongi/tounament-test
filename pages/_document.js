@@ -15,7 +15,7 @@ export default class extends Document {
       <html lang="en">
         <Head>
             <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
-            <Manifest href="/manifest.json" themeColor="#F0F0F0"/>
+            {/* <Manifest href="/manifest.json" themeColor="#F0F0F0"/> */}
         </Head>
         <body>
           <Main />
