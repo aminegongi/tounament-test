@@ -8,7 +8,7 @@ return(
     <div className={className}>
     <div className={css.system}>
 
-           <img className={css.system_img} src={img} alt="" />
+           <img className={css.system_img} src={img} alt="image" />
             <div className={css.gestion_club_title}> 
                 <div> {title}</div>
     
