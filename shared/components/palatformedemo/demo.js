@@ -7,7 +7,7 @@ return(
     <>
         <div className={css.gagnant_block}>
         <div className={css.gagnant_semaine}>
-          <img src={img} className={css.montre}></img>
+          <img  alt="image" src={img} className={css.montre}></img>
         <div className={css.gagnant_plus_text} >
           {title}<br/>
          {title_two}

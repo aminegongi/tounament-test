@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Layout from '../shared/components/layout/Layout';
 import css from '../shared/css/home.scss'
-// import 'antd/dist/antd.css';
 
 import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro';
 import TrustUs from '../shared/components/TrustUs/TrustUs';
@@ -99,18 +98,18 @@ const Index = (props) => {
              Pour Windows, Mac, Android et iOS
           </div>
         </div>
-           <img className={css.img_illustration} src={illustration} alt="" />
+           <img alt="image" className={css.img_illustration} src={illustration} alt="" />
 
       </div>
       <div className={css.clubs}>
          5 clubs partenaires nous font confiance
       </div>
       <div className={css.img_club}>
-        <img className={css.hubspot} src={hubspot} alt="" />
-        <img className={css.servicetitan} src={servicetitan} alt="" />
-        <img className={css.Grubhub} src={Grubhub} alt="" />
-        <img className={css.cognizant} src={cognizant} alt="" />
-        <img className={css.square} src={square} alt="" />
+        <img alt="image" className={css.hubspot} src={hubspot} alt="" />
+        <img alt="image" className={css.servicetitan} src={servicetitan} alt="" />
+        <img alt="image" className={css.Grubhub} src={Grubhub} alt="" />
+        <img alt="image" className={css.cognizant} src={cognizant} alt="" />
+        <img alt="image" className={css.square} src={square} alt="" />
 
       </div>
      <Title title="Regagnez votre temps à nouveau"
@@ -129,7 +128,7 @@ const Index = (props) => {
               sub_title_there="gérer parfaitement vos plannings et collaborateurs"
               sub_title_four=" mais aussi de gagner du temps."
         />
-        <img className={css.Image_gagnant} src={Image_gagnant} alt="" />
+        <img alt="image" className={css.Image_gagnant} src={Image_gagnant} alt="" />
 
         </div>
    </div>
@@ -138,7 +137,7 @@ const Index = (props) => {
    
       <div className={css.revenus_gagnant}>
         <div className={css.presenter_block}>
-            <img className={css.img_platforme1} src={img_platforme} alt="" />
+            <img alt="image" className={css.img_platforme1} src={img_platforme} alt="" />
             <Demo img={flech} 
               title="Accroissez" 
               title_two="vos revenus" 
@@ -222,7 +221,7 @@ const Index = (props) => {
       
       </div>
 
-      <img className={css.performance_img} src={gestion_club} alt="" />
+      <img alt="image" className={css.performance_img} src={gestion_club} alt="" />
 
      </div>
      
