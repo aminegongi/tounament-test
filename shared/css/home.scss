@@ -1,7 +1,210 @@
 .home_page {
     button {
+        border: unset;
         font-weight: 500 !important;
         padding: 20px 25px !important;
     }
+    // .gerer_button {
+    //     height: 60px;
+    //     border-radius: 8px;
+    //     background-color: #26beb5;
+    // }
+    .gerer_equipe {
+        padding: 20px 15px 20px 15px;
+        font-size: 16px;
+        font-weight: 500;
+
+        line-height: 1.38;
+        text-align: center;
+        color: #ffffff;
+    }
+    .gerer_equipe_img {
+        margin-left: 67.6px;
+        margin-top: 79.6px;
+        .gerer_equipe_title {
+            font-size: 44px;
+            font-weight: bold;
+            line-height: 1.18;
+            text-align: left;
+            color: #2e3034;
+        }
+        .ispoit_gagne_text {
+            margin-top: 13.3px;
+            font-size: 18px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.39;
+            letter-spacing: normal;
+            text-align: left;
+            color: #2e3034;
+        }
+        // .gerer_button {
+        //     margin-top: 36.1px;
+        //     height: 60px;
+        //     border-radius: 8px;
+        //     background-color: #26beb5;
+        // }
+
+        .for_windows {
+            margin-left: 35.4px;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.83;
+            letter-spacing: normal;
+            color: #a7a7a7;
+        }
+    }
+    .gerer_iluustateur {
+        display: flex;
+        display: flex;
+        justify-content: space-around;
+        background-color: #ffffff;
+        padding-bottom: 59.7px;
+
+        .img_illustration {
+            margin-top: 66.7px;
+        }
+    }
+    .clubs {
+        
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 0.22;
+        text-align: center;
+        color: #2e3034;
+        margin-top: 56px;
+    }
+    .img_club {
+        
+        margin-top: 43px;
+      
+        display: flex;
+        justify-content: space-evenly;
+        .servicetitan {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+        .Grudhub {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+        .cognizant {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
+   
+   
+    .presenter_block {
+        justify-content: space-around;
+        display: flex;
+
+       
+    }
+    .presenter_gagnant{
+        margin-top: 72.3px;
+
+    }
+    .revenus_gagnant{
+        margin-top:161.7px;
+    }
     
+    .gestion_club {
+        margin-left: 99px;
+        margin-top: 78px;
+        display: flex;
+
+        justify-content: space-between;
+        .system_performance {
+            justify-content: space-between;
+            .system_mobile{
+                margin-top: 65.9px;
+            }
+            .system_gestion{
+                margin-top:48.9px;
+            }
+        }
+        .gestion_club_title {
+            margin-top: 23px;
+           
+            font-size: 20px;
+            font-weight: 600;
+            font-style: normal;        
+            color: #2e3034;
+        }
+        .gestion_club_text {
+            margin-top: 14.4px;
+           
+            font-size: 15px;
+           
+            // @review dont write unnecessary css
+            //c'est lespace ente les ligne 
+            line-height: 1.47;
+           
+            color: #2e3034;
+        }
+    }
+    .gerer_equipe {
+        height: 60px;
+        border-radius: 8px;
+        background-color: #26beb5;
+        margin-top: 30.8px;
+        font-size: 14px;
+        padding: 20px 19px 20px 19x;
+    }
+   .rejoigner{
+    border-radius: 12px;
+    box-shadow: 0 10px 30px 0 rgba(38, 190, 181, 0.16);
+    background-color: #26beb5;
+    margin-top:90px;
+    margin-bottom: 50px;
+    .rejoigner_communaute{
+        padding-top:42px;
+        font-size: 40px;
+        font-weight: bold;
+
+        line-height: 1.45;
+        text-align: center;
+        color: #ffffff;
+    }
+    .rejoingner_button{
+        margin-top: 40px;
+        padding-bottom: 44px;
+        display: flex;
+        justify-content: center;
+    .buttom_connexion{
+        font-size: 16px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: normal;
+        text-align: center;
+        color: #26beb5;
+        padding:16px 20px 15px 20px !important;
+        border-radius: 4px;
+        background-color: #ffffff;
+    }
+    .button_commercial{
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+        padding:16px 17px 15px 17px !important;
+        border-radius: 4px;
+        border: solid 1px #ffffff;
+        background-color: #26beb5;
+    }
+}
+    
+   }
 }
