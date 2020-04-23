@@ -14,23 +14,6 @@ import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import Axios from 'axios';
-import cookies from 'next-cookies'
-import contactUs from './contact-us';
-import illustration from './icon/illustration.png';
-import cognizant from './icon/cognizant.png';
-import Grubhub from './icon/Grubhub.png';
-import hubspot from './icon/hubspot.png';
-import square from './icon/square.png';
-import servicetitan from './icon/servicetitan.png';
-import montre from './icon/montre.png';
-import Image_gagnant from './icon/Image_gagnant.png';
-import flech from './icon/flech.png';
-import img_platforme from './icon/img_platforme.png';
-import system from './icon/system.png';
-import mobile from './icon/mobile.png';
-import gestion from './icon/gestion.png';
-import performance from './icon/performance.png';
-import gestion_club from './icon/gestion_club.png';
 import { Collapse, Icon,Button } from 'antd';
 const { Panel } = Collapse;
 
@@ -98,18 +81,18 @@ const Index = (props) => {
              Pour Windows, Mac, Android et iOS
           </div>
         </div>
-           <img alt="image" className={css.img_illustration} src={illustration} alt="" />
+           <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
 
       </div>
       <div className={css.clubs}>
          5 clubs partenaires nous font confiance
       </div>
       <div className={css.img_club}>
-        <img alt="image" className={css.hubspot} src={hubspot} alt="" />
-        <img alt="image" className={css.servicetitan} src={servicetitan} alt="" />
-        <img alt="image" className={css.Grubhub} src={Grubhub} alt="" />
-        <img alt="image" className={css.cognizant} src={cognizant} alt="" />
-        <img alt="image" className={css.square} src={square} alt="" />
+        <img alt="image" className={css.hubspot} src={"icon/hubspot.png"} alt="" />
+        <img alt="image" className={css.servicetitan} src={"icon/servicetitan.png"} alt="" />
+        <img alt="image" className={css.Grubhub} src={"icon/square.png"} alt="" />
+        <img alt="image" className={css.cognizant} src={"icon/cognizant.png"} alt="" />
+        <img alt="image" className={css.square} src={"icon/square.png"} alt="" />
 
       </div>
      <Title title="Regagnez votre temps à nouveau"
@@ -121,14 +104,14 @@ const Index = (props) => {
    
   <div className={css.presenter_gagnant}>
      <div className={css.presenter_block}>
-        <Demo img={montre} title="Gagnez plus" 
+        <Demo img={"icon/montre.png"} title="Gagnez plus" 
               title_two="de 10h par semaine" 
               sub_title="Notre plateforme vous offrira des outils puissants"
               sub_title_two=" et simples qui vous permettront non seulement de"
               sub_title_there="gérer parfaitement vos plannings et collaborateurs"
               sub_title_four=" mais aussi de gagner du temps."
         />
-        <img alt="image" className={css.Image_gagnant} src={Image_gagnant} alt="" />
+        <img alt="image" className={css.Image_gagnant} src={"icon/Image_gagnant.png"} alt="" />
 
         </div>
    </div>
@@ -137,8 +120,8 @@ const Index = (props) => {
    
       <div className={css.revenus_gagnant}>
         <div className={css.presenter_block}>
-            <img alt="image" className={css.img_platforme1} src={img_platforme} alt="" />
-            <Demo img={flech} 
+            <img alt="image" className={css.img_platforme1} src={"icon/img_platforme.png"} alt="" />
+            <Demo img={"icon/flech.png"} 
               title="Accroissez" 
               title_two="vos revenus" 
               sub_title="Votre club gagnera en visibilité auprès d'une grande"
@@ -167,7 +150,7 @@ const Index = (props) => {
         <div className={css.system}>
         
                <Fonctionnalitesclub  
-                img={system}
+                img={"icon/system.png"}
                 title="Système de communication" 
                 sub_title="Grâce aux alertes mobile et messages"
                 sub_title_two="entre joueurs/entraîneurs/clubs,"
@@ -178,7 +161,7 @@ const Index = (props) => {
         <div className={css.system_performance}>
               <Fonctionnalitesclub  
               className={css.system_mobile}
-                img={mobile}
+                img={"icon/mobile.png"}
                 title="SMulti-accessibilité" 
                 sub_title="Vous aurez un accès à la plateforme"
                 sub_title_two="où que vous soyez avec votre"
@@ -194,7 +177,7 @@ const Index = (props) => {
     
       <div className={css.system_performance}>
               <Fonctionnalitesclub  
-                img={performance}
+                img={"icon/performance.png"}
                 title="Performance et statistiques" 
                 sub_title=" Ceux-ci aident les entraîneurs et joueurs"
                 sub_title_two="à analyser les matchs mais aussi de"
@@ -208,7 +191,7 @@ const Index = (props) => {
         <Fonctionnalitesclub  
                       className={css.system_gestion}
 
-                img={gestion}
+                img={"icon/gestion.png"}
                 title="Gestion du staff et groupes" 
                 sub_title="Organisez vos joueurs, entraîneurs et"
                 sub_title_two="groupes en gérant la présence et"
@@ -221,7 +204,7 @@ const Index = (props) => {
       
       </div>
 
-      <img alt="image" className={css.performance_img} src={gestion_club} alt="" />
+      <img alt="image" className={css.performance_img} src={"icon/gestion_club.png"} alt="" />
 
      </div>
      
