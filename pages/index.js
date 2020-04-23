@@ -88,7 +88,7 @@ const Index = (props) => {
             présence de vos groupes, l'organisation de vos <br />
             calendriers, événements et plus encore.
           </div>
-          <button className={css.gerer_equipe}>
+          <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_equipe}>
            
               Gérer mon équipe gratuitement
 
@@ -186,7 +186,7 @@ const Index = (props) => {
                sub_title_there="ordinateur, tablette et smartphone. "
                />
      
-        <button className={css.gerer_equipe}>
+        <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_equipe}>
                 Demander une démo
         </button>
         </div>
@@ -259,10 +259,10 @@ const Index = (props) => {
         et faîtes partie des meilleurs
      </div>
      <div className={css.rejoingner_button}>
-        <button className={css.buttom_connexion}>
+        <button onClick={() => window.location.href = "/contact-us"} className={css.buttom_connexion}>
           Connexion
         </button>
-        <button className={css.button_commercial}>
+        <button onClick={() => window.location.href = "/contact-us"} className={css.button_commercial}>
           Contactez notre service commercial
         </button>
       </div>

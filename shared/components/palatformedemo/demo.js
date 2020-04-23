@@ -18,7 +18,7 @@ return(
             {sub_title_there}<br/>
             {sub_title_four}  
          </div>
-        <button className={css.gerer_equipe}>
+        <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_equipe}>
             Demander une démo
         </button>
         </div>

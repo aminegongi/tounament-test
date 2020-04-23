@@ -13,18 +13,18 @@ function MyApp({ Component, pageProps }) {
   
   useEffect(() => {
     
-    if ('serviceWorker' in navigator) {
+    // if ('serviceWorker' in navigator) {
       
-      navigator.serviceWorker
-      .register('/service-worker.js')
-      .then(registration => {
-        console.log('service worker registration successful')
-      })
-      .catch(err => {
-        console.warn('service worker registration failed', err.message)
-      })
+    //   navigator.serviceWorker
+    //   .register('/service-worker.js')
+    //   .then(registration => {
+    //     console.log('service worker registration successful')
+    //   })
+    //   .catch(err => {
+    //     console.warn('service worker registration failed', err.message)
+    //   })
       
-    }
+    // }
 
     if (!window.GA_INITIALIZED) {
       initGA()
