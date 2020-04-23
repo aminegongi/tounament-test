@@ -1,17 +1,16 @@
 .home_page {
     button {
+        border: unset;
         font-weight: 500 !important;
         padding: 20px 25px !important;
     }
-    .gerer_button {
-        height: 60px;
-        border-radius: 8px;
-        background-color: #26beb5;
-    }
+    // .gerer_button {
+    //     height: 60px;
+    //     border-radius: 8px;
+    //     background-color: #26beb5;
+    // }
     .gerer_equipe {
         padding: 20px 15px 20px 15px;
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
         font-size: 16px;
         font-weight: 500;
 
@@ -23,8 +22,6 @@
         margin-left: 67.6px;
         margin-top: 79.6px;
         .gerer_equipe_title {
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
             font-size: 44px;
             font-weight: bold;
             line-height: 1.18;
@@ -33,8 +30,6 @@
         }
         .ispoit_gagne_text {
             margin-top: 13.3px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
             font-size: 18px;
             font-weight: normal;
             font-stretch: normal;
@@ -44,19 +39,16 @@
             text-align: left;
             color: #2e3034;
         }
-        .gerer_button {
-            margin-top: 36.1px;
-            // width: 270px;
-            height: 60px;
-            border-radius: 8px;
-            background-color: #26beb5;
-        }
+        // .gerer_button {
+        //     margin-top: 36.1px;
+        //     height: 60px;
+        //     border-radius: 8px;
+        //     background-color: #26beb5;
+        // }
 
         .for_windows {
             margin-left: 35.4px;
             margin-top: 10px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
             font-size: 12px;
             font-weight: normal;
             font-stretch: normal;
@@ -68,41 +60,30 @@
     }
     .gerer_iluustateur {
         display: flex;
-        // @review dont fix sections height
-        height: 626px;
-        // @review why using object-fit ?
-        object-fit: contain;
+        display: flex;
+        justify-content: space-around;
         background-color: #ffffff;
+        padding-bottom: 59.7px;
+
         .img_illustration {
-            margin-left: 185.1px;
             margin-top: 66.7px;
-            margin-right: 38.3px;
         }
     }
     .clubs {
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
+        
         font-size: 18px;
         font-weight: normal;
-        // @review dont write unnecessary css
-        font-stretch: normal;
-        // @review dont write unnecessary css
-        font-style: normal;
-        // @review dont write unnecessary css
         line-height: 0.22;
         text-align: center;
         color: #2e3034;
         margin-top: 56px;
     }
     .img_club {
-        // @review dont use margin for spacing
-        // use flex attributes
+        
         margin-top: 43px;
-        margin-left: 268px;
-        margin-right: 267px;
+      
         display: flex;
-
-        justify-content: space-between;
+        justify-content: space-evenly;
         .servicetitan {
             padding-top: 4px;
             padding-bottom: 4px;
@@ -116,165 +97,22 @@
             padding-bottom: 4px;
         }
     }
-    .regagnez_temps {
-        margin-top: 137px;
-
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
-        font-size: 46px;
-        font-weight: bold;
-        // @review dont write unnecessary css
-        line-height: 0.83;
-        text-align: center;
-        color: #2e3034;
-    }
-    .plannings {
-        margin-top: 20px;
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
-        font-size: 18px;
-        font-weight: normal;
-        // @review dont write unnecessary css
-        font-stretch: normal;
-        // @review dont write unnecessary css
-        font-style: normal;
-        // @review dont write unnecessary css
-        line-height: 1.67;
-        // @review dont write unnecessary css
-        letter-spacing: normal;
-        text-align: center;
-        color: #2e3034;
-    }
-    .gagnant_block {
-        // @review dont use margin for spacing
-        margin-left: 177px;
+   
+   
+    .presenter_block {
+        justify-content: space-around;
         display: flex;
-        margin-top: 72px;
 
-        // .gagnant_semaine{
-        //     .montre{
-        //     }
-        // }
-        .gagnant_plus_text {
-            margin-top: 23px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
-            font-size: 38px;
-            font-weight: bold;
-            // @review dont write unnecessary css
-            font-stretch: normal;
-            // @review dont write unnecessary css
-            font-style: normal;
-            // @review dont write unnecessary css
-            line-height: 1.26;
-            // @review dont write unnecessary css
-            letter-spacing: normal;
-            text-align: left;
-            color: #2e3034;
-        }
-        .gagnant_plateforme {
-            margin-top: 15px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
-            font-size: 16px;
-            font-weight: normal;
-            // @review dont write unnecessary css
-            font-stretch: normal;
-            // @review dont write unnecessary css
-            font-style: normal;
-            // @review dont write unnecessary css
-            line-height: 1.75;
-            // @review dont write unnecessary css
-            letter-spacing: normal;
-            // @review dont write unnecessary css
-            text-align: left;
-            color: #2e3034;
-        }
-        .gerer_button {
-            margin-top: 25px;
-        }
-        .Image_gagnant {
-            margin-left: 227.1px;
-        }
+       
     }
-    .gagnant_Accroissez {
-        display: flex;
-        margin-top: 161px;
-        .img_platforme {
-            width: 620.9px;
-            height: 492px;
-        }
-        .accroissez {
-            // @review dont use margin for spacing
-            margin-left: 268px;
-        }
-        .flech {
-            width: 62px;
-            height: 62px;
-            object-fit: contain;
-        }
-        .accroissez_revenus {
-            margin-top: 23px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
-            font-size: 38px;
-            font-weight: bold;
-            // @review dont write unnecessary css
-            font-stretch: normal;
-            // @review dont write unnecessary css
-            font-style: normal;
-            // @review dont write unnecessary css
-            line-height: 1.26;
-            // @review dont write unnecessary css
-            letter-spacing: normal;
-            // @review dont write unnecessary css
-            text-align: left;
-            color: #2e3034;
-        }
-        .accroissez_gagnera_visiblite {
-            margin-top: 15px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
-            font-size: 16px;
-            font-weight: normal;
-            // @review dont write unnecessary css
-            font-stretch: normal;
-            // @review dont write unnecessary css
-            line-height: 1.75;
-            // @review dont write unnecessary css
-            letter-spacing: normal;
-            // @review dont write unnecessary css
-            text-align: left;
-            color: #2e3034;
-            margin-bottom: 25px;
-        }
-    }
-    .meilleurs_fonctionnalite {
-        margin-top: 137px;
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
-        font-size: 46px;
-        font-weight: bold;
-        // @review dont write unnecessary css
-        line-height: 1.17;
-        // @review dont write unnecessary css
-        letter-spacing: normal;
-        text-align: center;
-        color: #2e3034;
-    }
-    .carrere_joueurs {
-        margin-top: 16px;
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
-        font-size: 18px;
+    .presenter_gagnant{
+        margin-top: 72.3px;
 
-        // @review dont write unnecessary css
-        line-height: 1.67;
-        // @review dont write unnecessary css
-        letter-spacing: normal;
-        text-align: center;
-        color: #2e3034;
     }
+    .revenus_gagnant{
+        margin-top:161.7px;
+    }
+    
     .gestion_club {
         margin-left: 99px;
         margin-top: 78px;
@@ -283,47 +121,30 @@
         justify-content: space-between;
         .system_performance {
             justify-content: space-between;
-            .performance_gestion_mobile {
-                margin-top: 47.8px;
+            .system_mobile{
+                margin-top: 65.9px;
             }
-            .performance__mobile {
-                margin-top: 65.8px;
+            .system_gestion{
+                margin-top:48.9px;
             }
         }
         .gestion_club_title {
             margin-top: 23px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
+           
             font-size: 20px;
             font-weight: 600;
-            // @review dont write unnecessary css
-            font-stretch: normal;
-            // @review dont write unnecessary css
-            font-style: normal;
-            // @review dont write unnecessary css
-            line-height: 1.2;
-            // @review dont write unnecessary css
-            letter-spacing: normal;
-            // @review dont write unnecessary css
-            text-align: left;
+            font-style: normal;        
             color: #2e3034;
         }
         .gestion_club_text {
             margin-top: 14.4px;
-            // @review dont use font-family because it's already declared in global style
-            font-family: Inter;
+           
             font-size: 15px;
-            font-weight: normal;
+           
             // @review dont write unnecessary css
-            font-stretch: normal;
-            // @review dont write unnecessary css
-            font-style: normal;
-            // @review dont write unnecessary css
+            //c'est lespace ente les ligne 
             line-height: 1.47;
-            // @review dont write unnecessary css
-            letter-spacing: normal;
-            // @review dont write unnecessary css
-            text-align: left;
+           
             color: #2e3034;
         }
     }
@@ -335,29 +156,55 @@
         font-size: 14px;
         padding: 20px 19px 20px 19x;
     }
-    .question_souvent_posee {
-        margin-top: 150px;
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
-        font-size: 46px;
+   .rejoigner{
+    border-radius: 12px;
+    box-shadow: 0 10px 30px 0 rgba(38, 190, 181, 0.16);
+    background-color: #26beb5;
+    margin-top:90px;
+    margin-bottom: 50px;
+    .rejoigner_communaute{
+        padding-top:42px;
+        font-size: 40px;
         font-weight: bold;
-        // @review dont write unnecessary css
-        line-height: 0.83;
-        // @review dont write unnecessary css
+
+        line-height: 1.45;
+        text-align: center;
+        color: #ffffff;
+    }
+    .rejoingner_button{
+        margin-top: 40px;
+        padding-bottom: 44px;
+        display: flex;
+        justify-content: center;
+    .buttom_connexion{
+        font-size: 16px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
         letter-spacing: normal;
         text-align: center;
-        color: #2e3034;
+        color: #26beb5;
+        padding:16px 20px 15px 20px !important;
+        border-radius: 4px;
+        background-color: #ffffff;
     }
-    .question_reponsese_necessaires {
-        margin-top: 16px;
-        // @review dont use font-family because it's already declared in global style
-        font-family: Inter;
-        font-size: 18px;
-        // @review dont write unnecessary css
-        line-height: 1.67;
-        // @review dont write unnecessary css
+    .button_commercial{
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.38;
         letter-spacing: normal;
         text-align: center;
-        color: #2e3034;
+        color: #ffffff;
+        padding:16px 17px 15px 17px !important;
+        border-radius: 4px;
+        border: solid 1px #ffffff;
+        background-color: #26beb5;
     }
+}
+    
+   }
 }

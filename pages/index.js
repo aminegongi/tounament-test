@@ -1,11 +1,16 @@
 import Head from 'next/head'
 import Layout from '../shared/components/layout/Layout';
 import css from '../shared/css/home.scss'
+// import 'antd/dist/antd.css';
+
 import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro';
 import TrustUs from '../shared/components/TrustUs/TrustUs';
 import InterfacesExample from '../shared/components/InterfacesExample/InterfacesExample';
 import Feature from '../shared/components/Feature/Feature';
 import BecomePartner from '../shared/components/BecomePartner/BecomePartner';
+import Title from '../shared/components/title/title';
+import Demo from '../shared/components/palatformedemo/demo';
+import Fonctionnalitesclub from '../shared/components/fonctionnalitesclub/fonctionnalitesclub';
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
@@ -83,14 +88,11 @@ const Index = (props) => {
             présence de vos groupes, l'organisation de vos <br />
             calendriers, événements et plus encore.
           </div>
-          <button className={css.gerer_button}>
-            {/* 
-              @review dont use span in button when you have only one to text to display 
-            */}
-            <span className={css.gerer_equipe}>
+          <button className={css.gerer_equipe}>
+           
               Gérer mon équipe gratuitement
 
-            </span>
+           
           </button>
           <div className={css.for_windows}>
 
@@ -111,133 +113,110 @@ const Index = (props) => {
         <img className={css.square} src={square} alt="" />
 
       </div>
-     <div className={css.regagnez_temps} >
-        Regagnez votre temps à nouveau
-     </div>
-     <div className={css.plannings}>
-         Gérer les plannings et les absences avec iSporit est plus efficace que de
-         le faire <br/> 
-         avec des tonnes de feuilles qui auront peu de traçabilité plus tard.
-       
-     </div>
+     <Title title="Regagnez votre temps à nouveau"
+       sub_title="Gérer les plannings et les absences avec iSporit est plus efficace
+        que de le faire 
+                avec des tonnes de feuilles qui auront peu de traçabilité plus tard.
+                "
+/>
    
-     <div className={css.gagnant_block}>
-        <div className={css.gagnant_semaine}>
-          <img src={montre} className={css.montre}></img>
-        <div className={css.gagnant_plus_text} >
-          Gagnez plus<br/>
-          de 10h par semaine
-        </div>
-        <div className={css.gagnant_plateforme}>
-          Notre plateforme vous offrira des outils puissants <br/>
-          et simples qui vous permettront non seulement de<br/>
-          gérer parfaitement vos plannings et collaborateurs,<br/>
-          mais aussi de gagner du temps.
-        </div>
-        <button className={css.gerer_button}>
-            <span className={css.gerer_equipe}>
-            Demander une démo
-            </span>
-        </button>
-        </div>
+  <div className={css.presenter_gagnant}>
+     <div className={css.presenter_block}>
+        <Demo img={montre} title="Gagnez plus" 
+              title_two="de 10h par semaine" 
+              sub_title="Notre plateforme vous offrira des outils puissants"
+              sub_title_two=" et simples qui vous permettront non seulement de"
+              sub_title_there="gérer parfaitement vos plannings et collaborateurs"
+              sub_title_four=" mais aussi de gagner du temps."
+        />
         <img className={css.Image_gagnant} src={Image_gagnant} alt="" />
-     </div>
 
-     <div className={css.gagnant_Accroissez}>
-      <img className={css.img_platforme} src={img_platforme} alt="" />
-        <div className={css.accroissez}>
-          <img className={css.flech} src={flech} alt="" />
-          <div className={css.accroissez_revenus}>
-            Accroissez<br/>
-            vos revenus
-          </div>
-          <div className={css.accroissez_gagnera_visiblite}>
-          Votre club gagnera en visibilité auprès d'une grande <br/>
-          communauté de joueurs inscrits dans la plateforme et<br/>
-          améliorera son image de marque grâce aux consignes <br/>
-          de notre équipe experte en digital.
-          </div>
-           <button className={css.gerer_button}>
-                <span className={css.gerer_equipe}>
-                Demander une démo
-                </span>
-            </button> 
         </div>
-     
-     </div>
+   </div>
+   
+   
+   
+      <div className={css.revenus_gagnant}>
+        <div className={css.presenter_block}>
+            <img className={css.img_platforme1} src={img_platforme} alt="" />
+            <Demo img={flech} 
+              title="Accroissez" 
+              title_two="vos revenus" 
+              sub_title="Votre club gagnera en visibilité auprès d'une grande"
+              sub_title_two="communauté de joueurs inscrits dans la plateforme et"
+              sub_title_there="améliorera son image de marque grâce aux consignes"
+              sub_title_four=" de notre équipe experte en digital."
+            />
 
-      <div className={css.meilleurs_fonctionnalite}>
-          Les meilleures fonctionnalités<br/>
-          pour révolutionner la gestion de votre club
-      </div> 
-    
-     <div className={css.carrere_joueurs}>
-     Boostez la carrière de vos joueurs et suivez leurs parcours sportif dès leur première  <br/>
-     inscription dans votre organisation.
-     </div>
+        </div>
+        </div>
 
+
+
+
+         <Title title="  Les meilleures fonctionnalités" 
+         title_two=" pour révolutionner la gestion de votre club"
+       sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
+        dès leur première 
+       inscription dans votre organisation."
+         />
+  
+      
      <div className={css.gestion_club}>
       
       <div className={css.system_performance}>
         <div className={css.system}>
-           <img className={css.system_img} src={system} alt="" />
-            <div className={css.gestion_club_title}> 
-               Système de communication
-            </div>
-            <div className={css.gestion_club_text}>
-               Grâce aux alertes mobile et messages <br/>
-               entre joueurs/entraîneurs/clubs,<br/>
-               communiquez en toute efficacité !</div>
-
+        
+               <Fonctionnalitesclub  
+                img={system}
+                title="Système de communication" 
+                sub_title="Grâce aux alertes mobile et messages"
+                sub_title_two="entre joueurs/entraîneurs/clubs,"
+               sub_title_there="communiquez en toute efficacité !"
+               />
         </div>
-        <div className={css.performance__mobile}>
-           <img className={css.system_img} src={mobile} alt="" />
-            <div className={css.gestion_club_title}> 
-               Multi-accessibilité
-            </div>
-            <div className={css.gestion_club_text}>
-              Vous aurez un accès à la plateforme<br/>
-              où que vous soyez avec votre<br/>
-              ordinateur, tablette et smartphone. 
-              
-              </div>
+       
+        <div className={css.system_performance}>
+              <Fonctionnalitesclub  
+              className={css.system_mobile}
+                img={mobile}
+                title="SMulti-accessibilité" 
+                sub_title="Vous aurez un accès à la plateforme"
+                sub_title_two="où que vous soyez avec votre"
+               sub_title_there="ordinateur, tablette et smartphone. "
+               />
+     
         <button className={css.gerer_equipe}>
-            <span className={css.gerer_equipe}>
                 Demander une démo
-            </span>
         </button>
         </div>
       </div>
       
-
+    
       <div className={css.system_performance}>
-        
-      <div className={css.performance}>
-           <img className={css.performance_img} src={performance} alt="" />
-            <div className={css.gestion_club_title}> 
-            Performance et statistiques
-            </div>
-            <div className={css.gestion_club_text}>
-            Ceux-ci aident les entraîneurs et joueurs<br/>
-             à analyser les matchs mais aussi de<br/>
-              mieux comprendre leurs forces et<br/>
-               faiblesses.
-            </div>
-
-        </div>
+              <Fonctionnalitesclub  
+                img={performance}
+                title="Performance et statistiques" 
+                sub_title=" Ceux-ci aident les entraîneurs et joueurs"
+                sub_title_two="à analyser les matchs mais aussi de"
+               sub_title_there="mieux comprendre leurs forces et "
+               sub_title_four=" faiblesses."
+               />
+     
 
     
-        <div className={css.performance_gestion_mobile}>
-           <img className={css.performance_img} src={gestion} alt="" />
-            <div className={css.gestion_club_title}> 
-                 Gestion du staff et groupes
-            </div>
-            <div className={css.gestion_club_text}>
-                Organisez vos joueurs, entraîneurs et<br/>
-                groupes en gérant la présence et <br/>
-                l'historique, la planification des tâches<br/>
-                  et des programmes à réaliser. 
-            </div>
+        <div className={css.system_performance}>
+        <Fonctionnalitesclub  
+                      className={css.system_gestion}
+
+                img={gestion}
+                title="Gestion du staff et groupes" 
+                sub_title="Organisez vos joueurs, entraîneurs et"
+                sub_title_two="groupes en gérant la présence et"
+               sub_title_there="l'historique, la planification des tâches "
+               sub_title_four="et des programmes à réaliser."
+               />
+        
 
         </div>
       
@@ -247,15 +226,13 @@ const Index = (props) => {
 
      </div>
      
-     <div className={css.question_souvent_posee}>
-        Questions souvent posées
-     </div>
-     <div className={css.question_reponsese_necessaires}>
-     Vous trouverez ci-dessous les questions auxquelles nous avons 
-     fait face plusieurs<br/>
-      fois et les réponses nécessaires
-     </div>
-     {/* <Button></Button> */}
+     <Title title=" Questions souvent posées"
+       sub_title="Vous trouverez ci-dessous les questions auxquelles nous avons 
+       fait face plusieurs "
+       sub_title_two="fois et les réponses nécessaires"
+/>
+
+
 
      <Collapse
     bordered={false}
@@ -272,12 +249,24 @@ const Index = (props) => {
       <p>{text}</p>
     </Panel>
   </Collapse> 
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
-     <br/>
+
+
+
+
+<div className={css.rejoigner}>
+     <div className={css.rejoigner_communaute}>
+        Rejoignez notre communauté <br />
+        et faîtes partie des meilleurs
+     </div>
+     <div className={css.rejoingner_button}>
+        <button className={css.buttom_connexion}>
+          Connexion
+        </button>
+        <button className={css.button_commercial}>
+          Contactez notre service commercial
+        </button>
+      </div>
+</div>
       {/* {
         lang && <Layout loggedIn={props.loggedIn}> */}
           {/* <PlatformIntro
