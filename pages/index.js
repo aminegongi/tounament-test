@@ -145,7 +145,7 @@ const Index = (props) => {
       <div className={css.system_performance}>
         <div className={css.system}>
         
-               <Fonctionnalitesclub  
+               <Functionclub  
                 img={"icon/system.png"}
                 title="Système de communication" 
                 sub_title="Grâce aux alertes mobile et messages"
@@ -172,7 +172,7 @@ const Index = (props) => {
       
     
       <div className={css.system_performance}>
-              <Fonctionnalitesclub  
+              <Functionclub  
                 img={"icon/performance.png"}
                 title="Performance et statistiques" 
                 sub_title=" Ceux-ci aident les entraîneurs et joueurs"
@@ -213,18 +213,46 @@ const Index = (props) => {
 
 
      <Collapse
+     className={css.collapseStyle}
+     expandIconPosition="right"
+    
     bordered={false}
     defaultActiveKey={['1']}
-    expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
+    // expandIcon={({ isActive }) => ({isActive} ? <Icon type="plus-square" theme="twoTone" /> :<Icon type="plus-circle" theme="twoTone" />)} 
+
+    expandIcon={({ isActive }) => <Icon type="plus-circle" theme="twoTone" rotate={isActive ? 90 : 0} />
+        }
   >
-    <Panel header="This is panel header 1" key="1" style={customPanelStyle}>
-      <p>{text}</p>
+    <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+    <div>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</div>
+    <div>sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,</div>
+     <div>sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</div>
+     <div> Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+     <div>  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, </div>
+    <div>  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,</div>
+    <div>   sed diam voluptua. At vero eos et accusam et.</div>
+    </div>
     </Panel>
-    <Panel header="This is panel header 2" key="2" style={customPanelStyle}>
-      <p>{text}</p>
+    <Panel className={css.customPanelStyletext} header="Je suis un joueur non-inscrit dans un club, est-ce que je peux utiliser la plateforme ?" key="2" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+        {text}
+      </div>
     </Panel>
-    <Panel header="This is panel header 3" key="3" style={customPanelStyle}>
-      <p>{text}</p>
+    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing elitr, sed diam nonumy ?" key="3" style={customPanelStyle}>
+      <div className={css.customPaneltwo}>
+        {text}
+      </div>
+    </Panel>
+    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet ?" key="4" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+        {text}
+      </div>
+    </Panel>
+    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing ?" key="5" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+        {text}
+      </div>
     </Panel>
   </Collapse> 
 

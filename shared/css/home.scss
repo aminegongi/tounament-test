@@ -1,4 +1,5 @@
 .home_page {
+    background-color: white;
     button {
         border: unset;
         font-weight: 500 !important;
@@ -135,6 +136,8 @@
     background-color: #26beb5;
     margin-top:90px;
     margin-bottom: 50px;
+    margin-left:52px;
+    margin-right: 52px;
     .join_community{
         padding-top:42px;
         font-size: 40px;
@@ -177,7 +180,41 @@
         border: solid 1px #ffffff;
         background-color: #26beb5;
     }
-}
-    
+}}
+   .collapseStyle{
+       padding-top:22.1px;
+
+       margin-top:37px;
+       margin-left: 211px;
+        margin-right: 210px;
+        background: white;
+    border-radius: 8px;
+   }
+   .customPanelStyletext{
+    font-size: 18px;
+    font-weight: 600;
+   margin-left:35px;
+   margin-top:49px;
+    line-height: 3.22;
+    padding-bottom: 20px;
+  padding-top:22.1px;
+  padding-left:35px;
+    color: #2e3034;
+    .customPaneltwo{
+        padding-top: 33.4px;
+padding-right: 104px;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.63;
+        letter-spacing: normal;
+        text-align: left;
+        color: #2e3034;
+    }
    }
 }
+
+.ant-collapse-header  {
+    right: 35px !important;
+   }
