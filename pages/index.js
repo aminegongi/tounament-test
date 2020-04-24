@@ -7,9 +7,9 @@ import TrustUs from '../shared/components/TrustUs/TrustUs';
 import InterfacesExample from '../shared/components/InterfacesExample/InterfacesExample';
 import Feature from '../shared/components/Feature/Feature';
 import BecomePartner from '../shared/components/BecomePartner/BecomePartner';
-import Title from '../shared/components/title/title';
-import Demo from '../shared/components/palatformedemo/demo';
-import Fonctionnalitesclub from '../shared/components/fonctionnalitesclub/fonctionnalitesclub';
+import Title from '../shared/components/TitleSection/TitleSection';
+import Demo from '../shared/components/DemoSection/DemoSection';
+import Functionclub from '../shared/components/Functionclub/Functionclub';
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
@@ -60,17 +60,17 @@ const Index = (props) => {
       <div className={css.gerer_iluustateur}>
         <div className={css.gerer_equipe_img}>
           <div className={css.gerer_equipe_title}>
-            Gérez vos équipes <br />
-            sportives efficacement<br />
-            et simplement n'importe<br />
-            où vous soyez
+           <div> Gérez vos équipes </div>
+           <div> sportives efficacement</div>
+           <div> et simplement n'importe</div>
+           <div> où vous soyez</div>
           </div>
-          <div className={css.ispoit_gagne_text}>
-            iSporit vous fera gagner du temps pour gérer la <br />
-            présence de vos groupes, l'organisation de vos <br />
-            calendriers, événements et plus encore.
+          <div className={css.gerer_time_title}>
+            <div>iSporit vous fera gagner du temps pour gérer la</div>
+            <div>présence de vos groupes, l'organisation de vos</div>
+            <div>calendriers, événements et plus encore.</div>
           </div>
-          <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_equipe}>
+          <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
            
               Gérer mon équipe gratuitement
 
@@ -102,7 +102,7 @@ const Index = (props) => {
                 "
 />
    
-  <div className={css.presenter_gagnant}>
+  <div className={css.presenter_winner}>
      <div className={css.presenter_block}>
         <Demo img={"icon/montre.png"} title="Gagnez plus" 
               title_two="de 10h par semaine" 
@@ -120,7 +120,7 @@ const Index = (props) => {
    
       <div className={css.revenus_gagnant}>
         <div className={css.presenter_block}>
-            <img alt="image" className={css.img_platforme1} src={"icon/img_platforme.png"} alt="" />
+            <img alt="image" className={css.img_platforme} src={"icon/img_platforme.png"} alt="" />
             <Demo img={"icon/flech.png"} 
               title="Accroissez" 
               title_two="vos revenus" 
@@ -132,13 +132,9 @@ const Index = (props) => {
 
         </div>
         </div>
-
-
-
-
          <Title title="  Les meilleures fonctionnalités" 
          title_two=" pour révolutionner la gestion de votre club"
-       sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
+         sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
         dès leur première 
        inscription dans votre organisation."
          />
@@ -149,7 +145,7 @@ const Index = (props) => {
       <div className={css.system_performance}>
         <div className={css.system}>
         
-               <Fonctionnalitesclub  
+               <Functionclub  
                 img={"icon/system.png"}
                 title="Système de communication" 
                 sub_title="Grâce aux alertes mobile et messages"
@@ -159,7 +155,7 @@ const Index = (props) => {
         </div>
        
         <div className={css.system_performance}>
-              <Fonctionnalitesclub  
+              <Functionclub  
               className={css.system_mobile}
                 img={"icon/mobile.png"}
                 title="SMulti-accessibilité" 
@@ -168,7 +164,7 @@ const Index = (props) => {
                sub_title_there="ordinateur, tablette et smartphone. "
                />
      
-        <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_equipe}>
+        <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
                 Demander une démo
         </button>
         </div>
@@ -176,7 +172,7 @@ const Index = (props) => {
       
     
       <div className={css.system_performance}>
-              <Fonctionnalitesclub  
+              <Functionclub  
                 img={"icon/performance.png"}
                 title="Performance et statistiques" 
                 sub_title=" Ceux-ci aident les entraîneurs et joueurs"
@@ -188,8 +184,8 @@ const Index = (props) => {
 
     
         <div className={css.system_performance}>
-        <Fonctionnalitesclub  
-                      className={css.system_gestion}
+        <Functionclub  
+                className={css.system_gestion}
 
                 img={"icon/gestion.png"}
                 title="Gestion du staff et groupes" 
@@ -217,30 +213,58 @@ const Index = (props) => {
 
 
      <Collapse
+     className={css.collapseStyle}
+     expandIconPosition="right"
+    
     bordered={false}
     defaultActiveKey={['1']}
-    expandIcon={({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />}
+    // expandIcon={({ isActive }) => ({isActive} ? <Icon type="plus-square" theme="twoTone" /> :<Icon type="plus-circle" theme="twoTone" />)} 
+
+    expandIcon={({ isActive }) => <Icon type="plus-circle" theme="twoTone" rotate={isActive ? 90 : 0} />
+        }
   >
-    <Panel header="This is panel header 1" key="1" style={customPanelStyle}>
-      <p>{text}</p>
+    <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+    <div>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</div>
+    <div>sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,</div>
+     <div>sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</div>
+     <div> Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+     <div>  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, </div>
+    <div>  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,</div>
+    <div>   sed diam voluptua. At vero eos et accusam et.</div>
+    </div>
     </Panel>
-    <Panel header="This is panel header 2" key="2" style={customPanelStyle}>
-      <p>{text}</p>
+    <Panel className={css.customPanelStyletext} header="Je suis un joueur non-inscrit dans un club, est-ce que je peux utiliser la plateforme ?" key="2" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+        {text}
+      </div>
     </Panel>
-    <Panel header="This is panel header 3" key="3" style={customPanelStyle}>
-      <p>{text}</p>
+    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing elitr, sed diam nonumy ?" key="3" style={customPanelStyle}>
+      <div className={css.customPaneltwo}>
+        {text}
+      </div>
+    </Panel>
+    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet ?" key="4" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+        {text}
+      </div>
+    </Panel>
+    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing ?" key="5" style={customPanelStyle}>
+    <div className={css.customPaneltwo}>
+        {text}
+      </div>
     </Panel>
   </Collapse> 
 
 
 
 
-<div className={css.rejoigner}>
-     <div className={css.rejoigner_communaute}>
+<div className={css.join}>
+     <div className={css.join_community}>
         Rejoignez notre communauté <br />
         et faîtes partie des meilleurs
      </div>
-     <div className={css.rejoingner_button}>
+     <div className={css.join_button}>
         <button onClick={() => window.location.href = "/contact-us"} className={css.buttom_connexion}>
           Connexion
         </button>

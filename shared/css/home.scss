@@ -1,15 +1,12 @@
 .home_page {
+    background-color: white;
     button {
         border: unset;
         font-weight: 500 !important;
         padding: 20px 25px !important;
     }
-    // .gerer_button {
-    //     height: 60px;
-    //     border-radius: 8px;
-    //     background-color: #26beb5;
-    // }
-    .gerer_equipe {
+  
+    .gerer_team {
         padding: 20px 15px 20px 15px;
         font-size: 16px;
         font-weight: 500;
@@ -28,7 +25,7 @@
             text-align: left;
             color: #2e3034;
         }
-        .ispoit_gagne_text {
+        .gerer_time_title {
             margin-top: 13.3px;
             font-size: 18px;
             font-weight: normal;
@@ -39,13 +36,7 @@
             text-align: left;
             color: #2e3034;
         }
-        // .gerer_button {
-        //     margin-top: 36.1px;
-        //     height: 60px;
-        //     border-radius: 8px;
-        //     background-color: #26beb5;
-        // }
-
+    
         .for_windows {
             margin-left: 35.4px;
             margin-top: 10px;
@@ -99,13 +90,13 @@
     }
    
    
-    .presenter_block {
+    .presenter_block{
         justify-content: space-around;
         display: flex;
 
        
     }
-    .presenter_gagnant{
+    .presenter_winner{
         margin-top: 72.3px;
 
     }
@@ -128,27 +119,10 @@
                 margin-top:48.9px;
             }
         }
-        .gestion_club_title {
-            margin-top: 23px;
-           
-            font-size: 20px;
-            font-weight: 600;
-            font-style: normal;        
-            color: #2e3034;
-        }
-        .gestion_club_text {
-            margin-top: 14.4px;
-           
-            font-size: 15px;
-           
-            // @review dont write unnecessary css
-            //c'est lespace ente les ligne 
-            line-height: 1.47;
-           
-            color: #2e3034;
-        }
+       
+       
     }
-    .gerer_equipe {
+    .gerer_team {
         height: 60px;
         border-radius: 8px;
         background-color: #26beb5;
@@ -156,13 +130,15 @@
         font-size: 14px;
         padding: 20px 19px 20px 19x;
     }
-   .rejoigner{
+   .join{
     border-radius: 12px;
     box-shadow: 0 10px 30px 0 rgba(38, 190, 181, 0.16);
     background-color: #26beb5;
     margin-top:90px;
     margin-bottom: 50px;
-    .rejoigner_communaute{
+    margin-left:52px;
+    margin-right: 52px;
+    .join_community{
         padding-top:42px;
         font-size: 40px;
         font-weight: bold;
@@ -171,7 +147,7 @@
         text-align: center;
         color: #ffffff;
     }
-    .rejoingner_button{
+    .join_button{
         margin-top: 40px;
         padding-bottom: 44px;
         display: flex;
@@ -204,7 +180,41 @@
         border: solid 1px #ffffff;
         background-color: #26beb5;
     }
-}
-    
+}}
+   .collapseStyle{
+       padding-top:22.1px;
+
+       margin-top:37px;
+       margin-left: 211px;
+        margin-right: 210px;
+        background: white;
+    border-radius: 8px;
+   }
+   .customPanelStyletext{
+    font-size: 18px;
+    font-weight: 600;
+   margin-left:35px;
+   margin-top:49px;
+    line-height: 3.22;
+    padding-bottom: 20px;
+  padding-top:22.1px;
+  padding-left:35px;
+    color: #2e3034;
+    .customPaneltwo{
+        padding-top: 33.4px;
+padding-right: 104px;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.63;
+        letter-spacing: normal;
+        text-align: left;
+        color: #2e3034;
+    }
    }
 }
+
+.ant-collapse-header  {
+    right: 35px !important;
+   }
