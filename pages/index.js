@@ -218,10 +218,10 @@ const Index = (props) => {
     
     bordered={false}
     defaultActiveKey={['1']}
-    // expandIcon={({ isActive }) => ({isActive} ? <Icon type="plus-square" theme="twoTone" /> :<Icon type="plus-circle" theme="twoTone" />)} 
 
-    expandIcon={({ isActive }) => <Icon type="plus-circle" theme="twoTone" rotate={isActive ? 90 : 0} />
-        }
+    expandIcon={({ isActive }) => <Icon type= {isActive ?
+      ("minus-circle" )
+    : "plus-circle" } theme="twoTone"  /> }        
   >
     <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
     <div className={css.customPaneltwo}>
