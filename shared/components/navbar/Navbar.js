@@ -1,4 +1,4 @@
-import css from './Navbar.scss'
+import css from './navbar.scss'
 import Link from 'next/link'
 import { Collapse, Icon,Button } from 'antd';
 
