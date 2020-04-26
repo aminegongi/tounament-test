@@ -10,6 +10,8 @@ import BecomePartner from '../shared/components/BecomePartner/BecomePartner';
 import Title from '../shared/components/TitleSection/TitleSection';
 import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
+import Navbar from '../shared/components/Navbar/Navbar';
+import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
@@ -57,6 +59,15 @@ const Index = (props) => {
         <link rel="manifest" href="/static/manifest/manifest.json" />
 
       </Head>
+      <Navbar logo= {"icon/logoindexpage.png"} 
+       navmenu1="La plateforme"
+       icon="down"
+       navmenu2="Clubs partenaires" 
+       navmenu3="Chercher un joueur" 
+       navmenu4="Contact"
+       buttonone="connexion"
+       buttontwo="S'inscrire gratuitement"
+       />
       <div className={css.gerer_iluustateur}>
         <div className={css.gerer_equipe_img}>
           <div className={css.gerer_equipe_title}>
@@ -219,7 +230,7 @@ const Index = (props) => {
     bordered={false}
     defaultActiveKey={['1']}
 
-    expandIcon={({ isActive }) => <Icon type= {isActive ?
+    expandIcon={({ isActive }) => <Icon className={css.expandicon} type= {isActive ?
       ("minus-circle" )
     : "plus-circle" } theme="twoTone"  /> }        
   >
@@ -259,7 +270,7 @@ const Index = (props) => {
 
 
 
-<div className={css.join}>
+     <div className={css.join}>
      <div className={css.join_community}>
         Rejoignez notre communauté <br />
         et faîtes partie des meilleurs
@@ -272,6 +283,21 @@ const Index = (props) => {
           Contactez notre service commercial
         </button>
       </div>
+</div>
+      <div className={css.footer}>
+        <FooterIndexPage logo= {"icon/logoindexpage.png"} 
+        navmenu1="La plateforme"
+        navmenu2="Clubs partenaires" 
+        navmenu3="Chercher un joueur" 
+        navmenu4="Contact"
+        navmenu5="connexion"
+
+        buttontwo="Devenez partenaire"
+
+        />
+       </div>
+<div className={css.copyright}>
+© 2020 iSporit. All rights reserved
 </div>
       {/* {
         lang && <Layout loggedIn={props.loggedIn}> */}

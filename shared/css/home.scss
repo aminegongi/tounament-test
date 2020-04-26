@@ -118,9 +118,7 @@
             .system_gestion{
                 margin-top:48.9px;
             }
-        }
-       
-       
+        }       
     }
     .gerer_team {
         height: 60px;
@@ -131,18 +129,17 @@
         padding: 20px 19px 20px 19x;
     }
    .join{
-    border-radius: 12px;
-    box-shadow: 0 10px 30px 0 rgba(38, 190, 181, 0.16);
-    background-color: #26beb5;
-    margin-top:90px;
-    margin-bottom: 50px;
-    margin-left:52px;
-    margin-right: 52px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px 0 rgba(38, 190, 181, 0.16);
+        background-color: #26beb5;
+        margin-top:90px;
+        margin-bottom: 50px;
+        margin-left:52px;
+        margin-right: 52px;
     .join_community{
         padding-top:42px;
         font-size: 40px;
         font-weight: bold;
-
         line-height: 1.45;
         text-align: center;
         color: #ffffff;
@@ -182,27 +179,26 @@
     }
 }}
    .collapseStyle{
-       padding-top:22.1px;
-
-       margin-top:37px;
-       margin-left: 211px;
+        padding-top:22.1px;
+        margin-top:37px;
+        margin-left: 211px;
         margin-right: 210px;
         background: white;
-    border-radius: 8px;
+        border-radius: 8px;
    }
    .customPanelStyletext{
-    font-size: 18px;
-    font-weight: 600;
-   margin-left:35px;
-   margin-top:49px;
-    line-height: 3.22;
-    padding-bottom: 20px;
-  padding-top:22.1px;
-  padding-left:35px;
-    color: #2e3034;
+        font-size: 18px;
+        font-weight: 600;
+        margin-left:35px;
+        margin-top:49px;
+        line-height: 3.22;
+        padding-bottom: 20px;
+        padding-top:22.1px;
+        padding-left:35px;
+        color: #2e3034;
     .customPaneltwo{
         padding-top: 33.4px;
-padding-right: 104px;
+        padding-right: 104px;
         font-size: 16px;
         font-weight: normal;
         font-stretch: normal;
@@ -213,8 +209,24 @@ padding-right: 104px;
         color: #2e3034;
     }
    }
+   .copyright{
+        margin-top:81.3px;
+        font-size: 16px;
+        
+        line-height: 1.56;
+        text-align: center;
+        color: #a7a7a7;
+        padding-bottom: 40px;
+   }
+}
+.expandicon{
+    right: 35px !important;
+
 }
 
-.ant-collapse-header  {
-    right: 35px !important;
-   }
+
+   .navbar_container .sign_in{
+    display: none;
+      
+   
+}

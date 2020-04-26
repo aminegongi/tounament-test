@@ -1,0 +1,118 @@
+.navbar_container {
+
+    max-width: 1380px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 20% auto max-content;
+    align-items: center;
+
+    padding-right: 10px;
+    padding-left: 10px;
+
+    .logo {
+        img {
+            width: 145px;
+            height: 38px;
+        }
+    }
+
+    .items_container {
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
+        column-gap: 34px;
+
+        .item {
+            display: inline-block;
+            font-size: 16px;
+            color: transparent;
+
+        }
+    }
+
+    .button_container {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        column-gap: 8px;
+
+        .sign_up {
+            background-color: #019da9;
+            color: #ffffff;
+
+        }
+
+        .sign_in {
+            color: #393c40;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 20px 25px ;
+            background-color: transparent;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+
+
+        }
+    }
+
+    .navBarButton {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .navbar_container {
+
+        grid-template-columns: auto max-content;
+
+
+        .navBarButton {
+            display: block;
+            background: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 0 !important;
+            
+            &:focus {
+                background: transparent;
+            }
+            &:active {
+                background: transparent;
+
+            }
+        }
+
+        .items_container,
+        .button_container {
+            display: none;
+        }
+
+        .mobileNavBar {
+            display: grid;
+            row-gap: 10px !important;
+            
+            .btn_items_container,
+            .button_container {
+                display: block;
+                a {
+                    display: inherit;
+                }
+            }
+
+            .btn_items_container {
+                grid-template-columns: unset !important;
+                grid-template-rows: repeat(4, 45px);
+                display: grid;
+                align-items: center;
+            }
+            .item {
+                padding-left: 0 !important;
+            }
+
+        }
+
+    }
+}

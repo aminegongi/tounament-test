@@ -1,8 +1,8 @@
-import css from './Navbar.scss'
+import css from './footerIndexPage.scss'
 import Link from 'next/link'
 import { Collapse, Icon,Button } from 'antd';
 
-function NavbarIndex({ logo,navmenu1,navmenu2,navmenu3,navmenu4, navmenu5, buttonone,buttontwo,buttonthere }) {
+function FooterIndexPage({ logo,navmenu1,navmenu2,navmenu3,navmenu4, navmenu5, buttonone,buttontwo,buttonthere }) {
   return (
     <div className={css.navbar_container}>
       <div className={css.logo}>
@@ -29,18 +29,12 @@ function NavbarIndex({ logo,navmenu1,navmenu2,navmenu3,navmenu4, navmenu5, butto
       </div>
       <div className={css.button_container}>
 
-        <Link href='/contact-us'>
-          <button className={css.sign_in}>
-            {buttonone} 
-            <Icon className={css.fleshdown} type="down" />
-            </button>
-        </Link>
-        <Link href='/contact-us'>
+      <Link href='/contact-us'>
           <a><button className={css.sign_up}>
             {buttontwo} 
-          <Icon className={css.fleshdown} type="down" />
         </button></a>
         </Link>
+      
 
        
 
@@ -52,4 +46,4 @@ function NavbarIndex({ logo,navmenu1,navmenu2,navmenu3,navmenu4, navmenu5, butto
 
 
 
-export default NavbarIndex;
+export default FooterIndexPage;

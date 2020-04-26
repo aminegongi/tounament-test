@@ -1,25 +1,25 @@
 .navbar_container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     .logo{
-        padding-top:34.2px;
+        margin-top:93.8px;
     }
     
     .items_container{
-        padding-top:39px;
+        margin-top:99px;
         display: flex;
         justify-content: space-around;
     }
     .button_container{
-        margin-top:24px;
+        margin-top:87px;
     }
     .item{    
-        font-size: 14px;
-        font-weight: 500;        
-        line-height: 1.36;
-        color: #2e3034;
-        margin-left:  40px;
-        margin-right: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.36;  
+    color: #2e3034;
+    margin-left:40px;
+    margin-right: 40px;
     }
     .sign_in{
         font-size: 14px;
@@ -37,13 +37,13 @@
         border-radius: 8px;
         background-color: #26beb5;
         padding:12px  18px 12px 18px !important;
-    }
+   }
 }
 
- .fleshdown svg{
-        margin-left: 8px;
-        width: 12.5px!important;
-        height: 12.5px!important;
-        padding-bottom: 1px!important;
-        padding-top: 3px!important;
- }
+.fleshdown svg{
+    margin-left: 8px;
+    width: 12.5px!important;
+    height: 12.5px!important;
+    padding-bottom: 1px!important;
+    padding-top: 3px!important;
+}
