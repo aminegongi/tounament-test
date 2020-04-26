@@ -10,7 +10,7 @@ import BecomePartner from '../shared/components/BecomePartner/BecomePartner';
 import Title from '../shared/components/TitleSection/TitleSection';
 import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
-import Navbar from '../shared/components/Navbar/Navbar';
+import Navbar from '../shared/components/navbar/Navbar';
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
@@ -81,11 +81,8 @@ const Index = (props) => {
             <div>présence de vos groupes, l'organisation de vos</div>
             <div>calendriers, événements et plus encore.</div>
           </div>
-          <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
-           
+          <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>           
               Gérer mon équipe gratuitement
-
-           
           </button>
           <div className={css.for_windows}>
 
@@ -93,7 +90,6 @@ const Index = (props) => {
           </div>
         </div>
            <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
-
       </div>
       <div className={css.clubs}>
          5 clubs partenaires nous font confiance
@@ -230,9 +226,10 @@ const Index = (props) => {
     bordered={false}
     defaultActiveKey={['1']}
 
-    expandIcon={({ isActive }) => <Icon className={css.expandicon} type= {isActive ?
-      ("minus-circle" )
-    : "plus-circle" } theme="twoTone"  /> }        
+    expandIcon={({ isActive }) => <img className={css.expandicon} src={isActive ?
+      "icon/moins.png" 
+     
+    : "icon/plus.png" }   /> }        
   >
     <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
     <div className={css.customPaneltwo}>
