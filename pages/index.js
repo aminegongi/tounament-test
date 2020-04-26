@@ -12,7 +12,7 @@ import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
 import Navbar from '../shared/components/navbar/Navbar';
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
-import Performance from '../public/icon/performance.png'
+import performance from '../public/icon/performance.png'
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
@@ -181,7 +181,7 @@ const Index = (props) => {
     
       <div className={css.system_performance}>
               <Functionclub  
-                img={Performance}
+                img={performance}
                 title="Performance et statistiques" 
                 sub_title=" Ceux-ci aident les entraîneurs et joueurs"
                 sub_title_two="à analyser les matchs mais aussi de"
