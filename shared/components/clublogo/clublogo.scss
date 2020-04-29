@@ -1,0 +1,29 @@
+.clubs {
+        
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 0.22;
+    text-align: center;
+    color: #2e3034;
+    margin-top: 56px;
+}
+.img_club {
+        
+    margin-top: 43px;
+  
+    display: flex;
+    justify-content: space-evenly;
+    .servicetitan {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .Grudhub {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .cognizant {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+}
+

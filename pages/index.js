@@ -1,13 +1,15 @@
 import Head from 'next/head'
 import Layout from '../shared/components/layout/Layout';
 import css from '../shared/css/home.scss'
-
+import Clublogo from '../shared/components/clublogo/Clublogo'
 import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro';
 import TrustUs from '../shared/components/TrustUs/TrustUs';
 import InterfacesExample from '../shared/components/InterfacesExample/InterfacesExample';
 import Feature from '../shared/components/Feature/Feature';
 import BecomePartner from '../shared/components/BecomePartner/BecomePartner';
 import Title from '../shared/components/TitleSection/TitleSection';
+import Join from '../shared/components/joinplatforme/Join';
+
 import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
 import Navbar from '../shared/components/navbar/Navbar';
@@ -92,21 +94,19 @@ const Index = (props) => {
         </div>
            <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
       </div>
-      <div className={css.clubs}>
-         5 clubs partenaires nous font confiance
-      </div>
-      <div className={css.img_club}>
-        <img alt="image" className={css.hubspot} src={"icon/hubspot.png"} alt="" />
-        <img alt="image" className={css.servicetitan} src={"icon/servicetitan.png"} alt="" />
-        <img alt="image" className={css.Grubhub} src={"icon/square.png"} alt="" />
-        <img alt="image" className={css.cognizant} src={"icon/cognizant.png"} alt="" />
-        <img alt="image" className={css.square} src={"icon/square.png"} alt="" />
+      <Clublogo  
+          iconone="icon/hubspot.png"
+          icontwo="icon/servicetitan.png"
+          iconthree="icon/square.png"
+          iconfour="icon/cognizant.png"
+          iconfive="icon/square.png"
 
-      </div>
+      />
+   
      <Title title="Regagnez votre temps à nouveau"
        sub_title="Gérer les plannings et les absences avec iSporit est plus efficace
-        que de le faire 
-                avec des tonnes de feuilles qui auront peu de traçabilité plus tard.
+        que de le faire" 
+        sub_title_two="avec des tonnes de feuilles qui auront peu de traçabilité plus tard.
                 "
 />
    
@@ -143,8 +143,8 @@ const Index = (props) => {
          <Title title="  Les meilleures fonctionnalités" 
          title_two=" pour révolutionner la gestion de votre club"
          sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
-        dès leur première 
-       inscription dans votre organisation."
+        dès leur première" 
+       sub_title_two="inscription dans votre organisation."
          />
   
       
@@ -266,24 +266,13 @@ const Index = (props) => {
   </Collapse> 
 
 
+  <div className={css.join}>
+    <Join buttonone="Connexion" buttontwo="Contactez notre service commercial" />
+  </div>
 
-
-     <div className={css.join}>
-     <div className={css.join_community}>
-        Rejoignez notre communauté <br />
-        et faîtes partie des meilleurs
-     </div>
-     <div className={css.join_button}>
-        <button onClick={() => window.location.href = "/contact-us"} className={css.buttom_connexion}>
-          Connexion
-        </button>
-        <button onClick={() => window.location.href = "/contact-us"} className={css.button_commercial}>
-          Contactez notre service commercial
-        </button>
-      </div>
-</div>
       <div className={css.footer}>
-        <FooterIndexPage logo= {"icon/logoindexpage.png"} 
+        <FooterIndexPage 
+        logo= {"icon/logoindexpage.png"} 
         navmenu1="La plateforme"
         navmenu2="Clubs partenaires" 
         navmenu3="Chercher un joueur" 

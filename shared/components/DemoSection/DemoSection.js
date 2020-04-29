@@ -1,6 +1,6 @@
 import css from './DemoSection.scss'
 
-export default function DemoSection({ title,title_two, sub_title,sub_title_two,sub_title_there,sub_title_four,img }) {
+export default function DemoSection({ title,title_two, sub_title,sub_title_two,sub_title_there,sub_title_four,sub_title_five,img }) {
 
 return(
     <>
@@ -16,6 +16,8 @@ return(
             <div>{sub_title_two}</div>
             <div>{sub_title_there}</div>
             <div>{sub_title_four} </div> 
+            <div>{sub_title_five} </div> 
+
          </div>
         <button className={css.gerer_equipe}>
             Demander une démo

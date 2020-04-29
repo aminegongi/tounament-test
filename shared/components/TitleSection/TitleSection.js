@@ -8,7 +8,7 @@ return(
      <div> {title}</div>
      <div> {title_two}</div>
       </div>
-     <div className={css.presentationTextTow}>
+     <div className={css.presentationTextTwo}>
         <div>{sub_title}</div>
         <div>{sub_title_two}</div>
      </div>
