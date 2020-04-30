@@ -12,7 +12,7 @@ import Title from '../shared/components/TitleSection/TitleSection';
 import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
 import Navbar from '../shared/components/navbar/Navbar';
-import Postplatforme from '../shared/components/Postplatforme/Postplatforme';
+import Postplatforme from '../shared/components/postplatforme/Postplatforme';
 import Tab from '../shared/components/Tab/Tab';
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
 import performance from '../public/icon/performance.png'
