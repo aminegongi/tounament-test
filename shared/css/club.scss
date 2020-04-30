@@ -4,8 +4,7 @@
 .postplatforme{
     margin-top:25px;
     text-align: center;
-
-   background-color: #26beb55e;
+    background-color: #E3F7F6;
 }
 button {
     border: unset;
@@ -22,6 +21,29 @@ button {
 
    
 }
+// .tab{
+//     button 
+//         {
+//             position: relative;
+//         }
+//         button:after, button:before {
+//             right: 100%;
+//             top: 50%;
+//             border: solid transparent;
+//             content: " ";
+//             height: 0;
+//             width: 0;
+//             position: absolute;
+//             pointer-events: none;
+//         }
+
+//         button:after  {
+//             border-color: rgba(136, 183, 213, 0);
+//             border-right-color: #d58888;
+//             border-width: 15px;
+//             margin-top: -15px;
+//         }
+// }
 .clubtitle{
     margin-left: 291.5px !important;
 margin-right: 291.5px!important;

@@ -32,7 +32,12 @@ const Index = (props) => {
   useEffect(() => {
     setLang(i18n.language)
   }, [i18n.language])
-
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     console.log('This will run after 1 second!')
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
   useEffect(() => {
     // window.location.href = "/contact-us";
     Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
@@ -73,7 +78,9 @@ const Index = (props) => {
        sub_title_two="nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam "
        sub_title_three="erat, sed diam voluptua. At vero"
      buttonone="Inscrivez-vous gratuitement"
-
+     
+     backgroundbutton={"#ffcd67"}
+     
     />
         </div>
 <div className={css.iteamlistblock}>
@@ -89,7 +96,8 @@ const Index = (props) => {
 
   <div className={css.presenter_winner}>
      <div className={css.presenter_block}>
-        <Demo img={"icon/performance.png"}
+        <Demo
+         img={performance}
          title="Suivez et analysez" 
          
               title_two="vos performances" 
@@ -101,7 +109,7 @@ const Index = (props) => {
               sub_title_four="permettra de noter et connaître vos forces et vos"
               sub_title_five="faiblesses."
         />
-        <img alt="image" className={css.Image_gagnant} src={"icon/Image_gagnant.png"} alt="" />
+        <img alt="image" className={css.Image_gagnant} src={"icon/joueur.svg"} alt="" />
 
         </div>
     </div>
@@ -112,6 +120,7 @@ const Index = (props) => {
     />
     <div className={css.tab}>
        <Tab
+       bgcolor={'#fff9e2'}
        imgone={"icon/clubseance.png"} 
        imgtwo={"icon/gestion_club.png"}
        imgthere={"icon/clubseance.png"} 
@@ -142,7 +151,6 @@ const Index = (props) => {
         navmenu3="Chercher un joueur" 
         navmenu4="Contact"
         navmenu5="connexion"
-
         buttontwo="Devenez partenaire"
 
         />

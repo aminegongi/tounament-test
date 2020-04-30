@@ -1,6 +1,10 @@
-import css from './navbar.scss'
+import css from './Navbar.scss'
 import Link from 'next/link'
-import { Collapse, Icon,Button } from 'antd';
+import {  Icon } from 'antd';
+import coach from '../../../public/icon/subforcoach.svg'
+import player from '../../../public/icon/subforplayer.svg'
+
+import club from '../../../public/icon/subforclub.svg'
 
 function NavbarIndex({ logo,navmenu1,navmenu2,navmenu3,navmenu4, navmenu5, buttonone,buttontwo,buttonthere }) {
   return (
@@ -11,9 +15,70 @@ function NavbarIndex({ logo,navmenu1,navmenu2,navmenu3,navmenu4, navmenu5, butto
         </Link>
       </div>
       <div className={css.items_container}>
+        <div className={css.sup}>
         <div className={css.item}> 
-          {navmenu1}<Icon  className={css.fleshdown} type="down" />
-          </div>
+          {navmenu1}
+          <Icon  className={css.fleshdown} type="down" />
+        <div className={css.subnav_content}>
+            <Link href='/club'>
+              <a>
+                <img className={css.img} src={club} />
+                <div className={css.title} >Clubs</div>
+                
+                <div className={css.subtitle} >
+                     <div>Centralisez tous les</div> 
+                     <div>données de vos</div>
+                     <div>équipes dans le même</div>
+                     <div>emplacement et</div>
+                     <div>gagnez du temps pour</div>
+                     <div>gérer l'organisation de</div> 
+                     <div>votre club.</div>
+                </div>
+              </a>
+            </Link>
+
+            <Link href='/coach'>
+              <a>
+                <img className={css.img} src={coach} />
+                <div className={css.title} >Entraîneurs</div>
+                
+                <div className={css.subtitle} >
+                  <div>Lorem ipsum dolor sit</div>
+                  <div>amet, consetetur</div>
+                    <div>sadipscing elitr, sed</div>
+                   <div>diam nonumy eirmod </div>
+                   <div>tempor invidunt ut </div>
+                   <div>labore et dolore magna</div>
+                   <div> aliquyam erat.</div>
+                   
+                </div>
+              </a>
+            </Link>
+            <Link href='/player'>
+              <a>
+                <img className={css.img} src={player} />
+                <div className={css.title} >Joueur</div>
+                
+                <div className={css.subtitle} >
+                <div>Lorem ipsum dolor sit</div>
+                  <div>amet, consetetur</div>
+                    <div>sadipscing elitr, sed</div>
+                   <div>diam nonumy eirmod </div>
+                   <div>tempor invidunt ut </div>
+                   <div>labore et dolore magna</div>
+                   <div> aliquyam erat.</div>
+                </div>
+              </a>
+            </Link>
+            {/* <Link href='/coach'>
+              <a ></a>
+            </Link> 
+            <Link href='/player'>
+              <a >Joueur</a>
+            </Link> */}
+            </div>
+            </div>
+         </div>
         <div className={css.item}>
           {navmenu2}
           </div>
