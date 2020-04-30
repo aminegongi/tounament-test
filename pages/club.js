@@ -12,10 +12,10 @@ import Title from '../shared/components/TitleSection/TitleSection';
 import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
 import Navbar from '../shared/components/navbar/Navbar';
-import Postplatforme from '../shared/components/Postplatforme/Postplatforme';
-import Tab from '../shared/components/Tab/Tab';
+import Postplatforme from '../shared/components/postplatforme/Postplatforme';
+import Tab from '../shared/components/tab/Tab';
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
-import performance from '../public/icon/Performance.png'
+import performance from '../public/icon/performance.png'
 import { i18n, withTranslation } from '../i18n'
 import Join from '../shared/components/joinplatforme/Join';
 
