@@ -1,4 +1,5 @@
 .navbar_container{
+    position: sticky;
     display: flex;
     justify-content: space-around;
     .logo{
@@ -9,6 +10,7 @@
         padding-top:39px;
         display: flex;
         justify-content: space-around;
+        
     }
     .button_container{
         margin-top:24px;

@@ -51,6 +51,7 @@ const Index = (props) => {
         <link rel="manifest" href="/static/manifest/manifest.json" />
 
       </Head>
+      <div className={css.navbarclub}>
       <Navbar logo= {"icon/logoindexpage.png"} 
        navmenu1="La plateforme"
        icon="down"
@@ -60,6 +61,7 @@ const Index = (props) => {
        buttonone="connexion"
        buttontwo="S'inscrire gratuitement"
        />
+       </div>
 <div className={css.postplatforme}>
      <Postplatforme 
      img={"icon/for_club.png"}
