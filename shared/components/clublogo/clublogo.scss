@@ -1,0 +1,31 @@
+.clubs {
+    font-size: 1.125rem;
+    font-weight: normal;
+    text-align: center;
+    color: #2e3034;
+    padding-top: 56px;
+}
+.img_club {
+    margin-top: 2.6875rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    img {
+        margin: 0 1.375rem 2.575rem ;
+        justify-self: center;
+        align-self: center;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .img_club {
+        display: grid;
+        row-gap: 1rem;
+        img {
+            margin: 0 1.375rem 2.575rem ;
+            justify-self: center;
+            align-self: center;
+        }
+    }
+    
+}

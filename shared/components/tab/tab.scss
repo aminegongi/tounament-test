@@ -1,0 +1,111 @@
+
+.tab{
+    display :flex;
+    justify-content: space-around;
+    margin-top:20px;
+    .img{
+        border-radius: 20px;
+        background-color: #f8f8f8;
+        padding: 67px 35px 110px 38px;
+        img{
+            width: 660px;
+            height: 354px
+        }
+    }
+}
+.tabtitle{
+font-size: 19px;
+font-weight: 600;
+line-height: 1.21;
+text-align: left;
+color: #2e3034;
+padding:25.3px 25px 15.7px 34px;
+}
+
+    .buttonone 
+        {
+            position: relative;
+        
+        button:after, button:before {
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        button:after  {
+            border-color: rgba(136, 183, 213, 0);
+            border-width: 15px;
+            margin-top: -15px;
+        }
+    }
+.list_iteam{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    button{
+        border-radius: 20px;
+
+    }
+    .iteamtwo{
+        margin-top:40.8px
+    }
+    .iteamthere{
+        margin-top:35.8px;
+    }
+    // button 
+    // {
+    //     position: relative;
+    // }
+    // button:after, .arrow_box:before {
+    //     right: 100%;
+    //     top: 50%;
+    //     border: solid transparent;
+    //     content: " ";
+    //     height: 0;
+    //     width: 0;
+    //     position: absolute;
+    //     pointer-events: none;
+    // }
+    
+    // button:after  {
+    //     border-color: rgba(136, 183, 213, 0);
+    //     border-right-color: #d58888;
+    //     border-width: 15px;
+    //     margin-top: -15px;
+    // }
+    // button:before {
+    //     border-color: rgba(194, 225, 245, 0);
+    //     border-right-color: #c2e1f5;
+    //     border-width: 36px;
+    //     margin-top: -36px;
+    // }
+
+
+
+
+
+
+
+
+
+
+
+}
+.subtitle{
+    font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.47;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e3034;
+  padding-left: 25px;
+  padding-bottom: 30.8px;
+  padding-right: 29px;
+}

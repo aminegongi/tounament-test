@@ -1,19 +1,33 @@
 .gestion_club_title {
-    margin-top: 23px;
-   
-    font-size: 20px;
+    margin-top: 1.4375rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    font-style: normal;        
     color: #2e3034;
 }
 .gestion_club_text {
-    margin-top: 14.4px;
-   
-    font-size: 15px;
-   
-    // @review dont write unnecessary css
-    //c'est lespace ente les ligne 
-    line-height: 1.47;
-   
+    margin-top: 0.875rem;
+    max-width: 15.625rem;
+    font-size: 0.9375rem;
     color: #2e3034;
+}
+
+.system_img {
+    width: 5rem;
+    height: 5rem;
+}
+
+@media only screen and (max-width: 450px) {
+    .gestion_club_text {
+        max-width: unset !important;
+    }
+    .system_img {
+        width: 7rem;
+        height: 7rem;
+    }
+    .gestion_club_title {
+        font-size: 1.5rem;
+    }
+    .gestion_club_text {
+        font-size: 1.2rem;
+    }
 }

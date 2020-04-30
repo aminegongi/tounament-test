@@ -1,49 +1,45 @@
-.navbar_container{
+.navbar_container {
     display: flex;
-    justify-content: space-evenly;
-    .logo{
-        margin-top:93.8px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6.1875rem;
+    padding-bottom: 2.5625rem;
+    border-bottom: 1px solid #eeeeee;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+
+    .items_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 2.5rem;
+        align-content: center;
     }
-    
-    .items_container{
-        margin-top:99px;
-        display: flex;
-        justify-content: space-around;
+    .item {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #2e3034;
     }
-    .button_container{
-        margin-top:87px;
-    }
-    .item{    
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.36;  
-    color: #2e3034;
-    margin-left:40px;
-    margin-right: 40px;
-    }
-    .sign_in{
-        font-size: 14px;
-        line-height: 1.36;
+    .sign_in {
+        font-size: 0.875rem;
         color: #ff8760;
         border-radius: 8px;
         background-color: #fff3e6;
-        margin-right:15px;
-        padding:14px  16px 13.5px 16px !important;
+        margin-right: 0.9375rem;
+        padding: 0.875rem 1rem !important;
     }
-   .sign_up{
-        font-size: 14px;
-        line-height: 1.57;
+    .sign_up {
+        font-size: 0.875rem;
         color: #ffffff;
         border-radius: 8px;
         background-color: #26beb5;
-        padding:12px  18px 12px 18px !important;
-   }
+        padding: 0.75rem 1.125rem !important;
+    }
 }
 
-.fleshdown svg{
+.fleshdown svg {
     margin-left: 8px;
-    width: 12.5px!important;
-    height: 12.5px!important;
-    padding-bottom: 1px!important;
-    padding-top: 3px!important;
+    width: 12.5px !important;
+    height: 12.5px !important;
+    padding-bottom: 1px !important;
+    padding-top: 3px !important;
 }
