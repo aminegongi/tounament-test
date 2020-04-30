@@ -14,7 +14,7 @@ import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
 import Navbar from '../shared/components/navbar/Navbar';
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
-import performance from '../public/icon/performanceIcon.png'
+import performance from '../public/icon/Performance.png'
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
