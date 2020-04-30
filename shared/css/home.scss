@@ -87,7 +87,7 @@
         margin-top: 4.375rem;
     }
     .revenus_gagnant {
-        margin-top: 10rem;
+        margin-top: 8rem;
     }
 
     .gestion_club {
@@ -156,6 +156,83 @@
 }
 .expandicon {
     right: 35px !important;
+}
+
+@media only screen and (max-width: 760px) {
+    .gerer_iluustateur {
+        padding-left: 2.375rem;
+        padding-right: 2.375rem;
+        padding-top: 3.3125rem;
+        padding-bottom: 3.75rem;
+        background-color: #ffffff;
+        .gerer_iluustateur_container {
+            display: flex !important;
+            align-items: center;
+            .gerer_equipe_img {
+                width: 100%;
+                text-align: center;
+                .gerer_equipe_title {
+                    text-align: center;
+                    margin: auto;
+                }
+                .gerer_time_title {
+                    text-align: center;
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+            }
+            img {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .presenter_block {
+        display: grid;
+        grid-template-columns: unset !important;
+        align-items: center;
+        justify-content: center;
+        row-gap: 5.25rem;
+        padding-right: 0.3125rem;
+        div {
+            text-align: center;
+        }
+        img {
+            display: none;
+        }
+    }
+    .revenus_gagnant {
+        margin-top: 5rem !important;
+    }
+    .expandicon {
+        right: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .gestion_club {
+        padding-left: 2.625rem;
+        padding-right: 2.625rem;
+        margin-top: 4.875rem;
+        grid-template-columns: unset !important;
+        row-gap: 4.8125rem;
+        text-align: center;
+        .system_performance {
+            grid-template-columns: unset !important;
+            column-gap: 2.5rem;
+            row-gap: 2.9375rem;
+            div {
+                text-align: center;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+        img:nth-child(2) {
+            display: none !important;
+        }
+    }
 }
 
 // .navbar_container .sign_in {

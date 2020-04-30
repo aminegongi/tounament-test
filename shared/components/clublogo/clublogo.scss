@@ -16,3 +16,16 @@
         align-self: center;
     }
 }
+
+@media only screen and (max-width: 450px) {
+    .img_club {
+        display: grid;
+        row-gap: 1rem;
+        img {
+            margin: 0 1.375rem 2.575rem ;
+            justify-self: center;
+            align-self: center;
+        }
+    }
+    
+}

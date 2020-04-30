@@ -98,7 +98,7 @@ const Index = (props) => {
             </Link>
             <div className={css.for_windows}>
               Pour Windows, Mac, Android et iOS
-          </div>
+            </div>
           </div>
           <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
         </div>

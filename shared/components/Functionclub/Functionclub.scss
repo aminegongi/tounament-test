@@ -6,7 +6,7 @@
 }
 .gestion_club_text {
     margin-top: 0.875rem;
-    width: 17.625rem;
+    max-width: 15.625rem;
     font-size: 0.9375rem;
     color: #2e3034;
 }
@@ -14,4 +14,20 @@
 .system_img {
     width: 5rem;
     height: 5rem;
+}
+
+@media only screen and (max-width: 450px) {
+    .gestion_club_text {
+        max-width: unset !important;
+    }
+    .system_img {
+        width: 7rem;
+        height: 7rem;
+    }
+    .gestion_club_title {
+        font-size: 1.5rem;
+    }
+    .gestion_club_text {
+        font-size: 1.2rem;
+    }
 }

@@ -48,3 +48,14 @@
         }
     }
 }
+
+@media only screen and (max-width: 450px) {
+    .join {
+        margin-bottom: 1.115rem;
+        margin-left: 1.15rem;
+        margin-right: 1.15rem;
+        .join_community {
+            font-size: 1.8rem;
+        }
+    }
+}

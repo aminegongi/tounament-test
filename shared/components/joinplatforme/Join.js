@@ -11,14 +11,14 @@ return(
         et faîtes partie des meilleurs
      </div>
      <div className={css.join_button}>
-        <button onClick={() => window.location.href = "/contact-us"} className={css.buttom_connexion}>
+        {/* <button onClick={() => window.location.href = "/contact-us"} className={css.buttom_connexion}>
           {buttonone}
-        </button>
+        </button> */}
         <div className={classbutton}>
-        <button  onClick={() => window.location.href = "/contact-us"} className={css.button_commercial}>
+          <button  onClick={() => window.location.href = "/contact-us"} className={css.button_commercial}>
             {buttontwo}  
           </button>
-          </div>
+        </div>
       </div>
 </div>
 </>
