@@ -63,15 +63,15 @@ const Index = (props) => {
 
 <div className={css.postplatforme}>
      <Postplatforme 
-     img={"icon/for_coach.png"}
-     title="Gérez les absences de vos"
-     title_two="groupes, assignez des tâches"
-     title_there="et programmez vos séances"
-     
-     sub_title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,sed diam "
-       sub_title_two="nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam "
-       sub_title_three="erat, sed diam voluptua. At vero"
-     buttonone="S'inscrire gratuitement"
+        img={"icon/forcoach.png"}
+        title="Gérez les absences de vos"
+        title_two="groupes, assignez des tâches"
+        title_there="et programmez vos séances"
+        sub_title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,sed diam "
+        sub_title_two="nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam "
+        sub_title_three="erat, sed diam voluptua. At vero"
+        buttonone="S'inscrire gratuitement"
+        backgroundbutton={"#ff8760"}
 
     />
         </div>
@@ -88,19 +88,15 @@ const Index = (props) => {
 
   <div className={css.presenter_winner}>
      <div className={css.presenter_block}>
-        <Demo img={"icon/icon_coach"} title="Invitez vos joueurs" 
-
+        <Demo img={"icon/icon_coach.png"} 
+              title="Invitez vos joueurs" 
               title_two="et gérez les absences" 
-              sub_title="Notre plateforme vous donne désormais la 
-              "
-              sub_title_two="possibilité de faire les appels depuis même votre 
-              "
-              sub_title_there="smartphone. Le suivi des disponibilités des joueurs 
-              "
-              sub_title_four="devient possible en 2 clics. 
-              "
+              sub_title="Notre plateforme vous donne désormais la"
+              sub_title_two="possibilité de faire les appels depuis même votre"
+              sub_title_there="smartphone. Le suivi des disponibilités des joueurs"
+              sub_title_four="devient possible en 2 clics."
         />
-        <img alt="image" className={css.Image_gagnant} src={"icon/Image_gagnant.png"} alt="" />
+        <img alt="image" className={css.Image_gagnant} src={"icon/coach.svg"} alt="" />
 
         </div>
     </div>
@@ -111,6 +107,8 @@ const Index = (props) => {
     />
     <div className={css.tab}>
        <Tab
+              bgcolor={'#ffe5d9'}
+
        imgone={"icon/clubseance.png"} 
        imgtwo={"icon/gestion_club.png"}
        imgthere={"icon/clubseance.png"} 

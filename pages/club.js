@@ -51,6 +51,7 @@ const Index = (props) => {
         <link rel="manifest" href="/static/manifest/manifest.json" />
 
       </Head>
+      <div className={css.navbarclub}>
       <Navbar logo= {"icon/logoindexpage.png"} 
        navmenu1="La plateforme"
        icon="down"
@@ -60,6 +61,7 @@ const Index = (props) => {
        buttonone="connexion"
        buttontwo="S'inscrire gratuitement"
        />
+       </div>
 <div className={css.postplatforme}>
      <Postplatforme 
      img={"icon/for_club.png"}
@@ -71,7 +73,7 @@ const Index = (props) => {
      sub_title_four="entraîneurs/clubs, communiquez en toute"
      sub_title_five="transparence et efficacité !"
      buttonone="Gérer mon équipe gratuitement"
-
+     backgroundbutton={"#26beb5"}
     />
         </div>
 <div className={css.iteamlistblock}>
@@ -94,7 +96,7 @@ const Index = (props) => {
               sub_title_there="gérer parfaitement vos plannings et collaborateurs"
               sub_title_four=" mais aussi de gagner du temps."
         />
-        <img alt="image" className={css.Image_gagnant} src={"icon/Image_gagnant.png"} alt="" />
+        <img alt="image" className={css.Image_gagnant} src={"icon/club.svg"} alt="" />
 
         </div>
     </div>
@@ -105,6 +107,7 @@ const Index = (props) => {
     />
     <div className={css.tab}>
        <Tab
+       bgcolor={'#E3F7F6'}
        imgone={"icon/clubseance.png"} 
        imgtwo={"icon/gestion_club.png"}
        imgthere={"icon/clubseance.png"} 

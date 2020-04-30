@@ -1,7 +1,7 @@
 import css from './postplatforme.scss';
 import Link from 'next/link'
 
-export default function Postplatforme({ img,title,title_two,title_three, sub_title,sub_title_two,sub_title_three,buttonone }) {
+export default function Postplatforme({ img,title,title_two,title_three, sub_title,sub_title_two,sub_title_three,buttonone,backgroundbutton }) {
 
 return(
     <>
@@ -17,10 +17,9 @@ return(
         <div>{sub_title}</div>
         <div>{sub_title_two}</div>
         <div>{sub_title_three}</div>
-
      </div>
      <Link href='/contact-us'>
-          <a><button className={css.sign_up}>
+          <a><button className={css.sign_up} style={{ backgroundColor: backgroundbutton }} >
             {buttonone} 
         </button></a>
         </Link>
