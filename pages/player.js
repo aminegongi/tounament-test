@@ -15,7 +15,7 @@ import Navbar from '../shared/components/navbar/Navbar';
 import Postplatforme from '../shared/components/Postplatforme/Postplatforme';
 import Tab from '../shared/components/Tab/Tab';
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
-import performance from '../public/icon/Performance.png'
+import performance from '../public/icon/performance.png'
 import { i18n, withTranslation } from '../i18n'
 import Join from '../shared/components/joinplatforme/Join';
 
