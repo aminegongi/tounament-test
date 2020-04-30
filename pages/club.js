@@ -75,14 +75,14 @@ const Index = (props) => {
     />
         </div>
 <div className={css.iteamlistblock}>
-     <Clublogo  
+     {/* <Clublogo  
           iconone="icon/hubspot.png"
           icontwo="icon/servicetitan.png"
           iconthree="icon/square.png"
           iconfour="icon/cognizant.png"
           iconfive="icon/square.png"
 
-      />
+      /> */}
 
 
   <div className={css.presenter_winner}>

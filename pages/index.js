@@ -19,7 +19,11 @@ import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import Axios from 'axios';
-import { Collapse, Icon,Button } from 'antd';
+import { Collapse, Icon, Button } from 'antd';
+import globalCss from '../shared/global-style.scss'
+import Link from 'next/link';
+
+
 const { Panel } = Collapse;
 
 const text = `
@@ -62,257 +66,228 @@ const Index = (props) => {
         <link rel="manifest" href="/static/manifest/manifest.json" />
 
       </Head>
-      <Navbar logo= {"icon/logoindexpage.png"} 
-       navmenu1="La plateforme"
-       icon="down"
-       navmenu2="Clubs partenaires" 
-       navmenu3="Chercher un joueur" 
-       navmenu4="Contact"
-       buttonone="connexion"
-       buttontwo="S'inscrire gratuitement"
-       />
-      <div className={css.gerer_iluustateur}>
-        <div className={css.gerer_equipe_img}>
-          <div className={css.gerer_equipe_title}>
-           <div> Gérez vos équipes </div>
-           <div> sportives efficacement</div>
-           <div> et simplement n'importe</div>
-           <div> où vous soyez</div>
-          </div>
-          <div className={css.gerer_time_title}>
-            <div>iSporit vous fera gagner du temps pour gérer la</div>
-            <div>présence de vos groupes, l'organisation de vos</div>
-            <div>calendriers, événements et plus encore.</div>
-          </div>
-          <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>           
-              Gérer mon équipe gratuitement
-          </button>
-          <div className={css.for_windows}>
-
-             Pour Windows, Mac, Android et iOS
-          </div>
-        </div>
-           <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
-      </div>
-      <Clublogo  
-          iconone="icon/hubspot.png"
-          icontwo="icon/servicetitan.png"
-          iconthree="icon/square.png"
-          iconfour="icon/cognizant.png"
-          iconfive="icon/square.png"
-
-      />
-   
-     <Title title="Regagnez votre temps à nouveau"
-       sub_title="Gérer les plannings et les absences avec iSporit est plus efficace
-        que de le faire" 
-        sub_title_two="avec des tonnes de feuilles qui auront peu de traçabilité plus tard.
-                "
-/>
-   
-  <div className={css.presenter_winner}>
-     <div className={css.presenter_block}>
-        <Demo img={"icon/montre.png"} title="Gagnez plus" 
-              title_two="de 10h par semaine" 
-              sub_title="Notre plateforme vous offrira des outils puissants"
-              sub_title_two=" et simples qui vous permettront non seulement de"
-              sub_title_there="gérer parfaitement vos plannings et collaborateurs"
-              sub_title_four=" mais aussi de gagner du temps."
+      <div className={css.navbar}>
+        <Navbar logo={"icon/logoindexpage.png"}
+          navmenu1="La plateforme"
+          icon="down"
+          navmenu2="Clubs partenaires"
+          navmenu3="Chercher un joueur"
+          navmenu4="Contact"
+          buttonone="connexion"
+          buttontwo="S'inscrire gratuitement"
         />
-        <img alt="image" className={css.Image_gagnant} src={"icon/Image_gagnant.png"} alt="" />
+      </div>
 
+
+      <div className={`${css.gerer_iluustateur}`}>
+        <div className={`${css.gerer_iluustateur_container} ${globalCss.isporit_max_width}`}>
+          <div className={`${css.gerer_equipe_img} `}>
+            <div className={css.gerer_equipe_title}>
+              Gérez vos équipes sportives efficacement et simplement n'importe où vous soyez
+            </div>
+            <div className={css.gerer_time_title}>
+              <div>
+                iSporit vous fera gagner du temps pour gérer la présence de vos groupes,
+                l'organisation de vos calendriers, événements et plus encore.
+              </div>
+            </div>
+            <Link href="/contact-us" >
+              <button className={css.gerer_team}>
+                Gérer mon équipe gratuitement
+              </button>
+            </Link>
+            <div className={css.for_windows}>
+              Pour Windows, Mac, Android et iOS
+          </div>
+          </div>
+          <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
         </div>
-   </div>
-   
-   
-   
-      <div className={css.revenus_gagnant}>
-        <div className={css.presenter_block}>
-            <img alt="image" className={css.img_platforme} src={"icon/img_platforme.png"} alt="" />
-            <Demo img={"icon/flech.png"} 
-              title="Accroissez" 
-              title_two="vos revenus" 
-              sub_title="Votre club gagnera en visibilité auprès d'une grande"
-              sub_title_two="communauté de joueurs inscrits dans la plateforme et"
-              sub_title_there="améliorera son image de marque grâce aux consignes"
-              sub_title_four=" de notre équipe experte en digital."
+      </div>
+
+
+      <div className={css.club_logo_and_title}>
+        <Clublogo
+          images={[
+            {
+              alt: "club",
+              src: "icon/hubspot.png",
+            },
+            {
+              alt: "club",
+              src: "icon/servicetitan.png",
+            },
+            {
+              alt: "club",
+              src: "icon/square.png",
+            },
+            {
+              alt: "club",
+              src: "icon/cognizant.png",
+            },
+            {
+              alt: "club",
+              src: "icon/square.png",
+            }
+          ]}
+
+        />
+
+        <Title
+          title="Regagnez votre temps à nouveau"
+          sub_title="Gérer les plannings et les absences avec iSporit est plus efficace
+        que de le faire"
+          sub_title_two="avec des tonnes de feuilles qui auront peu de traçabilité plus tard."
+        />
+
+        <div className={`${css.presenter_winner} ${globalCss.isporit_max_width}`}>
+          <div className={css.presenter_block}>
+            <div style={{ justifySelf: "center" }}>
+              <Demo
+                img={"icon/montre.png"}
+                title="Gagnez plus"
+                title_two="de 10h par semaine"
+                description="Notre plateforme vous offrira des outils puissants et simples qui vous permettront non seulement de gérer parfaitement vos plannings et collaborateurs mais aussi de gagner du temps."
+
+              />
+            </div>
+
+            <img style={{ width: "100%" }} alt="image" className={css.img_platforme} src={"icon/Image_gagnant.png"} />
+
+          </div>
+        </div>
+
+
+
+        <div className={`${css.revenus_gagnant} ${globalCss.isporit_max_width}`}>
+          <div className={css.presenter_block} >
+            <img style={{ width: "100%" }} alt="image" className={css.img_platforme} src={"icon/img_platforme.png"} alt="" />
+            <div style={{ justifySelf: "center" }}>
+              <Demo
+
+                img={"icon/flech.png"}
+                title="Accroissez"
+                title_two="vos revenus"
+                description="Votre club gagnera en visibilité auprès d'une grande communauté de joueurs inscrits dans la plateforme et améliorera son image de marque grâce aux consignes de notre équipe experte en digital."
+
+              />
+            </div>
+
+          </div>
+        </div>
+
+        <Title
+          title="  Les meilleures fonctionnalités"
+          title_two=" pour révolutionner la gestion de votre club"
+          sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
+        dès leur première"
+          sub_title_two="inscription dans votre organisation."
+        />
+
+
+        <div className={`${css.gestion_club} ${globalCss.isporit_max_width}`}>
+
+          <div className={css.system_performance}>
+            <Functionclub
+              img={"icon/system.png"}
+              title="Système de communication"
+              description="Grâce aux alertes mobile et messages entre joueurs/entraîneurs/clubs, communiquez en toute efficacité!"
             />
 
+
+            <Functionclub
+              img={performance}
+              title="Performance et statistiques"
+              description="Ceux-ci aident les entraîneurs et joueurs à analyser les matchs mais aussi de mieux comprendre leurs forces et faiblesses"
+            />
+            <Functionclub
+              img={"icon/mobile.png"}
+              title="Multi-accessibilité"
+              description="Vous aurez un accès à la plateforme où que vous soyez avec votre ordinateur, tablette et smartphone."
+            />
+
+            <Functionclub
+              img={"icon/gestion.png"}
+              title="Gestion du staff et groupes"
+              description="Organisez vos joueurs, entraîneurs et groupes en gérant la présence et l'historique, la planification des tâches et des programmes à réaliser."
+            />
+          </div>
+
+          <img alt="image" className={css.performance_img} src={"icon/gestion_club.png"} alt="" />
+
+          <div>
+            <button style={{ marginTop: 0 }} onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
+              Demander une démo
+            </button>
+          </div>
         </div>
-        </div>
-         <Title title="  Les meilleures fonctionnalités" 
-         title_two=" pour révolutionner la gestion de votre club"
-         sub_title=" Boostez la carrière de vos joueurs et suivez leurs parcours sportif
-        dès leur première" 
-       sub_title_two="inscription dans votre organisation."
-         />
-  
-      
-     <div className={css.gestion_club}>
-      
-      <div className={css.system_performance}>
-        <div className={css.system}>
-        
-               <Functionclub  
-                img={"icon/system.png"}
-                title="Système de communication" 
-                sub_title="Grâce aux alertes mobile et messages"
-                sub_title_two="entre joueurs/entraîneurs/clubs,"
-               sub_title_there="communiquez en toute efficacité !"
-               />
-        </div>
-       
-        <div className={css.system_performance}>
-              <Functionclub  
-              className={css.system_mobile}
-                img={"icon/mobile.png"}
-                title="SMulti-accessibilité" 
-                sub_title="Vous aurez un accès à la plateforme"
-                sub_title_two="où que vous soyez avec votre"
-               sub_title_there="ordinateur, tablette et smartphone. "
-               />
-     
-        <button onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
-                Demander une démo
-        </button>
-        </div>
-      </div>
-      
-    
-      <div className={css.system_performance}>
-              <Functionclub  
-                img={performance}
-                title="Performance et statistiques" 
-                sub_title=" Ceux-ci aident les entraîneurs et joueurs"
-                sub_title_two="à analyser les matchs mais aussi de"
-               sub_title_there="mieux comprendre leurs forces et "
-               sub_title_four=" faiblesses."
-               />
-     
 
-    
-        <div className={css.system_performance}>
-        <Functionclub  
-                className={css.system_gestion}
-
-                img={"icon/gestion.png"}
-                title="Gestion du staff et groupes" 
-                sub_title="Organisez vos joueurs, entraîneurs et"
-                sub_title_two="groupes en gérant la présence et"
-               sub_title_there="l'historique, la planification des tâches "
-               sub_title_four="et des programmes à réaliser."
-               />
-        
-
-        </div>
-      
-      </div>
-
-      <img alt="image" className={css.performance_img} src={"icon/gestion_club.png"} alt="" />
-
-     </div>
-     
-     <Title title=" Questions souvent posées"
-       sub_title="Vous trouverez ci-dessous les questions auxquelles nous avons 
-       fait face plusieurs "
-       sub_title_two="fois et les réponses nécessaires"
-/>
-
-
-
-     <Collapse
-     className={css.collapseStyle}
-     expandIconPosition="right"
-    
-    bordered={false}
-    defaultActiveKey={['1']}
-
-    expandIcon={({ isActive }) => <img className={css.expandicon} src={isActive ?
-      "icon/moins.png" 
-     
-    : "icon/plus.png" }   /> }        
-  >
-    <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
-    <div className={css.customPaneltwo}>
-    <div>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,</div>
-    <div>sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,</div>
-     <div>sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</div>
-     <div> Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
-     <div>  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, </div>
-    <div>  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,</div>
-    <div>   sed diam voluptua. At vero eos et accusam et.</div>
-    </div>
-    </Panel>
-    <Panel className={css.customPanelStyletext} header="Je suis un joueur non-inscrit dans un club, est-ce que je peux utiliser la plateforme ?" key="2" style={customPanelStyle}>
-    <div className={css.customPaneltwo}>
-        {text}
-      </div>
-    </Panel>
-    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing elitr, sed diam nonumy ?" key="3" style={customPanelStyle}>
-      <div className={css.customPaneltwo}>
-        {text}
-      </div>
-    </Panel>
-    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet ?" key="4" style={customPanelStyle}>
-    <div className={css.customPaneltwo}>
-        {text}
-      </div>
-    </Panel>
-    <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing ?" key="5" style={customPanelStyle}>
-    <div className={css.customPaneltwo}>
-        {text}
-      </div>
-    </Panel>
-  </Collapse> 
-
-
-  <div className={css.join}>
-    <Join buttonone="Connexion" buttontwo="Contactez notre service commercial" />
-  </div>
-
-      <div className={css.footer}>
-        <FooterIndexPage 
-        logo= {"icon/logoindexpage.png"} 
-        navmenu1="La plateforme"
-        navmenu2="Clubs partenaires" 
-        navmenu3="Chercher un joueur" 
-        navmenu4="Contact"
-        navmenu5="connexion"
-
-        buttontwo="Devenez partenaire"
-
+        <Title
+          title=" Questions souvent posées"
+          sub_title="Vous trouverez ci-dessous les questions auxquelles nous avons fait face plusieurs "
+          sub_title_two="fois et les réponses nécessaires"
         />
-       </div>
-<div className={css.copyright}>
-© 2020 iSporit. All rights reserved
-</div>
-      {/* {
-        lang && <Layout loggedIn={props.loggedIn}> */}
-          {/* <PlatformIntro
-            title={props.t("homePagePlatformIntroTitle", "Book your tennis court for free!")}
-            description={props.t("homePagePlatformIntroDescription", "Accessing the best courts has never been easier.")}
-            bookCourt={props.t("homePagePlatformIntroBookCourt", "Book Court")}
-            clubArea={props.t("homePagePlatformIntroClubArea", "Club Area")}
-          /> */}
-          {/* <TrustUs title={props.t("homePageTrustUsTitle", "clubs that trust us")} /> */}
-          {/* <InterfacesExample
-            title={props.t("homePageInterfacesExampleTitle", "A platform dedicated to players, Coaches and clubs")}
-            description={props.t("homePageInterfacesExampleDescription", "Organize your matches, manage your sports club and follow your performances.")}
-            button={props.t("homePageInterfacesExampleButton", "Functionalities")}
+
+
+
+        <Collapse
+          className={`${css.collapseStyle} ${globalCss.isporit_max_width}`}
+          expandIconPosition="right"
+          bordered={false}
+          defaultActiveKey={['1']}
+
+          expandIcon={({ isActive }) => <img className={css.expandicon} src={isActive ?
+            "icon/moins.png"
+            : "icon/plus.png"} />}
+        >
+          <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
+            {/* <div className={css.customPaneltwo}>s */}
+              Lorem
+            {/* </div>s */}
+          </Panel>
+          <Panel className={css.customPanelStyletext} header="Je suis un joueur non-inscrit dans un club, est-ce que je peux utiliser la plateforme ?" key="2" style={customPanelStyle}>
+            <div className={css.customPaneltwo}>
+              {text}
+            </div>
+          </Panel>
+          <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing elitr, sed diam nonumy ?" key="3" style={customPanelStyle}>
+            <div className={css.customPaneltwo}>
+              {text}
+            </div>
+          </Panel>
+          <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet ?" key="4" style={customPanelStyle}>
+            <div className={css.customPaneltwo}>
+              {text}
+            </div>
+          </Panel>
+          <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing ?" key="5" style={customPanelStyle}>
+            <div className={css.customPaneltwo}>
+              {text}
+            </div>
+          </Panel>
+        </Collapse>
+
+
+        <div className={`${css.join} ${globalCss.isporit_max_width}`}>
+          <Join buttonone="Connexion" buttontwo="Contactez notre service commercial" />
+        </div>
+
+        <div className={`${css.footer} ${globalCss.isporit_max_width}`}>
+          <FooterIndexPage
+            logo={"icon/logoindexpage.png"}
+            navmenu1="La plateforme"
+            navmenu2="Clubs partenaires"
+            navmenu3="Chercher un joueur"
+            navmenu4="Contact"
+            navmenu5="connexion"
+            buttontwo="Devenez partenaire"
+
           />
-          <Feature
-            title={props.t("homePageFeatureTitle", "Discover your latest performances.")}
-            description={props.t("homePageFeatureDescription", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reicabo.")}
-            button={props.t("homePageFeatureButton", "Join Us")}
-          />
-          <BecomePartner
-            title={props.t("homePagePartnerTitle", "Do you have a court? Join us!")}
-            description={props.t("homePagePartnerDescription", "Already using iSporit? Login")}
-            button={props.t("homePagePartnerButton", "become partner")}
-          /> */}
-          
-        {/* </Layout>
-      } */}
+        </div>
+        <div className={`${css.copyright} ${globalCss.isporit_max_width}`}>
+          © 2020 iSporit. All rights reserved
+        </div>
+      </div>
+
     </div>
   )
 }

@@ -1,49 +1,43 @@
-.navbar_container{
+.navbar_container {
     display: flex;
-    justify-content: space-around;
-    .logo{
-        padding-top:34.2px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .items_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 2.5rem;
+        align-content: center;
     }
-    
-    .items_container{
-        padding-top:39px;
-        display: flex;
-        justify-content: space-around;
-    }
-    .button_container{
-        margin-top:24px;
-    }
-    .item{    
-        font-size: 14px;
-        font-weight: 500;        
-        line-height: 1.36;
+    .item {
+        font-size: 0.875rem;
+        font-weight: 500;
         color: #2e3034;
-        margin-left:  40px;
-        margin-right: 40px;
     }
-    .sign_in{
-        font-size: 14px;
-        line-height: 1.36;
+    .sign_in {
+        font-size: 0.875rem;
         color: #ff8760;
         border-radius: 8px;
         background-color: #fff3e6;
-        margin-right:15px;
-        padding:14px  16px 13.5px 16px !important;
+        margin-right: 15px;
+        padding: 14px 16px 13.5px 16px !important;
     }
-   .sign_up{
-        font-size: 14px;
-        line-height: 1.57;
+    .sign_up {
+        font-size: 0.875rem;
         color: #ffffff;
         border-radius: 8px;
         background-color: #26beb5;
-        padding:12px  18px 12px 18px !important;
+        padding: 12px 18px 12px 18px !important;
     }
 }
 
- .fleshdown svg{
-        margin-left: 8px;
-        width: 12.5px!important;
-        height: 12.5px!important;
-        padding-bottom: 1px!important;
-        padding-top: 3px!important;
- }
+.fleshdown svg {
+    margin-left: 8px;
+    width: 12.5px !important;
+    height: 12.5px !important;
+    padding-bottom: 1px !important;
+    padding-top: 3px !important;
+}
