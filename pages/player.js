@@ -13,7 +13,7 @@ import Demo from '../shared/components/DemoSection/DemoSection';
 import Functionclub from '../shared/components/Functionclub/Functionclub';
 import Navbar from '../shared/components/navbar/Navbar';
 import Postplatforme from '../shared/components/postplatforme/Postplatforme';
-import Tab from '../shared/components/Tab/Tab';
+import Tab from '../shared/components/tab/Tab';
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
 import performance from '../public/icon/performance.png'
 import { i18n, withTranslation } from '../i18n'
