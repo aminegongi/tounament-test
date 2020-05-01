@@ -76,7 +76,7 @@ const Login = (props) => {
                                     <div className={css.card_body}>
                                         <h4>{el.title}</h4>
                                         <p>{el.description}</p>
-                                        <div><img src='/locationPin.svg' /> <span>{el.location}</span></div>
+                                        <div><img alt="location" src='/locationPin.svg' /> <span>{el.location}</span></div>
                                     </div>
                                     <div className={css.card_footer}>
                                         <button className={css.light_button}>Découvrir</button>
