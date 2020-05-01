@@ -50,7 +50,7 @@ const Index = (props) => {
 
   useEffect(() => {
     // window.location.href = "/contact-us";
-    Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
+    // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
 
   return (

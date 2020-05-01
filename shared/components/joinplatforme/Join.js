@@ -1,6 +1,6 @@
 import css from './join.scss'
 
-export default function TitleSection({ buttonone,buttontwo ,classbutton }) {
+export default function TitleSection({ buttontwo ,classbutton }) {
 
 return(
     <>
