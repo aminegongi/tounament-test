@@ -82,9 +82,7 @@ function NavbarIndex({ logo, navmenu1, navmenu2, navmenu3, navmenu4, navmenu5, b
             </div>
           </div>
         </div>
-        <div className={css.item}>
-          {navmenu1}<Icon className={css.fleshdown} type="down" />
-        </div>
+
         <div className={css.item}>
           {navmenu2}
         </div>
@@ -92,7 +90,11 @@ function NavbarIndex({ logo, navmenu1, navmenu2, navmenu3, navmenu4, navmenu5, b
           {navmenu3}
         </div>
         <div className={css.item}>
-          {navmenu4}
+          <Link href='/contact-us'>
+            <a>
+              {navmenu4}
+            </a>
+          </Link>
         </div>
         <div className={css.item}>
           {navmenu5}

@@ -11,7 +11,7 @@ export default function Clublogo({ images }) {
             </div>
             <div className={css.img_club}>
                 {
-                    images.map(el => <img alt={el.alt} className={css.hubspot} src={el.src}  />)
+                    images.map(el => <img key={Math.round(Math.random() * Math.random() * 100)} alt={el.alt} className={css.hubspot} src={el.src}  />)
                 }
             </div>
         </div>

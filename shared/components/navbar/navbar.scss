@@ -1,4 +1,4 @@
-.navbar_container{
+.navbar_container {
     position: sticky;
     display: flex;
     align-items: center;
@@ -9,18 +9,20 @@
 
     .items_container {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         column-gap: 2.5rem;
         align-content: center;
     }
-    
-    .item{    
+
+    .item {
         font-size: 14px;
-        font-weight: 500;        
+        font-weight: 500;
         line-height: 1.36;
         font-size: 0.875rem;
         color: #2e3034;
-        
+        a {
+            color: #2e3034;
+        }
     }
     .sign_in {
         font-size: 0.875rem;
@@ -39,58 +41,52 @@
     }
 }
 
- .fleshdown svg{
-        margin-left: 8px;
-        width: 12.5px!important;
-        height: 12.5px!important;
-        padding-bottom: 1px!important;
-        padding-top: 3px!important;
- }
- .subnav_content {
+.fleshdown svg {
+    margin-left: 8px;
+    width: 12.5px !important;
+    height: 12.5px !important;
+    padding-bottom: 1px !important;
+    padding-top: 3px !important;
+}
+.subnav_content {
     display: none;
-    margin-top:13px;
+    // margin-top:13px;
     position: absolute;
     background-color: white;
-    
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+
+    background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 15px #00000012;
-    border: 1px solid #E9E9E9;
+    border: 1px solid #e9e9e9;
     border-radius: 7px;
 
- .img{
-     margin-top:60px;
-     margin-left:60px;
-
+    .img {
+        margin-top: 60px;
+        margin-left: 60px;
     }
-     .title{
-        color: #2E3034;
+    .title {
+        color: #2e3034;
         font-size: 18px;
-        font-weight: 500; 
-        margin-top:28.3px;  
-        margin-left:60px;
-     }
-        .subtitle{
-            color: #2E3034;
-            font-size: 14px;
-            margin-top:17px;
-            margin-left:60px;
-            padding-bottom: 62px;
-            padding-right: 62px;
-            line-height: 1.65;
-        }
+        font-weight: 500;
+        margin-top: 28.3px;
+        margin-left: 60px;
+    }
+    .subtitle {
+        color: #2e3034;
+        font-size: 14px;
+        margin-top: 17px;
+        margin-left: 60px;
+        padding-bottom: 62px;
+        padding-right: 62px;
+        line-height: 1.65;
+    }
+}
 
-     
- }
-  
-
-  a:link {
+a:link {
     text-decoration: none;
     padding-bottom: 10px;
-    color: black;    
-
-  }
-  .sup:hover .subnav_content {
+    color: black;
+}
+.sup:hover .subnav_content {
     display: flex;
     position: absolute;
-
-  }
+}
