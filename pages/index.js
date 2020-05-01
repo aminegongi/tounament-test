@@ -235,7 +235,7 @@ const Index = (props) => {
           bordered={false}
           defaultActiveKey={['1']}
 
-          expandIcon={({ isActive }) => <img className={css.expandicon} src={isActive ?
+          expandIcon={({ isActive }) => <img  alt="icon" className={css.expandicon} src={isActive ?
             "icon/moins.png"
             : "icon/plus.png"} />}
         >

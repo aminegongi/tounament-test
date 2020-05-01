@@ -6,7 +6,7 @@ export default function DemoSection({ style, title, title_two, description, img 
         <div style={style}>
             <div className={css.demo_block}>
                 <div className={css.demo_semaine}>
-                    {img && <img src={img} className={css.montre}></img>}
+                    {img && <img src={img} alt={title} className={css.montre}></img>}
                     <div className={css.demo_plus_text} >
                         <div> {title}</div>
                         <div> {title_two}</div>
