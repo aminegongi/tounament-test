@@ -41,20 +41,20 @@ const Index = (props) => {
   // }, []);
   useEffect(() => {
     // window.location.href = "/contact-us";
-    Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
+    // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
 
   return (
     <div className={css.home_page}>
       <Head>
-        <title>{props.t("homePageTitle", "Home")}</title>
+        <title>Joueur</title>
         <link rel="icon" href="/logo.png" />
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="Sporit Home page " />
-        <meta name="keywords" content="sporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
-        <meta name="author" content="sporit" />
-        <link rel="manifest" href="/static/manifest/manifest.json" />
+        <meta name="description" content="Avec ISporit vous pouvez suivre vos performances, les analyser avec vos entraîneurs ou les partager sur vos réseaux sociaux. Vous pouvez aussi créer un profil public accessible à tous." />
+        <meta name="keywords" content="sport,clubs,coaches,players,tennis,football..." />
+        <meta name="author" content="iSporit" />
+        {/* <link rel="manifest" href="/static/manifest/manifest.json" /> */}
 
       </Head>
       <Layout>
@@ -62,8 +62,8 @@ const Index = (props) => {
           <Postplatforme
             img={"icon/for_player.png"}
 
-            title="Bâtissez une grande carrière et analysez vos performances réalisées"
-            sub_title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo."
+            title="Le suivi de votre carrière n’a jamais été aussi simple"
+            sub_title="Avec ISporit vous pouvez suivre vos performances, les analyser avec vos entraîneurs ou les partager sur vos réseaux sociaux. Vous pouvez aussi créer un profil public accessible à tous."
             buttonone="Inscrivez-vous gratuitement"
 
             backgroundbutton={"#ffcd67"}
@@ -104,7 +104,7 @@ const Index = (props) => {
                   img={performance}
                   title="Suivez et analysez"
                   title_two="vos performances"
-                  description="Notre plateforme vous donne désormais la possibilité de suivre les dernières nouvelles grâce aux alertes mobile et messages entre joueurs/entraîneurs/clubs, communiquez en toute transparence et efficacité !"
+                  description="Grâce à un affichage en courbes, vous pouvez visualiser l’évolution de vos performances au cours du temps."
 
                 />
               </div>
@@ -113,9 +113,8 @@ const Index = (props) => {
             </div>
           </div>
 
-          <Title title="Profitez pleinement du sport"
-            sub_title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,sed diam nonumy eirmod tempor"
-            sub_title_two="invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero"
+          <Title title="Profitez pleinement du iSporit"
+            sub_title="Nous vous offrons plusieurs outils intuitifs et faciles à utiliser"
           />
           <div className={`${css.tab} ${globalCss.isporit_max_width}`}>
             <Tab
@@ -126,16 +125,16 @@ const Index = (props) => {
 
               content={[
                 {
-                  title: "Encouragez vos joueurs et boostez-les",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Restez en contact avec vos entraîneurs et votre club",
+                  description: "grâce au système de messagerie, vous pouvez contacter votre club ou votre entraîneur et envoyer des feedbacks ou des réclamations."
                 },
                 {
                   title: "Personnalisez votre profil et partagez-le",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  description: "votre profil est une sorte de CV sportif dans lequel vous pouvez ajouter votre palmarès, vos résultats, vos performances..."
                 },
                 {
-                  title: "Créez à chacune des séances un plan",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Créez vos propres modules de statistiques",
+                  description: "Pour chaque séance d'entraînement ou chaque compétition, vous pouvez comptabiliser des anciennes statistiques ou en créer des nouvelles."
                 },
               ]}
             />
@@ -144,21 +143,6 @@ const Index = (props) => {
           <div className={`${css.join} ${globalCss.isporit_max_width}`}>
             <Join buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
           </div>
-          <div className={`${css.footer} ${globalCss.isporit_max_width}`}>
-            <FooterIndexPage
-              logo={"icon/logoindexpage.png"}
-              navmenu1="La plateforme"
-              navmenu2="Clubs partenaires"
-              navmenu3="Chercher un joueur"
-              navmenu4="Contact"
-              navmenu5="connexion"
-              buttontwo="Devenez partenaire"
-
-            />
-          </div>
-          <div className={`${css.copyright} ${globalCss.isporit_max_width}`}>
-            © 2020 iSporit. All rights reserved
-        </div>
         </div>
       </Layout>
 

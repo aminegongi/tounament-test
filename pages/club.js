@@ -124,25 +124,6 @@ const Index = (props) => {
           <div className={`${css.join} ${globalCss.isporit_max_width}`}>
             <Join buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
           </div>
-          <div className={`${css.footer} ${globalCss.isporit_max_width}`}>
-            <FooterIndexPage
-              logo={"icon/logoindexpage.png"}
-              navmenu1="La plateforme"
-              navmenu2="Clubs partenaires"
-              navmenu3="Chercher un joueur"
-              navmenu4="Contact"
-              navmenu5="connexion"
-
-              buttontwo="Devenez partenaire"
-
-            />
-          </div>
-          <div className={`${css.copyright} ${globalCss.isporit_max_width}`}>
-            © 2020 iSporit. All rights reserved
-        </div>
-
-
-
         </div>
       </Layout>
 

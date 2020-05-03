@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19" height="33.999" viewBox="0 0 19 33.999">
+  <g id="joueur" transform="translate(-619.067 -154)">
+    <circle id="Oval" cx="6.5" cy="6.5" r="6.5" transform="translate(622.067 154)" fill="#ffe6b2"/>
+    <rect id="Rectangle" width="19" height="18" rx="4.993" transform="translate(619.067 170)" fill="#ffcd67"/>
+  </g>
+</svg>

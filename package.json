@@ -36,9 +36,11 @@
     "next-offline": "^4.0.6",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-burger-menu": "^2.6.13",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.10.2",
     "react-ga": "^2.7.0",
+    "react-media-hook": "^0.4.7",
     "react-modal": "^3.11.1",
     "react-ticker": "^1.2.1"
   }
