@@ -39,7 +39,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
         <section className={`${css.footer_bar}  ${globalCss.isporit_max_width}`}>
           <div className={css.logo}>
             <Link href='/'>
-              <a><img src={"icon/logoindexpage.png"} alt="logo" /></a>
+              <a><img src={"icon/logoindexpage.png"} alt="iSporit" /></a>
             </Link>
           </div>
           <div className={css.social_media}>
