@@ -9,19 +9,24 @@ import { useMediaPredicate } from "react-media-hook";
 import BurgerMenu from 'react-burger-menu'
 
 import club from '../../../public/icon/subforclub.svg'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const { SubMenu } = Menu;
 
 
 function NavbarIndex({ buttontwo, isFooter }) {
   const router = useRouter();
-  console.log('router: ', router);
-  const [currentPqge, setCurrentPqge] = useState(router.route)
-  console.log('currentPqge: ', currentPqge);
+  const mobile = useMediaPredicate("(max-width: 850px)");
 
-  const isMobile = useMediaPredicate("(max-width: 850px)");
+  const [isMobile, setIsMobile] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (mobile !== isMobile) {
+      setIsMobile(mobile)
+
+    }
+  }, [mobile])
 
   const onChangeLocation = link => {
     router.push(link)
@@ -216,6 +221,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
       </div>
     )
   }
+  return <></>
 }
 
 

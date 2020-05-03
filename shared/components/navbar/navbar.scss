@@ -127,8 +127,16 @@ a:link {
     }
 }
 
+.mobile_burger_menu {
+    display: none;
+}
+
 @media only screen and (max-width: 850px) {
+    .navbar_container {
+        display: none;
+    }
     .mobile_burger_menu {
+        display: block;
         z-index: 9999999999999999;
         position: fixed;
         background-color: white;
