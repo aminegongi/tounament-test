@@ -8,9 +8,9 @@ export default function Postplatforme({ img, title, sub_title, buttonone, backgr
     <div className={`${globalCss.isporit_max_width} ${css.post_platform_container}`}>
       <img src={img} className={css.imgplatforme} alt="" />
 
-      <div className={css.presentationText} >
+      <h1 className={css.presentationText} >
         {title}
-      </div>
+      </h1>
       <div className={css.presentationTextTow}>
         <div>{sub_title}</div>
       </div>
