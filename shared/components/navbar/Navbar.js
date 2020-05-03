@@ -126,91 +126,93 @@ function NavbarIndex({ buttontwo, isFooter }) {
   }
   if (!isMobile) {
     return (
-      <div className={`${css.navbar_container} ${globalCss.isporit_max_width}`}>
-        <div className={css.logo}>
-          <Link href='/'>
-            <a><img src={"icon/logoindexpage.png"} alt="logo" /></a>
-          </Link>
-        </div>
-        <div className={css.items_container}>
-          <div className={css.sup}>
-            <div className={css.item}>
-              <div>
-                La plateforme
-                <Icon className={css.fleshdown} type="down" />
-              </div>
-              <div className={css.subnav_content}>
-                <Link href='/club'>
-                  <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
-                    <img className={css.img} src={club} />
-                    <div className={css.title} >Clubs</div>
-
-                    <div className={css.subtitle} >
-                      Centralisez tous les données de vos emplacement et gagnez
-                      du temps pour gérer l'organisation de votre club.
-                    </div>
-                  </a>
-                </Link>
-
-                <Link href='/coach'>
-                  <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
-                    <img className={css.img} src={coach} />
-                    <div className={css.title} >Entraîneurs</div>
-
-                    <div className={css.subtitle} >
-                      Centralisez tous les données de vos emplacement et gagnez
-                      du temps pour gérer l'organisation de votre club.
-                    </div>
-                  </a>
-                </Link>
-                <Link href='/player'>
-                  <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
-                    <img className={css.img} src={player} />
-                    <div className={css.title} >Joueur</div>
-
-                    <div className={css.subtitle} >
-                      Centralisez tous les données de vos emplacement et gagnez
-                      du temps pour gérer l'organisation de votre club.
-                    </div>
-                  </a>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className={css.item}>
-            Clubs partenaires
-          </div>
-          {/* <div className={css.item}>
-            Chercher un joueur
-          </div> */}
-          <div className={css.item}>
-            <Link href='/contact-us'>
-              <a>
-                Contact
-              </a>
+      <div style={{ backgroundColor: "white" }}>
+        <div className={`${css.navbar_container} ${globalCss.isporit_max_width}`}>
+          <div className={css.logo}>
+            <Link href='/'>
+              <a><img src={"icon/logoindexpage.png"} alt="logo" /></a>
             </Link>
           </div>
-        </div>
-        <div className={css.button_container}>
-          {/* 
+          <div className={css.items_container}>
+            <div className={css.sup}>
+              <div className={css.item}>
+                <div>
+                  La plateforme
+                <Icon className={css.fleshdown} type="down" />
+                </div>
+                <div className={css.subnav_content}>
+                  <Link href='/club'>
+                    <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
+                      <img className={css.img} src={club} />
+                      <div className={css.title} >Clubs</div>
+
+                      <div className={css.subtitle} >
+                        Centralisez tous les données de vos emplacement et gagnez
+                        du temps pour gérer l'organisation de votre club.
+                    </div>
+                    </a>
+                  </Link>
+
+                  <Link href='/coach'>
+                    <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
+                      <img className={css.img} src={coach} />
+                      <div className={css.title} >Entraîneurs</div>
+
+                      <div className={css.subtitle} >
+                        Centralisez tous les données de vos emplacement et gagnez
+                        du temps pour gérer l'organisation de votre club.
+                    </div>
+                    </a>
+                  </Link>
+                  <Link href='/player'>
+                    <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
+                      <img className={css.img} src={player} />
+                      <div className={css.title} >Joueur</div>
+
+                      <div className={css.subtitle} >
+                        Centralisez tous les données de vos emplacement et gagnez
+                        du temps pour gérer l'organisation de votre club.
+                    </div>
+                    </a>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className={css.item}>
+              Clubs partenaires
+          </div>
+            {/* <div className={css.item}>
+            Chercher un joueur
+          </div> */}
+            <div className={css.item}>
+              <Link href='/contact-us'>
+                <a>
+                  Contact
+              </a>
+              </Link>
+            </div>
+          </div>
+          <div className={css.button_container}>
+            {/* 
           <Link href='/contact-us'>
             <button className={css.sign_in}>
               connexion
               <Icon className={css.fleshdown} type="down" />
             </button>
           </Link> */}
-          <Link href='/contact-us'>
-            <a><button className={css.sign_up}>
-              S'inscrire gratuitement
+            <Link href='/contact-us'>
+              <a><button className={css.sign_up}>
+                S'inscrire gratuitement
               {/* <Icon className={css.fleshdown} type="down" /> */}
-            </button></a>
-          </Link>
+              </button></a>
+            </Link>
 
 
+
+          </div>
 
         </div>
-
       </div>
     )
   }
