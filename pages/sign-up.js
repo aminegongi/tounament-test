@@ -36,6 +36,11 @@ const SignUpModal = ({ load, email, lang }) => {
         setLoading(load)
     }, [load])
 
+    useEffect(() => {
+        window.location.href = "/";
+    }, [])
+
+
     if (loading) {
         return <div className={css.modal_container}>
             <div className={css.modal}>
@@ -80,7 +85,7 @@ const SignUp = () => {
     const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
     const [username, setUsername] = useState(router.query.username ? router.query.username : '')
     const [password, setPassword] = useState('')
-    const [modal, setModal] = useState((router.query.type === '' || router.query.type === undefined || router.query.type !== 'player' || router.query.type !== 'coach' || router.query.type !== 'club' ) ? true : false)
+    const [modal, setModal] = useState((router.query.type === '' || router.query.type === undefined || router.query.type !== 'player' || router.query.type !== 'coach' || router.query.type !== 'club') ? true : false)
     const [isNabVisible, setNavIsVisible] = useState(false)
 
     useEffect(() => {
@@ -92,14 +97,14 @@ const SignUp = () => {
     }, [cardNumber])
 
     useEffect(() => {
-        if (!(router.query.type === '' || router.query.type === undefined  ) ) {
+        if (!(router.query.type === '' || router.query.type === undefined)) {
             setModal(false)
         }
     }, [router.query.type])
-    
+
     useEffect(() => {
         setLang(i18n.language)
-      
+
     }, [i18n.language])
 
     return (

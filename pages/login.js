@@ -45,6 +45,10 @@ const Login = (props) => {
         }, 1000);
     }, [cardNumber])
 
+    useEffect(() => {
+        window.location.href = "/";
+    }, [])
+
     return (
         <div className={css.html}>
             <Head>

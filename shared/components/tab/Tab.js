@@ -90,7 +90,7 @@ export default function Tab({ content, imgone, imgtwo, imgthere, title, title_tw
 		`}</style>
             <div className={css.img}>
                 {key === 1 ?
-                    <img src={imgone}></img> : (key === 2 ? <img src={imgtwo}></img> : <img src={imgthere}></img>)}
+                    <img alt="image" src={imgone} /> : (key === 2 ? <img alt="image" src={imgtwo}/> : <img alt="image" src={imgthere}/>)}
             </div>
             <div className={css.list_iteam}>
                 {
