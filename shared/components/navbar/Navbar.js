@@ -100,7 +100,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
           right
           onStateChange={e => setIsMenuOpen(e.isOpen)}
           isOpen={isMenuOpen}
-          width={'80%'}
+          width={'260px'}
           customBurgerIcon={!isMenuOpen ? <Icon type="menu" /> : <Icon type="close" />}
           customCrossIcon={false}
           noOverlay={false}
