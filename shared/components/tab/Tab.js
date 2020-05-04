@@ -6,8 +6,7 @@ import Demo from '../DemoSection/DemoSection';
 import { Icon } from 'antd';
 import { v4 as uuid } from 'uuid'
 
-export default function Tab({ content, imgone, imgtwo, imgthere, title, title_two, title_three, sub_title, sub_title_two, sub_title_there,
-    sub_title_four, sub_title_five, sub_title_six, sub_title_seven, sub_title_eight, sub_title_nine, bgcolor }) {
+export default function Tab({ content, imgone, imgtwo, imgthere, bgcolor }) {
     const [key, setkey] = useState(1);
     const [backgroundlistone, setbackgroundlistone] = useState(bgcolor);
     const [backgroundlisttwo, setbackgroundlisttwo] = useState('#ffffff');

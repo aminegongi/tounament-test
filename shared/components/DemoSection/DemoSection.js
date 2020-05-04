@@ -1,6 +1,8 @@
 import css from './DemoSection.scss'
+import routes from '../../../utils/routes';
+import Link from 'next/link';
 
-export default function DemoSection({ style, title, title_two, description, img }) {
+export default function DemoSection({ style, title, title_two, description, img, link }) {
 
     return (
         <div style={style}>
@@ -15,9 +17,11 @@ export default function DemoSection({ style, title, title_two, description, img 
                         {description}
 
                     </div>
-                    <button className={css.gerer_equipe}>
-                        Demander une démo
-                    </button>
+                    {link && <Link href={link}>
+                        <button className={css.gerer_equipe}>
+                            Demander une démo
+                        </button>
+                    </Link>}
                 </div>
             </div>
         </div>

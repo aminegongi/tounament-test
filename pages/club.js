@@ -14,15 +14,16 @@ import globalCss from '../shared/global-style.scss'
 
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
+import routes from '../utils/routes';
 
 
 
 
 const Index = (props) => {
-  const [lang, setLang] = useState(undefined)
-  useEffect(() => {
-    setLang(i18n.language)
-  }, [i18n.language])
+  // const [lang, setLang] = useState(undefined)
+  // useEffect(() => {
+  //   setLang(i18n.language)
+  // }, [i18n.language])
 
 
   return (
@@ -31,19 +32,25 @@ const Index = (props) => {
         <title>Club</title>
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="Sporit Home page " />
-        <meta name="keywords" content="sporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
-        <meta name="author" content="sporit" />
+        <meta name="description" content="vous pouvez digitaliser votre travail (site web, gestion, suivi, calendrier, performances ...) 
+                        dans une seule plateforme. Vous pouvez personnaliser votre site Web avec vos propres informations 
+                        afin que les intéressés puissent vous contacter directement depuis votre site Web." />
+        <meta name="keywords" content="sport,clubs,coaches,players,tennis,football..." />
+        <meta name="author" content="iSporit" />
 
       </Head>
       <Layout>
         <div className={css.postplatforme}>
           <Postplatforme
             img={"icon/for_club.png"}
-            title="Centralisez tous les données de vos équipes dans le même emplacement"
-            sub_title="iSporit n'est pas seulement un outil de gestion d'effectif, mais aussi un espace de travail qui permet de centraliser les équipes, les programmes et les contenus."
-            buttonone="Gérer mon équipe gratuitement"
+            title="La gestion de votre club n'a jamais été aussi simple"
+            sub_title="vous pouvez digitaliser votre travail (site web, gestion, suivi, calendrier, performances ...) 
+                        dans une seule plateforme. Vous pouvez personnaliser votre site Web avec vos propres informations 
+                        afin que les intéressés puissent vous contacter directement depuis votre site Web."
+            // buttonone="Gérer mon équipe gratuitement"
+            buttonone="Demander une démo"
             backgroundbutton={"#26beb5"}
+            link={routes.CONTACT_US.clubPath}
           />
         </div>
         <div className={css.iteamlistblock}>
@@ -80,7 +87,8 @@ const Index = (props) => {
                   img={"icon/suivi_club.png"}
                   title="Gagnez plus"
                   title_two="de 10h par semaine"
-                  description="Notre plateforme vous donne désormais la possibilité de suivre les dernières nouvelles grâce aux alertes mobile et messages entre joueurs/entraîneurs/clubs, communiquez en toute transparence et efficacité !"
+                  description="Notre plateforme offre désormais à vos joueurs et entraîneurs la possibilité de suivre les dernières actualités grâce aux alertes et messages mobiles entre joueurs / entraîneurs / clubs et de communiquer de manière transparente et efficace!"
+                  link={routes.CONTACT_US.clubPath}
                 />
               </div>
               <img style={{ width: "100%" }} alt="image" className={css.Image_gagnant} src={"icon/club.svg"} alt="" />
@@ -89,8 +97,7 @@ const Index = (props) => {
           </div>
 
           <Title title="Boostez la gestion de votre club"
-            sub_title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,sed diam nonumy eirmod tempor"
-            sub_title_two="invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero"
+            sub_title="Nous vous offrons plusieurs outils intuitifs et faciles à utiliser"
           />
           <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
             <Tab
@@ -100,16 +107,16 @@ const Index = (props) => {
               imgthere={"icon/clubseance.png"}
               content={[
                 {
-                  title: "Organisez votre planning annuel",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Gérez des joueur et des entraîneurs",
+                  description: "Suivez les performances de vos joueurs et le travail de vos entraîneurs en quelques clics."
                 },
                 {
-                  title: "Examinez les programmes des séances",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Gérez des groupes et du calendrier",
+                  description: "Vous pouvez facilement suivre toutes les planifications et l'historique de vos groupes ainsi que le planning de vos salles/terrains."
                 },
                 {
-                  title: "Contactez les parents et les joueurs",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Personnalisez votre site web",
+                  description: "Vous pouvez personnaliser votre site Web avec votre propre logo, images et texte afin que les intéressés puissent vous contacter à partir du site Web."
                 },
               ]}
 
@@ -117,7 +124,7 @@ const Index = (props) => {
           </div>
 
           <div className={`${globalCss.isporit_max_width} ${css.join} `}>
-            <Join buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
+            <Join link={routes.CONTACT_US.clubPath} buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
           </div>
         </div>
       </Layout>
@@ -127,14 +134,15 @@ const Index = (props) => {
 }
 
 
-Index.getInitialProps = async (ctx) => {
+// Index.getInitialProps = async (ctx) => {
 
-  return ({
-    namespacesRequired: ['common'],
-  })
-}
+//   return ({
+//     namespacesRequired: ['common'],
+//   })
+// }
 
 Index.propTypes = {
-  t: PropTypes.func.isRequired,
+  // t: PropTypes.func.isRequired,
 }
-export default withTranslation('common')(Index);
+// export default withTranslation('common')(Index);
+export default Index

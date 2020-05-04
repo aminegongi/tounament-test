@@ -13,18 +13,14 @@ import Join from '../shared/components/joinplatforme/Join';
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import globalCss from '../shared/global-style.scss'
+import routes from '../utils/routes';
 
 
 const Index = (props) => {
-  const [lang, setLang] = useState(undefined)
-  useEffect(() => {
-    setLang(i18n.language)
-  }, [i18n.language])
-
-  useEffect(() => {
-    // window.location.href = "/contact-us";
-    // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
-  }, [])
+  // const [lang, setLang] = useState(undefined)
+  // useEffect(() => {
+  //   setLang(i18n.language)
+  // }, [i18n.language])
 
   return (
     <div className={css.home_page}>
@@ -32,21 +28,24 @@ const Index = (props) => {
         <title>Entraîneur</title>
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="Sporit Home page " />
-        <meta name="keywords" content="sporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
-        <meta name="author" content="sporit" />
-        {/* <link rel="manifest" href="/static/manifest/manifest.json" /> */}
+        <meta name="description" content="Avec ISporit vous pouvez planifier vos sessions, faire la présence et suivre l'historique 
+            de chacune des sessions de votre groupe. Vous pouvez partager 
+            votre expérience et vos réalisations via votre profil public." />
+        <meta name="keywords" content="sport,clubs,coaches,players,tennis,football..." />
+        <meta name="author" content="iSporit" />
 
       </Head>
       <Layout>
         <div className={css.postplatforme}>
           <Postplatforme
             img={"icon/forcoach.png"}
-            title="Bâtissez une grande carrière et analysez vos performances réalisées"
-            sub_title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo."
+            title="Le suivi et la planification pour vos joueurs n'ont jamais été aussi simples"
+            sub_title="Avec ISporit vous pouvez planifier vos sessions, faire la présence et suivre l'historique 
+            de chacune des sessions de votre groupe. Vous pouvez partager 
+            votre expérience et vos réalisations via votre profil public."
             buttonone="S'inscrire gratuitement"
             backgroundbutton={"#ff8760"}
-
+            link={routes.CONTACT_US.coachPath}
           />
         </div>
         <div className={css.iteamlistblock}>
@@ -81,10 +80,13 @@ const Index = (props) => {
               <div style={{ justifySelf: "center" }}>
                 <Demo
                   img={"icon/icon_coach.png"}
-                  title="Invitez vos joueurs"
-                  title_two="et gérez les absences"
-                  description="Notre plateforme vous donne désormais la possibilité de suivre les dernières nouvelles grâce aux alertes mobile et messages entre joueurs/entraîneurs/clubs, communiquez en toute transparence et efficacité !"
-
+                  title="Planifiez vos séances "
+                  title_two="et suivez vos joueurs"
+                  description="ISporit facilite la façon avec laquelle vous planifiez les séances de votre groupe, 
+                  la communication entre vous et votre club / joueurs et vous donne 
+                  la possibilité de suivre les performances de chaque match et 
+                  entraînement pour tous vos joueurs."
+                  link={routes.CONTACT_US.coachPath}
                 />
               </div>
               <img alt="image" style={{ width: "100%" }} className={css.Image_gagnant} src={"icon/coach.svg"} alt="" />
@@ -92,9 +94,8 @@ const Index = (props) => {
             </div>
           </div>
 
-          <Title title="Entraînez facilement"
-            sub_title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,sed diam nonumy eirmod tempor"
-            sub_title_two="invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero"
+          <Title title="Améliorez et suivez votre travail"
+            sub_title="Nous vous offrons plusieurs outils intuitifs et faciles à utiliser"
           />
           <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
             <Tab
@@ -104,23 +105,27 @@ const Index = (props) => {
               imgthere={"icon/clubseance.png"}
               content={[
                 {
-                  title: "Encouragez vos joueurs et boostez-les",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Planifiez et attribuez des tâches",
+                  description: "Planifiez vos séances d'entraînement et créez des tâches à faire par vos joueurs."
                 },
                 {
-                  title: "Personnalisez votre profil et partagez-le",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Encouragez et suivez chaque évolution",
+                  description: "Encouragez vos joueurs après leur entraînement et suivez leurs évolutions grâce au partage de statistiques."
                 },
                 {
-                  title: "Créez à chacune des séances un plan",
-                  description: "Gérez la disponibilité des terrains de votre club grâce à l'outil de gestion d'événement que la plateforme dédie et gagnez du temps."
+                  title: "Créez vos propres modules de statistiques",
+                  description: "Pour chaque séance d'entraînement ou chaque compétition, vous pouvez comptabiliser des anciennes statistiques ou en créer des nouvelles."
                 },
               ]}
             />
           </div>
 
           <div className={`${globalCss.isporit_max_width} ${css.join} `}>
-            <Join buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
+            <Join 
+              link={routes.CONTACT_US.coachPath} 
+              buttontwo="Contactez notre service commercial" 
+              classbutton={css.buttondisplay} 
+            />
           </div>
         </div>
       </Layout>
@@ -132,14 +137,15 @@ const Index = (props) => {
 }
 
 
-Index.getInitialProps = async (ctx) => {
+// Index.getInitialProps = async (ctx) => {
 
-  return ({
-    namespacesRequired: ['common'],
-  })
-}
+//   return ({
+//     namespacesRequired: ['common'],
+//   })
+// }
 
 Index.propTypes = {
-  t: PropTypes.func.isRequired,
+  // t: PropTypes.func.isRequired,
 }
-export default withTranslation('common')(Index);
+// export default withTranslation('common')(Index);
+export default Index
