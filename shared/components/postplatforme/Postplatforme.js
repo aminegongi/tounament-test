@@ -2,7 +2,7 @@ import css from './postplatforme.scss';
 import globalCss from '../../global-style.scss';
 import Link from 'next/link'
 
-export default function Postplatforme({ img, title, sub_title, buttonone, backgroundbutton }) {
+export default function Postplatforme({ img, title, sub_title, buttonone, backgroundbutton, link }) {
 
   return (
     <div className={`${globalCss.isporit_max_width} ${css.post_platform_container}`}>
@@ -14,13 +14,11 @@ export default function Postplatforme({ img, title, sub_title, buttonone, backgr
       <div className={css.presentationTextTow}>
         <div>{sub_title}</div>
       </div>
-      <Link href='/contact-us'>
-        <a>
-          <button className={css.sign_up} style={{ backgroundColor: backgroundbutton }} >
-            {buttonone}
-          </button>
-        </a>
-      </Link>
+      {link && <Link href={link}>
+        <button className={css.sign_up} style={{ backgroundColor: backgroundbutton }} >
+          {buttonone}
+        </button>
+      </Link>}
     </div>
   );
 }

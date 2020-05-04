@@ -15,6 +15,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 
 import globalCss from '../shared/global-style.scss'
+import routes from '../utils/routes';
 
 
 
@@ -23,12 +24,6 @@ const Index = (props) => {
   useEffect(() => {
     setLang(i18n.language)
   }, [i18n.language])
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     console.log('This will run after 1 second!')
-  //   }, 1000);
-  //   return () => clearTimeout(timer);
-  // }, []);
   useEffect(() => {
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
@@ -43,7 +38,6 @@ const Index = (props) => {
         <meta name="description" content="Avec ISporit vous pouvez suivre vos performances, les analyser avec vos entraîneurs ou les partager sur vos réseaux sociaux. Vous pouvez aussi créer un profil public accessible à tous." />
         <meta name="keywords" content="sport,clubs,coaches,players,tennis,football..." />
         <meta name="author" content="iSporit" />
-        {/* <link rel="manifest" href="/static/manifest/manifest.json" /> */}
 
       </Head>
       <Layout>
@@ -56,7 +50,7 @@ const Index = (props) => {
             buttonone="Inscrivez-vous gratuitement"
 
             backgroundbutton={"#ffcd67"}
-
+            link={routes.CONTACT_US.playerPath}
           />
         </div>
         <div className={css.iteamlistblock}>
@@ -94,6 +88,7 @@ const Index = (props) => {
                   title="Suivez et analysez"
                   title_two="vos performances"
                   description="Grâce à un affichage en courbes, vous pouvez visualiser l’évolution de vos performances au cours du temps."
+                  link={routes.CONTACT_US.playerPath}
 
                 />
               </div>
@@ -130,7 +125,11 @@ const Index = (props) => {
           </div>
 
           <div className={`${globalCss.isporit_max_width} ${css.join} `}>
-            <Join buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
+            <Join 
+              link={routes.CONTACT_US.playerPath}
+              buttontwo="Contactez notre service commercial" 
+              classbutton={css.buttondisplay} 
+            />
           </div>
         </div>
       </Layout>

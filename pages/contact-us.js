@@ -46,8 +46,9 @@ const ContactUs = (props) => {
         if (!model.body || model.body === "") newErrors.body = true
         setErrors(newErrors)
         if (isEmpty(newErrors)) {
-            Axios.post('https://api.isporit.com/contact/', { ...model, subject: "( "+ model.role + " ) " + model.subject }).then(res => {
-                alert(props.t("contactUsOnSubmitSuccess", "Merci! nous vous contacterons dans les prochaines 24h"))
+            Axios.post('https://api.isporit.com/contact/', { ...model, subject: "( " + model.role + " ) " + model.subject }).then(res => {
+                // alert(props.t("contactUsOnSubmitSuccess", "Merci! nous vous contacterons dans les prochaines 24h"))
+                alert("Merci! nous vous contacterons dans les prochaines 24h")
 
                 setModel({ email: "", firstName: "", lastName: "", phoneNumber: "", subject: "", body: "" })
             }).catch(e => {
@@ -143,7 +144,10 @@ const ContactUs = (props) => {
                                     setErrors({ ...errors, body: false })
                                 }} placeholder={'Message'} />
                             </div>
-                            <button className={css.submit} onClick={onSubmit} >{props.t('contactUsSendMessage', "Send my information")}</button>
+                            <button className={css.submit} onClick={onSubmit} >
+                                {/* {props.t('contactUsSendMessage', "Send my information")} */}
+                                Envoyer mes informations
+                            </button>
                         </div>
                     </div>
                     <div className={css.right_side}>

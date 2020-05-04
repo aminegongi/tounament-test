@@ -10,6 +10,7 @@ import BurgerMenu from 'react-burger-menu'
 
 import club from '../../../public/icon/subforclub.svg'
 import { useState, useEffect } from 'react';
+import routes from '../../../utils/routes';
 
 const { SubMenu } = Menu;
 
@@ -146,38 +147,37 @@ function NavbarIndex({ buttontwo, isFooter }) {
                 <Icon className={css.fleshdown} type="down" />
                 </div>
                 <div className={css.subnav_content}>
-                  <Link href='/club'>
+                  <Link href={routes.CLUB_FEATURES.path}>
                     <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
                       <img className={css.img} src={club} />
                       <div className={css.title} >Clubs</div>
 
                       <div className={css.subtitle} >
-                        Centralisez tous les données de vos emplacement et gagnez
-                        du temps pour gérer l'organisation de votre club.
-                    </div>
+                        Avec ISporit vous pouvez digitaliser tout le travail de votre club et le centraliser dans une seule plateforme.
+                      </div>
                     </a>
                   </Link>
 
-                  <Link href='/coach'>
+                  <Link href={routes.COACH_FEATURES.path}>
                     <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
                       <img className={css.img} src={coach} />
                       <div className={css.title} >Entraîneurs</div>
 
                       <div className={css.subtitle} >
-                        Centralisez tous les données de vos emplacement et gagnez
-                        du temps pour gérer l'organisation de votre club.
-                    </div>
+                        vous pouvez planifier vos sessions, faire la présence de vos joueurs et suivre l'historique de chacune
+                        des sessions de votre groupe. Vous pouvez aussi partager votre expérience et vos réalisations via votre profil public.
+                      </div>
                     </a>
                   </Link>
-                  <Link href='/player'>
+                  <Link href={routes.PLAYER_FEATURES.path}>
                     <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
                       <img className={css.img} src={player} />
                       <div className={css.title} >Joueur</div>
 
                       <div className={css.subtitle} >
-                        Centralisez tous les données de vos emplacement et gagnez
-                        du temps pour gérer l'organisation de votre club.
-                    </div>
+                        vous pouvez suivre vos performances, les analyser avec vos entraîneurs ou les partager
+                        sur vos réseaux sociaux. Vous pouvez aussi créer un profil public accessible à tous
+                      </div>
                     </a>
                   </Link>
                 </div>
@@ -191,7 +191,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
             Chercher un joueur
           </div> */}
             <div className={css.item}>
-              <Link href='/contact-us'>
+              <Link href={routes.CONTACT_US.path}>
                 <a>
                   Contact
               </a>
@@ -206,7 +206,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
               <Icon className={css.fleshdown} type="down" />
             </button>
           </Link> */}
-            <Link href='/contact-us'>
+            <Link href={routes.CONTACT_US.path}>
               <a><button className={css.sign_up}>
                 S'inscrire gratuitement
               {/* <Icon className={css.fleshdown} type="down" /> */}

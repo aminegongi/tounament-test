@@ -22,6 +22,7 @@ import Axios from 'axios';
 import { Collapse, Icon, Button } from 'antd';
 import globalCss from '../shared/global-style.scss'
 import Link from 'next/link';
+import routes from '../utils/routes';
 
 
 const { Panel } = Collapse;
@@ -78,7 +79,7 @@ const Index = (props) => {
                   l'organisation de vos calendriers, événements et plus encore.
               </div>
               </div>
-              <Link href="/contact-us" >
+              <Link href={routes.CLUB_FEATURES.path} >
                 <button className={css.gerer_team}>
                   Gérer mon équipe gratuitement
               </button>
@@ -122,7 +123,7 @@ const Index = (props) => {
           <Title
             title="Regagnez votre temps à nouveau"
             sub_title="Gérer les plannings et les absences avec iSporit est plus efficace
-        que de le faire"
+            que de le faire"
             sub_title_two="avec des tonnes de feuilles qui auront peu de traçabilité plus tard."
           />
 
@@ -134,7 +135,7 @@ const Index = (props) => {
                   title="Gagnez plus"
                   title_two="de 10h par semaine"
                   description="Notre plateforme vous offrira des outils puissants et simples qui vous permettront non seulement de gérer parfaitement vos plannings et collaborateurs mais aussi de gagner du temps."
-
+                  link={routes.CONTACT_US.clubPath}
                 />
               </div>
 
@@ -155,6 +156,7 @@ const Index = (props) => {
                   title="Accroissez"
                   title_two="vos revenus"
                   description="Votre club gagnera en visibilité auprès d'une grande communauté de joueurs inscrits dans la plateforme et améliorera son image de marque grâce aux consignes de notre équipe experte en digital."
+                  link={routes.CONTACT_US.clubPath}
 
                 />
               </div>
@@ -202,13 +204,15 @@ const Index = (props) => {
             <img alt="image" className={css.performance_img} src={"icon/gestion_club.png"} alt="" />
 
             <div>
-              <button style={{ marginTop: 0 }} onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
-                Demander une démo
-            </button>
+              <Link href={routes.CONTACT_US.clubPath}>
+                <button style={{ marginTop: 0 }} onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
+                  Demander une démo
+              </button>
+              </Link>
             </div>
           </div>
 
-          <Title
+          {/* <Title
             title=" Questions souvent posées"
             sub_title="Vous trouverez ci-dessous les questions auxquelles nous avons fait face plusieurs "
             sub_title_two="fois et les réponses nécessaires"
@@ -227,9 +231,7 @@ const Index = (props) => {
               : "icon/plus.png"} />}
           >
             <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
-              {/* <div className={css.customPaneltwo}>s */}
               Lorem
-            {/* </div>s */}
             </Panel>
             <Panel className={css.customPanelStyletext} header="Je suis un joueur non-inscrit dans un club, est-ce que je peux utiliser la plateforme ?" key="2" style={customPanelStyle}>
               <div className={css.customPaneltwo}>
@@ -251,11 +253,11 @@ const Index = (props) => {
                 {text}
               </div>
             </Panel>
-          </Collapse>
+          </Collapse> */}
 
 
           <div className={`${globalCss.isporit_max_width} ${css.join} `}>
-            <Join buttonone="Connexion" buttontwo="Contactez notre service commercial" />
+            <Join link={routes.CONTACT_US.clubPath} buttonone="Connexion" buttontwo="Contactez notre service commercial" />
           </div>
 
         </div>

@@ -66,6 +66,8 @@
     .feature_desktop_item {
         padding: 2rem;
         display: grid;
+        grid-template-rows: 50px 25px auto;
+
         row-gap: 1rem;
         border: 1px solid transparent;
         border-radius: 7px;
