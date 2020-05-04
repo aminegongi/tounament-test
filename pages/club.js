@@ -20,10 +20,10 @@ import routes from '../utils/routes';
 
 
 const Index = (props) => {
-  const [lang, setLang] = useState(undefined)
-  useEffect(() => {
-    setLang(i18n.language)
-  }, [i18n.language])
+  // const [lang, setLang] = useState(undefined)
+  // useEffect(() => {
+  //   setLang(i18n.language)
+  // }, [i18n.language])
 
 
   return (
@@ -134,14 +134,15 @@ const Index = (props) => {
 }
 
 
-Index.getInitialProps = async (ctx) => {
+// Index.getInitialProps = async (ctx) => {
 
-  return ({
-    namespacesRequired: ['common'],
-  })
-}
+//   return ({
+//     namespacesRequired: ['common'],
+//   })
+// }
 
 Index.propTypes = {
-  t: PropTypes.func.isRequired,
+  // t: PropTypes.func.isRequired,
 }
-export default withTranslation('common')(Index);
+// export default withTranslation('common')(Index);
+export default Index

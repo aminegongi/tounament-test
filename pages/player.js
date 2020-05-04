@@ -20,14 +20,14 @@ import routes from '../utils/routes';
 
 
 const Index = (props) => {
-  const [lang, setLang] = useState(undefined)
-  useEffect(() => {
-    setLang(i18n.language)
-  }, [i18n.language])
-  useEffect(() => {
-    // window.location.href = "/contact-us";
-    // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
-  }, [])
+  // const [lang, setLang] = useState(undefined)
+  // useEffect(() => {
+  //   setLang(i18n.language)
+  // }, [i18n.language])
+  // useEffect(() => {
+  //   // window.location.href = "/contact-us";
+  //   // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
+  // }, [])
 
   return (
     <div className={css.home_page}>
@@ -141,14 +141,15 @@ const Index = (props) => {
 }
 
 
-Index.getInitialProps = async (ctx) => {
+// Index.getInitialProps = async (ctx) => {
 
-  return ({
-    namespacesRequired: ['common'],
-  })
-}
+//   return ({
+//     namespacesRequired: ['common'],
+//   })
+// }
 
 Index.propTypes = {
-  t: PropTypes.func.isRequired,
+  // t: PropTypes.func.isRequired,
 }
-export default withTranslation('common')(Index);
+// export default withTranslation('common')(Index);
+export default Index

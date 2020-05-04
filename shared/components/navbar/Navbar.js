@@ -185,8 +185,12 @@ function NavbarIndex({ buttontwo, isFooter }) {
             </div>
 
             <div className={css.item}>
-              Clubs partenaires
-          </div>
+              <Link href={routes.CONTACT_US.path}>
+                <a>
+                  Clubs partenaires
+                </a>
+              </Link>
+            </div>
             {/* <div className={css.item}>
             Chercher un joueur
           </div> */}
@@ -207,10 +211,12 @@ function NavbarIndex({ buttontwo, isFooter }) {
             </button>
           </Link> */}
             <Link href={routes.CONTACT_US.path}>
-              <a><button className={css.sign_up}>
-                S'inscrire gratuitement
+              <a>
+                <button className={css.sign_up}>
+                  S'inscrire gratuitement
               {/* <Icon className={css.fleshdown} type="down" /> */}
-              </button></a>
+                </button>
+              </a>
             </Link>
 
 
