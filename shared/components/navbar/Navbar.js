@@ -185,7 +185,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
             </div>
 
             <div className={css.item}>
-              <Link href={routes.CONTACT_US.path}>
+              <Link href={routes.CONTACT_US.clubPath}>
                 <a>
                   Clubs partenaires
                 </a>
