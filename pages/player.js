@@ -3,26 +3,16 @@ import Layout from '../shared/components/layout/Layout';
 import css from '../shared/css/player.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
 
-import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro';
-import TrustUs from '../shared/components/TrustUs/TrustUs';
-import InterfacesExample from '../shared/components/InterfacesExample/InterfacesExample';
-import Feature from '../shared/components/Feature/Feature';
-import BecomePartner from '../shared/components/BecomePartner/BecomePartner';
 import Title from '../shared/components/TitleSection/TitleSection';
 import Demo from '../shared/components/DemoSection/DemoSection';
-import Functionclub from '../shared/components/Functionclub/Functionclub';
-import Navbar from '../shared/components/navbar/Navbar';
 import Postplatforme from '../shared/components/postplatforme/Postplatforme';
 import Tab from '../shared/components/tab/Tab';
-import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage';
 import performance from '../public/icon/performance.png'
 import { i18n, withTranslation } from '../i18n'
 import Join from '../shared/components/joinplatforme/Join';
 
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
-import Axios from 'axios';
-import { Collapse, Icon, Button } from 'antd';
 
 import globalCss from '../shared/global-style.scss'
 
@@ -48,7 +38,6 @@ const Index = (props) => {
     <div className={css.home_page}>
       <Head>
         <title>Joueur</title>
-        <link rel="icon" href="/logo.png" />
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="Avec ISporit vous pouvez suivre vos performances, les analyser avec vos entraîneurs ou les partager sur vos réseaux sociaux. Vous pouvez aussi créer un profil public accessible à tous." />
@@ -116,7 +105,7 @@ const Index = (props) => {
           <Title title="Profitez pleinement du iSporit"
             sub_title="Nous vous offrons plusieurs outils intuitifs et faciles à utiliser"
           />
-          <div className={`${css.tab} ${globalCss.isporit_max_width}`}>
+          <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
             <Tab
               bgcolor={'#fff9e2'}
               imgone={"icon/clubseance.png"}
@@ -140,7 +129,7 @@ const Index = (props) => {
             />
           </div>
 
-          <div className={`${css.join} ${globalCss.isporit_max_width}`}>
+          <div className={`${globalCss.isporit_max_width} ${css.join} `}>
             <Join buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
           </div>
         </div>

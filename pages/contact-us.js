@@ -6,7 +6,7 @@ import css from '../shared/css/contact-us.scss';
 import { useRouter } from 'next/router'
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { isEmpty } from 'lodash'
 
 import '../shared/global-style.scss'
@@ -18,35 +18,43 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
+const roles = ['player', 'coach', 'club']
+
+function roleValidaton(role) {
+    if (roles.includes(role)) return role
+    return false
+}
+
 const ContactUs = (props) => {
     const router = useRouter()
     const [lang, setLang] = useState(undefined)
-    const [model , setModel] = useState({})
-    const [errors , setErrors] = useState({})
+    const [model, setModel] = useState({ role: roleValidaton(router.query.role) || 'player', email: "", firstName: "", lastName: "", phoneNumber: "", subject: "", body: "" })
+    const [errors, setErrors] = useState({})
     useEffect(() => {
-      setLang(i18n.language)
+        setLang(i18n.language)
     }, [i18n.language])
-    
-   
+
+
 
     const onSubmit = () => {
         const newErrors = {}
-        if (!model.firstName || model.firstName === "") newErrors.firstName= true
-        if (!model.lastName || model.lastName === "") newErrors.lastName= true
-        if (!model.email || model.email === "" || !validateEmail(model.email) ) newErrors.email= true
-        if (!model.phoneNumber || (model.phoneNumber === "" || model.phoneNumber.length < 8) ) newErrors.phoneNumber= true
-        if (!model.subject || model.subject === "") newErrors.subject= true 
-        if (!model.body || model.body === "") newErrors.body= true
+        if (!model.firstName || model.firstName === "") newErrors.firstName = true
+        if (!model.lastName || model.lastName === "") newErrors.lastName = true
+        if (!model.email || model.email === "" || !validateEmail(model.email)) newErrors.email = true
+        if (!model.phoneNumber || (model.phoneNumber === "" || model.phoneNumber.length < 8)) newErrors.phoneNumber = true
+        if (!model.subject || model.subject === "") newErrors.subject = true
+        if (!model.body || model.body === "") newErrors.body = true
         setErrors(newErrors)
         if (isEmpty(newErrors)) {
-            Axios.post('https://api.isporit.com/contact/', {...model}).then(res => {
-                alert(props.t("contactUsOnSubmitSuccess", "Thank you an"))
-                
-                setModel({email : "" , firstName :"" , lastName:"" , phoneNumber:"" , subject:"" ,body:""})
+            Axios.post('https://api.isporit.com/contact/', { ...model, subject: "( "+ model.role + " ) " + model.subject }).then(res => {
+                alert(props.t("contactUsOnSubmitSuccess", "Merci! nous vous contacterons dans les prochaines 24h"))
+
+                setModel({ email: "", firstName: "", lastName: "", phoneNumber: "", subject: "", body: "" })
             }).catch(e => {
-                if (e.response.data.message === "Invalid phone number") {
-                    setErrors({...errors , phoneNumber: true})
+                if (e.response && e.response.data && e.response.data.message === "Invalid phone number") {
+                    return setErrors({ ...errors, phoneNumber: true })
                 }
+                return alert("something went wrong please try again later!")
             })
         }
     }
@@ -55,79 +63,95 @@ const ContactUs = (props) => {
         <Fragment>
             <Head>
                 <title>{props.t("contactUsHeadTitle", "Contact Us")}</title>
-                <link rel="icon" href="/logo.png" />
 
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <meta name="description" content="Sporit contact us page " />
-                <meta name="keywords" content="sporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
-                <meta name="author" content="sporit" />
+                <meta name="description" content="iSporit contact us page " />
+                <meta name="keywords" content="iSporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
+                <meta name="author" content="iSporit" />
 
             </Head>
 
-            {
-                lang && <Layout>
+            {/* {
+                lang && 
+            } */}
+
+            <Layout>
                 <div className={css.contact_us_container}>
                     <div className={css.left_side}>
                         <div className={css.top_description}>
                             <h1 className={css.h1}>
-                                {props.t("contactUsTitle", "Contact Us")}
-                            </h1>
+                                {/* {props.t("contactUsTitle", "Contact Us")} */}
+                                    Nous contacter
+                                </h1>
                             <p className={css.p}>
-                                {props.t("contactUsSubTitle", "Send us your information and we will contact you as soon as possible.")}
-                            </p>
+                                {/* {props.t("contactUsSubTitle", "Send us your information and we will contact you as soon as possible.")} */}
+                                    Envoyez-nous vos informations et nous vous contacterons dans les prochaines 24h
+                                </p>
                         </div>
 
                         <div className={css.form_container}>
                             <div className={css.form_item}>
-                                <label htmlFor="prenom">{props.t('contactUsFirstName', "First Name")}</label>
+                                <label htmlFor="prenom">Prenom</label>
                                 <input className={`${errors.firstName ? css.input_error : ""}`} value={model.firstName} type="text" id="prenom" onChange={e => {
-                                    setModel({...model , firstName : e.target.value});
-                                    setErrors({...errors, firstName: false})
-                                } } placeholder={'John'} />
+                                    setModel({ ...model, firstName: e.target.value });
+                                    setErrors({ ...errors, firstName: false })
+                                }} placeholder={'John'} />
                             </div>
                             <div className={css.form_item}>
-                                <label htmlFor="Nom">{props.t('contactUsLastName', "Last Name")}</label>
+                                <label htmlFor="Nom">Nom</label>
                                 <input className={`${errors.lastName ? css.input_error : ""}`} value={model.lastName} type="text" id="Nom" onChange={e => {
-                                    setModel({...model , lastName : e.target.value});
-                                    setErrors({...errors, lastName: false})
+                                    setModel({ ...model, lastName: e.target.value });
+                                    setErrors({ ...errors, lastName: false })
                                 }} placeholder={'doe'} />
                             </div>
                             <div className={css.form_item}>
-                                <label htmlFor="E-mail">{props.t('contactUsEmail', 'Email')}</label>
+                                <label htmlFor="E-mail">E-mail</label>
                                 <input className={`${errors.email ? css.input_error : ""}`} value={model.email} type="email" id="E-mail" onChange={e => {
-                                    setModel({...model , email : e.target.value});
-                                    setErrors({...errors, email: false})
+                                    setModel({ ...model, email: e.target.value });
+                                    setErrors({ ...errors, email: false })
                                 }} placeholder={'contact@isporit.com'} />
                             </div>
                             <div className={css.form_item}>
-                                <label htmlFor="Numero de telephone">{props.t('contactUsPhoneNumber', 'Phone Number')}</label>
+                                {/* <label htmlFor="Numero de telephone">{props.t('contactUsPhoneNumber', 'Phone Number')}</label> */}
+                                <label htmlFor="Numero de telephone">Numéro de téléphone</label>
                                 <input className={`${errors.phoneNumber ? css.input_error : ""}`} value={model.phoneNumber} type="number" id="Numero de telephone" onChange={e => {
-                                    setModel({...model , phoneNumber : e.target.value});
-                                    setErrors({...errors, phoneNumber: false})
-                                }} placeholder={'+216 54162644'} />
+                                    setModel({ ...model, phoneNumber: e.target.value });
+                                    setErrors({ ...errors, phoneNumber: false })
+                                }} placeholder={'54162644'} />
                             </div>
-                            <div className={css.complete_form_item}>
-                                <label htmlFor="Quel est l'objectif de votre demande ?">{props.t('contactUsObjective', "What is the purpose of your request?")}</label>
+                            <div style={{ gridRow: 3 }} className={css.complete_form_item}>
+                                <label htmlFor="role">Role</label>
+                                <select value={model.role} onChange={e => setModel({ ...model, role: e.target.value })}>
+                                    <option value="player">Joueur</option>
+                                    <option value="coach">Entraîneur</option>
+                                    <option value="club">Club</option>
+                                </select>
+                            </div>
+                            <div style={{ gridRow: 4 }} className={css.complete_form_item}>
+                                {/* <label htmlFor="Quel est l'objectif de votre demande ?">{props.t('contactUsObjective', "What is the purpose of your request?")}</label> */}
+                                <label htmlFor="Quel est l'objectif de votre demande ?">Quel est l'objectif de votre demande ?</label>
                                 <input className={`${errors.subject ? css.input_error : ""}`} value={model.subject} type="text" id="Quel est l'objectif de votre demande ?" onChange={e => {
-                                    setModel({...model , subject : e.target.value});
-                                    setErrors({...errors, subject: false})
-                                }} placeholder={props.t('contactUsTitlePlaceholder', "Title")} />
+                                    setModel({ ...model, subject: e.target.value });
+                                    setErrors({ ...errors, subject: false })
+                                }} placeholder="Titre" />
                             </div>
-                            <div className={css.complete_form_item2}>
-                                <label htmlFor="Message">{props.t('contactUsMessage', "Message")}</label>
+                            <div style={{ gridRow: 5 }} className={css.complete_form_item}>
+                                {/* <label htmlFor="Message">{props.t('contactUsMessage', "Message")}</label> */}
+                                <label htmlFor="Message">Message</label>
                                 <textarea className={`${errors.body ? css.input_error : ""}`} value={model.body} type="text" id="Message" rows="8" onChange={e => {
-                                    setModel({...model , body : e.target.value});
-                                    setErrors({...errors, body: false})
+                                    setModel({ ...model, body: e.target.value });
+                                    setErrors({ ...errors, body: false })
                                 }} placeholder={'Message'} />
                             </div>
-                            <button className={css.submit}  onClick={onSubmit} >{props.t('contactUsSendMessage', "Send my information")}</button>
+                            <button className={css.submit} onClick={onSubmit} >{props.t('contactUsSendMessage', "Send my information")}</button>
                         </div>
                     </div>
                     <div className={css.right_side}>
                         <div className={css.empty_block} />
                         <p className={css.contact_description}>
-                            {props.t('contactUsDescription' , "Our team is available 24/7 to answer you and guide you.")}
-                        </p>
+                            {/* {props.t('contactUsDescription', "Our team is available 24/7 to answer you and guide you.")} */}
+                                Notre équipe est disponible 24h/7j pour vous répondre et vous guider.
+                            </p>
                         <div className={css.contact_buttons_container}>
                             <button className={css.email}>contact@isporit.com</button>
                             <button className={css.phone}>(+216) 54 162 644</button>
@@ -135,7 +159,6 @@ const ContactUs = (props) => {
                     </div>
                 </div>
             </Layout>
-            }
         </Fragment>
     )
 }

@@ -57,7 +57,6 @@ const Index = (props) => {
     <div className={css.home_page}>
       <Head>
         <title>Accueil</title>
-        <link rel="icon" href="icon/logoindexpage.png" />
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="Notre plateforme vous offrira des outils puissants et simples qui vous permettront non seulement de gérer parfaitement vos plannings et collaborateurs mais aussi de gagner du temps." />
@@ -255,7 +254,7 @@ const Index = (props) => {
           </Collapse>
 
 
-          <div className={`${css.join} ${globalCss.isporit_max_width}`}>
+          <div className={`${globalCss.isporit_max_width} ${css.join} `}>
             <Join buttonone="Connexion" buttontwo="Contactez notre service commercial" />
           </div>
 
