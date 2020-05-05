@@ -146,40 +146,40 @@ function NavbarIndex({ buttontwo, isFooter }) {
                   La plateforme
                 <Icon className={css.fleshdown} type="down" />
                 </div>
-                <div className={css.subnav_content}>
-                  <Link href={routes.CLUB_FEATURES.path}>
-                    <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
-                      <img className={css.img} src={club} />
-                      <div className={css.title} >Clubs</div>
+                <div className={css.subnav_content_container}>
+                  <div className={css.subnav_content}>
+                    <Link href={routes.CLUB_FEATURES.path}>
+                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
+                        <img className={css.img} src={club} />
+                        <div className={css.title} >Club</div>
 
-                      <div className={css.subtitle} >
-                        Avec ISporit vous pouvez digitaliser tout le travail de votre club et le centraliser dans une seule plateforme.
+                        <div className={css.subtitle} >
+                          Digitalisez tout le travail de votre club et centralisez le dans une seule plateforme accessible depuis votre ordinateur, tablette et smartphone.
                       </div>
-                    </a>
-                  </Link>
+                      </a>
+                    </Link>
 
-                  <Link href={routes.COACH_FEATURES.path}>
-                    <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
-                      <img className={css.img} src={coach} />
-                      <div className={css.title} >Entraîneurs</div>
+                    <Link href={routes.COACH_FEATURES.path}>
+                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
+                        <img className={css.img} src={coach} />
+                        <div className={css.title} >Entraîneur</div>
 
-                      <div className={css.subtitle} >
-                        vous pouvez planifier vos sessions, faire la présence de vos joueurs et suivre l'historique de chacune
-                        des sessions de votre groupe. Vous pouvez aussi partager votre expérience et vos réalisations via votre profil public.
+                        <div className={css.subtitle} >
+                          Planifiez vos sessions, faîtes la présence de vos joueurs et suivez l'historique de chacune des session de votre groupe.
                       </div>
-                    </a>
-                  </Link>
-                  <Link href={routes.PLAYER_FEATURES.path}>
-                    <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
-                      <img className={css.img} src={player} />
-                      <div className={css.title} >Joueur</div>
+                      </a>
+                    </Link>
+                    <Link href={routes.PLAYER_FEATURES.path}>
+                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
+                        <img className={css.img} src={player} />
+                        <div className={css.title} >Joueur</div>
 
-                      <div className={css.subtitle} >
-                        vous pouvez suivre vos performances, les analyser avec vos entraîneurs ou les partager
-                        sur vos réseaux sociaux. Vous pouvez aussi créer un profil public accessible à tous
+                        <div className={css.subtitle} >
+                          Suivez vos performances, analysez les vos entraîneurs et partagez les sur vos réseaux sociaux, créez aussi votre profil public.
                       </div>
-                    </a>
-                  </Link>
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
