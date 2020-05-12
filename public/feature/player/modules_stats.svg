@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="552" height="384" viewBox="0 0 552 384">
+  <defs>
+    <filter id="Rectangle_932" x="284" y="0" width="268" height="184" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-opacity="0.039"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_138" x="481" y="113" width="45" height="45" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur-2"/>
+      <feFlood flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_932-2" x="142" y="200" width="268" height="184" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur-3"/>
+      <feFlood flood-opacity="0.039"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_138-2" x="339" y="313" width="45" height="45" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur-4"/>
+      <feFlood flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_932-3" x="0" y="0" width="268" height="184" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur-5"/>
+      <feFlood flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_138-3" x="197" y="113" width="45" height="45" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur-6"/>
+      <feFlood flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_959" x="76" y="122" width="153" height="131" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-7"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="modules_de_stats" data-name="modules de stats" transform="translate(-173 -1766)">
+    <g id="Lifté_main_gauche_" data-name="Lifté (main gauche)" transform="translate(469 1759)">
+      <g transform="matrix(1, 0, 0, 1, -296, 7)" filter="url(#Rectangle_932)">
+        <g id="Rectangle_932-4" data-name="Rectangle 932" transform="translate(296 9)" fill="#fff" stroke="#e9e9e9" stroke-width="1">
+          <rect width="244" height="160" rx="6" stroke="none"/>
+          <rect x="0.5" y="0.5" width="243" height="159" rx="5.5" fill="none"/>
+        </g>
+      </g>
+      <text id="Lifté_main_gauche_Tu_dois_" data-name="Lifté (main gauche)
+Tu dois " transform="translate(17 39)" fill="#2e3034" font-size="16" font-family="Inter-Bold, Inter" font-weight="700"><tspan x="0" y="16">Lifté (main gauche)</tspan></text>
+      <text id="Utilisé_22_fois" data-name="Utilisé 22 fois" transform="translate(17 145)" fill="#969696" font-size="10" font-family="Inter-Regular, Inter"><tspan x="0" y="0">Utilisé 22 fois</tspan></text>
+      <g id="type" transform="translate(177 38)">
+        <rect id="Rectangle_758" data-name="Rectangle 758" width="25" height="25" rx="7" transform="translate(0 0)" fill="#f2f2f2"/>
+        <g id="Groupe_338" data-name="Groupe 338" transform="translate(-0.167 0.233)">
+          <path id="Tracé_482" data-name="Tracé 482" d="M3.889,3.111V.389A.39.39,0,0,0,3.5,0a.367.367,0,0,0-.389.389V3.111H.389A.367.367,0,0,0,0,3.5a.367.367,0,0,0,.389.389H3.111V6.611A.39.39,0,0,0,3.5,7a.367.367,0,0,0,.389-.389V3.889H6.611A.39.39,0,0,0,7,3.5a.367.367,0,0,0-.389-.389Z" transform="translate(4.166 5.167)" fill="#707070" stroke="#707070" stroke-width="0.5" fill-rule="evenodd"/>
+          <line id="Ligne_78" data-name="Ligne 78" y1="13" x2="13" transform="translate(6.5 6.5)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1.5"/>
+          <line id="Ligne_79" data-name="Ligne 79" x2="6.3" transform="translate(14.5 17.5)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1.5"/>
+        </g>
+      </g>
+      <g id="Composant_24_9" data-name="Composant 24 – 9" transform="translate(188 121)">
+        <g transform="matrix(1, 0, 0, 1, -484, -114)" filter="url(#Ellipse_138)">
+          <g id="Ellipse_138-4" data-name="Ellipse 138" transform="translate(484 114)" fill="#fff" stroke="#e9e9e9" stroke-width="1">
+            <circle cx="19.5" cy="19.5" r="19.5" stroke="none"/>
+            <circle cx="19.5" cy="19.5" r="19" fill="none"/>
+          </g>
+        </g>
+        <g id="action" transform="translate(8 17)">
+          <circle id="Ellipse_78" data-name="Ellipse 78" cx="2.5" cy="2.5" r="2.5" transform="translate(1)" fill="#d1d1d1"/>
+          <circle id="Ellipse_79" data-name="Ellipse 79" cx="2.5" cy="2.5" r="2.5" transform="translate(9)" fill="#d1d1d1"/>
+          <circle id="Ellipse_80" data-name="Ellipse 80" cx="2.5" cy="2.5" r="2.5" transform="translate(17)" fill="#d1d1d1"/>
+        </g>
+      </g>
+      <g id="Groupe_3587" data-name="Groupe 3587" transform="translate(356 -105)">
+        <rect id="Rectangle_1137" data-name="Rectangle 1137" width="207" height="10" rx="5" transform="translate(-339 178)" fill="#f1f1f1"/>
+        <rect id="Rectangle_1138" data-name="Rectangle 1138" width="207" height="10" rx="5" transform="translate(-339 196)" fill="#f1f1f1"/>
+        <rect id="Rectangle_1139" data-name="Rectangle 1139" width="51" height="10" rx="5" transform="translate(-339 216)" fill="#f1f1f1"/>
+      </g>
+    </g>
+    <g id="Lifté_main_gauche_2" data-name="Lifté (main gauche)" transform="translate(327 1959)">
+      <g transform="matrix(1, 0, 0, 1, -154, -193)" filter="url(#Rectangle_932-2)">
+        <g id="Rectangle_932-5" data-name="Rectangle 932" transform="translate(154 209)" fill="#fff" stroke="#e9e9e9" stroke-width="1">
+          <rect width="244" height="160" rx="6" stroke="none"/>
+          <rect x="0.5" y="0.5" width="243" height="159" rx="5.5" fill="none"/>
+        </g>
+      </g>
+      <text id="Lifté_main_droite_Tu_dois_" data-name="Lifté (main droite)
+Tu dois " transform="translate(17 39)" fill="#2e3034" font-size="16" font-family="Inter-Bold, Inter" font-weight="700"><tspan x="0" y="16">Lifté (main droite)</tspan></text>
+      <text id="Utilisé_27_fois" data-name="Utilisé 27 fois" transform="translate(17 145)" fill="#969696" font-size="10" font-family="Inter-Regular, Inter"><tspan x="0" y="0">Utilisé 27 fois</tspan></text>
+      <g id="Composant_24_11" data-name="Composant 24 – 11" transform="translate(188 121)">
+        <g transform="matrix(1, 0, 0, 1, -342, -314)" filter="url(#Ellipse_138-2)">
+          <g id="Ellipse_138-5" data-name="Ellipse 138" transform="translate(342 314)" fill="#fff" stroke="#e9e9e9" stroke-width="1">
+            <circle cx="19.5" cy="19.5" r="19.5" stroke="none"/>
+            <circle cx="19.5" cy="19.5" r="19" fill="none"/>
+          </g>
+        </g>
+        <g id="action-2" data-name="action" transform="translate(8 17)">
+          <circle id="Ellipse_78-2" data-name="Ellipse 78" cx="2.5" cy="2.5" r="2.5" transform="translate(1)" fill="#d1d1d1"/>
+          <circle id="Ellipse_79-2" data-name="Ellipse 79" cx="2.5" cy="2.5" r="2.5" transform="translate(9)" fill="#d1d1d1"/>
+          <circle id="Ellipse_80-2" data-name="Ellipse 80" cx="2.5" cy="2.5" r="2.5" transform="translate(17)" fill="#d1d1d1"/>
+        </g>
+      </g>
+      <g id="Groupe_3588" data-name="Groupe 3588" transform="translate(356 -105)">
+        <rect id="Rectangle_1137-2" data-name="Rectangle 1137" width="207" height="10" rx="5" transform="translate(-339 178)" fill="#f1f1f1"/>
+        <rect id="Rectangle_1138-2" data-name="Rectangle 1138" width="159" height="10" rx="5" transform="translate(-339 196)" fill="#f1f1f1"/>
+        <rect id="Rectangle_1139-2" data-name="Rectangle 1139" width="51" height="10" rx="5" transform="translate(-339 216)" fill="#f1f1f1"/>
+      </g>
+      <g id="type-2" data-name="type" transform="translate(177 38)">
+        <rect id="Rectangle_758-2" data-name="Rectangle 758" width="25" height="25" rx="7" transform="translate(0 0)" fill="#f2f2f2"/>
+        <g id="Groupe_338-2" data-name="Groupe 338" transform="translate(-0.167 0.233)">
+          <path id="Tracé_482-2" data-name="Tracé 482" d="M3.889,3.111V.389A.39.39,0,0,0,3.5,0a.367.367,0,0,0-.389.389V3.111H.389A.367.367,0,0,0,0,3.5a.367.367,0,0,0,.389.389H3.111V6.611A.39.39,0,0,0,3.5,7a.367.367,0,0,0,.389-.389V3.889H6.611A.39.39,0,0,0,7,3.5a.367.367,0,0,0-.389-.389Z" transform="translate(4.166 5.167)" fill="#707070" stroke="#707070" stroke-width="0.5" fill-rule="evenodd"/>
+          <line id="Ligne_78-2" data-name="Ligne 78" y1="13" x2="13" transform="translate(6.5 6.5)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1.5"/>
+          <line id="Ligne_79-2" data-name="Ligne 79" x2="6.3" transform="translate(14.5 17.5)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1.5"/>
+        </g>
+      </g>
+    </g>
+    <g id="Endurance" transform="translate(185 1759)">
+      <g transform="matrix(1, 0, 0, 1, -12, 7)" filter="url(#Rectangle_932-3)">
+        <g id="Rectangle_932-6" data-name="Rectangle 932" transform="translate(12 9)" fill="#fff" stroke="#e9e9e9" stroke-width="1">
+          <rect width="244" height="160" rx="6" stroke="none"/>
+          <rect x="0.5" y="0.5" width="243" height="159" rx="5.5" fill="none"/>
+        </g>
+      </g>
+      <text id="Endurance_lorem_ipsum_dolor_aset_abim_dolor_lorem_ipsum_dolor_aset_abim_dolor_lorem_ipsum_dolor_aset_abim_dolor_lorem_ipsum_dolor_aset_abim_dolor_..." data-name="Endurance 
+lorem ipsum dolor aset abim dolor lorem ipsum dolor aset abim dolor lorem ipsum dolor aset abim dolor lorem ipsum dolor aset abim dolor ..." transform="translate(17 39)" fill="#2e3034" font-size="16" font-family="Inter-Bold, Inter" font-weight="700"><tspan x="0" y="16">Endurance </tspan></text>
+      <text id="Utilisé_23_fois" data-name="Utilisé 23 fois" transform="translate(17 145)" fill="#969696" font-size="10" font-family="Inter-Regular, Inter"><tspan x="0" y="0">Utilisé 23 fois</tspan></text>
+      <g id="Composant_24_12" data-name="Composant 24 – 12" transform="translate(188 121)">
+        <g transform="matrix(1, 0, 0, 1, -200, -114)" filter="url(#Ellipse_138-3)">
+          <g id="Ellipse_138-6" data-name="Ellipse 138" transform="translate(200 114)" fill="#fff" stroke="#e9e9e9" stroke-width="1">
+            <circle cx="19.5" cy="19.5" r="19.5" stroke="none"/>
+            <circle cx="19.5" cy="19.5" r="19" fill="none"/>
+          </g>
+        </g>
+        <g id="action-3" data-name="action" transform="translate(8 17)">
+          <circle id="Ellipse_78-3" data-name="Ellipse 78" cx="2.5" cy="2.5" r="2.5" transform="translate(1)" fill="#d1d1d1"/>
+          <circle id="Ellipse_79-3" data-name="Ellipse 79" cx="2.5" cy="2.5" r="2.5" transform="translate(9)" fill="#d1d1d1"/>
+          <circle id="Ellipse_80-3" data-name="Ellipse 80" cx="2.5" cy="2.5" r="2.5" transform="translate(17)" fill="#d1d1d1"/>
+        </g>
+      </g>
+      <rect id="Rectangle_955" data-name="Rectangle 955" width="6" height="36" rx="3" transform="translate(221 43)" fill="rgba(206,206,206,0.85)"/>
+      <g id="options" transform="translate(8.172 10)">
+        <g transform="matrix(1, 0, 0, 1, -20.17, -3)" filter="url(#Rectangle_959)">
+          <g id="Rectangle_959-2" data-name="Rectangle 959" transform="translate(85 129)" fill="#fff" stroke="#e9e9e9" stroke-width="1">
+            <rect width="135" height="113" rx="8" stroke="none"/>
+            <rect x="0.5" y="0.5" width="134" height="112" rx="7.5" fill="none"/>
+          </g>
+        </g>
+        <text id="Modifier" transform="translate(76.828 150)" fill="#969696" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Modifier</tspan></text>
+        <text id="Dupliquer" transform="translate(76.828 175)" fill="#969696" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Dupliquer</tspan></text>
+        <text id="Partager" transform="translate(76.828 200)" fill="#969696" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Partager</tspan></text>
+        <text id="Effacer" transform="translate(76.828 225)" fill="#ff7171" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Effacer</tspan></text>
+      </g>
+      <g id="type-3" data-name="type" transform="translate(110 38)">
+        <rect id="Rectangle_758-3" data-name="Rectangle 758" width="25" height="25" rx="7" fill="#f2f2f2"/>
+        <g id="Groupe_328" data-name="Groupe 328" transform="translate(8)">
+          <g id="Ellipse_139" data-name="Ellipse 139" transform="translate(-3 5)" fill="none" stroke="#707070" stroke-width="1.5">
+            <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
+            <circle cx="7.5" cy="7.5" r="6.75" fill="none"/>
+          </g>
+          <path id="Icon_weather-time-4" data-name="Icon weather-time-4" d="M16.968,13.01V8.89A.514.514,0,1,1,18,8.89v3.8l2.221,1.293a.5.5,0,0,1,.235.316.465.465,0,0,1-.056.384.482.482,0,0,1-.445.26.431.431,0,0,1-.26-.074l-2.363-1.38a.509.509,0,0,1-.26-.179A.47.47,0,0,1,16.968,13.01Z" transform="translate(-13.34 0.479)" fill="#707070" stroke="#707070" stroke-width="0.2"/>
+        </g>
+      </g>
+      <g id="Groupe_3586" data-name="Groupe 3586">
+        <rect id="Rectangle_1134" data-name="Rectangle 1134" width="191" height="10" rx="5" transform="translate(17 73)" fill="#f1f1f1"/>
+        <rect id="Rectangle_1135" data-name="Rectangle 1135" width="168" height="10" rx="5" transform="translate(17 91)" fill="#f1f1f1"/>
+        <rect id="Rectangle_1136" data-name="Rectangle 1136" width="155" height="10" rx="5" transform="translate(17 111)" fill="#f1f1f1"/>
+      </g>
+      <g id="tooltipp" transform="translate(174 88)">
+        <rect id="Rectangle_938" data-name="Rectangle 938" width="65" height="26" rx="7" fill="#707070"/>
+        <path id="Polygone_2" data-name="Polygone 2" d="M4.576.678a.5.5,0,0,1,.848,0l4.1,6.557A.5.5,0,0,1,9.1,8H.9a.5.5,0,0,1-.424-.765Z" transform="translate(38 31) rotate(180)" fill="#707070"/>
+        <text id="Options-2" data-name="Options" transform="translate(8.5 18)" fill="#fff" font-size="13" font-family="Inter-Regular, Inter"><tspan x="0" y="0">Options</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
