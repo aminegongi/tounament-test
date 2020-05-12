@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="630" height="351.268" viewBox="0 0 630 351.268">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.915" y1="0.125" x2="0.396" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#cbdaf1"/>
+      <stop offset="1" stop-color="#7089b9"/>
+    </linearGradient>
+    <filter id="Rectangle_1140" x="0" y="0" width="630" height="351.268" filterUnits="userSpaceOnUse">
+      <feOffset dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <ellipse id="Oval_6" data-name="Oval 6" cx="61.088" cy="61.081" rx="61.088" ry="61.081" opacity="0.6" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="profil" transform="translate(-278.225 -110.621)">
+    <g transform="matrix(1, 0, 0, 1, 278.22, 110.62)" filter="url(#Rectangle_1140)">
+      <rect id="Rectangle_1140-2" data-name="Rectangle 1140" width="585" height="306.268" rx="12" transform="translate(607.5 323.77) rotate(180)" fill="#fff"/>
+    </g>
+    <g id="informations" transform="translate(53.074 12)">
+      <g id="Groupe_242" data-name="Groupe 242" transform="translate(-373 5)">
+        <g id="socials" transform="translate(17 -41.624)">
+          <g id="Groupe_23" data-name="Groupe 23" transform="translate(635.926 399)">
+            <rect id="Rectangle_10" data-name="Rectangle 10" width="77.282" height="28.705" rx="14.352" transform="translate(0 0)" fill="#4261b4"/>
+            <g id="Groupe_13" data-name="Groupe 13" transform="translate(35.865 8.28)">
+              <path id="Tracé_2048" data-name="Tracé 2048" d="M256.543,249.213h-2.113v-1.542c0-.473.489-.582.718-.582h1.365v-2.081L254.948,245a2.4,2.4,0,0,0-2.621,2.546v1.667h-1.548v2.144h1.548v5.787h2.1v-5.787h1.786Z" transform="translate(-250.779 -245)" fill="#fff"/>
+            </g>
+          </g>
+        </g>
+        <g id="coordonnées" transform="translate(17 -24)">
+          <text id="Club_:_Gammarth_Sport_Center" data-name="Club : Gammarth Sport Center" transform="translate(636 306)" fill="#191616" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Club :</tspan><tspan y="0" xml:space="preserve" fill="#a7a7a7" font-family="Inter-Regular, Inter" font-weight="400"> Gammarth Sport Center</tspan></text>
+          <text id="Club_précédent_:_Hammam_Lif_Center" data-name="Club précédent : Hammam Lif Center" transform="translate(854 306)" fill="#191616" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Club précédent :</tspan><tspan y="0" xml:space="preserve" fill="#a7a7a7" font-family="Inter-Regular, Inter" font-weight="400"> Hammam Lif Center</tspan></text>
+          <text id="Numéro_:_216_28_123_456" data-name="Numéro : (+216) 28 123 456" transform="translate(636 332)" fill="#191616" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Numéro :</tspan><tspan y="0" xml:space="preserve" fill="#a7a7a7" font-family="Inter-Regular, Inter" font-weight="400"> (+216) 28 123 456</tspan></text>
+          <text id="Adresse_:_Résidence_Lemnara_Marsa_Ville_Tunis." data-name="Adresse : Résidence Lemnara, Marsa Ville, Tunis." transform="translate(636 358)" fill="#191616" font-size="13" font-family="Inter-Medium, Inter" font-weight="500"><tspan x="0" y="0">Adresse :</tspan><tspan y="0" xml:space="preserve" fill="#a7a7a7" font-family="Inter-Regular, Inter" font-weight="400"> Résidence Lemnara, Marsa Ville, Tunis.</tspan></text>
+        </g>
+        <g id="Groupe_3589" data-name="Groupe 3589" transform="translate(-144 3)">
+          <text id="nom_et_prénom" data-name="nom et prénom" transform="translate(797 165)" fill="#242424" font-size="24" font-family="Inter-Bold, Inter" font-weight="700"><tspan x="0" y="0">Aida Ben Salah</tspan></text>
+          <rect id="Rectangle_1141" data-name="Rectangle 1141" width="66" height="11" rx="5.5" transform="translate(796.926 220)" fill="#f5f5f5"/>
+          <rect id="Rectangle_1144" data-name="Rectangle 1144" width="132" height="11" rx="5.5" transform="translate(796.926 181)" fill="#dcdcdc" opacity="0.53"/>
+          <rect id="Rectangle_1142" data-name="Rectangle 1142" width="72" height="11" rx="5.5" transform="translate(872.926 220)" fill="#f5f5f5"/>
+          <rect id="Rectangle_1143" data-name="Rectangle 1143" width="51" height="11" rx="5.5" transform="translate(954.926 220)" fill="#f5f5f5"/>
+        </g>
+        <g id="user" transform="translate(1057.728 128.645)">
+          <ellipse id="Oval_6-2" data-name="Oval 6" cx="54.809" cy="54.803" rx="54.809" ry="54.803" transform="translate(5.579 5.719)" fill="#fff9e2"/>
+          <g id="Groupe_3446" data-name="Groupe 3446" transform="translate(45.013 32.855)">
+            <ellipse id="Oval" cx="10.493" cy="10.492" rx="10.493" ry="10.492" transform="translate(4.843)" fill="#ffe6b2"/>
+            <rect id="Rectangle" width="30.671" height="29.054" rx="4.993" transform="translate(0 25.828)" fill="#ffcd67"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -100,9 +100,9 @@ const Index = (props) => {
           <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
             <Tab
               bgcolor={'#ffe5d9'}
-              imgone={"icon/clubseance.png"}
-              imgtwo={"icon/gestion_club.png"}
-              imgthere={"icon/clubseance.png"}
+              imgone={"feature/coach/planification_attribution_taches.svg"}
+              imgtwo={"feature/coach/encouragement.svg"}
+              imgthere={"feature/coach/modules_stats.svg"}
               content={[
                 {
                   title: "Planifiez et attribuez des tâches",

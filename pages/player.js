@@ -103,10 +103,9 @@ const Index = (props) => {
           <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
             <Tab
               bgcolor={'#fff9e2'}
-              imgone={"icon/clubseance.png"}
-              imgtwo={"icon/gestion_club.png"}
-              imgthere={"icon/clubseance.png"}
-
+              imgone={"feature/player/message.svg"}
+              imgtwo={"feature/player/profil.svg"}
+              imgthere={"feature/player/modules_stats.svg"}
               content={[
                 {
                   title: "Restez en contact avec vos entraîneurs et votre club",
