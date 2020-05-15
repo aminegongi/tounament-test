@@ -5,6 +5,7 @@ import { initGA, logPageView } from '../utils/analytics';
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Axios from 'axios';
+import { hotjar } from 'react-hotjar';
 
 
 function MyApp({ Component, pageProps }) {
@@ -25,6 +26,9 @@ function MyApp({ Component, pageProps }) {
     //   })
       
     // }
+
+    hotjar.initialize(1813801, 6);
+
 
     if (!window.GA_INITIALIZED) {
       initGA()
