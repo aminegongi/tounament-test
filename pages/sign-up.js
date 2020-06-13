@@ -5,29 +5,22 @@ import Link from "next/link"
 import { useRouter } from 'next/router'
 import { i18n, withTranslation } from '../i18n'
 import PropTypes from 'prop-types'
+import { isEmpty, isNumber } from 'lodash'
+import moment from 'moment'
 import Navbar from "../shared/components/navbar/Navbar"
+import Axios from "axios"
+import { Modal } from 'antd';
 
+function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(email.toLowerCase())
+}
 
-const fakeData = [
-    {
-        title: 'Terrain de tennis',
-        description: 'Lorem ipsum dolor aset amit elit, sed do eiusmo  incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        location: 'Gammarth life Club, La marsa.',
-        image: '/tennisLoginImage.svg'
-    },
-    {
-        title: 'Terrain de foot',
-        description: 'Lorem ipsum dolor aset amit elit, sed do eiusmo  incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        location: 'Gammarth life Club, La marsa.',
-        image: 'https://gopark.fr/wp-content/uploads/2014/02/foot1-600x300.jpg'
-    },
-    {
-        title: 'Terrain de padel',
-        description: 'Lorem ipsum dolor aset amit elit, sed do eiusmo  incididunt ut labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        location: 'Gammarth life Club, La marsa.',
-        image: 'https://padelmagazine.fr/wp-content/uploads/2017/06/prix-terrain-de-padel-780x405.jpg'
-    }
-]
+function startWithNumber(string) {
+    const re = /^[a-zA-Z].*/
+    return re.test(string)
+}
+
 
 const SignUpModal = ({ load, email, lang }) => {
     const [loading, setLoading] = useState(load)
@@ -36,9 +29,6 @@ const SignUpModal = ({ load, email, lang }) => {
         setLoading(load)
     }, [load])
 
-    useEffect(() => {
-        window.location.href = "/";
-    }, [])
 
 
     if (loading) {
@@ -80,21 +70,29 @@ const SignUpModal = ({ load, email, lang }) => {
 
 const SignUp = () => {
     const router = useRouter()
+    const [data, setData] = useState({
+        username: "",
+        firstName: "",
+        lastName: "",
+        email: router.query.email || "",
+        birthday: "",
+        password: "",
+        confirmPassword: "",
+        local: "fr",
+        address: "",
+        userType: "player",
+        sport: [],
+        country: "Tunisia",
+        phoneNumber: "",
+        facebookLink: ""
+    })
     const [cardNumber, setCardNumber] = useState(0)
-    const [email, setEmail] = useState(router.query.email ? router.query.email : '')
     const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
     const [username, setUsername] = useState(router.query.username ? router.query.username : '')
-    const [password, setPassword] = useState('')
     const [modal, setModal] = useState((router.query.type === '' || router.query.type === undefined || router.query.type !== 'player' || router.query.type !== 'coach' || router.query.type !== 'club') ? true : false)
     const [isNabVisible, setNavIsVisible] = useState(false)
 
-    useEffect(() => {
-        setTimeout(() => {
-            if (cardNumber === fakeData.length - 1) {
-                setCardNumber(0)
-            } else setCardNumber(cardNumber + 1)
-        }, 1000);
-    }, [cardNumber])
+    const [localErrors, setLocalErrors] = useState({ userAlreadyExist: false, inputErrors: false })
 
     useEffect(() => {
         if (!(router.query.type === '' || router.query.type === undefined)) {
@@ -107,10 +105,89 @@ const SignUp = () => {
 
     }, [i18n.language])
 
+
+    const onRegister = async () => {
+        if (
+            data.username.length < 6 ||
+            isNumber(data.username.slice(0, 1)) ||
+            isEmpty(data.firstName) ||
+            isEmpty(data.lastName) ||
+            isEmpty(data.email) ||
+            !validateEmail(data.email) ||
+            isEmpty(data.birthday) ||
+            isEmpty(data.password) ||
+            isEmpty(data.confirmPassword) ||
+            data.password !== data.confirmPassword
+        ) {
+            return setLocalErrors({ ...localErrors, inputErrors: true })
+        }
+
+        if (router.query.env && router.query.env.includes('dev')) {
+            try {
+                if (router.query.invitationToken) {
+                    await Axios.post(
+                        "https://dev.api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
+                        {
+                            ...data
+                        },
+                    )
+                } else {
+                    await Axios.post(
+                        "https://dev.api.isporit.com/auth/register",
+                        {
+                            ...data
+                        },
+                    )
+                }
+
+
+                if (!isEmpty(router.query.invitationToken)) {
+                    return Modal.success({
+                        content: 'Félicitations et bienvenue à iSporit',
+                        onOk() { onLogin() }
+                    });
+                }
+                return Modal.success({
+                    content: 'Bienvenue à iSporit, Veuillez confirmer votre inscription par email',
+                    onOk() { router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env) }
+                });
+
+            } catch (error) {
+                if (error.response && error.response.data.errors && error.response.data.errors.email && error.response.data.errors.email.message === "userAlreadyExists") {
+                    setLocalErrors({ ...localErrors, userAlreadyExist: true })
+                }
+            }
+        }
+    }
+
+
+    const onLogin = async () => {
+        if (router.query.env && router.query.env.includes('dev')) {
+            try {
+                const result = await Axios.post(
+                    "https://dev.api.isporit.com/auth/login",
+                    {
+                        email: data.email,
+                        password: data.password,
+                    },
+                )
+                if (router.query.isLocalhost) {
+
+                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
+                } else {
+                    window.location.href = 'https://dev.isporit.com?accessToken=' + result.data.token
+                }
+
+            } catch (error) {
+                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env) 
+            }
+        }
+    }
+
     return (
         <div className={css.html}>
             <Head>
-                <title>SignUp</title>
+                <title>Register</title>
                 <link rel="icon" href="/logo.png" />
 
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -118,83 +195,103 @@ const SignUp = () => {
                 <meta name="keywords" content="sporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
                 <meta name="author" content="sporit" />
             </Head>
-            {
-                lang && <Fragment>
-
-                    <div className={css.login_container}>
-
-                        <SignUpModal load={modal} email={email} lang={lang} />
-                        <div className={css.left_side}>
-                            <div className={css.logo}>
-                                <Link href='/'><a><img src='/logoSporitLight.svg' alt='sporit' /></a></Link>
-                            </div>
-                            <div className={css.slider_title}>
-                                Réservez votre terrain <br />
-                                en toute facilité en ligne
-                            </div>
-                            <div className={css.slider_card_container}>
-                                {
-                                    fakeData.map((el, index) => {
-                                        if (index === cardNumber) return <div key={index * 100} className={css.slider_card}>
-                                            <div className={css.booking_images} style={{ backgroundImage: `url(${el.image})` }} />
-                                            <div className={css.card_body}>
-                                                <h4>{el.title}</h4>
-                                                <p>{el.description}</p>
-                                                <div><img src='/locationPin.svg' /> <span>{el.location}</span></div>
-                                            </div>
-                                            <div className={css.card_footer}>
-                                                <button className={css.light_button}>Découvrir</button>
-                                                <button className={css.primary_button}>Réserver</button>
-                                            </div>
-                                        </div>
-                                    })
-                                }
-                            </div>
-                            <div className={css.slider_dots}>{
-                                fakeData.map((el, index) => <div key={index} className={`${index === cardNumber ? css.active_dot : css.dot}`} />)
-                            }</div>
-
-
-                        </div>
-                        <div className={css.right_side}>
-                            <div className={css.mobile_navbar}>
-                                <Navbar isNabVisible={isNabVisible} setNavIsVisible={setNavIsVisible} />
-                            </div>
-                            <div className={css.top_section_container}>
-                                <div className={css.top_section}>
-                                    <span className={css.text}>
-                                        <a>déjà un compte ?</a>
-                                    </span>
-                                    <Link href={{ pathname: '/login', query: { email, lang } }} className={css.top_section}>
-                                        <a><button className={css.se_connecter}>
-                                            SE CONNECTER
-                                        </button></a>
-
-                                    </Link>
-                                </div>
-                            </div>
-                            <h1 className={css.page_title}>Inscrivez-vous gratuitement</h1>
-
-                            {
-                                router.query.type !== "club" && <Fragment>
-                                    <div className={css.social_media_buttons}>
-                                        <a href={`https://www.facebook.com/v5.0/dialog/oauth?scope=email,public_profile&client_id=741324166334810&redirect_uri=https%3A%2F%2Fapi.isporit.com%2Fauth%2Ffacebook%2Fcallback&state={"signup":true,"role":"${router.query.type}"} `} className={css.social_media1}>
-                                            <img src='/facebook.svg' alt='facebook' />
-                                        </a>
-                                    </div>
-                                    <p>ou bien utilisez vos informations personnelles</p>
-                                </Fragment>
-                            }
-                            <input value={username} onChange={e => setUsername(e.target.value)} className={css.input} placeholder='Nom et Prénom' type='text' />
-                            <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' type='email' />
-                            <input value={password} onChange={e => setPassword(e.target.value)} className={css.input} placeholder='Password' type='password' />
-                            <div className={css.signup_btn_container}>
-                                <button className={css.primary_button}>Inscription</button>
-                            </div>
-                        </div>
+            <div className={css.login_container}>
+                <div className={css.left_side}>
+                    <div className={css.logo}>
+                        <Link href={{ pathname: '/' }} >
+                            <a>
+                                <img src="icon/logoindexpage.png" alt="" />
+                            </a>
+                        </Link>
                     </div>
-                </Fragment>
-            }
+                    <h1 className={css.page_title}>Connectez-vous</h1>
+
+                    <input value={data.username} onChange={e => setData({ ...data, username: e.target.value })} className={css.input} placeholder='username' type='text' />
+                    {
+                        localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
+                    }
+                    {
+                        localErrors.inputErrors && !startWithNumber(data.username) && <span className={css.error}>Username doit commencer par un caractère</span>
+                    }
+
+
+                    <input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='firstName' type='text' />
+                    {
+                        localErrors.inputErrors && isEmpty(data.firstName) && <span className={css.error}>Champ obligatoire</span>
+                    }
+
+
+                    <input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='lastName' type='text' />
+                    {
+                        localErrors.inputErrors && isEmpty(data.lastName) && <span className={css.error}>Champ obligatoire</span>
+                    }
+
+
+                    <input value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' />
+                    {
+                        localErrors.inputErrors && isEmpty(data.email) && <span className={css.error}>Champ obligatoire</span>
+                    }
+
+                    {
+                        localErrors.inputErrors && !validateEmail(data.email) && <span className={css.error}>Cette adresse email n'est pas valide</span>
+                    }
+
+
+
+
+                    <input value={data.birthday} onChange={e => setData({ ...data, birthday: e.target.value })} className={css.input} placeholder='birthday' type='date' />
+                    {
+                        localErrors.inputErrors && isEmpty(data.birthday) && <span className={css.error}>Champ obligatoire</span>
+                    }
+                    {
+                        localErrors.inputErrors && moment().isBefore(data.birthday) && <span className={css.error}>Date n'est pas valid</span>
+                    }
+
+
+                    <input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
+                    {
+                        localErrors.inputErrors && isEmpty(data.password) && <span className={css.error}>Champ obligatoire</span>
+                    }
+
+                    <input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={css.input} placeholder='Confirmation mot de passe' type='password' />
+                    {
+                        localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={css.error}>Champ obligatoire</span>
+                    }
+                    {
+                        localErrors.inputErrors && data.password !== data.confirmPassword && <span className={css.error}>Deux mots de passe ne sont pas égaux</span>
+                    }
+
+                    <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
+                        <option value="player">Joueur</option>
+                        <option value="coach">Entraineur</option>
+                    </select>
+
+
+
+                    {
+                        localErrors.userAlreadyExist && <span className={css.error}>Email ou Username existe déjà</span>
+                    }
+                    <div className={css.signup_btn_container}>
+                        <button onClick={onRegister} className={css.primary_button}>S'INSCRIRE</button>
+                    </div>
+                </div>
+
+                <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
+                    <h2 className={css.title}>
+                        Vous avez déjà un compte
+                   </h2>
+
+                    <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost, env: router.query.env } }} >
+                        <a>
+                            <button className={css.button} type="submit">
+                                SE CONNECTER
+                            </button>
+                        </a>
+                    </Link>
+
+                </div>
+            </div>
+
 
         </div>
     )
