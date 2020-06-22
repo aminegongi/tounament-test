@@ -30,7 +30,7 @@ const Index = (props) => {
   // }, [])
 
   return (
-    <div className={css.home_page}>
+    <div className={css.player_page}>
       <Head>
         <title>Joueur</title>
 

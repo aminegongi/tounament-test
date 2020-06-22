@@ -23,7 +23,7 @@ const Index = (props) => {
   // }, [i18n.language])
 
   return (
-    <div className={css.home_page}>
+    <div className={css.coach_page}>
       <Head>
         <title>Entraîneur</title>
 

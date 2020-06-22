@@ -21,53 +21,6 @@ function startWithNumber(string) {
     return re.test(string)
 }
 
-
-const SignUpModal = ({ load, email, lang }) => {
-    const [loading, setLoading] = useState(load)
-    const router = useRouter()
-    useEffect(() => {
-        setLoading(load)
-    }, [load])
-
-
-
-    if (loading) {
-        return <div className={css.modal_container}>
-            <div className={css.modal}>
-                <Link href={{ pathname: '/sign-up', query: { email, lang, type: 'club' } }}>
-                    <a><div className={css.modal_item}>
-                        <img src='/espaceClub.svg' alt='espace club' />
-                        <h2>
-                            Espace<br />Club
-                        </h2>
-                        <button className={css.primary_button}>Inscription</button>
-
-                    </div></a>
-                </Link>
-                <Link href={{ pathname: '/sign-up', query: { email, lang, type: 'coach' } }}>
-                    <a> <div onClick={() => setLoading(false)} className={css.modal_item}>
-                        <img src='/espaceCoach.svg' alt='espace coach' />
-                        <h2>
-                            Espace<br />Entraîneur
-                    </h2>
-                        <button className={css.primary_button}>Inscription</button>
-                    </div></a>
-                </Link>
-                <Link href={{ pathname: '/sign-up', query: { email, lang, type: 'player' } }}>
-                    <a><div onClick={() => setLoading(false)} className={css.modal_item}>
-                        <img src='/espacePlayer.svg' alt='espace player' />
-                        <h2>
-                            Espace<br />Joueur
-                        </h2>
-                        <button className={css.primary_button}>Inscription</button>
-                    </div></a>
-                </Link>
-            </div>
-        </div>
-    }
-    return <Fragment />
-}
-
 const SignUp = () => {
     const router = useRouter()
     const [data, setData] = useState({
@@ -86,13 +39,9 @@ const SignUp = () => {
         phoneNumber: "",
         facebookLink: ""
     })
-    const [cardNumber, setCardNumber] = useState(0)
     const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
-    const [username, setUsername] = useState(router.query.username ? router.query.username : '')
-    const [modal, setModal] = useState((router.query.type === '' || router.query.type === undefined || router.query.type !== 'player' || router.query.type !== 'coach' || router.query.type !== 'club') ? true : false)
-    const [isNabVisible, setNavIsVisible] = useState(false)
 
-    const [localErrors, setLocalErrors] = useState({ userAlreadyExist: false, inputErrors: false })
+    const [localErrors, setLocalErrors] = useState({ usernameAlreadyExists: false, inputErrors: false, emailAlreadyExists: false })
 
     useEffect(() => {
         if (!(router.query.type === '' || router.query.type === undefined)) {
@@ -104,6 +53,7 @@ const SignUp = () => {
         setLang(i18n.language)
 
     }, [i18n.language])
+
 
 
     const onRegister = async () => {
@@ -124,15 +74,16 @@ const SignUp = () => {
 
         if (router.query.env && router.query.env.includes('dev')) {
             try {
+                let result = {}
                 if (router.query.invitationToken) {
-                    await Axios.post(
+                    result = await Axios.post(
                         "https://dev.api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
                         {
                             ...data
                         },
                     )
                 } else {
-                    await Axios.post(
+                    resukt = await Axios.post(
                         "https://dev.api.isporit.com/auth/register",
                         {
                             ...data
@@ -140,21 +91,23 @@ const SignUp = () => {
                     )
                 }
 
-
-                if (!isEmpty(router.query.invitationToken)) {
+                if (result.data.message === "invalidInvitation" ) {
                     return Modal.success({
-                        content: 'Félicitations et bienvenue à iSporit',
-                        onOk() { onLogin() }
-                    });
+                        content: 'Bienvenue à iSporit, Veuillez confirmer votre inscription par email',
+                        onOk() { router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || ''+'&verifyEmail=true') }
+                    })
                 }
                 return Modal.success({
-                    content: 'Bienvenue à iSporit, Veuillez confirmer votre inscription par email',
-                    onOk() { router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env) }
-                });
+                    content: 'Félicitations et bienvenue à iSporit',
+                    onOk() { onLogin() }
+                })
 
             } catch (error) {
-                if (error.response && error.response.data.errors && error.response.data.errors.email && error.response.data.errors.email.message === "userAlreadyExists") {
-                    setLocalErrors({ ...localErrors, userAlreadyExist: true })
+                if (error.response && error.response.data.errors && error.response.data.errors.email && error.response.data.errors.email.message === "emailAlreadyExists") {
+                    setLocalErrors({ ...localErrors, emailAlreadyExists: true, usernameAlreadyExists: false })
+                }
+                if (error.response && error.response.data.errors && error.response.data.errors.username && error.response.data.errors.username.message === "usernameAlreadyExists") {
+                    setLocalErrors({ ...localErrors, usernameAlreadyExists: true, emailAlreadyExists: false  })
                 }
             }
         }
@@ -171,7 +124,7 @@ const SignUp = () => {
                         password: data.password,
                     },
                 )
-                if (router.query.isLocalhost) {
+                if (router.query.isLocalhost === 'true') {
 
                     window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
                 } else {
@@ -179,7 +132,7 @@ const SignUp = () => {
                 }
 
             } catch (error) {
-                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env) 
+                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '')
             }
         }
     }
@@ -213,6 +166,11 @@ const SignUp = () => {
                     {
                         localErrors.inputErrors && !startWithNumber(data.username) && <span className={css.error}>Username doit commencer par un caractère</span>
                     }
+                    
+
+                    {
+                        localErrors.usernameAlreadyExists && <span className={css.error}>Username existe déjà</span>
+                    }
 
 
                     <input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='firstName' type='text' />
@@ -227,13 +185,17 @@ const SignUp = () => {
                     }
 
 
-                    <input value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' />
+                    <input value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
                     {
                         localErrors.inputErrors && isEmpty(data.email) && <span className={css.error}>Champ obligatoire</span>
                     }
 
                     {
                         localErrors.inputErrors && !validateEmail(data.email) && <span className={css.error}>Cette adresse email n'est pas valide</span>
+                    }
+
+                    {
+                        localErrors.emailAlreadyExists && <span className={css.error}>Email existe déjà</span>
                     }
 
 
@@ -261,16 +223,16 @@ const SignUp = () => {
                         localErrors.inputErrors && data.password !== data.confirmPassword && <span className={css.error}>Deux mots de passe ne sont pas égaux</span>
                     }
 
-                    <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
-                        <option value="player">Joueur</option>
-                        <option value="coach">Entraineur</option>
-                    </select>
-
-
-
                     {
-                        localErrors.userAlreadyExist && <span className={css.error}>Email ou Username existe déjà</span>
+                        !router.query.invitationToken && <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
+                            <option value="player">Joueur</option>
+                            <option value="coach">Entraineur</option>
+                        </select>
                     }
+
+
+
+
                     <div className={css.signup_btn_container}>
                         <button onClick={onRegister} className={css.primary_button}>S'INSCRIRE</button>
                     </div>
@@ -281,7 +243,7 @@ const SignUp = () => {
                         Vous avez déjà un compte
                    </h2>
 
-                    <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost, env: router.query.env } }} >
+                    <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost || '', env: router.query.env || '' } }} >
                         <a>
                             <button className={css.button} type="submit">
                                 SE CONNECTER

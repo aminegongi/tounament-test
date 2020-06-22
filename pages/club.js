@@ -27,7 +27,7 @@ const Index = (props) => {
 
 
   return (
-    <div className={css.home_page}>
+    <div className={css.club_page}>
       <Head>
         <title>Club</title>
 
