@@ -2,6 +2,7 @@ import Head from "next/head"
 import css from '../shared/css/login.scss'
 import { useState } from 'react'
 import Link from "next/link"
+import { isEmpty, isNumber } from 'lodash'
 import { useRouter } from 'next/router'
 import Axios from "axios"
 
@@ -13,6 +14,12 @@ const Login = (props) => {
     const [localErrors, setLocalErrors] = useState({ wrongEmailOrPassword: false, verifyYourAccount: router.query.verifyEmail === 'true' || false })
 
     const onLogin = async () => {
+        if (
+            isEmpty(email) || isEmpty(password)
+        ) {
+            return setLocalErrors({ ...localErrors, inputErrors: true })
+        }
+
         if (router.query.env === 'dev') {
             try {
                 const result = await Axios.post(
@@ -62,9 +69,14 @@ const Login = (props) => {
                     </div>
                     <h1 className={css.page_title}>Connectez-vous</h1>
 
-                    <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' type='email' />
-                    <input value={password} onChange={e => setPassword(e.target.value)} className={css.input} placeholder='Mot de passe' type='password' />
-
+                    <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email'  />
+                    {
+                        localErrors.inputErrors && isEmpty(email) && <span className={css.error}>Champ obligatoire</span>
+                    }
+                    <input value={password} onChange={e => setPassword(e.target.value)} className={css.input} placeholder='Mot de passe' type="password" />
+                    {
+                        localErrors.inputErrors && isEmpty(password) && <span className={css.error}>Champ obligatoire</span>
+                    }
                     <div className={css.error}>
                         {
                             localErrors.verifyYourAccount && "Compte n'est pas vérifié, Veuillez confirmer votre inscription par email"

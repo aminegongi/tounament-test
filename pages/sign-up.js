@@ -60,6 +60,7 @@ const SignUp = () => {
         if (
             data.username.length < 6 ||
             isNumber(data.username.slice(0, 1)) ||
+            data.username.includes(" ") ||
             isEmpty(data.firstName) ||
             isEmpty(data.lastName) ||
             isEmpty(data.email) ||
@@ -83,7 +84,7 @@ const SignUp = () => {
                         },
                     )
                 } else {
-                    resukt = await Axios.post(
+                    result = await Axios.post(
                         "https://dev.api.isporit.com/auth/register",
                         {
                             ...data
@@ -166,8 +167,11 @@ const SignUp = () => {
                     {
                         localErrors.inputErrors && !startWithNumber(data.username) && <span className={css.error}>Username doit commencer par un caractère</span>
                     }
+                    {
+                        localErrors.inputErrors && data.username.includes(" ") && <span className={css.error}>Aucun espace n'est autorisé</span>
+                    }
                     
-
+                    
                     {
                         localErrors.usernameAlreadyExists && <span className={css.error}>Username existe déjà</span>
                     }
