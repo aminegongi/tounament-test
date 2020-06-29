@@ -21,6 +21,8 @@ function startWithNumber(string) {
     return re.test(string)
 }
 
+// TODO we have to handle and change time zone depend on country !!!
+
 const SignUp = () => {
     const router = useRouter()
     const [data, setData] = useState({
@@ -36,6 +38,7 @@ const SignUp = () => {
         userType: "player",
         sport: [],
         country: "Tunisia",
+        timezone: "Africa/Tunis",
         phoneNumber: "",
         facebookLink: ""
     })
