@@ -40,7 +40,8 @@ const SignUp = () => {
         country: "Tunisia",
         timezone: "Africa/Tunis",
         phoneNumber: "",
-        facebookLink: ""
+        facebookLink: "",
+        timezone: "Africa/Tunis"
     })
     const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
 
@@ -163,12 +164,12 @@ const SignUp = () => {
                     </div>
                     <h1 className={css.page_title}>Connectez-vous</h1>
 
-                    <input value={data.username} onChange={e => setData({ ...data, username: e.target.value })} className={css.input} placeholder='username' type='text' />
+                    <input value={data.username} onChange={e => setData({ ...data, username: e.target.value })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
                     {
                         localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
                     }
                     {
-                        localErrors.inputErrors && !startWithNumber(data.username) && <span className={css.error}>Username doit commencer par un caractère</span>
+                        localErrors.inputErrors && !startWithNumber(data.username) && <span className={css.error}>Nom d'utilisateur doit commencer par un caractère</span>
                     }
                     {
                         localErrors.inputErrors && data.username.includes(" ") && <span className={css.error}>Aucun espace n'est autorisé</span>
@@ -176,17 +177,17 @@ const SignUp = () => {
                     
                     
                     {
-                        localErrors.usernameAlreadyExists && <span className={css.error}>Username existe déjà</span>
+                        localErrors.usernameAlreadyExists && <span className={css.error}>Nom d'utilisateur existe déjà</span>
                     }
 
 
-                    <input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='firstName' type='text' />
+                    <input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='Prénom' type='text' />
                     {
                         localErrors.inputErrors && isEmpty(data.firstName) && <span className={css.error}>Champ obligatoire</span>
                     }
 
 
-                    <input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='lastName' type='text' />
+                    <input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='Nom de famille' type='text' />
                     {
                         localErrors.inputErrors && isEmpty(data.lastName) && <span className={css.error}>Champ obligatoire</span>
                     }
@@ -208,7 +209,7 @@ const SignUp = () => {
 
 
 
-                    <input value={data.birthday} onChange={e => setData({ ...data, birthday: e.target.value })} className={css.input} placeholder='birthday' type='date' />
+                    <input value={data.birthday} onChange={e => setData({ ...data, birthday: e.target.value })} className={css.input} placeholder='Date de naissance' type='date' />
                     {
                         localErrors.inputErrors && isEmpty(data.birthday) && <span className={css.error}>Champ obligatoire</span>
                     }
