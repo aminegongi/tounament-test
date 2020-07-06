@@ -48,7 +48,7 @@ const Login = (props) => {
         } else if (router.query.env === 'test') {
             try {
                 const result = await Axios.post(
-                    "https://test.api.isporit.com/auth/login",
+                    "https://api.test.isporit.com/auth/login",
                     {
                         email,
                         password,
