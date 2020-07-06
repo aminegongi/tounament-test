@@ -29,6 +29,7 @@ const Login = (props) => {
                         password,
                     },
                 )
+                localStorage.setItem('token', result.data.token)
                 if (router.query.isLocalhost === 'true') {
 
                     window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
@@ -44,7 +45,58 @@ const Login = (props) => {
                     setLocalErrors({ wrongEmailOrPassword: true, verifyYourAccount: false })
                 }
             }
+        } else if (router.query.env === 'test') {
+            try {
+                const result = await Axios.post(
+                    "https://test.api.isporit.com/auth/login",
+                    {
+                        email,
+                        password,
+                    },
+                )
+                localStorage.setItem('token', result.data.token)
+                if (router.query.isLocalhost === 'true') {
+
+                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
+                } else {
+                    window.location.href = 'https://test.isporit.com?accessToken=' + result.data.token
+                }
+
+            } catch (error) {
+                if (error.response && error.response.data.message === "accountIsNotConfirmedPleaseConfirmYourAccount") {
+                    setLocalErrors({ verifyYourAccount: true, wrongEmailOrPassword: false })
+                }
+                if (error.response && error.response.data.message === "wrongEmailOrPassword") {
+                    setLocalErrors({ wrongEmailOrPassword: true, verifyYourAccount: false })
+                }
+            }
+        } else {
+            try {
+                const result = await Axios.post(
+                    "https://api.isporit.com/auth/login",
+                    {
+                        email,
+                        password,
+                    },
+                )
+                localStorage.setItem('token', result.data.token)
+                if (router.query.isLocalhost === 'true') {
+
+                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
+                } else {
+                    window.location.href = 'https://app.isporit.com?accessToken=' + result.data.token
+                }
+
+            } catch (error) {
+                if (error.response && error.response.data.message === "accountIsNotConfirmedPleaseConfirmYourAccount") {
+                    setLocalErrors({ verifyYourAccount: true, wrongEmailOrPassword: false })
+                }
+                if (error.response && error.response.data.message === "wrongEmailOrPassword") {
+                    setLocalErrors({ wrongEmailOrPassword: true, verifyYourAccount: false })
+                }
+            }
         }
+
     }
 
 
@@ -69,7 +121,7 @@ const Login = (props) => {
                     </div>
                     <h1 className={css.page_title}>Connectez-vous</h1>
 
-                    <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email'  />
+                    <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' />
                     {
                         localErrors.inputErrors && isEmpty(email) && <span className={css.error}>Champ obligatoire</span>
                     }

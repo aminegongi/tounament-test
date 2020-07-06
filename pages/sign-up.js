@@ -16,10 +16,17 @@ function validateEmail(email) {
     return re.test(email.toLowerCase())
 }
 
-function startWithNumber(string) {
-    const re = /^[a-zA-Z].*/
+function validateUsername(string) {
+    const re = /^[a-z][a-z\-0-9]+[a-z0-9]$/i
     return re.test(string)
 }
+
+
+function validatePhoneNumber(string) {
+    const re = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g
+    return re.test(string)
+}
+
 
 // TODO we have to handle and change time zone depend on country !!!
 
@@ -33,7 +40,6 @@ const SignUp = () => {
         birthday: "",
         password: "",
         confirmPassword: "",
-        local: "fr",
         address: "",
         userType: "player",
         sport: [],
@@ -41,7 +47,8 @@ const SignUp = () => {
         timezone: "Africa/Tunis",
         phoneNumber: "",
         facebookLink: "",
-        timezone: "Africa/Tunis"
+        timezone: "Africa/Tunis",
+        locale: 'fr'
     })
     const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
 
@@ -72,14 +79,17 @@ const SignUp = () => {
             isEmpty(data.birthday) ||
             isEmpty(data.password) ||
             isEmpty(data.confirmPassword) ||
+            !validatePhoneNumber(data.phoneNumber) ||
+            !validateUsername(data.username) ||
+            data.phoneNumber.length < 7 ||
             data.password !== data.confirmPassword
         ) {
             return setLocalErrors({ ...localErrors, inputErrors: true })
         }
 
-        if (router.query.env && router.query.env.includes('dev')) {
-            try {
-                let result = {}
+        try {
+            let result = {}
+            if (router.query.env && router.query.env.includes('dev')) {
                 if (router.query.invitationToken) {
                     result = await Axios.post(
                         "https://dev.api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
@@ -95,25 +105,58 @@ const SignUp = () => {
                         },
                     )
                 }
-
-                if (result.data.message === "invalidInvitation" ) {
-                    return Modal.success({
-                        content: 'Bienvenue à iSporit, Veuillez confirmer votre inscription par email',
-                        onOk() { router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || ''+'&verifyEmail=true') }
-                    })
+            } else if (router.query.env && router.query.env.includes('test')) {
+                if (router.query.invitationToken) {
+                    result = await Axios.post(
+                        "https://test.api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
+                        {
+                            ...data
+                        },
+                    )
+                } else {
+                    result = await Axios.post(
+                        "https://test.api.isporit.com/auth/register",
+                        {
+                            ...data
+                        },
+                    )
                 }
+            } else {
+                if (router.query.invitationToken) {
+                    result = await Axios.post(
+                        "https://api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
+                        {
+                            ...data
+                        },
+                    )
+                } else {
+                    result = await Axios.post(
+                        "https://api.isporit.com/auth/register",
+                        {
+                            ...data
+                        },
+                    )
+                }
+            }
+                
+
+            if (result.data.message === "invalidInvitation") {
                 return Modal.success({
-                    content: 'Félicitations et bienvenue à iSporit',
-                    onOk() { onLogin() }
+                    content: 'Bienvenue à iSporit, Veuillez confirmer votre inscription par email',
+                    onOk() { router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '' + '&verifyEmail=true') }
                 })
+            }
+            return Modal.success({
+                content: 'Félicitations et bienvenue à iSporit',
+                onOk() { onLogin() }
+            })
 
-            } catch (error) {
-                if (error.response && error.response.data.errors && error.response.data.errors.email && error.response.data.errors.email.message === "emailAlreadyExists") {
-                    setLocalErrors({ ...localErrors, emailAlreadyExists: true, usernameAlreadyExists: false })
-                }
-                if (error.response && error.response.data.errors && error.response.data.errors.username && error.response.data.errors.username.message === "usernameAlreadyExists") {
-                    setLocalErrors({ ...localErrors, usernameAlreadyExists: true, emailAlreadyExists: false  })
-                }
+        } catch (error) {
+            if (error.response && error.response.data.errors && error.response.data.errors.email && error.response.data.errors.email.message === "emailAlreadyExists") {
+                setLocalErrors({ ...localErrors, emailAlreadyExists: true, usernameAlreadyExists: false })
+            }
+            if (error.response && error.response.data.errors && error.response.data.errors.username && error.response.data.errors.username.message === "usernameAlreadyExists") {
+                setLocalErrors({ ...localErrors, usernameAlreadyExists: true, emailAlreadyExists: false })
             }
         }
     }
@@ -129,11 +172,53 @@ const SignUp = () => {
                         password: data.password,
                     },
                 )
+                localStorage.setItem('token', result.data.token)
+
                 if (router.query.isLocalhost === 'true') {
 
                     window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
                 } else {
                     window.location.href = 'https://dev.isporit.com?accessToken=' + result.data.token
+                }
+
+            } catch (error) {
+                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '')
+            }
+        } else if (router.query.env && router.query.env.includes('test')) {
+            try {
+                const result = await Axios.post(
+                    "https://test.api.isporit.com/auth/login",
+                    {
+                        email: data.email,
+                        password: data.password,
+                    },
+                )
+                localStorage.setItem('token', result.data.token)
+                if (router.query.isLocalhost === 'true') {
+
+                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
+                } else {
+                    window.location.href = 'https://test.isporit.com?accessToken=' + result.data.token
+                }
+
+            } catch (error) {
+                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '')
+            }
+        } else {
+            try {
+                const result = await Axios.post(
+                    "https://api.isporit.com/auth/login",
+                    {
+                        email: data.email,
+                        password: data.password,
+                    },
+                )
+                localStorage.setItem('token', result.data.token)
+                if (router.query.isLocalhost === 'true') {
+
+                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
+                } else {
+                    window.location.href = 'https://app.isporit.com?accessToken=' + result.data.token
                 }
 
             } catch (error) {
@@ -169,13 +254,13 @@ const SignUp = () => {
                         localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
                     }
                     {
-                        localErrors.inputErrors && !startWithNumber(data.username) && <span className={css.error}>Nom d'utilisateur doit commencer par un caractère</span>
+                        localErrors.inputErrors && !validateUsername(data.username) && <span className={css.error}>Nom d'utilisateur n'est pas valide</span>
                     }
                     {
                         localErrors.inputErrors && data.username.includes(" ") && <span className={css.error}>Aucun espace n'est autorisé</span>
                     }
-                    
-                    
+
+
                     {
                         localErrors.usernameAlreadyExists && <span className={css.error}>Nom d'utilisateur existe déjà</span>
                     }
@@ -193,7 +278,7 @@ const SignUp = () => {
                     }
 
 
-                    <input value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
+                    <input maxLength={40} value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
                     {
                         localErrors.inputErrors && isEmpty(data.email) && <span className={css.error}>Champ obligatoire</span>
                     }
@@ -217,6 +302,26 @@ const SignUp = () => {
                         localErrors.inputErrors && moment().isBefore(data.birthday) && <span className={css.error}>Date n'est pas valid</span>
                     }
 
+                    <input maxLength={40} value={data.phoneNumber} onChange={e => setData({ ...data, phoneNumber: e.target.value })} className={css.input} placeholder='Numéro de téléphone' />
+                    {
+                        localErrors.inputErrors && isEmpty(data.phoneNumber) && <span className={css.error}>Champ obligatoire</span>
+                    }
+
+
+                    {
+                        localErrors.inputErrors && !validatePhoneNumber(data.phoneNumber) && <span className={css.error}>Numéro de téléphone n'est pas valide</span>
+                    }
+                    {
+                        localErrors.inputErrors && data.phoneNumber.length < 7 && <span className={css.error}>Au moins 8 numéros</span>
+                    }
+
+                    {
+                        !router.query.invitationToken && <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
+                            <option value="player">Joueur</option>
+                            <option value="coach">Entraineur</option>
+                        </select>
+                    }
+
 
                     <input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
                     {
@@ -230,16 +335,6 @@ const SignUp = () => {
                     {
                         localErrors.inputErrors && data.password !== data.confirmPassword && <span className={css.error}>Deux mots de passe ne sont pas égaux</span>
                     }
-
-                    {
-                        !router.query.invitationToken && <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
-                            <option value="player">Joueur</option>
-                            <option value="coach">Entraineur</option>
-                        </select>
-                    }
-
-
-
 
                     <div className={css.signup_btn_container}>
                         <button onClick={onRegister} className={css.primary_button}>S'INSCRIRE</button>
