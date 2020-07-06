@@ -108,7 +108,7 @@ const SignUp = () => {
             } else if (router.query.env && router.query.env.includes('test')) {
                 if (router.query.invitationToken) {
                     result = await Axios.post(
-                        "https://api.test.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
+                        "https://test.api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
                         {
                             ...data
                         },
@@ -187,7 +187,7 @@ const SignUp = () => {
         } else if (router.query.env && router.query.env.includes('test')) {
             try {
                 const result = await Axios.post(
-                    "https://api.test.isporit.com/auth/login",
+                    "https://test.api.isporit.com/auth/login",
                     {
                         email: data.email,
                         password: data.password,
