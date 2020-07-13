@@ -1,16 +1,13 @@
-# Isporit Platform
+# Isporit Website
+The official website of Isporit
 
 ## Branches
 ##### master (Stable branch)
 
 Linked to isporit.com
 
-##### dev (Development branch)
-
-Linked to dev.isporit.com
 
 ## Run the website ( master ) with yarn
 
-##### yarn install
-##### yarn upgrate ( if necessary  )
-##### yarn run dev 
+1. yarn install
+2. yarn run dev 
