@@ -1,0 +1,35 @@
+name: Push to production
+
+on:
+  push:
+    branches: 
+      - master
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Push the production artifact
+      run: |
+        # Start the SSH Agent
+        eval $(ssh-agent -s)
+        mkdir -m 0700 -p ~/.ssh/
+        ssh-keyscan 51.254.117.36 >> ~/.ssh/known_hosts
+        # Add the private key
+        ssh-add - <<< "$SSH_PRIVATE_KEY"
+        echo "Added the host and then the key $SSH_PUBLIC_KEY"
+        
+        # Add the remote git server
+        git remote add live ssh://root@51.254.117.36/var/www/prod-website.git
+        # This fixes the error of pull
+        git fetch --unshallow
+        git push -fv live master
+        
+      env:
+        SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+        SSH_PUBLIC_KEY: ${{secrets.SSH_PUBLIC_KEY}}
