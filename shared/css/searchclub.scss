@@ -1,0 +1,76 @@
+.selectfilter{
+    
+    box-shadow: 0 1px 0 0 #e9e9e9;
+    // background-color: #ffffff;
+    // padding: 11px;
+    padding-top:11px;
+    padding-bottom: 9px;
+    border: 1px solid #e9e9e9;
+    padding-left:25px;
+
+    .search{
+        border-radius: 8px;
+        border: solid 1px #e9e9e9;
+         margin-right: 13px;
+    }
+}
+.linkclub{
+    
+    &__link{
+        display: flex;
+        padding-top:20px;
+        padding-left:25px;
+    }
+    &__link > div {
+        margin: 2px;
+      }
+}
+.clublist_map{
+    display: flex;
+    justify-content:space-between;
+    &__clubinfo{
+        &__detais{
+            &__title_sortby{
+                display: flex;
+                justify-content: space-between;
+                padding:21px 25px 29px 25px;
+                &__title_chiffre{
+                    &__title{
+                        color: #2e3034;
+                        font-size: 18px;
+                        font-weight: 500;
+                    }
+                    &__subtitle{
+                        color: #2e3034;
+                        font-size: 14px;
+                        line-height: 1.65;
+                    }
+                }
+            }
+            &__mapcarousel{
+                padding-left:25px;
+                
+            }
+        }
+    }
+}
+.imgmap{
+    margin-top: 6rem;
+    width: 641px;
+    height: 570px;
+    object-fit: contain;
+}
+@media only screen and (max-width: 850px) {
+
+.selectfilter{
+    display: grid;
+    /* flex-direction: column; */
+    grid-row-gap: 0.5rem;
+        padding-top: 6rem;
+    
+}
+.sign_up{
+    
+
+}
+}

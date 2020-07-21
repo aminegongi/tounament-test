@@ -1,0 +1,34 @@
+.partenaire_price_partenaire{
+    max-width: 1380px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    // padding-top:10.0625rem;
+    flex-flow: wrap;
+    &__partenaire{
+        &__title{
+            max-width: 36rem;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1.25;
+            color: #2e3034;
+        }
+        &__subtitle{
+            max-width: 29rem;
+            font-size: 1.125rem;
+           
+            line-height: 1.44;
+            letter-spacing: normal;
+            text-align: left;
+            color: #828282;
+            padding-top:1.0625rem;
+        }
+    }
+    &__presentation_club{
+        &__realisation{
+        padding-top:2.85625rem;
+       
+    }
+    }
+   
+}
