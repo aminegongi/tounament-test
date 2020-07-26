@@ -14,6 +14,13 @@ function PriceV1({ data, mapicon, phoneicon, instagram, fb }) {
 
     return (
         <div className={css.partenaire_price}>
+               <div className={css.price}>
+                <div className={css.price__title}>NOS TARIFS</div>
+                <div className={css.price__ligne}>_______________</div>
+                    <div className={css.price__subtitle}>
+                        {data.body.description}
+                    </div>
+                </div>
             <div className={css.partenaire_price_partenaire}>
                 {data.body.map((el, key) => {
 

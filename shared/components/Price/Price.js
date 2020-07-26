@@ -4,6 +4,7 @@ export default function price({ title, lieu, horaire, price, classname, classnam
 
     return (
         <div className={css[classname]}>
+            
             <div className={css.partenaire_price_partenaire__price}>
                 <div className={css.partenaire_price_partenaire__price__firstpack}>
                     <div className={css.partenaire_price_partenaire__price__firstblock} >

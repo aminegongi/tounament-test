@@ -15,7 +15,7 @@
     }
     .search{
         padding-top:1rem 0.9375rem 1rem 3.125rem;
-
+      
         input{
         border-radius: 5rem;
         box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.05);
@@ -131,7 +131,22 @@ position: absolute;
     }
    
 }
+@media only screen and (max-width:1024px){
+    .navbarserch{
+         .item {
+       
+        font-size: 0.73rem !important;
+    }
+}
+}
 @media only screen and (max-width: 850px) {
+    .logo{
+        display: flex;
+        img{
+            padding-top: 0.9rem;
+            padding-right:1.6875rem
+        }
+    }
     .selectfilter{
         padding-top: 6rem;
     }
@@ -224,5 +239,31 @@ position: absolute;
 
     }
 }
+.carte{
+    width: 81px;
+    height: 39px;
+    border-radius: 80px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    border: solid 1px #cecece;
+    background-color: #ffffff;
+    span{
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.36;
+        letter-spacing: normal;
+        text-align: left;
+        color: #26beb5;
+    }
+}
 
+}
+.ant-input-affix-wrapper .ant-input:not(:last-child) {
+    width: 256px !important;
+    height: 49px !important;
+    border-radius: 80px !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+    border: solid 1px #cecece !important;
+    background-color: #ffffff !important;
 }

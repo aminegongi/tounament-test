@@ -49,6 +49,8 @@
             }
             &__mapcarousel{
                 padding-left:25px;
+                height: 89vh;
+                overflow: auto;
                 
             }
         }
@@ -61,16 +63,37 @@
     object-fit: contain;
 }
 @media only screen and (max-width: 850px) {
+    .linkclub{
+        &__link{
+display: none;
+        }
+    }
 
 .selectfilter{
-    display: grid;
+    // display: grid;
     /* flex-direction: column; */
     grid-row-gap: 0.5rem;
-        padding-top: 6rem;
+    padding-top: 12rem;
     
 }
-.sign_up{
-    
 
 }
+.map{
+    padding-top:3rem;
+}
+@media only screen and (max-width: 344px) {
+    .selectfilter{
+        
+        padding-top: 16rem;
+    }
+}
+.listeclubs{
+    display: none;
+}
+
+.mapshow{
+    display: block;
+}
+.mapnotshow{
+    display: none;
 }

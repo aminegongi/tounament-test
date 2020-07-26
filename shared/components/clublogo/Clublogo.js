@@ -9,11 +9,12 @@ export default function Clublogo({ images }) {
             <div className={css.clubs}>
                 {/* 5 clubs partenaires nous font confiance */}
             </div>
-            {/* <div className={css.img_club}>
+            <div className={css.img_club}>
                 {
-                    images.map(el => <img key={Math.round(Math.random() * Math.random() * 100)} alt={el.alt} className={css.hubspot} src={el.src}  />)
+                    images.map(el => (el.image? <img key={Math.round(Math.random() * Math.random() * 100)} 
+                    alt={el.alt} className={css.hubspot} src={el.image}  />:""))
                 }
-            </div> */}
+            </div>
         </div>
     );
 }

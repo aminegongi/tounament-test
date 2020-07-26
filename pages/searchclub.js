@@ -1,5 +1,5 @@
 import css from '../shared/css/searchclub.scss'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Clubinfo from "../shared/components/clubinfo/Clubinfo"
 import _, { isEmpty } from 'lodash'
 // import 'leaflet/dist/leaflet.css'
@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Navbarsearch from '../shared/components/navbarsearch/Navbarsearch';
 import Mapclub from '../shared/components/map/Mapclub';
 
-import { Input, Select,Skeleton } from 'antd';
+import { Input, Select, Skeleton } from 'antd';
 
 
 const Indexs = (props) => {
@@ -18,18 +18,24 @@ const Indexs = (props) => {
 
     const [datacopy, setdata] = useState([]);
     const [datawebsite, setdatawebsite] = useState([]);
+    const [isMobile, setIsMobile] = useState(false)
+    const [showclub, setshowclub] = useState("liste");
+
+
+   
+    
 
 
     const fetchWebsitedata = async () => {
         const result = await axios.get("https://dev.api.isporit.com/Clubs/all?hasWebsite=true")
-        
+
         setdatawebsite(result.data)
     }
-    console.log("object",datawebsite)
     useEffect(() => {
         fetchWebsitedata()
+      
     }, [])
-    console.log("object",datawebsite)
+    
     const sortbyname = (key) => {
         const arrayCopy = datawebsite;
         if (key === 'name') (
@@ -56,7 +62,7 @@ const Indexs = (props) => {
     }
     return (
         <div>
-            <Navbarsearch el={datawebsite} img={"icon/logoindexpage.png"} setdatawebsite={setdatawebsite} />
+            <Navbarsearch el={datawebsite} setshowclub={setshowclub} showclub={showclub} img={"icon/logoindexpage.png"} setdatawebsite={setdatawebsite} />
 
             <div className={css.selectfilter}>
                 <Select
@@ -125,49 +131,51 @@ const Indexs = (props) => {
                 <div>/</div>
                 <div>Clubs partenaires</div>
             </div>
-            <div className={css.clublist_map}>
-            <div className={css.clublist_map__clubinfo__detais}>
-                <div className={css.clublist_map__clubinfo__detais__title_sortby}>
-                    <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre}>
-                        <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre__title}>
-                            Clubs de Tennis se trouvant à Tunis
+            <div className={ css.clublist_map  }>
+                <div className={ showclub==="liste" ? css.clublist_map__clubinfo__detais : css.listeclubs}>
+                    <div className={css.clublist_map__clubinfo__detais__title_sortby}>
+                        <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre}>
+                            <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre__title}>
+                                Clubs de Tennis se trouvant à Tunis
                   </div>
-                        <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre__number}>
-                            {datawebsite.length} Résultats
+                            <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre__number}>
+                                {datawebsite.length} Résultats
                  </div>
+                        </div>
+                        <div className={css.clublist_map__clubinfo__detais__title_sortby__sortby}>
+                            <Select
+                                // defaultValue="Plus de filtres"
+                                // showSearch
+                                className={css.clublist_map__clubinfo__detais__title_sortby__sortby__search}
+                                style={{ width: 100 }}
+                                placeholder="Plus de filtres"
+                                optionFilterProp="children"
+                                // filterOption={(input, option) =>
+                                //     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                // }
+                                onChange={(e) => sortbyname(e)}
+                            >
+                                <Option value="Plus de filtres" >Trier par</Option>
+                                <Option value="name" >Name</Option>
+                                <Option value="desc">desc</Option>
+                            </Select>
+                        </div>
                     </div>
-                    <div className={css.clublist_map__clubinfo__detais__title_sortby__sortby}>
-                        <Select
-                            // defaultValue="Plus de filtres"
-                            // showSearch
-                            className={css.clublist_map__clubinfo__detais__title_sortby__sortby__search}
-                            style={{ width: 100 }}
-                            placeholder="Plus de filtres"
-                            optionFilterProp="children"
-                            // filterOption={(input, option) =>
-                            //     option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                            // }
-                            onChange={(e) => sortbyname(e)}
-                        >
-                            <Option value="Plus de filtres" >Trier par</Option>
-                            <Option value="name" >Name</Option>
-                            <Option value="desc">desc</Option>
-                        </Select>
+                    <div className={css.clublist_map__clubinfo__detais__mapcarousel}>
+
+                        {!isEmpty(datawebsite) ?
+                            datawebsite.map((el, key) => {
+                                return (<Clubinfo key={Math.round(Math.random() * Math.random() * 100)} el={el} img={'../icon/tennislogo.svg'} />)
+                            }) : <Skeleton />}
+
                     </div>
-                </div>
-                <div className={css.clublist_map__clubinfo__detais__mapcarousel}>
 
-                    {!isEmpty(datawebsite) ?
-                        datawebsite.map((el, key) => {
-                            return (<Clubinfo key={Math.round(Math.random() * Math.random() * 100)} el={el} img={'../icon/tennislogo.svg'} />)
-                        }) : <Skeleton  />}
 
                 </div>
-
-
-            </div>
-            {/* <img className={css.imgmap} src="../icon/cartmap.png"  alt="phoneicon"></img> */}
-            <Mapclub />
+                {/* <img className={css.imgmap} src="../icon/cartmap.png"  alt="phoneicon"></img> */}
+                 <div  className={ showclub==="carte" ? css.mapshow: css.mapnotshow} > 
+                <Mapclub />
+                 </div> 
 
             </div>
         </div>
