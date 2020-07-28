@@ -69,7 +69,7 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub}) {
                 </div>
                 <div className={css.subnav_content_container}>
                   <div className={css.subnav_content}>
-                    <Link >
+                  <Link href={routes.CLUB_FEATURES.path}>
                       <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
                         <img className={css.img} src={club} />
                         <div className={css.title} >Club</div>
@@ -234,7 +234,7 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub}) {
                 </div>
                 <div className={css.subnav_content_container}>
                   <div className={css.subnav_content}>
-                    <Link >
+                  <Link href={routes.CLUB_FEATURES.path}>
                       <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
                         <img className={css.img} src={club} />
                         <div className={css.title} >Club</div>

@@ -4,12 +4,12 @@ export default function price({ title, lieu, horaire, price, classname, classnam
 
     return (
         <div className={css[classname]}>
-            
+
             <div className={css.partenaire_price_partenaire__price}>
                 <div className={css.partenaire_price_partenaire__price__firstpack}>
                     <div className={css.partenaire_price_partenaire__price__firstblock} >
                         <div className={css.partenaire_price_partenaire__price__firstpack__title}>
-                           {title}
+                            {title}
                         </div>
                         {/* <div className={css.partenaire_price_partenaire__price__firstpack__ligne}>
                             __________________________
@@ -22,16 +22,16 @@ export default function price({ title, lieu, horaire, price, classname, classnam
 
                     <div className={css.partenaire_price_partenaire__price__firstpack__horaire}>
                         <div>Horaire :</div>
-                        <div>{ horaire.map((el, key) => {
+                        <div>{horaire.map((el, key) => {
                             return <div>{el}</div>
                         })
                         }
                         </div>
-                   </div>
+                    </div>
 
                     <div className={css.partenaire_price_partenaire__price__firstpack__price}>
                         {price} DT
-            </div>
+                    </div>
                     <button onClick={() => window.location.href = "/contact-us"} className={css[classnamebutton]}>
                         <span>S'inscrire</span>
                     </button>

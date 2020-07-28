@@ -1,4 +1,4 @@
-import css from './navbar.scss'
+import { useState, useEffect } from 'react';
 import globalCss from '../../global-style.scss'
 import { useRouter } from "next/router";
 import Link from 'next/link'
@@ -9,8 +9,8 @@ import { useMediaPredicate } from "react-media-hook";
 import BurgerMenu from 'react-burger-menu'
 
 import club from '../../../public/icon/subforclub.svg'
-import { useState, useEffect } from 'react';
 import routes from '../../../utils/routes';
+import css from './navbar.scss'
 
 const { SubMenu } = Menu;
 
