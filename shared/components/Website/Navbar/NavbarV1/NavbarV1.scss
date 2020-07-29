@@ -1,0 +1,112 @@
+.navbarV1 {
+    background-color: #79bb43;
+    color: white;
+    // padding: 1rem 0.5rem;
+    &__container {
+        max-width: 1360px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 43% 14% 43%;
+        align-items: center;
+
+        &__menu {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            &__text {
+                color: white !important;
+                font-size: 1rem;
+                font-weight: 500;
+                &:hover , &:focus {
+                    color: white !important;
+                }
+            }
+        }
+
+        &__logo {
+            justify-self: center;
+            position: relative;
+            top: 2rem;
+            img {
+                // display: none;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+            }
+        }
+        &__contact {
+            justify-self: end;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            align-items: center;
+            &__text {
+                font-size: 1.3rem;
+                font-weight: 500;
+            }
+            &__join_button {
+                justify-self: flex-end;
+                padding: 1rem 2rem;
+                text-align: center;
+                color: #79bb43;
+                font-weight: 500;
+                font-size: 1rem;
+                border-radius: 8px;
+                background-color: #ffffff;
+            }
+        }
+    }
+}
+
+// .navbarV1{
+//     // max-width: 1380px;
+//     margin: auto;
+//     display: flex;
+
+//     justify-content: space-evenly;
+//     background-color: #79bb43;
+//     padding-left: 5.5625rem;
+//     height: 8.75rem;
+//     &__menu__text{
+//         padding-top:3.75rem;
+//         font-size: 1rem;
+//         font-weight: 500;
+//         line-height: 1.19;
+//         letter-spacing: normal;
+//         text-align: right;
+//         color: #ffffff;
+//         &__club{
+//             padding-left:9.5625rem;
+//         }
+//         &__menutextone{
+//             display: flex;
+//             justify-content: space-evenly;
+//             padding-top:3.75rem;
+//             font-size: 1rem;
+//             font-weight: 500;
+
+//             line-height: 1.19;
+//             letter-spacing: normal;
+//             text-align: right;
+//             color: #ffffff;
+//         }
+//     }
+//     &__imglogoclub{
+//         width: 11.5rem;
+//         height: 11.5rem;
+//         padding-top:1.25rem;
+//         object-fit: contain;
+//     }
+//     &__rejoindrebutton{
+//         margin-top: 2.8125rem;
+//         margin-bottom: 2.8125rem;
+//         border-radius: 0.5rem;
+//         background-color: #ffffff;
+//         span{
+//             padding: 0.9375rem 2rem 0.9375rem 2rem;
+//             font-size: 1rem;
+//             color: #79bb43;
+//             line-height: 1.38;
+//         }
+//     }
+// }

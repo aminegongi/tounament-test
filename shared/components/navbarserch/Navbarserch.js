@@ -1,5 +1,5 @@
 import css from './navbarserch.scss';
-import { useState, useEffect,useRef } from 'react';
+import React, { Component, useState, useEffect,useRef } from "react";
 import { UserOutlined } from '@ant-design/icons';
 import { Icon,Input,Select   } from 'antd';
 
@@ -11,7 +11,6 @@ import Link from 'next/link';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Clubinfo from "../clubinfo/Clubinfo"
-import React, { Component } from "react";
 import MapContainer from "../mapConponnet/index"
 
 
