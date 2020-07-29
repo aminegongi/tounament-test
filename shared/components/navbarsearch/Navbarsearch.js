@@ -11,10 +11,22 @@ import globalCss from '../../global-style.scss'
 
 import { useState, useEffect,useRef } from 'react';
 
-function Navbarsearch({ el ,setdatawebsite,img}) {
+function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub}) {
   const mobile = useMediaPredicate("(max-width: 850px)");
   const [isMobile, setIsMobile] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const switchshow = ()=>{
+    if (showclub==="carte"){
+        setshowclub("liste");
+    }
+    else if (showclub==="liste")
+
+        {
+            setshowclub("carte")
+        }
+    }
+
   const { SubMenu } = Menu;
 
     const { Search } = Input;
@@ -143,7 +155,31 @@ function Navbarsearch({ el ,setdatawebsite,img}) {
                         <Link href='/'>
                           <a><img src={img} alt="logo" /></a>
                         </Link>
+                        <Link href={routes.CONTACT_US.path}>
+                          <a>
+                            <button className={css.sign_up}>
+                              S'inscrire gratuitement
+                          <Icon className={css.fleshdown} type="down" />
+                            </button>
+                          </a>
+                       </Link>
                       </div>
+                      
+                      <Search
+                          placeholder="Cherchez un club de Tennis..."
+                          onChange={e => Sherch(e.target.value)
+                          }
+                          style={{ width: 250
+                       
+                          }}
+                          className={css.search}
+                      />
+                      <button className={css.carte} onClick={() => switchshow()}>
+
+                      {/* // <button  onclick="switchshow"> */}
+                        <span>{showclub}</span>
+                      </button>
+
                       <BurgerMenu.slide
                         styles={{
                           bmBurgerButton: {
@@ -151,7 +187,7 @@ function Navbarsearch({ el ,setdatawebsite,img}) {
                             height: '30px',
                             width: '30px',
                             right: '15px',
-                            top: '15px'
+                            top: '23px'
                           },
                           bmMenu: {
                             background: 'white',
@@ -181,14 +217,14 @@ function Navbarsearch({ el ,setdatawebsite,img}) {
                           defaultOpenKeys={['sub1']}
                           style={{ border: "none" }}
                         >
-                            <Search
+                            {/* <Search
                                 placeholder="Cherchez un club de Tennis..."
                                 onChange={e => Sherch(e.target.value)
                                 }
                                 style={{ width: 250
                                 }}
                                 className={css.search}
-                            />  
+                            />   */}
                     <div className={css.items_container}>
             <div className={css.sup}>
               <div className={css.item}>
@@ -260,14 +296,7 @@ function Navbarsearch({ el ,setdatawebsite,img}) {
                <Icon className={css.fleshdown} type="down" />
              </button>
            </Link> 
-             <Link href={routes.CONTACT_US.path}>
-               <a>
-                 <button className={css.sign_up}>
-                   S'inscrire gratuitement
-               {/* <Icon className={css.fleshdown} type="down" /> */}
-                 </button>
-               </a>
-             </Link>
+             
            </div>
                         </Menu>
                       </BurgerMenu.slide>

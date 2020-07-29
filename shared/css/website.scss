@@ -54,7 +54,8 @@
     &__imglogoclub{
         width: 11.5rem;
         height: 11.5rem;
-        padding-top:1.25rem
+        padding-top:1.25rem;
+        object-fit: contain;
     }
     &__rejoindrebutton{
         margin-top: 2.8125rem;

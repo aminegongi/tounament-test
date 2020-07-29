@@ -90,8 +90,8 @@ const mapStyles = {
                 <Link href='/'>
                     <a><img src={"icon/logoindexpage.png"} alt="logo" /></a>
                 </Link>
+                
             </div>
-      
             <Search
                 placeholder="Cherchez un club de Tennis..."
                 // onSearch={value => console.log(value)}
@@ -104,6 +104,7 @@ const mapStyles = {
                 }}
                 className={css.search}
             />
+           
        <div className={css.items_container}>
             <div className={css.sup}>
               <div className={css.item}>
@@ -113,7 +114,7 @@ const mapStyles = {
                 </div>
                 <div className={css.subnav_content_container}>
                   <div className={css.subnav_content}>
-                    <Link >
+                  <Link href={routes.CLUB_FEATURES.path}>
                       <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
                         <img className={css.img} src={club} />
                         <div className={css.title} >Club</div>
@@ -200,7 +201,7 @@ const mapStyles = {
                 filterOption={(input, option) =>
                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 }
-        >
+            >
             <Option value="Type d'activités (4)">Type d'activités (4)</Option>
             <Option value="lucy">Lucy</Option>
             <Option value="tom">Tom</Option>

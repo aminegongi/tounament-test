@@ -58,8 +58,8 @@ class Mapclub extends Component {
               </a>
               </Link>
               </div>
-         </div>
             </div>
+        </div>
         </Marker>
         </ReactMapGL>
      
