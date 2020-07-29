@@ -19,7 +19,7 @@ function StaffV1({ data }) {
             <div className={css.presentationequipe}>
                 {data.body.members.filter(el => !isEmpty(el.firstName)).map((el, i) => {
                     return (
-                        <div className="">
+                        <div className={css.staff__member}>
                             {
                                 !isEmpty(el.firstName) && <Member key={Math.round(Math.random() * Math.random() * 100)} firstName={el.firstName} lastName={el.lastName} img={el.image} job={el.job} icon={"../icon/joinfile.svg"} description={el.description} />
 

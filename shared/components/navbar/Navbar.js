@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import globalCss from '../../global-style.scss'
 import { useRouter } from "next/router";
 import Link from 'next/link'
+import moment from 'moment'
 import { Icon, Menu } from 'antd';
 import coach from '../../../public/icon/subforcoach.svg'
 import player from '../../../public/icon/subforplayer.svg'
@@ -40,7 +41,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
         <section className={`${css.footer_bar}  ${globalCss.isporit_max_width}`}>
           <div className={css.logo}>
             <Link href='/'>
-              <a><img src={"icon/logoindexpage.png"} alt="iSporit" /></a>
+              <a><img src={"../../../icon/logoindexpage.png"} alt="iSporit" /></a>
             </Link>
           </div>
           <div className={css.social_media}>
@@ -59,7 +60,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
           </div>
         </section>
         <div className={`${css.copyright}`}>
-          © 2020 iSporit. All rights reserved
+          © {moment().format('YYYY')} iSporit. All rights reserved
         </div>
 
       </div>
@@ -71,7 +72,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
       <div className={css.mobile_burger_menu}>
         <div className={css.logo}>
           <Link href='/'>
-            <a><img src={"icon/logoindexpage.png"} alt="logo" /></a>
+            <a><img src={"../../../icon/logoindexpage.png"} alt="logo" /></a>
           </Link>
         </div>
         <BurgerMenu.slide
@@ -136,7 +137,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
         <div className={`${css.navbar_container} ${globalCss.isporit_max_width}`}>
           <div className={css.logo}>
             <Link href='/'>
-              <a><img src={"icon/logoindexpage.png"} alt="logo" /></a>
+              <a><img src={"../../../icon/logoindexpage.png"} alt="logo" /></a>
             </Link>
           </div>
           <div className={css.items_container}>
