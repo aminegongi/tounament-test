@@ -79,7 +79,7 @@ function NavbarV1({ data, logo }) {
                                         width: '30px',
                                         right: '15px',
                                         top: '80px',
-                                        padding:'2.7rem'
+                                        padding:'1.8rem'
 
                                     },
                                     bmMenu: {
