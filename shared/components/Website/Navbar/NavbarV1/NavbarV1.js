@@ -58,9 +58,7 @@ function NavbarV1({ data, logo }) {
                 </div>
             
                 <div className={css.navbarV1__container__contact}>
-                    {/* <div className={css.navbarV1__container__contact__text}>
-                        {data.contact.body.phoneNumber1} {!isEmpty(data.contact.body.phoneNumber1) && "/ " + data.contact.body.phoneNumber1}
-                    </div> */}
+                   
                     <Link href="#contact">
                         <a >
                             <button onClick={() => { }} className={css.navbarV1__container__contact__join_button}>
