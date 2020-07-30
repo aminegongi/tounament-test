@@ -14,8 +14,6 @@ import Link from "next/link";
 import GlobalNavbar from '../../shared/components/Navbar/Navbar';
 
 
-
-
 const clubWebsite = ({ status, data, clubName, logo }) => {
 
 

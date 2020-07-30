@@ -110,3 +110,45 @@
 //         }
 //     }
 // }
+
+@media only screen and (max-width: 850px) {
+    .navbarV1 {
+        display: flex;
+
+    &__container{
+        &__logo{
+            position: unset;
+            img{
+                width: 103px;
+                height: 92px;
+                object-fit: contain;
+                padding-top: 19px;
+                padding-bottom: 18px;
+                padding-left: 32px;
+                padding-right: 20px;
+            }
+        }
+        &__contact{
+            justify-content: flex-start;
+            &__text{
+                padding-top:2.5rem;
+            }
+        }
+    }
+    
+    
+}
+.navbar{
+
+    &__menutext{
+        padding-top:3rem;
+    }
+    &__rejoindrebutton{
+        padding-top:3.5rem;
+
+    }
+}
+.anticon .anticon-menu .bm-icon{
+    padding-top:3rem !important;
+}
+}

@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import _, { isEmpty } from 'lodash'
 // import 'leaflet/dist/leaflet.css'
 import axios from 'axios';
+import globalCss from '../shared/global-style.scss'
 
 import Link from 'next/link';
 import Navbarsearch from '../shared/components/navbarsearch/Navbarsearch';

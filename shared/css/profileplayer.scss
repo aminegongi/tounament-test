@@ -169,89 +169,89 @@
   margin-bottom: 2rem;
 }
 
-@media only screen and (max-width: 850px) {
+// @media only screen and (max-width: 850px) {
 
-    .profilplayer{
+//     .profilplayer{
         
-        padding-top: 13.5rem;
-        padding-left: 11.25rem;
-    }
-}
-@media only screen and (max-width: 575px) {
+//         padding-top: 13.5rem;
+//         padding-left: 11.25rem;
+//     }
+// }
+// @media only screen and (max-width: 575px) {
 
-    .profilplayer{
+//     .profilplayer{
         
-        padding-top: 13.5rem;
-        padding-left: 3rem;
-    }
-}
-@media only screen and (max-width: 414px) {
+//         padding-top: 13.5rem;
+//         padding-left: 3rem;
+//     }
+// }
+// @media only screen and (max-width: 414px) {
 
-    .profilplayer{
+//     .profilplayer{
         
-        padding-top: 13.5rem;
-        padding-left: 1.2rem;
-        &__infoplayer{
-            width: 36rem;
-            margin-bottom: 1rem;
-        }
-    }
-    .timeline{
-        width: 36rem;
-        margin-bottom: 17rem;
-    }
-}
+//         padding-top: 13.5rem;
+//         padding-left: 1.2rem;
+//         &__infoplayer{
+//             width: 36rem;
+//             margin-bottom: 1rem;
+//         }
+//     }
+//     .timeline{
+//         width: 36rem;
+//         margin-bottom: 17rem;
+//     }
+// }
 
-@media only screen and (max-width: 360px) {
+// @media only screen and (max-width: 360px) {
 
-    .profilplayer{
+//     .profilplayer{
        
-        &__infoplayer{
-            width: 32rem;
-            margin-bottom: 1rem;
+//         &__infoplayer{
+//             width: 32rem;
+//             margin-bottom: 1rem;
 
-            &__img_name{
-                &__name_mail{
-                    &__name{
-                        font-size: 1.2rem;
-                    }
-                }
-            }
+//             &__img_name{
+//                 &__name_mail{
+//                     &__name{
+//                         font-size: 1.2rem;
+//                     }
+//                 }
+//             }
             
-        }
-    }
-    .playerexperiance{
-        &__title{
-            &__clubtitle{
-                font-size: 1.2rem;
-            }
-            &__date{
-                padding-top: 0.35rem;
-                padding-left: 0.875rem;
-                font-size: 0.8125rem;
-            }
-        }
-        &__description{
-            font-size: 0.7rem;
-        }
-    }
-    .timeline{
-        width: 32rem;
-    }
-}
-@media only screen and (max-width: 320px) {
+//         }
+//     }
+//     .playerexperiance{
+//         &__title{
+//             &__clubtitle{
+//                 font-size: 1.2rem;
+//             }
+//             &__date{
+//                 padding-top: 0.35rem;
+//                 padding-left: 0.875rem;
+//                 font-size: 0.8125rem;
+//             }
+//         }
+//         &__description{
+//             font-size: 0.7rem;
+//         }
+//     }
+//     .timeline{
+//         width: 32rem;
+//     }
+// }
+// @media only screen and (max-width: 320px) {
 
-    .profilplayer{
+//     .profilplayer{
         
-        padding-top: 16rem;
-        padding-left: 1.2rem;
-        &__infoplayer{
-            width: 28rem;
-            margin-bottom: 1rem;
-        }
-    }
-    .timeline{
-        width: 28rem;
-        margin-bottom: 3rem;
-    }
-}
+//         padding-top: 16rem;
+//         padding-left: 1.2rem;
+//         &__infoplayer{
+//             width: 28rem;
+//             margin-bottom: 1rem;
+//         }
+//     }
+//     .timeline{
+//         width: 28rem;
+//         margin-bottom: 3rem;
+//     }
+// }
