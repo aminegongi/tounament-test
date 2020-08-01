@@ -17,7 +17,8 @@
                 color: white !important;
                 font-size: 1rem;
                 font-weight: 500;
-                &:hover , &:focus {
+                &:hover,
+                &:focus {
                     color: white !important;
                 }
             }
@@ -114,41 +115,43 @@
 @media only screen and (max-width: 850px) {
     .navbarV1 {
         display: flex;
-
-    &__container{
-        &__logo{
-            position: unset;
-            img{
-                width: 6.4375rem;
-                height: 5.75rem;
-                object-fit: contain;
+        &__close_navbar {
+            display: flex;
+            justify-content: flex-end;
+        }
+        &__container {
+            &__logo {
+                position: unset;
                 padding-top: 1.1875rem;
                 padding-bottom: 1.125rem;
                 padding-left: 2rem;
                 padding-right: 1.25rem;
+                img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: contain;
+                }
+            }
+            &__contact {
+                justify-content: center;
+                margin-right: 25px;
+                &__text {
+                    padding-top: 2.5rem;
+                    padding-bottom: 2rem;
+                    border-bottom: 1px solid;
+                }
             }
         }
-        &__contact{
-            justify-content: flex-start;
-            &__text{
-                padding-top:2.5rem;
-            }
+    }
+    .navbar {
+        &__menutext {
+            padding-top: 3rem;
+        }
+        &__rejoindrebutton {
+            padding-top: 3.5rem;
         }
     }
-    
-    
-}
-.navbar{
-
-    &__menutext{
-        padding-top:3rem;
+    .anticon .anticon-menu .bm-icon {
+        padding-top: 3rem !important;
     }
-    &__rejoindrebutton{
-        padding-top:3.5rem;
-
-    }
-}
-.anticon .anticon-menu .bm-icon{
-    padding-top:3rem !important;
-}
 }
