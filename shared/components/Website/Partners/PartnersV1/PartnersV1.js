@@ -1,4 +1,4 @@
-import css from './PartnersV1.scss';
+import css from './partnersV1.scss';
 
 import Clublogo from '../../../clublogo/Clublogo'
 
