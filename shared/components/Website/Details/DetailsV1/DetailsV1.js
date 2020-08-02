@@ -1,4 +1,4 @@
-import css from './DetailsV1.scss';
+import css from './detailsV1.scss';
 import ClubNumberBlock from '../../../WebsiteClubNumberBlock/WebsiteClubNumberBlock'
 
 

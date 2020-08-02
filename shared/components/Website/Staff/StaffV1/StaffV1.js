@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import css from './StaffV1.scss';
+import css from './staffV1.scss';
 import Member from '../../../member/Member'
 import { isEmpty } from 'lodash';
 

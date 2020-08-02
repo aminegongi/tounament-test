@@ -1,4 +1,4 @@
-import css from './NavbarV1.scss';
+import css from './navbarV1.scss';
 import { isEmpty } from 'lodash';
 import Link from 'next/link';
 import { useMediaPredicate } from "react-media-hook";
