@@ -67,26 +67,28 @@ const ClubWebsite = ({ status = 401 , data, clubName, logo }) => {
     //         </div>
     //     )
     // }
+
+    return 'it works'
 }
 
-// ClubWebsite.getInitialProps = async (ctx) => {
-//     const res = await fetch("https://test.api.isporit.com/Clubs/slug/" + ctx.query.id)
-//     const json = await res.json()
-//     if (json.website) {
-//         return { status: 200, data: json.website, clubName: json.title, logo: json.logo }
-//     }
-//     // if (json.website && json.website.isPublished) {
-//     //     return { status: 200, data: json.website }
-//     // }
-//     // if (json.website && !json.website.isPublished) {
-//     //     return { status: 401, data: json.website }
-//     // }
-//     if (json.message === "clubNotFound") {
-//         return { status: 404, data: json }
-//     }
-//     return { status: 500, data: json }
+ClubWebsite.getInitialProps = async (ctx) => {
+    const res = await fetch("https://test.api.isporit.com/Clubs/slug/" + ctx.query.id)
+    const json = await res.json()
+    if (json.website) {
+        return { status: 200, data: json.website, clubName: json.title, logo: json.logo }
+    }
+    // if (json.website && json.website.isPublished) {
+    //     return { status: 200, data: json.website }
+    // }
+    // if (json.website && !json.website.isPublished) {
+    //     return { status: 401, data: json.website }
+    // }
+    if (json.message === "clubNotFound") {
+        return { status: 404, data: json }
+    }
+    return { status: 500, data: json }
 
-// }
+}
 
 
 export default ClubWebsite
