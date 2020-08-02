@@ -1,0 +1,51 @@
+.club_number_block {
+    max-width: 1380px;
+
+    &__details {
+        padding-top: 1.8125rem;
+    }
+    &__description {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #2e3034;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 1.125rem;
+        font-size: 1rem;
+
+        font-weight: bold;
+        line-height: 2.63;
+
+        letter-spacing: normal;
+
+        color: #2e3034;
+    }
+    &__number {
+        font-size: 4rem;
+        font-weight: bold;
+        line-height: 0.48;
+        letter-spacing: normal;
+        text-align: left;
+        color: #79bb43;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .club_number_block {
+        justify-self: center;
+        text-align: center;
+        &__is_first {
+            grid-column: 1/3;
+        }
+        &__description {
+            font-size: 1.5rem;
+
+            text-align: center;
+            font-weight: bolder;
+        }
+        &__number {
+            font-size: 4rem;
+            text-align: center;
+        }
+    }
+}

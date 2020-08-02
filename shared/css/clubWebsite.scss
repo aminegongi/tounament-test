@@ -1,0 +1,22 @@
+.clubWebsite {
+    .headerblock{
+        // max-width: 1380px;
+        margin: auto;
+        background-color: black;
+        display: flex;
+        justify-content: space-between;
+        &__img{
+           
+             margin-top:0.75rem;
+             margin-left:2.75rem;
+             margin-bottom: 0.76875rem
+        }
+        &__connexion{
+            font-size: 0.8125rem;
+            margin-top: 1.125rem;
+            margin-bottom: 0.875rem;
+            margin-right: 2.75rem;
+            color: #ffffff;
+        }
+    }
+}

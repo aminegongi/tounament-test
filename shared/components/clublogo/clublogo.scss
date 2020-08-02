@@ -8,12 +8,16 @@
 .img_club {
     margin-top: 2.6875rem;
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     img {
-        margin: 0 1.375rem 2.575rem ;
+        margin: 0 1.375rem 2.575rem;
         justify-self: center;
         align-self: center;
+        max-width: 110px;
+        max-height: 50px;
+        object-fit: contain;
     }
 }
 
@@ -22,10 +26,9 @@
         display: grid;
         row-gap: 1rem;
         img {
-            margin: 0 1.375rem 2.575rem ;
+            margin: 0 1.375rem 2.575rem;
             justify-self: center;
             align-self: center;
         }
     }
-    
 }

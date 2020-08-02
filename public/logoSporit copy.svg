@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140.722" height="28.954" viewBox="0 0 140.722 28.954">
+  <defs>
+    <linearGradient id="linear-gradient" x1="2.673" y1="-0.954" x2="-1.647" y2="2.568" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0082c3"/>
+      <stop offset="1" stop-color="#02be8a"/>
+    </linearGradient>
+  </defs>
+  <g id="logo" transform="translate(-135 -9)">
+    <rect id="Rectangle_740" data-name="Rectangle 740" width="28.954" height="3.048" rx="1.524" transform="translate(152.525 9)" fill="url(#linear-gradient)"/>
+    <rect id="Rectangle_741" data-name="Rectangle 741" width="38.86" height="3.048" rx="1.524" transform="translate(135 15.858)" fill="url(#linear-gradient)"/>
+    <rect id="Rectangle_742" data-name="Rectangle 742" width="38.86" height="3.048" rx="1.524" transform="translate(141.096 34.906)" fill="url(#linear-gradient)"/>
+    <rect id="Rectangle_743" data-name="Rectangle 743" width="29.716" height="3.048" rx="1.524" transform="translate(145.667 27.287)" fill="url(#linear-gradient)"/>
+    <rect id="Rectangle_744" data-name="Rectangle 744" width="17.525" height="3.048" rx="1.524" transform="translate(165.478 21.953)" fill="url(#linear-gradient)"/>
+    <rect id="Rectangle_745" data-name="Rectangle 745" width="6.858" height="3.048" rx="1.524" transform="translate(157.859 21.953)" fill="url(#linear-gradient)"/>
+    <text id="Spor_IT" data-name="Spor&apos;IT" transform="translate(195.722 32.438)" fill="#019aac" font-size="23" font-family="Raleway-BoldItalic, Raleway" font-weight="700" font-style="italic" letter-spacing="0.025em"><tspan x="0" y="0">Spor&apos;IT</tspan></text>
+  </g>
+</svg>

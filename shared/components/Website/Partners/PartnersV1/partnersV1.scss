@@ -1,0 +1,33 @@
+.price{
+    max-width: 1380px;
+    margin: auto;
+    // margin-top: 6.23125rem;
+    text-align: center;
+
+    &__title{
+        font-size: 2.25rem;
+        font-weight: 500;
+   
+        letter-spacing: normal;
+        color: #256092;
+    }
+    &__ligne{
+        padding-top:0.9375rem;
+        color:#79bb43;
+
+    }
+    &__subtitle{
+        font-size: 1.125rem;
+        padding-top: 1.875rem;
+        margin: auto;
+        letter-spacing: normal;
+        color: #2e3034;
+        max-width: 40rem;
+    }
+}
+.club_logo_and_title{
+    margin-top: 8rem;
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+    background-color: #ffffff;
+}

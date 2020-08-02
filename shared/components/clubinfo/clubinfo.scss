@@ -1,0 +1,141 @@
+.club_info{
+    display: flex;
+
+    padding-left:1.5625rem;
+    padding-bottom: 2.5rem;
+    padding-right: 1.5rem;
+}
+.clublist_map{
+ 
+   
+    &__clubinfo{
+     
+        &__detais{
+            &__mapcarousel{
+                display: flex;
+                flex-direction: column;
+                padding-left: 1.5625rem;
+                padding-top:1.5625rem;
+                padding-top: 1.3125rem;
+                
+                img{
+                    max-width: 16.25rem;
+                    max-height: 10rem;
+                   }
+                   &__detaisclub{
+                    //    padding-left:1.5625rem;
+                       padding-top:0.3125rem;
+                       &__nameclub{
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                            font-stretch: normal;
+                            font-style: normal;
+                            line-height: 1.15;
+                            letter-spacing: normal;
+                            text-align: left;
+                            color: #2e3034;
+                       }
+                       &__lieuclub{
+                        padding-top:0.3125rem;
+                        font-size: 0.75rem;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.33;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #2e3034;
+                        max-width: 19rem;
+                       }
+                       &__description{
+                        max-width: 23rem;
+                        padding-top:0.66875rem;
+                        font-size: 1rem;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.38;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #2e3034;
+                       }
+                       &__lien{
+                           padding-top:0.675rem;
+                       }
+                }
+                }
+            &__title_chiffre{
+                    &__title{
+                        padding-top:1.3125rem;
+                        padding-right: 3.3125rem;
+                        font-size: 1.6875rem;
+                        font-weight: bold;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 0.7;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #2e3034;
+                    }
+                    &__number{
+                        padding-top:0.3125rem;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.19;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #2e3034;
+                        }
+                }
+          
+            &__sortby{
+                padding-left: 5.4375rem;
+                padding-top: 1.625rem;
+               
+            }          
+        }
+        &__map{
+                
+            width: 260px;
+            height: 160px;
+            border-radius: 12px;
+            img{
+            max-width: 43.75rem;
+            }
+        }
+    }
+}
+.carousel{
+        text-align: center;
+        height: 1rem;
+        line-height: 10rem;
+        background: #364d79;
+        overflow: hidden;
+        color: #fff;
+        .ant-carousel .slick-slide {
+            text-align: center;
+            height: 10rem;
+            line-height: 10rem;
+            background: #364d79;
+            overflow: hidden;
+          }
+          
+          .ant-carousel .slick-slide h3 {
+            color: #fff;
+          }
+      
+}
+
+@media only screen and (max-width: 414px) {
+    .clublist_map{
+        &__clubinfo{
+            &__map{
+                margin-top: 2rem!important;
+                width: 93px!important;
+                height: 74px!important;
+            }
+            }
+        }
+    }

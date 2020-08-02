@@ -1,0 +1,272 @@
+.navbarserch {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.4375rem;
+    padding-left: 1.6125rem;
+    padding-right: 1.25rem;
+    padding-bottom: 2.1875rem;
+    .items_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 2.5rem;
+        align-content: center;
+    }
+    .search{
+        padding-top:1rem 0.9375rem 1rem 3.125rem;
+      
+        input{
+        border-radius: 5rem;
+        box-shadow: 0 0.0625rem 0.1875rem 0 rgba(0, 0, 0, 0.05);
+        border: solid 0.0625rem #cecece;
+        background-color: #ffffff;
+        }
+    }
+    .item {
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.36;
+        font-size: 0.875rem;
+        color: #2e3034;
+        cursor: pointer;
+        a {
+            color: #2e3034;
+        }
+    }
+    .sign_in {
+        font-size: 0.875rem;
+        color: #ff8760;
+        border-radius: 0.5rem;
+        background-color: #fff3e6;
+        margin-right: 0.9375rem;
+        padding: 0.875rem 1rem 0.84375rem 1rem !important;
+    }
+}
+.buttoncarte{
+    display: none;
+}
+.sign_up {
+font-size: 0.875rem;
+color: #ffffff;
+border-radius: 0.5rem;
+background-color: #26beb5;
+padding: 0.75rem 1.125rem 0.75rem 1.125rem !important;
+border: none;
+}
+.fleshdown svg {
+margin-left: 0.5rem;
+width: 0.78125rem !important;
+height: 0.78125rem !important;
+padding-bottom: 0.0625rem !important;
+padding-top: 0.1875rem !important;
+}
+.subnav_content_container {
+display: none;
+padding-top: 1.25rem;
+position: absolute;
+max-width: 43.125rem;
+padding-right: 1.25rem;
+padding-left: 1.25rem;
+cursor: initial;
+}
+.subnav_content {
+display: grid;
+position: relative;
+left: 1.4375rem;
+grid-template-columns: repeat(3, auto);
+background-color: white;
+background: #ffffff 0% 0% no-repeat padding-box;
+box-shadow: 0px 0px 0.9375rem #00000012;
+border: 0.0625rem solid #e9e9e9;
+border-radius: 0.4375rem;
+padding: 1.5rem;
+
+.feature_desktop_item {
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 3.125rem 1.5625rem auto;
+
+    row-gap: 1rem;
+    border: 0.0625rem solid transparent;
+    border-radius: 0.4375rem;
+    // text-align: justify;
+
+    .title {
+        color: #2e3034;
+        font-size: 1.125rem;
+        font-weight: 500;
+    }
+    .subtitle {
+        color: #2e3034;
+        font-size: 0.875rem;
+        line-height: 1.65;
+    }
+}
+}
+.feature_desktop_item_player:hover {
+border: 1px solid #ffcd67;
+}
+.feature_desktop_item_coach:hover {
+border: 1px solid #ff8760;
+}
+.feature_desktop_item_club:hover {
+border: 1px solid #26beb5;
+}
+
+a:link {
+text-decoration: none;
+padding-bottom: 0.625rem;
+color: black;
+}
+.sup:hover .subnav_content_container {
+display: grid;
+position: absolute;
+}
+@media only screen and (max-width:1200px){
+    .navbarserch{
+    .items_container{
+        column-gap: 1rem;
+        }
+    }
+    .button_container{
+        display: flex;
+    }
+   
+}
+@media only screen and (max-width:1024px){
+    .navbarserch{
+         .item {
+       
+        font-size: 0.73rem !important;
+    }
+}
+}
+@media only screen and (max-width: 850px) {
+    .logo{
+        display: flex;
+        img{
+            padding-top: 0.9rem;
+            padding-right:1.6875rem
+        }
+    }
+    .selectfilter{
+        padding-top: 6rem;
+    }
+    .navbar_container {
+        display: none;
+    }
+    .mobile_burger_menu {
+        display: block;
+        z-index: 9999999999999999;
+        position: fixed;
+        background-color: white;
+        width: 100%;
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-bottom: 15px;
+    }
+    .menu_item {
+        color: black;
+        :hover {
+            color: black;
+        }
+    }
+    .feature_item {
+        display: grid;
+        grid-template-columns: 35px auto;
+        column-gap: 10px;
+        align-items: center;
+        color: black;
+        :hover {
+            color: black;
+        }
+        img {
+            justify-self: center;
+        }
+    }
+    .items_container{
+        display: grid;
+        
+        grid-column-gap: 2rem;
+        grid-gap: 2rem;
+        padding-top: 2rem;
+    }
+    .button_container{
+        display: grid;
+        grid-column-gap: 2rem;
+        grid-gap: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 5.5rem;
+    }
+   .sign_in {
+            font-size: 0.875rem;
+            color: #ff8760;
+            border-radius: 0.5rem;
+            background-color: #fff3e6;
+            margin-right: 0.9375rem;
+            padding: 0.875rem 1rem 0.84375rem 1rem !important;
+        
+    }
+    .sign_up {
+        font-size: 0.875rem;
+        color: #ffffff;
+        border-radius: 0.5rem;
+        background-color: #26beb5;
+        // padding: 0.75rem 1.125rem 0.75rem 1.125rem !important;
+        padding: 14px 18px 14px 36px !important;
+        border: none;
+        }
+    .subtitle{
+        display: none;
+    }
+    .subnav_content_container{
+        display: block;
+    }
+    .subnav_content{
+        display: flex;
+        flex-direction: column;
+        box-shadow: none;
+        border: none;
+        border-radius: none;
+        left:0rem
+    }
+    .subnav_content_container {
+        position: relative;
+}
+.feature_desktop_item{
+    display: grid;
+    grid-template-columns: 7.125rem 1.5625rem auto;
+    .title{
+        padding-top: 1.6rem;
+
+    }
+}
+.carte{
+    width: 81px;
+    height: 39px;
+    border-radius: 80px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    border: solid 1px #cecece;
+    background-color: #ffffff;
+    span{
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.36;
+        letter-spacing: normal;
+        text-align: left;
+        color: #26beb5;
+    }
+}
+
+}
+.ant-input-affix-wrapper .ant-input:not(:last-child) {
+    width: 256px !important;
+    height: 49px !important;
+    border-radius: 80px !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+    border: solid 1px #cecece !important;
+    background-color: #ffffff !important;
+}

@@ -1,0 +1,113 @@
+.headerblock{
+    // max-width: 1380px;
+    margin: auto;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    &__img{
+       
+         margin-top:0.75rem;
+         margin-left:2.75rem;
+         margin-bottom: 0.76875rem
+    }
+    &__connexion{
+        font-size: 0.8125rem;
+        margin-top: 1.125rem;
+        margin-bottom: 0.875rem;
+        margin-right: 2.75rem;
+        color: #ffffff;
+    }
+}
+.navbar{
+    // max-width: 1380px;
+    margin: auto;
+    display: flex;
+    
+    justify-content: space-evenly;
+    background-color: #79bb43;
+    padding-left: 5.5625rem;
+    height: 8.75rem;
+    &__menutext{
+        padding-top:3.75rem;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.19;
+        letter-spacing: normal;
+        text-align: right;
+        color: #ffffff;
+        &__club{
+            padding-left:9.5625rem;
+        }
+        &__menutextone{
+            display: flex;
+            justify-content: space-evenly;
+            padding-top:3.75rem;
+            font-size: 1rem;
+            font-weight: 500;
+            
+            line-height: 1.19;
+            letter-spacing: normal;
+            text-align: right;
+            color: #ffffff;
+        }
+    }
+    &__imglogoclub{
+        width: 11.5rem;
+        height: 11.5rem;
+        padding-top:1.25rem;
+        object-fit: contain;
+    }
+    &__rejoindrebutton{
+        margin-top: 2.8125rem;
+        margin-bottom: 2.8125rem;
+        border-radius: 0.5rem;
+        background-color: #ffffff;
+        span{
+            padding: 0.9375rem 2rem 0.9375rem 2rem;
+            font-size: 1rem;
+            color: #79bb43;
+            line-height: 1.38;
+        }
+    }
+}
+
+
+.footer{
+    margin-top:3.125rem;
+}
+
+@media only screen and (max-width: 850px) {
+    .navbar {
+        padding-left: 0.5625rem;
+        justify-content: space-between;
+        &__rejoindrebutton{
+            margin-top: 2.8125rem;
+            margin-bottom: 2.8125rem;
+            border-radius: 0.5rem;
+            background-color: #79bb43;
+            padding: 0.9375rem 2rem 0.9375rem 2rem;
+            span{
+                padding: 0.9375rem 2rem 0.9375rem 2rem;
+                font-size: 1rem;
+                color: #ffffff;
+                line-height: 1.38;
+            }
+        }
+        &__menutext{
+            font-size: 14px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.36;
+            letter-spacing: normal;
+            text-align: left;
+            color: #2e3034;
+        }
+    }
+    .buttonclose{
+        margin-left: -263px;
+    
+    }
+   
+    
+}
