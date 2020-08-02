@@ -11,7 +11,7 @@ import Contact from '../../shared/components/Website/Contact/index'
 import globalCss from '../../shared/global-style.scss'
 import logoblanc from '../../public/icon/logobanc.svg'
 import Link from "next/link";
-import GlobalNavbar from '../../shared/components/Navbar/Navbar';
+import GlobalNavbar from '../../shared/components/navbar/Navbar';
 
 
 const clubWebsite = ({ status, data, clubName, logo }) => {
