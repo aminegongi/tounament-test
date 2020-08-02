@@ -9,7 +9,7 @@ import Price from '../../shared/components/Website/Price/index'
 import Partners from '../../shared/components/Website/Partners/index'
 import Contact from '../../shared/components/Website/Contact/index'
 import globalCss from '../../shared/global-style.scss'
-import logoblanc from '../../public/icon/logobanc.svg'
+// import logoblanc from '../../public/icon/logobanc.svg'
 import Link from "next/link";
 import GlobalNavbar from '../../shared/components/navbar/Navbar';
 
@@ -50,7 +50,7 @@ const clubWebsite = ({ status, data, clubName, logo }) => {
                     <div className={css.headerblock}>
                         <Link href="/" >
                             <a>
-                                <img className={css.headerblock__img} src={logoblanc} alt="logo" />
+                                {/* <img className={css.headerblock__img} src={logoblanc} alt="logo" /> */}
                             </a>
                             {/* <span className={css.headerblock__connexion}>Connexion</span> */}
                         </Link>
