@@ -1,5 +1,5 @@
 // import Head from "next/head";
-// import fetch from 'isomorphic-unfetch'
+import fetch from 'isomorphic-unfetch'
 // import css from '../../shared/css/clubWebsite.scss'
 // import Navbar from '../../shared/components/Website/Navbar/index'
 // import Introduction from '../../shared/components/Website/Introduction/index'
