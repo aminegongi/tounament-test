@@ -14,4 +14,4 @@ WORKDIR /app
 
 COPY --from=builder /app /app
 
-ENTRYPOINT next start -p $PORT
+ENTRYPOINT ./node_modules/.bin/next start -p $PORT
