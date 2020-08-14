@@ -11,15 +11,16 @@ RUN yarn build \
     && mv ../yarn.lock . && yarn init -y \
     && yarn add next
 
-RUN ls -al
+RUN ls -al .next
 RUN pwd
 
 FROM node:alpine AS runner
 
 WORKDIR /app
 
-COPY --from=builder /app/build/ build/
-COPY --from=builder /app/server/ server/
-RUN mv server/node_modules server/package.json ./
+COPY --from=builder /app/.next/ .next/
+COPY --from=builder /app/_server/ ./
+RUN ls -al
+RUN pwd
 
 ENTRYPOINT [ "yarn", "run", "start" ]
