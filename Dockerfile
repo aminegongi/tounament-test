@@ -8,7 +8,7 @@ RUN yarn install
 COPY . .
 RUN yarn build \
     && mkdir _server && cd _server \
-    && mv ../yarn.lock && yarn init -y \
+    && mv ../yarn.lock . && yarn init -y \
     && yarn add next
 
 RUN ls -al
