@@ -12,9 +12,7 @@ FROM node:alpine AS runner
 
 WORKDIR /app
 
-COPY --from=builder /app/node_modules/ ./node_modules/
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/package.json ./
+COPY --from=builder /app /app
 
 RUN ls -al
 RUN pwd
