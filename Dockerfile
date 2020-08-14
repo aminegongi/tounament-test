@@ -14,7 +14,4 @@ WORKDIR /app
 
 COPY --from=builder /app /app
 
-RUN ls -al
-RUN pwd
-
-ENTRYPOINT [ "yarn", "run", "start" ]
+ENTRYPOINT next start -p $PORT
