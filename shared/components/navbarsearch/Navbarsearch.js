@@ -11,7 +11,7 @@ import globalCss from '../../global-style.scss'
 
 import { useState, useEffect,useRef } from 'react';
 
-function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub}) {
+function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData}) {
   const mobile = useMediaPredicate("(max-width: 850px)");
   const [isMobile, setIsMobile] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -31,7 +31,7 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub}) {
 
     const { Search } = Input;
     const Sherch = value => { 
-        setdatawebsite(el.filter(e => e.title.includes(value)));
+        setdatawebsite(serverData.filter(e => e.title.includes(value)));
       }; 
       useEffect(() => {
         if (mobile !== isMobile) {
@@ -106,7 +106,7 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub}) {
             </div>
 
             <div className={css.item}>
-              <Link href={routes.CONTACT_US.clubPath}>
+            <Link href={`/searchclub`} >
                 <a>
                   Clubs partenaires
                 </a>

@@ -19,17 +19,14 @@ const Indexs = (props) => {
     const [datacopy, setdata] = useState([]);
     const [datawebsite, setdatawebsite] = useState([]);
     const [isMobile, setIsMobile] = useState(false)
+    const [serverData, setServerData] = useState([])
     const [showclub, setshowclub] = useState("liste");
-
-
-   
-    
-
 
     const fetchWebsitedata = async () => {
         const result = await axios.get("https://dev.api.isporit.com/Clubs/all?hasWebsite=true")
-
+        
         setdatawebsite(result.data)
+        setServerData(result.data)
     }
     useEffect(() => {
         fetchWebsitedata()
@@ -62,8 +59,8 @@ const Indexs = (props) => {
     }
     return (
         <div>
-            <Navbarsearch el={datawebsite} setshowclub={setshowclub} showclub={showclub} img={"icon/logoindexpage.png"} setdatawebsite={setdatawebsite} />
-
+            <Navbarsearch el={datawebsite} serverData={serverData} setshowclub={setshowclub} 
+            showclub={showclub} img={"icon/logoindexpage.png"} setdatawebsite={setdatawebsite} />
             <div className={css.selectfilter}>
                 <Select
                     defaultValue="Type d'activités (4)"
@@ -132,7 +129,7 @@ const Indexs = (props) => {
                 <div>Clubs partenaires</div>
             </div>
             <div className={ css.clublist_map  }>
-                <div className={ showclub==="liste" ? css.clublist_map__clubinfo__detais : css.listeclubs}>
+                <div className={ showclub==="carte" ? css.clublist_map__clubinfo__detais : css.listeclubs}>
                     <div className={css.clublist_map__clubinfo__detais__title_sortby}>
                         <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre}>
                             <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre__title}>
@@ -165,11 +162,10 @@ const Indexs = (props) => {
 
                         {!isEmpty(datawebsite) ?
                             datawebsite.map((el, key) => {
-                                return (<Clubinfo key={Math.round(Math.random() * Math.random() * 100)} el={el} img={'../icon/tennislogo.svg'} />)
+                                return (<Clubinfo key={key} el={el} img={'../icon/tennislogo.svg'} />)
                             }) : <Skeleton />}
 
                     </div>
-
 
                 </div>
                 {/* <img className={css.imgmap} src="../icon/cartmap.png"  alt="phoneicon"></img> */}

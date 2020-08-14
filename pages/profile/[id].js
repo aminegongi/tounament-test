@@ -9,6 +9,7 @@ import globalCss from '../../shared/global-style.scss'
 
 import Link from 'next/link';
 import Navbarsearch from '../../shared/components/navbarsearch/Navbarsearch';
+import Achivements from '../../shared/components/Achivements/achivements';
 import { useRouter } from "next/router";
 
 import { Input, Select,Timeline  } from 'antd';
@@ -53,8 +54,7 @@ const Indexs = ({props,data,message}) => {
             <div className={css.navbar}>
                 <Navbarsearch img={"../icon/logoindexpage.png"} el={datawebsite}  setdatawebsite={setdatawebsite} />
             </div>
-{            console.log("gfgfg",data)
-}           <div className={css.profilplayer}>
+          <div className={css.profilplayer}>
                 <div className={css.profilplayer__title}>
                     Profil
                 </div>
@@ -80,18 +80,8 @@ const Indexs = ({props,data,message}) => {
                              </div>
                          </div>
                      </div>
-                <div className={css.profilplayer__infoplayer__clubinfo}>
+               
 
-                    <div className={css.profilplayer__infoplayer__clubinfo__clubnow}>
-                        <div className={css.profilplayer__infoplayer__clubinfo__clubnow__club}>club :</div>
-                        <div className={css.profilplayer__infoplayer__clubinfo__clubnow__clubname}>ASM</div>
-                    </div>
-                    <div className={css.profilplayer__infoplayer__clubinfo__clubprevious}>
-                        <div className={css.profilplayer__infoplayer__clubinfo__clubprevious__club}>Club précédent : </div>
-
-                        <div className={css.profilplayer__infoplayer__clubinfo__clubprevious__clubname}>ASM</div>
-                    </div>
-                </div>
                 <div className={css.profilplayer__infoplayer__number}>
                     <div className={css.profilplayer__infoplayer__number__numberplayer}>Numéro :</div>
                     <div className={css.profilplayer__infoplayer__number__numberchiffre}> {data.phoneNumber}</div>
@@ -105,62 +95,11 @@ const Indexs = ({props,data,message}) => {
 
                         </a>
                 </div>
-                <div className={css.profilplayer__experiencetitle}>
-                     Expérience
-                </div>
-                <div className={css.profilplayer__all_experience}>
-                    
-                </div>
-            
-                <Timeline className={css.timeline} >
-                <Timeline.Item>
-                    <div className={css.playerexperiance}>
-                        <div className={css.playerexperiance__title}>
-                            <div className={css.playerexperiance__title__clubtitle}>
-                                Hammam Lif Center 
-                            </div>
-                            <div className={css.playerexperiance__title__date}>
-                                (Mai 2017-Avril 2018)
-                            </div>
-                         </div>
-                         <div className={css.playerexperiance__description}>
-                            lorem Ipsum dolor aset abim dolor aset lorem Ipsum dolor aset
-                            abim dolor aset lorem Ipsum dolor aset abim dolor aset lorem 
-                            Ipsum dolor aset abim dolor aset lorem Ipsum dolor aset abim
-                            dolor aset lorem Ipsum dolor aset abim dolor aset lorem Ipsum dolor
-                            aset abim dolor aset lorem Ipsum dolor aset abim dolor aset lorem 
-                            Ipsum dolor aset.
-                         </div>
-                    </div>
-                         
-                    </Timeline.Item>
+                   <Achivements title='Expérience'  data={data.experiences}/>
+                   <Achivements title='Palmarès'  data={data.achievements}/>
 
-                    <Timeline.Item>
-                    <div className={css.playerexperiance}>
-                        <div className={css.playerexperiance__title}>
-                            <div className={css.playerexperiance__title__clubtitle}>
-                                Hammam Lif Center 
-                            </div>
-                            <div className={css.playerexperiance__title__date}>
-                                (Mai 2017-Avril 2018)
-                            </div>
-                         </div>
-                         <div className={css.playerexperiance__description}>
-                            lorem Ipsum dolor aset abim dolor aset lorem Ipsum dolor aset
-                            abim dolor aset lorem Ipsum dolor aset abim dolor aset lorem 
-                            Ipsum dolor aset abim dolor aset lorem Ipsum dolor aset abim
-                            dolor aset lorem Ipsum dolor aset abim dolor aset lorem Ipsum dolor
-                            aset abim dolor aset lorem Ipsum dolor aset abim dolor aset lorem 
-                            Ipsum dolor aset.
-                         </div>
-                    </div>
-                         
-                    </Timeline.Item>
-                
-            </Timeline>
-        
             </div>
-        
+          
         </div>
       )
     // }   
