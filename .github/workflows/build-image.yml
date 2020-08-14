@@ -22,11 +22,9 @@ jobs:
         username: someone
         password: ${{secrets.GITHUB_TOKEN}} 
         registry: docker.pkg.github.com 
-    - name: Kubernetes CLI - kubectl
-      uses: steebchen/kubectl@v1.0.0
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        KUBECTL_VERSION: "1.18"
+    - uses: danielr1996/kubectl-action@1.0.0
+      name: Deploy
       with:
-        args: '"rollout restart deployment/isporit-website -n isporit"'
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          args: rollout restart deployment/isporit-website -n isporit
 
