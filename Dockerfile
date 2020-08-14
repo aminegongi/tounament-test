@@ -9,7 +9,7 @@ COPY . .
 RUN yarn build \
     && mkdir _server && cd _server \
     && mv ../yarn.lock . && yarn init -y \
-    && yarn add next
+    && yarn add next@`node -p -e "require('../package.json').dependencies.next"`
 
 RUN ls -al .next
 RUN pwd
