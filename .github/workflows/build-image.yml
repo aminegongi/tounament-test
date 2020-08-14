@@ -25,6 +25,6 @@ jobs:
     - uses: danielr1996/kubectl-action@1.0.0
       name: Deploy
       with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          kubeconfig: ${{ secrets.KUBE_CONFIG_CONFIG }}
           args: rollout restart deployment/isporit-website -n isporit
 
