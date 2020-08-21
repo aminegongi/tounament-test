@@ -1,3 +1,4 @@
+import getConfig from "next/config"
 import Head from "next/head"
 import css from '../shared/css/login.scss'
 import { useState, useEffect, Fragment } from 'react'
@@ -10,6 +11,9 @@ import moment from 'moment'
 import Navbar from "../shared/components/navbar/Navbar"
 import Axios from "axios"
 import { Modal } from 'antd';
+
+const { publicRuntimeConfig } = getConfig();
+
 
 function validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -65,9 +69,16 @@ const SignUp = () => {
 
     }, [i18n.language])
 
+    const {
+        redirectTo = publicRuntimeConfig.LOGIN_REDIRECT_URL,
+        env = "prod"
+    } = router.query;
+    const apiUrl = publicRuntimeConfig[`${env.toUpperCase()}_API_URL`];
+    const registerApiUrl = apiUrl + "/auth/register"
+    const loginApiUrl = apiUrl + "/auth/login";
 
-
-    const onRegister = async () => {
+    const onRegister = async (e) => {
+        e.preventDefault();
         if (
             data.username.length < 6 ||
             isNumber(data.username.slice(0, 1)) ||
@@ -89,61 +100,29 @@ const SignUp = () => {
 
         try {
             let result = {}
-            if (router.query.env && router.query.env.includes('dev')) {
-                if (router.query.invitationToken) {
-                    result = await Axios.post(
-                        "https://dev.api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
-                        {
-                            ...data
-                        },
-                    )
-                } else {
-                    result = await Axios.post(
-                        "https://dev.api.isporit.com/auth/register",
-                        {
-                            ...data
-                        },
-                    )
-                }
-            } else if (router.query.env && router.query.env.includes('test')) {
-                if (router.query.invitationToken) {
-                    result = await Axios.post(
-                        "https://test.api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
-                        {
-                            ...data
-                        },
-                    )
-                } else {
-                    result = await Axios.post(
-                        "https://test.api.isporit.com/auth/register",
-                        {
-                            ...data
-                        },
-                    )
-                }
-            } else {
-                if (router.query.invitationToken) {
-                    result = await Axios.post(
-                        "https://api.isporit.com/auth/register?invitationToken=" + router.query.invitationToken,
-                        {
-                            ...data
-                        },
-                    )
-                } else {
-                    result = await Axios.post(
-                        "https://api.isporit.com/auth/register",
-                        {
-                            ...data
-                        },
-                    )
-                }
+            let query = "";
+            if (router.query.invitationToken) {
+                query = `invitationToken=${router.query.invitationToken}`
             }
-                
+            result = await Axios.post(
+                `${registerApiUrl}?${query}`,
+                {
+                    ...data
+                },
+            )
 
             if (result.data.message === "invalidInvitation") {
                 return Modal.success({
                     content: 'Bienvenue à iSporit, Veuillez confirmer votre inscription par email',
-                    onOk() { router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '' + '&verifyEmail=true') }
+                    onOk() {
+                        router.push({
+                            pathname: "/login", query: {
+                                ...router.query,
+                                email: data.email,
+                                verifyEmail: true
+                            }
+                        })
+                    }
                 })
             }
             return Modal.success({
@@ -163,67 +142,24 @@ const SignUp = () => {
 
 
     const onLogin = async () => {
-        if (router.query.env && router.query.env.includes('dev')) {
-            try {
-                const result = await Axios.post(
-                    "https://dev.api.isporit.com/auth/login",
-                    {
-                        email: data.email,
-                        password: data.password,
-                    },
-                )
-                localStorage.setItem('token', result.data.token)
-
-                if (router.query.isLocalhost === 'true') {
-
-                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
-                } else {
-                    window.location.href = 'https://dev.isporit.com?accessToken=' + result.data.token
+        try {
+            const result = await Axios.post(
+                loginApiUrl,
+                {
+                    email: data.email,
+                    password: data.password,
+                },
+            )
+            localStorage.setItem('token', result.data.token)
+            window.location.href = `${redirectTo}?accessToken=${result.data.token}`
+        } catch (error) {
+            router.push({
+                pathname: "/login", query: {
+                    ...router.query,
+                    email: data.email,
+                    verifyEmail: true
                 }
-
-            } catch (error) {
-                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '')
-            }
-        } else if (router.query.env && router.query.env.includes('test')) {
-            try {
-                const result = await Axios.post(
-                    "https://test.api.isporit.com/auth/login",
-                    {
-                        email: data.email,
-                        password: data.password,
-                    },
-                )
-                localStorage.setItem('token', result.data.token)
-                if (router.query.isLocalhost === 'true') {
-
-                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
-                } else {
-                    window.location.href = 'https://test.isporit.com?accessToken=' + result.data.token
-                }
-
-            } catch (error) {
-                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '')
-            }
-        } else {
-            try {
-                const result = await Axios.post(
-                    "https://api.isporit.com/auth/login",
-                    {
-                        email: data.email,
-                        password: data.password,
-                    },
-                )
-                localStorage.setItem('token', result.data.token)
-                if (router.query.isLocalhost === 'true') {
-
-                    window.location.href = 'http://localhost:3000?accessToken=' + result.data.token
-                } else {
-                    window.location.href = 'https://app.isporit.com?accessToken=' + result.data.token
-                }
-
-            } catch (error) {
-                router.push('/login?email=' + data.email + '&verifyEmail=true&env=' + router.query.env || '' + '&isLocalhost=' + router.query.isLocalhost || '')
-            }
+            })
         }
     }
 
