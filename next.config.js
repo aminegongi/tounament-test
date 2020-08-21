@@ -10,6 +10,13 @@ if (typeof require !== 'undefined') {
 }
 
 module.exports = withCss(withSass(withImages({
+  publicRuntimeConfig:{
+    DEV_API_URL: process.env.DEV_API_URL,
+    TEST_API_URL: process.env.TEST_API_URL,
+    PROD_API_URL: process.env.PROD_API_URL,
+    LOGIN_REDIRECT_URL: process.env.LOGIN_REDIRECT_URL,
+  },
+
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
