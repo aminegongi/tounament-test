@@ -26,5 +26,5 @@ jobs:
       name: Deploy
       with:
           kubeconfig: ${{ SECRETS.KUBE_CONFIG_DATA }}
-          args: rollout restart deployment/isporit-website -n isporit
+          args: rollout restart deployment/website-isporit -n website-isporit
 
