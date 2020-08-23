@@ -6,6 +6,7 @@ import Link from "next/link"
 import { isEmpty, isNumber } from 'lodash'
 import { useRouter } from 'next/router'
 import Axios from "axios"
+import Layout from "../shared/components/layout/Layout";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -66,16 +67,17 @@ const Login = (props) => {
                 <meta name="keywords" content="sporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
                 <meta name="author" content="sporit" />
             </Head>
-            <div className={css.login_container}>
-                <form className={css.left_side}>
-                    <div className={css.logo}>
-                        <Link href={{ pathname: '/' }} >
-                            <a>
-                                <img src="icon/logoindexpage.png" alt="" />
-                            </a>
-                        </Link>
-                    </div>
-                    <h1 className={css.page_title}>Connectez-vous</h1>
+            <Layout>
+                <div className={css.login_container}>
+                    <form className={css.left_side}>
+                        <div className={css.logo}>
+                            <Link href={{ pathname: '/' }} >
+                                <a>
+                                    <img src="icon/logoindexpage.png" alt="" />
+                                </a>
+                            </Link>
+                        </div>
+                        <h1 className={css.page_title}>Connectez-vous</h1>
                         <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' type="email" />
                         {
                             localErrors.inputErrors && isEmpty(email) && <span className={css.error}>Champ obligatoire</span>
@@ -95,26 +97,27 @@ const Login = (props) => {
                         <div className={css.signup_btn_container}>
                             <button onClick={onLogin} className={css.primary_button}>Se Connecter</button>
                         </div>
-                </form>
+                    </form>
 
-                <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
-                    <h2 className={css.title}>
-                        Rejoignez notre platforme
+                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
+                        <h2 className={css.title}>
+                            Rejoignez notre platforme
                    </h2>
 
-                    <span className={css.description}>
-                        Entrez vos information et débutez avec nous votre parcours
+                        <span className={css.description}>
+                            Entrez vos information et débutez avec nous votre parcours
                    </span>
-                    <Link href={{ pathname: '/sign-up', query: router.query }} >
-                        <a>
-                            <button className={css.button} type="submit">
-                                S'INSCRIRE
+                        <Link href={{ pathname: '/sign-up', query: router.query }} >
+                            <a>
+                                <button className={css.button} type="submit">
+                                    S'INSCRIRE
                             </button>
-                        </a>
-                    </Link>
+                            </a>
+                        </Link>
 
+                    </div>
                 </div>
-            </div>
+            </Layout>
 
         </div>
     )
