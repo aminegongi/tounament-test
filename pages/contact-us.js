@@ -46,7 +46,7 @@ const ContactUs = (props) => {
         if (!model.body || model.body === "") newErrors.body = true
         setErrors(newErrors)
         if (isEmpty(newErrors)) {
-            Axios.post('https://api.isporit.com/contact/', { ...model, subject: "( " + model.role + " ) " + model.subject }).then(res => {
+            Axios.post('https://isporit.com/api/contact/', { ...model, subject: "( " + model.role + " ) " + model.subject }).then(res => {
                 // alert(props.t("contactUsOnSubmitSuccess", "Merci! nous vous contacterons dans les prochaines 24h"))
                 alert("Merci! nous vous contacterons dans les prochaines 24h")
 
