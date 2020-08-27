@@ -50,6 +50,7 @@ const Index = (props) => {
   }, [i18n.language])
 
   useEffect(() => {
+    console.log("This was deploy using swarm")
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
