@@ -7,7 +7,6 @@ const nextI18next = require('./i18n')
 const port = process.env.PORT || 3000
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler();
-console.log("Server updated in the swarm")
 
 // (async () => {
 //   await app.prepare()
