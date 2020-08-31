@@ -11,6 +11,7 @@ import moment from 'moment'
 import Navbar from "../shared/components/navbar/Navbar"
 import Axios from "axios"
 import { Modal } from 'antd';
+import Layout from "../shared/components/layout/Layout"
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -174,124 +175,126 @@ const SignUp = () => {
                 <meta name="keywords" content="sporit,Contactez-nous,contact@isporit.com,(+216) 54 162 644" />
                 <meta name="author" content="sporit" />
             </Head>
-            <div className={css.login_container}>
-                <div className={css.left_side}>
-                    <div className={css.logo}>
-                        <Link href={{ pathname: '/' }} >
-                            <a>
-                                <img src="icon/logoindexpage.png" alt="" />
-                            </a>
-                        </Link>
+            <Layout>
+                <div className={css.login_container}>
+                    <div className={css.left_side}>
+                        <div className={css.logo}>
+                            <Link href={{ pathname: '/' }} >
+                                <a>
+                                    <img src="icon/logoindexpage.png" alt="" />
+                                </a>
+                            </Link>
+                        </div>
+                        <h1 className={css.page_title}>Connectez-vous</h1>
+
+                        <input value={data.username} onChange={e => setData({ ...data, username: e.target.value })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
+                        {
+                            localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
+                        }
+                        {
+                            localErrors.inputErrors && !validateUsername(data.username) && <span className={css.error}>Nom d'utilisateur n'est pas valide</span>
+                        }
+                        {
+                            localErrors.inputErrors && data.username.includes(" ") && <span className={css.error}>Aucun espace n'est autorisé</span>
+                        }
+
+
+                        {
+                            localErrors.usernameAlreadyExists && <span className={css.error}>Nom d'utilisateur existe déjà</span>
+                        }
+
+
+                        <input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='Prénom' type='text' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.firstName) && <span className={css.error}>Champ obligatoire</span>
+                        }
+
+
+                        <input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='Nom de famille' type='text' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.lastName) && <span className={css.error}>Champ obligatoire</span>
+                        }
+
+
+                        <input maxLength={40} value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
+                        {
+                            localErrors.inputErrors && isEmpty(data.email) && <span className={css.error}>Champ obligatoire</span>
+                        }
+
+                        {
+                            localErrors.inputErrors && !validateEmail(data.email) && <span className={css.error}>Cette adresse email n'est pas valide</span>
+                        }
+
+                        {
+                            localErrors.emailAlreadyExists && <span className={css.error}>Email existe déjà</span>
+                        }
+
+
+
+
+                        <input value={data.birthday} onChange={e => setData({ ...data, birthday: e.target.value })} className={css.input} placeholder='Date de naissance' type='date' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.birthday) && <span className={css.error}>Champ obligatoire</span>
+                        }
+                        {
+                            localErrors.inputErrors && moment().isBefore(data.birthday) && <span className={css.error}>Date n'est pas valid</span>
+                        }
+
+                        <input maxLength={40} value={data.phoneNumber} onChange={e => setData({ ...data, phoneNumber: e.target.value })} className={css.input} placeholder='Numéro de téléphone' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.phoneNumber) && <span className={css.error}>Champ obligatoire</span>
+                        }
+
+
+                        {
+                            localErrors.inputErrors && !validatePhoneNumber(data.phoneNumber) && <span className={css.error}>Numéro de téléphone n'est pas valide</span>
+                        }
+                        {
+                            localErrors.inputErrors && data.phoneNumber.length < 7 && <span className={css.error}>Au moins 8 numéros</span>
+                        }
+
+                        {
+                            !router.query.invitationToken && <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
+                                <option value="player">Joueur</option>
+                                <option value="coach">Entraineur</option>
+                            </select>
+                        }
+
+
+                        <input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.password) && <span className={css.error}>Champ obligatoire</span>
+                        }
+
+                        <input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={css.input} placeholder='Confirmation mot de passe' type='password' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={css.error}>Champ obligatoire</span>
+                        }
+                        {
+                            localErrors.inputErrors && data.password !== data.confirmPassword && <span className={css.error}>Deux mots de passe ne sont pas égaux</span>
+                        }
+
+                        <div className={css.signup_btn_container}>
+                            <button onClick={onRegister} className={css.primary_button}>S'INSCRIRE</button>
+                        </div>
                     </div>
-                    <h1 className={css.page_title}>Connectez-vous</h1>
 
-                    <input value={data.username} onChange={e => setData({ ...data, username: e.target.value })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
-                    {
-                        localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
-                    }
-                    {
-                        localErrors.inputErrors && !validateUsername(data.username) && <span className={css.error}>Nom d'utilisateur n'est pas valide</span>
-                    }
-                    {
-                        localErrors.inputErrors && data.username.includes(" ") && <span className={css.error}>Aucun espace n'est autorisé</span>
-                    }
-
-
-                    {
-                        localErrors.usernameAlreadyExists && <span className={css.error}>Nom d'utilisateur existe déjà</span>
-                    }
-
-
-                    <input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='Prénom' type='text' />
-                    {
-                        localErrors.inputErrors && isEmpty(data.firstName) && <span className={css.error}>Champ obligatoire</span>
-                    }
-
-
-                    <input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='Nom de famille' type='text' />
-                    {
-                        localErrors.inputErrors && isEmpty(data.lastName) && <span className={css.error}>Champ obligatoire</span>
-                    }
-
-
-                    <input maxLength={40} value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
-                    {
-                        localErrors.inputErrors && isEmpty(data.email) && <span className={css.error}>Champ obligatoire</span>
-                    }
-
-                    {
-                        localErrors.inputErrors && !validateEmail(data.email) && <span className={css.error}>Cette adresse email n'est pas valide</span>
-                    }
-
-                    {
-                        localErrors.emailAlreadyExists && <span className={css.error}>Email existe déjà</span>
-                    }
-
-
-
-
-                    <input value={data.birthday} onChange={e => setData({ ...data, birthday: e.target.value })} className={css.input} placeholder='Date de naissance' type='date' />
-                    {
-                        localErrors.inputErrors && isEmpty(data.birthday) && <span className={css.error}>Champ obligatoire</span>
-                    }
-                    {
-                        localErrors.inputErrors && moment().isBefore(data.birthday) && <span className={css.error}>Date n'est pas valid</span>
-                    }
-
-                    <input maxLength={40} value={data.phoneNumber} onChange={e => setData({ ...data, phoneNumber: e.target.value })} className={css.input} placeholder='Numéro de téléphone' />
-                    {
-                        localErrors.inputErrors && isEmpty(data.phoneNumber) && <span className={css.error}>Champ obligatoire</span>
-                    }
-
-
-                    {
-                        localErrors.inputErrors && !validatePhoneNumber(data.phoneNumber) && <span className={css.error}>Numéro de téléphone n'est pas valide</span>
-                    }
-                    {
-                        localErrors.inputErrors && data.phoneNumber.length < 7 && <span className={css.error}>Au moins 8 numéros</span>
-                    }
-
-                    {
-                        !router.query.invitationToken && <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
-                            <option value="player">Joueur</option>
-                            <option value="coach">Entraineur</option>
-                        </select>
-                    }
-
-
-                    <input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
-                    {
-                        localErrors.inputErrors && isEmpty(data.password) && <span className={css.error}>Champ obligatoire</span>
-                    }
-
-                    <input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={css.input} placeholder='Confirmation mot de passe' type='password' />
-                    {
-                        localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={css.error}>Champ obligatoire</span>
-                    }
-                    {
-                        localErrors.inputErrors && data.password !== data.confirmPassword && <span className={css.error}>Deux mots de passe ne sont pas égaux</span>
-                    }
-
-                    <div className={css.signup_btn_container}>
-                        <button onClick={onRegister} className={css.primary_button}>S'INSCRIRE</button>
-                    </div>
-                </div>
-
-                <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
-                    <h2 className={css.title}>
-                        Vous avez déjà un compte
+                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
+                        <h2 className={css.title}>
+                            Vous avez déjà un compte
                    </h2>
 
-                    <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost || '', env: router.query.env || '' } }} >
-                        <a>
-                            <button className={css.button} type="submit">
-                                SE CONNECTER
+                        <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost || '', env: router.query.env || '' } }} >
+                            <a>
+                                <button className={css.button} type="submit">
+                                    SE CONNECTER
                             </button>
-                        </a>
-                    </Link>
+                            </a>
+                        </Link>
 
+                    </div>
                 </div>
-            </div>
+            </Layout>
 
 
         </div>

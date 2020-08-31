@@ -78,16 +78,16 @@ const Index = (props) => {
                 <div>
                   iSporit vous fera gagner du temps pour gérer la présence de vos groupes,
                   l'organisation de vos calendriers, événements et plus encore.
-              </div>
+                </div>
               </div>
               <Link href={routes.CLUB_FEATURES.path} >
                 <button className={css.gerer_team}>
                   Gérer mon équipe gratuitement
-              </button>
+                </button>
               </Link>
               <div className={css.for_windows}>
                 Pour Windows, Mac, Android et iOS
-            </div>
+              </div>
             </div>
             <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
           </div>

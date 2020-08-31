@@ -30,7 +30,7 @@ function NavbarV1({ data, logo }) {
                             <a href="#contact" className={css.navbarV1__container__menu__text}>CONTACT</a>
                         </div>
                         <div className={css.navbarV1__container__logo}>
-                            <img src={logo} alt="" />
+                            <img src={!isEmpty(logo) ? logo : '/logo-192.png'} alt="" />
                         </div>
                         <div className={css.navbarV1__container__contact}>
                             <div className={css.navbarV1__container__contact__text}>
@@ -41,7 +41,7 @@ function NavbarV1({ data, logo }) {
                                     <button onClick={() => { }} className={css.navbarV1__container__contact__join_button}>
                                         <span>
                                             Rejoindre le club
-                            </span>
+                                        </span>
                                     </button>
                                 </a>
                             </Link>
@@ -52,7 +52,7 @@ function NavbarV1({ data, logo }) {
                     <div className={css.navbarV1}>
 
                         <div className={css.navbarV1__container__logo}>
-                            <img src={logo} alt="" />
+                            <img src={!isEmpty(logo) ? logo : '/logo-192.png'} alt="" />
                         </div>
 
                         <div className={css.navbarV1__container__contact}>
@@ -62,7 +62,7 @@ function NavbarV1({ data, logo }) {
                                     <button onClick={() => { }} className={css.navbarV1__container__contact__join_button}>
                                         <span>
                                             Rejoindre le club
-                                </span>
+                                        </span>
                                     </button>
                                 </a>
                             </Link>
