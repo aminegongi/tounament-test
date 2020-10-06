@@ -38,9 +38,9 @@ function validatePhoneNumber(string) {
 const SignUp = () => {
     const router = useRouter()
     const [data, setData] = useState({
-        username: "",
-        firstName: "",
-        lastName: "",
+        username: (router.query.firstName && router.query.lastName) ? router.query.firstName+router.query.lastName+Math.random()*100000000000000000 : "",
+        firstName: router.query.firstName || "",
+        lastName: router.query.lastName || "",
         email: router.query.email || "",
         birthday: "",
         password: "",
@@ -50,7 +50,7 @@ const SignUp = () => {
         sport: [],
         country: "Tunisia",
         timezone: "Africa/Tunis",
-        phoneNumber: "",
+        phoneNumber: router.query.phoneNumber || "",
         facebookLink: "",
         timezone: "Africa/Tunis",
         locale: 'fr'
