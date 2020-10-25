@@ -32,13 +32,16 @@ function validatePhoneNumber(string) {
     return re.test(string)
 }
 
+function removeSpaceInString(string){
+    return string.replace(/\s/g, '')
+}
 
-// TODO we have to handle and change time zone depend on country !!!
+
 
 const SignUp = () => {
     const router = useRouter()
     const [data, setData] = useState({
-        username: (router.query.firstName && router.query.lastName) ? router.query.firstName+router.query.lastName+Math.random()*100000000000000000 : "",
+        username: (router.query.firstName && router.query.lastName) ? removeSpaceInString(`${router.query.firstName}${router.query.lastName}`)+Math.random()*100000000000000000 : "",
         firstName: router.query.firstName || "",
         lastName: router.query.lastName || "",
         email: router.query.email || "",
@@ -187,12 +190,12 @@ const SignUp = () => {
                         </div>
                         <h1 className={css.page_title}>Connectez-vous</h1>
 
-                        <input value={data.username} onChange={e => setData({ ...data, username: e.target.value })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
+                        <input value={data.username} onChange={e => setData({ ...data, username: removeSpaceInString(e.target.value) })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
                         {
                             localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
                         }
                         {
-                            localErrors.inputErrors && !validateUsername(data.username) && <span className={css.error}>Nom d'utilisateur n'est pas valide</span>
+                            localErrors.inputErrors && !validateUsername(data.username) && <span className={css.error}>Nom d'utilisateur n'est pas valide ( seuls les chiffres et lettres de l'alphabet sont autorisés )</span>
                         }
                         {
                             localErrors.inputErrors && data.username.includes(" ") && <span className={css.error}>Aucun espace n'est autorisé</span>
