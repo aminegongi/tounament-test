@@ -11,9 +11,12 @@ import moment from 'moment'
 import Navbar from "../shared/components/navbar/Navbar"
 import Axios from "axios"
 import { Modal } from 'antd';
+import randomId from 'random-id'
 import Layout from "../shared/components/layout/Layout"
 
 const { publicRuntimeConfig } = getConfig();
+
+const MAX_USERNAME_LENGTH = 60
 
 
 function validateEmail(email) {
@@ -41,7 +44,7 @@ function removeSpaceInString(string){
 const SignUp = () => {
     const router = useRouter()
     const [data, setData] = useState({
-        username: (router.query.firstName && router.query.lastName) ? removeSpaceInString(`${router.query.firstName}${router.query.lastName}`)+Math.random()*100000000000000000 : "",
+        username: (router.query.firstName && router.query.lastName) ? removeSpaceInString(`${router.query.firstName}${router.query.lastName}`)+randomId(MAX_USERNAME_LENGTH-`${router.query.firstName}${router.query.lastName}`.length, 'aA0') : "",
         firstName: router.query.firstName || "",
         lastName: router.query.lastName || "",
         email: router.query.email || "",
@@ -190,7 +193,7 @@ const SignUp = () => {
                         </div>
                         <h1 className={css.page_title}>Connectez-vous</h1>
 
-                        <input value={data.username} onChange={e => setData({ ...data, username: removeSpaceInString(e.target.value) })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
+                        <input maxLength={MAX_USERNAME_LENGTH} value={data.username} onChange={e => setData({ ...data, username: removeSpaceInString(e.target.value) })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
                         {
                             localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
                         }
@@ -198,7 +201,7 @@ const SignUp = () => {
                             localErrors.inputErrors && !validateUsername(data.username) && <span className={css.error}>Nom d'utilisateur n'est pas valide ( seuls les chiffres et lettres de l'alphabet sont autorisés )</span>
                         }
                         {
-                            localErrors.inputErrors && data.username.includes(" ") && <span className={css.error}>Aucun espace n'est autorisé</span>
+                            localErrors.inputErrors && !isNaN(data.username.charAt(0)) && <span className={css.error}>Le nom d'utilisateur doit commencer par une lettre alphabétique</span>
                         }
 
 

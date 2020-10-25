@@ -36,6 +36,7 @@
     "next-manifest": "^3.0.1",
     "next-offline": "^4.0.6",
     "node-sass": "^4.13.1",
+    "random-id": "^1.0.4",
     "react": "^16.13.1",
     "react-burger-menu": "^2.6.13",
     "react-copy-to-clipboard": "^5.0.2",
