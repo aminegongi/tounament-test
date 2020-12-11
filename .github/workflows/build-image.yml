@@ -25,9 +25,9 @@ jobs:
       run: |
         eval $(ssh-agent -s)
         mkdir -m 0700 -p ~/.ssh/
-        ssh-keyscan 51.210.44.130 >> ~/.ssh/known_hosts
+        ssh-keyscan 51.77.230.77 >> ~/.ssh/known_hosts
         ssh-add - <<< "$SSH_PRIVATE_KEY"
-        docker --host "ssh://root@51.210.44.130" \
+        docker --host "ssh://root@51.77.230.77" \
           service update --force --image docker.pkg.github.com/isporit/isporit-website/isporit-website:latest prod_isporit_website
       env:
         SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
