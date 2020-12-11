@@ -10,9 +10,11 @@ import { isEmpty, isNumber } from 'lodash'
 import moment from 'moment'
 import Navbar from "../shared/components/navbar/Navbar"
 import Axios from "axios"
-import { Modal } from 'antd';
+import { DatePicker, Input, Modal, Radio, Select } from 'antd';
 import randomId from 'random-id'
 import Layout from "../shared/components/layout/Layout"
+import { useMediaPredicate } from "react-media-hook"
+import routes from "../utils/routes"
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -35,7 +37,7 @@ function validatePhoneNumber(string) {
     return re.test(string)
 }
 
-function removeSpaceInString(string){
+function removeSpaceInString(string) {
     return string.replace(/\s/g, '')
 }
 
@@ -44,7 +46,7 @@ function removeSpaceInString(string){
 const SignUp = () => {
     const router = useRouter()
     const [data, setData] = useState({
-        username: (router.query.firstName && router.query.lastName) ? removeSpaceInString(`${router.query.firstName}${router.query.lastName}`)+randomId(MAX_USERNAME_LENGTH-`${router.query.firstName}${router.query.lastName}`.length, 'aA0') : "",
+        username: (router.query.firstName && router.query.lastName) ? removeSpaceInString(`${router.query.firstName}${router.query.lastName}`).slice(0,10) + randomId(MAX_USERNAME_LENGTH - `${router.query.firstName}${router.query.lastName}`.slice(0,10).length, 'aA0') : "",
         firstName: router.query.firstName || "",
         lastName: router.query.lastName || "",
         email: router.query.email || "",
@@ -52,7 +54,7 @@ const SignUp = () => {
         password: "",
         confirmPassword: "",
         address: "",
-        userType: "player",
+        userType: "club",
         sport: [],
         country: "Tunisia",
         timezone: "Africa/Tunis",
@@ -64,6 +66,8 @@ const SignUp = () => {
     const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
 
     const [localErrors, setLocalErrors] = useState({ usernameAlreadyExists: false, inputErrors: false, emailAlreadyExists: false })
+
+    const isSizeUnder360 = useMediaPredicate("(max-width: 360px)");
 
     useEffect(() => {
         if (!(router.query.type === '' || router.query.type === undefined)) {
@@ -82,14 +86,17 @@ const SignUp = () => {
     } = router.query;
     const apiUrl = publicRuntimeConfig[`${env.toUpperCase()}_API_URL`];
     const registerApiUrl = apiUrl + "/auth/register"
+    
     const loginApiUrl = apiUrl + "/auth/login";
 
     const onRegister = async (e) => {
         e.preventDefault();
+        
         if (
-            data.username.length < 6 ||
-            isNumber(data.username.slice(0, 1)) ||
-            data.username.includes(" ") ||
+            // data.username.length < 6 ||
+            // isNumber(data.username.slice(0, 1)) ||
+            // data.username.includes(" ") ||
+            // !validateUsername(data.username) ||
             isEmpty(data.firstName) ||
             isEmpty(data.lastName) ||
             isEmpty(data.email) ||
@@ -98,13 +105,11 @@ const SignUp = () => {
             isEmpty(data.password) ||
             isEmpty(data.confirmPassword) ||
             !validatePhoneNumber(data.phoneNumber) ||
-            !validateUsername(data.username) ||
             data.phoneNumber.length < 7 ||
             data.password !== data.confirmPassword
         ) {
             return setLocalErrors({ ...localErrors, inputErrors: true })
         }
-
         try {
             let result = {}
             let query = "";
@@ -114,7 +119,9 @@ const SignUp = () => {
             result = await Axios.post(
                 `${registerApiUrl}?${query}`,
                 {
-                    ...data
+                    ...data,
+                    username: (data.firstName && data.lastName) ? removeSpaceInString(`${data.firstName}${data.lastName}`).slice(0,10) + randomId(MAX_USERNAME_LENGTH - `${data.firstName}${data.lastName}`.slice(0,10).length, 'aA0') : "",
+
                 },
             )
 
@@ -173,7 +180,7 @@ const SignUp = () => {
     return (
         <div className={css.html}>
             <Head>
-                <title>Register</title>
+                <title>Créer un compte</title>
                 <link rel="icon" href="/logo.png" />
 
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -184,16 +191,29 @@ const SignUp = () => {
             <Layout>
                 <div className={css.login_container}>
                     <div className={css.left_side}>
-                        <div className={css.logo}>
+                        {/* <div className={css.logo}>
                             <Link href={{ pathname: '/' }} >
                                 <a>
                                     <img src="icon/logoindexpage.png" alt="" />
                                 </a>
                             </Link>
-                        </div>
-                        <h1 className={css.page_title}>Connectez-vous</h1>
+                        </div> */}
+                        <h1 className={css.page_title}>Créer un compte</h1>
 
-                        <input maxLength={MAX_USERNAME_LENGTH} value={data.username} onChange={e => setData({ ...data, username: removeSpaceInString(e.target.value) })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
+                        {/* {
+                            !router.query.invitationToken && <Select value={data.userType} onChange={e => setData({ ...data, userType: e })} className={css.select_input} name="" id="">
+                                <Select.Option value="player">Joueur</Select.Option>
+                                <Select.Option value="coach">Entraineur</Select.Option>
+                                <Select.Option value="club">Directeur de club</Select.Option>
+                            </Select>
+                        } */}
+                        {!router.query.invitationToken && <Radio.Group size={isSizeUnder360 ? "small" : 'large'} defaultValue="club" value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} buttonStyle="solid">
+                            <Radio.Button className={data.userType === 'player' && css.radio_group_button} value="player">Joueur</Radio.Button>
+                            <Radio.Button className={data.userType === 'coach' && css.radio_group_button} value="coach">Entraineur</Radio.Button>
+                            <Radio.Button className={data.userType === 'club' && css.radio_group_button} value="club">Directeur de club</Radio.Button>
+                        </Radio.Group>}
+
+                        {/* <Input maxLength={MAX_USERNAME_LENGTH} value={data.username} onChange={e => setData({ ...data, username: removeSpaceInString(e.target.value) })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
                         {
                             localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
                         }
@@ -202,7 +222,7 @@ const SignUp = () => {
                         }
                         {
                             localErrors.inputErrors && !isNaN(data.username.charAt(0)) && <span className={css.error}>Le nom d'utilisateur doit commencer par une lettre alphabétique</span>
-                        }
+                        } */}
 
 
                         {
@@ -210,19 +230,19 @@ const SignUp = () => {
                         }
 
 
-                        <input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='Prénom' type='text' />
+                        <Input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='Prénom' type='text' />
                         {
                             localErrors.inputErrors && isEmpty(data.firstName) && <span className={css.error}>Champ obligatoire</span>
                         }
 
 
-                        <input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='Nom de famille' type='text' />
+                        <Input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='Nom de famille' type='text' />
                         {
                             localErrors.inputErrors && isEmpty(data.lastName) && <span className={css.error}>Champ obligatoire</span>
                         }
 
 
-                        <input maxLength={40} value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
+                        <Input maxLength={40} value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
                         {
                             localErrors.inputErrors && isEmpty(data.email) && <span className={css.error}>Champ obligatoire</span>
                         }
@@ -238,7 +258,7 @@ const SignUp = () => {
 
 
 
-                        <input value={data.birthday} onChange={e => setData({ ...data, birthday: e.target.value })} className={css.input} placeholder='Date de naissance' type='date' />
+                        <DatePicker size={'large'} disabledDate={current => current && current > moment().endOf('day')} value={data.birthday} onChange={e => setData({ ...data, birthday: e })} className={css.select_input} placeholder='Date de naissance' type='date' />
                         {
                             localErrors.inputErrors && isEmpty(data.birthday) && <span className={css.error}>Champ obligatoire</span>
                         }
@@ -246,7 +266,7 @@ const SignUp = () => {
                             localErrors.inputErrors && moment().isBefore(data.birthday) && <span className={css.error}>Date n'est pas valid</span>
                         }
 
-                        <input maxLength={40} value={data.phoneNumber} onChange={e => setData({ ...data, phoneNumber: e.target.value })} className={css.input} placeholder='Numéro de téléphone' />
+                        <Input maxLength={40} value={data.phoneNumber} onChange={e => setData({ ...data, phoneNumber: e.target.value })} className={css.input} placeholder='Numéro de téléphone' />
                         {
                             localErrors.inputErrors && isEmpty(data.phoneNumber) && <span className={css.error}>Champ obligatoire</span>
                         }
@@ -259,20 +279,12 @@ const SignUp = () => {
                             localErrors.inputErrors && data.phoneNumber.length < 7 && <span className={css.error}>Au moins 8 numéros</span>
                         }
 
-                        {
-                            !router.query.invitationToken && <select value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} className={css.input} name="" id="">
-                                <option value="player">Joueur</option>
-                                <option value="coach">Entraineur</option>
-                            </select>
-                        }
-
-
-                        <input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
+                        <Input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
                         {
                             localErrors.inputErrors && isEmpty(data.password) && <span className={css.error}>Champ obligatoire</span>
                         }
 
-                        <input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={css.input} placeholder='Confirmation mot de passe' type='password' />
+                        <Input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={css.input} placeholder='Confirmation mot de passe' type='password' />
                         {
                             localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={css.error}>Champ obligatoire</span>
                         }
@@ -283,20 +295,27 @@ const SignUp = () => {
                         <div className={css.signup_btn_container}>
                             <button onClick={onRegister} className={css.primary_button}>S'INSCRIRE</button>
                         </div>
+                        <div className={css.already_have_account}>
+                            <Link href={routes.LOG_IN.path} >Vous avez déjà un compte ?</Link>
+
+                        </div>
+
                     </div>
 
                     <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
                         <h2 className={css.title}>
                             Vous avez déjà un compte
-                   </h2>
+                        </h2>
 
                         <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost || '', env: router.query.env || '' } }} >
                             <a>
                                 <button className={css.button} type="submit">
                                     SE CONNECTER
-                            </button>
+                                </button>
                             </a>
                         </Link>
+
+
 
                     </div>
                 </div>

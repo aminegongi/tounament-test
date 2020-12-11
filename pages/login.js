@@ -7,6 +7,8 @@ import { isEmpty, isNumber } from 'lodash'
 import { useRouter } from 'next/router'
 import Axios from "axios"
 import Layout from "../shared/components/layout/Layout";
+import routes from "../utils/routes";
+import { Input } from "antd";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -70,27 +72,18 @@ const Login = (props) => {
             <Layout>
                 <div className={css.login_container}>
                     <form className={css.left_side}>
-                        <div className={css.logo}>
-                            <Link href={{ pathname: '/' }} >
-                                <a>
-                                    <img src="icon/logoindexpage.png" alt="" />
-                                </a>
-                            </Link>
-                        </div>
                         <h1 className={css.page_title}>Connectez-vous</h1>
-                        <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' type="email" />
+                        <Input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' type="email" />
                         {
                             localErrors.inputErrors && isEmpty(email) && <span className={css.error}>Champ obligatoire</span>
                         }
-                        <input value={password} onChange={e => setPassword(e.target.value)} className={css.input} placeholder='Mot de passe' type="password" />
-                        <center>
-                            <b>
-                                <Link href={{ pathname: '/forgot-password' }} >
-                                    <a style={{ color: '#26beb5' }}>
-                                        Mot de passe oublié?
+                        <Input value={password} onChange={e => setPassword(e.target.value)} className={css.input} placeholder='Mot de passe' type="password" />
+                        <center className={css.forgot_password}>
+                            <Link href={{ pathname: '/forgot-password' }} >
+                                <a style={{ color: '#26beb5' }}>
+                                    Mot de passe oublié?
                                     </a>
-                                </Link>
-                            </b>
+                            </Link>
                         </center>
                         {
                             localErrors.inputErrors && isEmpty(password) && <span className={css.error}>Champ obligatoire</span>
@@ -105,6 +98,15 @@ const Login = (props) => {
                         </div>
                         <div className={css.signup_btn_container}>
                             <button onClick={onLogin} className={css.primary_button}>Se Connecter</button>
+                        </div>
+                        <div className={css.create_account_btn}>
+                            <Link href={routes.SIGN_UP.path} >
+                                <a>
+                                    <button className={css.button} type="submit">
+                                        Créer un compte
+                                    </button>
+                                </a>
+                            </Link>
                         </div>
                     </form>
 

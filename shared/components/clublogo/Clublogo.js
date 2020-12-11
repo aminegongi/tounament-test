@@ -1,19 +1,23 @@
 
 import css from './clublogo.scss';
 import globalCss from '../../global-style.scss'
+import routes from '../../../utils/routes';
+import Link from 'next/link';
 export default function Clublogo({ images }) {
 
     return (
         <div className={`${globalCss.isporit_max_width}`}>
-            {/* <div className={css.clubs}> */}
-                {/* 5 clubs partenaires nous font confiance */}
-            {/* </div> */}
-            <div className={css.img_club}>
-                {
-                    images.map(el => (el.image ? <img key={Math.round(Math.random() * Math.random() * 100)}
-                        alt={el.alt} className={css.hubspot} src={el.image} /> : ""))
-                }
+            <div className={css.clubs}>
+                Clubs partenaires nous font confiance
             </div>
+            <Link href={routes.SIGN_UP.path} >
+                <div className={css.img_club}>
+                    {
+                        images.map(el => <img key={Math.round(Math.random() * Math.random() * 100)}
+                            alt={el.alt} className={css.image} src={el.src} />)
+                    }
+                </div>
+            </Link>
         </div>
     );
 }

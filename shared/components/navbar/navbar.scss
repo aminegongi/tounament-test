@@ -6,12 +6,15 @@
     padding-top: 24px;
     padding-left: 10px;
     padding-right: 10px;
+    z-index: 999999999999999;
+
 
     .items_container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         column-gap: 2.5rem;
         align-content: center;
+
     }
 
     .item {

@@ -99,24 +99,16 @@ const Index = (props) => {
             images={[
               {
                 alt: "club",
-                src: "icon/hubspot.png",
+                src: "clubLogo/radesTennisAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/servicetitan.png",
+                src: "clubLogo/eliteSportAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/square.png",
+                src: "clubLogo/omSchoolTunis.jpg",
               },
-              {
-                alt: "club",
-                src: "icon/cognizant.png",
-              },
-              {
-                alt: "club",
-                src: "icon/square.png",
-              }
             ]}
 
           />
@@ -207,8 +199,8 @@ const Index = (props) => {
             <div>
               <Link href={routes.CONTACT_US.clubPath}>
                 <button style={{ marginTop: 0 }} onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
-                  Demander une démo
-              </button>
+                  J'inscris mon club
+                </button>
               </Link>
             </div>
           </div>

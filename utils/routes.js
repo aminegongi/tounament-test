@@ -9,6 +9,9 @@ export default {
     LOG_IN: {
         path: '/login',
     },
+    SIGN_UP: {
+        path: '/sign-up',
+    },
     PLAYER_FEATURES: {
         path: '/player',
     },

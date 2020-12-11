@@ -1,7 +1,7 @@
 import Layout from '../shared/components/layout/Layout'
 import Head from 'next/head'
 import css from '../shared/css/clubs.scss'
-import { Input, Button } from 'antd'
+import { Input, Button, Icon } from 'antd'
 import { CITIES } from '../utils/fakeData'
 import fetch from 'isomorphic-unfetch'
 import { useState, useEffect } from 'react'
@@ -12,7 +12,8 @@ import routes from '../utils/routes'
 const Card = ({ el }) => {
     const [image, setImage] = useState(el.logo || 'logo-192.png')
     return (
-        <Link href={routes.CLUB_WEBSITE.linkTo(el.slug)} >
+        // <Link href={routes.CLUB_WEBSITE.linkTo(el.slug)} >
+        <a href={'tel:'+el.phoneNumber1} >
             <div className={css.club_card}>
                 <div className={css.image_container}>
                     <img width="198px" src={image} onError={() => setImage('logo-192.png')} alt={el.title} />
@@ -26,15 +27,20 @@ const Card = ({ el }) => {
                     </div>
                     <div className={css.footer}>
                         <div className={css.address}>
-                            {el.address}
+                            <div>
+                                <b><Icon type="home" /></b> {el.address}
+                            </div>
+                            <div>
+                                <b><Icon type="phone" /></b> {el.phoneNumber1}
+                            </div>
                         </div>
                         <button>
-                            voir club
+                            <b><Icon type="phone" /></b> Appeler le club
                         </button>
                     </div>
                 </div>
             </div>
-        </Link>
+        </a>
     )
 }
 
@@ -199,7 +205,7 @@ export function Clubs({ data, status }) {
 
 
 Clubs.getInitialProps = async (ctx) => {
-    const res = await fetch("https://test.isporit.com/api/Clubs/all?hasWebsite=true")
+    const res = await fetch("https://app.isporit.com/api/Clubs/all")
     const json = await res.json()
     const data = () => {
         if (json) {
