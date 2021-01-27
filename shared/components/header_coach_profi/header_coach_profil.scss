@@ -1,0 +1,47 @@
+.header{
+padding:34px 79px 34px 79px;
+box-shadow: 0 2px 5px 0 rgba(233, 233, 233, 0.9);
+  background-color: #ffffff;
+&__body{
+    display: flex;
+    justify-content: space-between;
+
+    &__imglogo{
+        padding-top:8px;
+        width: 88px;
+        padding-bottom: 8px;
+    }
+    &__pages{
+        padding-top: 13px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-column-gap: 50px;
+        &__composant{
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: normal;
+            text-align: left;
+            color: #000000;
+        }
+
+    }
+    &__inscrirebutton{
+        span{
+            font-size: 16px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: normal;
+            text-align: left;
+            color: #ffffff;
+        }
+        padding: 13px 14px 12px 15px;
+        border-radius: 10px;
+        background-color: #26beb5
+    }
+}
+}

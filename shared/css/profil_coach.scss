@@ -1,0 +1,70 @@
+
+.profil_coach{
+    max-width: 1360px;
+    margin: auto;
+    font-family: Roboto;
+   &__coach_details{
+       margin:29px 44px 29.7px 79px;
+       display: flex;
+
+        &__filter{
+            width: 286px;
+            height: 1418px;
+            padding-right:  22px;
+            border-radius: 10px;
+            border: solid 1px #d5d5d5;
+            background-color: #ffffff;
+            &__input_searsh{
+                padding:7px 6px 6.5px 7px;
+                width: 273px !important;
+            }
+        }
+        &__list_of_coach{
+            width: 834px;
+            height: 1596px;
+            margin-left: 21.5px;
+            border-radius: 10px;
+            border: solid 1px #d5d5d5;
+            background-color: #ffffff;
+
+            &__lenght_sortby{               
+                display: flex;
+                justify-content: space-between;
+                padding:25px 15.5px 14.5px 16px;
+                &__lenght{
+                    font-size: 16px;
+                    
+                    letter-spacing: normal;
+                    
+                    color: #646464;
+                }
+                &__sortby {
+                    span{
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-stretch: normal;
+                    font-style: normal;
+                    
+                    color: #000000;
+                    }
+                    
+                }
+            }
+        &__card{
+            padding:21.5px 16px 17px 15px ;
+            display: flex;
+            flex-flow: wrap;
+            justify-content: space-between;
+        }
+        }
+    }
+}
+.line{
+    border-top: solid 3px #f5f4f4;
+        
+}
+.affiche{
+    width: 1142px;
+    height: 266px;
+    padding:19px 79px 29px 79px;
+}

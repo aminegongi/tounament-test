@@ -1,0 +1,87 @@
+.card_profil_coach{
+    &__information{
+        padding:17px 24px 5px 57px;
+
+        &__avatar{
+            img{
+            width: 143px;
+            height: 143px;
+            border-radius: 66px;
+            }
+        }
+        &__name{
+            padding-left:22px;
+            padding-top:1px;
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: normal;
+            text-align: left;
+            color: #26beb5;
+        }
+        &__rate{
+            padding-left: 27px;
+        }
+        &__worktype{
+            padding-top:10.3px;
+            font-size: 16px;
+            font-weight: bold;
+            
+            line-height: 1.19;
+            text-align: left;
+            color: #000000;
+        }
+        &__sporttype{
+            padding-top:1px;
+            font-size: 16px;
+            font-weight: bold;
+            padding-left: 27px;
+            line-height: 1.19;
+            text-align: left;
+            color: #000000;
+        }
+        &__yearexperiance{
+            padding-top:7px;
+            padding-left: 8px;
+            font-size: 16px;
+            line-height: 1.19;
+            letter-spacing: normal;
+            text-align: left;
+            color: #000000;
+        }
+       
+    }
+    &__button{
+        padding-top:17px;
+        &__contact{
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: normal;
+            text-align: left;
+            color: #26beb5;
+            background-color: transparent;
+            margin-left: -15px;
+        }
+        &__voirplus{
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: normal;
+            text-align: left;
+            color: #707070;
+            padding-left: 30px;
+            background-color: transparent;
+
+        }
+    }
+}
+.rate{
+    font-size: 12px;
+}

@@ -1,0 +1,32 @@
+.experience{
+    &__title{
+        font-size: 18px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: normal;
+        text-align: left;
+        color: #000000;
+        border-left: solid 3px #47c8c0;
+        display: flex;
+         justify-content: space-between;
+         margin-left: 23.5px;
+         padding-left:12.5px;
+         margin-top:21.5px;
+    }
+    &__marks{
+        margin: 26px 36px 47px 36px;
+        &__line{
+            background: #47c8c0 !important;
+
+        }
+    }
+    
+}
+.ant-slider-track {
+    background: #47c8c0;
+}
+.ant-slider-step{
+    background: #47c8c0;
+}
