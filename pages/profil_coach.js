@@ -11,8 +11,10 @@ import Recommendation from '../shared/components/recommendation/recommendation';
 import Coach_type from '../shared/components/coach_type/coach_type';
 import Coach_region from '../shared/components/coach_region/coach_region';
 import Card_profil_coach from '../shared/components/card_profil_coach/card_profil_coach';
- function profil_coach({data,jobs}) {
+export default function profil_coach({data,jobs}) {
     const [datacopy, setdatacopy] = useState(data)
+    const [coachspecialty, setcoachspecialty] = useState()
+    const [coachspecialtyfilter, setcoachspecialtyfilter] = useState([])
     const { Search } = Input;
 
     const onSearch = value =>  {
@@ -45,13 +47,10 @@ import Card_profil_coach from '../shared/components/card_profil_coach/card_profi
 
           }
        
-console.log("jbos",jobs)
-
     return (
         <div className={css.profil_coach}>
             <Header_coach_profil /> 
-            {console.log("jbos",jobs)
-}
+           
             <div className={css.affiche}>
                 <img className={css.affiche__img} src={"icon/profil_coach.png"} alt="" />
             </div>
@@ -63,25 +62,41 @@ console.log("jbos",jobs)
                              }} />
 
                     <Filter_coach 
+                     coachspecialty={coachspecialty}
+                     setcoachspecialty={setcoachspecialty}
+                     setcoachspecialtyfilter={setcoachspecialtyfilter}
+                     coachspecialtyfilter={coachspecialtyfilter}
+
                      title={"PROFESSIONS"} 
                      titleone={"Football"} 
                      titletwo={"Tennis"} 
-
+                     jobs={jobs}
+                     setdatacopy={setdatacopy}
+                     datacopy={datacopy}
+                     data={data}
                      />
                     <div className={css.line}></div> 
                      <Filter_coach 
-                     title={"SPÉCIALITÉ"} 
-                     titleone={"Collectif"} 
-                     titletwo={"Individuel"} 
-                     titlethere={"Football"} 
-                     subtitleone={"Basket-ball"} 
-                     subtitletwo={"Volley-ball"} 
-                     subtitlethere={"Handball"} 
-                     subtitlefour={"Football"} 
-                     subtitlefour={"Gymnastique"} 
-                     subtitlesix={"Tennis"} 
-                     subtitleseven={"Tennis"} 
-                     subtitleeight={"Yoga"} 
+                     setdatacopy={setdatacopy}
+                      datacopy={datacopy}
+                      data={data}
+                      coachspecialty={coachspecialty}
+                      setcoachspecialty={setcoachspecialty}
+                      setcoachspecialtyfilter={setcoachspecialtyfilter}
+                      coachspecialtyfilter={coachspecialtyfilter}
+                      jobs={jobs}
+                      title={"SPÉCIALITÉ"} 
+                      titleone={"Collectif"} 
+                      titletwo={"Individuel"} 
+                      titlethere={"Football"} 
+                      subtitleone={"Basket-ball"} 
+                      subtitletwo={"Volley-ball"} 
+                      subtitlethere={"Handball"} 
+                      subtitlefour={"Football"} 
+                      subtitlefour={"Gymnastique"} 
+                      subtitlesix={"Tennis"} 
+                      subtitleseven={"Tennis"} 
+                      subtitleeight={"Yoga"} 
                      />
                     <div className={css.line}></div> 
                     <Experience setdatacopy={setdatacopy} datacopy={datacopy} data={data} />
@@ -136,20 +151,17 @@ console.log("jbos",jobs)
 
 profil_coach.getInitialProps = async () => {
     const res = await fetch("https://dev.isporit.com/api/users/coaches/all")
+    const res2 = await fetch("https://dev.isporit.com/api/jobs")
+
 
     const json = await res.json()
+    const json2 = await res2.json()
 
 
-    return { status: 500, data: json }
+
+    return { status: 500, data: json,jobs:json2 }
 
 }
-// profil_coachjob.getInitialProps = async () => {
-//     const res = await fetch("https://dev.isporit.com/api/jobs")
-//     const json = await res.json()
 
-   
-//     return { status: 500, jobs: json }
-
-// }
     
-export default (profil_coach)
+    
