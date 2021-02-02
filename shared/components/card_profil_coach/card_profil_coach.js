@@ -38,7 +38,7 @@ useEffect(() => {
               
                     {coachprofil.coachData.specialty}
                 </div>
-                <div className={css.card_profil_coach__information__yearexperiance}>
+                <div className={css.card_profil_coach__information__yearexperience }>
                       {coachprofil.coachData.experiencesYearsNumber == 1 ?
                       ( coachprofil.coachData.experiencesYearsNumber + " an d'expérience") : 
                       coachprofil.coachData.experiencesYearsNumber  + " ans d'expérience"
@@ -56,7 +56,7 @@ useEffect(() => {
                     </button>
                     {/* <div className={css.linevertical}></div>  */}
 
-                    <button className={css.card_profil_coach__button__voirplus}>
+                    <button className={css.card_profil_coach__button__seeDetails}>
                     Voir plus
                     </button>
 
