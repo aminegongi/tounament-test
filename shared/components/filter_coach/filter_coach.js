@@ -24,7 +24,9 @@ export default function filter_coach({
         coachspecialtyfilter,
         setdatacopy,
          datacopy,
-         data
+         data,
+         dances,
+         sports
     }){
     const [icon, seticon] = useState(left);
     
@@ -38,7 +40,11 @@ export default function filter_coach({
                 seticon(down) }
             }
             const filterspecialty =()=>{
-                setcoachspecialtyfilter(jobs.filter(e=>e.translations.fr.includes(coachspecialty)))
+                console.log('coachspecialty',coachspecialty?coachspecialty :"n")
+                {coachspecialty =="sport" ? 
+                setcoachspecialtyfilter(sports) :setcoachspecialtyfilter(dances)
+                // setcoachspecialtyfilter(jobs.filter(e=>e.translations.fr.includes(coachspecialty)))
+                }
             }
             useEffect(() => {
                 filterspecialty()
@@ -62,15 +68,16 @@ export default function filter_coach({
                                 {jobs.map(el=> {
                                     return (
                                     <>
-                               <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
-                                css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                <div onClick={()=>
-                                                {
-                                                 setcoachspecialty(el.translations.fr)
+                                    <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
+                                        css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
+                                        <div onClick={()=>
+                                           {
+                                            setcoachspecialty(el.specialty.type)
                                                  
-                                                 }
-                                             } >
-                                                     {el.translations.fr}</div>
+                                            }
+                                        }>
+                                         {el.translations.fr}
+                                    </div>
                                     {/* <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
                                     {subtitleone}
                                     </div>
@@ -95,20 +102,24 @@ export default function filter_coach({
                             <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
                                  css.filter_coach__filter_type__title__Professions__items__iteamnotvisible } 
                                  >
-                                    {coachspecialtyfilter.specialty!==[] ? coachspecialtyfilter.map(e=>e.specialty.list.map(el=>{
+                                     {console.log("coachspecialtyfilter",coachspecialtyfilter)
+} 
+                                    {coachspecialtyfilter !="" ? coachspecialtyfilter.map(el=>{
                                         return (
                                             
                                         <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
                                                 css.filter_coach__filter_type__title__Professions__items__iteamnotvisible } 
-                                            onClick={()=>filterbyspecialty(el) }
+                                            onClick={()=>filterbyspecialty(el.translations.fr) }
                                                 >
-                                             {el}
-                                             </div>
+                                             {el.translations.fr}
+                                       </div>
                                         )
                                     }
                                         
-                                    ))
-                                    :   titleone
+                                    )
+                                    :  
+                                    
+                                     <div >pas de Spécialité disponible </div>
                                     }
                                     {/* <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
                                     {subtitlefive}

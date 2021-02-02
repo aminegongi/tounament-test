@@ -1,6 +1,12 @@
 .card_profil_coach{
+    opacity: 0.7;
+        border-radius: 10px;
+        background-color: #f9f9f9;
     &__information{
         padding:17px 24px 5px 57px;
+        
+        max-width: 264px;
+
 
         &__avatar{
             img{
@@ -11,14 +17,10 @@
         }
         &__name{
             padding-left:22px;
-            padding-top:1px;
+            padding-top:6px;
             font-size: 18px;
             font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.22;
-            letter-spacing: normal;
-            text-align: left;
+           
             color: #26beb5;
         }
         &__rate{
@@ -28,10 +30,11 @@
             padding-top:10.3px;
             font-size: 16px;
             font-weight: bold;
-            
+            text-align: center;
             line-height: 1.19;
-            text-align: left;
             color: #000000;
+            word-wrap: break-word;
+            margin-left: -21px;
         }
         &__sporttype{
             padding-top:1px;
@@ -54,7 +57,8 @@
        
     }
     &__button{
-        padding-top:17px;
+        padding-top:10.5px;
+        padding-left: 31px;
         &__contact{
             font-size: 18px;
             font-weight: 500;
@@ -84,4 +88,13 @@
 }
 .rate{
     font-size: 12px;
+}
+.line{
+    padding-top:3.5px;
+    border-top: solid 3px #f5f4f4;
+        
+}
+.linevertical{
+    border-left: 6px solid green;
+  height: 500px;
 }

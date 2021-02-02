@@ -6,13 +6,16 @@ export default function experience({setdatacopy,data,datacopy}) {
     const marks = {
         0: '0',
         5: '5',
-        25: {
+        10: '10',
+        15: '15',
+
+        20: {
           style: {
             color: '#000000',
             fontsize: '14px',
             lineheight: '1.21',
           },
-          label: <strong>25ans</strong>,
+          label: <strong>20ans</strong>,
         },
       };
      const onChange = value => {
@@ -24,12 +27,12 @@ export default function experience({setdatacopy,data,datacopy}) {
     
     return (
         <div className={css.experience}> 
-          <div className={css.experience__title} >NOMBRE D'EXPÉRIENCE
+          <div className={css.experience__title} >ANNEES D'EXPERIENCES
          </div>
           <div className={css.experience__marks}> 
               <Slider styele={{backgroudColor:'red'}} class={css.experience__marks__line}
                  onChange={onChange}
-                 marks={marks} max={25}/>
+                 marks={marks} max={20}/>
            </div>
         </div>
     )

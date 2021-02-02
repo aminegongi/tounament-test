@@ -14,7 +14,7 @@ export default function coach_region({setdatacopy,datacopy,data}) {
     return (
         <div className={css.coach_region}>
            <div className={css.coach_region__title}>
-           RÉGION
+           REGIONS
             </div> 
             <Checkbox.Group className={css.coach_region__checkbox} options={plainOptions}  onChange={onChange} />
 

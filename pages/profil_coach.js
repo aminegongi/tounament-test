@@ -11,10 +11,10 @@ import Recommendation from '../shared/components/recommendation/recommendation';
 import Coach_type from '../shared/components/coach_type/coach_type';
 import Coach_region from '../shared/components/coach_region/coach_region';
 import Card_profil_coach from '../shared/components/card_profil_coach/card_profil_coach';
-export default function profil_coach({data,jobs}) {
+export default function profil_coach({data,jobs,sports,dances}) {
     const [datacopy, setdatacopy] = useState(data)
     const [coachspecialty, setcoachspecialty] = useState()
-    const [coachspecialtyfilter, setcoachspecialtyfilter] = useState([])
+    const [coachspecialtyfilter, setcoachspecialtyfilter] = useState("")
     const { Search } = Input;
 
     const onSearch = value =>  {
@@ -56,7 +56,7 @@ export default function profil_coach({data,jobs}) {
             </div>
             <div className={css.profil_coach__coach_details} >
                 <div className={css.profil_coach__coach_details__filter} >
-                    <Search className={css.profil_coach__coach_details__filter__input_searsh} placeholder="RECHERCHE" 
+                    <Search className={css.profil_coach__coach_details__filter__input_searsh} placeholder="RECHERCHE PAR NOM" 
                      onChange={e=>onSearch(e.target.value)}
                      style={{ width: 200,
                              }} />
@@ -66,7 +66,8 @@ export default function profil_coach({data,jobs}) {
                      setcoachspecialty={setcoachspecialty}
                      setcoachspecialtyfilter={setcoachspecialtyfilter}
                      coachspecialtyfilter={coachspecialtyfilter}
-
+                     dances={dances}
+                     sports={sports}
                      title={"PROFESSIONS"} 
                      titleone={"Football"} 
                      titletwo={"Tennis"} 
@@ -77,6 +78,8 @@ export default function profil_coach({data,jobs}) {
                      />
                     <div className={css.line}></div> 
                      <Filter_coach 
+                     dances={dances}
+                     sports={sports}
                      setdatacopy={setdatacopy}
                       datacopy={datacopy}
                       data={data}
@@ -85,7 +88,7 @@ export default function profil_coach({data,jobs}) {
                       setcoachspecialtyfilter={setcoachspecialtyfilter}
                       coachspecialtyfilter={coachspecialtyfilter}
                       jobs={jobs}
-                      title={"SPÉCIALITÉ"} 
+                      title={"SPECIALITES"} 
                       titleone={"Collectif"} 
                       titletwo={"Individuel"} 
                       titlethere={"Football"} 
@@ -112,14 +115,14 @@ export default function profil_coach({data,jobs}) {
                     <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby}> 
 
                         <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__lenght}> 
-                            {datacopy.length} résultas
+                            {datacopy.length} resultat(s) 
                         </div>
                         <div  className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby}>
                         <span>Trier par : </span>
                         <Select
                             labelInValue
                             placeholder={"Tout"}
-                            style={{ width: 120 }}
+                            style={{ width: 155 }}
                             bordered={false}
                             className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select}
                             onChange={handleChange}
@@ -138,6 +141,7 @@ export default function profil_coach({data,jobs}) {
                         <Card_profil_coach 
                         data={e} 
                         key={e._id}
+                        jobs={jobs}
                         />
                         )}
                         
@@ -151,15 +155,22 @@ export default function profil_coach({data,jobs}) {
 
 profil_coach.getInitialProps = async () => {
     const res = await fetch("https://dev.isporit.com/api/users/coaches/all")
-    const res2 = await fetch("https://dev.isporit.com/api/jobs")
+    const resjobs = await fetch("https://dev.isporit.com/api/jobs")
+    const ressports = await fetch("https://dev.isporit.com/api/sports")
+    const resdance = await fetch("https://dev.isporit.com/api/dances/")
+
 
 
     const json = await res.json()
-    const json2 = await res2.json()
+    const jsonjobs = await resjobs.json()
+    const jsonsports = await ressports.json()
+    const jsondances = await resdance.json()
+
+    
 
 
 
-    return { status: 500, data: json,jobs:json2 }
+    return { status: 500, data: json,jobs:jsonjobs ,sports:jsonsports,dances:jsondances}
 
 }
 

@@ -28,7 +28,7 @@ export default function recommendation({ data, datacopy, setdatacopy }) {
   };
   return (
     <div className={css.recommandation}>
-      <div className={css.recommendation__title} >RÉCOMMANDATION
+      <div className={css.recommendation__title} >RECOMMANDATIONS
         </div>
       <div className={css.recommendation__rate}>
         <Radio.Group onChange={onChange} >
