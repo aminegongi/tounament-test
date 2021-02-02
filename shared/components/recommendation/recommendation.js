@@ -2,28 +2,28 @@ import React from 'react'
 import { Rate, Radio } from 'antd';
 import css from './recommendation.scss'
 
-export default function recommendation({ data, datacopy, setdatacopy }) {
+export default function recommendation({ coachlist, dataCopy, setdataCopy }) {
 
   const onChange = e => {
     
     if (e.target.value === 4) {
-      const x = (data.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 4))
-      return setdatacopy(x)
+      const x = (coachlist.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 4))
+      return setdataCopy(x)
     }
     if (e.target.value === 3) {
-      const x = (data.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 3))
+      const x = (coachlist.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 3))
 
-      return setdatacopy(x)
+      return setdataCopy(x)
     }
     if (e.target.value === 2) {
-      const x = (data.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 2))
+      const x = (coachlist.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 2))
 
-      return setdatacopy(x)
+      return setdataCopy(x)
     }
     if (e.target.value === 1) {
-      const x = (data.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 1))
+      const x = (coachlist.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 1))
 
-      return setdatacopy(x)
+      return setdataCopy(x)
     }
   };
   return (

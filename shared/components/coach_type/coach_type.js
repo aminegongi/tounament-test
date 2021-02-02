@@ -2,19 +2,16 @@ import React from 'react'
 import css from './coach_type.scss'
 import { Rate ,Radio } from 'antd';
 
-export default function coach_type({setdatacopy,datacopy,data}) {
+export default function coach_type({setdataCopy,dataCopy,coachlist}) {
     const [value, setValue] = React.useState('');
 
-    // const onChange = e => {
-    //   console.log('radio checked', e.target.value);
-    //   setValue(e.target.value);
-    // };
+    
     const onSearchtype = type =>  {
         setValue(type.target.value);
         {value ==="privatecoach" ? 
          
-        setdatacopy(data.filter(e=>e.coachData.lookingForJob ==true)) :
-        setdatacopy(data.filter(e=>e.coachData.lookingForJob ==false))
+        setdataCopy(coachlist.filter(e=>e.coachData.lookingForJob ==true)) :
+        setdataCopy(coachlist.filter(e=>e.coachData.lookingForJob ==false))
     }
    };
 

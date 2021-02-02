@@ -1,48 +1,45 @@
 import React,{useState,useEffect} from 'react'
-import Header_coach_profil from '../shared/components/header_coach_profi/header_coach_profil'
+import Header_coach_profil from '../shared/components/header_coach_profi/Header_coach_profil'
 import css from '../shared/css/profil_coach.scss'
 import globalCss from '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
 
 import { Input ,Select} from 'antd';
-import Filter_coach from '../shared/components/filter_coach/filter_coach';
-import Experience from '../shared/components/experience/experience';
+import Filter_coach from '../shared/components/filter_coach/Filter_coach';
+import Experience from '../shared/components/experience/Experience';
 import Recommendation from '../shared/components/recommendation/recommendation';
-import Coach_type from '../shared/components/coach_type/coach_type';
-import Coach_region from '../shared/components/coach_region/coach_region';
-import Card_profil_coach from '../shared/components/card_profil_coach/card_profil_coach';
-export default function profil_coach({data,jobs,sports,dances}) {
-    const [datacopy, setdatacopy] = useState(data)
-    const [coachspecialty, setcoachspecialty] = useState()
-    const [coachspecialtyfilter, setcoachspecialtyfilter] = useState("")
+import Coach_type from '../shared/components/coach_type/Coach_type';
+import Coach_region from '../shared/components/coach_region/Coach_region';
+import Card_profil_coach from '../shared/components/card_profil_coach/Card_profil_coach';
+export default function profil_coach({coachlist,jobs,sports,dances}) {
+    const [dataCopy, setdataCopy] = useState(coachlist)
+    const [coachSpecialty, setcoachSpecialty] = useState()
+    const [coachSpecialtyfilter, setcoachSpecialtyfilter] = useState('')
     const { Search } = Input;
 
     const onSearch = value =>  {
-         setdatacopy(data.filter(e => e.firstName.includes(value)))
-    };
+        setdataCopy(coachlist.filter(e => e.firstName.includes(value) || e.lastName.includes(value))) 
+       };
         const { Option } = Select;
         const handleChange=(value)=> {
-            console.log(value.key);
             if(value.key=='alphabetique'){
-              const x=([...data].sort( (a, b) => a.firstName - b.firstName? 1 : -1 ))
-               return setdatacopy(x)
+              const sortbyalphabetical=([...coachlist].sort( (a, b) => a.firstName - b.firstName? 1 : -1 ))
+               return setdataCopy(sortbyalphabetical)
               }
 
             if(value.key=='Tout'){
-                 return setdatacopy(data)
+                 return setdataCopy(coachlist)
                 }
             if(value.key=='experience'){
-                const x=([...data].sort( (a, b) => a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber ? 1 : -1 ))
-                 return setdatacopy(x)
+                const sortbyexperience=([...coachlist].sort( (a, b) => a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber ? 1 : -1 ))
+                 return setdataCopy(sortbyexperience)
             } 
             if(value.key=='recommander'){
-                const y=(data.map(e=>(Math.round(e.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/e.coachData.reviews.length))))
 
-                 const x=([...data].sort( (a, b) => 
+                 const sortbyrecommend=([...coachlist].sort( (a, b) => 
                  (Math.round(a.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/a.coachData.reviews.length) < 
                  Math.round(b.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/b.coachData.reviews.length))? 1 : -1 ))
-                    return setdatacopy(x)
-                // console.log("recommander",y)
+                    return setdataCopy(sortbyrecommend)
             }
 
           }
@@ -58,35 +55,35 @@ export default function profil_coach({data,jobs,sports,dances}) {
                 <div className={css.profil_coach__coach_details__filter} >
                     <Search className={css.profil_coach__coach_details__filter__input_searsh} placeholder="RECHERCHE PAR NOM" 
                      onChange={e=>onSearch(e.target.value)}
-                     style={{ width: 200,
+                     style={{ width: 160,
                              }} />
 
                     <Filter_coach 
-                     coachspecialty={coachspecialty}
-                     setcoachspecialty={setcoachspecialty}
-                     setcoachspecialtyfilter={setcoachspecialtyfilter}
-                     coachspecialtyfilter={coachspecialtyfilter}
+                     coachSpecialty={coachSpecialty}
+                     setcoachSpecialty={setcoachSpecialty}
+                     setcoachSpecialtyfilter={setcoachSpecialtyfilter}
+                     coachSpecialtyfilter={coachSpecialtyfilter}
                      dances={dances}
                      sports={sports}
                      title={"PROFESSIONS"} 
                      titleone={"Football"} 
                      titletwo={"Tennis"} 
                      jobs={jobs}
-                     setdatacopy={setdatacopy}
-                     datacopy={datacopy}
-                     data={data}
+                     setdataCopy={setdataCopy}
+                     dataCopy={dataCopy}
+                     coachlist={coachlist}
                      />
                     <div className={css.line}></div> 
                      <Filter_coach 
                      dances={dances}
                      sports={sports}
-                     setdatacopy={setdatacopy}
-                      datacopy={datacopy}
-                      data={data}
-                      coachspecialty={coachspecialty}
-                      setcoachspecialty={setcoachspecialty}
-                      setcoachspecialtyfilter={setcoachspecialtyfilter}
-                      coachspecialtyfilter={coachspecialtyfilter}
+                     setdataCopy={setdataCopy}
+                      dataCopy={dataCopy}
+                      coachlist={coachlist}
+                      coachSpecialty={coachSpecialty}
+                      setcoachSpecialty={setcoachSpecialty}
+                      setcoachSpecialtyfilter={setcoachSpecialtyfilter}
+                      coachSpecialtyfilter={coachSpecialtyfilter}
                       jobs={jobs}
                       title={"SPECIALITES"} 
                       titleone={"Collectif"} 
@@ -102,20 +99,20 @@ export default function profil_coach({data,jobs,sports,dances}) {
                       subtitleeight={"Yoga"} 
                      />
                     <div className={css.line}></div> 
-                    <Experience setdatacopy={setdatacopy} datacopy={datacopy} data={data} />
+                    <Experience setdataCopy={setdataCopy} dataCopy={dataCopy} coachlist={coachlist} />
                     <div className={css.line}></div> 
-                    <Recommendation datacopy={datacopy} setdatacopy={setdatacopy} data={data}/>
+                    <Recommendation dataCopy={dataCopy} setdataCopy={setdataCopy} coachlist={coachlist} />
                     <div className={css.line}></div> 
-                    <Coach_type setdatacopy={setdatacopy} datacopy={datacopy} data={data}/>
+                    <Coach_type setdataCopy={setdataCopy} dataCopy={dataCopy} coachlist={coachlist} />
                     <div className={css.line}></div> 
-                    <Coach_region  setdatacopy={setdatacopy} datacopy={datacopy} data={data}/>
+                    <Coach_region  setdataCopy={setdataCopy} dataCopy={dataCopy} coachlist={coachlist} />
                 </div>
 
                 <div className={css.profil_coach__coach_details__list_of_coach}>
                     <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby}> 
 
                         <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__lenght}> 
-                            {datacopy.length} resultat(s) 
+                            {dataCopy.length} resultat(s) 
                         </div>
                         <div  className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby}>
                         <span>Trier par : </span>
@@ -137,10 +134,10 @@ export default function profil_coach({data,jobs,sports,dances}) {
                     </div>
                     <div className={css.line}></div> 
                     <div className={css.profil_coach__coach_details__list_of_coach__card}>
-                        {datacopy.map((e,key)=>
+                        {dataCopy.map((coachprofil,key)=>
                         <Card_profil_coach 
-                        data={e} 
-                        key={e._id}
+                        coachprofil={coachprofil} 
+                        key={coachprofil._id}
                         jobs={jobs}
                         />
                         )}
@@ -154,23 +151,23 @@ export default function profil_coach({data,jobs,sports,dances}) {
 }
 
 profil_coach.getInitialProps = async () => {
-    const res = await fetch("https://dev.isporit.com/api/users/coaches/all")
-    const resjobs = await fetch("https://dev.isporit.com/api/jobs")
-    const ressports = await fetch("https://dev.isporit.com/api/sports")
-    const resdance = await fetch("https://dev.isporit.com/api/dances/")
+    const coachres = await fetch("https://dev.isporit.com/api/users/coaches/all")
+    const jobsres = await fetch("https://dev.isporit.com/api/jobs")
+    const sportsres = await fetch("https://dev.isporit.com/api/sports")
+    const danceres = await fetch("https://dev.isporit.com/api/dances/")
 
 
 
-    const json = await res.json()
-    const jsonjobs = await resjobs.json()
-    const jsonsports = await ressports.json()
-    const jsondances = await resdance.json()
+    const jsoncoach = await coachres.json()
+    const jsonjobs = await jobsres.json()
+    const jsonsports = await sportsres.json()
+    const jsondances = await danceres.json()
 
     
 
 
 
-    return { status: 500, data: json,jobs:jsonjobs ,sports:jsonsports,dances:jsondances}
+    return {  coachlist: jsoncoach,jobs:jsonjobs ,sports:jsonsports,dances:jsondances}
 
 }
 

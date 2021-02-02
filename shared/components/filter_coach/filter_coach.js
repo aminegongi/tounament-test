@@ -3,6 +3,7 @@ import { DownOutlined ,RightOutlined} from '@ant-design/icons';
 import css from './filter_coach.scss'
 import down from "../../../public/icon/down.jpg"
 import left from "../../../public/icon/left.png"
+import { Empty } from 'antd';
 
 export default function filter_coach({ 
         title ,
@@ -18,13 +19,13 @@ export default function filter_coach({
         subtitleseven,
         subtitleeight,
         jobs,
-        coachspecialty,
-        setcoachspecialty,
-        setcoachspecialtyfilter,
-        coachspecialtyfilter,
-        setdatacopy,
-         datacopy,
-         data,
+        coachSpecialty,
+        setcoachSpecialty,
+        setcoachSpecialtyfilter,
+        coachSpecialtyfilter,
+        setdataCopy,
+         dataCopy,
+         coachlist,
          dances,
          sports
     }){
@@ -40,18 +41,22 @@ export default function filter_coach({
                 seticon(down) }
             }
             const filterspecialty =()=>{
-                console.log('coachspecialty',coachspecialty?coachspecialty :"n")
-                {coachspecialty =="sport" ? 
-                setcoachspecialtyfilter(sports) :setcoachspecialtyfilter(dances)
-                // setcoachspecialtyfilter(jobs.filter(e=>e.translations.fr.includes(coachspecialty)))
+                {coachSpecialty ==="sport" ? 
+                setcoachSpecialtyfilter(sports) 
+                 :(coachSpecialty ==="dances" ? setcoachSpecialtyfilter(dances)
+                 :setcoachSpecialtyfilter(""))
+                 
+                // setcoachSpecialtyfilter(jobs.filter(e=>e.translations.fr.includes(coachSpecialty)))
                 }
             }
             useEffect(() => {
                 filterspecialty()
-            }, [coachspecialty])
+            }, [coachSpecialty])
             
             const filterbyspecialty=(el)=>{
-                setdatacopy(data.filter(e=>e.sports.includes(el)))
+              
+
+                setdataCopy(coachlist.filter(e=>e.coachData.specialty.includes(el)))
                
 
             }
@@ -72,44 +77,30 @@ export default function filter_coach({
                                         css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
                                         <div onClick={()=>
                                            {
-                                            setcoachspecialty(el.specialty.type)
+                                            setcoachSpecialty(el.specialty.type)
                                                  
                                             }
                                         }>
                                          {el.translations.fr}
                                     </div>
-                                    {/* <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                    {subtitleone}
-                                    </div>
-                                    <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                   {subtitletwo}
-                                    </div>
-                                    <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                    {subtitlethere}
-                                    </div>
-                                    <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                    {subtitlefour}
-                                    </div> */}
+                              
                                 </div>
                                     </>)
                                 })}
                             </>
                                 : (
-                                    
-                                
-
-                                
-                            <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
+                                                                   
+                            <div className={icon === down ?
+                                 css.filter_coach__filter_type__title__Professions__items__iteam :
                                  css.filter_coach__filter_type__title__Professions__items__iteamnotvisible } 
                                  >
-                                     {console.log("coachspecialtyfilter",coachspecialtyfilter)
-} 
-                                    {coachspecialtyfilter !="" ? coachspecialtyfilter.map(el=>{
+
+                                    {coachSpecialtyfilter !=="" ? coachSpecialtyfilter.map(el=>{
                                         return (
                                             
                                         <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
                                                 css.filter_coach__filter_type__title__Professions__items__iteamnotvisible } 
-                                            onClick={()=>filterbyspecialty(el.translations.fr) }
+                                            onClick={()=>filterbyspecialty(el._id) }
                                                 >
                                              {el.translations.fr}
                                        </div>
@@ -118,21 +109,15 @@ export default function filter_coach({
                                         
                                     )
                                     :  
-                                    
-                                     <div >pas de Spécialité disponible </div>
+                                    <>
+                                     <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={
+                                        <span>
+                                            pas de Spécialité disponible
+                                        </span>
+                                        } />
+                                     </>
                                     }
-                                    {/* <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                    {subtitlefive}
-                                    </div>
-                                    <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                    {subtitlesix}
-                                    </div>
-                                    <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                    {subtitleseven}
-                                    </div>
-                                    <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam__subiteam :css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
-                                    {subtitleeight}
-                                    </div> */}
+                                  
                             </div>
                                 )}
                         </div>
