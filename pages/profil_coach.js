@@ -11,32 +11,53 @@ import Recommendation from '../shared/components/recommendation/recommendation';
 import Coach_type from '../shared/components/coach_type/Coach_type';
 import Coach_region from '../shared/components/coach_region/Coach_region';
 import Card_profil_coach from '../shared/components/card_profil_coach/Card_profil_coach';
-export default function profil_coach({coachlist,jobs,sports,dances}) {
-    const [dataCopy, setdataCopy] = useState(coachlist)
+export default function profil_coach({coachesList,jobs,sports,dances}) {
+    const [dataCopy, setdataCopy] = useState(coachesList)
     const [coachSpecialty, setcoachSpecialty] = useState()
     const [coachSpecialtyfilter, setcoachSpecialtyfilter] = useState('')
     const { Search } = Input;
-
+    const renderCoachProfile =(coachProfile)=>{
+        console.log('coachProfile: ', coachProfile);
+        const job=jobs.find(job=>job._id===coachProfile.coachData.job)
+        console.log('job: ', job);
+        // return <div/>
+        let specialty=""
+        if(job.specialty && job.specialty.type==="sport"){
+            
+            specialty=sports.find(sport=>sport._id===coachProfile.coachData.specialty)
+        }
+        else if(job.specialty && job.specialty.type==="dance"){
+            
+            specialty=dances.find(dance=>dance._id===coachProfile.coachData.specialty)
+        }
+        console.log('specialty: ', specialty);
+        return <Card_profil_coach 
+        coachProfile={coachProfile} 
+        key={coachProfile._id}
+        job={job}
+        specialty={specialty}
+        />
+    }
     const onSearch = value =>  {
-        setdataCopy(coachlist.filter(e => e.firstName.includes(value) || e.lastName.includes(value))) 
+        setdataCopy(coachesList.filter(e => e.firstName.includes(value) || e.lastName.includes(value))) 
        };
         const { Option } = Select;
         const handleChange=(value)=> {
             if(value.key=='alphabetique'){
-              const sortbyalphabetical=([...coachlist].sort( (a, b) => a.firstName - b.firstName? 1 : -1 ))
+              const sortbyalphabetical=([...coachesList].sort( (a, b) => a.firstName - b.firstName? 1 : -1 ))
                return setdataCopy(sortbyalphabetical)
               }
 
             if(value.key=='Tout'){
-                 return setdataCopy(coachlist)
+                 return setdataCopy(coachesList)
                 }
             if(value.key=='experience'){
-                const sortbyexperience=([...coachlist].sort( (a, b) => a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber ? 1 : -1 ))
+                const sortbyexperience=([...coachesList].sort( (a, b) => a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber ? 1 : -1 ))
                  return setdataCopy(sortbyexperience)
             } 
             if(value.key=='recommander'){
 
-                 const sortbyrecommend=([...coachlist].sort( (a, b) => 
+                 const sortbyrecommend=([...coachesList].sort( (a, b) => 
                  (Math.round(a.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/a.coachData.reviews.length) < 
                  Math.round(b.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/b.coachData.reviews.length))? 1 : -1 ))
                     return setdataCopy(sortbyrecommend)
@@ -71,7 +92,7 @@ export default function profil_coach({coachlist,jobs,sports,dances}) {
                      jobs={jobs}
                      setdataCopy={setdataCopy}
                      dataCopy={dataCopy}
-                     coachlist={coachlist}
+                     coachesList={coachesList}
                      />
                     <div className={css.line}></div> 
                      <Filter_coach 
@@ -79,7 +100,7 @@ export default function profil_coach({coachlist,jobs,sports,dances}) {
                      sports={sports}
                      setdataCopy={setdataCopy}
                       dataCopy={dataCopy}
-                      coachlist={coachlist}
+                      coachesList={coachesList}
                       coachSpecialty={coachSpecialty}
                       setcoachSpecialty={setcoachSpecialty}
                       setcoachSpecialtyfilter={setcoachSpecialtyfilter}
@@ -99,13 +120,13 @@ export default function profil_coach({coachlist,jobs,sports,dances}) {
                       subtitleeight={"Yoga"} 
                      />
                     <div className={css.line}></div> 
-                    <Experience setdataCopy={setdataCopy} dataCopy={dataCopy} coachlist={coachlist} />
+                    <Experience setdataCopy={setdataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                     <div className={css.line}></div> 
-                    <Recommendation dataCopy={dataCopy} setdataCopy={setdataCopy} coachlist={coachlist} />
+                    <Recommendation dataCopy={dataCopy} setdataCopy={setdataCopy} coachesList={coachesList} />
                     <div className={css.line}></div> 
-                    <Coach_type setdataCopy={setdataCopy} dataCopy={dataCopy} coachlist={coachlist} />
+                    <Coach_type setdataCopy={setdataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                     <div className={css.line}></div> 
-                    <Coach_region  setdataCopy={setdataCopy} dataCopy={dataCopy} coachlist={coachlist} />
+                    <Coach_region  setdataCopy={setdataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                 </div>
 
                 <div className={css.profil_coach__coach_details__list_of_coach}>
@@ -134,12 +155,8 @@ export default function profil_coach({coachlist,jobs,sports,dances}) {
                     </div>
                     <div className={css.line}></div> 
                     <div className={css.profil_coach__coach_details__list_of_coach__card}>
-                        {dataCopy.map((coachprofil,key)=>
-                        <Card_profil_coach 
-                        coachprofil={coachprofil} 
-                        key={coachprofil._id}
-                        jobs={jobs}
-                        />
+                        {dataCopy.map((coachProfile,key)=>
+                            renderCoachProfile(coachProfile)
                         )}
                         
                     </div>
@@ -151,23 +168,23 @@ export default function profil_coach({coachlist,jobs,sports,dances}) {
 }
 
 profil_coach.getInitialProps = async () => {
-    const coachres = await fetch("https://dev.isporit.com/api/users/coaches/all")
-    const jobsres = await fetch("https://dev.isporit.com/api/jobs")
-    const sportsres = await fetch("https://dev.isporit.com/api/sports")
-    const danceres = await fetch("https://dev.isporit.com/api/dances/")
+    const coachesRes = await fetch("https://dev.isporit.com/api/users/coaches/all")
+    const jobsRes = await fetch("https://dev.isporit.com/api/jobs")
+    const sportsRes = await fetch("https://dev.isporit.com/api/sports")
+    const danceRes = await fetch("https://dev.isporit.com/api/dances/")
 
 
 
-    const jsoncoach = await coachres.json()
-    const jsonjobs = await jobsres.json()
-    const jsonsports = await sportsres.json()
-    const jsondances = await danceres.json()
+    const jsonCoachesRes = await coachesRes.json()
+    const jsonJobsRes = await jobsRes.json()
+    const jsonSportsRes = await sportsRes.json()
+    const jsonDancesRes = await danceRes.json()
 
     
 
 
 
-    return {  coachlist: jsoncoach,jobs:jsonjobs ,sports:jsonsports,dances:jsondances}
+    return {  coachesList: jsonCoachesRes,jobs:jsonJobsRes ,sports:jsonSportsRes,dances:jsonDancesRes}
 
 }
 
