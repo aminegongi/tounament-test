@@ -50,9 +50,11 @@ export default function coach_type({setdataCopy,dataCopy,coachesList}) {
         setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.level.includes(level) ))
        }
    }
-   const onChange = e => {
-        console.log("nombre de personne",e)
-   }
+   const onChange = personNumber => {
+       
+    setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.personsNumberPerSession  >personNumber ))
+
+    }
 
 
 
@@ -90,6 +92,7 @@ export default function coach_type({setdataCopy,dataCopy,coachesList}) {
                      class={css.coach_type__rate__plus__privatesessionfilter__filterby__marks}
                         onChange={onChange}
                         marks={marks} max={10} min={1}/>
+                <br/>  
 
                     </div>
                 </div>

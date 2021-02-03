@@ -76,7 +76,7 @@ export default function profil_coach({coachesList,jobs,sports,dances}) {
                     <Search className={css.profil_coach__coach_details__filter__input_searsh} 
                      placeholder="RECHERCHE PAR NOM" 
                      onChange={e=>onSearch(e.target.value)}
-                     style={{ width: 250,
+                     style={{ width: 270,
                              }} />
                     <div className={css.line}></div> 
 
