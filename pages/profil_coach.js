@@ -20,7 +20,6 @@ export default function profil_coach({coachesList,jobs,sports,dances}) {
         console.log('coachProfile: ', coachProfile);
         const job=jobs.find(job=>job._id===coachProfile.coachData.job)
         console.log('job: ', job);
-        // return <div/>
         let specialty=""
         if(job.specialty && job.specialty.type==="sport"){
             
@@ -74,10 +73,12 @@ export default function profil_coach({coachesList,jobs,sports,dances}) {
             </div>
             <div className={css.profil_coach__coach_details} >
                 <div className={css.profil_coach__coach_details__filter} >
-                    <Search className={css.profil_coach__coach_details__filter__input_searsh} placeholder="RECHERCHE PAR NOM" 
+                    <Search className={css.profil_coach__coach_details__filter__input_searsh} 
+                     placeholder="RECHERCHE PAR NOM" 
                      onChange={e=>onSearch(e.target.value)}
-                     style={{ width: 160,
+                     style={{ width: 250,
                              }} />
+                    <div className={css.line}></div> 
 
                     <Filter_coach 
                      coachSpecialty={coachSpecialty}

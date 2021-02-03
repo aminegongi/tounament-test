@@ -29,6 +29,43 @@
             text-align: left;
             color: #000000;
             padding-left:7.3px;
+            padding-top:23px;
+            &__privatesessionfilter{
+               
+                &__filterby{
+                    cursor: pointer;
+
+                    width: 65px;
+                    height: 19px;
+                    margin: 18px 18px 12px 50px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    line-height: 1.19;
+                    letter-spacing: normal;
+                    text-align: left;
+                    &__marks{
+                        margin: 18px 18px 12px 50px;
+
+                    }
+                }
+               
+                &__filterby_personnumber{
+                    
+
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.19;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #000000;
+                    white-space: nowrap;
+
+                    margin: 18px 18px 12px 50px;
+
+                }
+            }
         }
      }
     }
@@ -36,3 +73,4 @@
 .radio{
     padding-bottom: 12px;
 }
+.privatesessionfilter{display: none;}
