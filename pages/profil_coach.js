@@ -3,7 +3,7 @@ import Header_coach_profil from '../shared/components/header_coach_profi/Header_
 import css from '../shared/css/profil_coach.scss'
 import globalCss from '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
-
+import {TOUT,ALPHABETIQUE,RECOMMANDER,EXPERIENCE,API} from '../shared/constants'
 import { Input ,Select} from 'antd';
 import Filter_coach from '../shared/components/filter_coach/Filter_coach';
 import Experience from '../shared/components/experience/Experience';
@@ -11,6 +11,7 @@ import Recommendation from '../shared/components/recommendation/recommendation';
 import Coach_type from '../shared/components/coach_type/Coach_type';
 import Coach_region from '../shared/components/coach_region/Coach_region';
 import Card_profil_coach from '../shared/components/card_profil_coach/Card_profil_coach';
+
 export default function profil_coach({coachesList,jobs,sports,dances}) {
     const [dataCopy, setdataCopy] = useState(coachesList)
     const [coachSpecialty, setcoachSpecialty] = useState()
@@ -108,17 +109,7 @@ export default function profil_coach({coachesList,jobs,sports,dances}) {
                       coachSpecialtyfilter={coachSpecialtyfilter}
                       jobs={jobs}
                       title={"SPECIALITES"} 
-                      titleone={"Collectif"} 
-                      titletwo={"Individuel"} 
-                      titlethere={"Football"} 
-                      subtitleone={"Basket-ball"} 
-                      subtitletwo={"Volley-ball"} 
-                      subtitlethere={"Handball"} 
-                      subtitlefour={"Football"} 
-                      subtitlefour={"Gymnastique"} 
-                      subtitlesix={"Tennis"} 
-                      subtitleseven={"Tennis"} 
-                      subtitleeight={"Yoga"} 
+                      
                      />
                     <div className={css.line}></div> 
                     <Experience setdataCopy={setdataCopy} dataCopy={dataCopy} coachesList={coachesList} />
@@ -140,16 +131,16 @@ export default function profil_coach({coachesList,jobs,sports,dances}) {
                         <span>Trier par : </span>
                         <Select
                             labelInValue
-                            placeholder={"Tout"}
+                            placeholder={TOUT}
                             style={{ width: 155 }}
                             bordered={false}
                             className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select}
                             onChange={handleChange}
                         >
-                            <Option value="Tout" >Tout</Option>
-                            <Option value="alphabetique">Ordre alphabétique</Option>
-                            <Option value="recommander">Plus recommander</Option>
-                            <Option value="experience">Années expérience</Option>
+                            <Option value={TOUT} >{TOUT}</Option>
+                            <Option value={ALPHABETIQUE}>Ordre {ALPHABETIQUE}</Option>
+                            <Option value={RECOMMANDER}>Plus {RECOMMANDER}</Option>
+                            <Option value={EXPERIENCE}>Années expérience</Option>
                         </Select>
                         </div>
                         
@@ -167,12 +158,12 @@ export default function profil_coach({coachesList,jobs,sports,dances}) {
         </div>
     )
 }
-
+console.log("a",API +"users/coaches/all")
 profil_coach.getInitialProps = async () => {
-    const coachesRes = await fetch("https://dev.isporit.com/api/users/coaches/all")
-    const jobsRes = await fetch("https://dev.isporit.com/api/jobs")
-    const sportsRes = await fetch("https://dev.isporit.com/api/sports")
-    const danceRes = await fetch("https://dev.isporit.com/api/dances/")
+    const coachesRes = await fetch(API +"users/coaches/all")
+    const jobsRes = await fetch(API +"jobs")
+    const sportsRes = await fetch(API +"sports")
+    const danceRes = await fetch(API+"dances/")
 
 
 

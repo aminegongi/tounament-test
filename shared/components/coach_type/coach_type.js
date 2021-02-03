@@ -45,14 +45,13 @@ export default function coach_type({setdataCopy,dataCopy,coachesList}) {
          }
    };
       const Searchbylevel= level=>{
-       console.log("level",level,coachesList)
        { 
         setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.level.includes(level) ))
        }
    }
    const onChange = personNumber => {
        
-    setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.personsNumberPerSession  >personNumber ))
+    setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.personsNumberPerSession  >=personNumber ))
 
     }
 
@@ -99,7 +98,7 @@ export default function coach_type({setdataCopy,dataCopy,coachesList}) {
                 <Radio className={css.radio} value={'lookingforwork'} />
                   <span className={css.coach_type__rate__plus}>Recherche de travail
                   </span> <br/>     
-       </Radio.Group> 
+             </Radio.Group> 
             </div>
         </div>
     )

@@ -7,17 +7,6 @@ import { Empty } from 'antd';
 
 export default function filter_coach({ 
         title ,
-        titleone,
-        titletwo,
-        titlethere,
-        subtitleone ,
-        subtitletwo ,
-        subtitlethere,
-        subtitlefive ,
-        subtitlesix,
-        subtitlefour,
-        subtitleseven,
-        subtitleeight,
         jobs,
         coachSpecialty,
         setcoachSpecialty,
@@ -25,11 +14,13 @@ export default function filter_coach({
         coachSpecialtyfilter,
         setdataCopy,
          dataCopy,
-         coachlist,
+         coachesList,
          dances,
          sports
     }){
     const [icon, seticon] = useState(left);
+    const [statejob, setStatejob] = useState()
+    const[statespecialty,setStatespecialty]=useState()
     
     const changeIcon =()=>{
         if (icon === down  )
@@ -52,16 +43,14 @@ export default function filter_coach({
             useEffect(() => {
                 filterspecialty()
             }, [coachSpecialty])
-            
             const filterbyspecialty=(el)=>{
               
 
-                setdataCopy(coachlist.filter(e=>e.coachData.specialty.includes(el)))
-               
-
+                setdataCopy(coachesList.filter(e=>e.coachData.specialty.includes(el)))
             }
     return (
         <div className={css.filter_coach}>
+
             <div className={css.filter_coach__filter_type} >
                 <div className={css.filter_coach__filter_type__title} >
                      <div  onClick={()=>changeIcon()} className={css.filter_coach__filter_type__title__Professions} >
@@ -77,11 +66,17 @@ export default function filter_coach({
                                         css.filter_coach__filter_type__title__Professions__items__iteamnotvisible }>
                                         <div onClick={()=>
                                            {
-                                            setcoachSpecialty(el.specialty.type)
+                                            setcoachSpecialty(el.specialty.type),
+                                            setStatejob(el._id)
+
                                                  
                                             }
                                         }>
-                                         {el.translations.fr}
+                                            <div onClick={()=>setStatespecialty('')} 
+                                            className={(el._id==statejob) ?
+                                            css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow:""}>
+                                                 {el.translations.fr}
+                                             </div>
                                     </div>
                               
                                 </div>
@@ -94,15 +89,21 @@ export default function filter_coach({
                                  css.filter_coach__filter_type__title__Professions__items__iteam :
                                  css.filter_coach__filter_type__title__Professions__items__iteamnotvisible } 
                                  >
-
                                     {coachSpecialtyfilter !=="" ? coachSpecialtyfilter.map(el=>{
                                         return (
                                             
                                         <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
                                                 css.filter_coach__filter_type__title__Professions__items__iteamnotvisible } 
-                                            onClick={()=>filterbyspecialty(el._id) }
+                                            onClick={()=>{
+                                                filterbyspecialty(el._id),
+                                                setStatespecialty(el._id)
+                                            }
+                                            }
                                                 >
-                                             {el.translations.fr}
+                                     <div  className={(el._id==statespecialty) ?css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow:""}>
+                                            { (el._id !='kindergarten' && el._id !='activityclub' )?
+                                             el.translations.fr:''}
+                                             </div>
                                        </div>
                                         )
                                     }

@@ -20,7 +20,7 @@ export default function experience({setdataCopy,coachesList ,dataCopy}) {
       };
      const onChange = value => {
        
-        setdataCopy(coachesList.filter(e=>e.coachData.experiencesYearsNumber  >value-0.1 ))
+        setdataCopy(coachesList.filter(e=>e.coachData.experiencesYearsNumber  >=value ))
 
         }
 
