@@ -3,11 +3,11 @@ import css from './coach_region.scss'
 import { Checkbox} from 'antd';
 import down from "../../../public/icon/down.jpg"
 import left from "../../../public/icon/left.png"
-export default function coach_region({setdataCopy,dataCopy,coachlist}) {
+export default function coach_region({setdataCopy,dataCopy,coachesList}) {
     
 
       const onChange = region =>  {
-         setdataCopy(coachlist.filter(e=>e.coachData.privateCourseData.regions.find(el=>region.includes(el))));
+         setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.regions.find(el=>region.includes(el))));
         }
 
       const plainOptions = [
@@ -55,9 +55,7 @@ export default function coach_region({setdataCopy,dataCopy,coachlist}) {
              css.show_region :
                 css.unshow_region } >
             <Checkbox.Group className={css.coach_region__checkbox} options={plainOptions} onChange={onChange} />
-
-
-                                 </div>
+         </div>
 
         </div>
     )
