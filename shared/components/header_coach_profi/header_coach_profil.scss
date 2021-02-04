@@ -45,3 +45,68 @@ box-shadow: 0 2px 5px 0 rgba(233, 233, 233, 0.9);
     }
 }
 }
+@media only screen and (max-width : 992px) {
+    .header{
+        padding: 34px 53px 34px 76px;
+        &__body{
+            &__inscrirebutton{
+                padding: 10px 10px 10px 10px;
+            }
+            &__pages{
+                &__composant {
+                   font-size: 14px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width : 760px) {
+    .header{
+        padding: 34px 53px 34px 76px;
+        &__body{
+            &__imglogo {
+                height: 50px;
+                width: 50px;
+            }
+            
+            &__pages{        
+                 padding-top: 19px;
+                grid-column-gap: 22px;
+                &__composant {
+                   font-size: 12px;
+                }
+            }
+            &__inscrirebutton{
+                padding: 8px 10px 10px 10px;
+                 span {
+                    font-size: 10px;
+                 }
+                }
+            }
+            }
+}
+
+@media only screen and (max-width : 650px) {
+
+    .header{
+        &__body{
+            &__pages{
+                &__composant {
+                     font-size: 10px;
+                }
+            }
+            &__imglogo{
+                padding-top: 15px;
+                height: 40px;
+                width: 40px;
+            }
+            &__inscrirebutton {
+                padding: 8px 8px 10px 8px;
+                span{
+                    font-size: 8px;
+
+                }
+            }
+        }
+    }
+}

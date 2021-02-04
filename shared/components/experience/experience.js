@@ -8,14 +8,13 @@ export default function experience({setdataCopy,coachesList ,dataCopy}) {
         5: '5',
         10: '10',
         15: '15',
-
         20: {
           style: {
             color: '#000000',
             fontsize: '14px',
             lineheight: '1.21',
           },
-          label: <strong>20ans</strong>,
+          label: <strong className={css.label}>20ans</strong>,
         },
       };
      const onChange = value => {

@@ -30,3 +30,34 @@
 .ant-slider-step{
     background: #47c8c0;
 }
+@media only screen and (max-width : 992px) {
+    .experience{
+        &__title{
+            font-size: 16px;
+        }
+    }
+    
+    .label{
+        padding-left: 40px;
+    }
+}
+@media only screen and (max-width : 760px) {
+    .experience{
+        &__title {
+        font-size: 13px;
+        margin-left: 10.5px;
+        &__marks{
+            .ant-slider {
+ 
+                margin: 14px -14px 10px !important;
+            }
+        }
+        }
+    }
+    .ant-slider-mark {
+        
+        font-size: 11px !important;
+    }
+    
+    
+}

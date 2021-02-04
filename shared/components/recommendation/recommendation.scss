@@ -35,3 +35,28 @@
     font-size: 17px;
 }
 
+@media only screen and (max-width : 992px) {
+    .recommendation{
+        &__title{
+            font-size: 16px;
+            
+        }
+        &__rate{
+            &__plus{
+                display: none;
+            }
+        }
+    }
+}
+@media only screen and (max-width : 760px) {
+    .recommendation{
+        &__title{
+            font-size: 12.5px;
+            margin-left: 10.5px;
+        }
+        &__rate {
+            width: 225px;
+            margin: 26px 36px 47px 11px;
+        }
+    }
+}

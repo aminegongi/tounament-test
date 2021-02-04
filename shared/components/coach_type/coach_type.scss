@@ -74,3 +74,56 @@
     padding-bottom: 12px;
 }
 .privatesessionfilter{display: none;}
+
+@media only screen and (max-width : 992px) {
+    .coach_type{
+        &__title {
+            font-size: 16px;
+        }
+        &__rate{
+            &__plus{
+             font-size: 14px;
+                &__privatesessionfilter{
+                   &__filterby {
+                       font-size: 14px;
+                       margin: 18px 18px 12px 31px;
+
+                    }
+                    &__filterby_personnumber{
+                        font-size: 14px;
+
+                        margin: 18px 18px 12px 31px;
+
+                    }
+                }
+        }
+     
+      }   
+    }
+}
+
+@media only screen and (max-width : 760px) {
+    .coach_type{
+        &__title{
+            font-size: 13px;
+            margin-left: 10.5px;
+        }
+        &__rate{
+            margin: 26px 36px 47px 10px;
+        
+            &__plus {
+                font-size: 11px;
+        
+                &__privatesessionfilter{
+                     &__filterby {
+                         font-size: 11px;
+                         margin: 18px 18px 12px 29px;
+                    }
+                    &__filterby_personnumber {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }   
+    }
+}

@@ -3,6 +3,7 @@
     max-width: 1360px;
     margin: auto;
     font-family: Roboto;
+
    &__coach_details{
        margin:29px 44px 29.7px 79px;
        display: flex;
@@ -21,6 +22,9 @@
                 input{
                     background-color: #f2f2f2;
                 }
+            }
+            &__input_searshmobile{
+                display: none;
             }
         }
         &__list_of_coach{
@@ -41,6 +45,9 @@
                     letter-spacing: normal;
                     
                     color: #646464;
+                }
+                &__filter{
+                    display: none;
                 }
                 &__sortby {
                     span{
@@ -71,4 +78,94 @@
     width: 1142px;
     height: 266px;
     padding:19px 79px 29px 79px;
+}
+@media only screen and (max-width : 992px) {
+    .affiche{
+        &__img{
+            width: 862px;
+        }
+    }
+    .profil_coach{
+        
+       &__coach_details{
+         &__filter{      
+                &__input_searsh{       
+                    width: 213px !important;        
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width : 760px) {
+    // .card_profil_coach{
+    //     margin: 0 auto;
+    // }
+    .affiche{
+        height: 159px;
+        padding: 19px 79px 4px 79px !important;
+            &__img {
+                width: 635px;
+        }
+    }
+    .profil_coach{
+        
+        &__coach_details{
+          &__filter{      
+                 &__input_searsh{       
+                     width: 160px !important;        
+                 }
+             }
+         }
+     }
+     .profil_coach__coach_details__list_of_coach__card{
+        padding: 21.5px 16px 17px 15px;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width : 650px) {
+    .affiche{
+        &__img{
+            width: 528px;
+        }
+    }
+  
+    .profil_coach{
+        &__coach_details{
+            &__filter{
+                display: none;
+                &__input_searshmobile{
+                    display: block;
+                    margin-left: 20px;
+                    margin-top: 7px;
+                    width: 486px !important;
+                    input{
+                        padding-left: 139px;
+                    }
+                }
+            }
+        }
+        &__coach_details__list_of_coach {
+        
+            margin-left: 0px;
+            &__lenght_sortby{
+                &__lenght{
+                    display: none;
+                }
+                &__filter{
+                    display: block;
+                }
+
+            }
+        }
+        .buttonfilter{
+            margin-left: 7px;
+
+        }
+    }
+    
+             
+             
 }
