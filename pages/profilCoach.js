@@ -13,7 +13,7 @@ import CoachRegion from '../shared/components/Coachregion/CoachRegion';
 import CardProfilCoach from '../shared/components/CardProfilCoach/CardProfilCoach';
 import Axios from 'axios'
 
-export default function profil_coach({ coachesList, jobs, sports, dances, regions }) {
+export default function ProfilCoach({ coachesList, jobs, sports, dances, regions }) {
     console.log('regions: ', regions);
     const [dataCopy, setDataCopy] = useState(coachesList)
     const [coachSpecialty, setCoachSpecialty] = useState()

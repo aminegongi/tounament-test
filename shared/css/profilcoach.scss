@@ -258,15 +258,16 @@
             }
         }
     }
-}
-
-.affiche {
-    padding: 1.188rem 0.5rem 0.25rem 0.5rem ;
-
-    &__img {
-        width: 39rem;
+    .affiche {
+        padding: 1.188rem 0.5rem 0.25rem 0.5rem ;
+    
+        &__img {
+            width: 39rem;
+        }
     }
 }
+
+
 
 @media only screen and (max-width : 375px) {
 
