@@ -6,7 +6,7 @@ import fetch from 'isomorphic-unfetch'
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
 import { Input, Select, Modal, Button } from 'antd';
 import FilterCoach from '../shared/components/FilterCoach/FilterCoach';
-import Experience from '../shared/components/Experience/Experience';
+import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter';
 import Recommendation from '../shared/components/Recommendation/Recommendation';
 import CoachType from '../shared/components/CoachType/CoachType';
 import CoachRegion from '../shared/components/Coachregion/CoachRegion';
@@ -125,7 +125,7 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
 
                     />
                     <div className={css.line}></div>
-                    <Experience setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                    <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                     <div className={css.line}></div>
                     <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
                     <div className={css.line}></div>

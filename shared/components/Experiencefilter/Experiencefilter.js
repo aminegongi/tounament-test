@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
-import css from './experience.scss'
+import css from './experiencefilter.scss'
 import { Slider } from 'antd';
 
-export default function Experience({setDataCopy,coachesList ,dataCopy}) {
+export default function Experiencefilter({setDataCopy,coachesList ,dataCopy}) {
     const marks = {
         0: '0',
         5: '5',
