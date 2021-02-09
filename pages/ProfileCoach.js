@@ -7,10 +7,10 @@ import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constan
 import { Input, Select, Modal, Button } from 'antd';
 import FilterCoach from '../shared/components/FilterCoach/FilterCoach';
 import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter';
-import Recommendation from '../shared/components/Recommendation/Recommendation';
-import CoachType from '../shared/components/CoachType/CoachType';
-import CoachRegion from '../shared/components/Coachregion/CoachRegion';
-import CardProfileCoach from '../shared/components/CardProfileCoach/CardProfileCoach';
+import Recommendation from '../shared/components/RecommendationFilter/RecommendationFilter';
+import CoachType from '../shared/components/CoachTypeFilter/CoachTypeFilter';
+import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegionFilter';
+import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoachFilter';
 
 export default function ProfileCoach({ coachesList, jobs, sports, dances, regions }) {
     const [dataCopy, setDataCopy] = useState(coachesList)
@@ -36,8 +36,6 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
         />
     }
     const [isModalVisible, setIsModalVisible] = useState(false);
-
-
     const showModal = () => {
         setIsModalVisible(true);
     };
