@@ -1,0 +1,163 @@
+.header {
+    padding: 2.125rem 4.938rem 2.125rem 4.938rem;
+    box-shadow: 0 2px 5px 0 rgba(233, 233, 233, 0.9);
+    background-color: #ffffff;
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+
+        &__imglogo {
+            padding-top: 0.031rem;
+            width: 5.5rem;
+            padding-bottom: 0.031rem;
+        }
+
+        &__pages {
+            padding-top: 0.813rem;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-column-gap: 3.125rem;
+
+            &__composant {
+                font-size: 1rem;
+                font-weight: 500;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.19;
+                letter-spacing: normal;
+                text-align: left;
+                color: #000000;
+            }
+
+        }
+
+        &__inscrirebutton {
+            span {
+                font-size: 1rem;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.19;
+                letter-spacing: normal;
+                text-align: left;
+                color: #ffffff;
+            }
+
+            padding: 0.813rem 0.875rem 0.75rem 0.938rem;
+            border-radius: 0.625rem;
+            background-color: #26beb5
+        }
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .header {
+        padding: 2.125rem 3.313rem 2.125rem 4.75rem;
+
+        &__body {
+            &__inscrirebutton {
+                padding: 0.625rem 0.625rem 0.625rem 0.625rem;
+            }
+
+            &__pages {
+                &__composant {
+                    //    font-size: 0.875rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width : 760px) {
+    .header {
+        padding: 2.125rem 3.313rem 2.125rem 4.75rem;
+
+        &__body {
+            &__imglogo {
+                height: 3.125rem;
+                width: 5.125rem;
+            }
+
+            &__pages {
+                padding-top: 1.188rem;
+                grid-column-gap: 1.375rem;
+
+                &__composant {
+                    //    font-size: 0.75rem;
+                }
+            }
+
+            &__inscrirebutton {
+                padding: 0.5rem 0.625rem 0.625rem 0.625rem;
+
+                span {
+                    // font-size: 0.625rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width : 650px) {
+
+    .header {
+        &__body {
+            &__pages {
+                &__composant {
+                    font-size: 0.625rem;
+                }
+            }
+
+            &__imglogo {
+                padding-top: 0.938rem;
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+
+            &__inscrirebutton {
+                padding: 0.5rem 0.5rem 0.625rem 0.5rem;
+
+                span {
+                    font-size: 0.5rem;
+
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width : 425px) {
+    .header {
+        padding: 2.125rem 0.313rem 2.125rem 0.75rem;
+
+        &__body {
+            &__imglogo{
+                  padding-top: 0rem;
+                 height: 2.5rem;
+                 width: 6.5rem;
+            }
+            &__pages {
+                &__composant {
+                    font-size: 0.8rem;
+                }
+            }
+           
+            &__inscrirebutton {
+                span {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+    .BurgerMenu{
+        display: flex;
+        flex-direction: column;
+        gap: 20px 5px;
+    }
+}
+
+.buttonclose{
+    margin-left: -263px;
+
+}
