@@ -174,7 +174,7 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
 
                                 />
                                 <div className={css.line}></div>
-                                <Experience setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                                <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                                 <div className={css.line}></div>
                                 <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
                                 <div className={css.line}></div>
