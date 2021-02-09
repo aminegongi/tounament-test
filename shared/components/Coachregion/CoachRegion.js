@@ -7,9 +7,7 @@ export default function CoachRegion({ setDataCopy, dataCopy, coachesList, region
 
 
     const onChange = region => {
-        console.log("region",region)
-        // const regionFind = regions.filter(el => el.translations.fr.find(e=> region.includes(e)))
-        // console.log("object",regionFind)
+       
         setDataCopy(coachesList.filter(coach => coach.coachData.privateCourseData.regions.find(el => region.includes(el))));
     }
 
