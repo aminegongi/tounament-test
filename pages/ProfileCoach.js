@@ -11,10 +11,8 @@ import Recommendation from '../shared/components/Recommendation/Recommendation';
 import CoachType from '../shared/components/CoachType/CoachType';
 import CoachRegion from '../shared/components/Coachregion/CoachRegion';
 import CardProfileCoach from '../shared/components/CardProfileCoach/CardProfileCoach';
-import Axios from 'axios'
 
 export default function ProfileCoach({ coachesList, jobs, sports, dances, regions }) {
-    console.log('regions: ', regions);
     const [dataCopy, setDataCopy] = useState(coachesList)
     const [coachSpecialty, setCoachSpecialty] = useState()
     const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
