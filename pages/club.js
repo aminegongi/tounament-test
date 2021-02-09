@@ -48,9 +48,9 @@ const Index = (props) => {
                         dans une seule plateforme. Vous pouvez personnaliser votre site Web avec vos propres informations 
                         afin que les intéressés puissent vous contacter directement depuis votre site Web."
             // buttonone="Gérer mon équipe gratuitement"
-            buttonone="Demander une démo"
+            buttonone="J'inscris mon club"
             backgroundbutton={"#26beb5"}
-            link={routes.CONTACT_US.clubPath}
+            link={routes.SIGN_UP.path}
           />
         </div>
         <div className={css.iteamlistblock}>
@@ -58,25 +58,18 @@ const Index = (props) => {
             images={[
               {
                 alt: "club",
-                src: "icon/hubspot.png",
+                src: "clubLogo/radesTennisAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/servicetitan.png",
+                src: "clubLogo/eliteSportAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/square.png",
+                src: "clubLogo/omSchoolTunis.jpg",
               },
-              {
-                alt: "club",
-                src: "icon/cognizant.png",
-              },
-              {
-                alt: "club",
-                src: "icon/square.png",
-              }
             ]}
+
           />
 
 

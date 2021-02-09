@@ -11,7 +11,8 @@ import Contact from '../../shared/components/Website/Contact/index'
 import globalCss from '../../shared/global-style.scss'
 import logoblanc from '../../public/icon/logobanc.svg'
 import Link from "next/link";
-import GlobalNavbar from '../../shared/components/Navbar/Navbar';
+import GlobalNavbar from '../../shared/components/navbar/Navbar';
+import routes from "../../utils/routes";
 
 
 const clubWebsite = ({ status, data, clubName, logo }) => {
@@ -48,11 +49,13 @@ const clubWebsite = ({ status, data, clubName, logo }) => {
                 </Head>
                 <div className={css.clubWebsite__body}>
                     <div className={css.headerblock}>
-                        <Link href="/" >
+                        <Link href={routes.SEARCH_CLUB.path} >
                             <a>
                                 <img className={css.headerblock__img} src={logoblanc} alt="logo" />
                             </a>
-                            {/* <span className={css.headerblock__connexion}>Connexion</span> */}
+                        </Link>
+                        <Link href={routes.LOG_IN.path} >
+                            <span className={css.headerblock__connexion}>Connexion</span>
                         </Link>
                     </div>
                     <Navbar data={data} logo={logo} />
@@ -70,7 +73,7 @@ const clubWebsite = ({ status, data, clubName, logo }) => {
 }
 
 clubWebsite.getInitialProps = async (ctx) => {
-    const res = await fetch("https://test.api.isporit.com/Clubs/slug/" + ctx.query.id)
+    const res = await fetch("https://test.isporit.com/api/Clubs/slug/" + ctx.query.id)
     const json = await res.json()
     if (json.website) {
         return { status: 200, data: json.website, clubName: json.title, logo: json.logo }

@@ -17,7 +17,7 @@ body {
         background: rgba(0, 0, 0, 0.6);
 
         a {
-            color : #191616;
+            color: #191616;
             text-decoration: none;
         }
         .modal {
@@ -47,7 +47,6 @@ body {
         }
     }
 
-
     .right_side {
         text-align: center;
         padding: 0 38px;
@@ -68,7 +67,6 @@ body {
             font-weight: 300;
             color: #ffffff;
             margin-bottom: 1.75rem;
-
         }
         .button {
             background: transparent;
@@ -86,7 +84,6 @@ body {
 
         color: #ffffff;
 
-
         &:focus {
             outline: none;
         }
@@ -94,16 +91,14 @@ body {
 
     .light_button {
         background-color: transparent;
-        border: 1px solid #019DA9;
-        color: #019DA9;
+        border: 1px solid #019da9;
+        color: #019da9;
         margin-right: 10px;
-
-
     }
 
     .primary_button {
         background-color: #019da9;
-
+        font-size: 15px;
     }
 
     .left_side {
@@ -113,6 +108,7 @@ body {
         align-items: center;
         padding-top: 3rem;
         padding-bottom: 3rem;
+
 
         .error {
             color: red;
@@ -127,19 +123,44 @@ body {
             color: #302727;
             margin-bottom: 25px;
             text-align: center;
-
         }
 
+        .select_input {
+            width: 390px;
+            margin-top: 15px;
+            font-size: 1rem !important;
+            // height: 20px;
+        }
+
+        .radio_group_button {
+            background-color: #26beb5 !important;
+        }
+       
+
+        .create_account_btn {
+            border-top: 1px solid #dadde1;
+            width: 390px;
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            .button {
+                background-color: #42b72a;
+                border-radius: 10px;
+                font-size: 15px;
+            }
+        }
+        .already_have_account {
+            margin-top: 20px;
+        }
 
         .input {
-            border: solid 1px #F6F6F6;
-            background: transparent;
             padding: 15px;
             display: block;
             width: 390px;
+            height: 50px;
             margin-top: 15px;
-            background: #F6F6F6;
-            font-size: 0.9375rem;
+            font-size: 15px;
             color: #717171;
         }
 
@@ -147,28 +168,21 @@ body {
             display: flex;
             justify-content: center;
             margin-top: 38px;
-
         }
-
-
-
+        .forgot_password {
+            margin-top: 10px;
+        }
     }
-
-
 }
 
 .mobile_navbar {
     display: none;
 }
 
-
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     .signup_btn_container {
         padding-bottom: 20px !important;
-
     }
-   
-
 
     .login_container {
         display: unset;
@@ -179,11 +193,12 @@ body {
 
         .left_side {
             min-height: 100vh;
-            .social_media_buttons, p {
+            .social_media_buttons,
+            p {
                 // display: none !important;
             }
-            .input {
-                width: 300px;
+            .input, .select_input, .create_account_btn {
+                width: calc(100vw - 100px);
             }
 
             .page_title {
@@ -194,7 +209,6 @@ body {
                 padding-right: 10px;
             }
         }
-
     }
 
     .mobile_navbar {
@@ -207,8 +221,7 @@ body {
     }
 }
 
-@media only screen and (max-width : 800px) {
-
+@media only screen and (max-width: 800px) {
     .login_container {
         .left_side {
             min-height: calc(100vh - 78px);
@@ -230,7 +243,7 @@ body {
                 position: relative;
                 padding-bottom: 50px;
 
-                @media screen and (max-width : 992px) and (min-width : 750px) {
+                @media screen and (max-width: 992px) and (min-width: 750px) {
                     top: 50px;
                 }
 

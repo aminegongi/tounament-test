@@ -28,7 +28,6 @@ function PriceV1({ data, mapicon, phoneicon, instagram, fb }) {
 
                     if (!isEmpty(el.title)) {
                         return <Price
-                            key={Math.round(Math.random() * Math.random() * 100)}
                             classnamebutton="partenaire_price_partenaire__price__blocktwo__buttoninscrire"
                             classname="partenaire_price_partenaire__price__blockone"
                             title={el.title} lieu={el.location}

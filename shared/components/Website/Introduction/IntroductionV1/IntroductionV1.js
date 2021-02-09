@@ -27,7 +27,7 @@ function IntroductionV1({ data }) {
                 </div>
                 <div className={css.image}>
                     {data.body.sport === "tennis" ?
-                        <img alt="image" src={"../icon/club_illustration.svg"} alt="" /> : "is not a soccer"
+                        <img alt="image" src={"../icon/club_illustration.svg"} alt="" /> :  <img alt="image" src={"../icon/soccer_club_illustration_website.jpg"} alt="" />
                     }
                 </div>
             </div>

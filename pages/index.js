@@ -50,6 +50,7 @@ const Index = (props) => {
   }, [i18n.language])
 
   useEffect(() => {
+    console.log("This was deploy using swarm")
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
@@ -77,16 +78,16 @@ const Index = (props) => {
                 <div>
                   iSporit vous fera gagner du temps pour gérer la présence de vos groupes,
                   l'organisation de vos calendriers, événements et plus encore.
-              </div>
+                </div>
               </div>
               <Link href={routes.CLUB_FEATURES.path} >
                 <button className={css.gerer_team}>
                   Gérer mon équipe gratuitement
-              </button>
+                </button>
               </Link>
               <div className={css.for_windows}>
                 Pour Windows, Mac, Android et iOS
-            </div>
+              </div>
             </div>
             <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
           </div>
@@ -98,24 +99,16 @@ const Index = (props) => {
             images={[
               {
                 alt: "club",
-                src: "icon/hubspot.png",
+                src: "clubLogo/radesTennisAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/servicetitan.png",
+                src: "clubLogo/eliteSportAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/square.png",
+                src: "clubLogo/omSchoolTunis.jpg",
               },
-              {
-                alt: "club",
-                src: "icon/cognizant.png",
-              },
-              {
-                alt: "club",
-                src: "icon/square.png",
-              }
             ]}
 
           />
@@ -206,8 +199,8 @@ const Index = (props) => {
             <div>
               <Link href={routes.CONTACT_US.clubPath}>
                 <button style={{ marginTop: 0 }} onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
-                  Demander une démo
-              </button>
+                  J'inscris mon club
+                </button>
               </Link>
             </div>
           </div>

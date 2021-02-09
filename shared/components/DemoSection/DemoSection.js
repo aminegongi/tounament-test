@@ -17,9 +17,9 @@ export default function DemoSection({ style, title, title_two, description, img,
                         {description}
 
                     </div>
-                    {link && <Link href={link}>
+                    {link && <Link href={routes.SIGN_UP.path}>
                         <button className={css.gerer_equipe}>
-                            Demander une démo
+                            J'inscris mon club
                         </button>
                     </Link>}
                 </div>

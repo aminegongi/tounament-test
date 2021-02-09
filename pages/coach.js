@@ -45,7 +45,7 @@ const Index = (props) => {
             votre expérience et vos réalisations via votre profil public."
             buttonone="S'inscrire gratuitement"
             backgroundbutton={"#ff8760"}
-            link={routes.CONTACT_US.coachPath}
+            link={routes.SIGN_UP.path}
           />
         </div>
         <div className={css.iteamlistblock}>
@@ -53,25 +53,18 @@ const Index = (props) => {
             images={[
               {
                 alt: "club",
-                src: "icon/hubspot.png",
+                src: "clubLogo/radesTennisAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/servicetitan.png",
+                src: "clubLogo/eliteSportAcademy.jpg",
               },
               {
                 alt: "club",
-                src: "icon/square.png",
+                src: "clubLogo/omSchoolTunis.jpg",
               },
-              {
-                alt: "club",
-                src: "icon/cognizant.png",
-              },
-              {
-                alt: "club",
-                src: "icon/square.png",
-              }
             ]}
+
           />
 
 
@@ -121,10 +114,10 @@ const Index = (props) => {
           </div>
 
           <div className={`${globalCss.isporit_max_width} ${css.join} `}>
-            <Join 
-              link={routes.CONTACT_US.coachPath} 
-              buttontwo="Contactez notre service commercial" 
-              classbutton={css.buttondisplay} 
+            <Join
+              link={routes.CONTACT_US.coachPath}
+              buttontwo="Contactez notre service commercial"
+              classbutton={css.buttondisplay}
             />
           </div>
         </div>

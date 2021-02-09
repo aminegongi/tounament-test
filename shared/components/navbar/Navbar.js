@@ -45,12 +45,12 @@ function NavbarIndex({ buttontwo, isFooter }) {
             </Link>
           </div>
           <div className={css.social_media}>
-            <a href="" ><img src="/Facebook_logo.png" alt="facebook" /></a>
-            <a href="" ><img src="/Twitter_logo.png" alt="twitter" /></a>
-            <a href="" ><img src="/Instagram_logo.png" alt="instagram" /></a>
+            <a href="https://www.facebook.com/iSporitOfficial" ><img src="/Facebook_logo.png" alt="facebook" /></a>
+            {/* <a href="" ><img src="/Twitter_logo.png" alt="twitter" /></a> */}
+            <a href="https://www.instagram.com/isporit_com/" ><img src="/Instagram_logo.png" alt="instagram" /></a>
           </div>
           <div className={css.button_container}>
-            <Link href='/contact-us'>
+            <Link href={routes.SIGN_UP.path}>
               <a>
                 <button className={css.sign_up}>
                   Devenez partenaire
@@ -119,11 +119,13 @@ function NavbarIndex({ buttontwo, isFooter }) {
             </SubMenu>
             {/* <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.menu_item}>Clubs partenaires</Menu.Item> */}
             <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.menu_item}>Contact</Menu.Item>
-            <SubMenu className={css.menu_item} title="S'inscrire gratuitement" key="sub2">
+            <Menu.Item onClick={() => onChangeLocation("/login")} className={css.menu_item}>Login</Menu.Item>
+
+            {/* <SubMenu className={css.menu_item} title="S'inscrire gratuitement" key="sub2">
               <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.feature_item}><img alt="club" src="icon/features/clubs.svg" /><div>Clubs</div></Menu.Item>
               <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.feature_item}><img alt="club" src="icon/features/coaches.svg" /><div>Entraineurs</div></Menu.Item>
               <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.feature_item}><img alt="club" src="icon/features/players.svg" /><div>Joueurs/Parents</div></Menu.Item>
-            </SubMenu>
+            </SubMenu> */}
 
           </Menu>
         </BurgerMenu.slide>
@@ -186,7 +188,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
             </div>
 
             <div className={css.item}>
-              <Link href='/'>
+              <Link href={routes.SEARCH_CLUB.path}>
                 <a>
                   Clubs partenaires
                 </a>
@@ -211,7 +213,7 @@ function NavbarIndex({ buttontwo, isFooter }) {
               <Icon className={css.fleshdown} type="down" />
             </button>
           </Link> */}
-            <Link href={routes.CONTACT_US.path}>
+            <Link href={routes.SIGN_UP.path}>
               <a>
                 <button className={css.sign_up}>
                   S'inscrire gratuitement

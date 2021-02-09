@@ -5,6 +5,7 @@
         background-color: black;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         &__img{
            
              margin-top:0.75rem;
@@ -17,6 +18,7 @@
             margin-bottom: 0.875rem;
             margin-right: 2.75rem;
             color: #ffffff;
+            cursor: pointer;
         }
     }
 }

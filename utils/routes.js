@@ -6,6 +6,12 @@ export default {
         coachPath: '/contact-us?role=coach',
         clubPath: '/contact-us?role=club',
     },
+    LOG_IN: {
+        path: '/login',
+    },
+    SIGN_UP: {
+        path: '/sign-up',
+    },
     PLAYER_FEATURES: {
         path: '/player',
     },
@@ -15,4 +21,11 @@ export default {
     CLUB_FEATURES: {
         path: '/club',
     },
+    SEARCH_CLUB: {
+        path: '/clubs'
+    },
+    CLUB_WEBSITE: {
+        path: '/clubs/:id',
+        linkTo: slug => '/clubs/'+slug,
+    }
 }

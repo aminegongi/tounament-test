@@ -1,0 +1,40 @@
+name: Build image
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build docker images using cache
+      uses: whoan/docker-build-with-cache-action@v5
+      with:
+        # Name of the image to build
+        image_name: isporit-website
+        username: someone
+        password: ${{secrets.GITHUB_TOKEN}} 
+        registry: docker.pkg.github.com 
+        
+    - name: Deploy to swarm
+      run: |
+        eval $(ssh-agent -s)
+        mkdir -m 0700 -p ~/.ssh/
+        ssh-keyscan 51.77.230.77 >> ~/.ssh/known_hosts
+        ssh-add - <<< "$SSH_PRIVATE_KEY"
+        docker --host "ssh://root@51.77.230.77" \
+          service update --force --image docker.pkg.github.com/isporit/isporit-website/isporit-website:latest prod_isporit_website
+      env:
+        SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+        
+#     - uses: danielr1996/kubectl-action@1.0.0
+#       name: Deploy
+#       with:
+#           kubeconfig: ${{ SECRETS.KUBE_CONFIG_DATA }}
+#           args: rollout restart deployment/website-isporit -n website-isporit
+
