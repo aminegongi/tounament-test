@@ -12,7 +12,7 @@ import logoclub from '../../public/icon/logo_club.png'
 import mapicon from '../../public/icon/mapicon.svg'
 import phoneicon from '../../public/icon/phoneicon.svg'
 import cartemap from '../../public/icon/cartmap.png'
-import IntroductionV1 from '../../shared/components/IntroductionV1/IntroductionV1'
+import IntroductionV1 from '../../shared/components/Website/Introduction/IntroductionV1/IntroductionV1';
 import DetailsV1 from '../../shared/components/Website/Details/DetailsV1/DetailsV1'
 import StaffV1 from '../../shared/components/Website/Staff/StaffV1/StaffV1'
 import PartnersV1 from '../../shared/components/Website/Partners/PartnersV1/PartnersV1'

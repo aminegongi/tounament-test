@@ -1,4 +1,4 @@
-import css from './functionclub.scss'
+import css from './Functionclub.scss'
 
 export default function Functionclub({ className, title, description, img }) {
 
