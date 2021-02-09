@@ -1,0 +1,144 @@
+.coach_type {
+    &__title {
+        font-size: 1.125rem;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: normal;
+        text-align: left;
+        color: #000000;
+        border-left: solid 3px #47c8c0;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 1.469rem;
+        padding-left: 0.781rem;
+        margin-top: 1.344rem;
+    }
+
+    &__rate {
+        width: 14.063rem;
+        margin: 1.625rem 2.25rem 2.938rem 2.25rem;
+
+        &__plus {
+            font-size: 1rem;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: normal;
+            text-align: left;
+            color: #000000;
+            padding-left: 0.456rem;
+            padding-top: 1.438rem;
+
+            &__privatesessionfilter {
+
+                &__filterby {
+                    cursor: pointer;
+
+                    width: 4.063rem;
+                    height: 1.188rem;
+                    margin: 1.125rem 1.125rem 0.75rem 3.125rem;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    line-height: 1.19;
+                    letter-spacing: normal;
+                    text-align: left;
+
+                    &__marks {
+                        margin: 1.125rem 1.125rem 0.75rem 3.125rem;
+
+                    }
+                }
+
+                &__filterby_personnumber {
+
+
+                    font-size: 1rem;
+                    font-weight: 500;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.19;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #000000;
+                    white-space: nowrap;
+                    margin: 1.125rem 1.125rem 0.75rem 3.125rem;
+
+                }
+            }
+        }
+    }
+}
+
+.radio {
+    padding-bottom: 0.75rem;
+}
+
+.privatesessionfilter {
+    display: none;
+}
+
+@media only screen and (max-width : 992px) {
+    .coach_type {
+
+        // &__title {
+        //     font-size: 16px;
+        // }
+        &__rate {
+            &__plus {
+
+                //  font-size: 14px;
+                &__privatesessionfilter {
+                    &__filterby {
+                        //    font-size: 14px;
+                        margin: 1.125rem 1.125rem 0.75rem 1.938rem;
+
+                    }
+
+                    &__filterby_personnumber {
+                        // font-size: 14px;
+
+                        margin: 1.125rem 1.125rem 0.75rem 1.938rem;
+
+                    }
+                }
+            }
+
+        }
+    }
+}
+@media only screen and (max-width : 768px) {
+    .coach_type__rate__plus {
+        
+        padding-left: 0rem;
+    }
+}
+@media only screen and (max-width : 760px) {
+    .coach_type {
+        &__title {
+            // font-size: 13px;
+            margin-left: 0.656rem;
+        }
+
+        &__rate {
+            margin: 1.625rem 2.25rem 2.938rem 0.625rem;
+
+            &__plus {
+                // font-size: 11px;
+
+                &__privatesessionfilter {
+                    &__filterby {
+                        //  font-size: 11px;
+                        margin: 1.125rem 1.125rem 0.75rem 1.813rem;
+                    }
+
+                    &__filterby_personnumber {
+                        // font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+}

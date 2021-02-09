@@ -49,7 +49,6 @@ const mapStyles = {
         //arrayCopy.reverse(); for descending
          setdata(arrayCopy);
        
-         console.log('data1',data1)
     }
     const Sherch = value => { 
        
