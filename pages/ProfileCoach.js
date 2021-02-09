@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
-import css from '../shared/css/profileCoach.scss'
+import css from '../shared/css/profilecoach.scss'
 import globalCss from '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
 import { Input, Select, Modal, Button } from 'antd';
 import FilterCoach from '../shared/components/FilterCoach/FilterCoach';
 import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter';
-import Recommendation from '../shared/components/RecommendationFilter/RecommendationFilter';
-import CoachType from '../shared/components/CoachTypeFilter/CoachTypeFilter';
-import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegionFilter';
-import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoachFilter';
+import Recommendation from '../shared/components/RecommendationFilter/Recommendation';
+import CoachType from '../shared/components/CoachTypeFilter/CoachType';
+import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion';
+import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach';
 
 export default function ProfileCoach({ coachesList, jobs, sports, dances, regions }) {
     const [dataCopy, setDataCopy] = useState(coachesList)
@@ -174,7 +174,7 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
 
                                 />
                                 <div className={css.line}></div>
-                                <Experience setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                                <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                                 <div className={css.line}></div>
                                 <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
                                 <div className={css.line}></div>
