@@ -7,7 +7,7 @@ export default function CardProfilCoach({coachProfile,key,job,specialty}) {
 const [img, setimg] = useState(coachProfile.profilePicture ?
  "http://isporit.com/api/"+coachProfile.profilePicture :
  AVATAR)
-const [sum, setsum] = useState(Math.round((coachProfile.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/coachProfile.coachData.reviews.length)))
+const [sum, setSum] = useState(Math.round((coachProfile.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/coachProfile.coachData.reviews.length)))
 
     return (
         <div className={css.card_profil_coach}>
