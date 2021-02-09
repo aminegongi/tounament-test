@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import css from './coach_type.scss'
-import { Rate ,Radio ,Slider} from 'antd';
+import css from './coachType.scss'
+import { Radio ,Slider} from 'antd';
+import {PRIVATECOACH,PRIVATESESSION} from '../../constants'
 
-export default function coach_type({setdataCopy,dataCopy,coachesList}) {
+export default function CoachType({setDataCopy,dataCopy,coachesList}) {
     const marks = {
         1: {
             style: {
@@ -36,22 +37,22 @@ export default function coach_type({setdataCopy,dataCopy,coachesList}) {
     const onSearchtype = type =>  {
        setValue(type.target.value)
          if (type.target.value =="lookingforwork" ){ 
-         setdataCopy(coachesList.filter(coach=>coach.coachData.lookingForJob ==true))
+         setDataCopy(coachesList.filter(coach=>coach.coachData.lookingForJob ==true))
          }
           else if 
           (type.target.value =="privatecoach" )
           { 
-          setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.givePrivateCourse ==true))
+          setDataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.givePrivateCourse ==true))
          }
    };
       const Searchbylevel= level=>{
        { 
-        setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.level.includes(level) ))
+        setDataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.level.includes(level) ))
        }
    }
    const onChange = personNumber => {
        
-    setdataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.personsNumberPerSession  >=personNumber ))
+    setDataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.personsNumberPerSession  >=personNumber ))
 
     }
 
@@ -65,10 +66,10 @@ export default function coach_type({setdataCopy,dataCopy,coachesList}) {
             <div className={css.coach_type__rate}> 
 
             <Radio.Group onChange={onSearchtype} value={value}>
-                <Radio className={css.radio} value={'privatecoach'} className={css.radio} /> 
+                <Radio className={css.radio} value={PRIVATECOACH} className={css.radio} /> 
                 <span className={css.coach_type__rate__plus}>Coach privé
                 </span> <br/>
-                <Radio className={css.radio} value={'Privatesession'} className={css.radio} /> 
+                <Radio className={css.radio} value={PRIVATESESSION} className={css.radio} /> 
                 <span className={css.coach_type__rate__plus}>Cours privé
                 </span> <br/>
                 

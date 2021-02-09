@@ -1,16 +1,14 @@
 import React,{useState,useEffect} from 'react'
-import css from './card_profil_coach.scss'
+import css from './cardProfilCoach.scss'
 import { Rate  } from 'antd';
 import {AVATAR} from '../../constants'
 
-export default function card_profil_coach({coachProfile,key,job,specialty}) {
-console.log("object",coachProfile)
+export default function CardProfilCoach({coachProfile,key,job,specialty}) {
 const [img, setimg] = useState(coachProfile.profilePicture ?
  "http://isporit.com/api/"+coachProfile.profilePicture :
  AVATAR)
 const [sum, setsum] = useState(Math.round((coachProfile.coachData.reviews.reduce((a,v) =>  a = a + v.rating , 0 )/coachProfile.coachData.reviews.length)))
-useEffect(() => {
-}, [coachProfile,key])
+
     return (
         <div className={css.card_profil_coach}>
             <div className={css.card_profil_coach__information} >

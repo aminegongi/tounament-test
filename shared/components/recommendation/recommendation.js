@@ -2,29 +2,13 @@ import React from 'react'
 import { Rate, Radio } from 'antd';
 import css from './recommendation.scss'
 
-export default function recommendation({ coachesList, dataCopy, setdataCopy }) {
+export default function Recommendation({ coachesList, dataCopy, setDataCopy }) {
 
   const onChange = e => {
     
-    if (e.target.value === 4) {
-      const x = (coachesList.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 4))
-      return setdataCopy(x)
-    }
-    if (e.target.value === 3) {
-      const x = (coachesList.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 3))
-
-      return setdataCopy(x)
-    }
-    if (e.target.value === 2) {
-      const x = (coachesList.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 2))
-
-      return setdataCopy(x)
-    }
-    if (e.target.value === 1) {
-      const x = (coachesList.filter(e => (Math.round((e.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / e.coachData.reviews.length))) >= 1))
-
-      return setdataCopy(x)
-    }
+      return setDataCopy((coachesList.filter(el => 
+        (Math.round((coach.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / coach.coachData.reviews.length))) >= e.target.value)))
+    
   };
   return (
     <div className={css.recommandation}>

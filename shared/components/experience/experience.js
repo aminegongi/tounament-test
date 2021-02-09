@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import css from './experience.scss'
 import { Slider } from 'antd';
 
-export default function experience({setdataCopy,coachesList ,dataCopy}) {
+export default function Experience({setDataCopy,coachesList ,dataCopy}) {
     const marks = {
         0: '0',
         5: '5',
@@ -19,7 +19,7 @@ export default function experience({setdataCopy,coachesList ,dataCopy}) {
       };
      const onChange = value => {
        
-        setdataCopy(coachesList.filter(e=>e.coachData.experiencesYearsNumber  >=value ))
+        setDataCopy(coachesList.filter(e=>e.coachData.experiencesYearsNumber  >=value ))
 
         }
 

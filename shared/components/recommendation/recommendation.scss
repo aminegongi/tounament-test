@@ -1,6 +1,6 @@
-.recommendation{
-    &__title{
-        font-size: 18px;
+.recommendation {
+    &__title {
+        font-size: 1.125rem;
         font-weight: 500;
         font-stretch: normal;
         font-style: normal;
@@ -10,16 +10,18 @@
         color: #000000;
         border-left: solid 3px #47c8c0;
         display: flex;
-         justify-content: space-between;
-         margin-left: 23.5px;
-         padding-left:12.5px;
-         margin-top:21.5px;
-      }
-      &__rate{
-        width: 225px;
-        margin: 26px 36px 47px 36px;
-        &__plus{
-            font-size: 16px;
+        justify-content: space-between;
+        margin-left: 1.469rem;
+        padding-left: 0.781rem;
+        margin-top: 1.344rem;
+    }
+
+    &__rate {
+        width: 14.063rem;
+        margin: 1.625rem 2.25rem 2.938rem 2.25rem;
+
+        &__plus {
+            font-size: 1rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -27,36 +29,40 @@
             letter-spacing: normal;
             text-align: left;
             color: #000000;
-            padding-left:7.3px;
+            padding-left: 0.456rem;
         }
-     }
+    }
 }
-.rate{
-    font-size: 17px;
+
+.rate {
+    font-size: 1.063rem;
 }
 
 @media only screen and (max-width : 992px) {
-    .recommendation{
-        &__title{
-            font-size: 16px;
-            
+    .recommendation {
+        &__title {
+            // font-size: 1rem;
+
         }
-        &__rate{
-            &__plus{
+
+        &__rate {
+            &__plus {
                 display: none;
             }
         }
     }
 }
+
 @media only screen and (max-width : 760px) {
-    .recommendation{
-        &__title{
-            font-size: 12.5px;
-            margin-left: 10.5px;
+    .recommendation {
+        &__title {
+            // font-size: 0.781rem;
+            margin-left: 0.656rem;
         }
+
         &__rate {
-            width: 225px;
-            margin: 26px 36px 47px 11px;
+            width: 14.063rem;
+            margin: 1.625rem 2.25rem 2.938rem 0.688rem;
         }
     }
 }

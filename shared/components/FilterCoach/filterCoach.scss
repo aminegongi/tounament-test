@@ -4,7 +4,7 @@
         &__title{
             &__Professions{
             cursor: pointer;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -15,15 +15,15 @@
             border-left: solid 3px #47c8c0;
             display: flex;
              justify-content: space-between;
-             margin-left: 23.5px;
-             padding-left:12.5px;
-             margin-top:21.5px;
+             margin-left: 1.469rem;
+             padding-left:0.781rem;
+             margin-top:1.344rem;
              &__items{
                 cursor: pointer;
-                margin-top: 15px;
-                margin-left: 46px;
-                margin-bottom: 10px;
-                font-size: 16px;
+                margin-top: 0.938rem;
+                margin-left: 2.875rem;
+                margin-bottom: 0.625rem;
+                font-size: 1rem;
                 font-stretch: normal;
                 font-style: normal;
                 line-height: 1.19;
@@ -31,7 +31,7 @@
                 text-align: left;
                 color: #000000;
                 &__iteam{
-                    margin-bottom: 10px;
+                    margin-bottom: 0.625rem;
                     &__iteamshow{
                         color:#26beb5
                     }                    
@@ -45,22 +45,22 @@
     }
 }
 .down{
-    width: 34px;
+    width: 2.125rem;
 }
 .left{
-    width: 5px;
-    margin-left: 10px;
+    width: 0.313rem;
+    margin-left: 0.625rem;
 }
 @media only screen and (max-width : 992px) {
     .filter_coach{
         &__filter_type{
          &__title{
             &__Professions{
-                font-size: 16px;
+                // font-size: 1rem;
             }
             &__Professions{
                 &__items{
-                    font-size: 13px;
+                    // font-size: 13px;
 
                 }
         }
@@ -72,8 +72,8 @@
     .filter_coach{
         &__filter_type{
             &__title__Professions{
-                font-size: 13px;
-                margin-left: 10.5px;
+                // font-size: 13px;
+                margin-left: 0.656rem
             }
         }
     }
