@@ -7,9 +7,12 @@ export default function CoachRegion({ setDataCopy, dataCopy, coachesList, region
 
 
     const onChange = region => {
+        console.log("region",region)
+        // const regionFind = regions.filter(el => el.translations.fr.find(e=> region.includes(e)))
+        // console.log("object",regionFind)
         setDataCopy(coachesList.filter(coach => coach.coachData.privateCourseData.regions.find(el => region.includes(el))));
     }
-    
+
     const [icon, setIcon] = useState(left);
     const changeIcon = () => {
         if (icon === down) {
@@ -26,7 +29,14 @@ export default function CoachRegion({ setDataCopy, dataCopy, coachesList, region
             </div>
             <div>
                 {icon == down &&
-                    <Checkbox.Group className={css.coach_region__checkbox} options={regions.map(region=>region.translations.fr)} onChange={onChange} />
+                    <Checkbox.Group className={css.coach_region__checkbox} options={regions.map(region=>{
+                            return(
+                                {
+                                    "value":region._id,
+                                    "label":region.translations.fr
+                                }
+                            )
+                    })} onChange={onChange} />
                 }
             </div>
 

@@ -6,3 +6,4 @@ export const AVATAR = "https://avataaars.io/?avatarStyle=Transparent&topType=Sho
 export const API ="https://dev.isporit.com/api/"
 export const PRIVATECOACH = "privatecoach"
 export const PRIVATESESSION= "Privatesession"
+export const LOOKINGFORWORK = "lookingforwork"

@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
-import css from './cardProfilCoach.scss'
+import css from './cardProfileCoach.scss'
 import { Rate  } from 'antd';
 import {AVATAR} from '../../constants'
 
-export default function CardProfilCoach({coachProfile,key,job,specialty}) {
+export default function CardProfileCoach({coachProfile,key,job,specialty}) {
 const [img, setimg] = useState(coachProfile.profilePicture ?
  "http://isporit.com/api/"+coachProfile.profilePicture :
  AVATAR)

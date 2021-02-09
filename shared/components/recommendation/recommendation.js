@@ -6,7 +6,7 @@ export default function Recommendation({ coachesList, dataCopy, setDataCopy }) {
 
   const onChange = e => {
     
-      return setDataCopy((coachesList.filter(el => 
+      return setDataCopy((coachesList.filter(coach => 
         (Math.round((coach.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / coach.coachData.reviews.length))) >= e.target.value)))
     
   };

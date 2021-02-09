@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import HeaderCoachProfil from '../shared/components/HeaderCoachProfil/HeaderCoachProfil'
-import css from '../shared/css/profilCoach.scss'
+import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
+import css from '../shared/css/profileCoach.scss'
 import globalCss from '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
@@ -10,10 +10,10 @@ import Experience from '../shared/components/Experience/Experience';
 import Recommendation from '../shared/components/Recommendation/Recommendation';
 import CoachType from '../shared/components/CoachType/CoachType';
 import CoachRegion from '../shared/components/Coachregion/CoachRegion';
-import CardProfilCoach from '../shared/components/CardProfilCoach/CardProfilCoach';
+import CardProfileCoach from '../shared/components/CardProfileCoach/CardProfileCoach';
 import Axios from 'axios'
 
-export default function ProfilCoach({ coachesList, jobs, sports, dances, regions }) {
+export default function ProfileCoach({ coachesList, jobs, sports, dances, regions }) {
     console.log('regions: ', regions);
     const [dataCopy, setDataCopy] = useState(coachesList)
     const [coachSpecialty, setCoachSpecialty] = useState()
@@ -30,7 +30,7 @@ export default function ProfilCoach({ coachesList, jobs, sports, dances, regions
 
             specialty = dances.find(dance => dance._id === coachProfile.coachData.specialty)
         }
-        return <CardProfilCoach
+        return <CardProfileCoach
             coachProfile={coachProfile}
             key={coachProfile._id}
             job={job}
@@ -81,7 +81,7 @@ export default function ProfilCoach({ coachesList, jobs, sports, dances, regions
 
     return (
         <div className={css.profil_coach}>
-            <HeaderCoachProfil />
+            <HeaderCoachProfile />
 
             <div className={css.affiche}>
                 <img className={css.affiche__img} src={"icon/profil_coach.png"} alt="" />
@@ -221,24 +221,24 @@ export default function ProfilCoach({ coachesList, jobs, sports, dances, regions
         </div>
     )
 }
-profil_coach.getInitialProps = async () => {
+ProfileCoach.getInitialProps = async () => {
     const coachesRes = await fetch(API + "users/coaches/all")
     const jobsRes = await fetch(API + "jobs")
     const sportsRes = await fetch(API + "sports")
     const danceRes = await fetch(API + "dances/")
-    const regionsRES = await fetch(API +"regions/")
+    const regionsRes = await fetch(API +"regions/")
     const jsonCoachesRes = await coachesRes.json()
     const jsonJobsRes = await jobsRes.json()
     const jsonSportsRes = await sportsRes.json()
     const jsonDancesRes = await danceRes.json()
-    const jsonRegionsRES = await regionsRES.json()
+    const jsonRegionsRes = await regionsRes.json()
 
     return {
         coachesList: jsonCoachesRes,
         jobs: jsonJobsRes,
         sports: jsonSportsRes,
         dances: jsonDancesRes,
-        regions: jsonRegionsRES
+        regions: jsonRegionsRes
     }
 }
 

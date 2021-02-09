@@ -45,7 +45,7 @@ export default function CoachType({setDataCopy,dataCopy,coachesList}) {
           setDataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.givePrivateCourse ==true))
          }
    };
-      const Searchbylevel= level=>{
+      const searchbylevel= level=>{
        { 
         setDataCopy(coachesList.filter(coach=>coach.coachData.privateCourseData.level.includes(level) ))
        }
@@ -76,14 +76,14 @@ export default function CoachType({setDataCopy,dataCopy,coachesList}) {
                 <div className={value == "Privatesession"? 
                 css.coach_type__rate__plus__privatesessionfilter :css.privatesessionfilter}
                 >
-                    <div onClick={()=>Searchbylevel("beginner")} 
+                    <div onClick={()=>searchbylevel("beginner")} 
                      className={css.coach_type__rate__plus__privatesessionfilter__filterby}>
                       Débutant
                     </div>
-                    <div onClick={()=>Searchbylevel("intermediate")} className={css.coach_type__rate__plus__privatesessionfilter__filterby}>
+                    <div onClick={()=>searchbylevel("intermediate")} className={css.coach_type__rate__plus__privatesessionfilter__filterby}>
                      Intermédiaire
                     </div>
-                    <div onClick={()=>Searchbylevel("confirmed")} className={css.coach_type__rate__plus__privatesessionfilter__filterby}>
+                    <div onClick={()=>searchbylevel("confirmed")} className={css.coach_type__rate__plus__privatesessionfilter__filterby}>
                     Confirmé
                     </div>
                     <div className={css.coach_type__rate__plus__privatesessionfilter__filterby_personnumber}>

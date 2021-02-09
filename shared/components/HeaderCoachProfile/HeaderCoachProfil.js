@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import css from './headerCoachProfil.scss'
+import css from './headerCoachProfile.scss'
 import BurgerMenu from 'react-burger-menu'
 import { useMediaPredicate } from "react-media-hook";
 import { Icon, Input, Select, Menu, Skeleton } from 'antd';
 
-export default function HeaderCoachProfil() {
+export default function HeaderCoachProfile() {
 
 
     const mobile = useMediaPredicate("(max-width: 550px)");
