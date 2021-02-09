@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
-import css from '../shared/css/profileCoach.scss'
+import css from '../shared/css/profilecoach.scss'
 import globalCss from '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
