@@ -2,8 +2,8 @@ name: Push to production
 
 on:
   push:
-    branches: 
-      - master
+    branches-ignore:
+      - '**'
 
 
 jobs:
