@@ -118,7 +118,8 @@ const Login = (props) => {
                         <span className={css.description}>
                             Entrez vos information et débutez avec nous votre parcours
                         </span>
-                        <Link href={{ pathname: '/sign-up', query: router.query }} >
+                        <Link href={{ pathname: '/sign-up' }} >
+                        {/* query: router.query */}
                             <a>
                                 <button className={css.button} type="submit">
                                     S'INSCRIRE
