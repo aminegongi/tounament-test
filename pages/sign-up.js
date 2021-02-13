@@ -307,7 +307,8 @@ const SignUp = () => {
                             Vous avez déjà un compte
                         </h2>
 
-                        <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost || '', env: router.query.env || '' } }} >
+                        <Link href={{ pathname: '/login', query: { email: data.email } }} >
+                        {/* , isLocalhost: router.query.isLocalhost || '', env: router.query.env || '' */}
                             <a>
                                 <button className={css.button} type="submit">
                                     SE CONNECTER
