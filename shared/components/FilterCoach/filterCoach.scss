@@ -1,77 +1,105 @@
-.filter_coach{
+.filter_coach {
 
-    &__filter_type{
-        &__title{
-            &__Professions{
-            cursor: pointer;
-            font-size: 1.125rem;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.22;
-            letter-spacing: normal;
-            text-align: left;
-            color: #000000;
-            border-left: solid 3px #47c8c0;
-            display: flex;
-             justify-content: space-between;
-             margin-left: 1.469rem;
-             padding-left:0.781rem;
-             margin-top:1.344rem;
-             &__items{
+    &__filter_type {
+        &__title {
+            &__Professions {
                 cursor: pointer;
-                margin-top: 0.938rem;
-                margin-left: 2.875rem;
-                margin-bottom: 0.625rem;
-                font-size: 1rem;
+                font-size: 1.125rem;
+                font-weight: 500;
                 font-stretch: normal;
                 font-style: normal;
-                line-height: 1.19;
+                line-height: 1.22;
                 letter-spacing: normal;
                 text-align: left;
                 color: #000000;
-                &__iteam{
+                border-left: solid 3px #47c8c0;
+                display: flex;
+                justify-content: space-between;
+                margin-left: 1.469rem;
+                padding-left: 0.781rem;
+                margin-top: 1.344rem;
+
+                &__items {
+
+                    cursor: pointer;
+                    margin-top: 0.938rem;
+                    margin-left: 2.875rem;
                     margin-bottom: 0.625rem;
-                    &__iteamshow{
-                        color:#26beb5
-                    }                    
+                    font-size: 1rem;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.19;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #000000;
+
+                    &__iteam {
+
+                        margin-bottom: 0.625rem;
+
+                        &__iteamshow {
+                            color: #26beb5
+                        }
+                    }
+
+                    &__iteamnotvisible {
+                        display: none;
+
+                    }
                 }
-                &__iteamnotvisible{
-                    display: none;
-                }
-             }
             }
         }
     }
 }
-.down{
-    width: 2.125rem;
+
+.down {
+    width: 1.875rem;
 }
-.left{
-    width: 0.313rem;
+
+.left {
+    width: 1.875rem;
     margin-left: 0.625rem;
 }
-@media only screen and (max-width : 992px) {
-    .filter_coach{
-        &__filter_type{
-         &__title{
-            &__Professions{
-                // font-size: 1rem;
-            }
-            &__Professions{
-                &__items{
-                    // font-size: 13px;
 
+.filter_coach__show {
+    height: 13rem;
+    overflow: auto;
+    cursor: pointer;
+    margin-top: 0.938rem;
+    margin-left: 2.875rem;
+    margin-bottom: 0.625rem;
+    font-size: 1rem;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.19;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+@media only screen and (max-width : 992px) {
+    .filter_coach {
+        &__filter_type {
+            &__title {
+                &__Professions {
+                    // font-size: 1rem;
                 }
+
+                &__Professions {
+                    &__items {
+                        // font-size: 13px;
+
+                    }
+                }
+            }
         }
-      }
-    }
     }
 }
+
 @media only screen and (max-width : 760px) {
-    .filter_coach{
-        &__filter_type{
-            &__title__Professions{
+    .filter_coach {
+        &__filter_type {
+            &__title__Professions {
                 // font-size: 13px;
                 margin-left: 0.656rem
             }

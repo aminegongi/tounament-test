@@ -1,5 +1,6 @@
 .coach_region {
   &__title {
+    cursor: pointer;
     font-size: 1.125rem;
     font-weight: 500;
     font-stretch: normal;
@@ -20,7 +21,10 @@
     display: grid;
     grid-row-gap: 0.688rem;
     margin: 1.625rem 2.25rem 2.938rem 2.25rem;
-
+    padding-left: 0.456rem;
+    height: 10rem;
+    overflow: auto;
+    width: 14rem;
     span {
       font-size: 1rem;
       font-weight: 500;
@@ -30,7 +34,6 @@
       letter-spacing: normal;
       text-align: left;
       color: #000000;
-      padding-left: 0.456rem;
     }
   }
 }
@@ -44,12 +47,13 @@
 }
 
 .down {
-  width: 34px;
+  width: 1.875rem;
 }
 
 .left {
-  width: 0.313rem;
+  width: 1.875rem;
   margin-left: 0.625rem;
+ 
 }
 
 @media only screen and (max-width : 992px) {
