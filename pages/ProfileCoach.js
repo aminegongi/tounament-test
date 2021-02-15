@@ -19,15 +19,14 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
     const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
     const nbr_of_card_per_page = 2
 
-    const [state, setState] = useState(Array.from(dataCopy))
     const [pageNumber, setPageNumber] = useState(1)
     const [pageActiveNumber, setPageActiveNumber] = useState()
     function paginate(array, page_size, page_number) {
-        // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
         return array.slice((page_number - 1) * page_size, page_number * page_size);
     }
     const { Search } = Input;
     const renderCoachProfile = (coachProfile) => {
+        console.log("dataCopy", coachProfile)
         const job = jobs.find(job => job._id === coachProfile.coachData.job)
         let specialty = ""
         if (job.specialty && job.specialty.type === "sport") {
@@ -166,14 +165,14 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
                                         jobs={jobs}
                                         setDataCopy={setDataCopy}
                                         dataCopy={dataCopy}
-                                        coachesList={coachesList}
+                                        coachesList={dataCopy}
                                     />
                                     <FilterCoach
                                         dances={dances}
                                         sports={sports}
                                         setDataCopy={setDataCopy}
                                         dataCopy={dataCopy}
-                                        coachesList={coachesList}
+                                        coachesList={dataCopy}
                                         coachSpecialty={coachSpecialty}
                                         setCoachSpecialty={setCoachSpecialty}
                                         setCoachSpecialtyFilter={setCoachSpecialtyFilter}
@@ -199,7 +198,7 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
                                 <Select
                                     labelInValue
                                     placeholder={ALL}
-                                    style={{ width: 155 }}
+                                    style={{ width: 200 }}
                                     bordered={false}
                                     className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select}
                                     onChange={handleChange}
@@ -214,15 +213,15 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
                         </div>
                         <div className={css.line}></div>
                         <div className={css.profil_coach__coach_details__list_of_coach__card}>
-                            {paginate(state, nbr_of_card_per_page, pageNumber).map((coachProfile, key) =>
-                                renderCoachProfile(coachProfile)
+                            {paginate(dataCopy, nbr_of_card_per_page, pageNumber).map((dataCopy, key) =>
+                                renderCoachProfile(dataCopy)
                             )}
                         </div>
                         <div className={css.paginate}>
                             {
-                                Array.from({ length:Math.round(state.length / nbr_of_card_per_page )}).map((el, index) => (
-                                    <div className={pageActiveNumber == index  || index+1 ==pageNumber? css.paginate__page : ""}
-                                      key={index} type="submit" onClick={() => {setPageNumber(index + 1),setPageActiveNumber(index)}}>
+                                Array.from({ length: Math.round(dataCopy.length / nbr_of_card_per_page) }).map((el, index) => (
+                                    <div className={pageActiveNumber == index || index + 1 == pageNumber ? css.paginate__page : ""}
+                                        key={index} type="submit" onClick={() => { setPageNumber(index + 1), setPageActiveNumber(index) }}>
                                         {index + 1}
                                     </div>
                                 ))

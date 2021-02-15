@@ -13,11 +13,11 @@ export default function Recommendation({ coachesList, dataCopy, setDataCopy }) {
     if (e.target.value === selectedRate) {
       setSelectedRate("")
       setDataCopy(dataCopy)
-      window.scrollTo(400, 350);
+      // window.scrollTo(400, 350);
 
     }
     else {
-      window.scrollTo(400, 350);
+      // window.scrollTo(400, 350);
       setSelectedRate(e.target.value)
       setDataCopy((dataCopy.filter(coach =>
         (Math.round((coach.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / coach.coachData.reviews.length))) >= e.target.value)))
