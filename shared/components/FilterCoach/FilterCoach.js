@@ -21,7 +21,7 @@ export default function FilterCoach({
     const [icon, seticon] = useState(left);
     const [selectedJobId, setSelectedJobId] = useState()
     const [selectedSpecialtyId, setSelectedSpecialtyId] = useState()
-
+const [professionId, setProfessionId] = useState()
     const changeIcon = () => {
         if (icon === down) {
             seticon(left)
@@ -45,6 +45,21 @@ export default function FilterCoach({
         const filteredCoachesList = dataCopy.filter(e => e.coachData.specialty.includes(el))
         setDataCopy(filteredCoachesList)
     }
+
+    const handleProfession = (Profession) => {
+        window.scrollTo(400, 350);
+       setProfessionId(Profession._id);
+
+        if (Profession._id == professionId) {
+            setDataCopy(coachesList)
+            setProfessionId("")
+        }
+        else {
+            setDataCopy(dataCopy.filter(e => e.coachData.job == (Profession._id)))
+
+        }
+    }
+
     const handleSpecialty = (specialty) => {
         window.scrollTo(400, 350);
 
@@ -66,7 +81,7 @@ export default function FilterCoach({
                     <div onClick={() => changeIcon()} className={css.filter_coach__filter_type__title__Professions} >
                         {title}<img src={icon} className={icon === down ? css.down : css.left} alt="" />
                     </div>
-                    <div className={icon != down ? css.filter_coach__filter_type__title__Professions__items:css.filter_coach__show}>
+                    <div className={icon != down ? css.filter_coach__filter_type__title__Professions__items : css.filter_coach__show}>
                         {title === "PROFESSIONS" ?
                             <>
                                 {jobs.sort((a, b) => a.translations.fr > b.translations.fr ? 1 : -1).map(job => {
@@ -76,17 +91,23 @@ export default function FilterCoach({
                                                 css.filter_coach__filter_type__title__Professions__items__iteamnotvisible}>
                                                 <div onClick={() => {
                                                     {
-                                                        coachSpecialty == job.specialty.type && selectedJobId === job._id ?
-                                                            (setCoachSpecialty(""),
-                                                                setSelectedJobId("")) :
-                                                            (setCoachSpecialty(job.specialty.type),
-                                                                setSelectedJobId(job._id))
+                                                        handleProfession(job),
+                                                            coachSpecialty == job.specialty.type && selectedJobId === job._id ?
+                                                                (setCoachSpecialty(""),
+                                                                    setSelectedJobId("")
+                                                                    // handleProfession(coach)
+
+                                                                ) :
+                                                                (setCoachSpecialty(job.specialty.type),
+                                                                    setSelectedJobId(job._id)
+                                                                    // handleProfession(coach)
+                                                                )
                                                     }
                                                 }
                                                 }>
                                                     <div onClick={() => setSelectedSpecialtyId('')}
                                                         className={(job._id == selectedJobId) ?
-                                                        css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow : ""}>
+                                                            css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow : ""}>
                                                         {job.translations.fr}
                                                     </div>
                                                 </div>
