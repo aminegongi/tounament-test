@@ -1,13 +1,16 @@
 .coach {
+    max-width: 71.375rem;
+    margin: auto;
     &__coachdetails {
-        margin-left: 67px;
+        display: flex;
+        // margin-left: 67px;
     }
 }
 
 .affiche {
     &__img {
-        width: 1380px;
-        height: 400px;
-        padding: 1.188rem 0.9rem 0rem 4rem;
+        width: 100%;
+        margin-top:19px;
+
     }
 }
