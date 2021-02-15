@@ -4,18 +4,28 @@ import css from '../shared/css/profilecoach.scss'
 import globalCss from '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
-import { Input, Select, Modal, Button } from 'antd';
+import { Input, Select, Modal, Button, Pagination } from 'antd';
 import FilterCoach from '../shared/components/FilterCoach/FilterCoach';
 import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter';
 import Recommendation from '../shared/components/RecommendationFilter/Recommendation';
 import CoachType from '../shared/components/CoachTypeFilter/CoachType';
 import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion';
 import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach';
+import Navbar from '../shared/components/navbar/Navbar';
 
 export default function ProfileCoach({ coachesList, jobs, sports, dances, regions }) {
     const [dataCopy, setDataCopy] = useState(coachesList)
     const [coachSpecialty, setCoachSpecialty] = useState()
     const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
+    const nbr_of_card_per_page = 2
+
+    const [state, setState] = useState(Array.from(dataCopy))
+    const [pageNumber, setPageNumber] = useState(1)
+    const [pageActiveNumber, setPageActiveNumber] = useState()
+    function paginate(array, page_size, page_number) {
+        // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+        return array.slice((page_number - 1) * page_size, page_number * page_size);
+    }
     const { Search } = Input;
     const renderCoachProfile = (coachProfile) => {
         const job = jobs.find(job => job._id === coachProfile.coachData.job)
@@ -49,12 +59,12 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
     };
 
     const onSearch = value => {
-        setDataCopy(coachesList.filter(e => e.firstName.includes(value) || e.lastName.includes(value)))
+        setDataCopy(dataCopy.filter(e => e.firstName.includes(value) || e.lastName.includes(value)))
     };
     const { Option } = Select;
     const handleChange = (value) => {
         if (value.key == 'alphabetique') {
-            const sortbyalphabetical = ([...coachesList].sort((a, b) => a.firstName - b.firstName ? 1 : -1))
+            const sortbyalphabetical = ([...dataCopy].sort((a, b) => a.firstName - b.firstName ? 1 : -1))
             return setDataCopy(sortbyalphabetical)
         }
 
@@ -62,7 +72,7 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
             return setDataCopy(coachesList)
         }
         if (value.key == 'experience') {
-            const sortbyexperience = ([...coachesList].sort((a, b) => a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber ? 1 : -1))
+            const sortbyexperience = ([...dataCopy].sort((a, b) => a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber ? 1 : -1))
             return setDataCopy(sortbyexperience)
         }
         if (value.key == 'recommander') {
@@ -76,145 +86,153 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
     }
 
     return (
-        <div className={css.profil_coach}>
-            <HeaderCoachProfile />
+        <>
+            <Navbar />
 
-            <div className={css.affiche}>
-                <img className={css.affiche__img} src={"icon/profil_coach.png"} alt="" />
-            </div>
-            <div className={css.profil_coach__coach_details} >
-                <div className={css.profil_coach__coach_details__filter} >
-                    <Search className={css.profil_coach__coach_details__filter__input_searsh}
-                        placeholder="RECHERCHE PAR NOM"
-                        onChange={e => onSearch(e.target.value)}
-                        style={{
-                            width: 270,
-                        }} />
+            <div className={css.profil_coach}>
 
-                    <div className={css.line}></div>
-
-                    <FilterCoach
-                        coachSpecialty={coachSpecialty}
-                        setCoachSpecialty={setCoachSpecialty}
-                        setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                        coachSpecialtyFilter={coachSpecialtyFilter}
-                        dances={dances}
-                        sports={sports}
-                        title={"PROFESSIONS"}
-
-                        jobs={jobs}
-                        setDataCopy={setDataCopy}
-                        dataCopy={dataCopy}
-                        coachesList={coachesList}
-                    />
-                    <div className={css.line}></div>
-                    <FilterCoach
-                        dances={dances}
-                        sports={sports}
-                        setDataCopy={setDataCopy}
-                        dataCopy={dataCopy}
-                        coachesList={coachesList}
-                        coachSpecialty={coachSpecialty}
-                        setCoachSpecialty={setCoachSpecialty}
-                        setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                        coachSpecialtyFilter={coachSpecialtyFilter}
-                        jobs={jobs}
-                        title={"SPECIALITES"}
-
-                    />
-                    <div className={css.line}></div>
-                    <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                    <div className={css.line}></div>
-                    <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
-                    <div className={css.line}></div>
-                    <CoachType setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                    <div className={css.line}></div>
-                    <CoachRegion regions={regions} setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                <div className={css.affiche}>
+                    <img className={css.affiche__img} src={"../../../icon/profil_coach.png"} alt="" />
                 </div>
+                <div className={css.profil_coach__coach_details} >
+                    <div className={css.profil_coach__coach_details__filter} >
+                        <Search className={css.profil_coach__coach_details__filter__input_searsh}
+                            placeholder="RECHERCHE PAR NOM"
+                            onChange={e => onSearch(e.target.value)}
+                            style={{
+                                width: 270,
+                            }} />
 
-                <div className={css.profil_coach__coach_details__list_of_coach}>
-                    <Search className={css.profil_coach__coach_details__filter__input_searshmobile}
-                        placeholder="RECHERCHE PAR NOM"
-                        onChange={e => onSearch(e.target.value)}
-                        style={{
-                            width: 270,
-                        }} />
-                    <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby}>
-                        <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__filter}>
-                            <Button className={css.buttonfilter} type="primary" onClick={showModal}>
-                                Filter
+                        <div className={css.line}></div>
+
+                        <FilterCoach
+                            coachSpecialty={coachSpecialty}
+                            setCoachSpecialty={setCoachSpecialty}
+                            setCoachSpecialtyFilter={setCoachSpecialtyFilter}
+                            coachSpecialtyFilter={coachSpecialtyFilter}
+                            dances={dances}
+                            sports={sports}
+                            title={"PROFESSIONS"}
+                            jobs={jobs}
+                            setDataCopy={setDataCopy}
+                            dataCopy={dataCopy}
+                            coachesList={coachesList}
+                        />
+                        <div className={css.line}></div>
+                        <FilterCoach
+                            dances={dances}
+                            sports={sports}
+                            setDataCopy={setDataCopy}
+                            dataCopy={dataCopy}
+                            coachesList={coachesList}
+                            coachSpecialty={coachSpecialty}
+                            setCoachSpecialty={setCoachSpecialty}
+                            setCoachSpecialtyFilter={setCoachSpecialtyFilter}
+                            coachSpecialtyFilter={coachSpecialtyFilter}
+                            jobs={jobs}
+                            title={"SPECIALITES"}
+                        />
+                        <div className={css.line}></div>
+                        <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                        <div className={css.line}></div>
+                        <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
+                        <div className={css.line}></div>
+                        <CoachType setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                        <div className={css.line}></div>
+                        <CoachRegion regions={regions} setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                    </div>
+
+                    <div className={css.profil_coach__coach_details__list_of_coach}>
+                        <Search className={css.profil_coach__coach_details__filter__input_searshmobile}
+                            placeholder="RECHERCHE PAR NOM"
+                            onChange={e => onSearch(e.target.value)}
+                            style={{
+                                width: 270,
+                            }} />
+                        <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby}>
+                            <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__filter}>
+                                <Button className={css.buttonfilter} type="primary" onClick={showModal}>
+                                    Filter
                         </Button>
-                            <Modal title="Filter" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                                <FilterCoach
-                                    coachSpecialty={coachSpecialty}
-                                    setCoachSpecialty={setCoachSpecialty}
-                                    setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                                    coachSpecialtyFilter={coachSpecialtyFilter}
-                                    dances={dances}
-                                    sports={sports}
-                                    title={"PROFESSIONS"}
-
-                                    jobs={jobs}
-                                    setDataCopy={setDataCopy}
-                                    dataCopy={dataCopy}
-                                    coachesList={coachesList}
-                                />
-                                <FilterCoach
-                                    dances={dances}
-                                    sports={sports}
-                                    setDataCopy={setDataCopy}
-                                    dataCopy={dataCopy}
-                                    coachesList={coachesList}
-                                    coachSpecialty={coachSpecialty}
-                                    setCoachSpecialty={setCoachSpecialty}
-                                    setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                                    coachSpecialtyFilter={coachSpecialtyFilter}
-                                    jobs={jobs}
-                                    title={"SPECIALITES"}
-
-                                />
-                                <div className={css.line}></div>
-                                <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                                <div className={css.line}></div>
-                                <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
-                                <div className={css.line}></div>
-                                <CoachType setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                                <div className={css.line}></div>
-                                <CoachRegion regions={regions} setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                            </Modal>
+                                <Modal title="Filter" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                                    <FilterCoach
+                                        coachSpecialty={coachSpecialty}
+                                        setCoachSpecialty={setCoachSpecialty}
+                                        setCoachSpecialtyFilter={setCoachSpecialtyFilter}
+                                        coachSpecialtyFilter={coachSpecialtyFilter}
+                                        dances={dances}
+                                        sports={sports}
+                                        title={"PROFESSIONS"}
+                                        jobs={jobs}
+                                        setDataCopy={setDataCopy}
+                                        dataCopy={dataCopy}
+                                        coachesList={coachesList}
+                                    />
+                                    <FilterCoach
+                                        dances={dances}
+                                        sports={sports}
+                                        setDataCopy={setDataCopy}
+                                        dataCopy={dataCopy}
+                                        coachesList={coachesList}
+                                        coachSpecialty={coachSpecialty}
+                                        setCoachSpecialty={setCoachSpecialty}
+                                        setCoachSpecialtyFilter={setCoachSpecialtyFilter}
+                                        coachSpecialtyFilter={coachSpecialtyFilter}
+                                        jobs={jobs}
+                                        title={"SPECIALITES"}
+                                    />
+                                    <div className={css.line}></div>
+                                    <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                                    <div className={css.line}></div>
+                                    <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
+                                    <div className={css.line}></div>
+                                    <CoachType setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                                    <div className={css.line}></div>
+                                    <CoachRegion regions={regions} setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
+                                </Modal>
+                            </div>
+                            <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__lenght}>
+                                {dataCopy.length} résultat(s)
                         </div>
-                        <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__lenght}>
-                            {dataCopy.length} resultat(s)
+                            <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby}>
+                                <span>Trier par : </span>
+                                <Select
+                                    labelInValue
+                                    placeholder={ALL}
+                                    style={{ width: 155 }}
+                                    bordered={false}
+                                    className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select}
+                                    onChange={handleChange}
+                                >
+                                    <Option value={ALL} >Tout</Option>
+                                    <Option value={ALPHABETICAL}>Ordre alphabétique</Option>
+                                    <Option value={RECOMMEND}>Les plus recommandés</Option>
+                                    <Option value={EXPERIENCE}>Années d'expérience</Option>
+                                </Select>
+                            </div>
+
                         </div>
-                        <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby}>
-                            <span>Trier par : </span>
-                            <Select
-                                labelInValue
-                                placeholder={ALL}
-                                style={{ width: 155 }}
-                                bordered={false}
-                                className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select}
-                                onChange={handleChange}
-                            >
-                                <Option value={ALL} >Tout</Option>
-                                <Option value={ALPHABETICAL}>Ordre alphabetique</Option>
-                                <Option value={RECOMMEND}>Plus recommander</Option>
-                                <Option value={EXPERIENCE}>Années expérience</Option>
-                            </Select>
+                        <div className={css.line}></div>
+                        <div className={css.profil_coach__coach_details__list_of_coach__card}>
+                            {paginate(state, nbr_of_card_per_page, pageNumber).map((coachProfile, key) =>
+                                renderCoachProfile(coachProfile)
+                            )}
+                        </div>
+                        <div className={css.paginate}>
+                            {
+                                Array.from({ length:Math.round(state.length / nbr_of_card_per_page )}).map((el, index) => (
+                                    <div className={pageActiveNumber == index  || index+1 ==pageNumber? css.paginate__page : ""}
+                                      key={index} type="submit" onClick={() => {setPageNumber(index + 1),setPageActiveNumber(index)}}>
+                                        {index + 1}
+                                    </div>
+                                ))
+                            }
                         </div>
 
                     </div>
-                    <div className={css.line}></div>
-                    <div className={css.profil_coach__coach_details__list_of_coach__card}>
-                        {dataCopy.map((coachProfile, key) =>
-                            renderCoachProfile(coachProfile)
-                        )}
-
-                    </div>
-
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 ProfileCoach.getInitialProps = async () => {
@@ -222,7 +240,7 @@ ProfileCoach.getInitialProps = async () => {
     const jobsRes = await fetch(API + "jobs")
     const sportsRes = await fetch(API + "sports")
     const danceRes = await fetch(API + "dances/")
-    const regionsRes = await fetch(API +"regions/")
+    const regionsRes = await fetch(API + "regions/")
     const jsonCoachesRes = await coachesRes.json()
     const jsonJobsRes = await jobsRes.json()
     const jsonSportsRes = await sportsRes.json()

@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import css from './coachRegion.scss'
 import { Checkbox } from 'antd';
-import down from "../../../public/icon/down.jpg"
+import down from "../../../public/icon/down.png"
 import left from "../../../public/icon/left.png"
 export default function CoachRegion({ setDataCopy, dataCopy, coachesList, regions }) {
 
 
     const onChange = region => {
-       
-        setDataCopy(coachesList.filter(coach => coach.coachData.privateCourseData.regions.find(el => region.includes(el))));
+        window.scrollTo(400, 350);
+
+       {region.length != 0 ?
+        setDataCopy(coachesList.filter(coach => coach.coachData.privateCourseData.regions.find(el => region.includes(el))))
+        : setDataCopy(coachesList)
+    }
     }
 
     const [icon, setIcon] = useState(left);
@@ -27,7 +31,7 @@ export default function CoachRegion({ setDataCopy, dataCopy, coachesList, region
             </div>
             <div>
                 {icon == down &&
-                    <Checkbox.Group className={css.coach_region__checkbox} options={regions.map(region=>{
+                    <Checkbox.Group className={css.coach_region__checkbox} options={regions.sort((a, b) => a.translations.fr > b.translations.fr ? 1 :-1 ).map(region=>{
                             return(
                                 {
                                     "value":region._id,

@@ -15,7 +15,6 @@ export default function HeaderCoachProfile() {
             setIsMobile(mobile)
         }
     }, [mobile])
-    console.log("IsMobile", isMobile)
     return (
         <div className={css.header}>
             <div className={css.header__body}>

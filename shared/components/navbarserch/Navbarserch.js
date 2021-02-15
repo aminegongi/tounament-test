@@ -45,7 +45,6 @@ const mapStyles = {
     const sortbyname = (key)=>{
         let arrayCopy =data.club;
         arrayCopy.sort( (a, b) => a.name.length - b.name.length);
-        console.log("okkkkk",arrayCopy)
         //arrayCopy.reverse(); for descending
          setdata(arrayCopy);
        
