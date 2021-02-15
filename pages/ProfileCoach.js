@@ -4,7 +4,7 @@ import css from '../shared/css/profilecoach.scss'
 import globalCss from '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
-import { Input, Select, Modal, Button, Pagination } from 'antd';
+import { Input, Select, Modal, Button } from 'antd';
 import FilterCoach from '../shared/components/FilterCoach/FilterCoach';
 import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter';
 import Recommendation from '../shared/components/RecommendationFilter/Recommendation';

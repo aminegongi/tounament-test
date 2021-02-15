@@ -19,7 +19,7 @@ import PartnersV1 from '../../shared/components/Website/Partners/PartnersV1/Part
 import ContactV1 from '../../shared/components/Website/Contact/ContactV1/ContactV1'
 import Member from '../../shared/components/member/Member'
 import PriceV1 from '../../shared/components/Website/Price/PriceV1/PriceV1'
-import Navbar from '../../shared/components/Navbar/Navbar';
+import Navbar from '../../shared/components/navbar/Navbar';
 import axios from 'axios';
 
 import imgpost from '../../public/icon/post_img.png'
