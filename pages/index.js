@@ -99,15 +99,11 @@ const Index = (props) => {
             images={[
               {
                 alt: "club",
-                src: "clubLogo/radesTennisAcademy.jpg",
-              },
-              {
-                alt: "club",
-                src: "clubLogo/eliteSportAcademy.jpg",
-              },
-              {
-                alt: "club",
                 src: "clubLogo/omSchoolTunis.jpg",
+              },
+              {
+                alt: "club",
+                src: "clubLogo/green_park.png",
               },
             ]}
 
