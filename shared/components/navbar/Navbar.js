@@ -16,7 +16,7 @@ import css from './navbar.scss'
 const { SubMenu } = Menu;
 
 
-function NavbarIndex({ buttontwo, isFooter }) {
+function NavbarIndex({ buttontwo, isFooter ,clubmanagement}) {
   const router = useRouter();
   const mobile = useMediaPredicate("(max-width: 850px)");
 
@@ -186,7 +186,6 @@ function NavbarIndex({ buttontwo, isFooter }) {
                 </div>
               </div>
             </div>
-
             {/* <div className={css.item}>
               <Link href={routes.SEARCH_CLUB.path}>
                 <a>

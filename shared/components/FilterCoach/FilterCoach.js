@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import css from './filterCoach.scss'
-import down from "../../../public/icon/down.jpg"
+import down from "../../../public/icon/down.png"
 import left from "../../../public/icon/left.png"
 import { Empty } from 'antd';
 
@@ -21,7 +21,7 @@ export default function FilterCoach({
     const [icon, seticon] = useState(left);
     const [selectedJobId, setSelectedJobId] = useState()
     const [selectedSpecialtyId, setSelectedSpecialtyId] = useState()
-
+const [professionId, setProfessionId] = useState()
     const changeIcon = () => {
         if (icon === down) {
             seticon(left)
@@ -33,17 +33,46 @@ export default function FilterCoach({
     const filterSpecialty = () => {
         {
             coachSpecialty === "sport" ?
-            setCoachSpecialtyFilter(sports)
-            : (coachSpecialty === "dances" ? setCoachSpecialtyFilter(dances)
-                : setCoachSpecialtyFilter(""))
+                setCoachSpecialtyFilter(sports)
+                : (coachSpecialty === "dances" ? setCoachSpecialtyFilter(dances)
+                    : setCoachSpecialtyFilter(""))
         }
     }
     useEffect(() => {
         filterSpecialty()
     }, [coachSpecialty])
-    const filterbySpecialty = (el) => {
-        setDataCopy(coachesList.filter(e => e.coachData.specialty.includes(el)))
+    const filterBySpecialty = (el) => {
+        const filteredCoachesList = dataCopy.filter(e => e.coachData.specialty.includes(el))
+        setDataCopy(filteredCoachesList)
     }
+
+    const handleProfession = (Profession) => {
+        window.scrollTo(400, 350);
+       setProfessionId(Profession._id);
+
+        if (Profession._id == professionId) {
+            setDataCopy(coachesList)
+            setProfessionId("")
+        }
+        else {
+            setDataCopy(dataCopy.filter(e => e.coachData.job == (Profession._id)))
+
+        }
+    }
+
+    const handleSpecialty = (specialty) => {
+        window.scrollTo(400, 350);
+
+        if (specialty._id === selectedSpecialtyId) {
+            setSelectedSpecialtyId("")
+            setDataCopy(coachesList)
+        }
+        else {
+            filterBySpecialty(specialty._id)
+            setSelectedSpecialtyId(specialty._id)
+        }
+    }
+
     return (
         <div className={css.filter_coach}>
 
@@ -52,17 +81,28 @@ export default function FilterCoach({
                     <div onClick={() => changeIcon()} className={css.filter_coach__filter_type__title__Professions} >
                         {title}<img src={icon} className={icon === down ? css.down : css.left} alt="" />
                     </div>
-                    <div className={css.filter_coach__filter_type__title__Professions__items}>
+                    <div className={icon != down ? css.filter_coach__filter_type__title__Professions__items : css.filter_coach__show}>
                         {title === "PROFESSIONS" ?
                             <>
-                                {jobs.map(job => {
+                                {jobs.sort((a, b) => a.translations.fr > b.translations.fr ? 1 : -1).map(job => {
                                     return (
                                         <>
                                             <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
                                                 css.filter_coach__filter_type__title__Professions__items__iteamnotvisible}>
                                                 <div onClick={() => {
-                                                    setCoachSpecialty(job.specialty.type),
-                                                    setSelectedJobId(job._id)
+                                                    {
+                                                        handleProfession(job),
+                                                            coachSpecialty == job.specialty.type && selectedJobId === job._id ?
+                                                                (setCoachSpecialty(""),
+                                                                    setSelectedJobId("")
+                                                                    // handleProfession(coach)
+
+                                                                ) :
+                                                                (setCoachSpecialty(job.specialty.type),
+                                                                    setSelectedJobId(job._id)
+                                                                    // handleProfession(coach)
+                                                                )
+                                                    }
                                                 }
                                                 }>
                                                     <div onClick={() => setSelectedSpecialtyId('')}
@@ -82,26 +122,25 @@ export default function FilterCoach({
                                     css.filter_coach__filter_type__title__Professions__items__iteam :
                                     css.filter_coach__filter_type__title__Professions__items__iteamnotvisible}
                                 >
-                                    {coachSpecialtyFilter !== "" ? coachSpecialtyFilter.map(coach => {
-                                        return (
+                                    {icon === down && coachSpecialtyFilter !== "" ?
+                                        coachSpecialtyFilter.sort((a, b) => a.translations.fr > b.translations.fr ? 1 : -1).map(coach => {
+                                            return (
 
-                                            <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
-                                                css.filter_coach__filter_type__title__Professions__items__iteamnotvisible}
-                                                onClick={() => {
-                                                    filterbySpecialty(coach._id),
-                                                    setSelectedSpecialtyId(coach._id)
-                                                }
-                                                }
-                                            >
-                                                <div className={(coach._id == selectedSpecialtyId) ? css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow : ""}>
-                                                    {(coach.type  ?
-                                                        coach.translations.fr : '')}
+                                                <div className={css.filter_coach__filter_type__title__Professions__items__iteam}
+                                                    onClick={() => handleSpecialty(coach)
+
+                                                    }
+                                                >
+                                                    <div className={(coach._id == selectedSpecialtyId) ? css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow : ""}>
+
+                                                        {coach.translations.fr}
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )
-                                    }
+                                            )
+                                        }
 
-                                    )
+                                        )
                                         :
                                         <>
                                             <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={

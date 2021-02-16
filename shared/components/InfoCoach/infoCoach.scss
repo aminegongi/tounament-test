@@ -1,0 +1,31 @@
+.infocoach {
+    width: 267px;
+    height: 339.5px;
+    padding: 112px 39px 27.5px 30px;
+    // box-shadow: 3px 3px 20px 0 ;
+    border: solid 1px #d5d5d5;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:9px;
+
+    img {
+        margin-top: -162px;
+        width: 152px;
+        height: 152px;
+        object-fit: contain;
+        position: absolute;
+    }
+    &__coachName{
+        font-size: 18px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: normal;
+        text-align: left;
+        color: #000000;
+    }
+}
