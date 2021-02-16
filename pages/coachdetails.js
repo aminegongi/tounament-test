@@ -5,6 +5,9 @@ import css from '../shared/css/coachDetails.scss'
 import Navbar from '../shared/components/navbar/Navbar';
 import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach';
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
+import CoordinateCoach from '../shared/components/CoordinateCoach/CoordinateCoach';
+import { Tabs } from 'antd';
+import CoachBox from '../shared/components/CoachBox/CoachBox';
 
 export default function CoachDetails({ coachesList, jobs, sports, dances, regions }) {
 
@@ -23,27 +26,67 @@ export default function CoachDetails({ coachesList, jobs, sports, dances, region
             coachProfile={coachProfile}
             key={coachProfile._id}
             job={job}
+            pagename={"coachdetails"}
             specialty={specialty}
         />
     }
+    const { TabPane } = Tabs;
+
+    function callback(key) {
+        console.log(key);
+    }
     return (
         <>
-        <Navbar />
+            <Navbar />
 
-        <div className={css.coach}>
-            <div className={css.affiche}>
-                <img className={css.affiche__img} src={"icon/coachdetails.png"} alt="" />
-            </div>
-            <div className={css.coach__coachdetails}>
-                <div className={css.coach__coachdetails__coordinate}>
-                {coachesList.slice([0], [1]).map((coachProfile, key) =>
-                                renderCoachProfile(coachProfile.coachData.experiencesYearsNumber==4 ?coachProfile:"")
-                            )}
+            <div className={css.coach}>
+                <div className={css.affiche}>
+                    <img className={css.affiche__img} src={"icon/coachdetails.png"} alt="" />
                 </div>
-                <div >dfkdf</div>
+                <div className={css.coach__coachdetails}>
+                    <div>
+                        <div className={css.coach__coachdetails__coordinate}>
 
+                            {coachesList.slice([0], [1]).map((coachProfile, key) =>
+                                renderCoachProfile(coachProfile.coachData.experiencesYearsNumber == 4 ? coachProfile : "")
+                            )}
+                        </div>
+                        <div className={css.coach__coachdetails__coordinate}>
+
+                            <CoordinateCoach />
+                        </div>
+                    </div>
+                    <div >
+                        <Tabs defaultActiveKey="1" onChange={callback} className={css.tabs}>
+                            <TabPane tab="A propos" key="1">
+                                <div className={css.aprops}>
+                                    <CoachBox />
+                                </div>       
+                            </TabPane>
+                            <TabPane tab="Avis" key="2">
+                                Avis
+                            </TabPane>
+                            <TabPane tab="Biographie" key="3">
+                                Biographie
+                            </TabPane>
+                        </Tabs>
+                    </div>
+                    <div >
+                        <Tabs defaultActiveKey="1" onChange={callback}>
+                            <TabPane tab="Tab 1" key="1">
+                                Content of Tab Pane 1
+                        </TabPane>
+                            <TabPane tab="Tab 2" key="2">
+                                Content of Tab Pane 2
+                         </TabPane>
+                            <TabPane tab="Tab 3" key="3">
+                                Content of Tab Pane 3
+                        </TabPane>
+                        </Tabs>
+                    </div>
+
+                </div>
             </div>
-        </div>
         </>
     )
 }

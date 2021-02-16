@@ -1,0 +1,90 @@
+.coordinatecoach {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    padding: 16px;
+
+    &__title {
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: 0.36px;
+        text-align: left;
+        color: #000000;
+    }
+
+    &__birthday {
+        padding-top: 25px;
+        display: flex;
+
+        &__date {
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: 0.36px;
+            text-align: left;
+            color: #4e4d4d;
+            padding-left: 12px;
+            padding-top: 2px;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+
+    &__address {
+        padding-top: 25px;
+
+        display: flex;
+
+        &__lieu {
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: 0.36px;
+            text-align: left;
+            color: #4e4d4d;
+            padding-left: 12px;
+            padding-top: 2px;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    &__youtubetv {
+        padding-top: 25px;
+
+        display: flex;
+
+        &__lien {
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: 0.36px;
+            text-align: left;
+            color: #4e4d4d;
+            padding-left: 12px;
+            padding-top: 2px;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+}

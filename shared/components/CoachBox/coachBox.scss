@@ -1,0 +1,32 @@
+.coachBox {
+    border-radius: 10px;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    box-shadow: 5px 10px 9px 0 rgba(190, 190, 190, 0.16);
+    border: solid 1px #d5d5d5;
+    background-color: #ffffff;
+    height: 20px;
+
+    img {
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
+        background-color: #20bdb4;
+        border-radius: 50%;
+
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        left: 19px;
+        top: -12px;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: 0.36px;
+        text-align: left;
+        color: #26beb5;
+    }
+}
