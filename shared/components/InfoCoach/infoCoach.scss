@@ -1,24 +1,23 @@
 .infocoach {
-    width: 267px;
     height: 339.5px;
     padding: 112px 39px 27.5px 30px;
-    // box-shadow: 3px 3px 20px 0 ;
-    border: solid 1px #d5d5d5;
+
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top:9px;
+    margin-top: 9px;
 
-    img {
+    &__img {
         margin-top: -162px;
         width: 152px;
         height: 152px;
         object-fit: contain;
         position: absolute;
     }
-    &__coachName{
+
+    &__coachName {
         font-size: 18px;
         font-weight: 500;
         font-stretch: normal;
@@ -28,4 +27,110 @@
         text-align: left;
         color: #000000;
     }
+}
+
+.card_profil_coach {
+    border-radius: 0.625rem;
+    background-color: #f9f9f9;
+
+    &__information {
+        // padding: 1.063rem 1.5rem 0.313rem 3.563rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 16.5rem;
+
+        &__avatar {
+            padding-top: 1.063rem;
+
+            img {
+                width: 8.938rem;
+                height: 8.938rem;
+                border-radius: 4.125rem;
+            }
+        }
+
+        &__name {
+            padding-top: 0.375rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #26beb5;
+        }
+
+        &__rate {}
+
+        &__worktype {
+            padding-top: 0.644rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            width: 12rem;
+            color: #000000;
+            word-wrap: break-word;
+            height: 4rem;
+        }
+
+        &__sporttype {
+            padding-top: 0.063rem;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.19;
+            text-align: left;
+            color: #000000;
+        }
+
+        &__yearexperience {
+            padding-top: 0.438rem;
+            // padding-left: 0.5rem;
+            font-size: 1rem;
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: normal;
+            text-align: left;
+            color: #000000;
+            padding-bottom: 0.406rem;
+        }
+
+    }
+}
+
+.suggestcoachdetails {
+    text-align: -webkit-center;
+    padding-top: 10px;
+
+    &__suggestPrivateCourse {
+        height: 16px;
+
+        display: flex;
+        justify-content: center;
+
+        &__propose {
+            padding-left: 6px;
+            white-space: nowrap;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #4e4d4d;
+        }
+    }
+}
+
+.buttoncontact {
+    border-radius: 8px;
+    background-color: #26beb5;
+    padding: 9px 36px 11px 36px !important;
+    border: none;
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-top:15px
+
 }

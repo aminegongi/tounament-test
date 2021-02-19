@@ -2,11 +2,9 @@
     max-width: 71.375rem;
     margin: auto;
     font-family: Roboto;
-
     &__coach_details {
         margin-top: 1.813rem;
         display: flex;
-
         &__filter {
             flex: 20%;
             padding-right: 1.375rem;
@@ -14,23 +12,18 @@
             border: solid 1px #d5d5d5;
             background-color: #ffffff;
             overflow: auto;
-
             &__input_searsh {
                 padding: 0.438rem 0.375rem 0.406rem 0.438rem;
-
                 width: 17.8rem !important;
-
                 input {
                     border-radius: 10px;
                     background-color: #f2f2f2;
                 }
             }
-
             &__input_searshmobile {
                 display: none;
             }
         }
-
         &__list_of_coach {
             flex: 67%;
             height: 99.75rem;
@@ -38,34 +31,27 @@
             border-radius: 0.625rem;
             border: solid 1px #d5d5d5;
             background-color: #ffffff;
-
             &__lenght_sortby {
                 display: flex;
                 justify-content: space-between;
                 padding: 1.563rem 0.969rem 0.906rem 1rem;
-
                 &__lenght {
                     font-size: 1rem;
-
                     letter-spacing: normal;
-
                     color: #646464;
                 }
 
                 &__filter {
                     display: none;
                 }
-
                 &__sortby {
                     span {
                         font-size: 1rem;
                         font-weight: 500;
                         font-stretch: normal;
                         font-style: normal;
-
                         color: #000000;
                     }
-
                 }
             }
 

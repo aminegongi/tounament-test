@@ -1,9 +1,10 @@
 .coordinatecoach {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    // width: 300px;
 
     padding: 16px;
+    padding-right: 26px;
 
     &__title {
         font-size: 18px;

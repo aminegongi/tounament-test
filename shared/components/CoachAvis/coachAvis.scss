@@ -1,0 +1,89 @@
+.coachavis {
+    &__sumavis {
+        margin-top: 24.5px;
+        display: flex;
+        font-size: 20px;
+        font-weight: 500;
+        font-stretch: normal;
+        color: #707070;
+
+        span {
+            padding-right: 12px;
+        }
+
+        &__chiffre {
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            padding-left: 11.5px;
+            color: #f1ac22;
+            padding-top: 3px;
+        }
+    }
+
+    &__card {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 28.2px;
+
+
+        &__description {
+            margin-top: 24px;
+            margin-left: 0.2px;
+            width: 377.8px;
+            height: 304.5px;
+            padding: 17px 9px 32.5px 18.8px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 9px 0 rgba(190, 190, 190, 0.16);
+            border: solid 1px #d5d5d5;
+            background-color: #ffffff;
+
+            &__recommendationMember {
+                display: flex;
+                justify-content: space-between;
+
+                &__avatar {
+                    width: 66px;
+                    height: 66px;
+                    margin: 0 25px 19px 1px;
+                }
+
+                &__nameStart {
+                    &__name {
+                        font-size: 18px;
+                        font-weight: 500;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.22;
+                        letter-spacing: 0.36px;
+                        text-align: left;
+                        color: #4e4d4d;
+                    }
+                }
+
+                &__publishdate {
+                    font-size: 14px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.21;
+                    letter-spacing: 0.28px;
+                    text-align: left;
+                    color: #818181;
+                }
+            }
+
+            &__avis {
+                font-size: 18px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.22;
+                letter-spacing: 0.27px;
+                text-align: left;
+                color: #4e4d4d;
+                padding: 19px 19px 22px 24px;
+            }
+        }
+    }
+}
