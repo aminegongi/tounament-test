@@ -1,20 +1,20 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
 import InfoCoach from '../shared/components/InfoCoach/InfoCoach'
 import css from '../shared/css/coachDetails.scss'
 import Navbar from '../shared/components/navbar/Navbar';
 import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach';
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
-import CoordinateCoach from '../shared/components/CoordinateCoach/CoordinateCoach';
+import ContactCoach from '../shared/components/ContactCoach/ContactCoach';
 import { Tabs, Button, Divider, Checkbox } from 'antd';
 import CoachBox from '../shared/components/CoachBox/CoachBox';
 import CoachAvis from '../shared/components/CoachAvis/CoachAvis';
+import Biographie from '../shared/components/Biographie/Biographie';
 
 export default function CoachDetails({ coachesList, jobs, sports, dances, regions }) {
 
-const [tab, setTab] = useState("1")
-console.log("tab",tab)
-   
+    const [tab, setTab] = useState("1")
+
     return (
         <>
             <Navbar />
@@ -25,82 +25,73 @@ console.log("tab",tab)
                 </div>
                 <div className={css.coach__coachdetails}>
                     <div className={css.coach__cordonneBlock}>
-                        <div className={css.coach__coachdetails__coordinate}>
+                        <div className={css.coach__coachdetails__contact}>
                             <InfoCoach />
 
                         </div>
-                        <div className={css.coach__coachdetails__coordinate}>
+                        <div className={css.coach__coachdetails__information}>
 
-                            <CoordinateCoach />
+                            <ContactCoach />
                         </div>
                     </div>
                     <div className={css.tabsinfo}>
-                        {/* <Tabs defaultActiveKey="1" onChange={callback} className={css.tabs} tabBarExtraContent={<button className={css.tabsinfo__contact}>
-                            <span>Contacter</span>
-                        </button>}> */}
                         <div className={css.tabs}>
                             <div className={css.tabs__button}>
-                                <div className={css.tabs__button__apropos} onClick={()=>setTab(1)}>A propos</div>
-                                <div className={css.tabs__button__apropos} onClick={()=>setTab(2)} >Avis</div>
-                                <div className={css.tabs__button__apropos}  onClick={()=>setTab(3)}>Biographie</div>
-
+                                <div className={css.tabs__button__apropos} onClick={() => setTab(1)}>A propos</div>
+                                <div className={css.tabs__button__apropos} onClick={() => setTab(2)} >Avis</div>
+                                <div className={css.tabs__button__apropos} onClick={() => setTab(3)}>Biographie</div>
                             </div>
                             <button className={css.tabs__contact}>
                                 Contacter
                             </button>
                         </div>
                         <div className={css.linetabs}></div>
-
-                        {tab==1?
-                        <div className={css.tabsinfo__title}>
-                            <CoachBox iconexclamation={"../icon/exclamation.png"}>
-                                <div className={css.coachBox}>
-                                    <div className={css.coachBox__content}>
-                                        <div className={css.coachBox__content__title}>
-                                            Années d'expérience:
-                                                </div>
-                                        <div className={css.coachBox__content__experienceNumber}>
-                                            3
-                                                </div>
-                                    </div>
-                                    <div className={css.coachBox__content}>
-
-                                        <div className={css.coachBox__content__title}>
-                                            Années à jouer:
-                                        </div>
-
-                                        <div className={css.coachBox__content__experienceNumber}>
-                                            3
-                                        </div>
-                                    </div>
-                                    <div className={css.coachBox__content}>
-                                        <div className={css.coachBox__content__title}>
-                                            Nombre de personnes par séances:
-                                        </div>
-                                        <div className={css.coachBox__content__experienceNumber}>
-                                            3
-                                        </div>
-                                    </div>
-                                    <div className={css.coachBox__content}>
-                                        <div className={css.coachBox__content__title}>
-                                            Niveaux: Avancé , Intermédiaire , Débutant
-                                        </div>
-                                    </div>
-                                    <div className={css.coachBox__content}>
-
-                                        <div className={css.coachBox__content__title}>
-                                            Catégories d'ages:
+                        {tab == 1 ?
+                            <div className={css.tabsinfo__title}>
+                                <CoachBox iconexclamation={"../icon/exclamation.png"}>
+                                    <div className={css.coachBox}>
+                                        <div className={css.coachBox__content}>
+                                            <div className={css.coachBox__content__title}>
+                                                Années d'expérience:
                                             </div>
-                                        <div className={css.coachBox__content__experienceNumber}>
-                                            Senior , Adultes , Juniors , Enfant
+                                            <div className={css.coachBox__content__experienceNumber}>
+                                                3
                                             </div>
+                                        </div>
+                                        <div className={css.coachBox__content}>
+
+                                            <div className={css.coachBox__content__title}>
+                                                Années à jouer:
+                                            </div>
+                                            <div className={css.coachBox__content__experienceNumber}>
+                                                3
+                                            </div>
+                                        </div>
+                                        <div className={css.coachBox__content}>
+                                            <div className={css.coachBox__content__title}>
+                                                Nombre de personnes par séances:
+                                            </div>
+                                            <div className={css.coachBox__content__experienceNumber}>
+                                                3
+                                            </div>
+                                        </div>
+                                        <div className={css.coachBox__content}>
+                                            <div className={css.coachBox__content__title}>
+                                                Niveaux: <span>Avancé , Intermédiaire , Débutant</span>
+                                            </div>
+                                        </div>
+                                        <div className={css.coachBox__content}>
+                                            <div className={css.coachBox__content__title}>
+                                                Catégories d'ages:
+                                            </div>
+                                            <div className={css.coachBox__content__experienceNumber}>
+                                                Senior , Adultes , Juniors , Enfant
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-
-
-                            </CoachBox>
-                        </div>
-                       : (tab==2 ? <CoachAvis /> :"hhh")}
+                                </CoachBox>
+                            </div>
+                            : (tab == 2 ? <CoachAvis /> : <Biographie title={"Biographie"} icon={"../icon/exclamation.png"} />)}
                     </div>
 
 

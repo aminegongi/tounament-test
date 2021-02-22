@@ -1,27 +1,27 @@
 import React from 'react'
-import css from './coordinateCoach.scss'
+import css from './contactCoach.scss'
 
-function CoordinateCoach() {
+function ContactCoach() {
     return (
-        <div className={css.coordinatecoach}>
-            <div className={css.coordinatecoach__title}>
+        <div className={css.contactcoach}>
+            <div className={css.contactcoach__title}>
                 Coordonnés
             </div>
-            <div className={css.coordinatecoach__birthday}>
+            <div className={css.contactcoach__birthday}>
                 <img src="../icon/Birthday.png" />
-                <div className={css.coordinatecoach__birthday__date}>
+                <div className={css.contactcoach__birthday__date}>
                     8 Novembre 1983
                 </div>
             </div>
-            <div className={css.coordinatecoach__address}>
+            <div className={css.contactcoach__address}>
             <img src="../icon/localisation.png" />
                 <div className={css.coordinatecoach__address__lieu}>
                     Habib Bourguiba, tunis
                 </div>
             </div>
-            <div className={css.coordinatecoach__youtubetv}>
+            <div className={css.contactcoach__youtubetv}>
             <img src="../icon/youtube.png" />
-                <div className={css.coordinatecoach__youtubetv__lien}>
+                <div className={css.contactcoach__youtubetv__lien}>
                     Amira skhiri
                 </div>
             </div>
@@ -29,4 +29,4 @@ function CoordinateCoach() {
     )
 }
 
-export default CoordinateCoach
+export default ContactCoach

@@ -10,9 +10,11 @@
     margin-top: 9px;
 
     &__img {
-        margin-top: -162px;
+        background-color: white;
+        border-radius: 70px;
+        margin-top: -166px;
         width: 152px;
-        height: 152px;
+        height: 161px;
         object-fit: contain;
         position: absolute;
     }

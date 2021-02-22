@@ -50,7 +50,7 @@
         justify-content: space-between;
 
         // margin-left: 67px;
-        &__coordinate {
+        &__contact {
             border-radius: 10px;
             -webkit-backdrop-filter: blur(30px);
             backdrop-filter: blur(30px);
@@ -63,6 +63,13 @@
             // box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
             // border: solid 1px #d5d5d5;
             // background-color: #ffffff;
+        }
+        &__information{
+            margin-top: 32.5px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
+            border: solid 1px #d5d5d5;
+            background-color: #ffffff;
         }
     }
 }
@@ -138,7 +145,7 @@
     padding-left: 31px;
     display: grid;
     grid-gap: 24px;
-
+   
     &__content {
         display: flex;
         font-size: 17px;
@@ -149,7 +156,11 @@
         letter-spacing: normal;
         color: #4e4d4d;
 
-        &__title {}
+        &__title{
+            span{
+                font-weight: bold;
+            }
+        }
 
         &__experienceNumber {
             padding-left: 2px;
