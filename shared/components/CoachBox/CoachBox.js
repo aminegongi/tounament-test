@@ -45,7 +45,7 @@ export default function CoachBox({ children, iconexclamation }) {
                         src="https://www.youtube.com/embed/tgbNymZ7vqY" >
 
                     </iframe>
-                    <div className={css.coachBox__video__title}>ABDOS - CUISSES - FESSIERS </div>
+                    <div className={css.coachBox__video__titlevideo}>ABDOS - CUISSES - FESSIERS </div>
                     <div className={css.coachBox__video__date}>19 Dec 2020</div>
                 </div>
                 <div className={css.coachBox__video__othervideo} >
@@ -53,28 +53,28 @@ export default function CoachBox({ children, iconexclamation }) {
                         <iframe className={css.coachBox__video__videocoachother} width="420" height="315"
                             src="https://www.youtube.com/embed/tgbNymZ7vqY">
                         </iframe>
-                        <div className={css.coachBox__video__videotitle}>ABDOS - CUISSES - FESSIERS </div>
+                        <div className={css.coachBox__video__titlevideo}>OBTENIR UN VENTRE PLAT ! </div>
                         <div className={css.coachBox__video__date}>19 Dec 2020</div>
                     </div>
                     <div>
                         <iframe className={css.coachBox__video__videocoachother} width="420" height="315"
                             src="https://www.youtube.com/embed/tgbNymZ7vqY">
                         </iframe>
-                        <div className={css.coachBox__video__videotitle}>ABDOS - CUISSES - FESSIERS </div>
+                        <div className={css.coachBox__video__titlevideo}>OBTENIR UN VENTRE PLAT ! </div>
                         <div className={css.coachBox__video__date}>19 Dec 2020</div>
                     </div>
                     <div>
                         <iframe className={css.coachBox__video__videocoachother} width="420" height="315"
                             src="https://www.youtube.com/embed/tgbNymZ7vqY">
                         </iframe>
-                        <div className={css.coachBox__video__videotitle}>ABDOS - CUISSES - FESSIERS </div>
+                        <div className={css.coachBox__video__titlevideo}>OBTENIR UN VENTRE PLAT ! </div>
                         <div className={css.coachBox__video__date}>19 Dec 2020</div>
                     </div>
                     <div>
                         <iframe className={css.coachBox__video__videocoachother} width="420" height="315"
                             src="https://www.youtube.com/embed/tgbNymZ7vqY">
                         </iframe>
-                        <div className={css.coachBox__video__videotitle}>ABDOS - CUISSES - FESSIERS </div>
+                        <div className={css.coachBox__video__titlevideo}>OBTENIR UN VENTRE PLAT ! </div>
                         <div className={css.coachBox__video__date}>19 Dec 2020</div>
                     </div>
                 </div>

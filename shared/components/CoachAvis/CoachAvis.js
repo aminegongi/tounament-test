@@ -1,8 +1,9 @@
-import React from 'react'
-import { Rate } from 'antd';
+import React, { useState } from 'react'
+import { Rate, Input } from 'antd';
 import css from './coachAvis.scss'
 
 function CoachAvis() {
+    const [msgReponder, setMsgReponder] = useState(false)
     return (
         <div className={css.coachavis}>
             <div className={css.coachavis__sumavis}>
@@ -31,7 +32,19 @@ function CoachAvis() {
                         de recherche d'images pour "description
                         d'un coach sportif"
                     </div>
+                    {msgReponder == false ?
+                        <div className={css.coachavis__card__description__repondre} onClick={() => setMsgReponder(true)}>
+                            <div className={css.coachavis__card__description__repondre__iconrepondre}>
+                                <img src="../icon/reponde.png" alt="repondre" />
+                            </div>
+                            <div className={css.coachavis__card__description__repondre__title}>
+                                Répondre
+                        </div>
+                        </div> :
+                        <textarea className={css.textarea} name="w3review" rows="2" cols="44" />
+                    }
                 </div>
+
 
                 <div className={css.coachavis__card__description}>
                     <div className={css.coachavis__card__description__recommendationMember}>
@@ -46,13 +59,32 @@ function CoachAvis() {
                         </div>
                         <div className={css.coachavis__card__description__recommendationMember__publishdate}>
                             il y a  3 jours
-                            </div>
+                        </div>
                     </div>
                     <div className={css.coachavis__card__description__avis}>
                         Résultat de recherche d'images pour
                         description d'un coach sportif" Résultat
                         de recherche d'images pour "description
                         d'un coach sportif"
+                    </div>
+
+                    <div className={css.coachavis__card__description__avismember}>
+                        <div className={css.coachavis__card__description__avismember__avatarrepondre}>
+                            <img src="../icon/Avatar.png" alt="Avatar" />
+                        </div>
+                        <div className={css.coachavis__card__description__avismember__memberinfo}>
+                            <div className={css.coachavis__card__description__avismember__memberinfo__nameDate}>
+                                <div className={css.coachavis__card__description__avismember__memberinfo__nameDate__name}>
+                                    Yassine
+                                </div>
+                                <div className={css.coachavis__card__description__avismember__memberinfo__nameDate__date}>
+                                    il y a  3 jours
+                                </div>
+                            </div>
+                            <div div className={css.coachavis__card__description__avismember__memberinfo__contenu}>
+                                Merci pour votre recommandations.
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -80,7 +80,7 @@
     }
 
     &__map {
-        
+
         width: 282px;
         height: 212px;
         padding-top: 12.5px;
@@ -136,6 +136,34 @@
             color: #26beb5;
         }
 
+        &__titlevideo {
+            padding-top: 15px;
+
+            padding-left: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        &__date {
+            padding-top: 5px;
+            padding-left: 10px;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.21;
+            letter-spacing: 0.28px;
+            text-align: left;
+            color: #818181;
+        }
+
         &__videocoach {
 
             border-radius: 10px;
@@ -150,19 +178,21 @@
 
 
         }
-        &__othervideo{
+
+        &__othervideo {
             display: grid;
             grid-template-columns: auto auto;
             padding-right: 15.8px;
 
         }
+
         &__videocoachother {
-            
+
             border-radius: 10px;
             box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
             border: solid 1px #d5d5d5;
             background-color: #ffffff;
-            margin-left:11px;
+            margin-left: 11px;
             // margin-right: 2.8px;
             width: 223.4px;
             height: 193.5px;
@@ -176,7 +206,7 @@
             display: flex;
             margin-left: 28px;
             margin-top: 18px;
-        
+
             img {
                 width: 19px;
                 height: 19px;
@@ -281,9 +311,9 @@
 }
 
 .line {
-    
+
     width: 83%;
-  
+
     margin-left: 37.3px;
     margin-top: 9.5px;
     border: solid 2px #f5f4f4;

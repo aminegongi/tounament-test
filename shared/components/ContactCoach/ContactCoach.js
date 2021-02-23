@@ -15,7 +15,7 @@ function ContactCoach() {
             </div>
             <div className={css.contactcoach__address}>
             <img src="../icon/localisation.png" />
-                <div className={css.coordinatecoach__address__lieu}>
+                <div className={css.contactcoach__address__lieu}>
                     Habib Bourguiba, tunis
                 </div>
             </div>

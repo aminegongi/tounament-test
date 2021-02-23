@@ -7,13 +7,15 @@ import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardPr
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
 import ContactCoach from '../shared/components/ContactCoach/ContactCoach';
 import { Tabs, Button, Divider, Checkbox } from 'antd';
+import fetch from 'isomorphic-unfetch'
+
 import CoachBox from '../shared/components/CoachBox/CoachBox';
 import CoachAvis from '../shared/components/CoachAvis/CoachAvis';
 import Biographie from '../shared/components/Biographie/Biographie';
 
 export default function CoachDetails({ coachesList, jobs, sports, dances, regions }) {
 
-    const [tab, setTab] = useState("1")
+    const [tab, setTab] = useState("2")
 
     return (
         <>
@@ -21,7 +23,7 @@ export default function CoachDetails({ coachesList, jobs, sports, dances, region
 
             <div className={css.coach}>
                 <div className={css.affiche}>
-                    <img className={css.affiche__img} src={"icon/coachdetails.png"} alt="" />
+                    <img className={css.affiche__img} src={"icon/Banniere.png"} alt="" />
                 </div>
                 <div className={css.coach__coachdetails}>
                     <div className={css.coach__cordonneBlock}>
