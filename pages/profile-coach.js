@@ -26,7 +26,6 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
     }
     const { Search } = Input;
     const renderCoachProfile = (coachProfile) => {
-        console.log("dataCopy", coachProfile)
         const job = jobs.find(job => job._id === coachProfile.coachData.job)
         let specialty = ""
         if (job.specialty && job.specialty.type === "sport") {
