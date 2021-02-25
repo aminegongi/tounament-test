@@ -46,7 +46,7 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
         coachData.map(e => console.log("coachesList", e.email)) : ""
 
 
-    const [tab, setTab] = useState("1")
+    const [tab, setTab] = useState("3")
 
     return (
         <>
@@ -93,23 +93,23 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
                                                         <div className={css.coachBox__content}>
                                                             <div className={css.coachBox__content__title}>
                                                                 Années d'expérience:
-                                                </div>
+                                                            </div>
                                                             <div className={css.coachBox__content__experienceNumber}>
-                                                                {coach.coachData.experiencesYearsNumber}                                                    </div>
+                                                                {coach.coachData.experiencesYearsNumber}
+                                                            </div>
                                                         </div>
                                                         <div className={css.coachBox__content}>
-
                                                             <div className={css.coachBox__content__title}>
                                                                 Années à jouer:
-                                            </div>
+                                                            </div>
                                                             <div className={css.coachBox__content__experienceNumber}>
                                                                 3
-                                            </div>
+                                                            </div>
                                                         </div>
                                                         <div className={css.coachBox__content}>
                                                             <div className={css.coachBox__content__title}>
                                                                 Nombre de personnes par séances:
-                                            </div>
+                                                            </div>
                                                             <div className={css.coachBox__content__experienceNumber}>
                                                                 {coach.coachData.privateCourseData.personsNumberPerSession}
                                                             </div>
@@ -122,17 +122,17 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
                                                         <div className={css.coachBox__content}>
                                                             <div className={css.coachBox__content__title}>
                                                                 Catégories d'ages:
-                                            </div>
+                                                            </div>
                                                             <div className={css.coachBox__content__experienceNumber}>
                                                                 {coach.coachData.privateCourseData.ages.join(' , ')}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </CoachBox>
-                                )
-                            </div>
+                                            )
+                                            </div>
                                             : (tab == 2 ? <CoachAvis coachData={coach} /> :
-                                                <Biographie title={"Biographie"} icon={"../icon/exclamation.png"} />)
+                                            <Biographie coachData={coach}  title={"Biographie"} icon={"../icon/exclamation.png"} />)
                                     )
                                 })}
                             </>

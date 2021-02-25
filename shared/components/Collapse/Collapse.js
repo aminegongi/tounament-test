@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import css from './collapse.scss'
 import down from "../../../public/icon/icondown.png"
 import left from "../../../public/icon/iconleft.png"
-function Collapse({ title, iconblock }) {
+import moment from 'moment'
+
+function Collapse({ title, iconblock ,coachData}) {
     const [icon, setIcon] = useState(left);
 
     const [iconExperience, setIconExperience] = useState(left);
@@ -30,62 +32,39 @@ function Collapse({ title, iconblock }) {
                 {title}
             </div>
             <div className={css.line}></div>
+
+
             <div className={css.collapseblock}>
-                <div className={css.biographieblock__biographie__contenu}>
-                    <div className={css.biographieblock__biographie__contenu__collapse}>
-                        <div className={css.biographieblock__biographie__contenu__collapse__titledate} onClick={() => changeIcon()}>
-                            <div className={css.biographieblock__biographie__contenu__collapse__titledate__title}>
-                                Salle de sport: Arena
-                            </div>
-                            <div className={css.biographieblock__biographie__contenu__collapse__dateicon}>
+                {coachData.map(coach => {
+                    return (
+                        
+                        <div className={css.collapseblock}>
+                            <div className={css.biographieblock__biographie__contenu}>
+                                <div className={css.biographieblock__biographie__contenu__collapse}>
+                                    <div className={css.biographieblock__biographie__contenu__collapse__titledate} onClick={() => changeIcon()}>
+                                        <div className={css.biographieblock__biographie__contenu__collapse__titledate__title}>
+                                            Salle de sport: {coach.title}
+                                        </div>
+                                        <div className={css.biographieblock__biographie__contenu__collapse__dateicon}>
+                                            <div className={css.biographieblock__biographie__contenu__collapse__dateicon__date}>
+                                                {moment(coach.date.from).format('LL')} - 
+                                                { (coach.date.to == null) ?" "+ moment().format('LL') : " "+moment(coach.date.to).format('LL')}
+                                            </div>
+                                            <img src={icon} className={icon === down ? css.down : css.left} alt="" />
+                                        </div>
+                                    </div>
+                                    {icon == down &&
+                                        <div className={css.biographieblock__biographie__contenu__collapse__contenuShow} >
 
-                                <div className={css.biographieblock__biographie__contenu__collapse__dateicon__date}>
-                                    Jan 2020 - Sep 2020
+                                            {coach.description}
+                                        </div>
+                                    }
                                 </div>
-                                <img src={icon} className={icon === down ? css.down : css.left} alt="" />
                             </div>
+
                         </div>
-                        {icon == down &&
-                            <div className={css.biographieblock__biographie__contenu__collapse__contenuShow} >
-
-                                Résultat de recherche d'images pour "description d'un
-                                coach sportif"Un coach sportif ou entraîneur personnel
-                                est un professionnel chargé d'assister des personnes
-                                dans leur entraînement physique.
-                             </div>
-                        }
-                    </div>
-                </div>
-                <div className={css.biographieblock__biographie__contenu}>
-                    <div className={css.biographieblock__biographie__contenu__collapse}>
-                        <div className={css.biographieblock__biographie__contenu__collapse__titledate}
-                            onClick={() => changeIconexperience()}>
-                            <div className={css.biographieblock__biographie__contenu__collapse__titledate__title}>
-                                Salle de sport: Arena
-                    </div>
-                            <div className={css.biographieblock__biographie__contenu__collapse__dateicon}>
-
-                                <div className={css.biographieblock__biographie__contenu__collapse__dateicon__date}>
-                                    Jan 2020 - Sep 2020
-                        </div>
-                                <img src={iconExperience} className={iconExperience === down ? css.down : css.left} alt="" />
-
-                            </div>
-                        </div>
-
-                        {iconExperience == down &&
-                            <div className={css.biographieblock__biographie__contenu__collapse__contenuShow} >
-
-                                Résultat de recherche d'images pour "description d'un
-                                coach sportif"Un coach sportif ou entraîneur personnel
-                                est un professionnel chargé d'assister des personnes
-                                dans leur entraînement physique.
-                    </div>
-
-                        }
-
-                    </div>
-                </div>
+                    )
+                })}
             </div>
         </div>
     )

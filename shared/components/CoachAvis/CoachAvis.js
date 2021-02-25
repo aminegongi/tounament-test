@@ -45,18 +45,13 @@ function CoachAvis({ coachData }) {
                                     </div>
                                     <div className={css.coachavis__card__description__repondre__title}>
                                         Répondre
-                        </div>
+                                    </div>
                                 </div> :
                                 <textarea className={css.textarea} name="w3review" rows="2" cols="44" />
                             }
                         </div>
                     </>
                 ))}
-
-
-
-
-
             </div>
         </div>
     )
