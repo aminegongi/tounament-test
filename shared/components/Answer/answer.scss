@@ -1,0 +1,52 @@
+.textarea {
+
+    margin-top: 27px;
+
+}
+
+.coachavis__card__description {
+    &__repondre {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        padding: 17px 264px 18px 14.7px;
+        border: solid 1px #d5d5d5;
+        background-color: #f3f3f3;
+        margin-top: 28px;
+
+        &__title {
+            margin-left: 5px;
+        }
+    }
+}
+
+.coachavis {
+    width: 378px;
+    height: 60px;
+    background-color: grid;
+    margin-top: 33px;
+    border: solid 1px #d5d5d5;
+    background-color: #f3f3f3;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid: 7px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    justify-content: space-around;
+
+    img {
+        width: 37px;
+        height: 40px;
+        padding-top: 9px;
+        /* margin: 0 7px 0 0; */
+        border-radius: 10px;
+    }
+
+    input {
+        margin-top:8px;
+        border-radius: 17px;
+        background-color: #ffffff;
+        width: 281px;
+        height: 33px;
+    }
+}

@@ -142,3 +142,39 @@
     margin-top: 9.5px;
     border: solid 2px #f5f4f4;
 }
+
+.aucunBiographie {
+    background-color: white;
+    /* padding: 41px; */
+    text-align-last: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 29px;
+
+    &__title {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: normal;
+        text-align: left;
+        color: #26beb5;
+        margin-top: 10px;
+
+    }
+
+    &__message {
+        margin-top: 9px;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: normal;
+        text-align: left;
+        color: #232323;
+    }
+}

@@ -20,7 +20,6 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
     const [coachData, setCoachData] = useState()
 
     const renderCoachProfile = (coachData) => {
-        console.log("object,coachData", coachData)
         const job = jobs.find(job => job._id == coachData.map(e => e.coachData.job))
         let specialty = ""
         if (job.specialty && job.specialty.type == "sport") {
@@ -46,7 +45,7 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
         coachData.map(e => console.log("coachesList", e.email)) : ""
 
 
-    const [tab, setTab] = useState("3")
+    const [tab, setTab] = useState(1)
 
     return (
         <>
@@ -73,9 +72,15 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
                     <div className={css.tabsinfo}>
                         <div className={css.tabs}>
                             <div className={css.tabs__button}>
-                                <div className={css.tabs__button__apropos} onClick={() => setTab(1)}>A propos</div>
-                                <div className={css.tabs__button__apropos} onClick={() => setTab(2)} >Avis</div>
-                                <div className={css.tabs__button__apropos} onClick={() => setTab(3)}>Biographie</div>
+                                <div className={tab === 1 ? css.tabs__button__aproposaparopsactive : css.tabs__button__aproposaparops}
+                                    onClick={() => setTab(1)}>A propos
+                                </div>
+                                <div className={tab === 2 ? css.tabs__button__aproposavisactive : css.tabs__button__aproposavis}
+                                    onClick={() => setTab(2)} >Avis
+                                </div>
+                                <div className={tab === 3 ? css.tabs__button__aproposbiographieactive : css.tabs__button__aproposbiographie}
+                                    onClick={() => setTab(3)}>Biographie
+                                </div>
                             </div>
                             <button className={css.tabs__contact}>
                                 Contacter
@@ -90,14 +95,16 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
                                             <div className={css.tabsinfo__title}>
                                                 <CoachBox coachData={coach} iconexclamation={"../icon/exclamation.png"}>
                                                     <div className={css.coachBox}>
-                                                        <div className={css.coachBox__content}>
-                                                            <div className={css.coachBox__content__title}>
-                                                                Années d'expérience:
+                                                        {coach.coachData.experiencesYearsNumber ?
+                                                            <div className={css.coachBox__content}>
+                                                                <div className={css.coachBox__content__title}>
+                                                                    Années d'expérience:
                                                             </div>
-                                                            <div className={css.coachBox__content__experienceNumber}>
-                                                                {coach.coachData.experiencesYearsNumber}
-                                                            </div>
-                                                        </div>
+                                                                <div className={css.coachBox__content__experienceNumber}>
+                                                                    {coach.coachData.experiencesYearsNumber}
+                                                                </div>
+                                                            </div> : ""}
+
                                                         <div className={css.coachBox__content}>
                                                             <div className={css.coachBox__content__title}>
                                                                 Années à jouer:
@@ -106,33 +113,36 @@ export default function CoachDetails({ match, coachesList, jobs, sports, dances,
                                                                 3
                                                             </div>
                                                         </div>
-                                                        <div className={css.coachBox__content}>
-                                                            <div className={css.coachBox__content__title}>
-                                                                Nombre de personnes par séances:
+                                                        {coach.coachData.privateCourseData.personsNumberPerSession ?
+                                                            <div className={css.coachBox__content}>
+                                                                <div className={css.coachBox__content__title}>
+                                                                    Nombre de personnes par séances:
                                                             </div>
-                                                            <div className={css.coachBox__content__experienceNumber}>
-                                                                {coach.coachData.privateCourseData.personsNumberPerSession}
+                                                                <div className={css.coachBox__content__experienceNumber}>
+                                                                    {coach.coachData.privateCourseData.personsNumberPerSession}
+                                                                </div>
+                                                            </div> : ""}
+                                                        {coach.coachData.privateCourseData.level ?
+                                                            <div className={css.coachBox__content}>
+                                                                <div className={css.coachBox__content__title}>
+                                                                    Niveaux: <span>{coach.coachData.privateCourseData.level.join(' , ')}</span>
+                                                                </div>
+                                                            </div> : ""}
+                                                        {coach.coachData.privateCourseData.ages ?
+                                                            <div className={css.coachBox__content}>
+                                                                <div className={css.coachBox__content__title}>
+                                                                    Catégories d'ages:
                                                             </div>
-                                                        </div>
-                                                        <div className={css.coachBox__content}>
-                                                            <div className={css.coachBox__content__title}>
-                                                                Niveaux: <span>{coach.coachData.privateCourseData.level.join(' , ')}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className={css.coachBox__content}>
-                                                            <div className={css.coachBox__content__title}>
-                                                                Catégories d'ages:
-                                                            </div>
-                                                            <div className={css.coachBox__content__experienceNumber}>
-                                                                {coach.coachData.privateCourseData.ages.join(' , ')}
-                                                            </div>
-                                                        </div>
+                                                                <div className={css.coachBox__content__experienceNumber}>
+                                                                    {coach.coachData.privateCourseData.ages.join(' , ')}
+                                                                </div>
+                                                            </div> : ""}
                                                     </div>
                                                 </CoachBox>
                                             )
                                             </div>
                                             : (tab == 2 ? <CoachAvis coachData={coach} /> :
-                                            <Biographie coachData={coach}  title={"Biographie"} icon={"../icon/exclamation.png"} />)
+                                                <Biographie coachData={coach} title={"Biographie"} icon={"../icon/exclamation.png"} />)
                                     )
                                 })}
                             </>

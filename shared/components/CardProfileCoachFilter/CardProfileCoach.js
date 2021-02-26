@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import css from './cardProfileCoach.scss'
 import { Rate } from 'antd';
 import { AVATAR } from '../../constants'
+import Link from 'next/link'
 
 export default function CardProfileCoach({ coachProfile, key, job, specialty }) {
     const [img, setimg] = useState(coachProfile.profilePicture ?
@@ -50,20 +51,20 @@ export default function CardProfileCoach({ coachProfile, key, job, specialty }) 
 
             </div>
             <div className={css.line}></div>
-           
-                
-                <div className={css.card_profil_coach__button}>
-                    <button className={css.card_profil_coach__button__contact}>
-                        Contacter
-                    </button>
-                    {/* <div className={css.linevertical}></div>  */}
 
+
+            <div className={css.card_profil_coach__button}>
+                <button className={css.card_profil_coach__button__contact}>
+                    Contacter
+                    </button>
+                {/* <div className={css.linevertical}></div>  */}
+                <Link href={`/coach-details/${coachProfile._id}`}>
                     <button className={css.card_profil_coach__button__seeDetails}>
                         Voir plus
                     </button>
+                </Link>
+            </div>
 
-                </div>
-            
 
         </div>
     )

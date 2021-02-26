@@ -79,11 +79,80 @@
     &__button {
         cursor: pointer;
 
-        display: grid;
-        grid-template-columns: auto auto auto;
-        gap: 46px;
+        // display: grid;
+        // grid-template-columns: auto auto auto;
+        // gap: 46px;
         margin-top: 15px;
-        &__apropos {
+        &__aproposaparops {
+           
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #000000;
+            position: absolute;
+        }
+        &__aproposaparopsactive {
+            border-bottom: solid 4px #ff8760;
+            padding-bottom: 34px;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #000000;
+            position: absolute;
+        }
+        &__aproposavis {
+            margin-left: 7.5rem;
+            position: absolute;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #000000;
+        }
+        &__aproposavisactive {
+            border-bottom: solid 4px #ff8760;
+            padding-bottom: 34px;
+            margin-left: 7.5rem;
+            position: absolute;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #000000;
+        }
+        &__aproposbiographie {
+            position: absolute;
+
+            margin-left: 13rem;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: 0.32px;
+            text-align: left;
+            color: #000000;
+        }
+        &__aproposbiographieactive {
+            border-bottom: solid 4px #ff8760;
+            padding-bottom: 34px;
+            position: absolute;
+
+            margin-left: 13rem;
             font-size: 16px;
             font-weight: 500;
             font-stretch: normal;

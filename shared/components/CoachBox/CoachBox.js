@@ -38,7 +38,7 @@ export default function CoachBox({ coachData, children, iconexclamation }) {
 
             <div className={css.coachBox__video}>
                 <div className={css.coachBox__video__linevertical}></div>
-                <img className={css.coachBox__video__icon} src="../icon/exclamation.png" alt="" />
+                <img className={css.coachBox__video__icon} src="../icon/videoicon.png" alt="" />
                 <div className={css.coachBox__video__title}>
                     Vidéo
                 </div>

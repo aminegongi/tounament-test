@@ -86,18 +86,7 @@
                 height: 106px;
             }
 
-            &__repondre {
-                cursor: pointer;
-                display: flex;
-                justify-content: space-between;
-                padding: 17px 264px 18px 14.7px;
-                border: solid 1px #d5d5d5;
-                background-color: #f3f3f3;
-                margin-top: 28px;
-                &__title{
-                    margin-left: 5px;
-                }
-            }
+       
             &__avismember {
                 display: flex;
                 justify-content: space-around;

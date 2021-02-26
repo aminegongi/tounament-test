@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Rate, Input } from 'antd';
 import css from './coachAvis.scss'
 import { AVATAR } from '../../constants'
+import Answer from '../Answer/Answer';
 
 function CoachAvis({ coachData }) {
-    const [msgReponder, setMsgReponder] = useState(false)
     const [sum, setSum] = useState(Math.round((coachData.coachData.reviews.reduce((a, v) => a = a + v.rating, 0) / coachData.coachData.reviews.length)))
     const [img, setimg] = useState(coachData.profilePicture ?
         "http://isporit.com/api/" + coachData.profilePicture :
@@ -26,29 +26,19 @@ function CoachAvis({ coachData }) {
                                 <div className={css.coachavis__card__description__recommendationMember__nameStart}>
                                     <div className={css.coachavis__card__description__recommendationMember__nameStart__name}>
                                         Nour jbeli
-                               </div>
+                                    </div>
                                     <div className={css.coachavis__card__description__recommendationMember__nameStart__start}>
                                         <Rate disabled defaultValue={reviews.rating} />
                                     </div>
                                 </div>
                                 <div className={css.coachavis__card__description__recommendationMember__publishdate}>
                                     il y a  3 jours
-                            </div>
+                                </div>
                             </div>
                             <div className={css.coachavis__card__description__avis}>
                                {reviews.answer}
                             </div>
-                            {msgReponder == false ?
-                                <div className={css.coachavis__card__description__repondre} onClick={() => setMsgReponder(true)}>
-                                    <div className={css.coachavis__card__description__repondre__iconrepondre}>
-                                        <img src="../icon/reponde.png" alt="repondre" />
-                                    </div>
-                                    <div className={css.coachavis__card__description__repondre__title}>
-                                        Répondre
-                                    </div>
-                                </div> :
-                                <textarea className={css.textarea} name="w3review" rows="2" cols="44" />
-                            }
+                            <Answer  />
                         </div>
                     </>
                 ))}
