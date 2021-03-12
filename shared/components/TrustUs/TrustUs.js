@@ -1,4 +1,4 @@
-import css from './trust-us.scss'
+import  './trust-us.scss'
 import Link from 'next/link';
 import Ticker from 'react-ticker'
 
@@ -40,11 +40,11 @@ const fakeData = {
 }
 export default function TrustUs({ title }) {
   return (
-    <div className={css.trust_us_container}>
-      <h3 className={css.h3}>
+    <div className={"trust_us_container"}>
+      <h3 className={"h3"}>
         20 {title}
         </h3>
-      <div className={css.image_container}>
+      <div className={"image_container"}>
         <Ticker height={100}>
           {({ index }) => (
             <>

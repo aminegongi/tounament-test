@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../shared/components/layout/Layout';
-import css from '../shared/css/player.scss'
+import  '../shared/css/player.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
 
 import Title from '../shared/components/TitleSection/TitleSection';
@@ -14,7 +14,7 @@ import Join from '../shared/components/joinplatforme/Join';
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 
-import globalCss from '../shared/global-style.scss'
+import '../shared/global-style.scss'
 import routes from '../utils/routes';
 
 
@@ -30,7 +30,7 @@ const Index = (props) => {
   // }, [])
 
   return (
-    <div className={css.player_page}>
+    <div className={"player_page"}>
       <Head>
         <title>Joueur</title>
 
@@ -41,7 +41,7 @@ const Index = (props) => {
 
       </Head>
       <Layout>
-        <div className={css.postplatforme}>
+        <div className={"postplatforme"}>
           <Postplatforme
             img={"icon/for_player.png"}
 
@@ -53,7 +53,7 @@ const Index = (props) => {
             link={routes.SIGN_UP.path}
           />
         </div>
-        <div className={css.iteamlistblock}>
+        <div className={"iteamlistblock"}>
           <Clublogo
             images={[
               {
@@ -73,8 +73,8 @@ const Index = (props) => {
           />
 
 
-          <div className={`${css.presenter_winner} ${globalCss.isporit_max_width}`}>
-            <div className={css.presenter_block}>
+          <div className={`${"presenter_winner"} ${"isporit_max_width"}`}>
+            <div className={"presenter_block"}>
               <div style={{ justifySelf: "center" }}>
                 <Demo
                   img={performance}
@@ -85,7 +85,7 @@ const Index = (props) => {
 
                 />
               </div>
-              <img alt="image" style={{ width: "100%" }} className={css.Image_gagnant} src={"icon/joueur.svg"} alt="" />
+              <img alt="image" style={{ width: "100%" }} className={"Image_gagnant"} src={"icon/joueur.svg"} alt="" />
 
             </div>
           </div>
@@ -93,7 +93,7 @@ const Index = (props) => {
           <Title title="Profitez pleinement du iSporit"
             sub_title="Nous vous offrons plusieurs outils intuitifs et faciles à utiliser"
           />
-          <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
+          <div className={`${"isporit_max_width"} ${"tab"} `}>
             <Tab
               bgcolor={'#fff9e2'}
               imgone={"feature/player/message.svg"}
@@ -116,11 +116,11 @@ const Index = (props) => {
             />
           </div>
 
-          <div className={`${globalCss.isporit_max_width} ${css.join} `}>
+          <div className={`${"isporit_max_width"} ${"join"} `}>
             <Join
               link={routes.CONTACT_US.playerPath}
               buttontwo="Contactez notre service commercial"
-              classbutton={css.buttondisplay}
+              classbutton={"buttondisplay"}
             />
           </div>
         </div>

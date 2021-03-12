@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import css from './tab.scss'
+import  './tab.scss'
 import Demo from '../DemoSection/DemoSection';
 import { Icon } from 'antd';
-import { v4 as uuid } from 'uuid'
+// import { v4 as uuid } from 'uuid'
 
-export default function Tab({ content, imgone, imgtwo, imgthere, bgcolor }) {
+function Tab({ content, imgone, imgtwo, imgthere, bgcolor }) {
     const [key, setkey] = useState(1);
     const [backgroundlistone, setbackgroundlistone] = useState(bgcolor);
     const [backgroundlisttwo, setbackgroundlisttwo] = useState('#ffffff');
@@ -73,36 +73,36 @@ export default function Tab({ content, imgone, imgtwo, imgthere, bgcolor }) {
 
     const renderClassName = (step) => {
         if (step + 1 === key) {
-            return css.buttonone
+            return "buttonone"
         }
-        return css.buttonx
+        return "buttonx"
     }
 
 
     return (
 
-        <div className={css.tab}>
+        <div className={"tab"}>
             <style jsx>{`
             button:after  {
                 border-right-color: ${bgcolor};
           }
 		`}</style>
-            <div className={css.img}>
+            <div className={"img"}>
                 {key === 1 ?
                     <img alt="image" src={imgone} /> : (key === 2 ? <img alt="image" src={imgtwo}/> : <img alt="image" src={imgthere}/>)}
             </div>
-            <div className={css.list_iteam}>
+            <div className={"list_iteam"}>
                 {
                     content.map((el, index) => {
-                        return <div key={uuid()} className={renderClassName(index)}>
+                        return <div  className={renderClassName(index)}>
 
                             <button onClick={() => onChangeTab(index)}
                                 style={onStyleChange(index)}
                             >
-                                <div className={css.tabtitle}>
+                                <div className={"tabtitle"}>
                                     {el.title}
                                 </div>
-                                <div className={css.subtitle}>
+                                <div className={"subtitle"}>
                                     {el.description}
                                 </div>
                             </button>
@@ -111,10 +111,10 @@ export default function Tab({ content, imgone, imgtwo, imgthere, bgcolor }) {
                     })
                 }
             </div>
-            <div className={css.mobile_mode}>
+            <div className={"mobile_mode"}>
                 {
                     content.map((el, index) => {
-                        return <div key={uuid()} className={css.mobile_item}>
+                        return <div  className={"mobile_item"}>
                             <Demo
                                 title={el.title}
                                 description={el.description}
@@ -126,3 +126,5 @@ export default function Tab({ content, imgone, imgtwo, imgthere, bgcolor }) {
         </div>
     );
 }
+
+export default Tab

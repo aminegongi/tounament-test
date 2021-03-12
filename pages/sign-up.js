@@ -1,6 +1,6 @@
 import getConfig from "next/config"
 import Head from "next/head"
-import css from '../shared/css/login.scss'
+import  '../shared/css/login.scss'
 import { useState, useEffect, Fragment } from 'react'
 import Link from "next/link"
 import { useRouter } from 'next/router'
@@ -178,7 +178,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className={css.html}>
+        <div className={"html"}>
             <Head>
                 <title>Créer un compte</title>
                 <link rel="icon" href="/logo.png" />
@@ -189,127 +189,127 @@ const SignUp = () => {
                 <meta name="author" content="sporit" />
             </Head>
             <Layout>
-                <div className={css.login_container}>
-                    <div className={css.left_side}>
-                        {/* <div className={css.logo}>
+                <div className={"login_container"}>
+                    <div className={"left_side"}>
+                        {/* <div className={"logo"}>
                             <Link href={{ pathname: '/' }} >
                                 <a>
                                     <img src="icon/logoindexpage.png" alt="" />
                                 </a>
                             </Link>
                         </div> */}
-                        <h1 className={css.page_title}>Créer un compte</h1>
+                        <h1 className={"page_title"}>Créer un compte</h1>
 
                         {/* {
-                            !router.query.invitationToken && <Select value={data.userType} onChange={e => setData({ ...data, userType: e })} className={css.select_input} name="" id="">
+                            !router.query.invitationToken && <Select value={data.userType} onChange={e => setData({ ...data, userType: e })} className={"select_input"} name="" id="">
                                 <Select.Option value="player">Joueur</Select.Option>
                                 <Select.Option value="coach">Entraineur</Select.Option>
                                 <Select.Option value="club">Directeur de club</Select.Option>
                             </Select>
                         } */}
                         {!router.query.invitationToken && <Radio.Group size={isSizeUnder360 ? "small" : 'large'} defaultValue="club" value={data.userType} onChange={e => setData({ ...data, userType: e.target.value })} buttonStyle="solid">
-                            <Radio.Button className={data.userType === 'player' && css.radio_group_button} value="player">Joueur</Radio.Button>
-                            <Radio.Button className={data.userType === 'coach' && css.radio_group_button} value="coach">Entraineur</Radio.Button>
-                            <Radio.Button className={data.userType === 'club' && css.radio_group_button} value="club">Directeur de club</Radio.Button>
+                            <Radio.Button className={data.userType === 'player' && "radio_group_button"} value="player">Joueur</Radio.Button>
+                            <Radio.Button className={data.userType === 'coach' && "radio_group_button"} value="coach">Entraineur</Radio.Button>
+                            <Radio.Button className={data.userType === 'club' && "radio_group_button"} value="club">Directeur de club</Radio.Button>
                         </Radio.Group>}
 
-                        {/* <Input maxLength={MAX_USERNAME_LENGTH} value={data.username} onChange={e => setData({ ...data, username: removeSpaceInString(e.target.value) })} className={css.input} placeholder="Nom d'utilisateur" type='text' />
+                        {/* <Input maxLength={MAX_USERNAME_LENGTH} value={data.username} onChange={e => setData({ ...data, username: removeSpaceInString(e.target.value) })} className={"input"} placeholder="Nom d'utilisateur" type='text' />
                         {
-                            localErrors.inputErrors && data.username.length < 6 && <span className={css.error}>Minimum 6 caractère</span>
+                            localErrors.inputErrors && data.username.length < 6 && <span className={"error"}>Minimum 6 caractère</span>
                         }
                         {
-                            localErrors.inputErrors && !validateUsername(data.username) && <span className={css.error}>Nom d'utilisateur n'est pas valide ( seuls les chiffres et lettres de l'alphabet sont autorisés )</span>
+                            localErrors.inputErrors && !validateUsername(data.username) && <span className={"error"}>Nom d'utilisateur n'est pas valide ( seuls les chiffres et lettres de l'alphabet sont autorisés )</span>
                         }
                         {
-                            localErrors.inputErrors && !isNaN(data.username.charAt(0)) && <span className={css.error}>Le nom d'utilisateur doit commencer par une lettre alphabétique</span>
+                            localErrors.inputErrors && !isNaN(data.username.charAt(0)) && <span className={"error"}>Le nom d'utilisateur doit commencer par une lettre alphabétique</span>
                         } */}
 
 
                         {
-                            localErrors.usernameAlreadyExists && <span className={css.error}>Nom d'utilisateur existe déjà</span>
+                            localErrors.usernameAlreadyExists && <span className={"error"}>Nom d'utilisateur existe déjà</span>
                         }
 
 
-                        <Input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={css.input} placeholder='Prénom' type='text' />
+                        <Input value={data.firstName} onChange={e => setData({ ...data, firstName: e.target.value })} className={"input"} placeholder='Prénom' type='text' />
                         {
-                            localErrors.inputErrors && isEmpty(data.firstName) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(data.firstName) && <span className={"error"}>Champ obligatoire</span>
                         }
 
 
-                        <Input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={css.input} placeholder='Nom de famille' type='text' />
+                        <Input value={data.lastName} onChange={e => setData({ ...data, lastName: e.target.value })} className={"input"} placeholder='Nom de famille' type='text' />
                         {
-                            localErrors.inputErrors && isEmpty(data.lastName) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(data.lastName) && <span className={"error"}>Champ obligatoire</span>
                         }
 
 
-                        <Input maxLength={40} value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={css.input} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
+                        <Input maxLength={40} value={data.email} onChange={e => setData({ ...data, email: e.target.value })} className={"input"} placeholder='Email' type='email' disabled={!isEmpty(router.query.email)} />
                         {
-                            localErrors.inputErrors && isEmpty(data.email) && <span className={css.error}>Champ obligatoire</span>
-                        }
-
-                        {
-                            localErrors.inputErrors && !validateEmail(data.email) && <span className={css.error}>Cette adresse email n'est pas valide</span>
+                            localErrors.inputErrors && isEmpty(data.email) && <span className={"error"}>Champ obligatoire</span>
                         }
 
                         {
-                            localErrors.emailAlreadyExists && <span className={css.error}>Email existe déjà</span>
+                            localErrors.inputErrors && !validateEmail(data.email) && <span className={"error"}>Cette adresse email n'est pas valide</span>
                         }
-
-
-
-
-                        <DatePicker size={'large'} disabledDate={current => current && current > moment().endOf('day')} value={data.birthday} onChange={e => setData({ ...data, birthday: e })} className={css.select_input} placeholder='Date de naissance' type='date' />
-                        {
-                            localErrors.inputErrors && isEmpty(data.birthday) && <span className={css.error}>Champ obligatoire</span>
-                        }
-                        {
-                            localErrors.inputErrors && moment().isBefore(data.birthday) && <span className={css.error}>Date n'est pas valid</span>
-                        }
-
-                        <Input maxLength={40} value={data.phoneNumber} onChange={e => setData({ ...data, phoneNumber: e.target.value })} className={css.input} placeholder='Numéro de téléphone' />
-                        {
-                            localErrors.inputErrors && isEmpty(data.phoneNumber) && <span className={css.error}>Champ obligatoire</span>
-                        }
-
 
                         {
-                            localErrors.inputErrors && !validatePhoneNumber(data.phoneNumber) && <span className={css.error}>Numéro de téléphone n'est pas valide</span>
-                        }
-                        {
-                            localErrors.inputErrors && data.phoneNumber.length < 7 && <span className={css.error}>Au moins 8 numéros</span>
+                            localErrors.emailAlreadyExists && <span className={"error"}>Email existe déjà</span>
                         }
 
-                        <Input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
+
+
+
+                        <DatePicker size={'large'} disabledDate={current => current && current > moment().endOf('day')} value={data.birthday} onChange={e => setData({ ...data, birthday: e })} className={"select_input"} placeholder='Date de naissance' type='date' />
                         {
-                            localErrors.inputErrors && isEmpty(data.password) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(data.birthday) && <span className={"error"}>Champ obligatoire</span>
+                        }
+                        {
+                            localErrors.inputErrors && moment().isBefore(data.birthday) && <span className={"error"}>Date n'est pas valid</span>
                         }
 
-                        <Input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={css.input} placeholder='Confirmation mot de passe' type='password' />
+                        <Input maxLength={40} value={data.phoneNumber} onChange={e => setData({ ...data, phoneNumber: e.target.value })} className={"input"} placeholder='Numéro de téléphone' />
                         {
-                            localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={css.error}>Champ obligatoire</span>
-                        }
-                        {
-                            localErrors.inputErrors && data.password !== data.confirmPassword && <span className={css.error}>Deux mots de passe ne sont pas égaux</span>
+                            localErrors.inputErrors && isEmpty(data.phoneNumber) && <span className={"error"}>Champ obligatoire</span>
                         }
 
-                        <div className={css.signup_btn_container}>
-                            <button onClick={onRegister} className={css.primary_button}>S'INSCRIRE</button>
+
+                        {
+                            localErrors.inputErrors && !validatePhoneNumber(data.phoneNumber) && <span className={"error"}>Numéro de téléphone n'est pas valide</span>
+                        }
+                        {
+                            localErrors.inputErrors && data.phoneNumber.length < 7 && <span className={"error"}>Au moins 8 numéros</span>
+                        }
+
+                        <Input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={"input"} placeholder='Mot de passe' type='password' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.password) && <span className={"error"}>Champ obligatoire</span>
+                        }
+
+                        <Input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={"input"} placeholder='Confirmation mot de passe' type='password' />
+                        {
+                            localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={"error"}>Champ obligatoire</span>
+                        }
+                        {
+                            localErrors.inputErrors && data.password !== data.confirmPassword && <span className={"error"}>Deux mots de passe ne sont pas égaux</span>
+                        }
+
+                        <div className={"signup_btn_container"}>
+                            <button onClick={onRegister} className={"primary_button"}>S'INSCRIRE</button>
                         </div>
-                        <div className={css.already_have_account}>
+                        <div className={"already_have_account"}>
                             <Link href={routes.LOG_IN.path} >Vous avez déjà un compte ?</Link>
 
                         </div>
 
                     </div>
 
-                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
-                        <h2 className={css.title}>
+                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={"right_side"}>
+                        <h2 className={"title"}>
                             Vous avez déjà un compte
                         </h2>
 
                         <Link href={{ pathname: '/login', query: { email: data.email, isLocalhost: router.query.isLocalhost || '', env: router.query.env || '' } }} >
                             <a>
-                                <button className={css.button} type="submit">
+                                <button className={"button"} type="submit">
                                     SE CONNECTER
                                 </button>
                             </a>

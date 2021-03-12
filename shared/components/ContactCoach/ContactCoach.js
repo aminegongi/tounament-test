@@ -1,32 +1,34 @@
 import React from 'react'
-import css from './contactCoach.scss'
+import  './contactCoach.scss'
 import moment from 'moment'
 
 function ContactCoach({ coachData }) {
     return (
         coachData.map(coach =>
-            <div className={css.contactcoach}>
-                <div className={css.contactcoach__title}>
+            <div className={"contactcoach"}>
+                <div className={"contactcoach__title"}>
                     Coordonnés
             </div>
-                <div className={css.contactcoach__birthday}>
+                <div className={"contactcoach__birthday"}>
                     <img src="../icon/Birthday.png" />
-                    <div className={css.contactcoach__birthday__date}>
+                    <div className={"contactcoach__birthday__date"}>
                         {moment(coach.birthday).format('LL')}
                     </div>
                 </div>
-                <div className={css.contactcoach__address}>
+                <div className={"contactcoach__address"}>
                     <img src="../icon/localisation.png" />
-                    <div className={css.contactcoach__address__lieu}>
+                    <div className={"contactcoach__address__lieu"}>
                         {coach.address}
                 </div>
                 </div>
-                <div className={css.contactcoach__youtubetv}>
+                <div className={"contactcoach__youtubetv"}>
                     <img src="../icon/youtube.png" />
-                    <div className={css.contactcoach__youtubetv__lien}>
+                    <div className={"contactcoach__youtubetv__lien"}>
                         Amira skhiri
                 </div>
                 </div>
+               { console.log("coachData={coachData}",coachData)
+}
             </div>
         )
     )

@@ -3,11 +3,11 @@
     flex-direction: column;
     // width: 300px;
 
-    padding: 16px;
-    padding-right: 26px;
+    padding: 1rem;
+    padding-right: 1.625rem;
 
     &__title {
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: bold;
         font-stretch: normal;
         font-style: normal;
@@ -18,11 +18,11 @@
     }
 
     &__birthday {
-        padding-top: 25px;
+        padding-top: 1.563rem;
         display: flex;
 
         &__date {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -30,24 +30,24 @@
             letter-spacing: 0.36px;
             text-align: left;
             color: #4e4d4d;
-            padding-left: 12px;
-            padding-top: 2px;
+            padding-left: 0.75rem;
+            padding-top: 0.125rem;
         }
 
         img {
-            width: 25px;
-            height: 25px;
+            width: 1.563rem;
+            height: 1.563rem;
         }
     }
 
 
     &__address {
-        padding-top: 25px;
+        padding-top: 1.563rem;
 
         display: flex;
 
         &__lieu {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -55,23 +55,23 @@
             letter-spacing: 0.36px;
             text-align: left;
             color: #4e4d4d;
-            padding-left: 12px;
-            padding-top: 2px;
+            padding-left: 0.75rem;
+            padding-top: 0.125rem;
         }
 
         img {
-            width: 25px;
-            height: 25px;
+            width: 1.563rem;
+            height: 1.563rem;
         }
     }
 
     &__youtubetv {
-        padding-top: 25px;
+        padding-top: 1.563rem;
 
         display: flex;
 
         &__lien {
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -79,13 +79,20 @@
             letter-spacing: 0.36px;
             text-align: left;
             color: #4e4d4d;
-            padding-left: 12px;
-            padding-top: 2px;
+            padding-left: 0.75rem;
+            padding-top: 0.125rem;
         }
 
         img {
-            width: 25px;
-            height: 25px;
+            width: 1.563rem;
+            height: 1.563rem;
         }
+    }
+}
+
+@media only screen and (max-width : 425px) {
+
+    .contactcoach {
+        width: 38.5rem;
     }
 }

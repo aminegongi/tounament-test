@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import globalCss from '../../global-style.scss'
+import  '../../global-style.scss'
 import { useRouter } from "next/router";
 import Link from 'next/link'
 import moment from 'moment'
@@ -11,7 +11,7 @@ import BurgerMenu from 'react-burger-menu'
 
 import club from '../../../public/icon/subforclub.svg'
 import routes from '../../../utils/routes';
-import css from './navbar.scss'
+import  './navbar.scss'
 
 const { SubMenu } = Menu;
 
@@ -37,29 +37,29 @@ function NavbarIndex({ buttontwo, isFooter ,clubmanagement}) {
 
   if (isFooter) {
     return (
-      <div className={css.footer_container}>
-        <section className={`${css.footer_bar}  ${globalCss.isporit_max_width}`}>
-          <div className={css.logo}>
+      <div className={"footer_container"}>
+        <section className={`${"footer_bar"}  ${"isporit_max_width"}`}>
+          <div className={"logo"}>
             <Link href='/'>
               <a><img src={"../../../icon/logoindexpage.png"} alt="iSporit" /></a>
             </Link>
           </div>
-          <div className={css.social_media}>
+          <div className={"social_media"}>
             <a href="https://www.facebook.com/iSporitOfficial" ><img src="/Facebook_logo.png" alt="facebook" /></a>
             {/* <a href="" ><img src="/Twitter_logo.png" alt="twitter" /></a> */}
             <a href="https://www.instagram.com/isporit_com/" ><img src="/Instagram_logo.png" alt="instagram" /></a>
           </div>
-          <div className={css.button_container}>
+          <div className={"button_container"}>
             <Link href={routes.SIGN_UP.path}>
               <a>
-                <button className={css.sign_up}>
+                <button className={"sign_up"}>
                   Devenez partenaire
               </button>
               </a>
             </Link>
           </div>
         </section>
-        <div className={`${css.copyright}`}>
+        <div className={`${"copyright"}`}>
           © {moment().format('YYYY')} iSporit. All rights reserved
         </div>
 
@@ -69,8 +69,8 @@ function NavbarIndex({ buttontwo, isFooter ,clubmanagement}) {
 
   if (isMobile) {
     return (
-      <div className={css.mobile_burger_menu}>
-        <div className={css.logo}>
+      <div className={"mobile_burger_menu"}>
+        <div className={"logo"}>
           <Link href='/'>
             <a><img src={"../../../icon/logoindexpage.png"} alt="logo" /></a>
           </Link>
@@ -112,20 +112,16 @@ function NavbarIndex({ buttontwo, isFooter ,clubmanagement}) {
             defaultOpenKeys={['sub1']}
             style={{ border: "none" }}
           >
-            <SubMenu className={css.menu_item} title="La plateforme" key="sub1">
-              <Menu.Item onClick={() => onChangeLocation("/club")} className={css.feature_item}><img alt="club" src="icon/features/clubs.svg" /><div>Clubs</div></Menu.Item>
-              <Menu.Item onClick={() => onChangeLocation("/coach")} className={css.feature_item}><img alt="club" src="icon/features/coaches.svg" /><div>Entraineurs</div></Menu.Item>
-              <Menu.Item onClick={() => onChangeLocation("/player")} className={css.feature_item}><img alt="club" src="icon/features/players.svg" /><div>Joueurs/Parents</div></Menu.Item>
+            <SubMenu className={"menu_item"} title="La plateforme" key="sub1">
+              <Menu.Item onClick={() => onChangeLocation("/club")} className={"feature_item"}><img alt="club" src="icon/features/clubs.svg" /><div>Clubs</div></Menu.Item>
+              <Menu.Item onClick={() => onChangeLocation("/coach")} className={"feature_item"}><img alt="club" src="icon/features/coaches.svg" /><div>Entraineurs</div></Menu.Item>
+              <Menu.Item onClick={() => onChangeLocation("/player")} className={"feature_item"}><img alt="club" src="icon/features/players.svg" /><div>Joueurs/Parents</div></Menu.Item>
             </SubMenu>
-            {/* <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.menu_item}>Clubs partenaires</Menu.Item> */}
-            <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.menu_item}>Contact</Menu.Item>
-            <Menu.Item onClick={() => onChangeLocation("/login")} className={css.menu_item}>Login</Menu.Item>
+            {/* <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={"menu_item"}>Clubs partenaires</Menu.Item> */}
+            <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={"menu_item"}>Contact</Menu.Item>
+            <Menu.Item onClick={() => onChangeLocation("/login")} className={"menu_item"}>Login</Menu.Item>
 
-            {/* <SubMenu className={css.menu_item} title="S'inscrire gratuitement" key="sub2">
-              <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.feature_item}><img alt="club" src="icon/features/clubs.svg" /><div>Clubs</div></Menu.Item>
-              <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.feature_item}><img alt="club" src="icon/features/coaches.svg" /><div>Entraineurs</div></Menu.Item>
-              <Menu.Item onClick={() => onChangeLocation("/contact-us")} className={css.feature_item}><img alt="club" src="icon/features/players.svg" /><div>Joueurs/Parents</div></Menu.Item>
-            </SubMenu> */}
+     
 
           </Menu>
         </BurgerMenu.slide>
@@ -136,48 +132,48 @@ function NavbarIndex({ buttontwo, isFooter ,clubmanagement}) {
   if (!isMobile) {
     return (
       <div style={{ backgroundColor: "white" }}>
-        <div className={`${css.navbar_container} ${globalCss.isporit_max_width}`}>
-          <div className={css.logo}>
+        <div className={`${"navbar_container"} ${"isporit_max_width"}`}>
+          <div className={"logo"}>
             <Link href='/'>
               <a><img src={"../../../icon/logoindexpage.png"} alt="logo" /></a>
             </Link>
           </div>
-          <div className={css.items_container}>
-            <div className={css.sup}>
-              <div className={css.item}>
+          <div className={"items_container"}>
+            <div className={"sup"}>
+              <div className={"item"}>
                 <div>
                   La plateforme
-                <Icon className={css.fleshdown} type="down" />
+                <Icon className={"fleshdown"} type="down" />
                 </div>
-                <div className={css.subnav_content_container}>
-                  <div className={css.subnav_content}>
+                <div className={"subnav_content_container"}>
+                  <div className={"subnav_content"}>
                     <Link href={routes.CLUB_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
-                        <img className={css.img} src={club} />
-                        <div className={css.title} >Club</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_club"}`}>
+                        <img className={"img"} src={club} />
+                        <div className={"title"} >Club</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Digitalisez tout le travail de votre club et centralisez le dans une seule plateforme accessible depuis votre ordinateur, tablette et smartphone.
                       </div>
                       </a>
                     </Link>
 
                     <Link href={routes.COACH_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
-                        <img className={css.img} src={coach} />
-                        <div className={css.title} >Entraîneur</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_coach"}`}>
+                        <img className={"img"} src={coach} />
+                        <div className={"title"} >Entraîneur</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Planifiez vos sessions, faîtes la présence de vos joueurs et suivez l'historique de chacune des session de votre groupe.
                       </div>
                       </a>
                     </Link>
                     <Link href={routes.PLAYER_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
-                        <img className={css.img} src={player} />
-                        <div className={css.title} >Joueur</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_player"}`}>
+                        <img className={"img"} src={player} />
+                        <div className={"title"} >Joueur</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Suivez vos performances, analysez les vos entraîneurs et partagez les sur vos réseaux sociaux, créez aussi votre profil public.
                       </div>
                       </a>
@@ -187,17 +183,17 @@ function NavbarIndex({ buttontwo, isFooter ,clubmanagement}) {
               </div>
             </div>
           
-            <div className={css.item}>
+            <div className={"item"}>
               <Link href={routes.SEARCH_CLUB.path}>
                 <a>
                   Clubs partenaires
                 </a>
               </Link>
             </div>
-            {/* <div className={css.item}>
+            {/* <div className={"item"}>
             Chercher un joueur
           </div> */}
-            <div className={css.item}>
+            <div className={"item"}>
               <Link href={routes.CONTACT_US.path}>
                 <a>
                   Contact
@@ -205,19 +201,19 @@ function NavbarIndex({ buttontwo, isFooter ,clubmanagement}) {
               </Link>
             </div>
           </div>
-          <div className={css.button_container}>
+          <div className={"button_container"}>
             {/* 
           <Link href='/contact-us'>
-            <button className={css.sign_in}>
+            <button className={"sign_in"}>
               connexion
-              <Icon className={css.fleshdown} type="down" />
+              <Icon className={"fleshdown"} type="down" />
             </button>
           </Link> */}
             <Link href={routes.SIGN_UP.path}>
               <a>
-                <button className={css.sign_up}>
+                <button className={"sign_up"}>
                   S'inscrire gratuitement
-              {/* <Icon className={css.fleshdown} type="down" /> */}
+              {/* <Icon className={"fleshdown"} type="down" /> */}
                 </button>
               </a>
             </Link>

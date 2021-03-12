@@ -17,11 +17,11 @@ module.exports = withCss(withSass(withImages({
     LOGIN_REDIRECT_URL: process.env.LOGIN_REDIRECT_URL,
   },
 
-  cssModules: true,
-  cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: "[local]___[hash:base64:5]",
-  },
+  // cssModules: true,
+  // cssLoaderOptions: {
+  //   importLoaders: 1,
+  //   localIdentName: "[local]___[hash:base64:5]",
+  // },
   lessLoaderOptions: {
     // javascriptEnabled: true
   },

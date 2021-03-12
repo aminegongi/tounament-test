@@ -1,6 +1,6 @@
 import getConfig from "next/config";
 import Head from "next/head"
-import css from '../shared/css/login.scss'
+import  '../shared/css/login.scss'
 import { useState } from 'react'
 import Link from "next/link"
 import { isEmpty, isNumber } from 'lodash'
@@ -60,7 +60,7 @@ const Login = (props) => {
 
 
     return (
-        <div className={css.html}>
+        <div className={"html"}>
             <Head>
                 <title>Login</title>
 
@@ -70,15 +70,15 @@ const Login = (props) => {
                 <meta name="author" content="sporit" />
             </Head>
             <Layout>
-                <div className={css.login_container}>
-                    <form className={css.left_side}>
-                        <h1 className={css.page_title}>Connectez-vous</h1>
-                        <Input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' type="email" />
+                <div className={"login_container"}>
+                    <form className={"left_side"}>
+                        <h1 className={"page_title"}>Connectez-vous</h1>
+                        <Input value={email} onChange={e => setEmail(e.target.value)} className={"input"} placeholder='Email' type="email" />
                         {
-                            localErrors.inputErrors && isEmpty(email) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(email) && <span className={"error"}>Champ obligatoire</span>
                         }
-                        <Input value={password} onChange={e => setPassword(e.target.value)} className={css.input} placeholder='Mot de passe' type="password" />
-                        <center className={css.forgot_password}>
+                        <Input value={password} onChange={e => setPassword(e.target.value)} className={"input"} placeholder='Mot de passe' type="password" />
+                        <center className={"forgot_password"}>
                             <Link href={{ pathname: '/forgot-password' }} >
                                 <a style={{ color: '#26beb5' }}>
                                     Mot de passe oublié?
@@ -86,9 +86,9 @@ const Login = (props) => {
                             </Link>
                         </center>
                         {
-                            localErrors.inputErrors && isEmpty(password) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(password) && <span className={"error"}>Champ obligatoire</span>
                         }
-                        <div className={css.error}>
+                        <div className={"error"}>
                             {
                                 localErrors.verifyYourAccount && "Compte n'est pas vérifié, Veuillez confirmer votre inscription par email"
                             }
@@ -96,13 +96,13 @@ const Login = (props) => {
                                 localErrors.wrongEmailOrPassword && "E-mail ou mot de passe incorrect"
                             }
                         </div>
-                        <div className={css.signup_btn_container}>
-                            <button onClick={onLogin} className={css.primary_button}>Se Connecter</button>
+                        <div className={"signup_btn_container"}>
+                            <button onClick={onLogin} className={"primary_button"}>Se Connecter</button>
                         </div>
-                        <div className={css.create_account_btn}>
+                        <div className={"create_account_btn"}>
                             <Link href={routes.SIGN_UP.path} >
                                 <a>
-                                    <button className={css.button} type="submit">
+                                    <button className={"button"} type="submit">
                                         Créer un compte
                                     </button>
                                 </a>
@@ -110,17 +110,17 @@ const Login = (props) => {
                         </div>
                     </form>
 
-                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
-                        <h2 className={css.title}>
+                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={"right_side"}>
+                        <h2 className={"title"}>
                             Rejoignez notre platforme
                         </h2>
 
-                        <span className={css.description}>
+                        <span className={"description"}>
                             Entrez vos information et débutez avec nous votre parcours
                         </span>
                         <Link href={{ pathname: '/sign-up', query: router.query }} >
                             <a>
-                                <button className={css.button} type="submit">
+                                <button className={"button"} type="submit">
                                     S'INSCRIRE
                                 </button>
                             </a>

@@ -1,4 +1,4 @@
-import css from './navbarsearch.scss';
+import './navbarsearch.scss';
 import { Icon,Input,Select ,Menu  } from 'antd';
 import { useMediaPredicate } from "react-media-hook";
 import BurgerMenu from 'react-burger-menu'
@@ -7,7 +7,7 @@ import player from '../../../public/icon/subforplayer.svg'
 import coach from '../../../public/icon/subforcoach.svg'
 import routes from '../../../utils/routes';
 import Link from 'next/link';
-import globalCss from '../../global-style.scss'
+import  '../../global-style.scss'
 
 import { useState, useEffect,useRef } from 'react';
 
@@ -42,12 +42,12 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
       if(!isMobile){
 
     return (
-        <div className={css.search}>
+        <div className={"search"}>
 
-      <div className={css.navbar_container} >
+      <div className={"navbar_container"} >
 
-         <div className={css.navbarserch}>
-            <div className={css.logo}>
+         <div className={"navbarserch"}>
+            <div className={"logo"}>
                 <Link href='/'>
                     <a><img src={img}  alt="logo" /></a>
                 </Link>
@@ -58,44 +58,44 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
                 }
                 style={{ width: 250
                 }}
-                className={css.search}
+                className={"search"}
             />
-       <div className={css.items_container}>
-            <div className={css.sup}>
-              <div className={css.item}>
+       <div className={"items_container"}>
+            <div className={"sup"}>
+              <div className={"item"}>
                 <div>
                   La plateforme
-                <Icon className={css.fleshdown} type="down" />
+                <Icon className={"fleshdown"} type="down" />
                 </div>
-                <div className={css.subnav_content_container}>
-                  <div className={css.subnav_content}>
+                <div className={"subnav_content_container"}>
+                  <div className={"subnav_content"}>
                   <Link href={routes.CLUB_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
-                        <img className={css.img} src={club} />
-                        <div className={css.title} >Club</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_club"}`}>
+                        <img className={"img"} src={club} />
+                        <div className={"title"} >Club</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Digitalisez tout le travail de votre club et centralisez le dans une seule plateforme accessible depuis votre ordinateur, tablette et smartphone.
                       </div>
                       </a>
                     </Link>
 
                     <Link href={routes.COACH_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
-                        <img className={css.img} src={coach} />
-                        <div className={css.title} >Entraîneur</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_coach"}`}>
+                        <img className={"img"} src={coach} />
+                        <div className={"title"} >Entraîneur</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Planifiez vos sessions, faîtes la présence de vos joueurs et suivez l'historique de chacune des session de votre groupe.
                       </div>
                       </a>
                     </Link>
                     <Link href={routes.PLAYER_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
-                        <img className={css.img} src={player} />
-                        <div className={css.title} >Joueur</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_player"}`}>
+                        <img className={"img"} src={player} />
+                        <div className={"title"} >Joueur</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Suivez vos performances, analysez les vos entraîneurs et partagez les sur vos réseaux sociaux, créez aussi votre profil public.
                       </div>
                       </a>
@@ -105,17 +105,17 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
               </div>
             </div>
 
-            <div className={css.item}>
+            <div className={"item"}>
             <Link href={`/searchclub`} >
                 <a>
                   Clubs partenaires
                 </a>
               </Link>
             </div>
-            <div className={css.item}>
+            <div className={"item"}>
             Chercher un joueur
           </div>
-            <div className={css.item}>
+            <div className={"item"}>
               <Link href={routes.CONTACT_US.path}>
                 <a>
                   Contact
@@ -123,19 +123,19 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
               </Link>
             </div>
           </div>
-          <div className={css.button_container}>
+          <div className={"button_container"}>
            
           <Link href='/contact-us'>
-            <button className={css.sign_in}>
+            <button className={"sign_in"}>
               connexion
-              <Icon className={css.fleshdown} type="down" />
+              <Icon className={"fleshdown"} type="down" />
             </button>
           </Link> 
             <Link href={routes.CONTACT_US.path}>
               <a>
-                <button className={css.sign_up}>
+                <button className={"sign_up"}>
                   S'inscrire gratuitement
-              {/* <Icon className={css.fleshdown} type="down" /> */}
+              {/* <Icon className={"fleshdown"} type="down" /> */}
                 </button>
               </a>
             </Link>
@@ -150,16 +150,16 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
               if(isMobile){
                 return(
                   
-                    <div className={css.mobile_burger_menu}>
-                      <div className={css.logo}>
+                    <div className={"mobile_burger_menu"}>
+                      <div className={"logo"}>
                         <Link href='/'>
                           <a><img src={img} alt="logo" /></a>
                         </Link>
                         <Link href={routes.CONTACT_US.path}>
                           <a>
-                            <button className={css.sign_up}>
+                            <button className={"sign_up"}>
                               S'inscrire gratuitement
-                          <Icon className={css.fleshdown} type="down" />
+                          <Icon className={"fleshdown"} type="down" />
                             </button>
                           </a>
                        </Link>
@@ -172,9 +172,9 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
                           style={{ width: 250
                        
                           }}
-                          className={css.search}
+                          className={"search"}
                       />
-                      <button className={!showclub==""? css.carte:css.buttoncarte} onClick={() => switchshow()}>
+                      <button className={!showclub==""? "carte":"buttoncarte"} onClick={() => switchshow()}>
 
                       {/* // <button  onclick="switchshow"> */}
                         <span>{showclub}</span>
@@ -223,44 +223,44 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
                                 }
                                 style={{ width: 250
                                 }}
-                                className={css.search}
+                                className={"search"}
                             />   */}
-                    <div className={css.items_container}>
-            <div className={css.sup}>
-              <div className={css.item}>
+                    <div className={"items_container"}>
+            <div className={"sup"}>
+              <div className={"item"}>
                 <div>
                   La plateforme
-                <Icon className={css.fleshdown} type="down" />
+                <Icon className={"fleshdown"} type="down" />
                 </div>
-                <div className={css.subnav_content_container}>
-                  <div className={css.subnav_content}>
+                <div className={"subnav_content_container"}>
+                  <div className={"subnav_content"}>
                   <Link href={routes.CLUB_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_club}`}>
-                        <img className={css.img} src={club} />
-                        <div className={css.title} >Club</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_club"}`}>
+                        <img className={"img"} src={club} />
+                        <div className={"title"} >Club</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Digitalisez tout le travail de votre club et centralisez le dans une seule plateforme accessible depuis votre ordinateur, tablette et smartphone.
                       </div>
                       </a>
                     </Link>
 
                     <Link href={routes.COACH_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_coach}`}>
-                        <img className={css.img} src={coach} />
-                        <div className={css.title} >Entraîneur</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_coach"}`}>
+                        <img className={"img"} src={coach} />
+                        <div className={"title"} >Entraîneur</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Planifiez vos sessions, faîtes la présence de vos joueurs et suivez l'historique de chacune des session de votre groupe.
                       </div>
                       </a>
                     </Link>
                     <Link href={routes.PLAYER_FEATURES.path}>
-                      <a className={`${css.feature_desktop_item} ${css.feature_desktop_item_player}`}>
-                        <img className={css.img} src={player} />
-                        <div className={css.title} >Joueur</div>
+                      <a className={`${"feature_desktop_item"} ${"feature_desktop_item_player"}`}>
+                        <img className={"img"} src={player} />
+                        <div className={"title"} >Joueur</div>
 
-                        <div className={css.subtitle} >
+                        <div className={"subtitle"} >
                           Suivez vos performances, analysez les vos entraîneurs et partagez les sur vos réseaux sociaux, créez aussi votre profil public.
                       </div>
                       </a>
@@ -270,17 +270,17 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
               </div>
             </div>
 
-            <div className={css.item}>
+            <div className={"item"}>
               <Link href={routes.CONTACT_US.clubPath}>
                 <a>
                   Clubs partenaires
                 </a>
               </Link>
             </div>
-            <div className={css.item}>
+            <div className={"item"}>
             Chercher un joueur
            </div>
-            <div className={css.item}>
+            <div className={"item"}>
               <Link href={routes.CONTACT_US.path}>
                 <a>
                   Contact
@@ -288,12 +288,12 @@ function Navbarsearch({ el ,setdatawebsite,img ,showclub,setshowclub, serverData
               </Link>
             </div>
           </div>
-          <div className={css.button_container}>
+          <div className={"button_container"}>
            
            <Link href='/contact-us'>
-             <button className={css.sign_in}>
+             <button className={"sign_in"}>
                connexion
-               <Icon className={css.fleshdown} type="down" />
+               <Icon className={"fleshdown"} type="down" />
              </button>
            </Link> 
              

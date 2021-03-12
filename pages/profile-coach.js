@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
-import css from '../shared/css/profilecoach.scss'
-import globalCss from '../shared/global-style.scss'
+import '../shared/css/profilecoach.scss'
+import '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
 import { ALL, ALPHABETICAL, RECOMMEND, EXPERIENCE, API } from '../shared/constants'
 import { Input, Select, Modal, Button } from 'antd';
@@ -85,23 +85,25 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
 
     return (
         <>
-            <Navbar />
+            <div className="navbar">
+                <Navbar />
+            </div>
+            <div className={"profil_coach"}>
 
-            <div className={css.profil_coach}>
-
-                <div className={css.affiche}>
-                    <img className={css.affiche__img} src={"../../../icon/profil_coach.png"} alt="" />
+                <div className={"affiche"}>
+                    <img className={"affiche__img"} src={"../../../icon/profil_coach.png"} alt="" />
                 </div>
-                <div className={css.profil_coach__coach_details} >
-                    <div className={css.profil_coach__coach_details__filter} >
-                        <Search className={css.profil_coach__coach_details__filter__input_searsh}
+                <div className={"profil_coach__coach_details"} >
+                    <div className={"profil_coach__coach_details__filter"} >
+                        <Search className={"profil_coach__coach_details__filter__input_searsh"}
                             placeholder="RECHERCHE PAR NOM"
                             onChange={e => onSearch(e.target.value)}
-                            style={{
-                                width: 270,
-                            }} />
+                            // style={{
+                            //     width: 270,
+                            // }} 
+                            />
 
-                        <div className={css.line}></div>
+                        <div className={"lineprofilecoach"}></div>
 
                         <FilterCoach
                             coachSpecialty={coachSpecialty}
@@ -116,7 +118,7 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
                             dataCopy={dataCopy}
                             coachesList={coachesList}
                         />
-                        <div className={css.line}></div>
+                        <div className={"lineprofilecoach"}></div>
                         <FilterCoach
                             dances={dances}
                             sports={sports}
@@ -130,29 +132,30 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
                             jobs={jobs}
                             title={"SPECIALITES"}
                         />
-                        <div className={css.line}></div>
+                        <div className={"lineprofilecoach"}></div>
                         <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                        <div className={css.line}></div>
+                        <div className={"lineprofilecoach"}></div>
                         <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
-                        <div className={css.line}></div>
+                        <div className={"lineprofilecoach"}></div>
                         <CoachType setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                        <div className={css.line}></div>
+                        <div className={"lineprofilecoach"}></div>
                         <CoachRegion regions={regions} setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                     </div>
 
-                    <div className={css.profil_coach__coach_details__list_of_coach}>
-                        <Search className={css.profil_coach__coach_details__filter__input_searshmobile}
+                    <div className={"profil_coach__coach_details__list_of_coach"}>
+                        <Search className={"profil_coach__coach_details__filter__input_searshmobile"}
                             placeholder="RECHERCHE PAR NOM"
                             onChange={e => onSearch(e.target.value)}
-                            style={{
-                                width: 270,
-                            }} />
-                        <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby}>
-                            <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__filter}>
-                                <Button className={css.buttonfilter} type="primary" onClick={showModal}>
+                            // style={{
+                            //     width: 270,
+                            // }}
+                             />
+                        <div className={"profil_coach__coach_details__list_of_coach__lenght_sortby"}>
+                            <div className={"profil_coach__coach_details__list_of_coach__lenght_sortby__filter"}>
+                                <Button className={"buttonfilter"} type="primary" onClick={showModal}>
                                     Filter
-                        </Button>
-                                <Modal title="Filter" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                                </Button>
+                                <Modal title="FILTRES" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                                     <FilterCoach
                                         coachSpecialty={coachSpecialty}
                                         setCoachSpecialty={setCoachSpecialty}
@@ -179,27 +182,27 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
                                         jobs={jobs}
                                         title={"SPECIALITES"}
                                     />
-                                    <div className={css.line}></div>
+                                    <div className={"lineprofilecoach"}></div>
                                     <Experiencefilter setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                                    <div className={css.line}></div>
+                                    <div className={"lineprofilecoach"}></div>
                                     <Recommendation dataCopy={dataCopy} setDataCopy={setDataCopy} coachesList={coachesList} />
-                                    <div className={css.line}></div>
+                                    <div className={"lineprofilecoach"}></div>
                                     <CoachType setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
-                                    <div className={css.line}></div>
+                                    <div className={"lineprofilecoach"}></div>
                                     <CoachRegion regions={regions} setDataCopy={setDataCopy} dataCopy={dataCopy} coachesList={coachesList} />
                                 </Modal>
                             </div>
-                            <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__lenght}>
+                            <div className={"profil_coach__coach_details__list_of_coach__lenght_sortby__lenght"}>
                                 {dataCopy.length} résultat(s)
                         </div>
-                            <div className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby}>
+                            <div className={"profil_coach__coach_details__list_of_coach__lenght_sortby__sortby"}>
                                 <span>Trier par : </span>
                                 <Select
                                     labelInValue
                                     placeholder={ALL}
                                     style={{ width: 200 }}
                                     bordered={false}
-                                    className={css.profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select}
+                                    className={"profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select"}
                                     onChange={handleChange}
                                 >
                                     <Option value={ALL} >Tout</Option>
@@ -210,16 +213,16 @@ export default function ProfileCoach({ coachesList, jobs, sports, dances, region
                             </div>
 
                         </div>
-                        <div className={css.line}></div>
-                        <div className={css.profil_coach__coach_details__list_of_coach__card}>
+                        <div className={"lineprofilecoach"}></div>
+                        <div className={"profil_coach__coach_details__list_of_coach__card"}>
                             {paginate(dataCopy, nbr_of_card_per_page, pageNumber).map((dataCopy, key) =>
                                 renderCoachProfile(dataCopy)
                             )}
                         </div>
-                        <div className={css.paginate}>
+                        <div className={"paginate"}>
                             {
                                 Array.from({ length: Math.round(dataCopy.length / nbr_of_card_per_page) }).map((el, index) => (
-                                    <div className={pageActiveNumber == index || index + 1 == pageNumber ? css.paginate__page : ""}
+                                    <div className={pageActiveNumber == index || index + 1 == pageNumber ? "paginate__page" : ""}
                                         key={index} type="submit" onClick={() => { setPageNumber(index + 1), setPageActiveNumber(index) }}>
                                         {index + 1}
                                     </div>

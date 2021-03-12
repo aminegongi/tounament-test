@@ -1,26 +1,50 @@
-.infocoach {
-    height: 339.5px;
-    padding: 112px 39px 27.5px 30px;
-
+.coachcalander {
+    height: 21.219rem;
+    padding: 7rem 2.438rem 1.719rem 1.875rem;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 9px;
+    margin-top: 4.375rem;
+}
+
+.infocoach {
+    height: 21.219rem;
+    padding: 7rem 2.438rem 1.719rem 1.875rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.563rem;
+
+    &__firstblock {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__secondblock {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     &__img {
         background-color: white;
-        border-radius: 70px;
-        margin-top: -166px;
-        width: 152px;
-        height: 161px;
+        border-radius: 4.375rem;
+        margin-top: -10.375rem;
+        width: 9.5rem;
+        height: 10.063rem;
         object-fit: contain;
         position: absolute;
     }
 
     &__coachName {
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 500;
         font-stretch: normal;
         font-style: normal;
@@ -85,7 +109,7 @@
             padding-top: 0.438rem;
             // padding-left: 0.5rem;
             font-size: 1rem;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -101,18 +125,18 @@
 
 .suggestcoachdetails {
     text-align: -webkit-center;
-    padding-top: 10px;
+    padding-top: 0.625rem;
 
     &__suggestPrivateCourse {
-        height: 16px;
+        height: 1rem;
 
         display: flex;
         justify-content: center;
 
         &__propose {
-            padding-left: 6px;
+            padding-left: 0.375rem;
             white-space: nowrap;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -124,15 +148,99 @@
     }
 }
 
-.buttoncontact {
-    border-radius: 8px;
+.buttoncontactcoach {
+    border-radius: 0.5rem;
     background-color: #26beb5;
-    padding: 9px 36px 11px 36px !important;
+    padding: 0.563rem 2.25rem 0.688rem 2.25rem !important;
     border: none;
-    margin-top: 8px;
-    font-size: 20px;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
     font-weight: 500;
     color: #ffffff;
-    margin-top:15px
+    margin-top: 0.938rem
+}
 
+@media only screen and (max-width: 768px) {
+    .affiche {
+        width: 95%;
+        margin-left: 1.188rem;
+        padding-top: 3.188rem;
+        margin-right: 1rem;
+    }
+
+    .infocoach {
+        display: grid;
+        grid-template-columns: auto auto;
+        margin-left: -0.1rem;
+        width: 60.9rem;
+        height: 14.719rem;
+        padding: 0;
+        background-color: #ffffff;
+        /* justify-content: space-between;*/
+        justify-content: initial;
+        box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
+        border: solid 1px #d5d5d5;
+        background-color: #ffffff;
+        &__img {
+            top: 8.625rem;
+        }
+        &__secondblock {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: initial;
+            position: absolute;
+            top: 0.5rem;
+            left: 30rem;
+        }
+
+    }
+
+    .suggestcoachdetails__suggestPrivateCourse {
+        justify-content: initial;
+    }
+
+    .buttoncontactcoach {
+        float: left;
+    }
+}
+
+.card_profil_coach__information__worktype {
+    text-align: initial !important;
+}
+
+@media only screen and (max-width: 425px) {
+    .infocoach {
+
+        width: 38.5rem;
+        margin-left: -3px;
+        height: 14.719rem;
+        &__secondblock {
+
+            left: 21.5rem;
+        }
+        
+    }
+    .suggestcoachdetails__suggestPrivateCourse__propose {
+       
+      
+        padding-top: 0.188rem;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .infocoach {
+        width: 34rem;
+        
+        &__secondblock {
+            left: 18.8rem;
+        }
+    }
+}
+@media only screen and (max-width: 320px) {
+    .infocoach {
+        width: 28.8rem;
+        &__firstblock{
+            margin-left: -23px;
+        }
+    }
 }

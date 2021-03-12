@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import { DownOutlined, RightOutlined } from '@ant-design/icons';
-import css from './filterCoach.scss'
+import  './filterCoach.scss'
 import down from "../../../public/icon/down.png"
 import left from "../../../public/icon/left.png"
 import { Empty } from 'antd';
@@ -74,21 +74,21 @@ const [professionId, setProfessionId] = useState()
     }
 
     return (
-        <div className={css.filter_coach}>
+        <div className={"filter_coach"}>
 
-            <div className={css.filter_coach__filter_type} >
-                <div className={css.filter_coach__filter_type__title} >
-                    <div onClick={() => changeIcon()} className={css.filter_coach__filter_type__title__Professions} >
-                        {title}<img src={icon} className={icon === down ? css.down : css.left} alt="" />
+            <div className={"filter_coach__filter_type"} >
+                <div className={"filter_coach__filter_type__title"} >
+                    <div onClick={() => changeIcon()} className={"filter_coach__filter_type__title__Professions"} >
+                        {title}<img src={icon} className={icon === down ? "down" : "left"} alt="" />
                     </div>
-                    <div className={icon != down ? css.filter_coach__filter_type__title__Professions__items : css.filter_coach__show}>
+                    <div className={icon != down ? "filter_coach__filter_type__title__Professions__items" : "filter_coach__show"}>
                         {title === "PROFESSIONS" ?
                             <>
                                 {jobs.sort((a, b) => a.translations.fr > b.translations.fr ? 1 : -1).map(job => {
                                     return (
                                         <>
-                                            <div className={icon === down ? css.filter_coach__filter_type__title__Professions__items__iteam :
-                                                css.filter_coach__filter_type__title__Professions__items__iteamnotvisible}>
+                                            <div className={icon === down ? "filter_coach__filter_type__title__Professions__items__iteam" :
+                                                "filter_coach__filter_type__title__Professions__items__iteamnotvisible"}>
                                                 <div onClick={() => {
                                                     {
                                                         handleProfession(job),
@@ -107,7 +107,7 @@ const [professionId, setProfessionId] = useState()
                                                 }>
                                                     <div onClick={() => setSelectedSpecialtyId('')}
                                                         className={(job._id == selectedJobId) ?
-                                                            css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow : ""}>
+                                                            "filter_coach__filter_type__title__Professions__items__iteam__iteamshow" : ""}>
                                                         {job.translations.fr}
                                                     </div>
                                                 </div>
@@ -119,19 +119,19 @@ const [professionId, setProfessionId] = useState()
                             : (
 
                                 <div className={icon === down ?
-                                    css.filter_coach__filter_type__title__Professions__items__iteam :
-                                    css.filter_coach__filter_type__title__Professions__items__iteamnotvisible}
+                                    "filter_coach__filter_type__title__Professions__items__iteam" :
+                                    "filter_coach__filter_type__title__Professions__items__iteamnotvisible"}
                                 >
                                     {icon === down && coachSpecialtyFilter !== "" ?
                                         coachSpecialtyFilter.sort((a, b) => a.translations.fr > b.translations.fr ? 1 : -1).map(coach => {
                                             return (
 
-                                                <div className={css.filter_coach__filter_type__title__Professions__items__iteam}
+                                                <div className={"filter_coach__filter_type__title__Professions__items__iteam"}
                                                     onClick={() => handleSpecialty(coach)
 
                                                     }
                                                 >
-                                                    <div className={(coach._id == selectedSpecialtyId) ? css.filter_coach__filter_type__title__Professions__items__iteam__iteamshow : ""}>
+                                                    <div className={(coach._id == selectedSpecialtyId) ? "filter_coach__filter_type__title__Professions__items__iteam__iteamshow" : ""}>
 
                                                         {coach.translations.fr}
 

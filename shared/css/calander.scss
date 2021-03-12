@@ -1,0 +1,23 @@
+.calanderCoach {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 4.188rem;
+
+    &__coachinfo {
+        height: 29.063rem;
+        background-color: white;
+    }
+}
+
+.navbar {
+    padding-top: 1.188rem;
+    height: 5.438rem;
+    background-color: white;
+}
+.coachdetailsinformation{
+    margin-top:5rem
+}
+.reservation{
+    padding-bottom: 2.344rem;
+
+}

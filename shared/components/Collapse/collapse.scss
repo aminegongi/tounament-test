@@ -1,8 +1,8 @@
 .biographieblock {
     &__biographie {
         // margin-top: 39.5px;
-        width: 836px;
-        height: 139.5px;
+        width: 52.25rem;
+        height: 8.719rem;
 
         border-radius: 10px;
         -webkit-backdrop-filter: blur(30px);
@@ -10,17 +10,17 @@
         box-shadow: 5px 10px 9px 0 rgba(190, 190, 190, 0.16);
         border: solid 1px #d5d5d5;
         background-color: #ffffff;
-        margin-top: 38.5px;
+        margin-top: 2.406rem;
 
         // margin-top: -56px;
 
         &__linevertical {
             position: absolute;
-            top: -39px;
-            left: 30px;
+            top: -2.438rem;
+            left: 1.875rem;
             width: 0;
-            height: 22px;
-            margin: 0 0 11.5px;
+            height: 1.375rem;
+            margin: 0 0 0.719rem;
             /* margin-top: -20px; */
             border: solid 2px #20bdb4;
         }
@@ -29,17 +29,17 @@
             box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
             background-color: #20bdb4;
             border-radius: 50%;
-            width: 33px;
-            height: 33px;
+            width: 2.063rem;
+            height: 2.063rem;
             position: absolute;
-            left: 15px;
-            top: -18px;
+            left: 0.938rem;
+            top: -1.125rem;
         }
 
         &__title {
-            padding-top: 15px;
-            padding-left: 64px;
-            font-size: 18px;
+            padding-top: 0.938rem;
+            padding-left: 4rem;
+            font-size: 1.125rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
@@ -50,11 +50,11 @@
         }
 
         &__contenu {
-            padding: 16.5px 34px 0px 64px;
+            padding: 1.031rem 2.125rem 0px 4rem;
             // width: 807px;
             // height: 38px;
             font-family: Roboto;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: normal;
             font-stretch: normal;
             font-style: normal;
@@ -69,7 +69,7 @@
                     justify-content: space-between;
 
                     &__title {
-                        font-size: 16px;
+                        font-size: 1rem;
                         font-weight: 500;
                         font-stretch: normal;
                         font-style: normal;
@@ -78,15 +78,13 @@
                         text-align: left;
                         color: #4e4d4d;
                     }
-
                 }
 
                 &__contenuShow {
-
-                    padding-top: 16px;
-                    padding-right: 300px;
-                    padding-bottom: 20.5px;
-                    font-size: 16px;
+                    padding-top: 1rem;
+                    padding-right: 18.75rem;
+                    padding-bottom: 18.75rem;
+                    font-size: 1rem;
                     font-weight: normal;
                     font-stretch: normal;
                     font-style: normal;
@@ -94,17 +92,15 @@
                     letter-spacing: 0.32px;
                     text-align: left;
                     color: #4e4d4d;
-
-
                 }
 
                 &__dateicon {
                     display: grid;
                     grid-template-columns: auto auto;
-                    gap: 31.7px;
+                    gap: 1.981rem;
 
                     &__date {
-                        font-size: 14px;
+                        font-size: 0.875rem;
                         font-weight: normal;
                         font-stretch: normal;
                         font-style: normal;
@@ -112,7 +108,7 @@
                         letter-spacing: 0.28px;
                         text-align: left;
                         color: #818181;
-                        padding-top: 6px;
+                        padding-top: 0.375rem;
                     }
                 }
 
@@ -121,8 +117,8 @@
     }
 
     &__Experiences {
-        width: 836px;
-        max-height: 362.5px;
+        width: 52.25rem;
+        max-height: 22.656rem;
 
         border-radius: 10px;
         -webkit-backdrop-filter: blur(30px);
@@ -130,15 +126,90 @@
         box-shadow: 5px 10px 9px 0 rgba(190, 190, 190, 0.16);
         border: solid 1px #d5d5d5;
         background-color: #ffffff;
-        margin-top: 38.5px;
+        margin-top: 2.406rem;
     }
 }
+
 .collapseblock {
-    padding-bottom: 34px
+    padding-bottom: 2.125rem
 }
-.line {
+
+.linebiographie {
     width: 89%;
-    margin-left: 37.3px;
-    margin-top: 9.5px;
+    margin-left: 2.331rem;
+    margin-top: 0.594rem;
     border: solid 2px #f5f4f4;
+}
+
+
+
+@media only screen and (max-width: 425px) {
+    .biographieblock {
+        &__biographie {
+            width: 37.25rem;
+        }
+
+        &__Experiences {
+            width: 37.25rem;
+        }
+    }
+
+
+    .biographieblock__biographie__contenu__collapse__dateicon__date {
+        padding-top: 0px;
+        
+        img {
+            width: 1.906rem;
+            height: 1.906rem;
+            margin-top: -0.3rem;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 375px) {
+    .biographieblock {
+        &__biographie {
+            width: 32.25rem;
+        }
+
+        &__Experiences {
+            width: 32.25rem;
+        }
+    }
+
+
+    .biographieblock__biographie__contenu__collapse__dateicon__date {
+        padding-top: 0px;
+        
+        img {
+            width: 1.906rem;
+            height: 1.906rem;
+            margin-top: -0.3rem;
+        }
+    }
+
+}
+@media only screen and (max-width: 320px) {
+    .biographieblock {
+        &__biographie {
+            width: 27.25rem;
+        }
+
+        &__Experiences {
+            width: 27.25rem;
+        }
+    }
+
+
+    .biographieblock__biographie__contenu__collapse__dateicon__date {
+        padding-top: 0px;
+        
+        img {
+            width: 1.906rem;
+            height: 1.906rem;
+            margin-top: -0.3rem;
+        }
+    }
+
 }

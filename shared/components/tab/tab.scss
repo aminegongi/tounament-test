@@ -3,7 +3,7 @@
     justify-content: space-around;
     grid-template-columns: repeat(2, 50%);
     column-gap: 2.4375rem;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     margin-left: 6.25rem;
     margin-right: 3.75rem;
     .img {
@@ -21,7 +21,7 @@
     }
 }
 .tabtitle {
-    font-size: 19px;
+    font-size: 1.188rem;
     font-weight: 600;
     line-height: 1.21;
     text-align: left;
@@ -47,7 +47,7 @@
     button:after {
         border-color: rgba(136, 183, 213, 0);
         border-width: 15px;
-        margin-top: -15px;
+        margin-top: -0.938rem;
     }
 }
 .list_iteam {
@@ -58,10 +58,10 @@
         border-radius: 20px;
     }
     .iteamtwo {
-        margin-top: 40.8px;
+        margin-top: 2.55rem;
     }
     .iteamthere {
-        margin-top: 35.8px;
+        margin-top: 2.238rem;
     }
 }
 .subtitle {

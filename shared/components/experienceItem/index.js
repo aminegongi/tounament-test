@@ -1,17 +1,17 @@
-import css from './experienceItem.scss'
+import  './experienceItem.scss'
 function ExperienceItem ({content, title , date}) {
-    return <div className={css.experience_item}>
-    <div className={css.leftSide}>
+    return <div className={"experience_item"}>
+    <div className={"leftSide"}>
         <img src="/timeLineCircle.svg" alt="circle" />
-        <div className={css.line} >
+        <div className={"line"} >
             <div />
         </div>
     </div>
-    <div className={css.rightSide}>
-        <div className={css.itemTitle}>
-            <span>{title}</span> <span className={css.date}>({date})</span>
+    <div className={"rightSide"}>
+        <div className={"itemTitle"}>
+            <span>{title}</span> <span className={"date"}>({date})</span>
         </div>
-        <div className={css.itemDescription}>
+        <div className={"itemDescription"}>
             {content}
         </div>
     </div>

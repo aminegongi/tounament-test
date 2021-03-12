@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import css from './experiencefilter.scss'
+import  './experiencefilter.scss'
 import { Slider } from 'antd';
 
 export default function Experiencefilter({setDataCopy,coachesList ,dataCopy}) {
@@ -14,7 +14,7 @@ export default function Experiencefilter({setDataCopy,coachesList ,dataCopy}) {
             fontsize: '14px',
             lineheight: '1.21',
           },
-          label: <strong className={css.label}>20ans</strong>,
+          label: <strong className={"label"}>20ans</strong>,
         },
       };
      const onChange = value => {
@@ -26,11 +26,11 @@ export default function Experiencefilter({setDataCopy,coachesList ,dataCopy}) {
 
     
     return (
-        <div className={css.experience}> 
-          <div className={css.experience__title} >ANNEES D'EXPERIENCES
+        <div className={"experience"}> 
+          <div className={"experience__title"} >ANNEES D'EXPERIENCES
          </div>
-          <div className={css.experience__marks}> 
-              <Slider styele={{backgroudColor:'red'}} class={css.experience__marks__line}
+          <div className={"experience__marks"}> 
+              <Slider styele={{backgroudColor:'red'}} class={"experience__marks__line"}
                  onChange={onChange}
                  marks={marks} max={20}/>
            </div>

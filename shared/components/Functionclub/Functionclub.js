@@ -1,16 +1,16 @@
-import css from './Functionclub.scss'
+import  './Functionclub.scss'
 
 export default function Functionclub({ className, title, description, img }) {
 
     return (
-        <div className={className}>
-            <div className={css.system}>
+        <div className={"className"}>
+            <div className={"system"}>
 
-                <img className={css.system_img} src={img} alt={title} />
-                <div className={css.gestion_club_title}>
+                <img className={"system_img"} src={img} alt={title} />
+                <div className={"gestion_club_title"}>
                     {title}
                 </div>
-                <div className={css.gestion_club_text}>
+                <div className={"gestion_club_text"}>
                     {description}
                 </div>
             </div>

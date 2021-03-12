@@ -1,4 +1,4 @@
-import css from './DemoSection.scss'
+import  './DemoSection.scss'
 import routes from '../../../utils/routes';
 import Link from 'next/link';
 
@@ -6,19 +6,19 @@ export default function DemoSection({ style, title, title_two, description, img,
 
     return (
         <div style={style}>
-            <div className={css.demo_block}>
-                <div className={css.demo_semaine}>
-                    {img && <img src={img} alt={title} className={css.montre}></img>}
-                    <div className={css.demo_plus_text} >
+            <div className={"demo_block"}>
+                <div className={"demo_semaine"}>
+                    {img && <img src={img} alt={title} className={"montre"}></img>}
+                    <div className={"demo_plus_text"} >
                         <div> {title}</div>
                         <div> {title_two}</div>
                     </div>
-                    <div className={css.demo_plateforme}>
+                    <div className={"demo_plateforme"}>
                         {description}
 
                     </div>
                     {link && <Link href={routes.SIGN_UP.path}>
-                        <button className={css.gerer_equipe}>
+                        <button className={"gerer_equipe"}>
                             J'inscris mon club
                         </button>
                     </Link>}

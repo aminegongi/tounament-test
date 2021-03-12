@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import css from './cardProfileCoach.scss'
+import  './cardProfileCoach.scss'
 import { Rate } from 'antd';
 import { AVATAR } from '../../constants'
 import Link from 'next/link'
@@ -13,53 +13,54 @@ export default function CardProfileCoach({ coachProfile, key, job, specialty }) 
     return (
 
 
-        <div className={css.card_profil_coach}>
+        <div className={"card_profil_coach"}>
 
 
-            <div className={css.card_profil_coach__information} >
-                <div className={css.card_profil_coach__information__avatar} >
+            <div className={"card_profil_coach__information"} >
+                <div className={"card_profil_coach__information__avatar"} >
                     <img src=
                         {img}
                     />
                 </div>
-                <div className={css.card_profil_coach__information__name} >
+                <div className={"card_profil_coach__information__name"} >
                     {coachProfile.firstName}{' '}{coachProfile.lastName}
                 </div>
 
-                <div className={css.card_profil_coach__information__rate}>
+                <div className={"card_profil_coach__information__rate"}>
                     <Rate disabled defaultValue={sum}
-                        className={css.rate} />
+                        className={"rate"} />
 
                 </div>
-                <div className={css.card_profil_coach__information__worktype}>
+                <div className={"card_profil_coach__information__worktype"}>
 
                     {job.translations.fr}
 
 
                 </div>
-                <div className={css.card_profil_coach__information__sporttype}>
-                    {specialty.translations.fr}
+                <div className={"card_profil_coach__information__sporttype"}>
+                    {specialty && specialty.translations ?  specialty.translations.fr :""}
                 </div>
-                <div className={css.card_profil_coach__information__yearexperience}>
+                <div className={"card_profil_coach__information__yearexperience"}>
                     {coachProfile.coachData.experiencesYearsNumber == 1 ?
                         (coachProfile.coachData.experiencesYearsNumber + " an d'expérience") :
-                        coachProfile.coachData.experiencesYearsNumber + " ans d'expérience"
+                        (coachProfile.coachData.experiencesYearsNumber == null ? " zero ans d'expérience" : 
+                        coachProfile.coachData.experiencesYearsNumber + " ans d'expérience")
                     }
                 </div>
 
 
 
             </div>
-            <div className={css.line}></div>
+            <div className={"lineprofilecoach"}></div>
 
 
-            <div className={css.card_profil_coach__button}>
-                <button className={css.card_profil_coach__button__contact}>
+            <div className={"card_profil_coach__button"}>
+                <button className={"card_profil_coach__button__contact"}>
                     Contacter
                     </button>
-                {/* <div className={css.linevertical}></div>  */}
+                {/* <div className={"linevertical"}></div>  */}
                 <Link href={`/coach-details/${coachProfile._id}`}>
-                    <button className={css.card_profil_coach__button__seeDetails}>
+                    <button className={"card_profil_coach__button__seeDetails"}>
                         Voir plus
                     </button>
                 </Link>

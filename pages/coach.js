@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../shared/components/layout/Layout';
-import css from '../shared/css/coach.scss'
+import '../shared/css/coach.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
 
 import Title from '../shared/components/TitleSection/TitleSection';
@@ -12,7 +12,7 @@ import Join from '../shared/components/joinplatforme/Join';
 
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
-import globalCss from '../shared/global-style.scss'
+import  '../shared/global-style.scss'
 import routes from '../utils/routes';
 
 
@@ -23,7 +23,7 @@ const Index = (props) => {
   // }, [i18n.language])
 
   return (
-    <div className={css.coach_page}>
+    <div className={"coach_page"}>
       <Head>
         <title>Entraîneur</title>
 
@@ -36,7 +36,7 @@ const Index = (props) => {
 
       </Head>
       <Layout>
-        <div className={css.postplatforme}>
+        <div className={"postplatforme"}>
           <Postplatforme
             img={"icon/forcoach.png"}
             title="Le suivi et la planification pour vos joueurs n'ont jamais été aussi simples"
@@ -48,7 +48,7 @@ const Index = (props) => {
             link={routes.SIGN_UP.path}
           />
         </div>
-        <div className={css.iteamlistblock}>
+        <div className={"iteamlistblock"}>
           <Clublogo
             images={[
               {
@@ -68,8 +68,8 @@ const Index = (props) => {
           />
 
 
-          <div className={`${css.presenter_winner} ${globalCss.isporit_max_width}`}>
-            <div className={css.presenter_block}>
+          <div className={`${"presenter_winnercoach"} ${"isporit_max_width"}`}>
+            <div className={"presenter_block"}>
               <div style={{ justifySelf: "center" }}>
                 <Demo
                   img={"icon/icon_coach.png"}
@@ -82,7 +82,7 @@ const Index = (props) => {
                   link={routes.CONTACT_US.coachPath}
                 />
               </div>
-              <img alt="image" style={{ width: "100%" }} className={css.Image_gagnant} src={"icon/coach.svg"} alt="" />
+              <img alt="image" style={{ width: "100%" }} className={"Image_gagnant"} src={"icon/coach.svg"} alt="" />
 
             </div>
           </div>
@@ -90,7 +90,7 @@ const Index = (props) => {
           <Title title="Améliorez et suivez votre travail"
             sub_title="Nous vous offrons plusieurs outils intuitifs et faciles à utiliser"
           />
-          <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
+          <div className={`${"isporit_max_width"} ${"tab"} `}>
             <Tab
               bgcolor={'#ffe5d9'}
               imgone={"feature/coach/planification_attribution_taches.svg"}
@@ -113,11 +113,11 @@ const Index = (props) => {
             />
           </div>
 
-          <div className={`${globalCss.isporit_max_width} ${css.join} `}>
+          <div className={`${"isporit_max_width"} ${"join"} `}>
             <Join
               link={routes.CONTACT_US.coachPath}
               buttontwo="Contactez notre service commercial"
-              classbutton={css.buttondisplay}
+              classbutton={"buttondisplay"}
             />
           </div>
         </div>

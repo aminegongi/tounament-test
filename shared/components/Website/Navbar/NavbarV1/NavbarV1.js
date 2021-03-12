@@ -1,4 +1,4 @@
-import css from './NavbarV1.scss';
+import  './NavbarV1.scss';
 import { isEmpty } from 'lodash';
 import Link from 'next/link';
 import { useMediaPredicate } from "react-media-hook";
@@ -21,24 +21,24 @@ function NavbarV1({ data, logo }) {
     return (
         <>
             {(!isMobile) ?
-                <div className={css.navbarV1}>
-                    <div className={css.navbarV1__container}>
-                        <div className={css.navbarV1__container__menu}>
-                            <a href="#introduction" className={css.navbarV1__container__menu__text}>LE CLUB</a>
-                            <a href="#staff" className={css.navbarV1__container__menu__text}>STAFF</a>
-                            <a href="#prices" className={css.navbarV1__container__menu__text}>TARIFS</a>
-                            <a href="#contact" className={css.navbarV1__container__menu__text}>CONTACT</a>
+                <div className={"navbarV1"}>
+                    <div className={"navbarV1__container"}>
+                        <div className={"navbarV1__container__menu"}>
+                            <a href="#introduction" className={"navbarV1__container__menu__text"}>LE CLUB</a>
+                            <a href="#staff" className={"navbarV1__container__menu__text"}>STAFF</a>
+                            <a href="#prices" className={"navbarV1__container__menu__text"}>TARIFS</a>
+                            <a href="#contact" className={"navbarV1__container__menu__text"}>CONTACT</a>
                         </div>
-                        <div className={css.navbarV1__container__logo}>
+                        <div className={"navbarV1__container__logo"}>
                             <img src={!isEmpty(logo) ? logo : '/logo-192.png'} alt="" />
                         </div>
-                        <div className={css.navbarV1__container__contact}>
-                            <div className={css.navbarV1__container__contact__text}>
+                        <div className={"navbarV1__container__contact"}>
+                            <div className={"navbarV1__container__contact__text"}>
                                 {data.contact.body.phoneNumber1} {!isEmpty(data.contact.body.phoneNumber1) && "/ " + data.contact.body.phoneNumber1}
                             </div>
                             <Link href="#contact">
                                 <a >
-                                    <button onClick={() => { }} className={css.navbarV1__container__contact__join_button}>
+                                    <button onClick={() => { }} className={"navbarV1__container__contact__join_button"}>
                                         <span>
                                             Rejoindre le club
                                         </span>
@@ -49,17 +49,17 @@ function NavbarV1({ data, logo }) {
                     </div>
                 </div> :
                 <div>
-                    <div className={css.navbarV1}>
+                    <div className={"navbarV1"}>
 
-                        <div className={css.navbarV1__container__logo}>
+                        <div className={"navbarV1__container__logo"}>
                             <img src={!isEmpty(logo) ? logo : '/logo-192.png'} alt="" />
                         </div>
 
-                        <div className={css.navbarV1__container__contact}>
+                        <div className={"navbarV1__container__contact"}>
 
                             <Link href="#contact">
                                 <a >
-                                    <button onClick={() => { }} className={css.navbarV1__container__contact__join_button}>
+                                    <button onClick={() => { }} className={"navbarV1__container__contact__join_button"}>
                                         <span>
                                             Rejoindre le club
                                         </span>
@@ -102,7 +102,7 @@ function NavbarV1({ data, logo }) {
                             width={'260px'}
 
 
-                            customBurgerIcon={!isMenuOpen ? <Icon type="menu" /> : <Icon className={css.buttonclose} type="close" />}
+                            customBurgerIcon={!isMenuOpen ? <Icon type="menu" /> : <Icon className={"buttonclose"} type="close" />}
                             customCrossIcon={false}
                             noOverlay={false}
                         >
@@ -111,22 +111,22 @@ function NavbarV1({ data, logo }) {
                                 defaultOpenKeys={['sub1']}
                                 style={{ border: "none" }}
                             >
-                                <div className={css.navbarV1__close_navbar}>
+                                <div className={"navbarV1__close_navbar"}>
                                     <Icon onClick={e => setIsMenuOpen(false)} style={{ fontSize: "20px", textAlign: 'right' }} type="close" />
                                 </div>
-                                <div className={css.navbarV1__container__contact__text}>
+                                <div className={"navbarV1__container__contact__text"}>
                                     {data.contact.body.phoneNumber1} {!isEmpty(data.contact.body.phoneNumber1) && "/ " + data.contact.body.phoneNumber1}
                                 </div>
-                                <div onClick={e => setIsMenuOpen(false)} className={css.navbar__menutext}>
+                                <div onClick={e => setIsMenuOpen(false)} className={"navbar__menutext"}>
                                     <a href="#introduction" style={{ color: 'black' }} >LE CLUB</a>
                                 </div>
-                                <div onClick={e => setIsMenuOpen(false)} className={css.navbar__menutext}>
+                                <div onClick={e => setIsMenuOpen(false)} className={"navbar__menutext"}>
                                     <a href="#staff" style={{ color: 'black' }} >STAFF</a>
                                 </div>
-                                <div onClick={e => setIsMenuOpen(false)} className={css.navbar__menutext}>
+                                <div onClick={e => setIsMenuOpen(false)} className={"navbar__menutext"}>
                                     <a href="#prices" style={{ color: 'black' }}>TARIFS</a>
                                 </div>
-                                <div onClick={e => setIsMenuOpen(false)} className={css.navbar__menutext}>
+                                <div onClick={e => setIsMenuOpen(false)} className={"navbar__menutext"}>
                                     <a href="#contact" style={{ color: 'black' }}>CONTACT</a>
                                 </div>
 

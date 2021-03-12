@@ -1,11 +1,11 @@
-import css from './layout.scss'
+import   './layout.scss'
 import { useState } from 'react'
 import Navbar from '../navbar/Navbar';
 export default function Layout({ children, loggedIn }) {
   return (
-    <div className={css.layout_container}>
+    <div className={"layout_container"}>
       <Navbar />
-      <div className={css.children}>
+      <div className={"children"}>
         {children}
       </div>
       <Navbar isFooter />

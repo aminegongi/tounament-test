@@ -1,5 +1,5 @@
 import logoblanc from '../../public/icon/logobanc.svg'
-import css from '../../shared/css/website.scss'
+import  '../../shared/css/website.scss'
 import { useState, useEffect } from 'react';
 // import data from '../data'
 import { useRouter } from "next/router";
@@ -55,35 +55,35 @@ const Indexs = (props) => {
 
             <div >
 
-                <div className={css.headerblock}>
+                <div className={"headerblock"}>
 
-                    <img className={css.headerblock__img} src={logoblanc} alt="logo" />
+                    <img className={"headerblock__img"} src={logoblanc} alt="logo" />
 
-                    <span className={css.headerblock__connexion}>Connexion</span>
+                    <span className={"headerblock__connexion"}>Connexion</span>
                 </div>
                 {(!isMobile) ?
 
-                    <div className={css.navbar}>
-                        <div className={css.navbar__menutext}>LE CLUB</div>
-                        <div className={css.navbar__menutext}>STAFF</div>
-                        <div className={css.navbar__menutext}>TARIFS</div>
-                        <div className={css.navbar__menutext}>CONTACT</div>
-                        <img className={css.navbar__imglogoclub} src={datawebsitebyid.data ? datawebsitebyid.data.logo : ""}
+                    <div className={"navbar"}>
+                        <div className={"navbar__menutext"}>LE CLUB</div>
+                        <div className={"navbar__menutext"}>STAFF</div>
+                        <div className={"navbar__menutext"}>TARIFS</div>
+                        <div className={"navbar__menutext"}>CONTACT</div>
+                        <img className={"navbar__imglogoclub"} src={datawebsitebyid.data ? datawebsitebyid.data.logo : ""}
                             alt=""></img>
-                        <div className={css.navbar__menutext}>
+                        <div className={"navbar__menutext"}>
                             {datawebsitebyid.data ? (datawebsitebyid.data.phoneNumber2 && datawebsitebyid.data.phoneNumber1 ?
                                 datawebsitebyid.data.phoneNumber1 + " / " + datawebsitebyid.data.phoneNumber2 :
                                 datawebsitebyid.data.phoneNumber1) : ""}
                         </div>
-                        <button onClick={() => window.location.href = "/contact-us"} className={css.navbar__rejoindrebutton}><span>Rejoindre le club</span></button>
+                        <button onClick={() => window.location.href = "/contact-us"} className={"navbar__rejoindrebutton"}><span>Rejoindre le club</span></button>
                     </div>
                     :
                     <div>
-                        <div className={css.navbar}>
+                        <div className={"navbar"}>
 
-                            <img className={css.navbar__imglogoclub} src={datawebsitebyid.data ? datawebsitebyid.data.logo : ""}
+                            <img className={"navbar__imglogoclub"} src={datawebsitebyid.data ? datawebsitebyid.data.logo : ""}
                                 alt=""></img>
-                            <div className={css.navbar__menutext}>
+                            <div className={"navbar__menutext"}>
                                 {datawebsitebyid.data ? (datawebsitebyid.data.phoneNumber2 && datawebsitebyid.data.phoneNumber1 ?
                                     datawebsitebyid.data.phoneNumber1 + " / " + datawebsitebyid.data.phoneNumber2 :
                                     datawebsitebyid.data.phoneNumber1) : ""}
@@ -117,7 +117,7 @@ const Indexs = (props) => {
                                 onStateChange={e => setIsMenuOpen(e.isOpen)}
                                 isOpen={isMenuOpen}
                                 width={'260px'}
-                                customBurgerIcon={!isMenuOpen ? <Icon type="menu" /> : <Icon className={css.buttonclose} type="close" />}
+                                customBurgerIcon={!isMenuOpen ? <Icon type="menu" /> : <Icon className={"buttonclose"} type="close" />}
                                 customCrossIcon={false}
                                 noOverlay={false}
                             >
@@ -127,13 +127,13 @@ const Indexs = (props) => {
                                     style={{ border: "none" }}
                                 >
 
-                                    <div className={css.navbar__menutext}>LE CLUB</div>
-                                    <div className={css.navbar__menutext}>STAFF</div>
-                                    <div className={css.navbar__menutext}>TARIFS</div>
-                                    <div className={css.navbar__menutext}>CONTACT</div>
+                                    <div className={"navbar__menutext"}>LE CLUB</div>
+                                    <div className={"navbar__menutext"}>STAFF</div>
+                                    <div className={"navbar__menutext"}>TARIFS</div>
+                                    <div className={"navbar__menutext"}>CONTACT</div>
 
 
-                                    <button onClick={() => window.location.href = "/contact-us"} className={css.navbar__rejoindrebutton}><span>Rejoindre le club</span></button>
+                                    <button onClick={() => window.location.href = "/contact-us"} className={"navbar__rejoindrebutton"}><span>Rejoindre le club</span></button>
                                 </Menu>
                             </BurgerMenu.slide>
                         </div>
@@ -211,14 +211,14 @@ const Indexs = (props) => {
                         }
                     })
                         :
-                        <div className={css.navbar}>
-                            <img className={css.navbar__imglogoclub} src={datawebsitebyid.data ? datawebsitebyid.data.logo : ""}
+                        <div className={"navbar"}>
+                            <img className={"navbar__imglogoclub"} src={datawebsitebyid.data ? datawebsitebyid.data.logo : ""}
                                 alt=""></img>
                         </div>
 
 
                     : <Skeleton avatar paragraph={{ rows: 4 }} />}
-                <div className={css.footer}>
+                <div className={"footer"}>
                     <Navbar isFooter />
                 </div>
             </div>

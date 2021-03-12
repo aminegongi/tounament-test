@@ -1,6 +1,6 @@
 .textarea {
 
-    margin-top: 27px;
+    margin-top: 1.688rem;
 
 }
 
@@ -9,44 +9,101 @@
         cursor: pointer;
         display: flex;
         justify-content: space-between;
-        padding: 17px 264px 18px 14.7px;
+        padding: 1.063rem 16.5rem 1.125rem 0.919rem;
         border: solid 1px #d5d5d5;
         background-color: #f3f3f3;
-        margin-top: 28px;
+        margin-top: 1.75rem;
 
         &__title {
-            margin-left: 5px;
+            margin-left: 0.313rem;
         }
     }
 }
 
 .coachavis {
-    width: 378px;
-    height: 60px;
+    width: 23.625rem;
+    height: 3.75rem;
     background-color: grid;
-    margin-top: 33px;
+    margin-top: 2.063rem;
     border: solid 1px #d5d5d5;
     background-color: #f3f3f3;
     display: grid;
     grid-template-columns: auto auto;
-    grid: 7px;
+    grid: 0.438rem;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     justify-content: space-around;
 
     img {
-        width: 37px;
-        height: 40px;
-        padding-top: 9px;
+        width: 2.313rem;
+        height: 2.5rem;
+        padding-top: 0.563rem;
         /* margin: 0 7px 0 0; */
         border-radius: 10px;
     }
 
     input {
-        margin-top:8px;
+        margin-top: 0.5rem;
         border-radius: 17px;
         background-color: #ffffff;
-        width: 281px;
-        height: 33px;
+        width: 17.563rem;
+        height: 2.063rem;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .coachavis {
+        width: 35.625rem;
+        height: 5.75rem;
+
+        input {
+            margin-top: 0.8rem;
+            border-radius: 17px;
+            background-color: #ffffff;
+            width: 21.563rem;
+            height: 3.7rem;
+        }
+
+        img {
+            width: 4.2rem;
+            height: 4.4rem;
+        }
+
+        &__card {
+            &__description {
+                &__repondre {
+
+                    margin-top: 2.75rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .coachavis {
+        width: 31.625rem;
+        width: 31.9rem;
+    }
+
+    .coachaviscomposant__card__description {
+        margin-top: 1.5rem;
+        margin-left: 0.013rem;
+        width: 32rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .coachaviscomposant__card__description {
+
+        width: 27rem;
+    }
+    .coachavis {
+        width: 31.625rem;
+        width: 26.9rem;
+        input {
+           
+            width: 17.563rem;
+        }
     }
 }

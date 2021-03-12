@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../shared/components/layout/Layout';
-import css from '../shared/css/home.scss'
+import  '../shared/css/home.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
 import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro';
 import TrustUs from '../shared/components/TrustUs/TrustUs';
@@ -20,7 +20,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import Axios from 'axios';
 import { Collapse, Icon, Button } from 'antd';
-import globalCss from '../shared/global-style.scss'
+import  '../shared/global-style.scss'
 import Link from 'next/link';
 import routes from '../utils/routes';
 
@@ -56,7 +56,7 @@ const Index = (props) => {
   }, [])
 
   return (
-    <div className={css.home_page}>
+    <div className={"home_page"}>
       <Head>
         <title>Accueil</title>
 
@@ -68,33 +68,33 @@ const Index = (props) => {
 
 
       <Layout>
-        <div className={`${css.gerer_iluustateur}`}>
-          <div className={`${css.gerer_iluustateur_container} ${globalCss.isporit_max_width}`}>
-            <div className={`${css.gerer_equipe_img} `}>
-              <h1 className={css.gerer_equipe_title}>
+        <div className={`${"gerer_iluustateur"}`}>
+          <div className={`${"gerer_iluustateur_container"} ${"isporit_max_width"}`}>
+            <div className={`${"gerer_equipe_img"} `}>
+              <h1 className={"gerer_equipe_title"}>
                 Gérez vos équipes sportives efficacement et simplement n'importe où vous soyez
               </h1>
-              <div className={css.gerer_time_title}>
+              <div className={"gerer_time_title"}>
                 <div>
                   iSporit vous fera gagner du temps pour gérer la présence de vos groupes,
                   l'organisation de vos calendriers, événements et plus encore.
                 </div>
               </div>
               <Link href={routes.CLUB_FEATURES.path} >
-                <button className={css.gerer_team}>
+                <button className={"gerer_team"}>
                   Gérer mon équipe gratuitement
                 </button>
               </Link>
-              <div className={css.for_windows}>
+              <div className={"for_windows"}>
                 Pour Windows, Mac, Android et iOS
               </div>
             </div>
-            <img alt="image" className={css.img_illustration} src={"icon/illustration.png"} alt="" />
+            <img alt="image" className={"img_illustration"} src={"icon/illustration.png"} alt="" />
           </div>
         </div>
 
 
-        <div className={css.club_logo_and_title}>
+        <div className={"club_logo_and_title"}>
           <Clublogo
             images={[
               {
@@ -120,8 +120,8 @@ const Index = (props) => {
             sub_title_two="avec des tonnes de feuilles qui auront peu de traçabilité plus tard."
           />
 
-          <div className={`${css.presenter_winner} ${globalCss.isporit_max_width}`}>
-            <div className={css.presenter_block}>
+          <div className={`${"presenter_winner"} ${"isporit_max_width"}`}>
+            <div className={"presenter_block"}>
               <div style={{ justifySelf: "center" }}>
                 <Demo
                   img={"icon/montre.png"}
@@ -132,16 +132,16 @@ const Index = (props) => {
                 />
               </div>
 
-              <img style={{ width: "100%" }} alt="image" className={css.img_platforme} src={"icon/Image_gagnant.png"} />
+              <img style={{ width: "100%" }} alt="image" className={"img_platforme"} src={"icon/Image_gagnant.png"} />
 
             </div>
           </div>
 
 
 
-          <div className={`${css.revenus_gagnant} ${globalCss.isporit_max_width}`}>
-            <div className={css.presenter_block} >
-              <img style={{ width: "100%" }} alt="image" className={css.img_platforme} src={"icon/img_platforme.png"} alt="" />
+          <div className={`${"revenus_gagnant"} ${"isporit_max_width"}`}>
+            <div className={"presenter_block"} >
+              <img style={{ width: "100%" }} alt="image" className={"img_platforme"} src={"icon/img_platforme.png"} alt="" />
               <div style={{ justifySelf: "center" }}>
                 <Demo
 
@@ -166,9 +166,9 @@ const Index = (props) => {
           />
 
 
-          <div className={`${css.gestion_club} ${globalCss.isporit_max_width}`}>
+          <div className={`${"gestion_club"} ${"isporit_max_width"}`}>
 
-            <div className={css.system_performance}>
+            <div className={"system_performance"}>
               <Functionclub
                 img={"icon/system.png"}
                 title="Système de communication"
@@ -194,11 +194,11 @@ const Index = (props) => {
               />
             </div>
 
-            <img alt="image" className={css.performance_img} src={"icon/gestion_club.png"} alt="" />
+            <img alt="image" className={"performance_img"} src={"icon/gestion_club.png"} alt="" />
 
             <div>
               <Link href={routes.CONTACT_US.clubPath}>
-                <button style={{ marginTop: 0 }} onClick={() => window.location.href = "/contact-us"} className={css.gerer_team}>
+                <button style={{ marginTop: 0 }} onClick={() => window.location.href = "/contact-us"} className={"gerer_team"}>
                   J'inscris mon club
                 </button>
               </Link>
@@ -214,42 +214,42 @@ const Index = (props) => {
 
 
           <Collapse
-            className={`${css.collapseStyle} ${globalCss.isporit_max_width}`}
+            className={`${"collapseStyle"} ${"isporit_max_width"}`}
             expandIconPosition="right"
             bordered={false}
             defaultActiveKey={['1']}
 
-            expandIcon={({ isActive }) => <img alt="icon" className={css.expandicon} src={isActive ?
+            expandIcon={({ isActive }) => <img alt="icon" className={"expandicon"} src={isActive ?
               "icon/moins.png"
               : "icon/plus.png"} />}
           >
-            <Panel header="Comment s'inscrire sur iSporit ?" className={css.customPanelStyletext} key="1" style={customPanelStyle}>
+            <Panel header="Comment s'inscrire sur iSporit ?" className={"customPanelStyletext"} key="1" style={customPanelStyle}>
               Lorem
             </Panel>
-            <Panel className={css.customPanelStyletext} header="Je suis un joueur non-inscrit dans un club, est-ce que je peux utiliser la plateforme ?" key="2" style={customPanelStyle}>
-              <div className={css.customPaneltwo}>
+            <Panel className={"customPanelStyletext"} header="Je suis un joueur non-inscrit dans un club, est-ce que je peux utiliser la plateforme ?" key="2" style={customPanelStyle}>
+              <div className={"customPaneltwo"}>
                 {text}
               </div>
             </Panel>
-            <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing elitr, sed diam nonumy ?" key="3" style={customPanelStyle}>
-              <div className={css.customPaneltwo}>
+            <Panel className={"customPanelStyletext"} header="Lorem ipsum dolor sit amet, consetetur sadispscing elitr, sed diam nonumy ?" key="3" style={customPanelStyle}>
+              <div className={"customPaneltwo"}>
                 {text}
               </div>
             </Panel>
-            <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet ?" key="4" style={customPanelStyle}>
-              <div className={css.customPaneltwo}>
+            <Panel className={"customPanelStyletext"} header="Lorem ipsum dolor sit amet ?" key="4" style={customPanelStyle}>
+              <div className={"customPaneltwo"}>
                 {text}
               </div>
             </Panel>
-            <Panel className={css.customPanelStyletext} header="Lorem ipsum dolor sit amet, consetetur sadispscing ?" key="5" style={customPanelStyle}>
-              <div className={css.customPaneltwo}>
+            <Panel className={"customPanelStyletext"} header="Lorem ipsum dolor sit amet, consetetur sadispscing ?" key="5" style={customPanelStyle}>
+              <div className={"customPaneltwo"}>
                 {text}
               </div>
             </Panel>
           </Collapse> */}
 
 
-          <div className={`${globalCss.isporit_max_width} ${css.join} `}>
+          <div className={`${"isporit_max_width"} ${"join"} `}>
             <Join link={routes.CONTACT_US.clubPath} buttonone="Connexion" buttontwo="Contactez notre service commercial" />
           </div>
 

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../shared/components/layout/Layout';
-import css from '../shared/css/club.scss'
+import  '../shared/css/club.scss'
 
 import Clublogo from '../shared/components/clublogo/Clublogo'
 
@@ -10,7 +10,7 @@ import Postplatforme from '../shared/components/postplatforme/Postplatforme';
 import Tab from '../shared/components/tab/Tab';
 import { i18n, withTranslation } from '../i18n'
 import Join from '../shared/components/joinplatforme/Join';
-import globalCss from '../shared/global-style.scss'
+import '../shared/global-style.scss'
 
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
@@ -27,7 +27,7 @@ const Index = (props) => {
 
 
   return (
-    <div className={css.club_page}>
+    <div className={"club_page"}>
       <Head>
         <title>Club</title>
 
@@ -40,7 +40,7 @@ const Index = (props) => {
 
       </Head>
       <Layout>
-        <div className={css.postplatforme}>
+        <div className={"postplatforme"}>
           <Postplatforme
             img={"icon/for_club.png"}
             title="La gestion de votre club n'a jamais été aussi simple"
@@ -53,7 +53,7 @@ const Index = (props) => {
             link={routes.SIGN_UP.path}
           />
         </div>
-        <div className={css.iteamlistblock}>
+        <div className={"iteamlistblock"}>
           <Clublogo
             images={[
               {
@@ -73,8 +73,8 @@ const Index = (props) => {
           />
 
 
-          <div className={`${css.presenter_winner} ${globalCss.isporit_max_width}`}>
-            <div className={css.presenter_block}>
+          <div className={`${"presenter_winner"} ${"isporit_max_width"}`}>
+            <div className={"presenter_block"}>
               <div style={{ justifySelf: "center" }}>
                 <Demo
                   img={"icon/suivi_club.png"}
@@ -84,7 +84,7 @@ const Index = (props) => {
                   link={routes.CONTACT_US.clubPath}
                 />
               </div>
-              <img style={{ width: "100%" }} alt="image" className={css.Image_gagnant} src={"icon/club.svg"} alt="" />
+              <img style={{ width: "100%" }} alt="image" className={"Image_gagnant"} src={"icon/club.svg"} alt="" />
 
             </div>
           </div>
@@ -92,7 +92,7 @@ const Index = (props) => {
           <Title title="Boostez la gestion de votre club"
             sub_title="Nous vous offrons plusieurs outils intuitifs et faciles à utiliser"
           />
-          <div className={`${globalCss.isporit_max_width} ${css.tab} `}>
+          <div className={`${"isporit_max_width"} ${"tab"} `}>
             <Tab
               bgcolor={'#E3F7F6'}
               imgone={"feature/club/programme.svg"}
@@ -116,8 +116,8 @@ const Index = (props) => {
             />
           </div>
 
-          <div className={`${globalCss.isporit_max_width} ${css.join} `}>
-            <Join link={routes.CONTACT_US.clubPath} buttontwo="Contactez notre service commercial" classbutton={css.buttondisplay} />
+          <div className={`${"isporit_max_width"} ${"join"} `}>
+            <Join link={routes.CONTACT_US.clubPath} buttontwo="Contactez notre service commercial" classbutton={"buttondisplay"} />
           </div>
         </div>
       </Layout>

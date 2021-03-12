@@ -1,6 +1,6 @@
 import getConfig from "next/config";
 import Head from "next/head"
-import css from '../shared/css/login.scss'
+import  '../shared/css/login.scss'
 import { useState } from 'react'
 import Link from "next/link"
 import { isEmpty, isNumber } from 'lodash'
@@ -72,7 +72,7 @@ const ForgotPassword = (props) => {
 
 
     return (
-        <div className={css.html}>
+        <div className={"html"}>
             <Head>
                 <title>Mot de passe</title>
 
@@ -82,27 +82,27 @@ const ForgotPassword = (props) => {
                 <meta name="author" content="sporit" />
             </Head>
             <Layout>
-                <div className={css.login_container}>
-                    <form className={css.left_side}>
-                        <div className={css.logo}>
+                <div className={"login_container"}>
+                    <form className={"left_side"}>
+                        <div className={"logo"}>
                             <Link href={{ pathname: '/' }} >
                                 <a>
                                     <img src="icon/logoindexpage.png" alt="" />
                                 </a>
                             </Link>
                         </div>
-                        <h1 className={css.page_title}>Mot de passe oublié</h1>
-                        <input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={css.input} placeholder='Mot de passe' type='password' />
+                        <h1 className={"page_title"}>Mot de passe oublié</h1>
+                        <input value={data.password} onChange={e => setData({ ...data, password: e.target.value })} className={"input"} placeholder='Mot de passe' type='password' />
                         {
-                            localErrors.inputErrors && isEmpty(data.password) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(data.password) && <span className={"error"}>Champ obligatoire</span>
                         }
 
-                        <input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={css.input} placeholder='Confirmation mot de passe' type='password' />
+                        <input value={data.confirmPassword} onChange={e => setData({ ...data, confirmPassword: e.target.value })} className={"input"} placeholder='Confirmation mot de passe' type='password' />
                         {
-                            localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(data.confirmPassword) && <span className={"error"}>Champ obligatoire</span>
                         }
                         {
-                            localErrors.inputErrors && data.password !== data.confirmPassword && <span className={css.error}>Deux mots de passe ne sont pas égaux</span>
+                            localErrors.inputErrors && data.password !== data.confirmPassword && <span className={"error"}>Deux mots de passe ne sont pas égaux</span>
                         }
                         <center>
                             <b>
@@ -113,23 +113,23 @@ const ForgotPassword = (props) => {
                                 </Link>
                             </b>
                         </center>
-                        <div className={css.signup_btn_container}>
-                            <button onClick={onSend} className={css.primary_button}>Envoyer</button>
+                        <div className={"signup_btn_container"}>
+                            <button onClick={onSend} className={"primary_button"}>Envoyer</button>
                         </div>
                     </form>
 
 
-                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
-                        <h2 className={css.title}>
+                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={"right_side"}>
+                        <h2 className={"title"}>
                             Rejoignez notre platforme
                         </h2>
 
-                        <span className={css.description}>
+                        <span className={"description"}>
                             Entrez vos information et débutez avec nous votre parcours
                         </span>
                         <Link href={{ pathname: '/login', query: router.query }} >
                             <a>
-                                <button className={css.button} type="submit">
+                                <button className={"button"} type="submit">
                                     S'INSCRIRE
                                 </button>
                             </a>

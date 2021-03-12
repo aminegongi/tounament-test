@@ -1,5 +1,5 @@
 import Layout from "../../shared/components/layout/Layout"
-import css from '../../shared/css/editProfile.scss'
+import  '../../shared/css/editProfile.scss'
 import Head from "next/head";
 import { i18n, withTranslation } from '../../i18n'
 import { useState, useEffect } from 'react'
@@ -32,37 +32,37 @@ const EditProfile = (props) => {
                 <meta name="author" content="sporit" />
             </Head>
             <Layout>
-                <div className={css.editProfile_container}>
-                    <div className={css.leftSide}>
-                        <div className={css.params}>
-                            <div className={css.title}>
+                <div className={"editProfile_container"}>
+                    <div className={"leftSide"}>
+                        <div className={"params"}>
+                            <div className={"title"}>
                                 Paramètres du compte
                         </div>
-                            <div className={css.input_container}>
-                                <input className={css.input} type="text" placeholder="Nom et Prénom" />
-                                <input className={css.input} type="email" placeholder="Email" />
-                                <input className={css.input} type="text" placeholder="Address" />
-                                <input className={css.input} type="text" placeholder="Phone Number" />
-                                <input className={css.input} type="text" placeholder="Current Club" />
-                                <input className={css.input} type="text" placeholder="Facebook Link" />
+                            <div className={"input_container"}>
+                                <input className={"input"} type="text" placeholder="Nom et Prénom" />
+                                <input className={"input"} type="email" placeholder="Email" />
+                                <input className={"input"} type="text" placeholder="Address" />
+                                <input className={"input"} type="text" placeholder="Phone Number" />
+                                <input className={"input"} type="text" placeholder="Current Club" />
+                                <input className={"input"} type="text" placeholder="Facebook Link" />
                             </div>
                         </div>
-                        <div className={css.experience_container}>
-                            <div className={css.title}>
+                        <div className={"experience_container"}>
+                            <div className={"title"}>
                                 Expérience et clubs
                         </div>
-                            <div className={css.experience}>
-                                <div className={css.exp_label}>Experience 1 :</div>
-                                <div className={css.input_container}>
-                                    <input className={css.input} type="text" placeholder="Club Name" />
-                                    <input className={css.input} type="date" placeholder="Date" />
-                                    <textarea className={css.input} rows="10" placeholder="Description" />
+                            <div className={"experience"}>
+                                <div className={"exp_label"}>Experience 1 :</div>
+                                <div className={"input_container"}>
+                                    <input className={"input"} type="text" placeholder="Club Name" />
+                                    <input className={"input"} type="date" placeholder="Date" />
+                                    <textarea className={"input"} rows="10" placeholder="Description" />
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <div className={css.rightSide}>
+                    <div className={"rightSide"}>
                         <img src='/espaceCoach.svg' />
                     </div>
                 </div>

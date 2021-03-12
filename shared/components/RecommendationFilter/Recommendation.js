@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Rate, Radio } from 'antd';
-import css from './recommendation.scss'
+import './recommendation.scss'
 
 export default function Recommendation({ coachesList, dataCopy, setDataCopy }) {
   const [selectedRate, setSelectedRate] = useState(-1)
@@ -24,21 +24,32 @@ export default function Recommendation({ coachesList, dataCopy, setDataCopy }) {
     }
   }
   return (
-    <div className={css.recommandation}>
-      <div className={css.recommendation__title} >RECOMMANDATIONS
+    <div className={"recommandation"}>
+      <div className={"recommendation__title"} >RECOMMANDATIONS
         </div>
-      <div className={css.recommendation__rate}>
+      <div className={"recommendation__rate"}>
         <Radio.Group value={Number(selectedRate)} >
-          <Radio value={4} className={css.radio} onClick={handleClick}></Radio>
-          <Rate disabled defaultValue={4} className={css.rate} />
-          <span className={css.recommendation__rate__plus}>et plus</span> <br />
-          <Radio value={3} onClick={handleClick}></Radio>
-          <Rate disabled defaultValue={3} className={css.rate} />
-          <span className={css.recommendation__rate__plus}>et plus</span> <br />
-          <Radio value={2} onClick={handleClick}></Radio><Rate disabled defaultValue={2} className={css.rate} />
-          <span className={css.recommendation__rate__plus}>et plus</span> <br />
-          <Radio value={1} onClick={handleClick}></Radio><Rate disabled defaultValue={1} className={css.rate} />
-          <span className={css.recommendation__rate__plus}>et plus</span> <br />
+          <div>
+            <Radio value={4} className={"radio"} onClick={handleClick}></Radio>
+            <Rate disabled defaultValue={4} className={"rate"} />
+            <span className={"recommendation__rate__plus"}>et plus</span> 
+          </div>
+          <div>
+            <Radio value={3} className={"radio"} onClick={handleClick}></Radio>
+            <Rate disabled defaultValue={3} className={"rate"} />
+            <span className={"recommendation__rate__plus"}>et plus</span> 
+          </div>
+          <div>
+            <Radio value={2} className={"radio"} onClick={handleClick}></Radio>
+            <Rate disabled defaultValue={2} className={"rate"} />
+            <span className={"recommendation__rate__plus"}>et plus</span> 
+          </div>
+          <div>
+            <Radio value={1} className={"radio"} onClick={handleClick}></Radio>
+            <Rate disabled defaultValue={1} className={"rate"} />
+            <span className={"recommendation__rate__plus"}>et plus</span> 
+          </div>
+          
         </Radio.Group>
       </div>
     </div>

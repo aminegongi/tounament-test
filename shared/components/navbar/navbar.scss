@@ -3,12 +3,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 24px;
+    // padding-top: 24px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 10px;
+    // padding-bottom: 10px;
     z-index: 999999999999999;
-
+    height: 96px;
 
     .items_container {
         display: grid;
