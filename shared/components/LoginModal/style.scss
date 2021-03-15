@@ -1,0 +1,72 @@
+.login-modal {
+    &__modal {
+        .ant-modal-body {
+            padding: 46px 55px 18px 55px;
+        }
+        &__signup {
+            .ant-modal-content {
+                width: 652px;
+            }
+        }
+        &__singin {
+            .ant-modal-content {
+                width: 464px;
+            }
+        }
+       
+    }
+    &__title {
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        color: #000000;
+        margin-bottom: 27px;
+    }
+
+    &__body {
+        &__signup-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 37px;
+            row-gap: 17px;
+            margin-bottom: 13px;
+
+        }
+        &__forgot-password {
+            font-size: 14px;
+            font-weight: 500;
+            color: #707070;
+            margin-bottom: 11px;
+            margin-top: 9px;
+        }
+        &__signin-inputs {
+            width: 252px;
+            margin: auto;
+            display: grid;
+            row-gap: 17px;
+        }
+
+
+        &__submit {
+            padding: 9px 39px;
+            font-size: 15px;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+        &__text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #707070;
+        }
+        &__create-account {
+            font-size: 16px;
+            font-weight: 500;
+            color: #26beb5;
+            margin-left: 10px;
+        }
+    }
+}

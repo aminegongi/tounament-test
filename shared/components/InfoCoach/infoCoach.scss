@@ -1,23 +1,17 @@
-.coachcalander {
-    height: 21.219rem;
-    padding: 7rem 2.438rem 1.719rem 1.875rem;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4.375rem;
-}
+
 
 .infocoach {
-    height: 21.219rem;
     padding: 7rem 2.438rem 1.719rem 1.875rem;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.563rem;
+    // margin-top: 0.563rem;
+
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
+    border: solid 1px #d5d5d5;
 
     &__firstblock {
         display: flex;
@@ -81,6 +75,7 @@
             font-size: 1.125rem;
             font-weight: 500;
             color: #26beb5;
+            text-transform: capitalize;
         }
 
         &__rate {}
@@ -242,5 +237,18 @@
         &__firstblock{
             margin-left: -23px;
         }
+    }
+}
+.coachcalander {
+    padding: 1rem 2.438rem 1.719rem 1.875rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &__img {
+        position: unset !important;
+        margin-top: unset !important;
+        
     }
 }

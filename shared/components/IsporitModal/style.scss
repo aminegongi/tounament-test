@@ -1,0 +1,22 @@
+.isporit-modal {
+    
+    &__close-icon-container {
+        position: relative;
+        background-color: #26beb5;
+        top: -20px;
+        right: -27px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: auto;
+    }
+    &__close-icon {
+        color: white;
+        font-size: 19px;
+        
+    }
+}

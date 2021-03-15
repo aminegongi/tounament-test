@@ -1,0 +1,32 @@
+.coach-calendar {
+    &__body {
+        padding-top: 52px;
+        max-width: 1048px;
+        margin: auto;
+        display: grid;
+        column-gap: 57px;
+        grid-template-columns: 267px 723px;
+
+        &__profile-information {
+            &__card {
+                margin-bottom: 32px;
+            }
+        }
+        &__calendar-section {
+            &__header {
+                &__title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #232323;
+                    margin-bottom: 3px;
+                }
+                &__sub-title {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #232323;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}

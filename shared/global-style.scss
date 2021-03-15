@@ -1,40 +1,40 @@
 // @import url('https://rsms.me/inter/inter.css');
 
 html {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
 }
 
-@media only screen and (max-width : 1350px) {
+@media only screen and (max-width: 1350px) {
     html {
         font-size: 14px;
     }
 }
 
-@media only screen and (max-width : 1151px) {
+@media only screen and (max-width: 1151px) {
     html {
         font-size: 13px;
     }
 }
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     html {
         font-size: 12px;
     }
 }
 
-@media only screen and (max-width : 760px) {
+@media only screen and (max-width: 760px) {
     html {
         font-size: 11px;
     }
 }
 
-@media only screen and (max-width : 650px) {
+@media only screen and (max-width: 650px) {
     html {
         font-size: 10.5px;
     }
 }
 
-@media only screen and (max-width : 450px) {
+@media only screen and (max-width: 450px) {
     html {
         // font-size: 10px;
     }
@@ -42,11 +42,9 @@ html {
 
 @supports (font-variation-settings: normal) {
     html {
-        font-family: 'Inter var', sans-serif;
+        font-family: "Inter var", sans-serif;
     }
 }
-
-
 
 .isporit_max_width {
     max-width: 1360px;
@@ -58,12 +56,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f7f7f7;
-
 }
 
 * {
-    font-family: 'Inter', sans-serif !important;
-
+    font-family: "Inter", sans-serif !important;
 }
 
 button {
@@ -79,6 +75,39 @@ input:focus {
     outline-color: #019da9;
 }
 
+.isporit-primary-button {
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16);
+    background-color: #26beb5;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.isporit-input {
+    padding: 8px 8px;
+    border-radius: 10px;
+    border: solid 1px #26beb5;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.isporit-unset-button-css {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .global_primary_button {
     cursor: pointer;
     padding: 20px 32px;
@@ -88,7 +117,6 @@ input:focus {
 
     color: #ffffff;
     background-color: #019da9;
-
 
     &:focus {
         outline: none;
@@ -101,11 +129,9 @@ input:focus {
     font-size: 16px;
     border-radius: 3px;
 
-
     color: #019da9;
     background-color: transparent;
     border: solid 1px #019da9;
-
 
     &:focus {
         outline: none;

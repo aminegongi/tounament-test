@@ -1,0 +1,28 @@
+.calendar-time-slot {
+    display: flex;
+
+    &__time {
+        border: 1px solid #26beb5;
+        border-radius: 4px;
+        width: 326px;
+        background-color: white;
+        padding: 10px;
+        transition: width 0.3s;
+        &__active {
+            width: 158px;
+        }
+    }
+    &__confirm {
+        width: 158px;
+        padding: 10px;
+        margin-left: 10px;
+        border-radius: 4px;
+        background-color: #26beb5;
+        color: white;
+        transform: translateX(40px);
+        transition: transform 0.3s;
+        &__active {
+            transform: translateX(0px);
+        }
+    }
+}
