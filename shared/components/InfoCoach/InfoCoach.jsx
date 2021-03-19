@@ -19,17 +19,13 @@ export default function InfoCoach({
 
   const [sum, setSum] = useState(
     Math.round(
-      coachProfile.map(
-        (coach) =>
-          coach.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-          coach.coachData.reviews.length,
-      ),
+      coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
+        coachProfile.coachData.reviews.length,
     ),
   )
 
   return (
-    coachProfile &&
-    coachProfile.map((coach) => (
+    coachProfile && (
       <div
         className={`infocoach ${coachcalander ? 'coachcalander' : 'infocoach'}`}
       >
@@ -39,10 +35,10 @@ export default function InfoCoach({
               coachcalander ? 'coachcalander__img' : ''
             }`}
             src={img}
-            alt=""
+            alt="mg"
           />
           <div className="card_profil_coach__information__name">
-            {coach.firstName} {coach.lastName}
+            {coachProfile.firstName} {coachProfile.lastName}
           </div>
           <div className="card_profil_coach__information__rate">
             <Rate disabled defaultValue={sum} className="rate" />
@@ -53,16 +49,14 @@ export default function InfoCoach({
             {job.translations.fr}
           </div>
           <div className="card_profil_coach__information__sporttype">
-            {specialty && specialty.translations
-              ? specialty.translations.fr
-              : ''}
+            {specialty && specialty.translations && specialty.translations.fr}
           </div>
           <div className="card_profil_coach__information__yearexperience">
-            {coach &&
-            coach.coachData &&
-            coach.coachData.experiencesYearsNumber == 1
-              ? `${coach.coachData.experiencesYearsNumber} an d'expérience`
-              : `${coach.coachData.experiencesYearsNumber} ans d'expérience`}
+            {coachProfile &&
+            coachProfile.coachData &&
+            coachProfile.coachData.experiencesYearsNumber == 1
+              ? `${coachProfile.coachData.experiencesYearsNumber} an d'expérience`
+              : `${coachProfile.coachData.experiencesYearsNumber} ans d'expérience`}
           </div>
           <div className="suggestcoachdetails">
             <div className="suggestcoachdetails__suggestPrivateCourse">
@@ -81,6 +75,6 @@ export default function InfoCoach({
           </div>
         </div>
       </div>
-    ))
+    )
   )
 }

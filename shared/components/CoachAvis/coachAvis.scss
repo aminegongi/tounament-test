@@ -23,15 +23,15 @@
 
     &__card {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: 48% 48%;
         gap: 1.763rem;
 
 
         &__description {
             margin-top: 1.5rem;
             margin-left: 0.013rem;
-            width: 23.613rem;
-            height: 20.094rem;
+            // width: 23.613rem;
+            // height: 20.094rem;
             // padding: 17px 9px 32.5px 18.8px;
             border-radius: 10px;
             box-shadow: 5px 5px 9px 0 rgba(190, 190, 190, 0.16);
@@ -44,7 +44,7 @@
                 padding: 1.063rem 1.25rem 1.188rem 1.238rem;
 
                 &__avatar {
-                    width: 4.125rem;
+                    // width: 4.125rem;
                     height: 4.125rem;
                     margin: 0 1.563rem 1.188rem 0.063rem;
                 }
@@ -163,50 +163,50 @@
 
 }
 
-@media only screen and (max-width: 768px) {
+// @media only screen and (max-width: 768px) {
 
-    .coachaviscomposant {
-        &__sumavis {
-            span {
-                padding-top: 5px;
-            }
+//     .coachaviscomposant {
+//         &__sumavis {
+//             span {
+//                 padding-top: 5px;
+//             }
 
-            &__chiffre {
-                padding-top: 0.7rem
-            }
-        }
+//             &__chiffre {
+//                 padding-top: 0.7rem
+//             }
+//         }
 
-        &__card__description__recommendationMember__publishdate {
+//         &__card__description__recommendationMember__publishdate {
 
-            flex: none;
-        }
-    }
-}
+//             flex: none;
+//         }
+//     }
+// }
 
-@media only screen and (max-width: 425px) {
+// @media only screen and (max-width: 425px) {
 
-    .coachaviscomposant {
-        &__card {
-            gap: 2.763rem;
-            grid-template-columns: auto;
-            &__description {
-                margin-top: 1.5rem;
-                margin-left: 0.013rem;
-                width: 35.613rem;
-    height: 22.2rem;
-            }
-        }
-    }
-}
+//     .coachaviscomposant {
+//         &__card {
+//             gap: 2.763rem;
+//             grid-template-columns: auto;
+//             &__description {
+//                 margin-top: 1.5rem;
+//                 margin-left: 0.013rem;
+//                 width: 35.613rem;
+//     height: 22.2rem;
+//             }
+//         }
+//     }
+// }
 
-@media only screen and (max-width:320px){
-    .coachaviscomposant {
-        &__card {
+// @media only screen and (max-width:320px){
+//     .coachaviscomposant {
+//         &__card {
             
-            &__description {
+//             &__description {
                 
-                width: 27rem;
-            }
-        }
-    }
-}
+//                 width: 27rem;
+//             }
+//         }
+//     }
+// }

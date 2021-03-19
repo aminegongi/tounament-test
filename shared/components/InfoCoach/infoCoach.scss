@@ -164,11 +164,10 @@
     }
 
     .infocoach {
+        height: 15rem;
         display: grid;
         grid-template-columns: auto auto;
-        margin-left: -0.1rem;
-        width: 60.9rem;
-        height: 14.719rem;
+       
         padding: 0;
         background-color: #ffffff;
         /* justify-content: space-between;*/
@@ -184,9 +183,7 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: initial;
-            position: absolute;
-            top: 0.5rem;
-            left: 30rem;
+           
         }
 
     }
@@ -202,53 +199,4 @@
 
 .card_profil_coach__information__worktype {
     text-align: initial !important;
-}
-
-@media only screen and (max-width: 425px) {
-    .infocoach {
-
-        width: 38.5rem;
-        margin-left: -3px;
-        height: 14.719rem;
-        &__secondblock {
-
-            left: 21.5rem;
-        }
-        
-    }
-    .suggestcoachdetails__suggestPrivateCourse__propose {
-       
-      
-        padding-top: 0.188rem;
-    }
-}
-@media only screen and (max-width: 375px) {
-    .infocoach {
-        width: 34rem;
-        
-        &__secondblock {
-            left: 18.8rem;
-        }
-    }
-}
-@media only screen and (max-width: 320px) {
-    .infocoach {
-        width: 28.8rem;
-        &__firstblock{
-            margin-left: -23px;
-        }
-    }
-}
-.coachcalander {
-    padding: 1rem 2.438rem 1.719rem 1.875rem;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    &__img {
-        position: unset !important;
-        margin-top: unset !important;
-        
-    }
 }
