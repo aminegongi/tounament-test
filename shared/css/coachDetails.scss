@@ -1,14 +1,12 @@
 .coach {
-    max-width: 71.375rem;
+    max-width: 1142px;
     margin: auto;
 
-    &__cordonneBlock {
-        flex: 20%;
-    }
+    // &__cordonneBlock {
+    //     flex: 20%;
+    // }
 
     .tabsinfo {
-        flex: 80%;
-        margin-left: 2.5rem;
         margin-top: 1.438rem;
         height: 42rem;
 
@@ -45,8 +43,9 @@
     }
 
     &__coachdetails {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 22% 75%;
+        column-gap: 3%;
 
         &__contact {
             border-radius: 0.625rem;
@@ -54,7 +53,6 @@
             backdrop-filter: blur(30px);
             box-shadow: 5px 10px 9px 0 rgba(190, 190, 190, 0.16);
             border: solid 1px #d5d5d5;
-            width: 16.5rem;
             margin-top: 0.563rem;
             // height: 26.469rem;
             background-color: white;
@@ -68,200 +66,98 @@
             background-color: #ffffff;
         }
     }
-}
 
-.tabs {
-    display: flex;
-    justify-content: space-between;
+    .tabs {
+        display: grid;
+        grid-template-columns: 79% 21%;
+        justify-content: space-between;
+        border-bottom: solid 2px #dfdfdf;
+        // padding-bottom: 1.125rem;
+        align-items: center;
 
-    &__button {
-        cursor: pointer;
+        &__button {
+            cursor: pointer;
+            display: flex;
 
-        margin-top: 0.938rem;
+            &__not-active {
+                padding: 22px 0 !important;
+                width: 100px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #000000;
+                border-bottom: solid 4px transparent !important;
+            }
 
-        &__aproposaparops {
-
-            font-size: 1rem;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.19;
-            letter-spacing: 0.32px;
-            text-align: left;
-            color: #000000;
-            position: absolute;
-        }
-
-        &__aproposaparopsactive {
-            border-bottom: solid 4px #ff8760;
-            padding-bottom: 2.125rem;
-            font-size: 1rem;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.19;
-            letter-spacing: 0.32px;
-            text-align: left;
-            color: #000000;
-            position: absolute;
-        }
-
-        &__aproposavis {
-            margin-left: 7.5rem;
-            position: absolute;
-            font-size: 1rem;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.19;
-            letter-spacing: 0.32px;
-            text-align: left;
-            color: #000000;
-        }
-
-        &__aproposavisactive {
-            border-bottom: solid 4px #ff8760;
-            padding-bottom: 2.125rem;
-            margin-left: 7.5rem;
-            position: absolute;
-            font-size: 1rem;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.19;
-            letter-spacing: 0.32px;
-            text-align: left;
-            color: #000000;
-        }
-
-        &__aproposbiographie {
-            position: absolute;
-
-            margin-left: 13rem;
-            font-size: 1rem;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.19;
-            letter-spacing: 0.32px;
-            text-align: left;
-            color: #000000;
-        }
-
-        &__aproposbiographieactive {
-            border-bottom: solid 4px #ff8760;
-            padding-bottom: 2.125rem;
-            position: absolute;
-
-            margin-left: 13rem;
-            font-size: 1rem;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.19;
-            letter-spacing: 0.32px;
-            text-align: left;
-            color: #000000;
-        }
-    }
-
-    &__contact {
-        border-radius: 0.625rem;
-        box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16);
-        background-color: #26beb5;
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.2;
-        letter-spacing: normal;
-        text-align: left;
-        color: #ffffff;
-        padding: 0.938rem 2.5rem 0.938rem 2.5rem;
-    }
-}
-
-.linetabs {
-    margin-top: 1.406rem;
-    width: 52.156rem;
-    height: 0;
-    border: solid 2px #dfdfdf;
-}
-
-.ant-tabs-tab {
-    font-size: 1rem;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.19;
-    letter-spacing: 0.32px;
-    text-align: left;
-    color: #000000;
-    margin-bottom: 1.406rem;
-}
-
-
-.affiche {
-    &__img {
-        width: 100%;
-        margin-top: 1.188rem;
-    }
-}
-
-.coachBox {
-    display: grid;
-    padding-top: 0.906rem;
-    gap: 1.5rem;
-    margin-left: 1.938rem;
-
-    &__content {
-        display: flex;
-        font-size: 1.063rem;
-        font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.18;
-        letter-spacing: normal;
-        color: #4e4d4d;
-
-        &__title {
-            span {
-                font-weight: bold;
+            &__active {
+                border-bottom: solid 4px #ff8760 !important;
             }
         }
 
-        &__experienceNumber {
-            padding-left: 0.125rem;
-            color: #010101;
-
+        &__contact {
+            font-size: 20px;
+            padding: 10px 34px;
         }
-
     }
-}
 
-.line {
-    padding-top: 0.219rem;
+    .linetabs {
+        background-color: #dfdfdf;
+        margin-top: 1.406rem;
+        width: 52.156rem;
+        height: 0;
+        border: solid 2px #dfdfdf;
+    }
 
-    width: 83%;
+    .ant-tabs-tab {
+        font-size: 1rem;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.19;
+        letter-spacing: 0.32px;
+        text-align: left;
+        color: #000000;
+        margin-bottom: 1.406rem;
+    }
 
-    margin-left: 2.331rem;
-    margin-top: 0.594rem;
-    border: solid 2px #f5f4f4;
+    .affiche {
+        &__img {
+            width: 100%;
+            margin-top: 1.188rem;
+        }
+    }
+
+
+    .line {
+        padding-top: 0.219rem;
+
+        width: 83%;
+
+        margin-left: 2.331rem;
+        margin-top: 0.594rem;
+        border: solid 2px #f5f4f4;
+    }
 }
 
 .coachdetailsinformation {
     background-color: white;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     .coach {
+        .tabsinfo {
+            margin-top: 0;
+        }
         &__coachdetails {
             display: grid;
+            grid-template-columns: 100%;
+            margin-left: 16px;
+            margin-right: 16px;
 
             &__contact {
                 border: none;
-                margin-left: 16px;
+                // margin-left: 16px;s
                 margin-top: 0.563rem;
-                /* height: 26.469rem; */
+                // height: 26.469rem;
                 border-radius: 0.625rem;
                 -webkit-backdrop-filter: blur(30px);
                 backdrop-filter: blur(30px);
@@ -269,7 +165,7 @@
                 border: none;
                 /* width: 16.5rem; */
                 margin-top: 0.563rem;
-                height: 13.5rem;
+                // height: 13.5rem;
                 background-color: transparent;
             }
 
@@ -279,12 +175,6 @@
                 box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
                 border: solid 1px #d5d5d5;
                 background-color: #ffffff;
-                /* width: 56rem; */
-
-                width: 60.9rem;
-                margin-left: 1rem;
-
-                margin-right: 25px;
             }
         }
 
@@ -292,172 +182,71 @@
             margin-top: 13px;
         }
     }
-
-    .tabs__contact {
-        display: none;
-    }
-
     .linetabs {
         margin-top: 3.65rem;
         width: 59.156rem;
-
     }
 
-    .tabs__button {
-        &__aproposaparopsactive {
-            padding-bottom: 2.125rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-left: 2rem;
-        }
-
-        &__aproposavis {
-            padding-bottom: 2.125rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-left: 43%;
-        }
-
-        &__aproposbiographie {
-            padding-bottom: 2.125rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-left: 79%;
-        }
-
-        &__aproposavisactive {
-            padding-bottom: 2.125rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-left: 43%;
-        }
-
-        &__aproposbiographieactive {
-            padding-bottom: 2.125rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-left: 79%;
-        }
-
-        &__aproposaparops {
-            padding-bottom: 2.125rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-left: 2rem;
-        }
-
-
-    }
-
-    .coachBox {
+    .tabs {
         display: grid;
-        padding-top: 1.906rem;
-        gap: 2.5rem !important;
-        margin-left: 4.938rem;
-    }
-}
-
-@media only screen and (max-width: 425px) {
-    .coach__coachdetails {
-        &__information {
-            width: 38.5rem;
-            margin-left: 13px;
-            margin-right: 45px;
-        }
-
+        justify-content: normal;
+        grid-template-columns: 1fr;
+        padding-bottom: 0;
         &__contact {
-            height: 13.4rem;
+            display: none;
+        }
+
+        &__button {
+            margin-top: 0;
+            // border-bottom: solid 2px #dfdfdf;
+            &__aproposaparopsactive {
+                padding-bottom: 2.125rem;
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding-left: 2rem;
+                justify-self: left;
+            }
+
+            &__aproposavis {
+                padding-bottom: 2.125rem;
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding-left: 2.6rem;
+                justify-self: center;
+            }
+
+            &__aproposbiographie {
+                padding-bottom: 2.125rem;
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding-left: 1.5rem;
+                justify-self: right;
+            }
+
+            &__aproposavisactive {
+                padding-bottom: 2.125rem;
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding-left: 2.6rem;
+                justify-self: center;
+            }
+
+            &__aproposbiographieactive {
+                padding-bottom: 2.125rem;
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding-left: 1.5rem;
+                justify-self: right;
+            }
+
+            &__aproposaparops {
+                padding-bottom: 2.125rem;
+                font-size: 1.4rem;
+                font-weight: bold;
+                padding-left: 2rem;
+                justify-self: left;
+            }
         }
     }
-
-    .tabs__button {
-        &__aproposaparopsactive {
-            margin-left: 0px;
-        }
-
-        &__aproposavis {
-
-            margin-left: 42%;
-        }
-
-        &__aproposbiographie {
-
-            margin-left: 70%;
-        }
-
-        &__aproposavisactive {
-
-            margin-left: 42%;
-        }
-
-        &__aproposbiographieactive {
-
-            margin-left: 70%;
-        }
-
-        &__aproposaparops {
-            margin-left: 0px;
-
-        }
-    }
-
-    .linetabs {
-        width: 37.156rem;
-    }
-}
-@media only screen and (max-width: 375px) {
-
-    .coach__coachdetails__information {
-        width: 34rem;
-    }
-    .tabs__button__aproposbiographie {
-        margin-left: 68%;
-    }
-    .linetabs {
-        width: 32.9rem;
-    }
-}
-@media only screen and (max-width: 320px) {
-    .affiche__img {
-        width: 100%;
-        height: 126px;
-        margin-top: 3rem;
-    }
-    .coach__coachdetails__information {
-        width: 28.9rem;
-    }
-    .tabs__button {
-        &__aproposaparopsactive {
-            margin-left: 0px;
-        }
-
-        &__aproposavis {
-
-            margin-left: 40%;
-        }
-
-        &__aproposbiographie {
-
-            margin-left: 63%;
-        }
-
-        &__aproposavisactive {
-
-            margin-left: 40%;
-        }
-
-        &__aproposbiographieactive {
-
-            margin-left: 63%;
-        }
-
-        &__aproposaparops {
-            margin-left: 0px;
-
-        }
-    }
-    .linetabs {
-        width: 26.9rem;
-    }    
 
 }

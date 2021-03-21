@@ -5,40 +5,40 @@ html {
     font-size: 16px;
 }
 
-@media only screen and (max-width: 1350px) {
+// @media only screen and (max-width: 1350px) {
+//     html {
+//         font-size: 14px;
+//     }
+// }
+
+// @media only screen and (max-width: 1151px) {
+//     html {
+//         font-size: 13px;
+//     }
+// }
+@media only screen and (max-width: 992px) {
     html {
         font-size: 14px;
     }
 }
 
-@media only screen and (max-width: 1151px) {
-    html {
-        font-size: 13px;
-    }
-}
-@media only screen and (max-width: 992px) {
-    html {
-        font-size: 12px;
-    }
-}
+// @media only screen and (max-width: 760px) {
+//     html {
+//         font-size: 11px;
+//     }
+// }
 
-@media only screen and (max-width: 760px) {
-    html {
-        font-size: 11px;
-    }
-}
+// @media only screen and (max-width: 650px) {
+//     html {
+//         font-size: 10.5px;
+//     }
+// }
 
-@media only screen and (max-width: 650px) {
-    html {
-        font-size: 10.5px;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-    html {
-        // font-size: 10px;
-    }
-}
+// @media only screen and (max-width: 450px) {
+//     html {
+//         // font-size: 10px;
+//     }
+// }
 
 @supports (font-variation-settings: normal) {
     html {
@@ -89,7 +89,14 @@ input:focus {
     box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16);
     background-color: #26beb5;
     font-weight: 500;
+    
+    cursor: pointer;
+
     color: #ffffff;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .isporit-input {
@@ -117,20 +124,6 @@ input:focus {
     user-select: none;
 }
 
-.global_primary_button {
-    cursor: pointer;
-    padding: 20px 32px;
-    font-size: 16px;
-    border: none;
-    border-radius: 3px;
-
-    color: #ffffff;
-    background-color: #019da9;
-
-    &:focus {
-        outline: none;
-    }
-}
 
 .global_light_button {
     cursor: pointer;
@@ -148,8 +141,8 @@ input:focus {
 }
 
 @media only screen and (max-width: 992px) {
-    .global_primary_button {
-        padding: 23px 12px !important;
-        font-size: 11px !important;
+    .isporit-primary-button {
+        // padding: 23px 12px !important;
+        // font-size: 11px !important;
     }
 }

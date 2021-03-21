@@ -18,4 +18,9 @@ export const createUsernameForSignUp = (string) =>
   removeSpaceInString(string).slice(0, 10) +
   randomId(MAX_USERNAME_LENGTH - string.slice(0, 10).length, 'aA0')
 
+export const getYouTubeVideoId = (url) => {
+  const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
+  const match = url.match(regExp)
+  return match && match[7].length === 11 ? match[7] : false
+}
 export default getUserProfilePicture

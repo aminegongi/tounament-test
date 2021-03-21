@@ -7,19 +7,19 @@ import locationIcon from '../../../public/icon/localisation.png'
 import youtubeIcon from '../../../public/icon/youtube.png'
 
 function ContactCoach({ coachData }) {
-  return coachData.map((coach) => (
+  return (
     <div className="contactcoach">
       <div className="contactcoach__title">Coordonnés</div>
       <div className="contactcoach__birthday">
         <img alt="birthdayIcon" src={birthdayIcon} />
         <div className="contactcoach__birthday__date">
-          {moment(coach.birthday).format('LL')}
+          {moment(coachData.birthday).format('LL')}
         </div>
       </div>
-      {!isEmpty(coach.address) && (
+      {!isEmpty(coachData.address) && (
         <div className="contactcoach__address">
           <img alt="locationIcon" src={locationIcon} />
-          <div className="contactcoach__address__lieu">{coach.address}</div>
+          <div className="contactcoach__address__lieu">{coachData.address}</div>
         </div>
       )}
       {/* <div className="contactcoach__youtubetv">
@@ -27,7 +27,7 @@ function ContactCoach({ coachData }) {
         <div className="contactcoach__youtubetv__lien">Amira skhiri</div>
       </div> */}
     </div>
-  ))
+  )
 }
 
 export default ContactCoach

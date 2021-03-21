@@ -1,7 +1,7 @@
 .card_profil_coach {
     border-radius: 0.625rem;
     background-color: #f9f9f9;
-
+    position: relative;
     &__information {
         // padding: 1.063rem 1.5rem 0.313rem 3.563rem;
         display: flex;
@@ -20,10 +20,29 @@
         }
 
         &__name {
-            padding-top: 0.375rem;
+            // padding-top: 0.375rem;
             font-size: 1.125rem;
             font-weight: 500;
             color: #26beb5;
+            // margin-top: -130px;
+        }
+
+        &__share {
+            
+            position: absolute;
+            top: 0;
+            right: 0;
+            img {
+                position: absolute;
+            top: 0;
+            right: 0;
+                // float: right;
+                // margin-left: 86%;
+                // position: absolute;
+                // top: 31.25rem;
+                // margin-left: 11.7%;
+      
+            }
         }
 
         &__rate {
@@ -126,7 +145,7 @@
 
 .lineprofilecoach {
     // padding-top: 0.219rem;
-
+    background-color: #f5f4f4;
     width: 100%;
     // margin-left: 37.3px;
     margin-top: 0.594rem;
@@ -152,15 +171,14 @@
     .card_profil_coach {
         margin-bottom: 1.25rem;
 
-        &__information__name {
-            margin-top: 7.375rem;
+        &__information{
+            margin: auto;
+            &__name{
+                // padding-top:8.9rem;
+            }
+            
+           
         }
     }
 }
 
-@media only screen and (max-width : 425px) {
-
-    .card_profil_coach__information__name {
-        margin-top: 6.375rem;
-    }
-}

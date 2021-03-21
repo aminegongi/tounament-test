@@ -67,24 +67,33 @@ const ReservationCours = ({
           <div className="reservation__contact__title">
             Récruter l'entraineur
           </div>
-          <div className="reservation__contact__textarea">
-            <textarea
-              value={recruitmentEmail}
-              name=""
-              id=""
-              cols="30"
-              rows="4"
-              onChange={(e) => setRecruitmentEmail(e.target.value)}
-            />
-          </div>
-          <Button
-            loading={sendRecruitmentRequestLoading}
-            type="submit"
-            onClick={onSendRecruitmentRequest}
-            className="isporit-primary-button reservation__contact__send-button"
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              onSendRecruitmentRequest()
+            }}
           >
-            Envoyer
-          </Button>
+            <div className="reservation__contact__textarea">
+              <textarea
+                value={recruitmentEmail}
+                name=""
+                id=""
+                cols="30"
+                rows="4"
+                onChange={(e) => setRecruitmentEmail(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="isporit-unset-button-css">
+              <Button
+                loading={sendRecruitmentRequestLoading}
+                type="submit"
+                className="isporit-primary-button reservation__contact__send-button"
+              >
+                Envoyer
+              </Button>
+            </button>
+          </form>
         </div>
       )
     }

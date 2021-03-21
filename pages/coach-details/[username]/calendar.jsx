@@ -1,13 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-underscore-dangle */
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import fetch from 'isomorphic-unfetch'
-import { useRouter } from 'next/router'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
-import Axios from 'axios'
-import { Button, Icon, message, Modal } from 'antd'
+import { Button, Icon, message } from 'antd'
 import {
   API,
   CLUB,
@@ -15,13 +14,11 @@ import {
   REQUEST_SUCCEEDED,
 } from '../../../shared/constants'
 import '../../../shared/css/coachCalendar.scss'
-import Navbar from '../../../shared/components/navbar/Navbar'
 import ContactCoach from '../../../shared/components/ContactCoach/ContactCoach'
 import InfoCoach from '../../../shared/components/InfoCoach/InfoCoach'
 import WeeklyBookingCalendar from '../../../shared/components/WeeklyBookingCalendar/WeeklyBookingCalendar'
 import { createCoachingRequest } from '../../../shared/services/coachDetails.service'
-import AuthContext from '../../../utils/context.utils'
-import LoginModal from '../../../shared/components/LoginModal/LoginModal'
+import { AuthContext } from '../../../utils/context.utils'
 import Layout from '../../../shared/components/layout/Layout'
 
 export default function Calendar({
@@ -29,7 +26,6 @@ export default function Calendar({
   jobs,
   sports,
   dances,
-  regions,
   serverResponseStatus,
 }) {
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
@@ -39,7 +35,6 @@ export default function Calendar({
 
   const renderCoachProfile = () => {
     const job = jobs.find((j) => j._id === coachDetails.coachData.job)
-    console.log('job: ', job)
     let specialty = ''
     if (job && job.specialty && job.specialty.type === 'sport') {
       specialty = sports.find((sport) => sport._id === coachDetails.specialty)
