@@ -1,11 +1,26 @@
 .login-modal {
+    &__input-label {
+        input {
+            margin-top: 10px;
+        }
+    }
+    &__radio-group-button {
+        background-color: #26beb5 !important;
+    }
+    &__user-type {
+        margin-bottom: 10px;
+
+    }
     &__modal {
         .ant-modal-body {
-            padding: 46px 55px 18px 55px;
+            padding: 46px 40px 18px 40px;
         }
         &__signup {
             .ant-modal-content {
                 width: 652px;
+                @media only screen and (max-width: 992px) {
+                    width: 100%;
+                }
             }
         }
         &__singin {
@@ -13,7 +28,6 @@
                 width: 464px;
             }
         }
-       
     }
     &__title {
         font-size: 22px;
@@ -24,13 +38,21 @@
     }
 
     &__body {
+        &__forgot-password {
+            margin: 15px 0;
+            a {
+                color: #000000;
+            }
+        }
         &__signup-inputs {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            @media only screen and (max-width: 992px) {
+                grid-template-columns: unset;
+            }
             column-gap: 37px;
             row-gap: 17px;
             margin-bottom: 13px;
-
         }
         &__forgot-password {
             font-size: 14px;
@@ -46,16 +68,17 @@
             row-gap: 17px;
         }
 
-
         &__submit {
             padding: 9px 39px;
             font-size: 15px;
+            height: unset;
         }
     }
 
     &__footer {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         margin-top: 15px;
         &__text {
             font-size: 16px;

@@ -1,33 +1,32 @@
-import moment from 'moment'
 import React, { useState } from 'react'
 import './style.scss'
 
-const CalendarTimeSlot = ({ onConfirm }) => {
+const CalendarTimeSlot = ({ onConfirm, time }) => {
   const [isSlotClicked, setIsSlotClicked] = useState(false)
   return (
-    <div className="calendar-time-slot">
+    <div
+      className={`calendar-time-slot ${
+        isSlotClicked ? 'calendar-time-slot__active' : ''
+      }`}
+    >
       <button
         onClick={() => setIsSlotClicked(!isSlotClicked)}
         className={`isporit-unset-button-css calendar-time-slot__time ${
-          isSlotClicked
-            ? 'isporit-unset-button-css calendar-time-slot__time__active'
-            : ''
+          isSlotClicked ? 'calendar-time-slot__time__active' : ''
         }`}
         type="submit"
       >
-        16:00
+        {time}
       </button>
-      <button
-        className={`isporit-unset-button-css calendar-time-slot__confirm ${
-          isSlotClicked
-            ? 'isporit-unset-button-css calendar-time-slot__confirm__active'
-            : ''
+      <a
+        onClick={onConfirm}
+        href="#coach-calendar-footer-confirm-button"
+        className={`isporit-unset-link-css calendar-time-slot__confirm ${
+          isSlotClicked ? 'calendar-time-slot__confirm__active' : ''
         }`}
-        onClick={() => onConfirm()}
-        type="submit"
       >
         Confirm
-      </button>
+      </a>
     </div>
   )
 }

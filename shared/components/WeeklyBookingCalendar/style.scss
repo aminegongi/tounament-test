@@ -3,14 +3,30 @@
     box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
     border: solid 1px #d5d5d5;
     background-color: #ffffff;
-    padding: 3px;
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     column-gap: 20px;
     overflow: hidden;
+    padding: 18px 10px 44px;
 
     &__calendar {
         border: none;
+        .react-calendar__tile--active {
+            color: #000000A6;
+        }
+        &__day {
+            background-color: #ff8760;
+            color: white;
+            &.react-calendar__tile--active {
+                color: white;
+            }
+            &.react-calendar__tile:disabled {
+                color: #000000A6;
+            }
+        }
+            .react-calendar__tile:disabled {
+                background-color: white;
+            }
         .react-calendar__navigation__next2-button, .react-calendar__navigation__prev2-button {
             display: none;
         }
@@ -29,6 +45,21 @@
         &__slot {
             margin-bottom: 5px;
             padding-right: 20px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .weekly-booking-calendar {
+        display: grid;
+        row-gap: 6px;
+        grid-template-columns: unset;
+        width: 100%;
+        &__calendar {
+            width: 100%;
+        }
+        &__body {
         }
     }
 }

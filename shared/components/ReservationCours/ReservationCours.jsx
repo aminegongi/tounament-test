@@ -1,43 +1,144 @@
-import React, { useState } from 'react';
-import { Modal, Button } from 'antd';
+import React, { useContext, useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import './reservationCours.scss'
-const ReservationCours = ({ isModalVisibleReservation, setIsModalVisibleReservation }) => {
+import { Button, message } from 'antd'
+import IsporitModal from '../IsporitModal/IsporitModal'
+import routes from '../../../utils/routes'
+import { createRecruitmentRequest } from '../../services/coachDetails.service'
+import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../../constants'
+import AuthContext from '../../../utils/context.utils'
 
+const ReservationCours = ({
+  isModalVisibleReservation,
+  setIsModalVisibleReservation,
+  coachProfile,
+}) => {
+  const [isContactStep, setIsContactStep] = useState(false)
+  const [recruitmentEmail, setRecruitmentEmail] = useState('')
+  const [
+    sendRecruitmentRequestLoading,
+    setSendRecruitmentRequestLoading,
+  ] = useState(false)
+  const [coachingRequestApi, setCoachingRequestApi] = useState()
+  const router = useRouter()
+  const authContext = useContext(AuthContext)
 
+  const onSendRecruitmentRequest = async () => {
+    const result = await createRecruitmentRequest(
+      {
+        coachId: coachProfile._id,
+        emailBody: recruitmentEmail,
+      },
+      setSendRecruitmentRequestLoading,
+    )
+    if (result.type === REQUEST_FAILED) {
+      if (result.data.message === 'youAreNotAClub') {
+        return message.error(
+          "Cette fonctionnalité n'est disponible que pour les organisations et les clubs",
+        )
+      }
+      return message.error(
+        "Ahhh! quelque chose s'est mal passé, réessayez plus tard. Merci",
+      )
+    }
+    if (result.type === REQUEST_SUCCEEDED) {
+      setCoachingRequestApi(REQUEST_SUCCEEDED)
+      return setIsContactStep(false)
+    }
+  }
 
-    const handleOk = () => {
-        setIsModalVisibleReservation(false);
-    };
+  const handleCancel = () => {
+    setIsModalVisibleReservation(false)
+    setIsContactStep(false)
+  }
 
-    const handleCancel = () => {
-        setIsModalVisibleReservation(false);
-    };
+  useEffect(() => {
+    if (coachingRequestApi === REQUEST_SUCCEEDED) {
+      setIsModalVisibleReservation(false)
+      setRecruitmentEmail('')
+      setSendRecruitmentRequestLoading()
+    }
+  }, [coachingRequestApi])
 
-    return (
-        
-        <div >
-            <Modal footer={null} className="reservation" visible={isModalVisibleReservation} onOk={handleOk} onCancel={handleCancel}>
-               
-               <div className="reservation__block">
-                    <div className="reservation__title">
-                    Réserver vos cours
-                </div>
-
-             
-                <button className="reservation__button_inscription">
-                    <span>Disponibilités</span>
-                </button>
-                <div className="reservation__title">
-                Récruter l'entraineur 
-                </div>
-
-             
-                <button className="reservation__button_contact">
-                    <span>Prise de contact</span>
-                </button>
-                </div>
-            </Modal>
+  const renderBody = () => {
+    if (isContactStep) {
+      return (
+        <div className="reservation__contact">
+          <div className="reservation__contact__title">
+            Récruter l'entraineur
+          </div>
+          <div className="reservation__contact__textarea">
+            <textarea
+              value={recruitmentEmail}
+              name=""
+              id=""
+              cols="30"
+              rows="4"
+              onChange={(e) => setRecruitmentEmail(e.target.value)}
+            />
+          </div>
+          <Button
+            loading={sendRecruitmentRequestLoading}
+            type="submit"
+            onClick={onSendRecruitmentRequest}
+            className="isporit-primary-button reservation__contact__send-button"
+          >
+            Envoyer
+          </Button>
         </div>
-    );
-};
+      )
+    }
+    return (
+      <div className="reservation__block">
+        {authContext.userType !== CLUB &&
+          coachProfile.coachData &&
+          coachProfile.coachData.privateCourseData &&
+          coachProfile.coachData.privateCourseData.givePrivateCourse && (
+            <>
+              <div className="reservation__title">Réserver vos cours</div>
+
+              <button
+                onClick={() =>
+                  router.push(
+                    routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
+                  )
+                }
+                type="submit"
+                className="reservation__button-availabilities"
+              >
+                Disponibilités
+              </button>
+            </>
+          )}
+
+        {authContext.userType === CLUB &&
+          coachProfile.coachData &&
+          coachProfile.coachData.lookingForJob && (
+            <>
+              <div className="reservation__title">Récruter l'entraineur</div>
+              <button
+                onClick={() => setIsContactStep(true)}
+                type="submit"
+                className="reservation__button_contact"
+              >
+                Prise de contact
+              </button>
+            </>
+          )}
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <IsporitModal
+        className="reservation"
+        visible={isModalVisibleReservation}
+        onCancel={handleCancel}
+      >
+        {renderBody()}
+      </IsporitModal>
+    </div>
+  )
+}
 export default ReservationCours

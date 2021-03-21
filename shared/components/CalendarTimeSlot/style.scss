@@ -21,8 +21,48 @@
         color: white;
         transform: translateX(40px);
         transition: transform 0.3s;
+        text-align: center;
+        &:hover {
+            color: white;
+        }
         &__active {
             transform: translateX(0px);
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .calendar-time-slot {
+        // display: inline-block;
+        // grid-template-columns: ;
+        width: 150%;
+        transition: width 0.3s;
+        &__active {
+            width: 100%;
+            transform: translateX(0px);
+        }
+        &__time {
+            display: inline-block;
+            width: 100%;
+            background-color: white;
+            transition: width 0.3s;
+            &__active {
+                width: 48%;
+            }
+        }
+        &__confirm {
+            // display: none;
+            display: inline-block;
+            width: 50%;
+            margin-left: 2%;
+            border-radius: 4px;
+            transform: translateX(40px);
+            transition: width 0.3s;
+            transition: transform 0.3s;
+            &__active {
+                width: 48%;
+                transform: translateX(0px);
+            }
         }
     }
 }

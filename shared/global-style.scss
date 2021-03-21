@@ -67,12 +67,21 @@ button {
     border: none;
 }
 
+.ant-message {
+    z-index: 9999999999999999999999;
+}
+
 button:focus {
     outline: none;
 }
 
 input:focus {
     outline-color: #019da9;
+}
+
+.isporit-flex-h-any-v-center {
+    display: flex;
+    align-items: center;    
 }
 
 .isporit-primary-button {

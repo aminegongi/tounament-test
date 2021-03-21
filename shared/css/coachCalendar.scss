@@ -1,4 +1,30 @@
 .coach-calendar {
+    padding-bottom: 50px;
+    &__request-succeeded {
+        border-radius: 10px;
+        box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
+        border: solid 1px #d5d5d5;
+        background-color: #ffffff;
+        height: max-content;
+        padding: 58px 0 110px;
+        text-align: center;
+        &__icon {
+            font-size: 30px;
+            color: #26beb5;
+            margin-bottom: 9px;
+        }
+        &__title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #26beb5;
+            margin-bottom: 17px;
+        }
+        &__description {
+            font-size: 18px;
+            font-weight: bold;
+            color: #232323;
+        }
+    }
     &__body {
         padding-top: 52px;
         max-width: 1048px;
@@ -12,6 +38,7 @@
                 margin-bottom: 32px;
             }
         }
+
         &__calendar-section {
             &__header {
                 &__title {
@@ -25,6 +52,91 @@
                     font-weight: 500;
                     color: #232323;
                     margin-bottom: 10px;
+                }
+            }
+            &__footer {
+                width: max-content;
+                margin-top: 43px;
+                border-radius: 10px;
+                box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
+                border: solid 1px #d5d5d5;
+                background-color: #ffffff;
+                padding: 18px 39px 25px;
+                &__confirm-button {
+                    padding: 8px 35px;
+                    font-size: 17px;
+                    font-weight: 500;
+                    color: #ffffff;
+                    width: max-content;
+                    border-radius: 10px;
+                    box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16);
+                    background-color: #26beb5;
+                    margin-top: 7px;
+                    height: unset;
+                    &:hover {
+                        background-color: #26beb5;
+                        color: #ffffff;
+                    }
+                }
+                &__title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #232323;
+                    margin-bottom: 28px;
+                }
+                &__item {
+                    display: flex;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #232323;
+                    align-items: center;
+                    margin-bottom: 20px;
+
+                    &__icon {
+                        width: 16px;
+                        height: 16px;
+                        background-color: #ff8760;
+                        margin-right: 15px;
+                        opacity: 0.7;
+                    }
+                    &__day,
+                    &__date,
+                    &__time {
+                        width: 140px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .coach-calendar {
+        &__body {
+            display: grid;
+            padding: 15px 21px 21px 21px;
+
+            row-gap: 6px;
+            grid-template-columns: unset;
+            &__profile-information {
+                &__card {
+                    margin-bottom: 6px;
+                }
+            }
+            &__calendar-section {
+                &__footer {
+                    width: 100%;
+                    padding: 20px;
+                    &__item {
+                        font-size: 14px;
+                        flex-wrap: wrap;
+                        &__day,
+                        &__date,
+                        &__time {
+                            width: auto;
+                            margin-right: 10px;
+                        }
+                    }
                 }
             }
         }
