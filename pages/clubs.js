@@ -1,6 +1,6 @@
 import Layout from '../shared/components/layout/Layout'
 import Head from 'next/head'
-import css from '../shared/css/clubs.scss'
+import  '../shared/css/clubs.scss'
 import { Input, Button, Icon } from 'antd'
 import { CITIES } from '../utils/fakeData'
 import fetch from 'isomorphic-unfetch'
@@ -14,19 +14,19 @@ const Card = ({ el }) => {
     return (
         // <Link href={routes.CLUB_WEBSITE.linkTo(el.slug)} >
         <a href={'tel:'+el.phoneNumber1} >
-            <div className={css.club_card}>
-                <div className={css.image_container}>
+            <div className={"club_card"}>
+                <div className={"image_container"}>
                     <img width="198px" src={image} onError={() => setImage('logo-192.png')} alt={el.title} />
                 </div>
-                <div className={css.club_card_body}>
-                    <div className={css.title}>
+                <div className={"club_card_body"}>
+                    <div className={"title"}>
                         {el.title}
                     </div>
-                    <div className={css.description}>
+                    <div className={"description"}>
                         {el.website.introduction && el.website.introduction.body && (el.website.introduction.body.description.slice(0, 310) + "...")}
                     </div>
-                    <div className={css.footer}>
-                        <div className={css.address}>
+                    <div className={"footer"}>
+                        <div className={"address"}>
                             <div>
                                 <b><Icon type="home" /></b> {el.address}
                             </div>
@@ -66,7 +66,7 @@ export function Clubs({ data, status }) {
         if (isMobile && mobileExtraSearchOptions) {
             return (
                 <>
-                    <div className={css.select_container}>
+                    <div className={"select_container"}>
                         <label htmlFor="pays">Pays</label>
                         <select id="pays" disabled >
                             <option value="">
@@ -74,7 +74,7 @@ export function Clubs({ data, status }) {
                         </option>
                         </select>
                     </div>
-                    <div className={css.select_container}>
+                    <div className={"select_container"}>
                         <label htmlFor="ville">Ville</label>
                         {/* style={{ border: 'unset', borderBottom: '1px solid red' }}  */}
                         <select onChange={e => setSearchOption({ ...searchOption, city: e.target.value })} value={searchOption.city} id="ville" >
@@ -90,7 +90,7 @@ export function Clubs({ data, status }) {
                             }
                         </select>
                     </div>
-                    <div className={css.select_container}>
+                    <div className={"select_container"}>
                         <label htmlFor="sport">Sport</label>
                         {/* style={{ border: 'unset', borderBottom: '1px solid red' }}  */}
                         <select onChange={e => setSearchOption({ ...searchOption, sport: e.target.value })} value={searchOption.sport} id="sport" >
@@ -111,7 +111,7 @@ export function Clubs({ data, status }) {
         if (!isMobile) {
             return (
                 <>
-                    <div className={css.select_container}>
+                    <div className={"select_container"}>
                         <label htmlFor="pays">Pays</label>
                         <select id="pays" disabled >
                             <option value="">
@@ -119,7 +119,7 @@ export function Clubs({ data, status }) {
                             </option>
                         </select>
                     </div>
-                    <div className={css.select_container}>
+                    <div className={"select_container"}>
                         <label htmlFor="ville">Ville</label>
                         {/* style={{ border: 'unset', borderBottom: '1px solid red' }}  */}
                         <select onChange={e => setSearchOption({ ...searchOption, city: e.target.value })} value={searchOption.city} id="ville" >
@@ -135,7 +135,7 @@ export function Clubs({ data, status }) {
                             }
                         </select>
                     </div>
-                    <div className={css.select_container}>
+                    <div className={"select_container"}>
                         <label htmlFor="sport">Sport</label>
                         {/* style={{ border: 'unset', borderBottom: '1px solid red' }}  */}
                         <select onChange={e => setSearchOption({ ...searchOption, sport: e.target.value })} value={searchOption.sport} id="sport" >
@@ -168,9 +168,9 @@ export function Clubs({ data, status }) {
 
             </Head>
             <Layout>
-                <div className={css.clubs}>
-                    <div className={css.search_section}>
-                        <div className={css.input_container}>
+                <div className={"clubs"}>
+                    <div className={"search_section"}>
+                        <div className={"input_container"}>
                             <label htmlFor="clubName">Rechercher un club</label>
                             <Input onChange={e => setSearchOption({ ...searchOption, clubName: e.target.value })} value={searchOption.clubName} type="text" id="clubName" placeholder="club" />
                         </div>
@@ -182,11 +182,11 @@ export function Clubs({ data, status }) {
                         }
                     </div>
 
-                    <div className={css.result_section}>
-                        <div className={css.title}>
+                    <div className={"result_section"}>
+                        <div className={"title"}>
                             Résultat ({clubs.length} clubs)
                         </div>
-                        <div className={css.clubs_cards}>
+                        <div className={"clubs_cards"}>
                             {
                                 clubs.filter(el => el.public).map(el => {
                                     return (

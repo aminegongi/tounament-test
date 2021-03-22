@@ -1,0 +1,108 @@
+.textarea {
+
+    margin-top: 1.688rem;
+
+}
+
+.coachavis__card__description {
+    &__repondre {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        padding: 1.063rem 16.5rem 1.125rem 0.919rem;
+        border: solid 1px #d5d5d5;
+        background-color: #f3f3f3;
+        margin-top: 2.75rem;
+
+        &__title {
+            margin-left: 0.313rem;
+        }
+    }
+}
+
+.coachavis {
+    height: 4.75rem;
+    background-color: grid;
+    margin-top: 2.063rem;
+    border: solid 1px #d5d5d5;
+    background-color: #f3f3f3;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid: 0.438rem;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    justify-content: space-around;
+
+    img {
+        width: 2.313rem;
+        height: 2.5rem;
+        padding-top: 0.563rem;
+        /* margin: 0 7px 0 0; */
+        border-radius: 10px;
+    }
+
+    input {
+        margin-top: 0.5rem;
+        border-radius: 17px;
+        background-color: #ffffff;
+        width: 17.563rem;
+        height: 2.063rem;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    .coachavis {
+        width: 35.625rem;
+        height: 5.75rem;
+
+        input {
+            margin-top: 0.8rem;
+            border-radius: 17px;
+            background-color: #ffffff;
+            width: 21.563rem;
+            height: 3.7rem;
+        }
+
+        img {
+            width: 4.2rem;
+            height: 4.4rem;
+        }
+
+        &__card {
+            &__description {
+                &__repondre {
+
+                    margin-top: 2.75rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .coachavis {
+        width: 31.625rem;
+        width: 31.9rem;
+    }
+
+    .coachaviscomposant__card__description {
+        margin-top: 1.5rem;
+        margin-left: 0.013rem;
+        width: 32rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .coachaviscomposant__card__description {
+
+        width: 27rem;
+    }
+    .coachavis {
+        width: 31.625rem;
+        width: 26.9rem;
+        input {
+           
+            width: 17.563rem;
+        }
+    }
+}

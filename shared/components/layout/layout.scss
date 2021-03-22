@@ -1,7 +1,15 @@
 .layout_container {
+    min-height: 100vh;
+    background: white;
+    position: relative;
     .children {
-        padding-top: 25px;
         background: white;
+        padding-bottom: 167px;
+    }
+    &__footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
     }
 }
 @media only screen and (max-width: 850px) {

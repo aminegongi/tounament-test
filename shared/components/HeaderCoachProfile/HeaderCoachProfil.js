@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import css from './headerCoachProfile.scss'
+import './headerCoachProfile.scss'
 import BurgerMenu from 'react-burger-menu'
 import { useMediaPredicate } from "react-media-hook";
 import { Icon, Input, Select, Menu, Skeleton } from 'antd';
@@ -16,21 +16,21 @@ export default function HeaderCoachProfile() {
         }
     }, [mobile])
     return (
-        <div className={css.header}>
-            <div className={css.header__body}>
+        <div className={"header"}>
+            <div className={"header__body"}>
                 {isMenuOpen==false ? 
-                <img src={"../../../icon/logoindexpage.png"} className={css.header__body__imglogo} alt="logo" />
+                <img src={"../../../icon/logoindexpage.png"} className={"header__body__imglogo"} alt="logo" />
                 :""}
                 {(!isMobile) ?
                     <>
-                        <div className={css.header__body__pages}>
-                            <div className={css.header__body__pages__composant}>Entraîneur</div>
-                            <div className={css.header__body__pages__composant}>Club management</div>
-                            <div className={css.header__body__pages__composant}>Clubs partenaires</div>
-                            <div className={css.header__body__pages__composant}>Contact</div>
+                        <div className={"header__body__pages"}>
+                            <div className={"header__body__pages__composant"}>Entraîneur</div>
+                            <div className={"header__body__pages__composant"}>Club management</div>
+                            <div className={"header__body__pages__composant"}>Clubs partenaires</div>
+                            <div className={"header__body__pages__composant"}>Contact</div>
 
                         </div>
-                        <button className={css.header__body__inscrirebutton}><span>S'inscrire gratuitement</span></button>
+                        <button className={"header__body__inscrirebutton"}><span>S'inscrire gratuitement</span></button>
                     </>
                     :
                     <>
@@ -63,7 +63,7 @@ export default function HeaderCoachProfile() {
                             onStateChange={e => setIsMenuOpen(e.isOpen)}
                             isOpen={isMenuOpen}
                             width={'260px'}
-                            customBurgerIcon={!isMenuOpen ? <Icon type="menu" /> : <Icon className={css.buttonclose} type="close" />}
+                            customBurgerIcon={!isMenuOpen ? <Icon type="menu" /> : <Icon className={"buttonclose"} type="close" />}
                             customCrossIcon={false}
                             noOverlay={false}
                         >
@@ -72,12 +72,12 @@ export default function HeaderCoachProfile() {
                                 defaultOpenKeys={['sub1']}
                                 style={{ border: "none" }}
                             >
-                                <div className={css.BurgerMenu} >
-                                    <div className={css.header__body__pages__composant}>Entraîneur</div>
-                                    <div className={css.header__body__pages__composant}>Club management</div>
-                                    <div className={css.header__body__pages__composant}>Clubs partenaires</div>
-                                    <div className={css.header__body__pages__composant}>Contact</div>
-                                    <button className={css.header__body__inscrirebutton}><span>S'inscrire gratuitement</span></button>
+                                <div className={"BurgerMenu"} >
+                                    <div className={"header__body__pages__composant"}>Entraîneur</div>
+                                    <div className={"header__body__pages__composant"}>Club management</div>
+                                    <div className={"header__body__pages__composant"}>Clubs partenaires</div>
+                                    <div className={"header__body__pages__composant"}>Contact</div>
+                                    <button className={"header__body__inscrirebutton"}><span>S'inscrire gratuitement</span></button>
                                 </div>
                             </Menu>
                         </BurgerMenu.slide>

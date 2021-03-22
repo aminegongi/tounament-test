@@ -1,6 +1,6 @@
 import Head from "next/head";
 import fetch from 'isomorphic-unfetch'
-import css from '../../shared/css/clubWebsite.scss'
+import  '../../shared/css/clubWebsite.scss'
 import Navbar from '../../shared/components/Website/Navbar/index'
 import Introduction from '../../shared/components/Website/Introduction/index'
 import Details from '../../shared/components/Website/Details/index'
@@ -21,7 +21,7 @@ const clubWebsite = ({ status, data, clubName, logo }) => {
 
     if (status === 401) {
         return (
-            <div className={"css.clubWebsite"}>
+            <div className={"clubWebsite"}>
                 unauthorized
             </div>
         )
@@ -29,7 +29,7 @@ const clubWebsite = ({ status, data, clubName, logo }) => {
 
     if (status === 404) {
         return (
-            <div className={"css.clubWebsite"}>
+            <div className={"clubWebsite"}>
                 not found
             </div>
         )
@@ -37,7 +37,7 @@ const clubWebsite = ({ status, data, clubName, logo }) => {
 
     if (status === 200) {
         return (
-            <div className={css.clubWebsite}>
+            <div className={"clubWebsite"}>
                 <Head>
                     <title>{clubName}</title>
 
@@ -47,15 +47,15 @@ const clubWebsite = ({ status, data, clubName, logo }) => {
                     <meta name="author" content="iSporit" />
 
                 </Head>
-                <div className={css.clubWebsite__body}>
-                    <div className={css.headerblock}>
+                <div className={"clubWebsite__body"}>
+                    <div className={"headerblock"}>
                         <Link href={routes.SEARCH_CLUB.path} >
                             <a>
-                                <img className={css.headerblock__img} src={logoblanc} alt="logo" />
+                                <img className={"headerblock__img"} src={logoblanc} alt="logo" />
                             </a>
                         </Link>
                         <Link href={routes.LOG_IN.path} >
-                            <span className={css.headerblock__connexion}>Connexion</span>
+                            <span className={"headerblock__connexion"}>Connexion</span>
                         </Link>
                     </div>
                     <Navbar data={data} logo={logo} />

@@ -1,27 +1,55 @@
 .card_profil_coach {
     border-radius: 0.625rem;
     background-color: #f9f9f9;
+    position: relative;
 
     &__information {
         // padding: 1.063rem 1.5rem 0.313rem 3.563rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 16.5rem;
+        // max-width: 16.5rem;
+
         &__avatar {
             padding-top: 1.063rem;
+
             img {
-                width: 8.938rem;
-                height: 8.938rem;
-                border-radius: 4.125rem;
+                width: 143px;
+                // height: 143px;
+                min-height: 143px;
+
+                border-radius: 50%;
             }
         }
 
         &__name {
-            padding-top: 0.375rem;
+            // padding-top: 0.375rem;
+            text-transform: capitalize;
             font-size: 1.125rem;
             font-weight: 500;
             color: #26beb5;
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            // margin-top: -130px;
+        }
+
+        &__share {
+            position: absolute;
+            top: 0;
+            right: 0;
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                // float: right;
+                // margin-left: 86%;
+                // position: absolute;
+                // top: 31.25rem;
+                // margin-left: 11.7%;
+            }
         }
 
         &__rate {
@@ -29,39 +57,46 @@
         }
 
         &__worktype {
-            padding-top: 0.644rem;
-            font-size: 1rem;
+            padding-top: 10px;
+            font-size: 16px;
             font-weight: bold;
             text-align: center;
-            width: 12rem;
             color: #000000;
-            word-wrap: break-word;
-            // margin-left: -1.313rem;
-            height: 4rem;
+            height: 65px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -moz-box-orient: vertical;
+            -ms-box-orient: vertical;
+            box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            width: 250px;
         }
 
         &__sporttype {
-            padding-top: 0.063rem;
+            padding-top: 1px;
             font-size: 1rem;
             font-weight: bold;
-            // padding-left: 1.688rem;
-            line-height: 1.19;
             text-align: left;
             color: #000000;
-            // padding-top:1.5rem;
+
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            height: 25px;
         }
 
         &__yearexperience {
             padding-top: 0.438rem;
-            // padding-left: 0.5rem;
             font-size: 1rem;
             line-height: 1.19;
             letter-spacing: normal;
             text-align: left;
             color: #000000;
             padding-bottom: 0.406rem;
+            height: 32px;
         }
-
     }
 
     &__button {
@@ -69,12 +104,16 @@
         justify-content: space-around;
         padding-top: 0.656rem;
         padding-bottom: 0.656rem;
+        border-top: solid 2px #f5f4f4;
+        // position: absolute;
+        // bottom: 0;
+        width: 100%;
+
         &__contact {
             font-size: 1.125rem;
             font-weight: 500;
             font-stretch: normal;
             font-style: normal;
-            
             color: #26beb5;
             background-color: transparent;
         }
@@ -88,19 +127,39 @@
             letter-spacing: normal;
             color: #707070;
             background-color: transparent;
+        }
+    }
 
+    &__suggestcoachdetails {
+        text-align: -webkit-center;
+
+        &__suggestPrivateCourse {
+            display: flex;
+            justify-content: center;
+
+            img {
+                width: 1rem;
+                height: 1rem;
+                margin: 0.125rem 0.375rem 0.063rem 0;
+                padding: 0.25rem;
+            }
+
+            &__propose {
+                font-size: 1rem;
+                font-weight: 500;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.19;
+                letter-spacing: 0.32px;
+                text-align: left;
+                color: #4e4d4d;
+            }
         }
     }
 }
 
 .rate {
-    font-size: 0.75rem;
-}
-
-.line {
-    padding-top: 0.219rem;
-    border-top: solid 3px #f5f4f4;
-
+    font-size: 1rem;
 }
 
 .linevertical {
@@ -108,9 +167,25 @@
     height: 31.25rem;
 }
 
-@media only screen and (max-width : 760px) {
+.buttoncontact {
+    font-size: 0.875rem;
+    color: #ffffff;
+    border-radius: 8px;
+    background-color: #26beb5;
+    padding: 0.563rem 2.25rem 0.688rem 2.25rem !important;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
     .card_profil_coach {
         margin-bottom: 1.25rem;
-    }
 
+        &__information {
+            margin: auto;
+            &__name {
+                // padding-top:8.9rem;
+            }
+        }
+    }
 }

@@ -1,0 +1,103 @@
+.contactcoach {
+    display: flex;
+    flex-direction: column;
+    // width: 300px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
+    // border: solid 1px #d5d5d5;
+    background-color: #ffffff;
+
+    border: solid 1px #d5d5d5;
+    padding: 1rem;
+    padding-right: 1.625rem;
+
+    &__title {
+        font-size: 1.125rem;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: 0.36px;
+        text-align: left;
+        color: #000000;
+    }
+
+    &__birthday {
+        padding-top: 1.563rem;
+        display: flex;
+
+        &__date {
+            font-size: 1.125rem;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: 0.36px;
+            text-align: left;
+            color: #4e4d4d;
+            padding-left: 0.75rem;
+            padding-top: 0.125rem;
+        }
+
+        img {
+            width: 1.563rem;
+            height: 1.563rem;
+        }
+    }
+
+
+    &__address {
+        padding-top: 1.563rem;
+
+        display: flex;
+
+        &__lieu {
+            font-size: 1.125rem;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: 0.36px;
+            text-align: left;
+            color: #4e4d4d;
+            padding-left: 0.75rem;
+            padding-top: 0.125rem;
+        }
+
+        img {
+            width: 1.563rem;
+            height: 1.563rem;
+        }
+    }
+
+    &__youtubetv {
+        padding-top: 1.563rem;
+
+        display: flex;
+
+        &__lien {
+            font-size: 1.125rem;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.22;
+            letter-spacing: 0.36px;
+            text-align: left;
+            color: #4e4d4d;
+            padding-left: 0.75rem;
+            padding-top: 0.125rem;
+        }
+
+        img {
+            width: 1.563rem;
+            height: 1.563rem;
+        }
+    }
+}
+
+@media only screen and (max-width : 425px) {
+
+    .contactcoach {
+        width: 100%;
+    }
+}

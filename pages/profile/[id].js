@@ -1,11 +1,11 @@
-import css from '../../shared/css/profileplayer.scss'
+import   '../../shared/css/profileplayer.scss'
 import { useState, useEffect, useRef } from 'react';
 import _, { isEmpty } from 'lodash'
 import fetch from 'isomorphic-unfetch'
 
 // import 'leaflet/dist/leaflet.css'
 import axios from 'axios';
-import globalCss from '../../shared/global-style.scss'
+import  '../../shared/global-style.scss'
 
 import Link from 'next/link';
 import Navbarsearch from '../../shared/components/navbarsearch/Navbarsearch';

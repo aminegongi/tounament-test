@@ -1,4 +1,4 @@
-import css from '../shared/css/searchclub.scss'
+import  '../shared/css/searchclub.scss'
 import { useState, useEffect } from 'react';
 import Clubinfo from "../shared/components/clubinfo/Clubinfo"
 import _, { isEmpty } from 'lodash'
@@ -61,11 +61,11 @@ const Indexs = (props) => {
         <div>
             <Navbarsearch el={datawebsite} serverData={serverData} setshowclub={setshowclub} 
             showclub={showclub} img={"icon/logoindexpage.png"} setdatawebsite={setdatawebsite} />
-            <div className={css.selectfilter}>
+            <div className={"selectfilter"}>
                 <Select
                     defaultValue="Type d'activités (4)"
                     showSearch
-                    className={css.search}
+                    className={"search"}
                     style={{ width: 170 }}
                     placeholder="Select a person"
                     optionFilterProp="children"
@@ -84,7 +84,7 @@ const Indexs = (props) => {
                 <Select
                     defaultValue="Distance"
                     showSearch
-                    className={css.search}
+                    className={"search"}
                     style={{ width: 110 }}
                     placeholder="Select a person"
                     optionFilterProp="children"
@@ -104,7 +104,7 @@ const Indexs = (props) => {
                 <Select
                     defaultValue="Plus de filtres"
                     showSearch
-                    className={css.search}
+                    className={"search"}
 
                     style={{ width: 150 }}
                     placeholder="Plus de filtres"
@@ -123,27 +123,27 @@ const Indexs = (props) => {
                 </Select>
             </div>
 
-            <div className={css.linkclub__link}>
+            <div className={"linkclub__link"}>
                 <div>Accueil</div>
                 <div>/</div>
                 <div>Clubs partenaires</div>
             </div>
-            <div className={ css.clublist_map  }>
-                <div className={ showclub==="carte" ? css.clublist_map__clubinfo__detais : css.listeclubs}>
-                    <div className={css.clublist_map__clubinfo__detais__title_sortby}>
-                        <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre}>
-                            <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre__title}>
+            <div className={ "clublist_map"  }>
+                <div className={ showclub==="carte" ? "clublist_map__clubinfo__detais" : "listeclubs"}>
+                    <div className={"clublist_map__clubinfo__detais__title_sortby"}>
+                        <div className={"clublist_map__clubinfo__detais__title_sortby__title_chiffre"}>
+                            <div className={"clublist_map__clubinfo__detais__title_sortby__title_chiffre__title"}>
                                 Clubs de Tennis se trouvant à Tunis
                   </div>
-                            <div className={css.clublist_map__clubinfo__detais__title_sortby__title_chiffre__number}>
+                            <div className={"clublist_map__clubinfo__detais__title_sortby__title_chiffre__number"}>
                                 {datawebsite.length} Résultats
                  </div>
                         </div>
-                        <div className={css.clublist_map__clubinfo__detais__title_sortby__sortby}>
+                        <div className={"clublist_map__clubinfo__detais__title_sortby__sortby"}>
                             <Select
                                 // defaultValue="Plus de filtres"
                                 // showSearch
-                                className={css.clublist_map__clubinfo__detais__title_sortby__sortby__search}
+                                className={"clublist_map__clubinfo__detais__title_sortby__sortby__search"}
                                 style={{ width: 100 }}
                                 placeholder="Plus de filtres"
                                 optionFilterProp="children"
@@ -158,7 +158,7 @@ const Indexs = (props) => {
                             </Select>
                         </div>
                     </div>
-                    <div className={css.clublist_map__clubinfo__detais__mapcarousel}>
+                    <div className={"clublist_map__clubinfo__detais__mapcarousel"}>
 
                         {!isEmpty(datawebsite) ?
                             datawebsite.map((el, key) => {
@@ -168,8 +168,8 @@ const Indexs = (props) => {
                     </div>
 
                 </div>
-                {/* <img className={css.imgmap} src="../icon/cartmap.png"  alt="phoneicon"></img> */}
-                 <div  className={ showclub==="carte" ? css.mapshow: css.mapnotshow} > 
+                {/* <img className={"imgmap"} src="../icon/cartmap.png"  alt="phoneicon"></img> */}
+                 <div  className={ showclub==="carte" ? "mapshow": "mapnotshow"} > 
                 <Mapclub />
                  </div> 
 

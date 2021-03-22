@@ -1,6 +1,6 @@
 import player from '../../../../../public/icon/subforplayer.svg'
 import { useState, useEffect, useRef } from 'react';
-import css from './priceV1.scss';
+import  './priceV1.scss';
 import Price from '../../../Price/Price'
 
 import coach from '../../../../../public/icon/subforcoach.svg'
@@ -13,15 +13,15 @@ import { isEmpty } from 'lodash';
 function PriceV1({ data, mapicon, phoneicon, instagram, fb }) {
 
     return (
-        <div className={css.partenaire_price}>
-            <div className={css.price}>
-                <div className={css.price__title}>NOS TARIFS</div>
-                <div className={css.price__ligne}>_______________</div>
-                {/* <div className={css.price__subtitle}>
+        <div className={"partenaire_price"}>
+            <div className={"price"}>
+                <div className={"price__title"}>NOS TARIFS</div>
+                <div className={"price__ligne"}>_______________</div>
+                {/* <div className={"price__subtitle"}>
                     {data.body.description}
                 </div> */}
             </div>
-            <div className={css.partenaire_price_partenaire}>
+            <div className={"partenaire_price_partenaire"}>
                 {data.body.map((el, key) => {
 
                     //   return Object.keys(el.schedule).map(key => (

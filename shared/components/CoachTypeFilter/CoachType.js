@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import css from './coachType.scss'
+import  './coachType.scss'
 import { Radio, Slider, Checkbox } from 'antd';
 import { PRIVATECOACH, PRIVATESESSION } from '../../constants'
 
@@ -75,35 +75,35 @@ export default function CoachType({ setDataCopy, dataCopy, coachesList }) {
 
 
   return (
-    <div className={css.coach_type}>
-      <div className={css.coach_type__title}>
+    <div className={"coach_type"}>
+      <div className={"coach_type__title"}>
         FILTRE PAR
       </div>
-      <div className={css.coach_type__rate}>
+      <div className={"coach_type__rate"}>
 
         <Radio.Group value={String(selectedRate)}>
-          <Radio onClick={searchbylevel} className={css.radio} value={"beginner"} />
-          <span className={css.coach_type__rate__plus}>Débutant
+          <Radio onClick={searchbylevel} className={"radio"} value={"beginner"} />
+          <span className={"coach_type__rate__plus"}>Débutant
                 </span> <br />
-          <Radio onClick={searchbylevel} className={css.radio} value={"intermediate"} />
-          <span className={css.coach_type__rate__plus}>Intermédiaire
+          <Radio onClick={searchbylevel} className={"radio"} value={"intermediate"} />
+          <span className={"coach_type__rate__plus"}>Intermédiaire
                 </span> <br />
 
-          <Radio onClick={searchbylevel} className={css.radio} value={'confirmed'} />
-          <span className={css.coach_type__rate__plus}>Confirmé
+          <Radio onClick={searchbylevel} className={"radio"} value={'confirmed'} />
+          <span className={"coach_type__rate__plus"}>Confirmé
                   </span> <br />
         </Radio.Group>
-        <div className={css.coach_type__rate__plus__privatesessionfilter__filterby_personnumber}>
+        <div className={"coach_type__rate__plus__privatesessionfilter__filterby_personnumber"}>
           Nombre de personnes <br />
           <Slider
-            class={css.coach_type__rate__plus__privatesessionfilter__filterby__marks}
+            class={"coach_type__rate__plus__privatesessionfilter__filterby__marks"}
             onChange={onChange}
             marks={marks} max={10} min={1} />
           <br />
 
         </div>
 
-        <Checkbox.Group className={css.checkbox} options={options} onChange={searchbybyAge} />
+        <Checkbox.Group className={"checkbox"} options={options} onChange={searchbybyAge} />
       </div>
     </div>
   )

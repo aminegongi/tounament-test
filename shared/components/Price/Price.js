@@ -1,26 +1,26 @@
-import css from './price.scss'
+import  './price.scss'
 
 export default function price({ title, lieu, horaire, price, classname, classnamebutton }) {
 
     return (
-        <div className={css[classname]}>
+        <div className={[classname]}>
 
-            <div className={css.partenaire_price_partenaire__price}>
-                <div className={css.partenaire_price_partenaire__price__firstpack}>
-                    <div className={css.partenaire_price_partenaire__price__firstblock} >
-                        <div className={css.partenaire_price_partenaire__price__firstpack__title}>
+            <div className={"partenaire_price_partenaire__price"}>
+                <div className={"partenaire_price_partenaire__price__firstpack"}>
+                    <div className={"partenaire_price_partenaire__price__firstblock"} >
+                        <div className={"partenaire_price_partenaire__price__firstpack__title"}>
                             {title}
                         </div>
-                        {/* <div className={css.partenaire_price_partenaire__price__firstpack__ligne}>
+                        {/* <div className={"partenaire_price_partenaire__price__firstpack__ligne"}>
                             __________________________
                         </div> */}
                     </div>
-                    <div className={css.partenaire_price_partenaire__price__firstpack__lieu}>
+                    <div className={"partenaire_price_partenaire__price__firstpack__lieu"}>
                         <div>Lieu :</div>
                         <div>{lieu}</div>
                     </div>
 
-                    <div className={css.partenaire_price_partenaire__price__firstpack__horaire}>
+                    <div className={"partenaire_price_partenaire__price__firstpack__horaire"}>
                         <div>Horaire :</div>
                         <div>{horaire.map((el, key) => {
                             return <div>{el}</div>
@@ -29,7 +29,7 @@ export default function price({ title, lieu, horaire, price, classname, classnam
                         </div>
                     </div>
 
-                    <div className={css.partenaire_price_partenaire__price__firstpack__price}>
+                    <div className={"partenaire_price_partenaire__price__firstpack__price"}>
                         {price} DT
                     </div>
                     <button onClick={() => window.location.href = "/contact-us"} className={css[classnamebutton]}>

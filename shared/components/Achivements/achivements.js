@@ -1,4 +1,4 @@
-import css from './Achivements.scss'
+import   './Achivements.scss'
 // import routes from '../../../utils/routes';
 // import Link from 'next/link';
 // import { Empty } from 'antd';
@@ -11,26 +11,26 @@ import { Timeline  } from 'antd';
 
     return (
         <>
-            <div className={css.profilplayer__experiencetitle}>
+            <div className={"profilplayer__experiencetitle"}>
                         {title}
                    </div>
                  
-                    <Timeline className={css.timeline} >
+                    <Timeline className={"timeline"} >
                             {data.map((el,key)=> {
                             return(
                                 <Timeline.Item key={key}>
 
-                                    <div className={css.playerexperiance}>
-                                        <div className={css.playerexperiance__title}>
-                                            <div className={css.playerexperiance__title__clubtitle}>
+                                    <div className={"playerexperiance"}>
+                                        <div className={"playerexperiance__title"}>
+                                            <div className={"playerexperiance__title__clubtitle"}>
                                                 {el.title}
                                             </div>
-                                            <div className={css.playerexperiance__title__date}>
+                                            <div className={"playerexperiance__title__date"}>
                                             
                                                 ({ moment(el.date.from).format('LL')} - Avril 2018) 
                                             </div>
                                         </div>
-                                            <div className={css.playerexperiance__description}>
+                                            <div className={"playerexperiance__description"}>
                                                 {el.description}
                                             </div>
                                     </div>

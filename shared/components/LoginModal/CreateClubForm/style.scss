@@ -1,0 +1,22 @@
+.create-club-form {
+    &__title {
+        font-size: 22px;
+        font-weight: bold;
+        text-align: center;
+        color: #000000;
+        margin-bottom: 27px;
+    }
+   
+    &__input-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 37px;
+        row-gap: 17px;
+        margin-bottom: 13px;
+    }
+    &__submit {
+        padding: 9px 39px;
+        font-size: 15px;
+        height: unset;
+    }
+}

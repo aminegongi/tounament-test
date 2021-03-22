@@ -1,6 +1,6 @@
 import getConfig from "next/config";
 import Head from "next/head"
-import css from '../shared/css/login.scss'
+import  '../shared/css/login.scss'
 import { useState } from 'react'
 import Link from "next/link"
 import { isEmpty, isNumber } from 'lodash'
@@ -55,7 +55,7 @@ const ForgotPassword = (props) => {
 
 
     return (
-        <div className={css.html}>
+        <div className={"html"}>
             <Head>
                 <title>Mot de passe oublié</title>
 
@@ -65,17 +65,17 @@ const ForgotPassword = (props) => {
                 <meta name="author" content="sporit" />
             </Head>
             <Layout>
-                <div className={css.login_container}>
-                    <form className={css.left_side}>
-                        <div className={css.logo}>
+                <div className={"login_container"}>
+                    <form className={"left_side"}>
+                        <div className={"logo"}>
                             <Link href={{ pathname: '/' }} >
                                 <a>
                                     <img src="icon/logoindexpage.png" alt="" />
                                 </a>
                             </Link>
                         </div>
-                        <h1 className={css.page_title}>Mot de passe oublié</h1>
-                        <input value={email} onChange={e => setEmail(e.target.value)} className={css.input} placeholder='Email' type="email" />
+                        <h1 className={"page_title"}>Mot de passe oublié</h1>
+                        <input value={email} onChange={e => setEmail(e.target.value)} className={"input"} placeholder='Email' type="email" />
                         <center>
                             <b>
                                 <Link href={{ pathname: '/login' }} >
@@ -86,32 +86,32 @@ const ForgotPassword = (props) => {
                             </b>
                         </center>
                         {
-                            localErrors.inputErrors && isEmpty(email) && <span className={css.error}>Champ obligatoire</span>
+                            localErrors.inputErrors && isEmpty(email) && <span className={"error"}>Champ obligatoire</span>
                         }
                         {
-                            localErrors.inputErrors && !validateEmail(email) && <span className={css.error}>Cette adresse email n'est pas valide</span>
+                            localErrors.inputErrors && !validateEmail(email) && <span className={"error"}>Cette adresse email n'est pas valide</span>
                         }
                         {
-                            localErrors.userDoesntExist && <span className={css.error}>L'utilisateur n'existe pas</span>
+                            localErrors.userDoesntExist && <span className={"error"}>L'utilisateur n'existe pas</span>
                         }
 
-                        <div className={css.signup_btn_container}>
-                            <button onClick={onSend} className={css.primary_button}>Envoyer</button>
+                        <div className={"signup_btn_container"}>
+                            <button onClick={onSend} className={"primary_button"}>Envoyer</button>
                         </div>
                     </form>
 
 
-                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={css.right_side}>
-                        <h2 className={css.title}>
+                    <div style={{ backgroundImage: 'url(loginBgColor.svg)' }} className={"right_side"}>
+                        <h2 className={"title"}>
                             Rejoignez notre platforme
                         </h2>
 
-                        <span className={css.description}>
+                        <span className={"description"}>
                             Entrez vos information et débutez avec nous votre parcours
                         </span>
                         <Link href={{ pathname: '/login', query: router.query }} >
                             <a>
-                                <button className={css.button} type="submit">
+                                <button className={"button"} type="submit">
                                     S'INSCRIRE
                                 </button>
                             </a>
