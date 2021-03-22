@@ -41,6 +41,7 @@
     "react": "^17.0.1",
     "react-burger-menu": "^2.6.13",
     "react-calendar": "^3.3.1",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.10.2",
     "react-ga": "^2.7.0",
     "react-hotjar": "^2.2.0",
