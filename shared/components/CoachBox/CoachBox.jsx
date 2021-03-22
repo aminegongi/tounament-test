@@ -8,9 +8,11 @@ import { Modal } from 'antd'
 
 import { useMediaPredicate } from 'react-media-hook'
 import dataMap from '../../../pages/dataMap.json'
-import localisationicon from '../../../public/icon/localisationicon.png'
+import localisationicon from '../../../public/icon/locationSectionIcon.svg'
 import videoicon from '../../../public/icon/videoicon.png'
 import exclamationIcon from '../../../public/icon/exclamation.png'
+import picturesIcon from '../../../public/icon/photoSectionIcon.png'
+
 import video from '../../../public/icon/video.png'
 import photoicon from '../../../public/icon/photoicon.png'
 import CoachProfileSection from '../CoachProfileSection'
@@ -183,7 +185,7 @@ export default function CoachAboutBoxes({ coachData }) {
           <CoachProfileSection
             title="Photos"
             isVerticalLine
-            icon={exclamationIcon}
+            icon={picturesIcon}
           >
             <div className="coachBoxiteam__pictures-section">
               {coachData &&

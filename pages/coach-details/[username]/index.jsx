@@ -21,7 +21,7 @@ import AuthContext from '../../../utils/context.utils'
 export default function CoachDetails({ coachesList, jobs, sports, dances }) {
   const router = useRouter()
   const [coachData, setCoachData] = useState()
-  const [tab, setTab] = useState(1)
+  const [tab, setTab] = useState(3)
   const [isContactModalVisible, setIsContactModalVisible] = useState(false)
 
   const authContext = useContext(AuthContext)
@@ -97,7 +97,7 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
       if (tab === 2) {
         return <CoachAvis coachData={coachesList} />
       }
-      if (tab === 2) {
+      if (tab === 3) {
         return (
           <Biography
             coachData={coachData}

@@ -2,11 +2,11 @@
     display: flex;
 
     &__time {
-        border: 1px solid #26beb5;
+        border: 1px solid #26beb5 !important;
         border-radius: 4px;
         width: 326px;
-        background-color: white;
-        padding: 10px;
+        background-color: white !important;
+        padding: 10px !important;
         transition: width 0.3s;
         &__active {
             width: 158px;

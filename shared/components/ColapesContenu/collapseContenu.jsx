@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
+import { isEmpty } from 'lodash'
+import moment from 'moment'
 import down from '../../../public/icon/icondown.png'
 import left from '../../../public/icon/iconleft.png'
 import './collapseContenu.scss'
-import moment from 'moment'
 
-export default function collapseContenu({ coach }) {
+export default function CollapseContenu({ coach }) {
   const [icon, setIcon] = useState(left)
 
   const [iconExperience, setIconExperience] = useState(left)
   const changeIcon = () => {
-    if (icon === down) {
-      setIcon(left)
-    }
-    if (icon === left) {
-      setIcon(down)
+    if (!isEmpty(coach.description)) {
+      if (icon === down) {
+        setIcon(left)
+      }
+      if (icon === left) {
+        setIcon(down)
+      }
     }
   }
   const changeIconexperience = () => {
@@ -24,36 +27,39 @@ export default function collapseContenu({ coach }) {
       setIconExperience(down)
     }
   }
+
   return (
     <div className="collapseblock">
       <div className="biographieblock__biographie__contenu">
         <div className="biographieblock__biographie__contenu__collapse">
           <div
             className="biographieblock__biographie__contenu__collapse__titledate"
-            onClick={() => changeIcon()}
+            onClick={changeIcon}
           >
             <div className="biographieblock__biographie__contenu__collapse__titledate__title">
-              Salle de sport: {coach.title}
+              {coach.title}
             </div>
             <div className="biographieblock__biographie__contenu__collapse__dateicon">
               <div className="biographieblock__biographie__contenu__collapse__dateicon__date">
                 {coach.date ? (
                   <>
-                    {moment(coach.date.from).format('LL')} -{' '}
+                    {moment(coach.date.from).format('MMM YYYY')} -{' '}
                     {coach.date.to == null
-                      ? `${moment().format('LL')}`
-                      : `${moment(coach.date.to).format('LL')}`}
+                      ? `${moment().format('MMM YYYY')}`
+                      : `${moment(coach.date.to).format('MMM YYYY')}`}
                   </>
                 ) : (
                   <>{coach.year}</>
                 )}
               </div>
+            </div>
+            {!isEmpty(coach.description) && (
               <img
                 src={icon}
                 className={icon === down ? 'down' : 'left'}
                 alt="icon"
               />
-            </div>
+            )}
           </div>
           {icon === down && (
             <div className="biographieblock__biographie__contenu__collapse__contenuShow">

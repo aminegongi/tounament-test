@@ -346,24 +346,26 @@ function NavbarIndex({ buttontwo, isFooter, clubmanagement }) {
             {authContext.isLoggedIn &&
               authContext.fetchUserProfileLoading === false && (
                 <div className="isporit-flex-h-any-v-center">
-                  <div className="navbar_container__user-card">
-                    <img
-                      src={getUserProfilePicture(
-                        authContext.userProfile.profilePicture,
-                      )}
-                      alt=""
-                    />
-                    <div className="navbar_container__user-card__name">
-                      {authContext.userProfile.firstName}{' '}
-                      {authContext.userProfile.lastName}
-                    </div>
-                  </div>
-
                   <Dropdown overlay={menu}>
-                    <Icon
-                      type="down"
-                      className="navbar_container__user-card__down-icon"
-                    />
+                    <div className="isporit-flex-h-any-v-center">
+                      <div className="navbar_container__user-card">
+                        <img
+                          src={getUserProfilePicture(
+                            authContext.userProfile.profilePicture,
+                          )}
+                          alt=""
+                        />
+                        <div className="navbar_container__user-card__name">
+                          {authContext.userProfile.firstName}{' '}
+                          {authContext.userProfile.lastName}
+                        </div>
+                      </div>
+
+                      <Icon
+                        type="down"
+                        className="navbar_container__user-card__down-icon"
+                      />
+                    </div>
                   </Dropdown>
                 </div>
               )}

@@ -7,8 +7,10 @@ import experience from '../../../public/icon/experience.png'
 import formation from '../../../public/icon/formation.png'
 import certification from '../../../public/icon/certification.png'
 import palmares from '../../../public/icon/palmares.png'
+import CoachProfileSection from '../CoachProfileSection'
 
-function Biography({ coachData, icon, title }) {
+function Biography({ coachData }) {
+  console.log('coachData: ', coachData)
   return (
     <div className="biographyblock">
       {!coachData.aboutMe &&
@@ -24,24 +26,13 @@ function Biography({ coachData, icon, title }) {
           </div>
         </div>
       ) : (
-        <>
+        <div className="biographyblock__blocks">
           {coachData && coachData.aboutMe && (
-            <div className="biographieblock__biographie">
-              {/* <div className={"biographieblock__biographie__linevertical"}></div> */}
-              <img
-                className="biographieblock__biographie__icon"
-                src={bio}
-                alt="bio"
-              />
-              <div className="biographieblock__biographie__title">
-                Biographie
-              </div>
-              <div className="linebiographie" />
-
+            <CoachProfileSection title="Biographie" icon={bio}>
               <div className="biographieblock__biographie__contenu">
                 {coachData.aboutMe}
               </div>
-            </div>
+            </CoachProfileSection>
           )}
           {coachData && coachData.experiences.length !== 0 && (
             <Collapse
@@ -71,7 +62,7 @@ function Biography({ coachData, icon, title }) {
               iconblock={palmares}
             />
           )}
-        </>
+        </div>
       )}
     </div>
   )
