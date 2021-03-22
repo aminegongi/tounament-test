@@ -1,36 +1,26 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import './shareLink.scss'
-import { Input, Select, Icon } from 'antd'
+import { Input, Icon } from 'antd'
 
 export default function ShareLink({ coachProfile }) {
-  const [link, setLink] = useState(coachProfile.username)
-  const { Option } = Select
-  const myFunction = () => {
-    const copyText = document.getElementById('myInput')
-    copyText.select()
-    copyText.setSelectionRange(0, 99999)
+  const inputRef = useRef(null)
+  const onCopy = () => {
+    inputRef.current.select()
     document.execCommand('copy')
-    console.log(`Copied the text: ${copyText.value}`)
   }
   return (
     <div className="sharelink">
       <div className="sharelink__text">Partager via</div>
 
-      <img
-        src="../../../public/icon/link.svg"
-        alt=""
-        className="iconsharelink"
-      />
-
       <div style={{ marginBottom: 16 }}>
         <Input
           addonAfter={
-            <Icon onClick={myFunction} type="link" className="sharelinkicon" />
+            <Icon onClick={onCopy} type="link" className="sharelinkicon" />
           }
-          value={`http://dev.isporit.com/coach-details/${link}`}
+          ref={inputRef}
+          value={`http://www.isporit.com/coach-details/${coachProfile.username}`}
           defaultValue="mysite"
           className="sharelink__input"
-          id="myInput"
         />
       </div>
     </div>

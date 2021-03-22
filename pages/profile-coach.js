@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
+import React, { useState } from 'react'
+import { Input, Select, Modal } from 'antd'
 import '../shared/css/profilecoach.scss'
 import '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
@@ -10,7 +10,6 @@ import {
   EXPERIENCE,
   API,
 } from '../shared/constants'
-import { Input, Select, Modal, Button } from 'antd'
 import FilterCoach from '../shared/components/FilterCoach/FilterCoach'
 import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter'
 import Recommendation from '../shared/components/RecommendationFilter/Recommendation'
@@ -18,7 +17,9 @@ import CoachType from '../shared/components/CoachTypeFilter/CoachType'
 import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion'
 import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach'
 import Navbar from '../shared/components/navbar/Navbar'
+import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
 import affiche from '../public/icon/Banniere.png'
+import Layout from '../shared/components/layout/Layout'
 
 export default function ProfileCoach({
   coachesList,
@@ -30,7 +31,7 @@ export default function ProfileCoach({
   const [dataCopy, setDataCopy] = useState(coachesList)
   const [coachSpecialty, setCoachSpecialty] = useState()
   const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
-  const nbr_of_card_per_page = 2
+  const nbr_of_card_per_page = 9
 
   const [pageNumber, setPageNumber] = useState(1)
   const [pageActiveNumber, setPageActiveNumber] = useState()
@@ -117,11 +118,7 @@ export default function ProfileCoach({
   }
 
   return (
-    <>
-      <div className="navbar">
-        <Navbar />
-        {console.log('object', dataCopy)}{' '}
-      </div>
+    <Layout>
       <div className="profil_coach">
         <div className="affiche">
           <img className="affiche__img" src={affiche} alt="affiche" />
@@ -298,6 +295,7 @@ export default function ProfileCoach({
                 pageNumber,
               ).map((dataCopy, key) => renderCoachProfile(dataCopy))}
             </div>
+
             <div className="paginate">
               {Array.from({
                 length: Math.round(dataCopy.length / nbr_of_card_per_page),
@@ -314,6 +312,7 @@ export default function ProfileCoach({
                     setPageNumber(index + 1), setPageActiveNumber(index)
                   }}
                 >
+                  {console.log('index: ', index)}
                   {index + 1}
                 </div>
               ))}
@@ -321,7 +320,7 @@ export default function ProfileCoach({
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 ProfileCoach.getInitialProps = async () => {

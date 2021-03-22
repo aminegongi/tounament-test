@@ -54,7 +54,7 @@
         color: #000000;
     }
 
-    .card_profil_coach {
+    &_coach {
         border-radius: 0.625rem;
         background-color: #f9f9f9;
 
@@ -86,7 +86,7 @@
                 &__icon {
                     font-size: 16px;
                     @media only screen and (max-width: 450px) {
-                        font-size: 9px;
+                        font-size: 8px;
                     }
                 }
             }
@@ -164,21 +164,33 @@
 
 @media only screen and (max-width: 992px) {
     .infocoach {
-        padding: 12px 27px;
+        padding: 12px;
         margin-top: 10px;
         width: 100%;
         flex-direction: row;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 10px;
+        column-gap: 5%;
 
         &__secondblock {
             justify-self: flex-start;
+            align-items: flex-start;
         }
         &__firstblock {
             justify-self: flex-end;
             &__coach-name {
                 margin-top: 10px;
+            }
+        }
+        &_coach {
+            &__information {
+                &__worktype {
+                    font-size: 12px;
+                    text-align: left;
+                }
+                &__yearexperience {
+                    font-size: 14px;
+                }
             }
         }
 

@@ -69,19 +69,19 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
   }
 
   return (
-    <div className={`infocoach `}>
+    <div className="infocoach">
       <div className="infocoach__firstblock">
         <img
           className="infocoach__img"
           src={getUserProfilePicture(coachProfile.profilePicture)}
           alt=""
         />
-        <div className="card_profil_coach__information__name infocoach__firstblock__coach-name">
+        <div className="infocoach_coach__information__name infocoach__firstblock__coach-name">
           {coachProfile.firstName} {coachProfile.lastName}
         </div>
-        <div className="card_profil_coach__information__rate">
+        <div className="infocoach_coach__information__rate">
           <Rate
-            className="card_profil_coach__information__rate__icon"
+            className="infocoach_coach__information__rate__icon"
             disabled
             defaultValue={sum}
           />
@@ -89,16 +89,16 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
       </div>
       <div className="infocoach__secondblock">
         {job && (
-          <div className="card_profil_coach__information__worktype">
+          <div className="infocoach_coach__information__worktype">
             {job.translations.fr}
           </div>
         )}
         {specialty && (
-          <div className="card_profil_coach__information__sporttype">
+          <div className="infocoach_coach__information__sporttype">
             {specialty.translations ? specialty.translations.fr : ''}
           </div>
         )}
-        <div className="card_profil_coach__information__yearexperience">
+        <div className="infocoach_coach__information__yearexperience">
           {getYearsOfExperience()}
         </div>
         <div className="suggestcoachdetails">

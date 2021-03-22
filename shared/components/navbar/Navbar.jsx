@@ -345,7 +345,7 @@ function NavbarIndex({ buttontwo, isFooter, clubmanagement }) {
               )}
             {authContext.isLoggedIn &&
               authContext.fetchUserProfileLoading === false && (
-                <div className="isporit-flex-h-any-v-center">
+                <div className="isporit-flex-h-end-v-center">
                   <Dropdown overlay={menu}>
                     <div className="isporit-flex-h-any-v-center">
                       <div className="navbar_container__user-card">

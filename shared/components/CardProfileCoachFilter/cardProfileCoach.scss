@@ -2,46 +2,53 @@
     border-radius: 0.625rem;
     background-color: #f9f9f9;
     position: relative;
+
     &__information {
         // padding: 1.063rem 1.5rem 0.313rem 3.563rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 16.5rem;
+        // max-width: 16.5rem;
 
         &__avatar {
             padding-top: 1.063rem;
 
             img {
-                width: 8.938rem;
-                height: 8.938rem;
-                border-radius: 4.125rem;
+                width: 143px;
+                // height: 143px;
+                min-height: 143px;
+
+                border-radius: 50%;
             }
         }
 
         &__name {
             // padding-top: 0.375rem;
+            text-transform: capitalize;
             font-size: 1.125rem;
             font-weight: 500;
             color: #26beb5;
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
             // margin-top: -130px;
         }
 
         &__share {
-            
             position: absolute;
             top: 0;
             right: 0;
             img {
                 position: absolute;
-            top: 0;
-            right: 0;
+                top: 0;
+                right: 0;
                 // float: right;
                 // margin-left: 86%;
                 // position: absolute;
                 // top: 31.25rem;
                 // margin-left: 11.7%;
-      
             }
         }
 
@@ -50,37 +57,45 @@
         }
 
         &__worktype {
-            padding-top: 0.644rem;
-            font-size: 1rem;
+            padding-top: 10px;
+            font-size: 16px;
             font-weight: bold;
             text-align: center;
-            width: 12rem;
             color: #000000;
-            word-wrap: break-word;
-            // margin-left: -1.313rem;
-            height: 4rem;
+            height: 65px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -moz-box-orient: vertical;
+            -ms-box-orient: vertical;
+            box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            width: 250px;
         }
 
         &__sporttype {
-            padding-top: 0.063rem;
+            padding-top: 1px;
             font-size: 1rem;
             font-weight: bold;
-            // padding-left: 1.688rem;
-            line-height: 1.19;
             text-align: left;
             color: #000000;
-            // padding-top:1.5rem;
+
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            height: 25px;
         }
 
         &__yearexperience {
             padding-top: 0.438rem;
-            // padding-left: 0.5rem;
             font-size: 1rem;
             line-height: 1.19;
             letter-spacing: normal;
             text-align: left;
             color: #000000;
             padding-bottom: 0.406rem;
+            height: 32px;
         }
     }
 
@@ -89,6 +104,10 @@
         justify-content: space-around;
         padding-top: 0.656rem;
         padding-bottom: 0.656rem;
+        border-top: solid 2px #f5f4f4;
+        // position: absolute;
+        // bottom: 0;
+        width: 100%;
 
         &__contact {
             font-size: 1.125rem;
@@ -143,15 +162,6 @@
     font-size: 1rem;
 }
 
-.lineprofilecoach {
-    // padding-top: 0.219rem;
-    background-color: #f5f4f4;
-    width: 100%;
-    // margin-left: 37.3px;
-    margin-top: 0.594rem;
-    border: solid 2px #f5f4f4;
-}
-
 .linevertical {
     border-left: 6px solid green;
     height: 31.25rem;
@@ -167,18 +177,15 @@
     margin-top: 0.5rem;
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 768px) {
     .card_profil_coach {
         margin-bottom: 1.25rem;
 
-        &__information{
+        &__information {
             margin: auto;
-            &__name{
+            &__name {
                 // padding-top:8.9rem;
             }
-            
-           
         }
     }
 }
-

@@ -17,11 +17,12 @@ import affiche from '../../../public/icon/Banniere.png'
 import exclamation from '../../../public/icon/exclamation.png'
 import ReservationCours from '../../../shared/components/ReservationCours/ReservationCours'
 import AuthContext from '../../../utils/context.utils'
+import Layout from '../../../shared/components/layout/Layout'
 
 export default function CoachDetails({ coachesList, jobs, sports, dances }) {
   const router = useRouter()
   const [coachData, setCoachData] = useState()
-  const [tab, setTab] = useState(3)
+  const [tab, setTab] = useState(1)
   const [isContactModalVisible, setIsContactModalVisible] = useState(false)
 
   const authContext = useContext(AuthContext)
@@ -63,14 +64,16 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
     const job = jobs.find((j) => j._id === coachData.coachData.job)
 
     let specialty = ''
-    if (job.specialty && job.specialty.type === 'sport') {
-      specialty = sports.find(
-        (sport) => sport._id === coachData.coachData.specialty,
-      )
-    } else if (job.specialty && job.specialty.type === 'dance') {
-      specialty = dances.find(
-        (dance) => dance._id === coachData.coachData.specialty,
-      )
+    if (job) {
+      if (job.specialty && job.specialty.type === 'sport') {
+        specialty = sports.find(
+          (sport) => sport._id === coachData.coachData.specialty,
+        )
+      } else if (job.specialty && job.specialty.type === 'dance') {
+        specialty = dances.find(
+          (dance) => dance._id === coachData.coachData.specialty,
+        )
+      }
     }
     return (
       <InfoCoach
@@ -114,8 +117,7 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
   }, [router.query.id])
 
   return (
-    <>
-      <Navbar />
+    <Layout>
       <div className="coach">
         <div className="affiche">
           <img className="affiche__img" src={affiche} alt="affiche" />
@@ -179,7 +181,7 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
           setIsModalVisibleReservation={setIsContactModalVisible}
         />
       </div>
-    </>
+    </Layout>
   )
 }
 

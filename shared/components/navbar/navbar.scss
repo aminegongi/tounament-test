@@ -11,7 +11,7 @@
     height: 96px;
 
     &__button-container {
-        width: 204px;
+        width: 208px;
     }
 
     &__user-card {
@@ -70,7 +70,14 @@
         margin-right: 15px;
         padding: 14px 16px 13.5px 16px !important;
     }
-   
+    .sign_up {
+        font-size: 0.875rem;
+        color: white;
+        border-radius: 8px;
+        background-color: #26beb5;
+        margin-right: 15px;
+        padding: 14px 16px 13.5px 16px !important;
+    }
 }
 
 .fleshdown svg {

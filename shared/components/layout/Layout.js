@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react'
 import './layout.scss'
-import { useState } from 'react'
 import Navbar from '../navbar/Navbar'
 
 export default function Layout({ children }) {

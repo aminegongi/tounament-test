@@ -4,6 +4,8 @@ import { Rate } from 'antd'
 import Link from 'next/link'
 import { AVATAR } from '../../constants'
 import ShareLink from '../ShareLink/ShareLink'
+import getUserProfilePicture from '../../../utils/string.utils'
+import routes from '../../../utils/routes'
 
 export default function CardProfileCoach({
   coachProfile,
@@ -43,7 +45,10 @@ export default function CardProfileCoach({
       </div>
       <div className="card_profil_coach__information">
         <div className="card_profil_coach__information__avatar">
-          <img src={img} alt="avatar" />
+          <img
+            src={getUserProfilePicture(coachProfile.profilePicture)}
+            alt="avatar"
+          />
         </div>
 
         <div className="card_profil_coach__information__name">
@@ -53,28 +58,40 @@ export default function CardProfileCoach({
         <div className="card_profil_coach__information__rate">
           <Rate disabled defaultValue={sum} className="rate" />
         </div>
-        <div className="card_profil_coach__information__worktype">
-          {job.translations.fr}
-        </div>
-        <div className="card_profil_coach__information__sporttype">
-          {specialty && specialty.translations ? specialty.translations.fr : ''}
-        </div>
+        {
+          <div className="card_profil_coach__information__worktype">
+            {job && job.translations.fr}
+          </div>
+        }
+        {
+          <div className="card_profil_coach__information__sporttype">
+            {specialty && specialty.translations
+              ? specialty.translations.fr +
+                specialty.translations.fr +
+                specialty.translations.fr +
+                specialty.translations.fr
+              : ''}
+          </div>
+        }
         <div className="card_profil_coach__information__yearexperience">
-          {coachProfile.coachData.experiencesYearsNumber == 1
-            ? `${coachProfile.coachData.experiencesYearsNumber} an d'expérience`
-            : coachProfile.coachData.experiencesYearsNumber == null
-            ? " zero ans d'expérience"
-            : `${coachProfile.coachData.experiencesYearsNumber} ans d'expérience`}
+          {coachProfile.coachData.experiencesYearsNumber >= 1 &&
+            `${coachProfile.coachData.experiencesYearsNumber} ans d'expérience`}
+          {coachProfile.coachData.experiencesYearsNumber === 1 &&
+            `1 an d'expérience`}
         </div>
       </div>
-      <div className="lineprofilecoach" />
       <div className="card_profil_coach__button">
-        <button className="card_profil_coach__button__contact">
-          Contacter
-        </button>
+        <Link href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
+          <button type="button" className="card_profil_coach__button__contact">
+            Contacter
+          </button>
+        </Link>
         {/* <div className={"linevertical"}></div>  */}
-        <Link href={`/coach-details/${coachProfile.username}`}>
-          <button className="card_profil_coach__button__seeDetails">
+        <Link href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
+          <button
+            type="button"
+            className="card_profil_coach__button__seeDetails"
+          >
             Voir plus
           </button>
         </Link>

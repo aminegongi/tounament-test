@@ -9,6 +9,9 @@ export default {
     CALENDAR: {
       linkTo: (username) => `/coach-details/${username}/calendar`,
     },
+    PROFILE: {
+      linkTo: (username) => `/coach-details/${username}`,
+    },
   },
   LOG_IN: {
     path: '/login',
