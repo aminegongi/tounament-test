@@ -66,10 +66,7 @@ export default function CardProfileCoach({
         {
           <div className="card_profil_coach__information__sporttype">
             {specialty && specialty.translations
-              ? specialty.translations.fr +
-                specialty.translations.fr +
-                specialty.translations.fr +
-                specialty.translations.fr
+              ? specialty.translations.fr
               : ''}
           </div>
         }
