@@ -105,7 +105,7 @@ const Index = (props) => {
         </div>
 
         <div className="club_logo_and_title">
-          <Clublogo
+          {/* <Clublogo
             images={[
               {
                 alt: 'club',
@@ -119,8 +119,12 @@ const Index = (props) => {
                 alt: 'club',
                 src: 'clubLogo/omSchoolTunis.jpg',
               },
+              {
+                alt: 'club',
+                src: 'clubLogo/green_park.png',
+              },
             ]}
-          />
+          /> */}
 
           <Title
             title="Regagnez votre temps à nouveau"
