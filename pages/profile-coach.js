@@ -29,6 +29,7 @@ export default function ProfileCoach({
   regions,
 }) {
   const [dataCopy, setDataCopy] = useState(coachesList)
+  console.log('dataCopy: ', dataCopy);
   const [coachSpecialty, setCoachSpecialty] = useState()
   const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
   const nbr_of_card_per_page = 9
@@ -40,16 +41,18 @@ export default function ProfileCoach({
   }
   const { Search } = Input
   const renderCoachProfile = (coachProfile) => {
-    const job = jobs.find((job) => job._id === coachProfile.coachData.job)
+    const job = jobs.find((j) => j._id === (coachProfile.coachData && coachProfile.coachData.job))
     let specialty = ''
-    if (job && job.specialty && job.specialty.type === 'sport') {
-      specialty = sports.find(
-        (sport) => sport._id === coachProfile.coachData.specialty,
-      )
-    } else if (job && job.specialty && job.specialty.type === 'dance') {
-      specialty = dances.find(
-        (dance) => dance._id === coachProfile.coachData.specialty,
-      )
+    if (job) {
+      if (job.specialty && job.specialty.type === 'sport') {
+        specialty = sports.find(
+          (sport) => sport._id === (coachProfile.coachData && coachProfile.coachData.specialty),
+        )
+      } else if (job.specialty && job.specialty.type === 'dance') {
+        specialty = dances.find(
+          (dance) => dance._id === (coachProfile.coachData && coachProfile.coachData.specialty),
+        )
+      }
     }
     return (
       <CardProfileCoach
@@ -293,7 +296,7 @@ export default function ProfileCoach({
                 dataCopy,
                 nbr_of_card_per_page,
                 pageNumber,
-              ).map((dataCopy, key) => renderCoachProfile(dataCopy))}
+              ).map((el, key) => renderCoachProfile(el))}
             </div>
 
             <div className="paginate">

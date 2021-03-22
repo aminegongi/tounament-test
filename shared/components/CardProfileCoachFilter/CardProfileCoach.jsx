@@ -22,7 +22,9 @@ export default function CardProfileCoach({
   )
   const [sum, setSum] = useState(
     Math.round(
-      coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
+      coachProfile.coachData &&
+        coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
+          coachProfile.coachData &&
         coachProfile.coachData.reviews.length,
     ),
   )
@@ -71,9 +73,14 @@ export default function CardProfileCoach({
           </div>
         }
         <div className="card_profil_coach__information__yearexperience">
-          {coachProfile.coachData.experiencesYearsNumber >= 1 &&
-            `${coachProfile.coachData.experiencesYearsNumber} ans d'expérience`}
-          {coachProfile.coachData.experiencesYearsNumber === 1 &&
+          {coachProfile.coachData &&
+            coachProfile.coachData.experiencesYearsNumber >= 1 &&
+            `${
+              coachProfile.coachData &&
+              coachProfile.coachData.experiencesYearsNumber
+            } ans d'expérience`}
+          {coachProfile.coachData &&
+            coachProfile.coachData.experiencesYearsNumber === 1 &&
             `1 an d'expérience`}
         </div>
       </div>
