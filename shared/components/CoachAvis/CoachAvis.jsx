@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Rate, Input } from 'antd'
 import './coachAvis.scss'
 import { AVATAR } from '../../constants'
-import Answer from '../Answer/Answer'
 import opps from '../../../public/icon/opps.png'
 import AvatarCoach from '../../../public/icon/AvatarCoach.png'
 
@@ -48,18 +47,19 @@ function CoachAvis({ coachData }) {
                         <div className="coachaviscomposant__card__description__recommendationMember__nameStart__name">
                           Nour jbeli
                         </div>
-                        <div className="coachaviscomposant__card__description__recommendationMember__nameStart__start">
-                          <Rate disabled defaultValue={reviews.rating} />
-                        </div>
+                        <Rate
+                          className="coachaviscomposant__card__description__recommendationMember__nameStart__rate"
+                          disabled
+                          defaultValue={reviews.rating}
+                        />
                       </div>
                       <div className="coachaviscomposant__card__description__recommendationMember__publishdate">
-                        il y a 3 jours
+                        <span>il y a 3 jours</span>
                       </div>
                     </div>
                     <div className="coachaviscomposant__card__description__avis">
                       {reviews.answer}
                     </div>
-                    <Answer />
                   </div>
                 )
               })}

@@ -1,17 +1,21 @@
 import React, { useContext, useState } from 'react'
 import './infoCoach.scss'
+import Link from 'next/link'
 import { Rate } from 'antd'
 import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
 import circleIcon from '../../../public/icon/cercle.png'
 import ReservationCours from '../ReservationCours/ReservationCours'
 import { AuthContext } from '../../../utils/context.utils'
 import { getUserProfilePicture } from '../../../utils/string.utils'
 import { CLUB } from '../../constants'
+import routes from '../../../utils/routes'
 
 export default function InfoCoach({ coachProfile, job, specialty }) {
   const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
     false,
   )
+  const router = useRouter()
 
   const authContext = useContext(AuthContext)
 
@@ -46,9 +50,9 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
     return true
   }
   const onOpenContactModal = () => {
-    if (!authContext.isLoggedIn) {
-      return authContext.toggleLogInModal()
-    }
+    // if (!authContext.isLoggedIn) {
+    //   return authContext.toggleLogInModal()
+    // }
     if (isCoachOpenForWork()) {
       return setIsModalVisibleReservation(true)
     }
@@ -77,7 +81,21 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
           alt=""
         />
         <div className="infocoach_coach__information__name infocoach__firstblock__coach-name">
-          {coachProfile.firstName} {coachProfile.lastName}
+          {router.pathname !== routes.COACH_DETAILS.PROFILE.path ? (
+            <Link
+              href={routes.COACH_DETAILS.PROFILE.linkTo(router.query.username)}
+            >
+              <a
+                href={routes.COACH_DETAILS.PROFILE.linkTo(
+                  router.query.username,
+                )}
+              >
+                {coachProfile.firstName} {coachProfile.lastName}
+              </a>
+            </Link>
+          ) : (
+            `${coachProfile.firstName} ${coachProfile.lastName}`
+          )}
         </div>
         <div className="infocoach_coach__information__rate">
           <Rate

@@ -5,11 +5,16 @@ export default {
     coachPath: '/contact-us?role=coach',
     clubPath: '/contact-us?role=club',
   },
+  COACHES_LIST: {
+    path: '/profile-coach',
+  },
   COACH_DETAILS: {
     CALENDAR: {
+      path: `/coach-details/[username]/calendar`,
       linkTo: (username) => `/coach-details/${username}/calendar`,
     },
     PROFILE: {
+      path: `/coach-details/[username]`,
       linkTo: (username) => `/coach-details/${username}`,
     },
   },

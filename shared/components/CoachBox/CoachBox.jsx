@@ -7,6 +7,7 @@ import moment from 'moment'
 import { Modal } from 'antd'
 
 import { useMediaPredicate } from 'react-media-hook'
+import { isEmpty } from 'lodash'
 import dataMap from '../../../pages/dataMap.json'
 import localisationicon from '../../../public/icon/locationSectionIcon.svg'
 import videoicon from '../../../public/icon/videoicon.png'
@@ -23,6 +24,19 @@ export default function CoachAboutBoxes({ coachData }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
+
+  const isLocationEmpty = () => {
+    if (
+      coachData &&
+      coachData &&
+      coachData.privateCourseData &&
+      isEmpty(coachData.privateCourseData.regions) &&
+      isEmpty(coachData.privateCourseData.location)
+    ) {
+      return true
+    }
+    return false
+  }
 
   return (
     <div className="coachBoxiteam">
@@ -147,39 +161,43 @@ export default function CoachAboutBoxes({ coachData }) {
       </div>
 
       <div className="coachBoxiteam__column">
-        <CoachProfileSection
-          title="Lieux"
-          isVerticalLine={isMobile}
-          icon={localisationicon}
-        >
-          {coachData &&
-            coachData &&
-            coachData.privateCourseData &&
-            coachData.privateCourseData.regions.map((region) => {
-              return (
-                <iframe
-                  className="coachBoxiteam__location-map"
-                  src={dataMap[region]}
-                  title="coah-region"
-                />
-              )
-            })}
-
-          <div className="coachBoxiteam__locations-container">
+        {!isLocationEmpty() && (
+          <CoachProfileSection
+            title="Lieux"
+            isVerticalLine={isMobile}
+            icon={localisationicon}
+          >
             {coachData &&
               coachData &&
               coachData.privateCourseData &&
-              coachData.privateCourseData.location.map((location) => (
-                <div className="coachBoxiteam__locations-container__location">
-                  <img src={localisationicon} alt="icon" />
+              coachData.privateCourseData.regions.map((region) => {
+                if (dataMap[region]) {
+                  return (
+                    <iframe
+                      className="coachBoxiteam__location-map"
+                      src={dataMap[region]}
+                      title="coah-region"
+                    />
+                  )
+                }
+              })}
 
-                  <div className="coachBoxiteam__locations-container__location__text">
-                    {location.title}
+            <div className="coachBoxiteam__locations-container">
+              {coachData &&
+                coachData &&
+                coachData.privateCourseData &&
+                coachData.privateCourseData.location.map((location) => (
+                  <div className="coachBoxiteam__locations-container__location">
+                    <img src={localisationicon} alt="icon" />
+
+                    <div className="coachBoxiteam__locations-container__location__text">
+                      {location.title}
+                    </div>
                   </div>
-                </div>
-              ))}
-          </div>
-        </CoachProfileSection>
+                ))}
+            </div>
+          </CoachProfileSection>
+        )}
 
         {coachData && coachData && coachData.coachingPhotos.length !== 0 ? (
           <CoachProfileSection

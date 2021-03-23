@@ -306,10 +306,16 @@ function NavbarIndex({ buttontwo, isFooter, clubmanagement }) {
             </div>
 
             <div className="item">
+              <Link href={routes.COACHES_LIST.path}>
+                <a href={routes.COACHES_LIST.path}>Entraineurs</a>
+              </Link>
+            </div>
+            {/*             
+            <div className="item">
               <Link href={routes.SEARCH_CLUB.path}>
                 <a href={routes.SEARCH_CLUB.path}>Clubs partenaires</a>
               </Link>
-            </div>
+            </div> */}
             {/* <div className={"item"}>
             Chercher un joueur
           </div> */}

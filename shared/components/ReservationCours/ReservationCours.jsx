@@ -23,33 +23,40 @@ const ReservationCours = ({
   const router = useRouter()
   const authContext = useContext(AuthContext)
 
-  const onSendRecruitmentRequest = async () => {
-    const result = await createRecruitmentRequest(
-      {
-        coachId: coachProfile._id,
-        emailBody: recruitmentEmail,
-      },
-      setSendRecruitmentRequestLoading,
-    )
-    if (result.type === REQUEST_FAILED) {
-      if (result.data.message === 'youAreNotAClub') {
-        return message.error(
-          "Cette fonctionnalité n'est disponible que pour les organisations et les clubs",
-        )
-      }
-      return message.error(
-        "Ahhh! quelque chose s'est mal passé, réessayez plus tard. Merci",
-      )
-    }
-    if (result.type === REQUEST_SUCCEEDED) {
-      setCoachingRequestApi(REQUEST_SUCCEEDED)
-      return setIsContactStep(false)
-    }
-  }
-
   const handleCancel = () => {
     setIsModalVisibleReservation(false)
     setIsContactStep(false)
+  }
+  const onSendRecruitmentRequest = () => {
+    const onSend = async () => {
+      const result = await createRecruitmentRequest(
+        {
+          coachId: coachProfile._id,
+          emailBody: recruitmentEmail,
+        },
+        setSendRecruitmentRequestLoading,
+      )
+      if (result.type === REQUEST_FAILED) {
+        if (result.data.message === 'youAreNotAClub') {
+          return message.error(
+            "Cette fonctionnalité n'est disponible que pour les organisations et les clubs",
+          )
+        }
+        return message.error(
+          "Ahhh! quelque chose s'est mal passé, réessayez plus tard. Merci",
+        )
+      }
+      if (result.type === REQUEST_SUCCEEDED) {
+        setCoachingRequestApi(REQUEST_SUCCEEDED)
+        return setIsContactStep(false)
+      }
+    }
+    if (!authContext.isLoggedIn) {
+      handleCancel()
+
+      return authContext.toggleLogInModal(() => () => onSend())
+    }
+    return onSend()
   }
 
   useEffect(() => {
@@ -99,41 +106,39 @@ const ReservationCours = ({
     }
     return (
       <div className="reservation__block">
-        {authContext.userType !== CLUB &&
+        {/* {authContext.userType !== CLUB &&
           coachProfile.coachData &&
           coachProfile.coachData.privateCourseData &&
           coachProfile.coachData.privateCourseData.givePrivateCourse && (
-            <>
-              <div className="reservation__title">Réserver vos cours</div>
+           
+          )} */}
+        <>
+          <div className="reservation__title">Réserver vos cours</div>
 
-              <button
-                onClick={() =>
-                  router.push(
-                    routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
-                  )
-                }
-                type="submit"
-                className="reservation__button-availabilities"
-              >
-                Disponibilités
-              </button>
-            </>
-          )}
-
-        {authContext.userType === CLUB &&
-          coachProfile.coachData &&
-          coachProfile.coachData.lookingForJob && (
-            <>
-              <div className="reservation__title">Récruter l'entraineur</div>
-              <button
-                onClick={() => setIsContactStep(true)}
-                type="submit"
-                className="reservation__button_contact"
-              >
-                Prise de contact
-              </button>
-            </>
-          )}
+          <button
+            onClick={() =>
+              router.push(
+                routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
+              )
+            }
+            type="submit"
+            className="reservation__button-availabilities"
+          >
+            Disponibilités
+          </button>
+        </>
+        {coachProfile.coachData && coachProfile.coachData.lookingForJob && (
+          <>
+            <div className="reservation__title">Récruter l'entraineur</div>
+            <button
+              onClick={() => setIsContactStep(true)}
+              type="submit"
+              className="reservation__button_contact"
+            >
+              Prise de contact
+            </button>
+          </>
+        )}
       </div>
     )
   }

@@ -36,31 +36,28 @@
       color: #000000;
     }
   }
+  .show_region {
+    display: block;
+  }
+
+  .unshow_region {
+    display: none;
+  }
+
+  .down {
+    width: 1.875rem;
+  }
+
+  .left {
+    width: 1.875rem;
+    // margin-left: 0.625rem;
+  }
 }
 
-.show_region {
-  display: block;
-}
-
-.unshow_region {
-  display: none;
-}
-
-.down {
-  width: 1.875rem;
-}
-
-.left {
-  width: 1.875rem;
-  margin-left: 0.625rem;
- 
-}
-
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .coach_region {
     &__title {
       // font-size: 16px;
-
     }
 
     &__checkbox {
@@ -71,14 +68,13 @@
   }
 }
 
-@media only screen and (max-width : 760px) {
+@media only screen and (max-width: 760px) {
   .coach_region {
     &__title {
       // font-size: 13px;
     }
 
     &__checkbox {
-
       margin: 1.625rem 2.25rem 2.938rem 1.313rem;
 
       span {
@@ -86,6 +82,4 @@
       }
     }
   }
-
-
 }
