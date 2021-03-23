@@ -21,6 +21,8 @@ import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCo
 import affiche from '../public/icon/Banniere.png'
 import Layout from '../shared/components/layout/Layout'
 
+const { Search } = Input
+
 export default function ProfileCoach({
   coachesList,
   jobs,
@@ -29,7 +31,6 @@ export default function ProfileCoach({
   regions,
 }) {
   const [dataCopy, setDataCopy] = useState(coachesList)
-  console.log('dataCopy: ', dataCopy);
   const [coachSpecialty, setCoachSpecialty] = useState()
   const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
   const nbr_of_card_per_page = 9
@@ -39,18 +40,23 @@ export default function ProfileCoach({
   function paginate(array, page_size, page_number) {
     return array.slice((page_number - 1) * page_size, page_number * page_size)
   }
-  const { Search } = Input
   const renderCoachProfile = (coachProfile) => {
-    const job = jobs.find((j) => j._id === (coachProfile.coachData && coachProfile.coachData.job))
+    const job = jobs.find(
+      (j) => j._id === (coachProfile.coachData && coachProfile.coachData.job),
+    )
     let specialty = ''
     if (job) {
       if (job.specialty && job.specialty.type === 'sport') {
         specialty = sports.find(
-          (sport) => sport._id === (coachProfile.coachData && coachProfile.coachData.specialty),
+          (sport) =>
+            sport._id ===
+            (coachProfile.coachData && coachProfile.coachData.specialty),
         )
       } else if (job.specialty && job.specialty.type === 'dance') {
         specialty = dances.find(
-          (dance) => dance._id === (coachProfile.coachData && coachProfile.coachData.specialty),
+          (dance) =>
+            dance._id ===
+            (coachProfile.coachData && coachProfile.coachData.specialty),
         )
       }
     }
@@ -315,7 +321,6 @@ export default function ProfileCoach({
                     setPageNumber(index + 1), setPageActiveNumber(index)
                   }}
                 >
-                  {console.log('index: ', index)}
                   {index + 1}
                 </div>
               ))}

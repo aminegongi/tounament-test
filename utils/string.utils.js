@@ -23,4 +23,5 @@ export const getYouTubeVideoId = (url) => {
   const match = url.match(regExp)
   return match && match[7].length === 11 ? match[7] : false
 }
+
 export default getUserProfilePicture

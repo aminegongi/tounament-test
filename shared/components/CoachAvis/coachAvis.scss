@@ -25,31 +25,33 @@
         display: grid;
         grid-template-columns: 48% 48%;
         gap: 1.763rem;
-
+        @media only screen and (max-width: 748px) {
+            grid-template-columns: 1fr;
+            row-gap: 20px;
+        }
 
         &__description {
-            margin-top: 1.5rem;
-            margin-left: 0.013rem;
-            // width: 23.613rem;
-            // height: 20.094rem;
-            // padding: 17px 9px 32.5px 18.8px;
             border-radius: 10px;
             box-shadow: 5px 5px 9px 0 rgba(190, 190, 190, 0.16);
             border: solid 1px #d5d5d5;
             background-color: #ffffff;
 
             &__recommendationMember {
-                display: flex;
-                justify-content: space-between;
+                display: grid;
+                grid-template-columns: 90px auto auto;
+
                 padding: 1.063rem 1.25rem 1.188rem 1.238rem;
 
                 &__avatar {
-                    // width: 4.125rem;
-                    height: 4.125rem;
-                    margin: 0 1.563rem 1.188rem 0.063rem;
+                    width: 66px;
                 }
 
                 &__nameStart {
+                    &__rate {
+                        @media only screen and (max-width: 380px) {
+                            font-size: 11px;
+                        }
+                    }
                     &__name {
                         padding-top: 0.563rem;
                         font-size: 1.125rem;
@@ -73,6 +75,7 @@
                     letter-spacing: 0.28px;
                     text-align: left;
                     color: #818181;
+                    justify-self: flex-end;
                 }
             }
 
@@ -86,9 +89,7 @@
                 text-align: left;
                 color: #4e4d4d;
                 padding: 0px 1.175rem 1.375rem 1.5rem;
-                height: 6.625rem;
             }
-
 
             &__avismember {
                 display: flex;
@@ -144,69 +145,17 @@
                         text-align: left;
                         color: #4e4d4d;
                     }
-
                 }
             }
         }
     }
+
+    .comment-action {
+        padding-left: 8px;
+        cursor: "auto";
+    }
+
+    .textarea {
+        margin-top: 1.688rem;
+    }
 }
-
-.comment-action {
-    padding-left: 8px;
-    cursor: 'auto';
-}
-
-
-.textarea {
-
-    margin-top: 1.688rem;
-
-}
-
-// @media only screen and (max-width: 768px) {
-
-//     .coachaviscomposant {
-//         &__sumavis {
-//             span {
-//                 padding-top: 5px;
-//             }
-
-//             &__chiffre {
-//                 padding-top: 0.7rem
-//             }
-//         }
-
-//         &__card__description__recommendationMember__publishdate {
-
-//             flex: none;
-//         }
-//     }
-// }
-
-// @media only screen and (max-width: 425px) {
-
-//     .coachaviscomposant {
-//         &__card {
-//             gap: 2.763rem;
-//             grid-template-columns: auto;
-//             &__description {
-//                 margin-top: 1.5rem;
-//                 margin-left: 0.013rem;
-//                 width: 35.613rem;
-//     height: 22.2rem;
-//             }
-//         }
-//     }
-// }
-
-// @media only screen and (max-width:320px){
-//     .coachaviscomposant {
-//         &__card {
-            
-//             &__description {
-                
-//                 width: 27rem;
-//             }
-//         }
-//     }
-// }

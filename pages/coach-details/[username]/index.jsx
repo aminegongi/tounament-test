@@ -51,9 +51,9 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
     return true
   }
   const onOpenContactModal = () => {
-    if (!authContext.isLoggedIn) {
-      return authContext.toggleLogInModal()
-    }
+    // if (!authContext.isLoggedIn) {
+    //   return authContext.toggleLogInModal()
+    // }
     if (isCoachOpenForWork()) {
       return setIsContactModalVisible(true)
     }

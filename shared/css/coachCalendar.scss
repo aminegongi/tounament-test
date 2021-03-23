@@ -30,7 +30,7 @@
         max-width: 1048px;
         margin: auto;
         display: grid;
-        column-gap: 57px;
+        column-gap: 2%;
         grid-template-columns: 267px 723px;
 
         &__profile-information {
@@ -40,6 +40,8 @@
         }
 
         &__calendar-section {
+            position: relative;
+            top: -14px;
             &__header {
                 &__title {
                     font-size: 18px;

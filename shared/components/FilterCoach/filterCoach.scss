@@ -1,5 +1,4 @@
 .filter_coach {
-
     &__filter_type {
         &__title {
             &__Professions {
@@ -20,7 +19,6 @@
                 margin-top: 1.344rem;
 
                 &__items {
-
                     cursor: pointer;
                     margin-top: 0.938rem;
                     margin-left: 2.875rem;
@@ -34,50 +32,48 @@
                     color: #000000;
 
                     &__iteam {
-
                         margin-bottom: 0.625rem;
 
                         &__iteamshow {
-                            color: #26beb5
+                            color: #26beb5;
                         }
                     }
 
                     &__iteamnotvisible {
                         display: none;
-
                     }
                 }
             }
         }
     }
+
+    .down {
+        width: 1.875rem;
+    }
+
+    .left {
+        width: 1.875rem;
+        // margin-left: 0.625rem;
+    }
+
+    .filter_coach__show {
+        height: 13rem;
+        overflow: auto;
+        cursor: pointer;
+        margin-top: 0.938rem;
+        margin-left: 2.875rem;
+        margin-bottom: 0.625rem;
+        font-size: 1rem;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.19;
+        letter-spacing: normal;
+        text-align: left;
+        color: #000000;
+    }
 }
 
-.down {
-    width: 1.875rem;
-}
-
-.left {
-    width: 1.875rem;
-    margin-left: 0.625rem;
-}
-
-.filter_coach__show {
-    height: 13rem;
-    overflow: auto;
-    cursor: pointer;
-    margin-top: 0.938rem;
-    margin-left: 2.875rem;
-    margin-bottom: 0.625rem;
-    font-size: 1rem;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.19;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
-}
-
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     .filter_coach {
         &__filter_type {
             &__title {
@@ -88,7 +84,6 @@
                 &__Professions {
                     &__items {
                         // font-size: 13px;
-
                     }
                 }
             }
@@ -96,12 +91,12 @@
     }
 }
 
-@media only screen and (max-width : 760px) {
+@media only screen and (max-width: 760px) {
     .filter_coach {
         &__filter_type {
             &__title__Professions {
                 // font-size: 13px;
-                margin-left: 0.656rem
+                margin-left: 0.656rem;
             }
         }
     }
