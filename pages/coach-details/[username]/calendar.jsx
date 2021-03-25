@@ -188,12 +188,11 @@ Calendar.propTypes = {
   jobs: PropTypes.arrayOf(PropTypes.any).isRequired,
   sports: PropTypes.arrayOf(PropTypes.any).isRequired,
   dances: PropTypes.arrayOf(PropTypes.any).isRequired,
-  regions: PropTypes.arrayOf(PropTypes.any).isRequired,
   serverResponseStatus: PropTypes.number.isRequired,
 }
 
 Calendar.getInitialProps = async ({ query }) => {
-  const coachRes = await fetch(`${API}users/slug/${query.username}`)
+  const coachRes = await fetch(`${API}users/coaches/slug/${query.username}`)
   const jobsRes = await fetch(`${API}jobs`)
   const sportsRes = await fetch(`${API}sports`)
   const danceRes = await fetch(`${API}dances/`)

@@ -13,6 +13,7 @@ export default function CardProfileCoach({
   job,
   specialty,
 }) {
+  console.log('specialty: ', specialty)
   const [img, setimg] = useState(
     // coachProfile.profilePicture
     //   ? `http://dev.isporit.com/api/${coachProfile.profilePicture}`
@@ -67,9 +68,13 @@ export default function CardProfileCoach({
         }
         {
           <div className="card_profil_coach__information__sporttype">
-            {specialty && specialty.translations
-              ? specialty.translations.fr
-              : ''}
+            {specialty &&
+              specialty.map((el, index) => {
+                if (index !== specialty.length - 1) {
+                  return `${el.translations.fr}, `
+                }
+                return el.translations.fr
+              })}
           </div>
         }
         <div className="card_profil_coach__information__yearexperience">

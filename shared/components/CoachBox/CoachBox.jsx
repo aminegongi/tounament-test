@@ -56,12 +56,18 @@ export default function CoachAboutBoxes({ coachData }) {
               ''
             )}
 
-            <div className="coachBox__content">
-              <div className="coachBox__content__title">
-                Années à jouer:{' '}
-                <span className="coachBox__content__value">3</span>
-              </div>
-            </div>
+            {coachData.playerData &&
+              coachData.playerData.experiencesYearsNumber && (
+                <div className="coachBox__content">
+                  <div className="coachBox__content__title">
+                    Années à jouer:{' '}
+                    <span className="coachBox__content__value">
+                      {coachData.playerData.experiencesYearsNumber}
+                    </span>
+                  </div>
+                </div>
+              )}
+
             {coachData &&
               coachData.privateCourseData &&
               coachData.privateCourseData.personsNumberPerSession && (
@@ -81,7 +87,7 @@ export default function CoachAboutBoxes({ coachData }) {
                   <span className="coachBox__content__title">
                     Niveaux:{' '}
                     <span className="coachBox__content__value">
-                      {coachData.privateCourseData.level.join(' , ')}
+                      {coachData.privateCourseData.level.join(', ')}
                     </span>
                   </span>
                 </div>
@@ -93,7 +99,7 @@ export default function CoachAboutBoxes({ coachData }) {
                   <div className="coachBox__content__title ">
                     Catégories d'ages:{' '}
                     <span className="coachBox__content__value">
-                      {coachData.privateCourseData.ages.join(' , ')}
+                      {coachData.privateCourseData.ages.join(', ')}
                     </span>
                   </div>
                 </div>
