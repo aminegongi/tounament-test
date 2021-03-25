@@ -1,36 +1,32 @@
 .experience {
+    border-bottom: solid 2px #f5f4f4;
+
     &__title {
         font-size: 1.125rem;
         font-weight: 500;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.22;
-        letter-spacing: normal;
         color: #000000;
         border-left: solid 3px #47c8c0;
-        white-space: nowrap;
-        margin-left: 1.469rem;
-        padding-left: 0.781rem;
-        margin-top: 1.344rem;
+        margin: 20px;
+        padding-left: 12px;
+
     }
 
     &__marks {
-        margin: 1.625rem 2.25rem 2.938rem 2.25rem;
-
+        margin: 30px 35px 47px 36px;
         &__line {
             background: #47c8c0 !important;
         }
     }
 
+    .ant-slider-track {
+        background: #47c8c0;
+    }
+    
+    .ant-slider-step {
+        background: #47c8c0;
+    }
 }
 
-.ant-slider-track {
-    background: #47c8c0;
-}
-
-.ant-slider-step {
-    background: #47c8c0;
-}
 
 @media only screen and (max-width : 992px) {
     .experience {

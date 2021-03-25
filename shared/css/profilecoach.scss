@@ -9,20 +9,18 @@
         display: flex;
 
         &__filter {
-            flex: 30%;
-            padding-right: 23px;
             border-radius: 0.625rem;
             border: solid 1px #d5d5d5;
             background-color: #ffffff;
             overflow: auto;
             padding-bottom: 12px;
+            max-width: 299px;
 
             &__input_searsh {
-                margin-left: 13px;
-                margin-top: 7px;
-                margin-right: 10px;
-                margin-bottom: 10px;
-
+                padding: 7px !important;
+                .ant-input-suffix {
+                    right: 24px !important;
+                }
                 input {
                     height: 45px;
                     border-radius: 10px;

@@ -3,28 +3,23 @@
     cursor: pointer;
     font-size: 1.125rem;
     font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.22;
-    letter-spacing: normal;
     text-align: left;
     color: #000000;
     border-left: solid 3px #47c8c0;
     display: flex;
     justify-content: space-between;
-    margin-left: 1.469rem;
-    padding-left: 0.781rem;
-    margin-top: 1.344rem;
+    margin: 20px;
+    padding-left: 12px;
   }
 
   &__checkbox {
-    display: grid;
-    grid-row-gap: 0.688rem;
-    margin: 1.625rem 2.25rem 2.938rem 2.25rem;
-    padding-left: 0.456rem;
-    height: 10rem;
-    overflow: auto;
-    width: 14rem;
+    display: grid !important;
+    grid-row-gap: 0.688rem !important;
+    margin: 1.625rem 2.25rem 2.938rem 2.25rem !important;
+    padding-left: 0.456rem !important;
+    // height: 10rem;
+    // overflow: auto;
+    // width: 14rem;
     span {
       font-size: 1rem;
       font-weight: 500;
@@ -52,6 +47,7 @@
     width: 1.875rem;
     // margin-left: 0.625rem;
   }
+  
 }
 
 @media only screen and (max-width: 992px) {

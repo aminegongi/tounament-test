@@ -4,18 +4,15 @@
     position: relative;
 
     &__information {
-        // padding: 1.063rem 1.5rem 0.313rem 3.563rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        // max-width: 16.5rem;
 
         &__avatar {
             padding-top: 1.063rem;
 
             img {
                 width: 143px;
-                // height: 143px;
                 min-height: 143px;
 
                 border-radius: 50%;
@@ -23,7 +20,6 @@
         }
 
         &__name {
-            // padding-top: 0.375rem;
             text-transform: capitalize;
             font-size: 1.125rem;
             font-weight: 500;
@@ -33,7 +29,6 @@
             text-overflow: ellipsis;
             white-space: nowrap;
 
-            // margin-top: -130px;
         }
 
         &__share {
@@ -42,18 +37,10 @@
             right: 0;
             img {
                 position: absolute;
-                top: 0;
-                right: 0;
-                // float: right;
-                // margin-left: 86%;
-                // position: absolute;
-                // top: 31.25rem;
-                // margin-left: 11.7%;
+                top: 9px;
+                right: 4px;
+                cursor: pointer;
             }
-        }
-
-        &__rate {
-            // padding-left: 1.688rem;
         }
 
         &__worktype {
@@ -105,9 +92,8 @@
         padding-top: 0.656rem;
         padding-bottom: 0.656rem;
         border-top: solid 2px #f5f4f4;
-        // position: absolute;
-        // bottom: 0;
         width: 100%;
+        align-items: center;
 
         &__contact {
             font-size: 1.125rem;
@@ -156,25 +142,25 @@
             }
         }
     }
-}
 
-.rate {
-    font-size: 1rem;
-}
+    .rate {
+        font-size: 1rem;
+    }
 
-.linevertical {
-    border-left: 6px solid green;
-    height: 31.25rem;
-}
+    .linevertical {
+        border-left: 6px solid green;
+        height: 31.25rem;
+    }
 
-.buttoncontact {
-    font-size: 0.875rem;
-    color: #ffffff;
-    border-radius: 8px;
-    background-color: #26beb5;
-    padding: 0.563rem 2.25rem 0.688rem 2.25rem !important;
-    border: none;
-    margin-top: 0.5rem;
+    .buttoncontact {
+        font-size: 0.875rem;
+        color: #ffffff;
+        border-radius: 8px;
+        background-color: #26beb5;
+        padding: 0.563rem 2.25rem 0.688rem 2.25rem !important;
+        border: none;
+        margin-top: 0.5rem;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -183,9 +169,6 @@
 
         &__information {
             margin: auto;
-            &__name {
-                // padding-top:8.9rem;
-            }
         }
     }
 }
