@@ -6,12 +6,12 @@ import left from '../../../public/icon/iconleft.png'
 import CollapseContenu from '../ColapesContenu/collapseContenu'
 import CoachProfileSection from '../CoachProfileSection'
 
-function Collapse({ title, iconblock, coachData }) {
+function Collapse({ title, iconblock, data }) {
   return (
     <div className="biographieblock">
       <CoachProfileSection title={title} icon={iconblock} isVerticalLine>
         <div className="collapseblock">
-          {coachData.map((coach) => {
+          {data.map((coach) => {
             return <CollapseContenu coach={coach} />
           })}
         </div>

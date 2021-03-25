@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './biography.scss'
+import { isEmpty } from 'lodash'
 import Collapse from '../Collapse/Collapse'
 import bio from '../../../public/icon/bio.png'
 import opps from '../../../public/icon/opps.png'
@@ -9,15 +10,15 @@ import certification from '../../../public/icon/certification.png'
 import palmares from '../../../public/icon/palmares.png'
 import CoachProfileSection from '../CoachProfileSection'
 
-function Biography({ coachData }) {
-  console.log('coachData: ', coachData)
+function Biography({ coachProfile }) {
+  console.log('coachProfile: ', coachProfile)
   return (
     <div className="biographyblock">
-      {!coachData.aboutMe &&
-      coachData.experiences.length == 0 &&
-      coachData.education.length == 0 &&
-      coachData.certification.length == 0 &&
-      coachData.achievements.length == 0 ? (
+      {!coachProfile.aboutMe &&
+      !isEmpty(coachProfile.experiences) &&
+      !isEmpty(coachProfile.education) &&
+      !isEmpty(coachProfile.certification) &&
+      !isEmpty(coachProfile.achievements) ? (
         <div className="aucunBiographie">
           <img src={opps} alt="icon" />
           <div className="aucunBiographie__title">OOPS</div>
@@ -27,41 +28,57 @@ function Biography({ coachData }) {
         </div>
       ) : (
         <div className="biographyblock__blocks">
-          {coachData && coachData.aboutMe && (
+          {coachProfile && coachProfile.aboutMe && (
             <CoachProfileSection title="Biographie" icon={bio}>
               <div className="biographieblock__biographie__contenu">
-                {coachData.aboutMe}
+                {coachProfile.aboutMe}
               </div>
             </CoachProfileSection>
           )}
-          {coachData && coachData.experiences.length !== 0 && (
-            <Collapse
-              coachData={coachData.experiences}
-              title="Expériences professionnelles"
-              iconblock={experience}
-            />
-          )}
-          {coachData && coachData.education.length != 0 && (
-            <Collapse
-              coachData={coachData.education}
-              title="Formations"
-              iconblock={formation}
-            />
-          )}
-          {coachData && coachData.certification.length != 0 && (
-            <Collapse
-              coachData={coachData.certification}
-              title="Certifications"
-              iconblock={certification}
-            />
-          )}
-          {coachData && coachData.achievements.length !== 0 && (
-            <Collapse
-              coachData={coachData.achievements}
-              title="Palmarès professionnel"
-              iconblock={palmares}
-            />
-          )}
+          {coachProfile.coachData &&
+            !isEmpty(coachProfile.coachData.experiences) && (
+              <Collapse
+                data={coachProfile.coachData.experiences}
+                title="Expériences professionnelles"
+                iconblock={experience}
+              />
+            )}
+          {coachProfile.coachData &&
+            !isEmpty(coachProfile.coachData.education) && (
+              <Collapse
+                data={coachProfile.coachData.education}
+                title="Formations"
+                iconblock={formation}
+              />
+            )}
+          {coachProfile.coachData &&
+            !isEmpty(coachProfile.coachData.certifications) && (
+              <Collapse
+                data={coachProfile.coachData.certifications}
+                title="Certifications"
+                iconblock={certification}
+              />
+            )}
+          {coachProfile.coachData &&
+            !isEmpty(coachProfile.coachData.achievements) && (
+              <Collapse
+                data={coachProfile.coachData.achievements}
+                // title="Palmarès professionnel"
+                title="Palmarès entraineur"
+                iconblock={palmares}
+              />
+            )}
+          {coachProfile.coachData &&
+            coachProfile.coachData.playerData &&
+            coachProfile.coachData.playerData.achievements &&
+            !isEmpty(coachProfile.coachData.playerData.achievements) && (
+              <Collapse
+                data={coachProfile.coachData.playerData.achievements}
+                // title="Palmarès professionnel"
+                title="Palmarès joueur"
+                iconblock={palmares}
+              />
+            )}
         </div>
       )}
     </div>

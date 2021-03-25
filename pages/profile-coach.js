@@ -47,17 +47,25 @@ export default function ProfileCoach({
     let specialty = ''
     if (job) {
       if (job.specialty && job.specialty.type === 'sport') {
-        specialty = sports.find(
-          (sport) =>
-            sport._id ===
-            (coachProfile.coachData && coachProfile.coachData.specialty),
-        )
+        specialty = coachProfile.coachData.specialty
+          ? coachProfile.coachData.specialty.reduce((acc, val) => {
+              const element = sports.find((dance) => dance._id === val)
+              if (element) {
+                acc = [...acc, element]
+              }
+              return acc
+            }, [])
+          : []
       } else if (job.specialty && job.specialty.type === 'dance') {
-        specialty = dances.find(
-          (dance) =>
-            dance._id ===
-            (coachProfile.coachData && coachProfile.coachData.specialty),
-        )
+        specialty = coachProfile.coachData.specialty
+          ? coachProfile.coachData.specialty.reduce((acc, val) => {
+              const element = dances.find((dance) => dance._id === val)
+              if (element) {
+                acc = [...acc, element]
+              }
+              return acc
+            }, [])
+          : []
       }
     }
     return (

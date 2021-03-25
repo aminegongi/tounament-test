@@ -26,37 +26,8 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
     ),
   )
 
-  const isCoachOpenForWork = () => {
-    if (authContext.isLoggedIn) {
-      if (
-        authContext.userType === CLUB &&
-        coachProfile.coachData &&
-        !coachProfile.coachData.lookingForJob
-      ) {
-        return false
-      }
-      if (
-        authContext.userType !== CLUB &&
-        coachProfile.coachData &&
-        coachProfile.coachData.privateCourseData &&
-        !coachProfile.coachData.privateCourseData.givePrivateCourse
-      ) {
-        return false
-      }
-    }
-    if (!authContext.isLoggedIn) {
-      return true
-    }
-    return true
-  }
   const onOpenContactModal = () => {
-    // if (!authContext.isLoggedIn) {
-    //   return authContext.toggleLogInModal()
-    // }
-    if (isCoachOpenForWork()) {
-      return setIsModalVisibleReservation(true)
-    }
-    return null
+    return setIsModalVisibleReservation(true)
   }
 
   const getYearsOfExperience = () => {
@@ -113,7 +84,13 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
         )}
         {specialty && (
           <div className="infocoach_coach__information__sporttype">
-            {specialty.translations ? specialty.translations.fr : ''}
+            {specialty &&
+              specialty.map((el, index) => {
+                if (index !== specialty.length - 1) {
+                  return `${el.translations.fr}, `
+                }
+                return el.translations.fr
+              })}
           </div>
         )}
         <div className="infocoach_coach__information__yearexperience">
@@ -130,15 +107,13 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
               Propose de cours privé{' '}
             </div>
           </div>
-          {isCoachOpenForWork() && (
-            <button
-              onClick={onOpenContactModal}
-              type="submit"
-              className="buttoncontactcoach"
-            >
-              contacter
-            </button>
-          )}
+          <button
+            onClick={onOpenContactModal}
+            type="submit"
+            className="buttoncontactcoach"
+          >
+            contacter
+          </button>
         </div>
       </div>
       <ReservationCours
