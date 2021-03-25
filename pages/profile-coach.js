@@ -1,8 +1,11 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react'
 import { Input, Select, Modal } from 'antd'
 import '../shared/css/profilecoach.scss'
 import '../shared/global-style.scss'
 import fetch from 'isomorphic-unfetch'
+import { useMediaPredicate } from 'react-media-hook'
 import {
   ALL,
   ALPHABETICAL,
@@ -16,8 +19,6 @@ import Recommendation from '../shared/components/RecommendationFilter/Recommenda
 import CoachType from '../shared/components/CoachTypeFilter/CoachType'
 import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion'
 import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach'
-import Navbar from '../shared/components/navbar/Navbar'
-import HeaderCoachProfile from '../shared/components/HeaderCoachProfile/HeaderCoachProfil'
 import affiche from '../public/icon/Banniere.png'
 import Layout from '../shared/components/layout/Layout'
 
@@ -34,6 +35,7 @@ export default function ProfileCoach({
   const [coachSpecialty, setCoachSpecialty] = useState()
   const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
   const nbr_of_card_per_page = 9
+  const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const [pageNumber, setPageNumber] = useState(1)
   const [pageActiveNumber, setPageActiveNumber] = useState()
@@ -99,17 +101,17 @@ export default function ProfileCoach({
   }
   const { Option } = Select
   const handleChange = (value) => {
-    if (value.key == 'alphabetique') {
+    if (value.key === 'alphabetique') {
       const sortbyalphabetical = [...dataCopy].sort((a, b) =>
         a.firstName - b.firstName ? 1 : -1,
       )
       return setDataCopy(sortbyalphabetical)
     }
 
-    if (value.key == 'Tout') {
+    if (value.key === 'Tout') {
       return setDataCopy(coachesList)
     }
-    if (value.key == 'experience') {
+    if (value.key === 'experience') {
       const sortbyexperience = [...dataCopy].sort((a, b) =>
         a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber
           ? 1
@@ -117,7 +119,7 @@ export default function ProfileCoach({
       )
       return setDataCopy(sortbyexperience)
     }
-    if (value.key == 'recommander') {
+    if (value.key === 'recommander') {
       const sortbyrecommend = [...coachesList].sort((a, b) =>
         Math.round(
           a.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
@@ -142,16 +144,15 @@ export default function ProfileCoach({
         </div>
         <div className="profil_coach__coach_details">
           <div className="profil_coach__coach_details__filter">
-            <Search
-              className="profil_coach__coach_details__filter__input_searsh"
-              placeholder="RECHERCHE PAR NOM"
-              onChange={(e) => onSearch(e.target.value)}
-              // style={{
-              //     width: 270,
-              // }}
-            />
+            {!isMobile && (
+              <Search
+                className="profil_coach__coach_details__filter__input_searsh"
+                placeholder="RECHERCHE PAR NOM"
+                onChange={(e) => onSearch(e.target.value)}
+              />
+            )}
 
-            <div className="lineprofilecoach" />
+            {/* <div className="lineprofilecoach" /> */}
 
             <FilterCoach
               coachSpecialty={coachSpecialty}
@@ -166,7 +167,7 @@ export default function ProfileCoach({
               dataCopy={dataCopy}
               coachesList={coachesList}
             />
-            <div className="lineprofilecoach" />
+            {/* <div className="lineprofilecoach" /> */}
             <FilterCoach
               dances={dances}
               sports={sports}
@@ -180,25 +181,25 @@ export default function ProfileCoach({
               jobs={jobs}
               title="SPECIALITES"
             />
-            <div className="lineprofilecoach" />
+            {/* <div className="lineprofilecoach" /> */}
             <Experiencefilter
               setDataCopy={setDataCopy}
               dataCopy={dataCopy}
               coachesList={coachesList}
             />
-            <div className="lineprofilecoach" />
+            {/* <div className="lineprofilecoach" /> */}
             <Recommendation
               dataCopy={dataCopy}
               setDataCopy={setDataCopy}
               coachesList={coachesList}
             />
-            <div className="lineprofilecoach" />
+            {/* <div className="lineprofilecoach" /> */}
             <CoachType
               setDataCopy={setDataCopy}
               dataCopy={dataCopy}
               coachesList={coachesList}
             />
-            <div className="lineprofilecoach" />
+            {/* <div className="lineprofilecoach" /> */}
             <CoachRegion
               regions={regions}
               setDataCopy={setDataCopy}
@@ -208,14 +209,16 @@ export default function ProfileCoach({
           </div>
 
           <div className="profil_coach__coach_details__list_of_coach">
-            <Search
-              className="profil_coach__coach_details__filter__input_searshmobile"
-              placeholder="RECHERCHE PAR NOM"
-              onChange={(e) => onSearch(e.target.value)}
-              // style={{
-              //     width: 270,
-              // }}
-            />
+            {isMobile && (
+              <Search
+                className="profil_coach__coach_details__filter__input_searshmobile"
+                placeholder="RECHERCHE PAR NOM"
+                onChange={(e) => onSearch(e.target.value)}
+                // style={{
+                //     width: 270,
+                // }}
+              />
+            )}
             <div className="profil_coach__coach_details__list_of_coach__lenght_sortby">
               <div className="profil_coach__coach_details__list_of_coach__lenght_sortby__filter">
                 <div className="filerblock">

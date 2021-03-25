@@ -82,7 +82,7 @@ export default function CoachAboutBoxes({ coachData }) {
               )}
             {coachData &&
               coachData.privateCourseData &&
-              coachData.privateCourseData.level && (
+              !isEmpty(coachData.privateCourseData.level) && (
                 <div className="coachBox__content">
                   <span className="coachBox__content__title">
                     Niveaux:{' '}
@@ -94,7 +94,7 @@ export default function CoachAboutBoxes({ coachData }) {
               )}
             {coachData &&
               coachData.privateCourseData &&
-              coachData.privateCourseData.ages && (
+              !isEmpty(coachData.privateCourseData.ages) && (
                 <div className="coachBox__content">
                   <div className="coachBox__content__title ">
                     Catégories d'ages:{' '}

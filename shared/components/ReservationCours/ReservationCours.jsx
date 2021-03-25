@@ -118,7 +118,7 @@ const ReservationCours = ({
           <button
             onClick={() =>
               router.push(
-                routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
+                routes.COACH_DETAILS.CALENDAR.linkTo(coachProfile.username),
               )
             }
             type="submit"
