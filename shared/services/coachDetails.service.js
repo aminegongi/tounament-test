@@ -25,7 +25,7 @@ export const createCoachingRequest = async (values, setLoading) => {
 
     return {
       type: REQUEST_FAILED,
-      data: error,
+      data: error.response.data,
     }
   }
 }

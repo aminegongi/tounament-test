@@ -234,7 +234,7 @@ export default function CoachAboutBoxes({ coachData }) {
                 {coachData &&
                   coachData &&
                   coachData.coachingPhotos &&
-                  coachData.coachingPhotos.map((photo) => {
+                  coachData.coachingPhotos.slice(1).map((photo) => {
                     return (
                       <button
                         type="button"
