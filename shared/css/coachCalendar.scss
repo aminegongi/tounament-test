@@ -86,6 +86,7 @@
                     color: #232323;
                     margin-bottom: 28px;
                 }
+
                 &__item {
                     display: flex;
                     font-size: 16px;
@@ -93,6 +94,13 @@
                     color: #232323;
                     align-items: center;
                     margin-bottom: 20px;
+
+                    &__delete-icon {
+                        font-size: 20px;
+                        color:  #ff5854;
+                        cursor: pointer;
+                        
+                    }
 
                     &__icon {
                         width: 16px;
@@ -126,6 +134,7 @@
                 }
             }
             &__calendar-section {
+                top: 0;
                 &__footer {
                     width: 100%;
                     padding: 20px;

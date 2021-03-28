@@ -12,7 +12,7 @@
     &__calendar {
         border: none;
         .react-calendar__tile--active {
-            color: #000000A6;
+            color: #000000a6;
         }
         &__day {
             background-color: #ff8760;
@@ -21,18 +21,22 @@
                 color: white;
             }
             &.react-calendar__tile:disabled {
-                color: #000000A6;
+                color: #000000a6;
             }
         }
-            .react-calendar__tile:disabled {
-                background-color: white;
-            }
-        .react-calendar__navigation__next2-button, .react-calendar__navigation__prev2-button {
+        .react-calendar__tile--active {
+            background-color: #26beb5 !important;
+            color: white;
+        }
+        .react-calendar__tile:disabled {
+            background-color: white;
+        }
+        .react-calendar__navigation__next2-button,
+        .react-calendar__navigation__prev2-button {
             display: none;
         }
         .react-calendar__navigation__label {
             pointer-events: none;
-
         }
     }
 
@@ -48,7 +52,6 @@
         }
     }
 }
-
 
 @media only screen and (max-width: 992px) {
     .weekly-booking-calendar {

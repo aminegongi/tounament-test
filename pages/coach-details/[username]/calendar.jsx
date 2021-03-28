@@ -37,9 +37,25 @@ export default function Calendar({
     const job = jobs.find((j) => j._id === coachDetails.coachData.job)
     let specialty = ''
     if (job && job.specialty && job.specialty.type === 'sport') {
-      specialty = sports.find((sport) => sport._id === coachDetails.specialty)
+      specialty = coachDetails.coachData.specialty
+        ? coachDetails.coachData.specialty.reduce((acc, val) => {
+            const element = sports.find((dance) => dance._id === val)
+            if (element) {
+              acc = [...acc, element]
+            }
+            return acc
+          }, [])
+        : []
     } else if (job && job.specialty && job.specialty.type === 'dance') {
-      specialty = dances.find((dance) => dance._id === coachDetails.specialty)
+      specialty = coachDetails.coachData.specialty
+        ? coachDetails.coachData.specialty.reduce((acc, val) => {
+            const element = dances.find((dance) => dance._id === val)
+            if (element) {
+              acc = [...acc, element]
+            }
+            return acc
+          }, [])
+        : []
     }
     return (
       <InfoCoach
@@ -61,13 +77,16 @@ export default function Calendar({
       const result = await createCoachingRequest(
         {
           coachId: coachDetails._id,
-          requests: selectedTimeSlots.map((el) =>
-            moment(el, 'DD-MM-YYYY HH:mm').format(),
-          ),
+          requests: selectedTimeSlots.map((el) => ({ availabilityId: el._id })),
         },
         setConfirmationLoading,
       )
       if (result.type === REQUEST_FAILED) {
+        if (result.data.message === 'youCanNotBookMoreThan4CoachesPerDay') {
+          return message.error(
+            'Vous ne pouvez pas réserver plus de 4 cours par jour!',
+          )
+        }
         return message.error(
           "Ahhh! quelque chose s'est mal passé, réessayez plus tard. Merci",
         )
@@ -89,11 +108,21 @@ export default function Calendar({
         coachDetails.coachData.privateCourseData &&
         !coachDetails.coachData.privateCourseData.givePrivateCourse
       ) {
-        return {}
+        return []
       }
-      return coachDetails.coachData.availabilities
+      return coachDetails.coachData.availabilities.reduce((acc, val) => {
+        if (moment().isSameOrBefore(val.startTime)) {
+          const date = moment(val.startTime).format('DD-MM-YYYY')
+          if (acc[date]) {
+            acc[date] = [...acc[date], val]
+          } else {
+            acc[date] = [val]
+          }
+        }
+        return acc
+      }, {})
     }
-    return {}
+    return []
   }
 
   if (serverResponseStatus === 404) {
@@ -137,7 +166,7 @@ export default function Calendar({
               </div>
               <div className="coach-calendar__body__calendar-section__body">
                 <WeeklyBookingCalendar
-                  availabilities={getCoachAvailabilities()}
+                  availabilitiesByDate={getCoachAvailabilities()}
                   setSelectedTimeSlots={setSelectedTimeSlots}
                   selectedTimeSlots={selectedTimeSlots}
                 />
@@ -152,14 +181,28 @@ export default function Calendar({
                     <div className="coach-calendar__body__calendar-section__footer__item">
                       <div className="coach-calendar__body__calendar-section__footer__item__icon" />
                       <div className="coach-calendar__body__calendar-section__footer__item__day">
-                        {moment(el, 'DD-MM-YYYY').format('dddd')}
+                        {moment(el.startTime, 'YYYY-MM-DD').format('dddd')}
                       </div>
                       <div className="coach-calendar__body__calendar-section__footer__item__date">
-                        {moment(el, 'DD-MM-YYYY').format('DD-MM-YYYY')}
+                        {moment(el.startTime, 'YYYY-MM-DD').format(
+                          'DD-MM-YYYY',
+                        )}
                       </div>
                       <div className="coach-calendar__body__calendar-section__footer__item__time">
-                        {moment(el, 'DD-MM-YYYY HH:mm').format('HH:mm')}
+                        {moment(el.startTime, 'YYYY-MM-DD HH:mm').format(
+                          'HH:mm',
+                        )}
                       </div>
+                      <Icon
+                        type="close-square"
+                        className="coach-calendar__body__calendar-section__footer__item__delete-icon"
+                        theme="filled"
+                        onClick={() =>
+                          setSelectedTimeSlots(
+                            selectedTimeSlots.filter((s) => s._id !== el._id),
+                          )
+                        }
+                      />
                     </div>
                   ))}
                   {authContext.userProfile._id !== coachDetails._id && (
