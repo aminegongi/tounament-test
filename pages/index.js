@@ -1,4 +1,13 @@
+/* eslint-disable react/jsx-filename-extension */
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
+
+import Axios from 'axios'
+import { Collapse, Icon, Button } from 'antd'
+import Link from 'next/link'
+import Countdown from 'antd/lib/statistic/Countdown'
+import moment from 'moment'
 import Layout from '../shared/components/layout/Layout'
 import '../shared/css/home.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
@@ -16,13 +25,10 @@ import Navbar from '../shared/components/navbar/Navbar'
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage'
 import performance from '../public/icon/performance.png'
 import { i18n, withTranslation } from '../i18n'
-import PropTypes from 'prop-types'
-import { useState, useEffect } from 'react'
-import Axios from 'axios'
-import { Collapse, Icon, Button } from 'antd'
+
 import '../shared/global-style.scss'
-import Link from 'next/link'
 import routes from '../utils/routes'
+// import Countdown from '../shared/components/CountDown'
 
 const { Panel } = Collapse
 
@@ -51,6 +57,32 @@ const Index = (props) => {
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
+
+  return (
+    <div className="home_page">
+      <div className="home_page__counter-page">
+        <img
+          width="200px"
+          src="../../../icon/logoindexpage.png"
+          alt="iSporit"
+        />
+        <h1 className="home_page__counter-page__counter">
+          <Countdown
+            title=""
+            value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
+            format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+          />
+        </h1>
+        <Link href={routes.CONTACT_US.path}>
+          <a href={routes.CONTACT_US.path}>
+            <Button className="home_page__counter-page__contact" type="primary">
+              Contact
+            </Button>
+          </a>
+        </Link>
+      </div>
+    </div>
+  )
 
   return (
     <div className="home_page">

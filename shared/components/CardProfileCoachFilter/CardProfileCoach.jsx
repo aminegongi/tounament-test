@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './cardProfileCoach.scss'
 import { Rate } from 'antd'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { AVATAR } from '../../constants'
 import ShareLink from '../ShareLink/ShareLink'
 import getUserProfilePicture from '../../../utils/string.utils'
@@ -15,6 +16,7 @@ export default function CardProfileCoach({
   job,
   specialty,
 }) {
+  const router = useRouter()
   const [img, setimg] = useState(
     // coachProfile.profilePicture
     //   ? `http://dev.isporit.com/api/${coachProfile.profilePicture}`
@@ -105,11 +107,16 @@ export default function CardProfileCoach({
       </Link>
       <div className="card_profil_coach__button">
         <button
-          onClick={() => setIsModalVisibleReservation(true)}
+          // onClick={() => setIsModalVisibleReservation(true)}
+          onClick={() =>
+            router.push(
+              routes.COACH_DETAILS.CALENDAR.linkTo(coachProfile.username),
+            )
+          }
           type="button"
           className="card_profil_coach__button__contact"
         >
-          Contacter
+          Réserver
         </button>
         <Link href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
           <a href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
@@ -123,11 +130,11 @@ export default function CardProfileCoach({
         </Link>
       </div>
 
-      <ReservationCours
+      {/* <ReservationCours
         coachProfile={coachProfile}
         isModalVisibleReservation={isModalVisibleReservation}
         setIsModalVisibleReservation={setIsModalVisibleReservation}
-      />
+      /> */}
     </div>
   )
 }

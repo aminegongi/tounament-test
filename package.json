@@ -47,6 +47,7 @@
     "react-hotjar": "^2.2.0",
     "react-media-hook": "^0.4.7",
     "react-modal": "^3.11.1",
+    "react-player": "^2.9.0",
     "react-router-dom": "^5.2.0",
     "react-ticker": "^1.2.1",
     "uuid": "^8.3.2",

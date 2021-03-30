@@ -20,6 +20,7 @@ import exclamation from '../../../public/icon/exclamation.png'
 import ReservationCours from '../../../shared/components/ReservationCours/ReservationCours'
 import AuthContext from '../../../utils/context.utils'
 import Layout from '../../../shared/components/layout/Layout'
+import routes from '../../../utils/routes'
 
 export default function CoachDetails({ coachesList, jobs, sports, dances }) {
   const router = useRouter()
@@ -52,15 +53,15 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
     }
     return true
   }
-  const onOpenContactModal = () => {
-    // if (!authContext.isLoggedIn) {
-    //   return authContext.toggleLogInModal()
-    // }
-    if (isCoachOpenForWork()) {
-      return setIsContactModalVisible(true)
-    }
-    return null
-  }
+  // const onOpenContactModal = () => {
+  //   // if (!authContext.isLoggedIn) {
+  //   //   return authContext.toggleLogInModal()
+  //   // }
+  //   if (isCoachOpenForWork()) {
+  //     return setIsContactModalVisible(true)
+  //   }
+  //   return null
+  // }
 
   const renderCoachProfile = () => {
     const job = jobs.find(
@@ -178,11 +179,15 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
                 </button>
               </div>
               <button
-                onClick={onOpenContactModal}
+                onClick={() =>
+                  router.push(
+                    routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
+                  )
+                }
                 type="button"
                 className="isporit-primary-button tabs__contact"
               >
-                Contacter
+                Réserver
               </button>
             </div>
             {/* <div className="linetabs" /> */}
@@ -190,11 +195,11 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
           </div>
         </div>
 
-        <ReservationCours
+        {/* <ReservationCours
           coachProfile={coachesList}
           isModalVisibleReservation={isContactModalVisible}
           setIsModalVisibleReservation={setIsContactModalVisible}
-        />
+        /> */}
       </div>
     </Layout>
   )

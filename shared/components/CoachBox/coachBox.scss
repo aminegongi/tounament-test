@@ -19,9 +19,7 @@
     }
 
     &__video {
-        
         &__noVideo {
-
             margin-top: 43px;
             display: grid;
             place-content: center;
@@ -56,8 +54,16 @@
     &__video-section {
         display: grid;
         row-gap: 29px;
+        
         &__first-video,
         &__other-videos {
+            &__container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                min-height: 200px;
+            }
             &__video {
                 border: 1px solid transparent;
             }
@@ -169,8 +175,6 @@
         border: 1px solid transparent;
         margin-top: 12px;
     }
-
-
 }
 
 @media only screen and (max-width: 768px) {
@@ -187,16 +191,13 @@
             &__first-picture {
                 max-height: 100%;
                 border-radius: 10px;
-                
             }
         }
     }
 }
 
-
 @media only screen and (max-width: 500px) {
     .coachBoxiteam {
-        
         &__video-section {
             &__other-videos {
                 grid-template-columns: 100%;
@@ -204,5 +205,3 @@
         }
     }
 }
-
-

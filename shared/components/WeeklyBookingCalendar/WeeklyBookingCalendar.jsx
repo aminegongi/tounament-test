@@ -20,18 +20,20 @@ const WeeklyBookingCalendar = ({
         moment(selectedDate, 'DD-MM-YYYY').format('DD-MM-YYYY')
       ]
     if (items) {
-      return sortBy(items, (o) =>
-        moment(o.startTime, 'YYYY-MM-DD HH:mm').format('HH:mm'),
-      )
-        .filter((el) => !moment().isSameOrAfter(moment(el.startTime)))
-        .filter(
-          (el) =>
-            !selectedTimeSlots.find((s) =>
-              moment(s.startTime, 'YYYY-MM-DD HH:mm').isSame(
-                moment(el.startTime, 'YYYY-MM-DD HH:mm'),
-              ),
-            ),
+      return (
+        sortBy(items, (o) =>
+          moment(o.startTime, 'YYYY-MM-DD HH:mm').format('HH:mm'),
         )
+          // .filter((el) => !moment().isSameOrAfter(moment(el.startTime)))
+          .filter(
+            (el) =>
+              !selectedTimeSlots.find((s) =>
+                moment(s.startTime, 'YYYY-MM-DD HH:mm').isSame(
+                  moment(el.startTime, 'YYYY-MM-DD HH:mm'),
+                ),
+              ),
+          )
+      )
     }
     return []
   }

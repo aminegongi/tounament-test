@@ -38,82 +38,107 @@ export default function CoachAboutBoxes({ coachData }) {
     return false
   }
 
+  const isInformationEmpty = () => {
+    if (
+      !coachData.experiencesYearsNumber &&
+      !(coachData.playerData && coachData.playerData.experiencesYearsNumber) &&
+      !(
+        coachData.privateCourseData &&
+        coachData.privateCourseData.personsNumberPerSession
+      ) &&
+      !(
+        coachData.privateCourseData &&
+        !isEmpty(coachData.privateCourseData.level)
+      ) &&
+      !(
+        coachData.privateCourseData &&
+        !isEmpty(coachData.privateCourseData.ages)
+      )
+    ) {
+      return true
+    }
+    return false
+  }
+
   return (
     <div className="coachBoxiteam">
       <div className="coachBoxiteam__column">
-        <CoachProfileSection title="Informations" icon={exclamationIcon}>
-          <div className="coachBox">
-            {coachData.experiencesYearsNumber ? (
-              <div className="coachBox__content">
-                <div className="coachBox__content__title">
-                  Années d'expérience:{' '}
-                  <span className="coachBox__content__value">
-                    {coachData && coachData.experiencesYearsNumber}
-                  </span>
-                </div>
-              </div>
-            ) : (
-              ''
-            )}
-
-            {coachData.playerData &&
-              coachData.playerData.experiencesYearsNumber && (
+        {!isInformationEmpty() && (
+          <CoachProfileSection title="Informations" icon={exclamationIcon}>
+            <div className="coachBox">
+              {coachData.experiencesYearsNumber ? (
                 <div className="coachBox__content">
                   <div className="coachBox__content__title">
-                    Années à jouer:{' '}
+                    Années d'expérience:{' '}
                     <span className="coachBox__content__value">
-                      {coachData.playerData.experiencesYearsNumber}
+                      {coachData && coachData.experiencesYearsNumber}
                     </span>
                   </div>
                 </div>
+              ) : (
+                ''
               )}
 
-            {coachData &&
-              coachData.privateCourseData &&
-              coachData.privateCourseData.personsNumberPerSession && (
-                <div className="coachBox__content">
-                  <div className="coachBox__content__title">
-                    Nombre de personnes par séances:
-                    <span className="coachBox__content__value">
-                      {coachData.privateCourseData.personsNumberPerSession}
-                    </span>
+              {coachData.playerData &&
+                coachData.playerData.experiencesYearsNumber && (
+                  <div className="coachBox__content">
+                    <div className="coachBox__content__title">
+                      Années à jouer:{' '}
+                      <span className="coachBox__content__value">
+                        {coachData.playerData.experiencesYearsNumber}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              )}
-            {coachData &&
-              coachData.privateCourseData &&
-              !isEmpty(coachData.privateCourseData.level) && (
-                <div className="coachBox__content">
-                  <span className="coachBox__content__title">
-                    Niveaux:{' '}
-                    <span className="coachBox__content__value">
-                      {coachData.privateCourseData.level.join(', ')}
-                    </span>
-                  </span>
-                </div>
-              )}
-            {coachData &&
-              coachData.privateCourseData &&
-              !isEmpty(coachData.privateCourseData.ages) && (
-                <div className="coachBox__content">
-                  <div className="coachBox__content__title ">
-                    Catégories d'ages:{' '}
-                    <span className="coachBox__content__value">
-                      {coachData.privateCourseData.ages.join(', ')}
-                    </span>
-                  </div>
-                </div>
-              )}
-          </div>
-        </CoachProfileSection>
+                )}
 
-        {coachData && coachData && coachData.youtubeVideosLinks.length !== 0 ? (
-          <CoachProfileSection title="Videos" isVerticalLine icon={videoicon}>
+              {coachData.privateCourseData &&
+                coachData.privateCourseData.personsNumberPerSession && (
+                  <div className="coachBox__content">
+                    <div className="coachBox__content__title">
+                      Nombre de personnes par séances:
+                      <span className="coachBox__content__value">
+                        {coachData.privateCourseData.personsNumberPerSession}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              {coachData.privateCourseData &&
+                !isEmpty(coachData.privateCourseData.level) && (
+                  <div className="coachBox__content">
+                    <span className="coachBox__content__title">
+                      Niveaux:{' '}
+                      <span className="coachBox__content__value">
+                        {coachData.privateCourseData.level.join(', ')}
+                      </span>
+                    </span>
+                  </div>
+                )}
+              {coachData.privateCourseData &&
+                !isEmpty(coachData.privateCourseData.ages) && (
+                  <div className="coachBox__content">
+                    <div className="coachBox__content__title ">
+                      Catégories d'ages:{' '}
+                      <span className="coachBox__content__value">
+                        {coachData.privateCourseData.ages.join(', ')}
+                      </span>
+                    </div>
+                  </div>
+                )}
+            </div>
+          </CoachProfileSection>
+        )}
+
+        {coachData && coachData && coachData.videosLinks.length !== 0 ? (
+          <CoachProfileSection
+            title="Videos"
+            isVerticalLine={!isInformationEmpty()}
+            icon={videoicon}
+          >
             <div className="coachBoxiteam__video-section">
               {coachData &&
                 coachData &&
-                coachData.youtubeVideosLinks &&
-                coachData.youtubeVideosLinks.slice(0, 1).map((v) => {
+                coachData.videosLinks &&
+                coachData.videosLinks.slice(0, 1).map((v) => {
                   return (
                     <div className="coachBoxiteam__video-section__first-video">
                       <YoutubeVideoCard
@@ -135,10 +160,10 @@ export default function CoachAboutBoxes({ coachData }) {
               <div className="coachBoxiteam__video-section__other-videos">
                 {coachData &&
                   coachData &&
-                  coachData.youtubeVideosLinks &&
-                  coachData.youtubeVideosLinks.slice(1).map((v) => {
+                  coachData.videosLinks &&
+                  coachData.videosLinks.slice(1).map((v) => {
                     return (
-                      <div>
+                      <div className="coachBoxiteam__video-section__other-videos__container">
                         <YoutubeVideoCard
                           title={v.title}
                           width="100%"
@@ -146,11 +171,13 @@ export default function CoachAboutBoxes({ coachData }) {
                           src={v.link}
                           height="194px"
                         />
-                        <div className="coachBoxiteam__video-section__other-videos__title">
-                          {v.title}
-                        </div>
-                        <div className="coachBoxiteam__video-section__other-videos__date">
-                          {moment(v.videoDate).format('LL')}
+                        <div className="">
+                          <div className="coachBoxiteam__video-section__other-videos__title">
+                            {v.title}
+                          </div>
+                          <div className="coachBoxiteam__video-section__other-videos__date">
+                            {moment(v.videoDate).format('LL')}
+                          </div>
                         </div>
                       </div>
                     )
@@ -208,7 +235,7 @@ export default function CoachAboutBoxes({ coachData }) {
         {coachData && coachData && coachData.coachingPhotos.length !== 0 ? (
           <CoachProfileSection
             title="Photos"
-            isVerticalLine
+            isVerticalLine={!isLocationEmpty()}
             icon={picturesIcon}
           >
             <div className="coachBoxiteam__pictures-section">

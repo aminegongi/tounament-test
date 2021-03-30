@@ -111,14 +111,14 @@ export default function Calendar({
         return []
       }
       return coachDetails.coachData.availabilities.reduce((acc, val) => {
-        if (moment().isSameOrBefore(val.startTime)) {
-          const date = moment(val.startTime).format('DD-MM-YYYY')
-          if (acc[date]) {
-            acc[date] = [...acc[date], val]
-          } else {
-            acc[date] = [val]
-          }
+        // if (moment().isSameOrBefore(val.startTime)) {
+        const date = moment(val.startTime).format('DD-MM-YYYY')
+        if (acc[date]) {
+          acc[date] = [...acc[date], val]
+        } else {
+          acc[date] = [val]
         }
+        // }
         return acc
       }, {})
     }
