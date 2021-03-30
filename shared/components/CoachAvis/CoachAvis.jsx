@@ -37,6 +37,7 @@ function CoachAvis({ coachData }) {
               coachData.coachData.reviews.map((reviews) => {
                 return (
                   <div className="coachaviscomposant__card__description">
+                    {console.log('reviews: ', reviews)}
                     <div className="coachaviscomposant__card__description__recommendationMember">
                       <img
                         src={AvatarCoach}
@@ -45,7 +46,8 @@ function CoachAvis({ coachData }) {
                       />
                       <div className="coachaviscomposant__card__description__recommendationMember__nameStart">
                         <div className="coachaviscomposant__card__description__recommendationMember__nameStart__name">
-                          Nour jbeli
+                          {reviews.reviewer.firstName}{' '}
+                          {reviews.reviewer.lastName}
                         </div>
                         <Rate
                           className="coachaviscomposant__card__description__recommendationMember__nameStart__rate"
@@ -53,12 +55,12 @@ function CoachAvis({ coachData }) {
                           defaultValue={reviews.rating}
                         />
                       </div>
-                      <div className="coachaviscomposant__card__description__recommendationMember__publishdate">
+                      {/* <div className="coachaviscomposant__card__description__recommendationMember__publishdate">
                         <span>il y a 3 jours</span>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="coachaviscomposant__card__description__avis">
-                      {reviews.answer}
+                      {reviews.title}
                     </div>
                   </div>
                 )

@@ -107,13 +107,13 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
               Propose de cours privé{' '}
             </div>
           </div>
-          <button
+          {/* <button
             onClick={onOpenContactModal}
             type="submit"
             className="buttoncontactcoach"
           >
             contacter
-          </button>
+          </button> */}
         </div>
       </div>
       <ReservationCours
