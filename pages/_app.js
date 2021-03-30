@@ -85,7 +85,6 @@ function MyApp({ Component, pageProps }) {
 
   const toggleLogInModal = (cbAfterLogin = () => {}, isSignUp = false, role) => {
     setCallbackAfterLogin(cbAfterLogin)
-    console.log('role: ', role);
     if(role){
       setRole(role)
     }
