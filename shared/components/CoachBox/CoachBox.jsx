@@ -107,13 +107,13 @@ export default function CoachAboutBoxes({ coachData }) {
           </div>
         </CoachProfileSection>
 
-        {coachData && coachData && coachData.youtubeVideosLinks.length !== 0 ? (
+        {coachData && coachData && coachData.videosLinks.length !== 0 ? (
           <CoachProfileSection title="Videos" isVerticalLine icon={videoicon}>
             <div className="coachBoxiteam__video-section">
               {coachData &&
                 coachData &&
-                coachData.youtubeVideosLinks &&
-                coachData.youtubeVideosLinks.slice(0, 1).map((v) => {
+                coachData.videosLinks &&
+                coachData.videosLinks.slice(0, 1).map((v) => {
                   return (
                     <div className="coachBoxiteam__video-section__first-video">
                       <YoutubeVideoCard
@@ -135,8 +135,8 @@ export default function CoachAboutBoxes({ coachData }) {
               <div className="coachBoxiteam__video-section__other-videos">
                 {coachData &&
                   coachData &&
-                  coachData.youtubeVideosLinks &&
-                  coachData.youtubeVideosLinks.slice(1).map((v) => {
+                  coachData.videosLinks &&
+                  coachData.videosLinks.slice(1).map((v) => {
                     return (
                       <div>
                         <YoutubeVideoCard

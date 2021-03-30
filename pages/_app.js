@@ -62,19 +62,23 @@ function MyApp({ Component, pageProps }) {
     fetchProfile()
     hotjar.initialize(1813801, 6)
 
-    if (!window.GA_INITIALIZED) {
-      initGA()
-      window.GA_INITIALIZED = true
+    if (window.location.href.includes('isporit.com')) {
+      if (!window.GA_INITIALIZED) {
+        initGA()
+        window.GA_INITIALIZED = true
+      }
+      logPageView()
     }
-    logPageView()
   }, [])
 
   useEffect(() => {
-    if (!window.GA_INITIALIZED) {
-      initGA()
-      window.GA_INITIALIZED = true
+    if (window.location.href.includes('isporit.com')) {
+      if (!window.GA_INITIALIZED) {
+        initGA()
+        window.GA_INITIALIZED = true
+      }
+      logPageView()
     }
-    logPageView()
   }, [router.query])
 
   const toggleLogInModal = (cbAfterLogin = () => {}, isSignUp = false) => {
