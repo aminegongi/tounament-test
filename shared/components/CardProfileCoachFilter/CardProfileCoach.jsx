@@ -89,6 +89,7 @@ export default function CardProfileCoach({
                     }
                     return el.translations.fr
                   })}
+                 
               </div>
             }
             <div className="card_profil_coach__information__yearexperience">

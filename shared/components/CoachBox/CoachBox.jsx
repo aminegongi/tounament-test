@@ -20,7 +20,7 @@ import CoachProfileSection from '../CoachProfileSection'
 import { API } from '../../constants'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
 
-export default function CoachAboutBoxes({ coachData }) {
+export default function CoachAboutBoxes({ coachData, specialty }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
@@ -64,14 +64,14 @@ export default function CoachAboutBoxes({ coachData }) {
     <div className="coachBoxiteam">
       <div className="coachBoxiteam__column">
         {!isInformationEmpty() && (
-          <CoachProfileSection title="Informations" icon={exclamationIcon}>
+          <CoachProfileSection title="Informations sportives" icon={exclamationIcon}>
             <div className="coachBox">
               {coachData.experiencesYearsNumber ? (
                 <div className="coachBox__content">
                   <div className="coachBox__content__title">
                     Années d'expérience:{' '}
                     <span className="coachBox__content__value">
-                      {coachData && coachData.experiencesYearsNumber}
+                      {coachData && coachData.experiencesYearsNumber} ans
                     </span>
                   </div>
                 </div>
@@ -83,25 +83,25 @@ export default function CoachAboutBoxes({ coachData }) {
                 coachData.playerData.experiencesYearsNumber && (
                   <div className="coachBox__content">
                     <div className="coachBox__content__title">
-                      Années à jouer:{' '}
+                      Années en tant que joueur:{' '}
                       <span className="coachBox__content__value">
-                        {coachData.playerData.experiencesYearsNumber}
+                        {coachData.playerData.experiencesYearsNumber} ans 
                       </span>
                     </div>
                   </div>
                 )}
 
-              {coachData.privateCourseData &&
+              {/* {coachData.privateCourseData &&
                 coachData.privateCourseData.personsNumberPerSession && (
                   <div className="coachBox__content">
                     <div className="coachBox__content__title">
-                      Nombre de personnes par séances:
+                      Nombre de personnes par séance:
                       <span className="coachBox__content__value">
                         {coachData.privateCourseData.personsNumberPerSession}
                       </span>
                     </div>
                   </div>
-                )}
+                )} */}
               {coachData.privateCourseData &&
                 !isEmpty(coachData.privateCourseData.level) && (
                   <div className="coachBox__content">
@@ -124,6 +124,24 @@ export default function CoachAboutBoxes({ coachData }) {
                     </div>
                   </div>
                 )}
+{specialty &&
+                !isEmpty(specialty) && (
+                  <div className="coachBox__content">
+                    <div className="coachBox__content__title ">
+                      Spécialités:{' '}
+                      <span className="coachBox__content__value">
+                        {specialty.map((el, index) => {
+                          if (index !== specialty.length - 1) {
+                            return `${el.translations.fr}, `
+                          }
+                          return el.translations.fr
+                        })}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+              
             </div>
           </CoachProfileSection>
         )}
@@ -188,7 +206,7 @@ export default function CoachAboutBoxes({ coachData }) {
         ) : (
           <div className="coachBoxiteam__video__noVideo">
             <img src={video} alt="video" />
-            <span>Aucun Vidéo publie</span>
+            <span>Aucune Vidéo publiée</span>
           </div>
         )}
       </div>
@@ -281,7 +299,7 @@ export default function CoachAboutBoxes({ coachData }) {
         ) : (
           <div className="coachBoxiteam__photo__noPhoto">
             <img src={photoicon} alt="" />
-            <span>Aucun photo publie</span>
+            <span>Aucune photo publiée</span>
           </div>
         )}
       </div>
@@ -300,4 +318,5 @@ export default function CoachAboutBoxes({ coachData }) {
 
 CoachAboutBoxes.propTypes = {
   coachData: PropTypes.objectOf(PropTypes.any).isRequired,
+  specialty: PropTypes.arrayOf(PropTypes.any).isRequired,
 }

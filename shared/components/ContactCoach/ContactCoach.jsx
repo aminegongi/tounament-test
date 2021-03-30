@@ -9,7 +9,7 @@ import youtubeIcon from '../../../public/icon/youtube.png'
 function ContactCoach({ coachData }) {
   return (
     <div className="contactcoach">
-      <div className="contactcoach__title">Coordonnés</div>
+      <div className="contactcoach__title">Autres informations</div>
       <div className="contactcoach__birthday">
         <img alt="birthdayIcon" src={birthdayIcon} />
         <div className="contactcoach__birthday__date">

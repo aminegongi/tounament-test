@@ -1,0 +1,273 @@
+.profil_coach {
+
+    max-width: 71.375rem;
+    margin: auto;
+    font-family: Roboto;
+
+    &__coach_details {
+        margin-top: 1.813rem;
+        display: flex;
+
+        &__filter {
+            border-radius: 0.625rem;
+            border: solid 1px #d5d5d5;
+            background-color: #ffffff;
+            overflow: auto;
+            padding-bottom: 12px;
+            max-width: 299px;
+
+            &__input_searsh {
+                padding: 7px !important;
+                .ant-input-suffix {
+                    right: 24px !important;
+                }
+                input {
+                    height: 45px;
+                    border-radius: 10px;
+                    background-color: #f2f2f2;
+
+                }
+            }
+
+            &__input_searshmobile {
+                display: none;
+            }
+        }
+
+        &__list_of_coach {
+            flex: 70%;
+            margin-left: 1.344rem;
+            border-radius: 0.625rem;
+            border: solid 1px #d5d5d5;
+            background-color: #ffffff;
+
+            &__lenght_sortby {
+                padding:25px 16px 14.5px 15.5px;
+                display: flex;
+                justify-content: space-between;
+                &__lenght {
+                    font-size: 1rem;
+                    letter-spacing: normal;
+                    color: #646464;
+                }
+
+                &__filter {
+                    display: none;
+                }
+
+                &__sortby {
+                    span {
+                        font-size: 1rem;
+                        font-weight: 500;
+                        font-stretch: normal;
+                        font-style: normal;
+                        color: #000000;
+                    }
+                }
+            }
+
+            &__card {
+                padding: 1.344rem 1rem 1.063rem 0.938rem;
+                margin-bottom: 2rem;
+                justify-content: space-between;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-column-gap: 18px;
+                row-gap: 17px;
+                
+                @media only screen and (max-width : 1150px) and (min-width: 992px) {
+                    grid-template-columns: 1fr 1fr;
+                   
+                }
+                @media only screen and (max-width : 850px) {
+                    grid-template-columns: 1fr 1fr;
+                    @media only screen and (max-width : 600px) {
+                        grid-template-columns: 1fr;
+                        
+                    }
+                }
+            }
+        }
+    }
+
+    .lineprofilecoach {
+        width: 100%;
+        border-top: solid 3px #f5f4f4;
+
+    }
+
+    .affiche {
+        img {
+            width: 100%;
+        }
+    }
+
+    .paginate div {
+        padding: 9px 13.1px 8px 14px;
+        border-radius: 3px;
+
+    }
+
+    .paginate {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        bottom: 0;
+
+        font-weight: 500;
+        border-color: #1890ff;
+
+        &__page {
+            background-color: #1890ff;
+            color: white;
+        }
+    }
+    .filerblock {
+        display: flex;
+    }
+    .filterbutton {
+        font-size: 1.3rem;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.19;
+        letter-spacing: normal;
+        text-align: left;
+        color: #47c8c0;
+        padding-left: 9px;
+        padding-top: 7px;
+        cursor: pointer;
+    }
+}
+@media only screen and (max-width : 992px) {
+   
+    .profil_coach {
+        background-color: #f8f8f8;
+        padding: 50px 21px;
+        .ant-input-affix-wrapper .ant-input:not(:last-child) {
+            padding-right: 30px;
+            padding-left: 25px;
+        }
+        .ant-input-affix-wrapper .ant-input-suffix {
+            left: 33px;
+        }
+        .lineprofilecoach {
+            display: none;
+        }
+        .buttonfilter {
+            margin-left: 0.438rem;
+        }
+        .affiche {
+            width: 100%;
+            margin: auto;
+            padding-top: 0;
+
+            &__img {
+                width: 100%;
+            }
+        }
+        &__coach_details {
+            margin: 11px 0;
+
+            &__list_of_coach {
+                margin-left: 0;
+            }
+            &__filter {
+
+                &__input_searshmobile {
+                    display: block;
+                    padding-top: 13px;
+                    padding-left: 26px;
+                    padding-right: 29px;
+                    padding-bottom: 12px;
+                }
+            }
+            &__list_of_coach {
+                &__lenght_sortby {
+                    padding:0;
+
+                    border-bottom: solid 3px #f5f4f4;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    grid-template-rows: auto auto;
+                    row-gap: 7px;
+                    align-items: center;
+                    margin-left: 27px;
+                    padding-bottom: 8.8px;
+                    &__sortby {
+                        grid-column: 3;
+                        margin-right: 30px;
+                    }
+                    &__filter {
+                        display: block;
+                        padding-top: 7px;
+                    }
+                    &__lenght {
+                        grid-column: 2/3;
+                        justify-self: center;
+                        grid-row: 2/2;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        white-space: nowrap;
+                        color: #646464;
+                    }
+                }
+                &__card {
+                    // grid-template-columns: 1fr 1fr;
+                }
+            }
+            &__filter {
+                display: none;
+            }
+        }
+    }
+}
+@media only screen and (max-width : 450px) {
+    .profil_coach {
+        &__coach_details {
+            &__list_of_coach {
+                &__lenght_sortby {
+                    grid-template-columns: 100%;
+                    &__lenght {
+                        grid-column: 1;
+                        grid-row: 3;
+                        justify-self: flex-start;
+
+                    }
+                    &__sortby {
+                        grid-row: 2;
+                        grid-column: 1;
+                    }
+                    &__sortby__select {
+
+                    }
+                }
+                // &__card {
+                //     grid-template-columns: 80%;
+                //     justify-content: center;
+                // }
+            }
+        }
+    }
+}
+// @media only screen and (max-width : 325px) {
+//     .profil_coach {
+//         .affiche img {
+//             width: 105%;
+//         }
+//         &__coach_details {
+//             &__list_of_coach {
+//                 &__lenght_sortby {
+//                     &__sortby {
+//                         &__select {
+//                             width: 73px !important;
+//                         }
+//                         &__filter {
+//                             padding-top: 16px;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

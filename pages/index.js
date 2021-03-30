@@ -62,8 +62,8 @@ const Index = (props) => {
     <div className="home_page">
       <div className="home_page__counter-page">
         <img
-          width="200px"
-          src="../../../icon/logoindexpage.png"
+          width="400px"
+          src="../../../icon/coachIsporit.png"
           alt="iSporit"
         />
         <h1 className="home_page__counter-page__counter">
