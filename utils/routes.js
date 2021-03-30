@@ -6,7 +6,7 @@ export default {
     clubPath: '/contact-us?role=club',
   },
   COACHES_LIST: {
-    path: '/profile-coach',
+    path: '/coaches',
   },
   COACH_DETAILS: {
     CALENDAR: {

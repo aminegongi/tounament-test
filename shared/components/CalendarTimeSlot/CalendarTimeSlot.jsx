@@ -25,7 +25,7 @@ const CalendarTimeSlot = ({ onConfirm, time }) => {
           isSlotClicked ? 'calendar-time-slot__confirm__active' : ''
         }`}
       >
-        Confirm
+        Confirmer
       </a>
     </div>
   )

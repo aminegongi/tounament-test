@@ -161,7 +161,7 @@ export default function Calendar({
                   Choisir la date et l'heure pour réserver vos cours
                 </div>
                 <div className="coach-calendar__body__calendar-section__header__sub-title">
-                  Vous pouvez choisir plus qu'un créneaux horraires
+                  Choisissez plus qu'un créneau horaire pour maximiser vos chances
                 </div>
               </div>
               <div className="coach-calendar__body__calendar-section__body">

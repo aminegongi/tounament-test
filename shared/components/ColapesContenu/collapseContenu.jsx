@@ -43,10 +43,10 @@ export default function CollapseContenu({ coach }) {
               <div className="biographieblock__biographie__contenu__collapse__dateicon__date">
                 {coach.date ? (
                   <>
-                    {moment(coach.date.from).format('MMM YYYY')} -{' '}
+                    {moment(coach.date.from).format('DD MMM YYYY')} -{' '}
                     {coach.date.to == null
-                      ? `${moment().format('MMM YYYY')}`
-                      : `${moment(coach.date.to).format('MMM YYYY')}`}
+                      ? `${moment().format('DD MMM YYYY')}`
+                      : `${moment(coach.date.to).format('DD MMM YYYY')}`}
                   </>
                 ) : (
                   <>{coach.year}</>

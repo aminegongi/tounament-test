@@ -37,7 +37,6 @@ function CoachAvis({ coachData }) {
               coachData.coachData.reviews.map((reviews) => {
                 return (
                   <div className="coachaviscomposant__card__description">
-                    {console.log('reviews: ', reviews)}
                     <div className="coachaviscomposant__card__description__recommendationMember">
                       <img
                         src={AvatarCoach}
@@ -71,7 +70,7 @@ function CoachAvis({ coachData }) {
         <div className="aucunBiographie">
           <img src={opps} alt="icon" />
           <div className="aucunBiographie__title">OOPS</div>
-          <div className="aucunBiographie__message">Aucune Avis trouvée</div>
+          <div className="aucunBiographie__message">Aucun Avis trouvé</div>
         </div>
       )}
     </div>
