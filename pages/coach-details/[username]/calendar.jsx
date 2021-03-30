@@ -70,7 +70,7 @@ export default function Calendar({
   const onCreateCoachingRequest = () => {
     if (authContext.userType === CLUB) {
       return message.error(
-        "une organisation n'est pas autorisée à réserver un cours privé avec un entraineur",
+        "une organisation n'est pas autorisée à réserver un cours privé avec un entraîneur",
       )
     }
     const createRequest = async () => {
@@ -84,7 +84,7 @@ export default function Calendar({
       if (result.type === REQUEST_FAILED) {
         if (result.data.message === 'youCanNotBookMoreThan4CoachesPerDay') {
           return message.error(
-            'Vous ne pouvez pas réserver plus de 4 cours par jour!',
+            'Vous ne pouvez pas réserver plus que 4 cours privés par jour!',
           )
         }
         return message.error(
@@ -96,7 +96,7 @@ export default function Calendar({
       }
     }
     if (!authContext.isLoggedIn) {
-      return authContext.toggleLogInModal(() => () => createRequest())
+      return authContext.toggleLogInModal(() => () => createRequest(), false, 'player')
     }
     return createRequest()
   }
@@ -152,6 +152,19 @@ export default function Calendar({
               <div className="coach-calendar__request-succeeded__description">
                 Votre demande de réservation a été envoyée à l'entraîneur!
               </div>
+               <div className="coach-calendar__request-succeeded__sub-description">
+                vous serez contacté par téléphone pour confirmer votre cours .
+                <div>
+                 <a
+                href="https://dev.isporit.com/dashboard"
+                className="isporit-primary-button link-platform"
+                target="_blank"
+              >
+                Voir mes réservations
+              </a>
+              </div>
+              </div>
+             
             </div>
           )}
           {coachingRequestApi !== REQUEST_SUCCEEDED && (

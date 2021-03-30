@@ -15,6 +15,7 @@ const LoginModal = ({
   isSignUpModal,
   onLogin,
   loading,
+  role
 }) => {
   const [isSignUp, setIsSignUp] = useState(isSignUpModal)
   const [data, setData] = useState({
@@ -58,6 +59,9 @@ const LoginModal = ({
         <div className="login-modal__title">Créer un compte</div>
         <form
           onSubmit={(e) => {
+            if(role){
+              data.userType=role
+            }
             if (!loading && data.userType !== CLUB) {
               onSignUp(data)
             } else {
@@ -67,73 +71,7 @@ const LoginModal = ({
           }}
           className="login-modal__body"
         >
-          <div className="login-modal__body__signup-inputs">
-            <input
-              type="text"
-              onChange={onChangeInput}
-              placeholder="Prénom"
-              name="firstName"
-              className="isporit-input"
-              required
-            />
-            <input
-              type="text"
-              onChange={onChangeInput}
-              placeholder="Nom de famille"
-              name="lastName"
-              className="isporit-input"
-              required
-            />
-            <input
-              type="email"
-              onChange={onChangeInput}
-              placeholder="Email"
-              name="email"
-              className="isporit-input"
-              required
-            />
-
-            <input
-              type="number"
-              onChange={onChangeInput}
-              placeholder="Numéro de télèphone"
-              name="phoneNumber"
-              className="isporit-input"
-              required
-            />
-
-            <input
-              type="password"
-              onChange={onChangeInput}
-              placeholder="Mot de passe "
-              name="password"
-              className="isporit-input"
-              required
-            />
-            <input
-              type="password"
-              onChange={onChangeInput}
-              placeholder="Confirmation mot de passe "
-              name="confirmPassword"
-              className="isporit-input"
-              required
-            />
-            <div className="login-modal__input-label">
-              <label className="" htmlFor="date">
-                Date de naissance
-              </label>
-              <input
-                type="date"
-                onChange={onChangeInput}
-                id="date"
-                placeholder="Date de naissance "
-                name="birthday"
-                className="isporit-input"
-                required
-              />
-            </div>
-          </div>
-          <center className="login-modal__user-type">
+          {!role &&<center className="login-modal__user-type">
             <Radio.Group
               size="default"
               value={data.userType}
@@ -166,6 +104,88 @@ const LoginModal = ({
               </Radio.Button>
             </Radio.Group>
           </center>
+         }
+        {role && 
+        <div className="isporit-note">Certaines informations vont être envoyées au coach pour connaître votre profil </div>}
+
+          <div className="login-modal__body__signup-inputs">
+            <input
+              type="text"
+              onChange={onChangeInput}
+              placeholder="Prénom"
+              name="firstName"
+              className="isporit-input"
+              required
+            />
+            <input
+              type="text"
+              onChange={onChangeInput}
+              placeholder="Nom de famille"
+              name="lastName"
+              className="isporit-input"
+              required
+            />
+             
+              
+              <input
+                type="number"
+                onChange={onChangeInput}
+                placeholder="Numéro de télèphone"
+                name="phoneNumber"
+                className="isporit-input"
+                required
+              />
+              
+            <input
+              type="email"
+              onChange={onChangeInput}
+              placeholder="Email"
+              name="email"
+              className="isporit-input"
+              required
+            />
+            <input
+              type="password"
+              onChange={onChangeInput}
+              placeholder="Mot de passe "
+              name="password"
+              className="isporit-input"
+              required
+            />
+            <input
+              type="password"
+              onChange={onChangeInput}
+              placeholder="Confirmation mot de passe "
+              name="confirmPassword"
+              className="isporit-input"
+              required
+            />
+           <div className="login-modal__input-label">
+               <label className="" htmlFor="gender">
+                Sexe
+              </label>
+               <select  name="gender" onChange={onChangeInput} className="isporit-input">
+                <option value="M">Masculin</option>
+                <option value="F">Féminin</option>
+              </select>
+            </div>
+            <div className="login-modal__input-label">
+              <label className="" htmlFor="date">
+                Date de naissance
+              </label>
+              <input
+                type="date"
+                onChange={onChangeInput}
+                id="date"
+                placeholder="Date de naissance "
+                name="birthday"
+                className="isporit-input"
+                required
+              />
+            </div>
+          </div>
+          
+          
           <center>
             <button type="submit" className="isporit-unset-button-css">
               <Button
@@ -287,6 +307,7 @@ LoginModal.propTypes = {
   isSignUpModal: PropTypes.bool.isRequired,
   onLogin: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  role: PropTypes.string
 }
 
 export default LoginModal

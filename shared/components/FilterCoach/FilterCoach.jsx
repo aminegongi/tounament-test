@@ -84,7 +84,8 @@ export default function FilterCoach({
           }
         >
           {jobs
-            .sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
+            // .sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
+            .sort((a,b)=>a.order-b.order)
             .map((job) => {
               return (
                 <>

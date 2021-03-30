@@ -349,7 +349,13 @@ Coaches.getInitialProps = async () => {
   const danceRes = await fetch(`${API}dances/`)
   const regionsRes = await fetch(`${API}regions/`)
   const jsonCoachesRes = await coachesRes.json()
-  const jsonJobsRes = await jobsRes.json()
+  let jsonJobsRes = await jobsRes.json()
+  console.log('jsonJobsRes: ', jsonJobsRes);
+  if(jsonJobsRes){
+    jsonJobsRes=jsonJobsRes.filter(job=>job.isPublic).sort((a,b)=>a.order-b.order)
+  }
+  console.log('jsonJobsRes2: ', jsonJobsRes);
+
   let jsonSportsRes = await sportsRes.json()
   if(jsonSportsRes){
     jsonSportsRes=jsonSportsRes.filter(sport=>sport.type!==undefined)
