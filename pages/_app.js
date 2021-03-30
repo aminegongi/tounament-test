@@ -30,6 +30,8 @@ function MyApp({ Component, pageProps }) {
   const [userProfile, setUserProfile] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userType, setUserType] = useState()
+  const [role, setRole] = useState()
+
   const [fetchUserProfileLoading, setFetchUserProfileLoading] = useState()
   const [loginLoading, setLoginLoading] = useState(false)
   const [callbackAfterLogin, setCallbackAfterLogin] = useState(() => {})
@@ -81,8 +83,11 @@ function MyApp({ Component, pageProps }) {
     }
   }, [router.query])
 
-  const toggleLogInModal = (cbAfterLogin = () => {}, isSignUp = false) => {
+  const toggleLogInModal = (cbAfterLogin = () => {}, isSignUp = false, role) => {
     setCallbackAfterLogin(cbAfterLogin)
+    if(role){
+      setRole(role)
+    }
     setIsLoginModalOpen(true)
     setIsSignUpModal(isSignUp)
   }
@@ -167,6 +172,7 @@ function MyApp({ Component, pageProps }) {
         loading={loginLoading}
         onLogin={onLogin}
         onSignUp={onSignUp}
+        role={role}
         isVisible={isLoginModalOpen}
         onCancel={() => setIsLoginModalOpen(false)}
       />

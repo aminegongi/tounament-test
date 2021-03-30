@@ -81,14 +81,14 @@ input:focus {
 
 .isporit-flex-h-any-v-center {
     display: flex;
-    align-items: center;    
+    align-items: center;
 }
 
 
 .isporit-flex-h-end-v-center {
     display: flex;
-    align-items: center;  
-    justify-content: flex-end;  
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .isporit-primary-button {
@@ -96,7 +96,7 @@ input:focus {
     box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16);
     background-color: #26beb5;
     font-weight: 500;
-    
+
     cursor: pointer;
 
     color: #ffffff;
@@ -145,6 +145,22 @@ input:focus {
     &:focus {
         outline: none;
     }
+}
+
+.isporit-input-note {
+    color: #ff6767;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.isporit-note {
+    color: #ff6767;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    width: 250px;
+    margin: 0 auto;
+    padding-bottom: 20px;
 }
 
 @media only screen and (max-width: 992px) {
