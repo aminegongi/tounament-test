@@ -34,7 +34,6 @@ const ForgotPassword = (props) => {
     if (!apiUrl) {
         console.error("Missing API URL for this environment");
     }
-    console.log('router.query.token: ', router.query.token);
     useEffect(() => {
         if (isEmpty(router.query.token)) {
             window.location.href = `/login`

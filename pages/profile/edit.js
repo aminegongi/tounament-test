@@ -15,7 +15,6 @@ const EditProfile = (props) => {
     const [userInformation, setUserInformation] = useState({})
 
     useEffect(() => {
-        console.log('props: ', props);
         Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => setUserInformation(res.data)).catch(e => Router.push("/login"))
     }, [])
 

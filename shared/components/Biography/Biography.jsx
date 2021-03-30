@@ -11,10 +11,9 @@ import palmares from '../../../public/icon/palmares.png'
 import CoachProfileSection from '../CoachProfileSection'
 
 function Biography({ coachProfile }) {
-  console.log('coachProfile: ', coachProfile)
   return (
     <div className="biographyblock">
-      {!coachProfile.aboutMe &&
+      {!coachProfile.coachData && !coachProfile.coachData.aboutMe &&
       !isEmpty(coachProfile.experiences) &&
       !isEmpty(coachProfile.education) &&
       !isEmpty(coachProfile.certification) &&
@@ -28,10 +27,10 @@ function Biography({ coachProfile }) {
         </div>
       ) : (
         <div className="biographyblock__blocks">
-          {coachProfile && coachProfile.aboutMe && (
+          {coachProfile.coachData && coachProfile.coachData.aboutMe && (
             <CoachProfileSection title="Biographie" icon={bio}>
               <div className="biographieblock__biographie__contenu">
-                {coachProfile.aboutMe}
+                {coachProfile.coachData.aboutMe}
               </div>
             </CoachProfileSection>
           )}

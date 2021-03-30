@@ -32,7 +32,6 @@ function Tab({ content, imgone, imgtwo, imgthere, bgcolor }) {
       }
     }, 3000)
     return () => clearTimeout(interval)
-    console.log('key: ', key)
   }, [key])
 
   const onStyleChange = (step) => {

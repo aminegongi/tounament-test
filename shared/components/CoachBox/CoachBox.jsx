@@ -59,6 +59,20 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
     }
     return false
   }
+   const ages = 
+   {
+     kids: { label: 'enfants', value: 'kids' },
+     junior: { label: 'juniors', value: 'junior' },
+     senior: { label: 'séniors', value: 'senior' },
+    adult: { label: 'adultes', value: 'adult' },
+   }
+
+  const levels = 
+   {
+     beginner: { label: 'débutant', value: 'beginner' },
+     intermediate: { label: 'intermédiaire', value: 'intermediate' },
+     confirmed: { label: 'confirmé(e)', value: 'confirmed' },
+   }
 
   return (
     <div className="coachBoxiteam">
@@ -108,7 +122,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                     <span className="coachBox__content__title">
                       Niveaux:{' '}
                       <span className="coachBox__content__value">
-                        {coachData.privateCourseData.level.join(', ')}
+                        {coachData.privateCourseData.level.map(level=>levels[level].label).join(', ')}
                       </span>
                     </span>
                   </div>
@@ -119,7 +133,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                     <div className="coachBox__content__title ">
                       Catégories d'ages:{' '}
                       <span className="coachBox__content__value">
-                        {coachData.privateCourseData.ages.join(', ')}
+                        {coachData.privateCourseData.ages.map(age=>ages[age].label).join(', ')}
                       </span>
                     </div>
                   </div>
@@ -222,12 +236,13 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
               coachData &&
               coachData.privateCourseData &&
               coachData.privateCourseData.regions.map((region) => {
+                console.log('region: ', region, dataMap[region]);
                 if (dataMap[region]) {
                   return (
                     <iframe
                       className="coachBoxiteam__location-map"
                       src={dataMap[region]}
-                      title="coah-region"
+                      title="coach-region"
                     />
                   )
                 }

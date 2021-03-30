@@ -354,7 +354,6 @@ Coaches.getInitialProps = async () => {
   if(jsonSportsRes){
     jsonSportsRes=jsonSportsRes.filter(sport=>sport.type!==undefined)
   }
-  console.log('jsonSportsRes: ', jsonSportsRes);
   const jsonDancesRes = await danceRes.json()
   const jsonRegionsRes = await regionsRes.json()
 
