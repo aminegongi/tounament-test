@@ -74,9 +74,9 @@ export default function CoachType({ setDataCopy, dataCopy, coachesList }) {
 
   const options = [
     { label: 'Enfants', value: 'kids' },
-    { label: 'Junior', value: 'Junior' },
-    { label: 'senior', value: 'senior' },
-    { label: 'Adult', value: 'Adult' },
+    { label: 'Juniors', value: 'Junior' },
+    { label: 'Séniors', value: 'senior' },
+    { label: 'Adultes', value: 'Adult' },
   ]
 
   return (

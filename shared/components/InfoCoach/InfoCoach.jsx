@@ -8,10 +8,13 @@ import circleIcon from '../../../public/icon/cercle.png'
 import ReservationCours from '../ReservationCours/ReservationCours'
 import { AuthContext } from '../../../utils/context.utils'
 import { getUserProfilePicture } from '../../../utils/string.utils'
+import { useMediaPredicate } from "react-media-hook";
+
 import { CLUB } from '../../constants'
 import routes from '../../../utils/routes'
 
 export default function InfoCoach({ coachProfile, job, specialty }) {
+     const isMobile = useMediaPredicate("(max-width: 992px)");
   const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
     false,
   )
@@ -104,16 +107,16 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
               alt=""
             />
             <div className="suggestcoachdetails__suggestPrivateCourse__propose">
-              Propose de cours privé{' '}
+              Propose des cours privés{' '}
             </div>
           </div>
-          {/* <button
+          {isMobile &&<button
             onClick={onOpenContactModal}
             type="submit"
             className="buttoncontactcoach"
           >
-            contacter
-          </button> */}
+            Réserver
+          </button>}
         </div>
       </div>
       <ReservationCours

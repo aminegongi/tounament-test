@@ -22,9 +22,11 @@ import AuthContext from '../../../utils/context.utils'
 import Layout from '../../../shared/components/layout/Layout'
 import routes from '../../../utils/routes'
 
-export default function CoachDetails({ coachesList, jobs, sports, dances }) {
+export default function CoachDetails({ coach, jobs, sports, dances }) {
   const router = useRouter()
-  const [coachData, setCoachData] = useState()
+  // const [coachData, setCoachData] = useState()
+  const [specialty, setSpecialty]=useState()
+  const [job, setJob]=useState()
   const [tab, setTab] = useState(1)
   const [isContactModalVisible, setIsContactModalVisible] = useState(false)
 
@@ -34,16 +36,16 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
     if (authContext.isLoggedIn) {
       if (
         authContext.userType === CLUB &&
-        coachesList.coachData &&
-        !coachesList.coachData.lookingForJob
+        coach.coachData &&
+        !coach.coachData.lookingForJob
       ) {
         return false
       }
       if (
         authContext.userType !== CLUB &&
-        coachesList.coachData &&
-        coachesList.coachData.privateCourseData &&
-        !coachesList.coachData.privateCourseData.givePrivateCourse
+        coach.coachData &&
+        coach.coachData.privateCourseData &&
+        !coach.coachData.privateCourseData.givePrivateCourse
       ) {
         return false
       }
@@ -64,58 +66,32 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
   // }
 
   const renderCoachProfile = () => {
-    const job = jobs.find(
-      (j) => j._id === (coachData.coachData && coachData.coachData.job),
-    )
-
-    let specialty = ''
-    if (job) {
-      if (job.specialty && job.specialty.type === 'sport') {
-        specialty = coachData.coachData.specialty
-          ? coachData.coachData.specialty.reduce((acc, val) => {
-              const element = sports.find((dance) => dance._id === val)
-              if (element) {
-                acc = [...acc, element]
-              }
-              return acc
-            }, [])
-          : []
-      } else if (job.specialty && job.specialty.type === 'dance') {
-        specialty = coachData.coachData.specialty
-          ? coachData.coachData.specialty.reduce((acc, val) => {
-              const element = dances.find((dance) => dance._id === val)
-              if (element) {
-                acc = [...acc, element]
-              }
-              return acc
-            }, [])
-          : []
-      }
-    }
+    
     return (
-      <InfoCoach coachProfile={coachesList} job={job} specialty={specialty} />
+      <InfoCoach coachProfile={coach} job={job} specialty={specialty} />
     )
   }
 
   const displayTabs = () => {
-    if (coachData) {
+    if (coach) {
       if (tab === 1) {
         return (
           <div className="tabsinfo__title">
             <CoachBox
-              coachData={coachesList.coachData}
+              coachData={coach.coachData}
               iconExclamation={exclamation}
+              specialty={specialty}
             />
           </div>
         )
       }
       if (tab === 2) {
-        return <CoachAvis coachData={coachesList} />
+        return <CoachAvis coachData={coach} />
       }
       if (tab === 3) {
         return (
           <Biography
-            coachProfile={coachData}
+            coachProfile={coach}
             title="Biographie"
             icon={exclamation}
           />
@@ -125,10 +101,40 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
   }
 
   useEffect(() => {
-    setCoachData(coachesList)
+    // setCoachData(coach)
+    const job = jobs.find(
+      (j) => j._id === (coach.coachData && coach.coachData.job),
+    )
+
+    let specialty = ''
+    if (job) {
+      if (job.specialty && job.specialty.type === 'sport') {
+        specialty = coach.coachData.specialty
+          ? coach.coachData.specialty.reduce((acc, val) => {
+              const element = sports.find((dance) => dance._id === val)
+              if (element) {
+                acc = [...acc, element]
+              }
+              return acc
+            }, [])
+          : []
+      } else if (job.specialty && job.specialty.type === 'dance') {
+        specialty = coach.coachData.specialty
+          ? coach.coachData.specialty.reduce((acc, val) => {
+              const element = dances.find((dance) => dance._id === val)
+              if (element) {
+                acc = [...acc, element]
+              }
+              return acc
+            }, [])
+          : []
+      }
+    }
+    setSpecialty(specialty)
+    setJob(job)
   }, [router.query.id])
 
-  if (isEmpty(coachesList.coachData)) {
+  if (isEmpty(coach.coachData)) {
     return <h1>coach data is missing in the coach object</h1>
   }
 
@@ -141,10 +147,10 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
         <div className="coach__coachdetails">
           <div className="coach__cordonneBlock">
             <div className="coach__coachdetails__contact">
-              {coachData && jobs && renderCoachProfile(coachData)}
+              {coach && jobs && renderCoachProfile(coach)}
             </div>
             <div className="coach__coachdetails__information">
-              {coachesList ? <CoachAboutBoxes coachData={coachesList} /> : ''}
+              {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
             </div>
           </div>
           <div className="tabsinfo">
@@ -196,7 +202,7 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
         </div>
 
         {/* <ReservationCours
-          coachProfile={coachesList}
+          coachProfile={coach}
           isModalVisibleReservation={isContactModalVisible}
           setIsModalVisibleReservation={setIsContactModalVisible}
         /> */}
@@ -206,26 +212,26 @@ export default function CoachDetails({ coachesList, jobs, sports, dances }) {
 }
 
 CoachDetails.propTypes = {
-  coachesList: PropTypes.objectOf(PropTypes.any).isRequired,
+  coach: PropTypes.objectOf(PropTypes.any).isRequired,
   jobs: PropTypes.arrayOf(PropTypes.any).isRequired,
   sports: PropTypes.arrayOf(PropTypes.any).isRequired,
   dances: PropTypes.arrayOf(PropTypes.any).isRequired,
 }
 
 CoachDetails.getInitialProps = async ({ query }) => {
-  const coachesRes = await fetch(`${API}users/coaches/slug/${query.username}`)
+  const coachRes = await fetch(`${API}users/coaches/slug/${query.username}`)
   const jobsRes = await fetch(`${API}jobs`)
   const sportsRes = await fetch(`${API}sports`)
   const danceRes = await fetch(`${API}dances/`)
   const regionsRes = await fetch(`${API}regions/`)
-  const jsonCoachesRes = await coachesRes.json()
+  const jsonCoachRes = await coachRes.json()
   const jsonJobsRes = await jobsRes.json()
   const jsonSportsRes = await sportsRes.json()
   const jsonDancesRes = await danceRes.json()
   const jsonRegionsRes = await regionsRes.json()
 
   return {
-    coachesList: jsonCoachesRes,
+    coach: jsonCoachRes,
     jobs: jsonJobsRes,
     sports: jsonSportsRes,
     dances: jsonDancesRes,

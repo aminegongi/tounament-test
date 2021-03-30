@@ -17,6 +17,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+
         &__coach-name {
             // margin-top: 7px !important;
             width: unset;
@@ -80,6 +81,7 @@
                 font-weight: 500;
                 color: #26beb5;
                 text-transform: capitalize;
+
                 a {
                     font-size: 1.125rem;
                     font-weight: 500;
@@ -91,6 +93,7 @@
             &__rate {
                 &__icon {
                     font-size: 16px;
+
                     @media only screen and (max-width: 450px) {
                         font-size: 8px;
                     }
@@ -112,6 +115,10 @@
                 line-height: 1.19;
                 text-align: center;
                 color: #000000;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 160px;
+                overflow: hidden;
             }
 
             &__yearexperience {
@@ -130,6 +137,7 @@
             }
         }
     }
+
     .suggestcoachdetails {
         padding-top: 0.625rem;
 
@@ -137,6 +145,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
+
             &__img {
                 width: 16px;
                 height: max-content;
@@ -181,21 +190,26 @@
             justify-self: flex-start;
             align-items: flex-start;
         }
+
         &__firstblock {
             justify-self: flex-end;
+
             &__coach-name {
                 margin-top: 10px;
             }
         }
+
         &_coach {
             &__information {
                 &__worktype {
                     font-size: 12px;
                     text-align: left;
                 }
+
                 &__yearexperience {
                     font-size: 14px;
                 }
+
                 &__sporttype {
                     text-align: left;
                 }
