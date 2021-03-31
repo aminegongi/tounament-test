@@ -4,17 +4,17 @@ import Link from 'next/link'
 import { Rate } from 'antd'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
+import { useMediaPredicate } from 'react-media-hook'
 import circleIcon from '../../../public/icon/cercle.png'
 import ReservationCours from '../ReservationCours/ReservationCours'
 import { AuthContext } from '../../../utils/context.utils'
 import { getUserProfilePicture } from '../../../utils/string.utils'
-import { useMediaPredicate } from "react-media-hook";
 
 import { CLUB } from '../../constants'
 import routes from '../../../utils/routes'
 
 export default function InfoCoach({ coachProfile, job, specialty }) {
-     const isMobile = useMediaPredicate("(max-width: 992px)");
+  const isMobile = useMediaPredicate('(max-width: 992px)')
   const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
     false,
   )
@@ -110,13 +110,15 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
               Propose des cours privés{' '}
             </div>
           </div>
-          {isMobile &&<button
-            onClick={onOpenContactModal}
-            type="submit"
-            className="buttoncontactcoach"
-          >
-            Réserver
-          </button>}
+          {isMobile && (
+            <button
+              onClick={onOpenContactModal}
+              type="submit"
+              className="buttoncontactcoach"
+            >
+              Réserver
+            </button>
+          )}
         </div>
       </div>
       <ReservationCours

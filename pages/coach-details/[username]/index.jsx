@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import Axios from 'axios'
 import { isEmpty } from 'lodash'
+import Head from 'next/head'
 import InfoCoach from '../../../shared/components/InfoCoach/InfoCoach'
 import '../../../shared/css/coachDetails.scss'
 import Navbar from '../../../shared/components/navbar/Navbar'
@@ -21,12 +22,13 @@ import ReservationCours from '../../../shared/components/ReservationCours/Reserv
 import AuthContext from '../../../utils/context.utils'
 import Layout from '../../../shared/components/layout/Layout'
 import routes from '../../../utils/routes'
+import { getUserProfilePicture } from '../../../utils/string.utils'
 
 export default function CoachDetails({ coach, jobs, sports, dances }) {
   const router = useRouter()
   // const [coachData, setCoachData] = useState()
-  const [specialty, setSpecialty]=useState()
-  const [job, setJob]=useState()
+  const [specialty, setSpecialty] = useState()
+  const [job, setJob] = useState()
   const [tab, setTab] = useState(1)
   const [isContactModalVisible, setIsContactModalVisible] = useState(false)
 
@@ -66,10 +68,7 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
   // }
 
   const renderCoachProfile = () => {
-    
-    return (
-      <InfoCoach coachProfile={coach} job={job} specialty={specialty} />
-    )
+    return <InfoCoach coachProfile={coach} job={job} specialty={specialty} />
   }
 
   const displayTabs = () => {
@@ -139,75 +138,95 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
   }
 
   return (
-    <Layout>
-      <div className="coach">
-        <div className="affiche">
-          <img className="affiche__img" src={affiche} alt="affiche" />
-        </div>
-        <div className="coach__coachdetails">
-          <div className="coach__cordonneBlock">
-            <div className="coach__coachdetails__contact">
-              {coach && jobs && renderCoachProfile(coach)}
-            </div>
-            <div className="coach__coachdetails__information">
-              {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
-            </div>
+    <>
+      <Head>
+        <title>
+          {console.log('coach', coach)}
+          {coach.firstName} {coach.lastName}
+        </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          property="og:url"
+          content={`https://isporit.com/coaches/${coach.username}`}
+        />
+        <meta property="og:description" content={coach.coachData.aboutMe} />
+        <meta
+          property="og:image"
+          content={getUserProfilePicture(coach.profilePicture)}
+        />
+      </Head>
+      <Layout>
+        <div className="coach">
+          <div className="affiche">
+            <img className="affiche__img" src={affiche} alt="affiche" />
           </div>
-          <div className="tabsinfo">
-            <div className="tabs">
-              <div className="tabs__button">
+          <div className="coach__coachdetails">
+            <div className="coach__cordonneBlock">
+              <div className="coach__coachdetails__contact">
+                {coach && jobs && renderCoachProfile(coach)}
+              </div>
+              <div className="coach__coachdetails__information">
+                {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
+              </div>
+            </div>
+            <div className="tabsinfo">
+              <div className="tabs">
+                <div className="tabs__button">
+                  <button
+                    type="button"
+                    className={`isporit-unset-button-css tabs__button__not-active ${
+                      tab === 1 ? 'tabs__button__active' : ''
+                    }`}
+                    onClick={() => setTab(1)}
+                  >
+                    A propos
+                  </button>
+                  <button
+                    type="button"
+                    className={`isporit-unset-button-css tabs__button__not-active ${
+                      tab === 2 ? 'tabs__button__active' : ''
+                    }`}
+                    onClick={() => setTab(2)}
+                  >
+                    Avis
+                  </button>
+                  <button
+                    type="button"
+                    className={`isporit-unset-button-css tabs__button__not-active ${
+                      tab === 3 ? 'tabs__button__active' : ''
+                    }`}
+                    onClick={() => setTab(3)}
+                  >
+                    Biographie
+                  </button>
+                </div>
                 <button
+                  onClick={() =>
+                    router.push(
+                      routes.COACH_DETAILS.CALENDAR.linkTo(
+                        router.query.username,
+                      ),
+                    )
+                  }
                   type="button"
-                  className={`isporit-unset-button-css tabs__button__not-active ${
-                    tab === 1 ? 'tabs__button__active' : ''
-                  }`}
-                  onClick={() => setTab(1)}
+                  className="isporit-primary-button tabs__contact"
                 >
-                  A propos
-                </button>
-                <button
-                  type="button"
-                  className={`isporit-unset-button-css tabs__button__not-active ${
-                    tab === 2 ? 'tabs__button__active' : ''
-                  }`}
-                  onClick={() => setTab(2)}
-                >
-                  Avis
-                </button>
-                <button
-                  type="button"
-                  className={`isporit-unset-button-css tabs__button__not-active ${
-                    tab === 3 ? 'tabs__button__active' : ''
-                  }`}
-                  onClick={() => setTab(3)}
-                >
-                  Biographie
+                  Réserver
                 </button>
               </div>
-              <button
-                onClick={() =>
-                  router.push(
-                    routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
-                  )
-                }
-                type="button"
-                className="isporit-primary-button tabs__contact"
-              >
-                Réserver
-              </button>
+              {/* <div className="linetabs" /> */}
+              {displayTabs()}
             </div>
-            {/* <div className="linetabs" /> */}
-            {displayTabs()}
           </div>
-        </div>
 
-        {/* <ReservationCours
+          {/* <ReservationCours
           coachProfile={coach}
           isModalVisibleReservation={isContactModalVisible}
           setIsModalVisibleReservation={setIsContactModalVisible}
         /> */}
-      </div>
-    </Layout>
+        </div>
+      </Layout>
+    </>
   )
 }
 
