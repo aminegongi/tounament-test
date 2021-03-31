@@ -141,8 +141,13 @@ export default function Coaches({
   return (
     <>
       <Head>
-        <title>yassine yassine gugui</title>
+        <title>liste des entraineurs</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:url" content="https://isporit.com/coaches" />
+        <meta
+          property="og:description"
+          content="Trouver des maintenant votre entraineur sportifs"
+        />
         <meta
           property="og:image"
           content="https://isporit.com/icon/coachIsporit.png"
@@ -362,13 +367,12 @@ Coaches.getInitialProps = async () => {
   const regionsRes = await fetch(`${API}regions/`);
   const jsonCoachesRes = await coachesRes.json();
   let jsonJobsRes = await jobsRes.json();
-  console.log("jsonJobsRes: ", jsonJobsRes);
+
   if (jsonJobsRes) {
     jsonJobsRes = jsonJobsRes
       .filter((job) => job.isPublic)
       .sort((a, b) => a.order - b.order);
   }
-  console.log("jsonJobsRes2: ", jsonJobsRes);
 
   let jsonSportsRes = await sportsRes.json();
   if (jsonSportsRes) {
