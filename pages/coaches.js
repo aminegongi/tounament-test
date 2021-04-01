@@ -141,17 +141,24 @@ export default function Coaches({
   return (
     <>
       <Head>
-        <title>liste des entraineurs</title>
+        <title>Liste des coaches</title>
+        <meta
+          name="description"
+          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+iSporit vous offre la possibilité de choisir votre coach selon vos propres critères."
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:url" content="https://isporit.com/coaches" />
         <meta
           property="og:description"
-          content="Trouver des maintenant votre entraineur sportifs"
+          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. "
         />
         <meta
           property="og:image"
           content="https://isporit.com/icon/coachIsporit.png"
         />
+        <link rel="canonical" href="https://isporit.com/coaches" />
       </Head>
       <Layout>
         <div className="profil_coach">
@@ -328,7 +335,7 @@ export default function Coaches({
                 {paginate(
                   dataCopy,
                   nbr_of_card_per_page,
-                  pageNumber
+                  pageNumber,
                 ).map((el, key) => renderCoachProfile(el))}
               </div>
 
@@ -339,13 +346,13 @@ export default function Coaches({
                   <div
                     className={
                       pageActiveNumber == index || index + 1 == pageNumber
-                        ? "paginate__page"
-                        : ""
+                        ? 'paginate__page'
+                        : ''
                     }
                     key={index}
                     type="submit"
                     onClick={() => {
-                      setPageNumber(index + 1), setPageActiveNumber(index);
+                      setPageNumber(index + 1), setPageActiveNumber(index)
                     }}
                   >
                     {index + 1}
@@ -357,7 +364,7 @@ export default function Coaches({
         </div>
       </Layout>
     </>
-  );
+  )
 }
 Coaches.getInitialProps = async () => {
   const coachesRes = await fetch(`${API}users/coaches/all`);
