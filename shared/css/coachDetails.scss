@@ -119,7 +119,7 @@
     .affiche {
         &__img {
             width: 100%;
-            margin-top: 1.188rem;
+            // margin-top: 1.188rem;
         }
     }
 
@@ -144,6 +144,7 @@
         .tabsinfo {
             margin-top: 0;
         }
+
         &__coachdetails {
             display: grid;
             grid-template-columns: 100%;
@@ -171,6 +172,8 @@
                 border-radius: 0.625rem;
                 box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
                 background-color: #ffffff;
+                margin-bottom: 20px;
+
             }
         }
 
@@ -178,6 +181,7 @@
             margin-top: 13px;
         }
     }
+
     .linetabs {
         margin-top: 3.65rem;
         width: 59.156rem;
@@ -188,12 +192,14 @@
         justify-content: normal;
         grid-template-columns: 1fr;
         padding-bottom: 0;
+
         &__contact {
             display: none;
         }
 
         &__button {
             margin-top: 0;
+
             // border-bottom: solid 2px #dfdfdf;
             &__aproposaparopsactive {
                 padding-bottom: 2.125rem;

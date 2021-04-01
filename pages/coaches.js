@@ -161,15 +161,15 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
         <link rel="canonical" href="https://isporit.com/coaches" />
       </Head>
       <Layout>
-        <div className="profil_coach">
+        <div className="coaches ">
           <div className="affiche">
             <img className="affiche__img" src={affiche} alt="affiche" />
           </div>
-          <div className="profil_coach__coach_details">
-            <div className="profil_coach__coach_details__filter">
+          <div className="coaches__coach_details">
+            <div className="coaches__coach_details__filter">
               {!isMobile && (
                 <Search
-                  className="profil_coach__coach_details__filter__input_searsh"
+                  className="coaches__coach_details__filter__input_searsh"
                   placeholder="RECHERCHE PAR NOM"
                   onChange={(e) => onSearch(e.target.value)}
                 />
@@ -231,10 +231,10 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               />
             </div>
 
-            <div className="profil_coach__coach_details__list_of_coach">
+            <div className="coaches__coach_details__list_of_coach">
               {isMobile && (
                 <Search
-                  className="profil_coach__coach_details__filter__input_searshmobile"
+                  className="coaches__coach_details__filter__input_searshmobile"
                   placeholder="RECHERCHE PAR NOM"
                   onChange={(e) => onSearch(e.target.value)}
                   // style={{
@@ -242,8 +242,8 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                   // }}
                 />
               )}
-              <div className="profil_coach__coach_details__list_of_coach__lenght_sortby">
-                <div className="profil_coach__coach_details__list_of_coach__lenght_sortby__filter">
+              <div className="coaches__coach_details__list_of_coach__lenght_sortby">
+                <div className="coaches__coach_details__list_of_coach__lenght_sortby__filter">
                   <div className="filerblock">
                     <img src="../../../icon/filtre.png" alt=" " />
                     <div className="filterbutton" onClick={showModal}>
@@ -310,17 +310,17 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                     />
                   </Modal>
                 </div>
-                <div className="profil_coach__coach_details__list_of_coach__lenght_sortby__lenght">
+                <div className="coaches__coach_details__list_of_coach__lenght_sortby__lenght">
                   {dataCopy.length} résultat(s)
                 </div>
-                <div className="profil_coach__coach_details__list_of_coach__lenght_sortby__sortby">
+                <div className="coaches__coach_details__list_of_coach__lenght_sortby__sortby">
                   <span>Trier par : </span>
                   <Select
                     labelInValue
                     placeholder={ALL}
                     style={{ width: 200 }}
                     bordered={false}
-                    className="profil_coach__coach_details__list_of_coach__lenght_sortby__sortby__select"
+                    className="coaches__coach_details__list_of_coach__lenght_sortby__sortby__select"
                     onChange={handleChange}
                   >
                     <Option value={ALL}>Tout</Option>
@@ -331,7 +331,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 </div>
               </div>
               <div className="lineprofilecoach" />
-              <div className="profil_coach__coach_details__list_of_coach__card">
+              <div className="coaches__coach_details__list_of_coach__card">
                 {paginate(
                   dataCopy,
                   nbr_of_card_per_page,

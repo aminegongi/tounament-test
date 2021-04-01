@@ -4,6 +4,9 @@ import App from 'next/app'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Axios from 'axios'
+import moment from 'moment'
+import { MOMENT_FRENCH_I18N } from '../utils/moment.utils'
+
 import { hotjar } from 'react-hotjar'
 import { message } from 'antd'
 import AuthContext from '../utils/context.utils'
@@ -44,9 +47,12 @@ function MyApp({ Component, pageProps }) {
       setIsLoggedIn(true)
     }
   }
-
+  useEffect(() => {
+    moment.locale('fr', MOMENT_FRENCH_I18N)
+  }, [])
   useEffect(() => {
     setIsLoginModalOpen(false)
+
   }, [pathname])
   useEffect(() => {
     // if ('serviceWorker' in navigator) {

@@ -12,6 +12,8 @@ import { getUserProfilePicture } from '../../../utils/string.utils'
 
 import { CLUB } from '../../constants'
 import routes from '../../../utils/routes'
+import { getFormattedNumber } from '../../../utils/number.utils'
+import { getRoundedRate } from './../../../utils/number.utils';
 
 export default function InfoCoach({ coachProfile, job, specialty }) {
   const isMobile = useMediaPredicate('(max-width: 992px)')
@@ -22,12 +24,11 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
 
   const authContext = useContext(AuthContext)
 
-  const [sum, setSum] = useState(
-    Math.round(
-      coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-        coachProfile.coachData.reviews.length,
-    ),
-  )
+  const sum = getFormattedNumber(
+    coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
+    coachProfile.coachData.reviews.length,
+    2,
+    )
 
   const onOpenContactModal = () => {
     return setIsModalVisibleReservation(true)
@@ -75,7 +76,8 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
           <Rate
             className="infocoach_coach__information__rate__icon"
             disabled
-            defaultValue={sum}
+            allowHalf
+            defaultValue={getRoundedRate(sum)}
           />
         </div>
       </div>

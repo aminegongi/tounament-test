@@ -1,17 +1,32 @@
 .layout_container {
     min-height: 100vh;
-    background: white;
+    background-color: #f8f8f8;
+
     position: relative;
+
     .children {
-        background: white;
+        // background: white;
+        background-color: #f8f8f8;
         padding-bottom: 167px;
+
+        >div:first-child {
+            padding-top: 106px;
+
+            @media only screen and (max-width: 850px) {
+                    padding-top: 20px !important;
+            }
+        }
+
+
     }
+
     &__footer {
         position: absolute;
         bottom: 0;
         width: 100%;
     }
 }
+
 @media only screen and (max-width: 850px) {
     .children {
         padding-top: 55px !important;

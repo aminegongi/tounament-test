@@ -1,5 +1,6 @@
 .home_page {
     background-color: white;
+
     &__counter-page {
         padding: 20px;
         display: flex;
@@ -8,33 +9,42 @@
         justify-content: center;
         width: 100%;
         height: 100vh;
+
         &__counter {
             text-align: center;
             margin: 50px 0;
+
             .ant-statistic-content {
                 color: #26beb5;
             }
         }
+
         &__contact {
             background-color: #26beb5;
             border: none;
             font-size: 25px;
             height: unset;
             padding: 10px 20px;
-            &:focus, &:hover {
+
+            &:focus,
+            &:hover {
                 background-color: #26beb5;
             }
         }
     }
+
     .performance_img {
         height: 37.8rem;
     }
+
     .navbar {
         background-color: white !important;
     }
+
     .club_logo_and_title {
         background-image: linear-gradient(to bottom, #f8f8f9, white 97%);
     }
+
     // button {
     //     border: unset;
     //     font-weight: 500 !important;
@@ -50,6 +60,7 @@
         text-align: center;
         color: #ffffff;
     }
+
     .gerer_equipe_img {
         .gerer_equipe_title {
             font-size: 2.75rem;
@@ -59,6 +70,7 @@
             color: #2e3034;
             max-width: 35rem;
         }
+
         .gerer_time_title {
             max-width: 30rem;
             margin-top: 0.8125rem;
@@ -84,17 +96,30 @@
             color: #a7a7a7;
         }
     }
+
+    .gerer_iluustateur,
     .gerer_iluustateur {
-        padding-left: 2.375rem;
-        padding-right: 2.375rem;
-        padding-top: 3.3125rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-top: 6.3125rem;
         padding-bottom: 3.75rem;
         background-color: #ffffff;
+
+        .illustration-cv {
+            &__image {
+                position: absolute;
+                top: 127px;
+                width: 100%;
+            }
+        }
+
+
         .gerer_iluustateur_container {
             display: grid;
             grid-template-columns: auto auto;
             column-gap: 1.125rem;
             align-items: center;
+
             img {
                 // height: 27.6rem;
                 width: 100%;
@@ -110,9 +135,11 @@
         column-gap: 5.25rem;
         padding-right: 0.3125rem;
     }
+
     .presenter_winner {
         margin-top: 4.375rem;
     }
+
     .revenus_gagnant {
         margin-top: 8rem;
     }
@@ -124,19 +151,23 @@
         grid-template-columns: repeat(2, max-content);
         overflow: hidden;
         column-gap: 4.8125rem;
+
         .system_performance {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             column-gap: 2.5rem;
             row-gap: 2.9375rem;
+
             .system_mobile {
                 margin-top: 4.0625rem;
             }
+
             .system_gestion {
                 margin-top: 3rem;
             }
         }
     }
+
     .gerer_team {
         // height: 60px;
         border-radius: 8px;
@@ -145,9 +176,11 @@
         font-size: 0.875rem;
         padding: 20px 19px;
     }
+
     .join {
         margin-top: 90px;
     }
+
     .collapseStyle {
         padding-top: 1.375rem;
         margin-top: 2.3125rem;
@@ -155,6 +188,7 @@
         background: white;
         border-radius: 8px;
     }
+
     .customPanelStyletext {
         font-size: 1.125rem;
         font-weight: 600;
@@ -164,6 +198,7 @@
         padding-top: 1.375rem;
         padding-left: 2.1875rem;
         color: #2e3034;
+
         .customPaneltwo {
             padding-top: 2.0625rem;
             padding-right: 6.5rem;
@@ -174,6 +209,7 @@
         }
     }
 }
+
 .expandicon {
     right: 35px !important;
 }
@@ -185,22 +221,27 @@
         padding-top: 3.3125rem;
         padding-bottom: 3.75rem;
         background-color: #ffffff;
+
         .gerer_iluustateur_container {
             display: flex !important;
             align-items: center;
+
             .gerer_equipe_img {
                 width: 100%;
                 text-align: center;
+
                 .gerer_equipe_title {
                     text-align: center;
                     margin: auto;
                 }
+
                 .gerer_time_title {
                     text-align: center;
                     margin-right: auto;
                     margin-left: auto;
                 }
             }
+
             img {
                 display: none;
             }
@@ -216,16 +257,20 @@
         justify-content: center;
         row-gap: 5.25rem;
         padding-right: 0.3125rem;
+
         div {
             text-align: center;
         }
+
         img {
             display: none;
         }
     }
+
     .revenus_gagnant {
         margin-top: 5rem !important;
     }
+
     .expandicon {
         right: 15px !important;
     }
@@ -239,16 +284,19 @@
         grid-template-columns: unset !important;
         row-gap: 4.8125rem;
         text-align: center;
+
         .system_performance {
             grid-template-columns: unset !important;
             column-gap: 2.5rem;
             row-gap: 2.9375rem;
+
             div {
                 text-align: center;
                 margin-right: auto;
                 margin-left: auto;
             }
         }
+
         img:nth-child(2) {
             display: none !important;
         }

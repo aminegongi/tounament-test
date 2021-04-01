@@ -47,7 +47,7 @@ html {
 }
 
 .isporit_max_width {
-    max-width: 1360px;
+    max-width: 1300px;
     margin: auto;
 }
 
@@ -89,6 +89,12 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+
+.isporit-flex-h-space-v-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .isporit-primary-button {
@@ -162,6 +168,137 @@ input:focus {
     margin: 0 auto;
     padding-bottom: 20px;
 }
+
+.isporit-no-padding {
+    padding: 0 !important
+}
+
+.isporit-breadcrumb-link {
+    color: #26beb5 !important;
+
+    &:hover {
+        color: #26beb5 !important;
+    }
+
+}
+
+.isporit-search-bar {
+    width: 770px;
+    height: 63px;
+    padding: 10.5px 10px 8.5px 25px;
+    border-radius: 43px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >div {
+        border-right: 1px solid gray;
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+
+        &.last {
+            // padding:0px;
+            border: none;
+        }
+
+
+
+        select {
+            border: none !important;
+            width: 100%;
+
+        }
+
+        &.svg {
+            width: 60px;
+        }
+    }
+
+    .ant-btn-primary {
+        background-color: #26beb5 !important;
+        width: 44px !important;
+        height: 44px !important;
+        outline: none !important;
+        border: none !important;
+    }
+
+    .ant-select-selection {
+        border: none;
+        outline: none;
+
+        div {
+            border: none;
+            outline: none;
+        }
+    }
+}
+
+
+.isporit-search-bar2 {
+    width: 300px;
+    height: 63px;
+    padding: 10.5px 10px 8.5px 25px;
+    border-radius: 43px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    // transition: box-shadow 1s ease !important;
+    // transform-origin: 0% 0% !important;
+
+    // transition: -ms-transform 150ms ease,
+    // transform 150ms ease,
+    // opacity 50ms ease 20ms,
+    // pointer-events 0ms 150ms !important;
+    
+    >div {
+        border-right: 1px solid gray;
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 20px;
+
+        &.last {
+            // padding:0px;
+            border: none;
+        }
+
+
+
+        select {
+            border: none !important;
+            width: 100%;
+
+        }
+
+        &.svg {
+            width: 60px;
+        }
+    }
+
+    .ant-btn-primary {
+        background-color: #26beb5 !important;
+        width: 44px !important;
+        height: 44px !important;
+        outline: none !important;
+        border: none !important;
+    }
+
+    .ant-select-selection {
+        border: none;
+        outline: none;
+
+        div {
+            border: none;
+            outline: none;
+        }
+    }
+}
+
 
 @media only screen and (max-width: 992px) {
     .isporit-primary-button {

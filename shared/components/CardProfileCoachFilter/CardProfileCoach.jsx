@@ -9,6 +9,8 @@ import getUserProfilePicture from '../../../utils/string.utils'
 import routes from '../../../utils/routes'
 import ReservationCours from '../ReservationCours/ReservationCours'
 import shareIcon from '../../../public/icon/profileShare.png'
+import { getFormattedNumber } from '../../../utils/number.utils'
+import { getRoundedRate } from './../../../utils/number.utils';
 
 export default function CardProfileCoach({
   coachProfile,
@@ -17,24 +19,19 @@ export default function CardProfileCoach({
   specialty,
 }) {
   const router = useRouter()
-  const [img, setimg] = useState(
-    // coachProfile.profilePicture
-    //   ? `http://dev.isporit.com/api/${coachProfile.profilePicture}`
-    //   :
-    AVATAR,
-    //   ,
-  )
+ 
   const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
     false,
   )
-  const [sum, setSum] = useState(
-    Math.round(
-      coachProfile.coachData &&
-        coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-          coachProfile.coachData &&
-        coachProfile.coachData.reviews.length,
-    ),
-  )
+  const sum =
+  coachProfile.coachData &&
+  coachProfile.coachData.reviews ?getFormattedNumber(
+    
+    coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
+    coachProfile.coachData.reviews.length,
+    2,
+    ):0
+  
   const [linkShow, setLinkShow] = useState(false)
   const ShowLink = () => {
     if (linkShow) {
@@ -73,7 +70,7 @@ export default function CardProfileCoach({
             </div>
 
             <div className="card_profil_coach__information__rate">
-              <Rate disabled defaultValue={sum} className="rate" />
+              <Rate allowHalf disabled defaultValue={getRoundedRate(sum)} className="rate" />
             </div>
             {
               <div className="card_profil_coach__information__worktype">

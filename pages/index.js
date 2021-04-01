@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+import fetch from 'isomorphic-unfetch'
 
 import Axios from 'axios'
 import { Collapse, Icon, Button } from 'antd'
 import Link from 'next/link'
 import Countdown from 'antd/lib/statistic/Countdown'
-import moment from 'moment'
 import Layout from '../shared/components/layout/Layout'
 import '../shared/css/home.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
@@ -18,6 +18,8 @@ import Feature from '../shared/components/Feature/Feature'
 import BecomePartner from '../shared/components/BecomePartner/BecomePartner'
 import Title from '../shared/components/TitleSection/TitleSection'
 import Join from '../shared/components/joinplatforme/Join'
+import moment from 'moment'
+import { useMediaPredicate } from 'react-media-hook'
 
 import Demo from '../shared/components/DemoSection/DemoSection'
 import Functionclub from '../shared/components/Functionclub/Functionclub'
@@ -25,7 +27,9 @@ import Navbar from '../shared/components/navbar/Navbar'
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage'
 import performance from '../public/icon/performance.png'
 import { i18n, withTranslation } from '../i18n'
-
+import {
+  API,
+} from '../shared/constants'
 import '../shared/global-style.scss'
 import routes from '../utils/routes'
 // import Countdown from '../shared/components/CountDown'
@@ -46,43 +50,91 @@ const customPanelStyle = {
   overflow: 'hidden',
 }
 
-const Index = (props) => {
+const Index = ({ coachesList, jobs, sports, dances, regions }) => {
   const [lang, setLang] = useState(undefined)
+  const [searchBar, setSearchBar] = useState(true)
   useEffect(() => {
     setLang(i18n.language)
   }, [i18n.language])
+const mobile = useMediaPredicate('(max-width: 850px)')
 
+const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
-    console.log('This was deploy using swarm')
+    if (mobile !== isMobile) {
+      setIsMobile(mobile)
+    }
+  }, [mobile])
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const isVisibleElement = (el) => {
+    if (!el) return false
+    const rect = el.getBoundingClientRect()
+    const elemTop = rect.top
+    const elemBottom = rect.bottom
+    // Only completely visible elements return true:
+    // const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    // Partially visible elements return true:
+    const isVisibleC = elemTop < window.innerHeight && elemBottom >= 0
+    return isVisibleC
+  }
+  const handleScroll = () => {
+    let el = document.getElementById('cv')
+    let isVisibleC = isVisibleElement(el)
+    if (isVisibleC) {
+      // setSkeletonState({
+      //   activeIndex: 2,
+      //   colorSpace: '#e50e37',
+      //   isFooterDisplayed: false,
+      // })
+      setSearchBar(true)
+    } else {
+      // el = document.getElementById('reste')
+      // isVisibleC = isVisibleElement(el)
+      // if (isVisibleC) {
+      // setSkeletonState({
+      //   activeIndex: 2,
+      //   colorSpace: '#e50e37',
+      //   isFooterDisplayed: false,
+      // })
+      setSearchBar(false)
+      // }
+    }
+  }
+  useEffect(() => {
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
 
-  return (
-    <div className="home_page">
-      <div className="home_page__counter-page">
-        <img
-          width="400px"
-          src="../../../icon/coachIsporit.png"
-          alt="iSporit"
-        />
-        <h1 className="home_page__counter-page__counter">
-          <Countdown
-            title=""
-            value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
-            format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
-          />
-        </h1>
-        <Link href={routes.CONTACT_US.path}>
-          <a href={routes.CONTACT_US.path}>
-            <Button className="home_page__counter-page__contact" type="primary">
-              Contact
-            </Button>
-          </a>
-        </Link>
-      </div>
-    </div>
-  )
+  // return (
+  //   <div className="home_page">
+  //     <div className="home_page__counter-page">
+  //       <img
+  //         width="400px"
+  //         src="../../../icon/coachIsporit.png"
+  //         alt="iSporit"
+  //       />
+  //       <h1 className="home_page__counter-page__counter">
+  //         <Countdown
+  //           title=""
+  //           value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
+  //           format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+  //         />
+  //       </h1>
+  //       <Link href={routes.CONTACT_US.path}>
+  //         <a href={routes.CONTACT_US.path}>
+  //           <Button className="home_page__counter-page__contact" type="primary">
+  //             Contact
+  //           </Button>
+  //         </a>
+  //       </Link>
+  //     </div>
+  //   </div>
+  // )
 
   return (
     <div className="home_page">
@@ -101,8 +153,47 @@ const Index = (props) => {
         <meta name="author" content="iSporit" />
       </Head>
 
-      <Layout>
-        <div className={`${'gerer_iluustateur'}`}>
+      <Layout
+        searchBar={searchBar}
+        setSearchBar={setSearchBar}
+        coachesList={coachesList}
+        jobs={jobs}
+        sports={sports}
+        dances={dances}
+        regions={regions}
+      >
+        <div
+          className={`${'gerer_iluustateur'}`}
+          style={!isMobile?{ paddingTop: '11rem' }:{}}
+        >
+          <div
+            className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
+          >
+            <div className={`${'gerer_equipe_img'} `}>
+              <h1 className="gerer_equipe_title">
+                Réservez dès maintenant votre entraîneur Isporit
+              </h1>
+              <div className="gerer_time_title" id="cv">
+                <div>
+                  Avec Isporit, vous trouverez des entraîneurs qualifiés et
+                  expérimentés, vous pouvez planifier votre séance avec un
+                  professionnel en sport et yoga.
+                </div>
+              </div>
+              <Link href={routes.COACHES_LIST.path}>
+                <button className="gerer_team">Réservez vos entraîneurs</button>
+              </Link>
+            </div>
+            <img
+              alt="image"
+              className="img_illustration"
+              src="icon/coachesBanner.png"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div className={`${'gerer_iluustateur'}`} id="reste">
           <div
             className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
           >
@@ -158,7 +249,7 @@ const Index = (props) => {
             ]}
           /> */}
 
-          <Title
+          {/* <Title
             title="Regagnez votre temps à nouveau"
             sub_title="Gérer les plannings et les absences avec iSporit est plus efficace
             que de le faire"
@@ -259,7 +350,7 @@ const Index = (props) => {
                 </button>
               </Link>
             </div>
-          </div>
+          </div> */}
 
           {/* <Title
             title=" Questions souvent posées"
@@ -318,10 +409,39 @@ const Index = (props) => {
 }
 
 Index.getInitialProps = async (ctx) => {
+  const coachesRes = await fetch(`${API}users/coaches/all`)
+  const jobsRes = await fetch(`${API}jobs`)
+  const sportsRes = await fetch(`${API}sports`)
+  const danceRes = await fetch(`${API}dances/`)
+  const regionsRes = await fetch(`${API}regions/`)
+  const jsonCoachesRes = await coachesRes.json()
+  let jsonJobsRes = await jobsRes.json()
+
+  if (jsonJobsRes) {
+    jsonJobsRes = jsonJobsRes
+      .filter((job) => job.isPublic)
+      .sort((a, b) => a.order - b.order)
+  }
+
+  let jsonSportsRes = await sportsRes.json()
+  if (jsonSportsRes) {
+    jsonSportsRes = jsonSportsRes.filter((sport) => sport.type !== undefined)
+  }
+  const jsonDancesRes = await danceRes.json()
+  const jsonRegionsRes = await regionsRes.json()
+
   return {
+    coachesList: jsonCoachesRes,
+    jobs: jsonJobsRes,
+    sports: jsonSportsRes,
+    dances: jsonDancesRes,
+    regions: jsonRegionsRes,
     namespacesRequired: ['common'],
   }
+ 
 }
+
+
 
 Index.propTypes = {
   t: PropTypes.func.isRequired,

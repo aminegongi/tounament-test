@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import Axios from 'axios'
 import { isEmpty } from 'lodash'
 import Head from 'next/head'
+import {Breadcrumb} from 'antd'
 import InfoCoach from '../../../shared/components/InfoCoach/InfoCoach'
 import '../../../shared/css/coachDetails.scss'
 import Navbar from '../../../shared/components/navbar/Navbar'
@@ -85,7 +86,7 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
         )
       }
       if (tab === 2) {
-        return <CoachAvis coachData={coach} />
+        return <CoachAvis coach={coach} />
       }
       if (tab === 3) {
         return (
@@ -141,7 +142,8 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
     <>
       <Head>
         <title>
-          {coach.firstName} {coach.lastName}
+          {coach.firstName[0].toUpperCase() + coach.firstName.slice(1)}{' '}
+          {coach.lastName[0].toUpperCase() + coach.lastName.slice(1)}
         </title>
         <meta
           name="description"
@@ -167,6 +169,7 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
           <div className="affiche">
             <img className="affiche__img" src={affiche} alt="affiche" />
           </div>
+
           <div className="coach__coachdetails">
             <div className="coach__cordonneBlock">
               <div className="coach__coachdetails__contact">
@@ -177,6 +180,21 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
               </div>
             </div>
             <div className="tabsinfo">
+              <Breadcrumb separator=">">
+                <Breadcrumb.Item
+                  href="/coaches"
+                  className="isporit-breadcrumb-link"
+                >
+                  Tous les coachs
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  {coach.firstName[0].toUpperCase() +
+                    coach.firstName.slice(1) +
+                    ' ' +
+                    coach.lastName[0].toUpperCase() +
+                    coach.lastName.slice(1)}
+                </Breadcrumb.Item>
+              </Breadcrumb>
               <div className="tabs">
                 <div className="tabs__button">
                   <button
@@ -225,7 +243,6 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
               {displayTabs()}
             </div>
           </div>
-
           {/* <ReservationCours
           coachProfile={coach}
           isModalVisibleReservation={isContactModalVisible}
