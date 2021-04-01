@@ -58,7 +58,6 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
     setLang(i18n.language)
   }, [i18n.language])
   const router = useRouter()
-  console.log('router: ', router);
 
 const mobile = useMediaPredicate('(max-width: 850px)')
 

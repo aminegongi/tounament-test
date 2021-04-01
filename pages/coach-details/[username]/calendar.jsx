@@ -144,114 +144,124 @@ export default function Calendar({
           </div>
           <div>
             <>
-          <Breadcrumb separator=">">
-            <Breadcrumb.Item
-              href="/coaches"
-              className="isporit-breadcrumb-link"
-            >
-              Tous les coachs
-            </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              {coach.firstName[0].toUpperCase() +
-                coach.firstName.slice(1) +
-                ' ' +
-                coach.lastName[0].toUpperCase() +
-                coach.lastName.slice(1)}
-            </Breadcrumb.Item>
-          </Breadcrumb>
-          {coachingRequestApi === REQUEST_SUCCEEDED && (
-            <div className="coach-calendar__request-succeeded">
-              <div className="coach-calendar__request-succeeded__icon">
-                <Icon type="check-circle" />
-              </div>
-              <div className="coach-calendar__request-succeeded__title">
-                Confirmation
-              </div>
-              <div className="coach-calendar__request-succeeded__description">
-                Votre demande de réservation a été envoyée à l'entraîneur!
-              </div>
-              <div className="coach-calendar__request-succeeded__sub-description">
-                vous serez contacté par téléphone pour confirmer votre cours .
-                <div>
-                  <a
-                    href="https://dev.isporit.com/dashboard"
-                    className="isporit-primary-button link-platform"
-                    target="_blank"
-                  >
-                    Voir mes réservations
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
-          {coachingRequestApi !== REQUEST_SUCCEEDED && (
-            <div className="coach-calendar__body__calendar-section">
-              <div className="coach-calendar__body__calendar-section__header">
-                <div className="coach-calendar__body__calendar-section__header__title">
-                  Choisir la date et l'heure pour réserver vos cours
-                </div>
-                <div className="coach-calendar__body__calendar-section__header__sub-title">
-                  Choisissez plus qu'un créneau horaire pour maximiser vos
-                  chances
-                </div>
-              </div>
-              <div className="coach-calendar__body__calendar-section__body">
-                <WeeklyBookingCalendar
-                  availabilitiesByDate={getCoachAvailabilities()}
-                  setSelectedTimeSlots={setSelectedTimeSlots}
-                  selectedTimeSlots={selectedTimeSlots}
-                />
-              </div>
-              {!isEmpty(selectedTimeSlots) && (
-                <div className="coach-calendar__body__calendar-section__footer">
-                  <div className="coach-calendar__body__calendar-section__footer__title">
-                    Merci de confirmer votre date
+              <Breadcrumb separator=">">
+                <Breadcrumb.Item
+                  href="/coaches"
+                  className="isporit-breadcrumb-link"
+                >
+                  Tous les coachs
+                </Breadcrumb.Item>
+                <Breadcrumb.Item
+                  href={'/coach-details/' + coach.username}
+                  className="isporit-breadcrumb-link"
+                >
+                  {coach.firstName[0].toUpperCase() +
+                    coach.firstName.slice(1) +
+                    ' ' +
+                    coach.lastName[0].toUpperCase() +
+                    coach.lastName.slice(1)}
+                </Breadcrumb.Item>
+                <Breadcrumb.Item
+                >
+                  Calendar
+                </Breadcrumb.Item>
+              </Breadcrumb>
+              {coachingRequestApi === REQUEST_SUCCEEDED && (
+                <div className="coach-calendar__request-succeeded">
+                  <div className="coach-calendar__request-succeeded__icon">
+                    <Icon type="check-circle" />
                   </div>
-
-                  {selectedTimeSlots.map((el) => (
-                    <div className="coach-calendar__body__calendar-section__footer__item">
-                      <div className="coach-calendar__body__calendar-section__footer__item__icon" />
-                      <div className="coach-calendar__body__calendar-section__footer__item__day">
-                        {moment(el.startTime, 'YYYY-MM-DD').format('dddd')}
-                      </div>
-                      <div className="coach-calendar__body__calendar-section__footer__item__date">
-                        {moment(el.startTime, 'YYYY-MM-DD').format(
-                          'DD-MM-YYYY',
-                        )}
-                      </div>
-                      <div className="coach-calendar__body__calendar-section__footer__item__time">
-                        {moment(el.startTime, 'YYYY-MM-DD HH:mm').format(
-                          'HH:mm',
-                        )}
-                      </div>
-                      <Icon
-                        type="close-square"
-                        className="coach-calendar__body__calendar-section__footer__item__delete-icon"
-                        theme="filled"
-                        onClick={() =>
-                          setSelectedTimeSlots(
-                            selectedTimeSlots.filter((s) => s._id !== el._id),
-                          )
-                        }
-                      />
+                  <div className="coach-calendar__request-succeeded__title">
+                    Confirmation
+                  </div>
+                  <div className="coach-calendar__request-succeeded__description">
+                    Votre demande de réservation a été envoyée à l'entraîneur!
+                  </div>
+                  <div className="coach-calendar__request-succeeded__sub-description">
+                    vous serez contacté par téléphone pour confirmer votre cours
+                    .
+                    <div>
+                      <a
+                        href="https://dev.isporit.com/dashboard"
+                        className="isporit-primary-button link-platform"
+                        target="_blank"
+                      >
+                        Voir mes réservations
+                      </a>
                     </div>
-                  ))}
-                  {authContext.userProfile._id !== coach._id && (
-                    <Button
-                      type="submit"
-                      id="coach-calendar-footer-confirm-button"
-                      loading={confirmationLoading}
-                      onClick={onCreateCoachingRequest}
-                      className="coach-calendar__body__calendar-section__footer__confirm-button"
-                    >
-                      Confirmer
-                    </Button>
+                  </div>
+                </div>
+              )}
+              {coachingRequestApi !== REQUEST_SUCCEEDED && (
+                <div className="coach-calendar__body__calendar-section">
+                  <div className="coach-calendar__body__calendar-section__header">
+                    <div className="coach-calendar__body__calendar-section__header__title">
+                      Choisir la date et l'heure pour réserver vos cours
+                    </div>
+                    <div className="coach-calendar__body__calendar-section__header__sub-title">
+                      Choisissez plus qu'un créneau horaire pour maximiser vos
+                      chances
+                    </div>
+                  </div>
+                  <div className="coach-calendar__body__calendar-section__body">
+                    <WeeklyBookingCalendar
+                      availabilitiesByDate={getCoachAvailabilities()}
+                      setSelectedTimeSlots={setSelectedTimeSlots}
+                      selectedTimeSlots={selectedTimeSlots}
+                    />
+                  </div>
+                  {!isEmpty(selectedTimeSlots) && (
+                    <div className="coach-calendar__body__calendar-section__footer">
+                      <div className="coach-calendar__body__calendar-section__footer__title">
+                        Merci de confirmer votre date
+                      </div>
+
+                      {selectedTimeSlots.map((el) => (
+                        <div className="coach-calendar__body__calendar-section__footer__item">
+                          <div className="coach-calendar__body__calendar-section__footer__item__icon" />
+                          <div className="coach-calendar__body__calendar-section__footer__item__day">
+                            {moment(el.startTime, 'YYYY-MM-DD').format('dddd')}
+                          </div>
+                          <div className="coach-calendar__body__calendar-section__footer__item__date">
+                            {moment(el.startTime, 'YYYY-MM-DD').format(
+                              'DD-MM-YYYY',
+                            )}
+                          </div>
+                          <div className="coach-calendar__body__calendar-section__footer__item__time">
+                            {moment(el.startTime, 'YYYY-MM-DD HH:mm').format(
+                              'HH:mm',
+                            )}
+                          </div>
+                          <Icon
+                            type="close-square"
+                            className="coach-calendar__body__calendar-section__footer__item__delete-icon"
+                            theme="filled"
+                            onClick={() =>
+                              setSelectedTimeSlots(
+                                selectedTimeSlots.filter(
+                                  (s) => s._id !== el._id,
+                                ),
+                              )
+                            }
+                          />
+                        </div>
+                      ))}
+                      {authContext.userProfile._id !== coach._id && (
+                        <Button
+                          type="submit"
+                          id="coach-calendar-footer-confirm-button"
+                          loading={confirmationLoading}
+                          onClick={onCreateCoachingRequest}
+                          className="coach-calendar__body__calendar-section__footer__confirm-button"
+                        >
+                          Confirmer
+                        </Button>
+                      )}
+                    </div>
                   )}
                 </div>
               )}
-            </div>
-          )}
-          </>
+            </>
           </div>
         </div>
       </div>
