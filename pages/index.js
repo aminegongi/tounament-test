@@ -90,23 +90,11 @@ const [isMobile, setIsMobile] = useState(false)
     let el = document.getElementById('cv')
     let isVisibleC = isVisibleElement(el)
     if (isVisibleC) {
-      // setSkeletonState({
-      //   activeIndex: 2,
-      //   colorSpace: '#e50e37',
-      //   isFooterDisplayed: false,
-      // })
+
       setSearchBar(true)
     } else {
-      // el = document.getElementById('reste')
-      // isVisibleC = isVisibleElement(el)
-      // if (isVisibleC) {
-      // setSkeletonState({
-      //   activeIndex: 2,
-      //   colorSpace: '#e50e37',
-      //   isFooterDisplayed: false,
-      // })
+ 
       setSearchBar(false)
-      // }
     }
   }
   useEffect(() => {
