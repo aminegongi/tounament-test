@@ -144,9 +144,11 @@ function NavbarIndex({
 
               {searchBar && (
                 <div className="item">
-                  <Link href={routes.COACHES_LIST.path}>
-                    <a href={routes.COACHES_LIST.path}>Réservez votre coach</a>
-                  </Link>
+                  {/* <Link href={routes.COACHES_LIST.path}> */}
+                  {/* <a href={routes.COACHES_LIST.path}> */}
+                    Réservez votre coach
+                    {/* </a> */}
+                  {/* </Link> */}
                 </div>
               )}
               {!searchBar && (
@@ -197,7 +199,7 @@ function NavbarIndex({
                     placeholder="Quelle spécialité?"
                     optionFilterProp="children"
                     onChange={(e) => {
-                      console.log('e: ', e);
+                      console.log('e: ', e)
                       setSpecialty(e)
                     }}
                     // onSearch={onSearch}
