@@ -7,7 +7,6 @@ import Axios from 'axios'
 import { Collapse, Icon, Button } from 'antd'
 import Link from 'next/link'
 import Countdown from 'antd/lib/statistic/Countdown'
-import moment from 'moment'
 import Layout from '../shared/components/layout/Layout'
 import '../shared/css/home.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
@@ -18,6 +17,7 @@ import Feature from '../shared/components/Feature/Feature'
 import BecomePartner from '../shared/components/BecomePartner/BecomePartner'
 import Title from '../shared/components/TitleSection/TitleSection'
 import Join from '../shared/components/joinplatforme/Join'
+import moment from 'moment'
 
 import Demo from '../shared/components/DemoSection/DemoSection'
 import Functionclub from '../shared/components/Functionclub/Functionclub'
@@ -53,7 +53,8 @@ const Index = (props) => {
   }, [i18n.language])
 
   useEffect(() => {
-    console.log('This was deploy using swarm')
+    console.log('This was deploy using swarmk, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])

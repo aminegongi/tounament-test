@@ -162,7 +162,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
 
         {coachData && coachData && coachData.videosLinks.length !== 0 ? (
           <CoachProfileSection
-            title="Videos"
+            title="Vidéos"
             isVerticalLine={!isInformationEmpty()}
             icon={videoicon}
           >
@@ -236,7 +236,6 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
               coachData &&
               coachData.privateCourseData &&
               coachData.privateCourseData.regions.map((region) => {
-                console.log('region: ', region, dataMap[region]);
                 if (dataMap[region]) {
                   return (
                     <iframe

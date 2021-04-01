@@ -9,6 +9,7 @@
         height: max-content;
         padding: 58px 0 58px;
         text-align: center;
+        margin-top:20px;
 
         &__icon {
             font-size: 30px;
@@ -59,6 +60,7 @@
         &__calendar-section {
             position: relative;
             top: -14px;
+            margin-top:20px;
 
             &__header {
                 &__title {

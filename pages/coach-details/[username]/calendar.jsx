@@ -20,9 +20,10 @@ import WeeklyBookingCalendar from '../../../shared/components/WeeklyBookingCalen
 import { createCoachingRequest } from '../../../shared/services/coachDetails.service'
 import { AuthContext } from '../../../utils/context.utils'
 import Layout from '../../../shared/components/layout/Layout'
+import { Breadcrumb } from 'antd';
 
 export default function Calendar({
-  coachDetails,
+  coach,
   jobs,
   sports,
   dances,
@@ -34,11 +35,11 @@ export default function Calendar({
   const authContext = useContext(AuthContext)
 
   const renderCoachProfile = () => {
-    const job = jobs.find((j) => j._id === coachDetails.coachData.job)
+    const job = jobs.find((j) => j._id === coach.coachData.job)
     let specialty = ''
     if (job && job.specialty && job.specialty.type === 'sport') {
-      specialty = coachDetails.coachData.specialty
-        ? coachDetails.coachData.specialty.reduce((acc, val) => {
+      specialty = coach.coachData.specialty
+        ? coach.coachData.specialty.reduce((acc, val) => {
             const element = sports.find((dance) => dance._id === val)
             if (element) {
               acc = [...acc, element]
@@ -47,8 +48,8 @@ export default function Calendar({
           }, [])
         : []
     } else if (job && job.specialty && job.specialty.type === 'dance') {
-      specialty = coachDetails.coachData.specialty
-        ? coachDetails.coachData.specialty.reduce((acc, val) => {
+      specialty = coach.coachData.specialty
+        ? coach.coachData.specialty.reduce((acc, val) => {
             const element = dances.find((dance) => dance._id === val)
             if (element) {
               acc = [...acc, element]
@@ -59,7 +60,7 @@ export default function Calendar({
     }
     return (
       <InfoCoach
-        coachProfile={coachDetails}
+        coachProfile={coach}
         job={job}
         specialty={specialty}
         coachcalander
@@ -76,7 +77,7 @@ export default function Calendar({
     const createRequest = async () => {
       const result = await createCoachingRequest(
         {
-          coachId: coachDetails._id,
+          coachId: coach._id,
           requests: selectedTimeSlots.map((el) => ({ availabilityId: el._id })),
         },
         setConfirmationLoading,
@@ -102,15 +103,15 @@ export default function Calendar({
   }
 
   const getCoachAvailabilities = () => {
-    if (coachDetails.coachData.availabilities) {
+    if (coach.coachData.availabilities) {
       if (
-        coachDetails.coachData &&
-        coachDetails.coachData.privateCourseData &&
-        !coachDetails.coachData.privateCourseData.givePrivateCourse
+        coach.coachData &&
+        coach.coachData.privateCourseData &&
+        !coach.coachData.privateCourseData.givePrivateCourse
       ) {
         return []
       }
-      return coachDetails.coachData.availabilities.reduce((acc, val) => {
+      return coach.coachData.availabilities.reduce((acc, val) => {
         // if (moment().isSameOrBefore(val.startTime)) {
         const date = moment(val.startTime).format('DD-MM-YYYY')
         if (acc[date]) {
@@ -135,12 +136,29 @@ export default function Calendar({
         <div className="coach-calendar__body">
           <div className="coach-calendar__body__profile-information">
             <div className="coach-calendar__body__profile-information__card">
-              {coachDetails && renderCoachProfile()}
+              {coach && renderCoachProfile()}
             </div>
             <div className="">
-              {coachDetails ? <ContactCoach coachData={[coachDetails]} /> : ''}
+              {coach ? <ContactCoach coachData={[coach]} /> : ''}
             </div>
           </div>
+          <div>
+            <>
+          <Breadcrumb separator=">">
+            <Breadcrumb.Item
+              href="/coaches"
+              className="isporit-breadcrumb-link"
+            >
+              Tous les coachs
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>
+              {coach.firstName[0].toUpperCase() +
+                coach.firstName.slice(1) +
+                ' ' +
+                coach.lastName[0].toUpperCase() +
+                coach.lastName.slice(1)}
+            </Breadcrumb.Item>
+          </Breadcrumb>
           {coachingRequestApi === REQUEST_SUCCEEDED && (
             <div className="coach-calendar__request-succeeded">
               <div className="coach-calendar__request-succeeded__icon">
@@ -152,19 +170,18 @@ export default function Calendar({
               <div className="coach-calendar__request-succeeded__description">
                 Votre demande de réservation a été envoyée à l'entraîneur!
               </div>
-               <div className="coach-calendar__request-succeeded__sub-description">
+              <div className="coach-calendar__request-succeeded__sub-description">
                 vous serez contacté par téléphone pour confirmer votre cours .
                 <div>
-                 <a
-                href="https://dev.isporit.com/dashboard"
-                className="isporit-primary-button link-platform"
-                target="_blank"
-              >
-                Voir mes réservations
-              </a>
+                  <a
+                    href="https://dev.isporit.com/dashboard"
+                    className="isporit-primary-button link-platform"
+                    target="_blank"
+                  >
+                    Voir mes réservations
+                  </a>
+                </div>
               </div>
-              </div>
-             
             </div>
           )}
           {coachingRequestApi !== REQUEST_SUCCEEDED && (
@@ -174,7 +191,8 @@ export default function Calendar({
                   Choisir la date et l'heure pour réserver vos cours
                 </div>
                 <div className="coach-calendar__body__calendar-section__header__sub-title">
-                  Choisissez plus qu'un créneau horaire pour maximiser vos chances
+                  Choisissez plus qu'un créneau horaire pour maximiser vos
+                  chances
                 </div>
               </div>
               <div className="coach-calendar__body__calendar-section__body">
@@ -218,7 +236,7 @@ export default function Calendar({
                       />
                     </div>
                   ))}
-                  {authContext.userProfile._id !== coachDetails._id && (
+                  {authContext.userProfile._id !== coach._id && (
                     <Button
                       type="submit"
                       id="coach-calendar-footer-confirm-button"
@@ -233,6 +251,8 @@ export default function Calendar({
               )}
             </div>
           )}
+          </>
+          </div>
         </div>
       </div>
     </Layout>
@@ -240,7 +260,7 @@ export default function Calendar({
 }
 
 Calendar.propTypes = {
-  coachDetails: PropTypes.objectOf(PropTypes.any).isRequired,
+  coach: PropTypes.objectOf(PropTypes.any).isRequired,
   jobs: PropTypes.arrayOf(PropTypes.any).isRequired,
   sports: PropTypes.arrayOf(PropTypes.any).isRequired,
   dances: PropTypes.arrayOf(PropTypes.any).isRequired,
@@ -260,7 +280,7 @@ Calendar.getInitialProps = async ({ query }) => {
   const jsonRegionsRes = await regionsRes.json()
 
   return {
-    coachDetails: jsonCoachRes,
+    coach: jsonCoachRes,
     jobs: jsonJobsRes,
     sports: jsonSportsRes,
     dances: jsonDancesRes,

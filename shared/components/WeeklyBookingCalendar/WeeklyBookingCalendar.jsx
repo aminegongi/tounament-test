@@ -57,6 +57,7 @@ const WeeklyBookingCalendar = ({
           return null
         }}
         className="weekly-booking-calendar__calendar"
+        minDate={new Date()}
       />
       <div className="weekly-booking-calendar__time-slots">
         <div className="weekly-booking-calendar__time-slots__date">
