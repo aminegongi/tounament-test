@@ -35,6 +35,7 @@ import routes from '../utils/routes'
 // import Countdown from '../shared/components/CountDown'
 
 const { Panel } = Collapse
+import { useRouter } from 'next/router'
 
 const text = `
   A dog is a type of domesticated animal.
@@ -56,6 +57,9 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
   useEffect(() => {
     setLang(i18n.language)
   }, [i18n.language])
+  const router = useRouter()
+  console.log('router: ', router);
+
 const mobile = useMediaPredicate('(max-width: 850px)')
 
 const [isMobile, setIsMobile] = useState(false)
@@ -109,32 +113,33 @@ const [isMobile, setIsMobile] = useState(false)
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
-
-  // return (
-  //   <div className="home_page">
-  //     <div className="home_page__counter-page">
-  //       <img
-  //         width="400px"
-  //         src="../../../icon/coachIsporit.png"
-  //         alt="iSporit"
-  //       />
-  //       <h1 className="home_page__counter-page__counter">
-  //         <Countdown
-  //           title=""
-  //           value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
-  //           format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
-  //         />
-  //       </h1>
-  //       <Link href={routes.CONTACT_US.path}>
-  //         <a href={routes.CONTACT_US.path}>
-  //           <Button className="home_page__counter-page__contact" type="primary">
-  //             Contact
-  //           </Button>
-  //         </a>
-  //       </Link>
-  //     </div>
-  //   </div>
-  // )
+  if(!router.query.draft){
+  return (
+    <div className="home_page">
+      <div className="home_page__counter-page">
+        <img
+          width="400px"
+          src="../../../icon/coachIsporit.png"
+          alt="iSporit"
+        />
+        <h1 className="home_page__counter-page__counter">
+          <Countdown
+            title=""
+            value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
+            format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+          />
+        </h1>
+        <Link href={routes.CONTACT_US.path}>
+          <a href={routes.CONTACT_US.path}>
+            <Button className="home_page__counter-page__contact" type="primary">
+              Contact
+            </Button>
+          </a>
+        </Link>
+      </div>
+    </div>
+  )
+  }
 
   return (
     <div className="home_page">
