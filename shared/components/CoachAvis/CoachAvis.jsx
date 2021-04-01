@@ -35,7 +35,6 @@ function CoachAvis({ coach }) {
               coach.coachData &&
               coach.coachData.reviews.length != 0 &&
               coach.coachData.reviews.map((review) => {
-                console.log('review: ', review);
                 return (
                   <>
                     <div className="coachaviscomposant__card__description">
