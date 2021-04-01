@@ -1,17 +1,37 @@
 .navbar_container {
-    position: sticky;
+
+    position: fixed;
+    right: 50%;
+    margin-right: -650px;
+    width: 1300px;
+    background-color: #fff;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // // padding-top: 24px;
+    // padding-left: 10px;
+    // padding-right: 10px;
+    // // padding-bottom: 10px;
+    z-index: 999;
+    // height: 96px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // padding-top: 24px;
-    padding-left: 10px;
-    padding-right: 10px;
-    // padding-bottom: 10px;
-    z-index: 999;
-    height: 96px;
+    // margin-top: 6.1875rem;
+    padding-bottom: 2.5625rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+    .logo {
+        width: 20%;
+        margin-top: -30px;
+    }
 
     &__button-container {
-        width: 208px;
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -30px;
     }
 
     &__user-card {
@@ -21,22 +41,26 @@
         text-transform: capitalize;
         cursor: pointer;
         padding-right: 5px;
+
         &__down-icon {
             font-size: 12px;
             // margin-bottom: 7px;
             cursor: pointer;
         }
+
         img {
             width: 32px;
             height: 32px;
             border-radius: 50%;
             margin-right: 10px;
         }
+
         &__name {
             max-width: 128px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+
             @media only screen and (max-width: 850px) {
                 max-width: auto;
             }
@@ -44,10 +68,15 @@
     }
 
     .items_container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: 2.5rem;
+        // display: grid;
+        // grid-template-columns: repeat(3, 1fr);
+        // column-gap: 2.5rem;
         align-content: center;
+        // padding-top: 80px;
+        padding-bottom: 20px;
+        width: 20%;
+        // /* display: flex; */
+        margin: 0 auto;
     }
 
     .item {
@@ -57,19 +86,25 @@
         font-size: 0.875rem;
         color: #2e3034;
         cursor: pointer;
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #26beb5;
+
 
         a {
             color: #2e3034;
         }
     }
+
     .sign_in {
         font-size: 0.875rem;
         color: #ff8760;
         border-radius: 8px;
         background-color: #fff3e6;
-        margin-right: 15px;
+        // margin-right: 15px;
         padding: 14px 16px 13.5px 16px !important;
     }
+
     .sign_up {
         font-size: 0.875rem;
         color: white;
@@ -78,12 +113,15 @@
         margin-right: 15px;
         padding: 14px 16px 13.5px 16px !important;
     }
+
     .feature_desktop_item_player:hover {
         border: 1px solid #ffcd67;
     }
+
     .feature_desktop_item_coach:hover {
         border: 1px solid #ff8760;
     }
+
     .feature_desktop_item_club:hover {
         border: 1px solid #26beb5;
     }
@@ -93,6 +131,7 @@
         padding-bottom: 10px;
         color: black;
     }
+
     .sup:hover .subnav_content_container {
         display: grid;
         position: absolute;
@@ -105,6 +144,7 @@
         padding-bottom: 1px !important;
         padding-top: 3px !important;
     }
+
     .subnav_content_container {
         display: none;
         padding-top: 20px;
@@ -114,6 +154,7 @@
         padding-left: 20px;
         cursor: initial;
     }
+
     .subnav_content {
         display: grid;
         position: relative;
@@ -141,6 +182,7 @@
                 font-size: 18px;
                 font-weight: 500;
             }
+
             .subtitle {
                 color: #2e3034;
                 font-size: 14px;
@@ -154,6 +196,7 @@
     background: white;
     width: 100%;
     height: 164px;
+
     .sign_up {
         font-size: 0.875rem;
         color: white;
@@ -162,20 +205,24 @@
         margin-right: 15px;
         padding: 14px 16px 13.5px 16px !important;
     }
+
     .footer_bar {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         padding: 15px;
         border-bottom: 1px solid #eeeeee;
         align-items: center;
+
         .social_media {
             display: flex;
             justify-content: space-around;
         }
+
         .button_container {
             justify-self: end;
         }
     }
+
     .copyright {
         margin-top: 2.5rem;
         font-size: 1rem;
@@ -193,6 +240,7 @@
     .navbar_container {
         display: none;
     }
+
     .mobile_burger_menu {
         display: block;
         z-index: 9999999999999999;
@@ -203,21 +251,26 @@
         padding-left: 15px;
         padding-bottom: 15px;
     }
+
     .menu_item {
         color: black;
+
         :hover {
             color: black;
         }
     }
+
     .feature_item {
         display: grid;
         grid-template-columns: 35px auto;
         column-gap: 10px;
         align-items: center;
         color: black;
+
         :hover {
             color: black;
         }
+
         img {
             justify-self: center;
         }

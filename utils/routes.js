@@ -1,4 +1,7 @@
 export default {
+  HOME:{
+     path: '/',
+  },
   CONTACT_US: {
     path: '/contact-us',
     playerPath: '/contact-us?role=player',
