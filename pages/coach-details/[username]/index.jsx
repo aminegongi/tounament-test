@@ -141,9 +141,12 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
     <>
       <Head>
         <title>
-          {console.log('coach', coach)}
           {coach.firstName} {coach.lastName}
         </title>
+        <meta
+          name="description"
+          content={coach.coachData && coach.coachData.aboutMe}
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           property="og:url"
@@ -153,6 +156,10 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
         <meta
           property="og:image"
           content={getUserProfilePicture(coach.profilePicture)}
+        />
+        <link
+          rel="canonical"
+          href={`https://isporit.com/coaches/${coach.username}`}
         />
       </Head>
       <Layout>
