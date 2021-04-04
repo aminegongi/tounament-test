@@ -340,8 +340,9 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               </div>
 
               <div className="paginate">
+                {console.log('dataCopy.length: ', Math.ceil(dataCopy.length / nbr_of_card_per_page))}
                 {Array.from({
-                  length: Math.round(dataCopy.length / nbr_of_card_per_page),
+                  length: Math.ceil(dataCopy.length / nbr_of_card_per_page),
                 }).map((el, index) => (
                   <div
                     className={

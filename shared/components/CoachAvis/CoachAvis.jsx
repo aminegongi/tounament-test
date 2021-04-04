@@ -16,6 +16,8 @@ function CoachAvis({ coach }) {
         coach.coachData.reviews.length,2)
     
   // )
+      console.log('sumsssssssssssssssssssss: ', coach.coachData.reviews, sum)        
+
 
 
   return (

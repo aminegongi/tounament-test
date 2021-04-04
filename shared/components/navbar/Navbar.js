@@ -118,6 +118,113 @@ function NavbarIndex({
             </a>
           </Link>
         </div>
+        <div className="">
+         <BurgerMenu.slide
+            styles={{
+              bmBurgerButton: {
+                position: 'fixed',
+                height: '30px',
+                width: '30px',
+                right: '15px',
+                top: '15px',
+              },
+              bmMenu: {
+                background: 'white',
+                fontSize: '1.15em',
+                boxShadow: '0 20px 40px 0 rgba(0, 0, 0, 0.2)',
+              },
+              bmItemList: {
+                color: '#b8b7ad',
+                padding: '0.8em',
+              },
+              bmItem: {
+                display: 'inline-block',
+              },
+              bmOverlay: {
+                backgroundColor: 'transparent',
+              },
+            }}
+            right
+            onStateChange={(e) => setIsMenuOpen(e.isOpen)}
+            isOpen={isMenuOpen}
+            width="260px"
+            customBurgerIcon={
+              !isMenuOpen ? <Icon type="menu" /> : <Icon type="close" />
+            }
+            customCrossIcon={false}
+            noOverlay={false}
+          >
+            <Menu
+              mode="inline"
+              defaultOpenKeys={['sub1']}
+              style={{ border: 'none' }}
+            >
+              {authContext.isLoggedIn &&
+                authContext.fetchUserProfileLoading === false && (
+                  <Menu.Item
+                    onClick={() => {
+                      window.location.href = routes.ISPORIT_PLATFORM.linkTo()
+                    }}
+                    className="menu_item"
+                  >
+                    <div className="isporit-flex-h-any-v-center">
+                      <div className="navbar_container__user-card">
+                        <img
+                          src={getUserProfilePicture(
+                            authContext.userProfile.profilePicture,
+                          )}
+                          alt=""
+                        />
+                        <div className="navbar_container__user-card__name">
+                          {authContext.userProfile.firstName}{' '}
+                          {authContext.userProfile.lastName}
+                        </div>
+                      </div>
+                    </div>
+                  </Menu.Item>
+                )}
+
+              <Menu.Item
+                onClick={() => onChangeLocation(routes.COACHES_LIST.path)}
+                className="menu_item"
+              >
+                Réserver votre coach
+              </Menu.Item>
+              
+              <Menu.Item
+                onClick={() => onChangeLocation('/contact-us')}
+                className="menu_item"
+              >
+                Contact
+              </Menu.Item>
+
+              {!authContext.isLoggedIn &&
+                authContext.fetchUserProfileLoading === false && (
+                  <Menu.Item
+                    onClick={() => {
+                      authContext.toggleLogInModal(null, true)
+                      setIsMenuOpen(false)
+                    }}
+                    className="menu_item"
+                  >
+                    Inscription
+                  </Menu.Item>
+                )}
+              {!authContext.isLoggedIn &&
+                authContext.fetchUserProfileLoading === false && (
+                  <Menu.Item
+                    onClick={() => {
+                      authContext.toggleLogInModal()
+                      setIsMenuOpen(false)
+                    }}
+                    className="menu_item"
+                  >
+                    Log in
+                  </Menu.Item>
+                )}
+            </Menu>
+          </BurgerMenu.slide>
+        </div>
       </div>
     )
   }
