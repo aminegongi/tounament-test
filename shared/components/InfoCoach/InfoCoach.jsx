@@ -114,7 +114,11 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
           </div>
           {isMobile && (
             <button
-              onClick={onOpenContactModal}
+              onClick={() =>
+                router.push(
+                  routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
+                )
+              }
               type="submit"
               className="buttoncontactcoach"
             >

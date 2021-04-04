@@ -133,7 +133,7 @@ const [isMobile, setIsMobile] = useState(false)
       <Head>
         <title>Accueil</title>
 
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
           content="Notre plateforme vous offrira des outils puissants et simples qui vous permettront non seulement de gérer parfaitement vos plannings et collaborateurs mais aussi de gagner du temps."
@@ -142,7 +142,24 @@ const [isMobile, setIsMobile] = useState(false)
           name="keywords"
           content="sport,clubs,coaches,players,tennis,football"
         />
-        <meta name="author" content="iSporit" />
+        <meta name="author" content="iSporit" /> */}
+        <meta
+          name="description"
+          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+iSporit vous offre la possibilité de choisir votre coach selon vos propres critères."
+        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:url" content="https://isporit.com/coaches" />
+        <meta
+          property="og:description"
+          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. "
+        />
+        <meta
+          property="og:image"
+          content="https://isporit.com/logo_isporit_final.png"
+        />
+        <link rel="canonical" href="https://isporit.com" />
       </Head>
 
       <Layout
@@ -156,7 +173,7 @@ const [isMobile, setIsMobile] = useState(false)
       >
         <div
           className={`${'gerer_iluustateur'}`}
-          style={!isMobile?{ paddingTop: '11rem' }:{}}
+          style={!isMobile ? { paddingTop: '11rem' } : {}}
         >
           <div
             className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}

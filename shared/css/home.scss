@@ -69,6 +69,14 @@
             text-align: left;
             color: #2e3034;
             max-width: 35rem;
+
+            @media only screen and (max-width: 1300px) {
+                font-size: 2.25rem;
+            }
+
+            @media only screen and (max-width: 1150px) {
+                font-size: 2rem;
+            }
         }
 
         .gerer_time_title {
@@ -82,6 +90,16 @@
             letter-spacing: normal;
             text-align: left;
             color: #2e3034;
+
+            @media only screen and (max-width: 1300px) {
+                font-size: 0.925rem;
+
+            }
+
+            @media only screen and (max-width: 1150px) {
+                font-size: 0.925rem;
+
+            }
         }
 
         .for_windows {
