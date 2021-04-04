@@ -22,13 +22,20 @@
     padding-left: 5rem;
     padding-right: 5rem;
 
+    @media only screen and (max-width:1300px) {
+        width: 100%;
+        right:unset;
+        margin-right: unset;
+
+    }
+
     .logo {
-        width: 30%;
+        width: 20%;
         margin-top: -30px;
     }
 
     &__button-container {
-        width: 30%;
+        width: 20%;
         display: flex;
         justify-content: flex-end;
         margin-top: -30px;
@@ -74,7 +81,7 @@
         align-content: center;
         // padding-top: 80px;
         padding-bottom: 20px;
-        width: 20%;
+        width: 25%;
         // /* display: flex; */
         margin: 0 auto;
     }

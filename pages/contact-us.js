@@ -107,16 +107,14 @@ const ContactUs = (props) => {
                 lang && 
             } */}
 
-      {/* <Layout> */}
+      <Layout>
       <div className="contact_us_container">
         <div className="left_side">
           <div className="top_description">
             <h1 className="h1">
-              {/* {props.t("contactUsTitle", "Contact Us")} */}
               Nous contacter
             </h1>
             <p className="p">
-              {/* {props.t("contactUsSubTitle", "Send us your information and we will contact you as soon as possible.")} */}
               Envoyez-nous vos informations et nous vous contacterons dans les
               prochaines 24h
             </p>
@@ -166,7 +164,6 @@ const ContactUs = (props) => {
               />
             </div>
             <div className="form_item">
-              {/* <label htmlFor="Numero de telephone">{props.t('contactUsPhoneNumber', 'Phone Number')}</label> */}
               <label htmlFor="Numero de telephone">Numéro de téléphone</label>
               <input
                 className={`${errors.phoneNumber ? 'input_error' : ''}`}
@@ -192,7 +189,6 @@ const ContactUs = (props) => {
               </select>
             </div>
             <div style={{ gridRow: 4 }} className="complete_form_item">
-              {/* <label htmlFor="Quel est l'objectif de votre demande ?">{props.t('contactUsObjective', "What is the purpose of your request?")}</label> */}
               <label htmlFor="Quel est l'objectif de votre demande ?">
                 Quel est l'objectif de votre demande ?
               </label>
@@ -209,7 +205,6 @@ const ContactUs = (props) => {
               />
             </div>
             <div style={{ gridRow: 5 }} className="complete_form_item">
-              {/* <label htmlFor="Message">{props.t('contactUsMessage', "Message")}</label> */}
               <label htmlFor="Message">Message</label>
               <textarea
                 className={`${errors.body ? 'input_error' : ''}`}
@@ -225,7 +220,6 @@ const ContactUs = (props) => {
               />
             </div>
             <button className="submit" onClick={onSubmit}>
-              {/* {props.t('contactUsSendMessage', "Send my information")} */}
               Envoyer mes informations
             </button>
           </div>
@@ -233,7 +227,6 @@ const ContactUs = (props) => {
         <div className="right_side">
           <div className="empty_block" />
           <p className="contact_description">
-            {/* {props.t('contactUsDescription', "Our team is available 24/7 to answer you and guide you.")} */}
             Notre équipe est disponible 24h/7j pour vous répondre et vous
             guider.
           </p>
@@ -243,7 +236,7 @@ const ContactUs = (props) => {
           </div>
         </div>
       </div>
-      {/* </Layout> */}
+      </Layout>
     </>
   )
 }

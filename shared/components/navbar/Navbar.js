@@ -119,7 +119,7 @@ function NavbarIndex({
           </Link>
         </div>
         <div className="">
-         <BurgerMenu.slide
+          <BurgerMenu.slide
             styles={{
               bmBurgerButton: {
                 position: 'fixed',
@@ -190,7 +190,7 @@ function NavbarIndex({
               >
                 Réserver votre coach
               </Menu.Item>
-              
+
               <Menu.Item
                 onClick={() => onChangeLocation('/contact-us')}
                 className="menu_item"
@@ -198,7 +198,7 @@ function NavbarIndex({
                 Contact
               </Menu.Item>
 
-              {!authContext.isLoggedIn &&
+              {/* {!authContext.isLoggedIn &&
                 authContext.fetchUserProfileLoading === false && (
                   <Menu.Item
                     onClick={() => {
@@ -209,7 +209,7 @@ function NavbarIndex({
                   >
                     Inscription
                   </Menu.Item>
-                )}
+                )} */}
               {!authContext.isLoggedIn &&
                 authContext.fetchUserProfileLoading === false && (
                   <Menu.Item
@@ -219,7 +219,13 @@ function NavbarIndex({
                     }}
                     className="menu_item"
                   >
-                    Log in
+                    Se connecter
+                  </Menu.Item>
+                )}
+              {authContext.isLoggedIn &&
+                authContext.fetchUserProfileLoading === false && (
+                  <Menu.Item onClick={authContext.logOut} className="menu_item">
+                    Déconnexion
                   </Menu.Item>
                 )}
             </Menu>
@@ -373,21 +379,20 @@ function NavbarIndex({
             {!authContext.isLoggedIn &&
               authContext.fetchUserProfileLoading === false && (
                 <div className="isporit-flex-h-end-v-center">
-                  <button
+                  {/* <button
                     onClick={() => authContext.toggleLogInModal(null, true)}
                     type="submit"
                     className="sign_up"
                   >
                     Inscription
-                    {/* S'inscrire gratuitement */}
-                    {/* <Icon className={"fleshdown"} type="down" /> */}
-                  </button>
+                    
+                  </button> */}
                   <button
                     onClick={authContext.toggleLogInModal}
                     type="submit"
                     className="sign_in"
                   >
-                    Log in
+                    Se connecter
                     {/* S'inscrire gratuitement */}
                     {/* <Icon className={"fleshdown"} type="down" /> */}
                   </button>

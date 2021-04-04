@@ -183,7 +183,7 @@ input:focus {
 }
 
 .isporit-search-bar {
-    width: 750px;
+    width: 700px;
     height: 63px;
     padding: 10.5px 10px 8.5px 25px;
     border-radius: 43px;
@@ -196,11 +196,12 @@ input:focus {
     >div {
         border-right: 1px solid gray;
         width: 100%;
-        padding-right: 20px;
-        padding-left: 20px;
+        padding-right: 10px;
+        padding-left: 10px;
 
         &.last {
             // padding:0px;
+            padding-right: 0px;
             border: none;
         }
 
@@ -255,7 +256,7 @@ input:focus {
     // transform 150ms ease,
     // opacity 50ms ease 20ms,
     // pointer-events 0ms 150ms !important;
-    
+
     >div {
         border-right: 1px solid gray;
         width: 100%;
