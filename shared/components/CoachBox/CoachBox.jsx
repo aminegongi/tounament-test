@@ -8,6 +8,7 @@ import { Modal } from 'antd'
 
 import { useMediaPredicate } from 'react-media-hook'
 import { isEmpty } from 'lodash'
+import { getUserProfilePicture } from '../../../utils/string.utils'
 import dataMap from '../../../pages/dataMap.json'
 import localisationicon from '../../../public/icon/locationSectionIcon.svg'
 import videoicon from '../../../public/icon/videoicon.png'
@@ -17,7 +18,6 @@ import picturesIcon from '../../../public/icon/photoSectionIcon.png'
 import video from '../../../public/icon/video.png'
 import photoicon from '../../../public/icon/photoicon.png'
 import CoachProfileSection from '../CoachProfileSection'
-import { API } from '../../constants'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
 
 export default function CoachAboutBoxes({ coachData, specialty }) {
@@ -59,26 +59,27 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
     }
     return false
   }
-   const ages = 
-   {
-     kids: { label: 'enfants', value: 'kids' },
-     junior: { label: 'juniors', value: 'junior' },
-     senior: { label: 'séniors', value: 'senior' },
+  const ages = {
+    kids: { label: 'enfants', value: 'kids' },
+    junior: { label: 'juniors', value: 'junior' },
+    senior: { label: 'séniors', value: 'senior' },
     adult: { label: 'adultes', value: 'adult' },
-   }
+  }
 
-  const levels = 
-   {
-     beginner: { label: 'débutant', value: 'beginner' },
-     intermediate: { label: 'intermédiaire', value: 'intermediate' },
-     confirmed: { label: 'confirmé(e)', value: 'confirmed' },
-   }
+  const levels = {
+    beginner: { label: 'débutant', value: 'beginner' },
+    intermediate: { label: 'intermédiaire', value: 'intermediate' },
+    confirmed: { label: 'confirmé(e)', value: 'confirmed' },
+  }
 
   return (
     <div className="coachBoxiteam">
       <div className="coachBoxiteam__column">
         {!isInformationEmpty() && (
-          <CoachProfileSection title="Informations sportives" icon={exclamationIcon}>
+          <CoachProfileSection
+            title="Informations sportives"
+            icon={exclamationIcon}
+          >
             <div className="coachBox">
               {coachData.experiencesYearsNumber ? (
                 <div className="coachBox__content">
@@ -99,7 +100,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                     <div className="coachBox__content__title">
                       Années en tant que joueur:{' '}
                       <span className="coachBox__content__value">
-                        {coachData.playerData.experiencesYearsNumber} ans 
+                        {coachData.playerData.experiencesYearsNumber} ans
                       </span>
                     </div>
                   </div>
@@ -122,7 +123,9 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                     <span className="coachBox__content__title">
                       Niveaux:{' '}
                       <span className="coachBox__content__value">
-                        {coachData.privateCourseData.level.map(level=>levels[level].label).join(', ')}
+                        {coachData.privateCourseData.level
+                          .map((level) => levels[level].label)
+                          .join(', ')}
                       </span>
                     </span>
                   </div>
@@ -133,29 +136,28 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                     <div className="coachBox__content__title ">
                       Catégories d'ages:{' '}
                       <span className="coachBox__content__value">
-                        {coachData.privateCourseData.ages.map(age=>ages[age].label).join(', ')}
+                        {coachData.privateCourseData.ages
+                          .map((age) => ages[age].label)
+                          .join(', ')}
                       </span>
                     </div>
                   </div>
                 )}
-{specialty &&
-                !isEmpty(specialty) && (
-                  <div className="coachBox__content">
-                    <div className="coachBox__content__title ">
-                      Spécialités:{' '}
-                      <span className="coachBox__content__value">
-                        {specialty.map((el, index) => {
-                          if (index !== specialty.length - 1) {
-                            return `${el.translations.fr}, `
-                          }
-                          return el.translations.fr
-                        })}
-                      </span>
-                    </div>
+              {specialty && !isEmpty(specialty) && (
+                <div className="coachBox__content">
+                  <div className="coachBox__content__title ">
+                    Spécialités:{' '}
+                    <span className="coachBox__content__value">
+                      {specialty.map((el, index) => {
+                        if (index !== specialty.length - 1) {
+                          return `${el.translations.fr}, `
+                        }
+                        return el.translations.fr
+                      })}
+                    </span>
                   </div>
-                )}
-
-              
+                </div>
+              )}
             </div>
           </CoachProfileSection>
         )}
@@ -279,11 +281,11 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                     <button
                       type="button"
                       onClick={() => {
-                        setPreviewImage(API + photo)
+                        setPreviewImage(getUserProfilePicture(photo))
                         setPreviewVisible(true)
                       }}
                       style={{
-                        backgroundImage: `url(${API}${photo})`,
+                        backgroundImage: `url(${getUserProfilePicture(photo)})`,
                       }}
                       className="coachBoxiteam__pictures-section__first-picture"
                     />
@@ -298,12 +300,12 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                       <button
                         type="button"
                         onClick={() => {
-                          setPreviewImage(API + photo)
+                          setPreviewImage(getUserProfilePicture(photo))
                           setPreviewVisible(true)
                         }}
                         className="isporit-unset-button-css"
                       >
-                        <img src={`${API}${photo}`} alt="" />
+                        <img src={`${getUserProfilePicture(photo)}`} alt="" />
                       </button>
                     )
                   })}

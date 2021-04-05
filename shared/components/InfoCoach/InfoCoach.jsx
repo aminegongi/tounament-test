@@ -1,19 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import './infoCoach.scss'
 import Link from 'next/link'
 import { Rate } from 'antd'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import { useMediaPredicate } from 'react-media-hook'
+import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
+
 import circleIcon from '../../../public/icon/cercle.png'
 import ReservationCours from '../ReservationCours/ReservationCours'
-import { AuthContext } from '../../../utils/context.utils'
+// import { AuthContext } from '../../../utils/context.utils'
 import { getUserProfilePicture } from '../../../utils/string.utils'
 
-import { CLUB } from '../../constants'
 import routes from '../../../utils/routes'
-import { getFormattedNumber } from '../../../utils/number.utils'
-import { getRoundedRate } from './../../../utils/number.utils';
 
 export default function InfoCoach({ coachProfile, job, specialty }) {
   const isMobile = useMediaPredicate('(max-width: 992px)')
@@ -22,17 +21,17 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
   )
   const router = useRouter()
 
-  const authContext = useContext(AuthContext)
+  // const authContext = useContext(AuthContext)
 
   const sum = getFormattedNumber(
     coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-    coachProfile.coachData.reviews.length,
+      coachProfile.coachData.reviews.length,
     2,
-    )
+  )
 
-  const onOpenContactModal = () => {
-    return setIsModalVisibleReservation(true)
-  }
+  // const onOpenContactModal = () => {
+  //   return setIsModalVisibleReservation(true)
+  // }
 
   const getYearsOfExperience = () => {
     if (

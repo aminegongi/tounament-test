@@ -40,6 +40,7 @@ const WeeklyBookingCalendar = ({
   return (
     <div className="weekly-booking-calendar">
       <Calendar
+        locale="fr"
         showNeighboringMonth={false}
         value={selectedDate}
         view="month"

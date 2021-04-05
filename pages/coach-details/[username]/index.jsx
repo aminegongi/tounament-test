@@ -7,11 +7,11 @@ import { useRouter } from 'next/router'
 import Axios from 'axios'
 import { isEmpty } from 'lodash'
 import Head from 'next/head'
-import {Breadcrumb} from 'antd'
+import { Breadcrumb } from 'antd'
 import InfoCoach from '../../../shared/components/InfoCoach/InfoCoach'
 import '../../../shared/css/coachDetails.scss'
 import Navbar from '../../../shared/components/navbar/Navbar'
-import { API, CLUB } from '../../../shared/constants'
+import { SERVER_SIDE_API_BASE_URL, CLUB } from '../../../shared/constants'
 import CoachAboutBoxes from '../../../shared/components/ContactCoach/ContactCoach'
 
 import CoachBox from '../../../shared/components/CoachBox/CoachBox'
@@ -188,11 +188,11 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
                   Tous les coachs
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  {coach.firstName[0].toUpperCase() +
-                    coach.firstName.slice(1) +
-                    ' ' +
-                    coach.lastName[0].toUpperCase() +
-                    coach.lastName.slice(1)}
+                  {`${
+                    coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
+                  } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
+                    1,
+                  )}`}
                 </Breadcrumb.Item>
               </Breadcrumb>
               <div className="tabs">
@@ -261,12 +261,14 @@ CoachDetails.propTypes = {
   dances: PropTypes.arrayOf(PropTypes.any).isRequired,
 }
 
-CoachDetails.getInitialProps = async ({ query }) => {
-  const coachRes = await fetch(`${API}users/coaches/slug/${query.username}`)
-  const jobsRes = await fetch(`${API}jobs`)
-  const sportsRes = await fetch(`${API}sports`)
-  const danceRes = await fetch(`${API}dances/`)
-  const regionsRes = await fetch(`${API}regions/`)
+CoachDetails.getInitialProps = async ({ query, req }) => {
+  const coachRes = await fetch(
+    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/slug/${query.username}`,
+  )
+  const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
+  const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
+  const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
+  const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
   const jsonCoachRes = await coachRes.json()
   const jsonJobsRes = await jobsRes.json()
   const jsonSportsRes = await sportsRes.json()
