@@ -10,10 +10,11 @@
 
         &__avatar {
             padding-top: 1.063rem;
-
             img {
                 width: 143px;
-                min-height: 143px;
+                height: 143px;
+                height: 143px;
+                object-fit: cover;
 
                 border-radius: 50%;
             }

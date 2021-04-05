@@ -1,3 +1,5 @@
+import { CLIENT_SIDE_API_BASE_URL } from '../constants'
+
 const coachingRequest = {
   create: 'coachingRequests/create',
 }
@@ -17,7 +19,7 @@ const club = {
 }
 
 export default {
-  baseApiUrl: () => '/api/',
+  baseApiUrl: `${CLIENT_SIDE_API_BASE_URL()}/`,
   coachingRequest,
   recruitmentRequest,
   auth,

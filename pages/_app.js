@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Axios from 'axios'
 import moment from 'moment'
-import { MOMENT_FRENCH_I18N } from '../utils/moment.utils'
 
 import { hotjar } from 'react-hotjar'
 import { message } from 'antd'
+import { MOMENT_FRENCH_I18N } from '../utils/moment.utils'
 import AuthContext from '../utils/context.utils'
 import { initGA, logPageView } from '../utils/analytics'
 import { appWithTranslation } from '../i18n'
@@ -52,7 +52,6 @@ function MyApp({ Component, pageProps }) {
   }, [])
   useEffect(() => {
     setIsLoginModalOpen(false)
-
   }, [pathname])
   useEffect(() => {
     // if ('serviceWorker' in navigator) {
@@ -89,9 +88,13 @@ function MyApp({ Component, pageProps }) {
     }
   }, [router.query])
 
-  const toggleLogInModal = (cbAfterLogin = () => {}, isSignUp = false, role) => {
+  const toggleLogInModal = (
+    cbAfterLogin = () => {},
+    isSignUp = false,
+    role,
+  ) => {
     setCallbackAfterLogin(cbAfterLogin)
-    if(role){
+    if (role) {
       setRole(role)
     }
     setIsLoginModalOpen(true)

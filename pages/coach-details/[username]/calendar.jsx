@@ -6,9 +6,9 @@ import PropTypes from 'prop-types'
 import fetch from 'isomorphic-unfetch'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
-import { Button, Icon, message } from 'antd'
+import { Button, Icon, message, Breadcrumb } from 'antd'
 import {
-  API,
+  SERVER_SIDE_API_BASE_URL,
   CLUB,
   REQUEST_FAILED,
   REQUEST_SUCCEEDED,
@@ -20,7 +20,6 @@ import WeeklyBookingCalendar from '../../../shared/components/WeeklyBookingCalen
 import { createCoachingRequest } from '../../../shared/services/coachDetails.service'
 import { AuthContext } from '../../../utils/context.utils'
 import Layout from '../../../shared/components/layout/Layout'
-import { Breadcrumb } from 'antd';
 
 export default function Calendar({
   coach,
@@ -97,7 +96,11 @@ export default function Calendar({
       }
     }
     if (!authContext.isLoggedIn) {
-      return authContext.toggleLogInModal(() => () => createRequest(), false, 'player')
+      return authContext.toggleLogInModal(
+        () => () => createRequest(),
+        false,
+        'player',
+      )
     }
     return createRequest()
   }
@@ -152,19 +155,16 @@ export default function Calendar({
                   Tous les coachs
                 </Breadcrumb.Item>
                 <Breadcrumb.Item
-                  href={'/coach-details/' + coach.username}
+                  href={`/coach-details/${coach.username}`}
                   className="isporit-breadcrumb-link"
                 >
-                  {coach.firstName[0].toUpperCase() +
-                    coach.firstName.slice(1) +
-                    ' ' +
-                    coach.lastName[0].toUpperCase() +
-                    coach.lastName.slice(1)}
+                  {`${
+                    coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
+                  } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
+                    1,
+                  )}`}
                 </Breadcrumb.Item>
-                <Breadcrumb.Item
-                >
-                  Calendar
-                </Breadcrumb.Item>
+                <Breadcrumb.Item>Calendar</Breadcrumb.Item>
               </Breadcrumb>
               {coachingRequestApi === REQUEST_SUCCEEDED && (
                 <div className="coach-calendar__request-succeeded">
@@ -277,12 +277,14 @@ Calendar.propTypes = {
   serverResponseStatus: PropTypes.number.isRequired,
 }
 
-Calendar.getInitialProps = async ({ query }) => {
-  const coachRes = await fetch(`${API}users/coaches/slug/${query.username}`)
-  const jobsRes = await fetch(`${API}jobs`)
-  const sportsRes = await fetch(`${API}sports`)
-  const danceRes = await fetch(`${API}dances/`)
-  const regionsRes = await fetch(`${API}regions/`)
+Calendar.getInitialProps = async ({ req, query }) => {
+  const coachRes = await fetch(
+    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/slug/${query.username}`,
+  )
+  const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
+  const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
+  const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
+  const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
   const jsonCoachRes = await coachRes.json()
   const jsonJobsRes = await jobsRes.json()
   const jsonSportsRes = await sportsRes.json()

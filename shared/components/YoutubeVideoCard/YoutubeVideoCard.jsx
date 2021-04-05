@@ -2,20 +2,23 @@ import { Icon } from 'antd'
 import React, { useState } from 'react'
 import ReactYoutubePlayer from 'react-player/youtube'
 import ReactFacebookPlayer from 'react-player/facebook'
-import { getYouTubeVideoId } from '../../../utils/string.utils'
+import {
+  getYouTubeVideoId,
+  isYoutubeLinkValid,
+} from '../../../utils/string.utils'
 
 import './style.scss'
 
 const YoutubeVideoCard = ({ src, ...restProps }) => {
   const [isVideoActive, setIsVideoActive] = useState(false)
-  if (!isVideoActive && !src.includes('facebook.com')) {
+  if (!isVideoActive && isYoutubeLinkValid(src)) {
     return (
       <button
         type="button"
         onClick={() => setIsVideoActive(true)}
         style={{
           backgroundImage:
-            !src.includes('facebook.com') &&
+            isYoutubeLinkValid(src) &&
             `url(http://img.youtube.com/vi/${getYouTubeVideoId(src)}/0.jpg)`,
           width: restProps.width,
           height: restProps.height,
@@ -33,7 +36,7 @@ const YoutubeVideoCard = ({ src, ...restProps }) => {
   }
   return (
     <div className="">
-      {src.includes('facebook.com') ? (
+      {!isYoutubeLinkValid(src) ? (
         <ReactFacebookPlayer url={src} width="100%" height="100%" />
       ) : (
         <ReactYoutubePlayer url={src} width="100%" height="250px" />

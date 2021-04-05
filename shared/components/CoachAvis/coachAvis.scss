@@ -51,8 +51,10 @@
                 padding: 1.063rem 1.25rem 1.188rem 1.238rem;
 
                 &__avatar {
-                    width: 66px;
+                    width: 60px;
+                    height: 60px;
                     border-radius: 50%;
+                    object-fit: cover;
                 }
 
                 &__nameStart {
@@ -91,7 +93,9 @@
 
                 &__answer {
                     padding-left: 2.376rem;
-                    padding-right: 1.25rem
+                    padding-right: 1.25rem;
+                    white-space: pre-line;
+
                 }
             }
 
@@ -106,6 +110,8 @@
                 text-align: left;
                 color: #4e4d4d;
                 padding: 0px 1.175rem 1.375rem 1.5rem;
+                white-space: pre-line;
+
             }
 
             &__answer {

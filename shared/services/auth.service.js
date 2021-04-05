@@ -1,6 +1,6 @@
 import Axios from 'axios'
-import moment from 'moment'
-import { API, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../constants'
+
+import { REQUEST_FAILED, REQUEST_SUCCEEDED } from '../constants'
 import URL from './constants'
 import { apiHeader } from '../../utils/apiHeader'
 import { createUsernameForSignUp } from '../../utils/string.utils'
@@ -8,7 +8,10 @@ import { createUsernameForSignUp } from '../../utils/string.utils'
 export const fetchUserProfile = async (setLoading) => {
   try {
     setLoading(true)
-    const result = await Axios.get(API + URL.auth.fetchUserProfile, apiHeader())
+    const result = await Axios.get(
+      URL.baseApiUrl + URL.auth.fetchUserProfile,
+      apiHeader(),
+    )
     setLoading(false)
     return {
       type: REQUEST_SUCCEEDED,
@@ -27,7 +30,7 @@ export const fetchUserProfile = async (setLoading) => {
 export const signIn = async (values, setLoading) => {
   try {
     setLoading(true)
-    const result = await Axios.post(API + URL.auth.login, {
+    const result = await Axios.post(URL.baseApiUrl + URL.auth.login, {
       email: values.email,
       password: values.password,
     })
@@ -49,7 +52,7 @@ export const signIn = async (values, setLoading) => {
 export const signUp = async (values, setLoading) => {
   try {
     setLoading(true)
-    const result = await Axios.post(API + URL.auth.signUp, {
+    const result = await Axios.post(URL.baseApiUrl + URL.auth.signUp, {
       ...values,
       username: createUsernameForSignUp(values.firstName + values.lastName),
     })
@@ -72,7 +75,7 @@ export const createClub = async (values, setLoading) => {
   try {
     setLoading(true)
     const result = await Axios.post(
-      API + URL.club.create,
+      URL.baseApiUrl + URL.club.create,
       {
         ...values,
         slug: createUsernameForSignUp(values.title),

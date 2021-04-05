@@ -4,10 +4,13 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 import fetch from 'isomorphic-unfetch'
 
+import { useRouter } from 'next/router'
 import Axios from 'axios'
 import { Collapse, Icon, Button } from 'antd'
 import Link from 'next/link'
 import Countdown from 'antd/lib/statistic/Countdown'
+import moment from 'moment'
+import { useMediaPredicate } from 'react-media-hook'
 import Layout from '../shared/components/layout/Layout'
 import '../shared/css/home.scss'
 import Clublogo from '../shared/components/clublogo/Clublogo'
@@ -18,24 +21,19 @@ import Feature from '../shared/components/Feature/Feature'
 import BecomePartner from '../shared/components/BecomePartner/BecomePartner'
 import Title from '../shared/components/TitleSection/TitleSection'
 import Join from '../shared/components/joinplatforme/Join'
-import moment from 'moment'
-import { useMediaPredicate } from 'react-media-hook'
 
 import Demo from '../shared/components/DemoSection/DemoSection'
 import Functionclub from '../shared/components/Functionclub/Functionclub'
 import Navbar from '../shared/components/navbar/Navbar'
 import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage'
 import performance from '../public/icon/performance.png'
+import { SERVER_SIDE_API_BASE_URL } from '../shared/constants'
 import { i18n, withTranslation } from '../i18n'
-import {
-  API,
-} from '../shared/constants'
 import '../shared/global-style.scss'
 import routes from '../utils/routes'
 // import Countdown from '../shared/components/CountDown'
 
 const { Panel } = Collapse
-import { useRouter } from 'next/router'
 
 const text = `
   A dog is a type of domesticated animal.
@@ -59,9 +57,9 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
   }, [i18n.language])
   const router = useRouter()
 
-const mobile = useMediaPredicate('(max-width: 850px)')
+  const mobile = useMediaPredicate('(max-width: 850px)')
 
-const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
     if (mobile !== isMobile) {
       setIsMobile(mobile)
@@ -86,13 +84,11 @@ const [isMobile, setIsMobile] = useState(false)
     return isVisibleC
   }
   const handleScroll = () => {
-    let el = document.getElementById('cv')
-    let isVisibleC = isVisibleElement(el)
+    const el = document.getElementById('cv')
+    const isVisibleC = isVisibleElement(el)
     if (isVisibleC) {
-
       setSearchBar(true)
     } else {
- 
       setSearchBar(false)
     }
   }
@@ -100,32 +96,35 @@ const [isMobile, setIsMobile] = useState(false)
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
-  if(!router.query.draft){
-  return (
-    <div className="home_page">
-      <div className="home_page__counter-page">
-        <img
-          width="400px"
-          src="../../../icon/coachIsporit.png"
-          alt="iSporit"
-        />
-        <h1 className="home_page__counter-page__counter">
-          <Countdown
-            title=""
-            value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
-            format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+  if (!router.query.draft) {
+    return (
+      <div className="home_page">
+        <div className="home_page__counter-page">
+          <img
+            width="400px"
+            src="../../../icon/coachIsporit.png"
+            alt="iSporit"
           />
-        </h1>
-        <Link href={routes.CONTACT_US.path}>
-          <a href={routes.CONTACT_US.path}>
-            <Button className="home_page__counter-page__contact" type="primary">
-              Contact
-            </Button>
-          </a>
-        </Link>
+          <h1 className="home_page__counter-page__counter">
+            <Countdown
+              title=""
+              value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
+              format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+            />
+          </h1>
+          <Link href={routes.CONTACT_US.path}>
+            <a href={routes.CONTACT_US.path}>
+              <Button
+                className="home_page__counter-page__contact"
+                type="primary"
+              >
+                Contact
+              </Button>
+            </a>
+          </Link>
+        </div>
       </div>
-    </div>
-  )
+    )
   }
 
   return (
@@ -417,12 +416,14 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
   )
 }
 
-Index.getInitialProps = async (ctx) => {
-  const coachesRes = await fetch(`${API}users/coaches/all`)
-  const jobsRes = await fetch(`${API}jobs`)
-  const sportsRes = await fetch(`${API}sports`)
-  const danceRes = await fetch(`${API}dances/`)
-  const regionsRes = await fetch(`${API}regions/`)
+Index.getInitialProps = async ({ req }) => {
+  const coachesRes = await fetch(
+    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
+  )
+  const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
+  const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
+  const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
+  const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
   const jsonCoachesRes = await coachesRes.json()
   let jsonJobsRes = await jobsRes.json()
 
@@ -447,10 +448,7 @@ Index.getInitialProps = async (ctx) => {
     regions: jsonRegionsRes,
     namespacesRequired: ['common'],
   }
- 
 }
-
-
 
 Index.propTypes = {
   t: PropTypes.func.isRequired,

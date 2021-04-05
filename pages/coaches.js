@@ -1,30 +1,30 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState } from "react";
-import { Input, Select, Modal } from "antd";
-import "../shared/css/coaches.scss";
-import "../shared/global-style.scss";
-import Head from "next/head";
+import React, { useState } from 'react'
+import { Input, Select, Modal } from 'antd'
+import '../shared/css/coaches.scss'
+import '../shared/global-style.scss'
+import Head from 'next/head'
 
-import fetch from "isomorphic-unfetch";
-import { useMediaPredicate } from "react-media-hook";
+import fetch from 'isomorphic-unfetch'
+import { useMediaPredicate } from 'react-media-hook'
 import {
   ALL,
   ALPHABETICAL,
   RECOMMEND,
   EXPERIENCE,
-  API,
-} from "../shared/constants";
-import FilterCoach from "../shared/components/FilterCoach/FilterCoach";
-import Experiencefilter from "../shared/components/Experiencefilter/Experiencefilter";
-import Recommendation from "../shared/components/RecommendationFilter/Recommendation";
-import CoachType from "../shared/components/CoachTypeFilter/CoachType";
-import CoachRegion from "../shared/components/CoachRegionFilter/CoachRegion";
-import CardProfileCoach from "../shared/components/CardProfileCoachFilter/CardProfileCoach";
-import affiche from "../public/icon/Banniere.png";
-import Layout from "../shared/components/layout/Layout";
+  SERVER_SIDE_API_BASE_URL,
+} from '../shared/constants'
+import FilterCoach from '../shared/components/FilterCoach/FilterCoach'
+import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter'
+import Recommendation from '../shared/components/RecommendationFilter/Recommendation'
+import CoachType from '../shared/components/CoachTypeFilter/CoachType'
+import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion'
+import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach'
+import affiche from '../public/icon/Banniere.png'
+import Layout from '../shared/components/layout/Layout'
 
-const { Search } = Input;
+const { Search } = Input
 
 export default function Coaches({
   coachesList,
@@ -33,43 +33,43 @@ export default function Coaches({
   dances,
   regions,
 }) {
-  const [dataCopy, setDataCopy] = useState(coachesList);
-  const [coachSpecialty, setCoachSpecialty] = useState();
-  const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState("");
-  const nbr_of_card_per_page = 9;
-  const isMobile = useMediaPredicate("(max-width: 992px)");
+  const [dataCopy, setDataCopy] = useState(coachesList)
+  const [coachSpecialty, setCoachSpecialty] = useState()
+  const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
+  const nbr_of_card_per_page = 9
+  const isMobile = useMediaPredicate('(max-width: 992px)')
 
-  const [pageNumber, setPageNumber] = useState(1);
-  const [pageActiveNumber, setPageActiveNumber] = useState();
+  const [pageNumber, setPageNumber] = useState(1)
+  const [pageActiveNumber, setPageActiveNumber] = useState()
   function paginate(array, page_size, page_number) {
-    return array.slice((page_number - 1) * page_size, page_number * page_size);
+    return array.slice((page_number - 1) * page_size, page_number * page_size)
   }
   const renderCoachProfile = (coachProfile) => {
     const job = jobs.find(
-      (j) => j._id === (coachProfile.coachData && coachProfile.coachData.job)
-    );
-    let specialty = "";
+      (j) => j._id === (coachProfile.coachData && coachProfile.coachData.job),
+    )
+    let specialty = ''
     if (job) {
-      if (job.specialty && job.specialty.type === "sport") {
+      if (job.specialty && job.specialty.type === 'sport') {
         specialty = coachProfile.coachData.specialty
           ? coachProfile.coachData.specialty.reduce((acc, val) => {
-              const element = sports.find((dance) => dance._id === val);
+              const element = sports.find((dance) => dance._id === val)
               if (element) {
-                acc = [...acc, element];
+                acc = [...acc, element]
               }
-              return acc;
+              return acc
             }, [])
-          : [];
-      } else if (job.specialty && job.specialty.type === "dance") {
+          : []
+      } else if (job.specialty && job.specialty.type === 'dance') {
         specialty = coachProfile.coachData.specialty
           ? coachProfile.coachData.specialty.reduce((acc, val) => {
-              const element = dances.find((dance) => dance._id === val);
+              const element = dances.find((dance) => dance._id === val)
               if (element) {
-                acc = [...acc, element];
+                acc = [...acc, element]
               }
-              return acc;
+              return acc
             }, [])
-          : [];
+          : []
       }
     }
     return (
@@ -79,64 +79,64 @@ export default function Coaches({
         job={job}
         specialty={specialty}
       />
-    );
-  };
-  const [isModalVisible, setIsModalVisible] = useState(false);
+    )
+  }
+  const [isModalVisible, setIsModalVisible] = useState(false)
   const showModal = () => {
-    setIsModalVisible(true);
-  };
+    setIsModalVisible(true)
+  }
 
   const handleOk = () => {
-    setIsModalVisible(false);
-  };
+    setIsModalVisible(false)
+  }
 
   const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+    setIsModalVisible(false)
+  }
 
   const onSearch = (value) => {
     setDataCopy(
       dataCopy.filter(
-        (e) => e.firstName.includes(value) || e.lastName.includes(value)
-      )
-    );
-  };
-  const { Option } = Select;
+        (e) => e.firstName.includes(value) || e.lastName.includes(value),
+      ),
+    )
+  }
+  const { Option } = Select
   const handleChange = (value) => {
-    if (value.key === "alphabetique") {
+    if (value.key === 'alphabetique') {
       const sortbyalphabetical = [...dataCopy].sort((a, b) =>
-        a.firstName - b.firstName ? 1 : -1
-      );
-      return setDataCopy(sortbyalphabetical);
+        a.firstName - b.firstName ? 1 : -1,
+      )
+      return setDataCopy(sortbyalphabetical)
     }
 
-    if (value.key === "Tout") {
-      return setDataCopy(coachesList);
+    if (value.key === 'Tout') {
+      return setDataCopy(coachesList)
     }
-    if (value.key === "experience") {
+    if (value.key === 'experience') {
       const sortbyexperience = [...dataCopy].sort((a, b) =>
         a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber
           ? 1
-          : -1
-      );
-      return setDataCopy(sortbyexperience);
+          : -1,
+      )
+      return setDataCopy(sortbyexperience)
     }
-    if (value.key === "recommander") {
+    if (value.key === 'recommander') {
       const sortbyrecommend = [...coachesList].sort((a, b) =>
         Math.round(
           a.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-            a.coachData.reviews.length
+            a.coachData.reviews.length,
         ) <
         Math.round(
           b.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-            b.coachData.reviews.length
+            b.coachData.reviews.length,
         )
           ? 1
-          : -1
-      );
-      return setDataCopy(sortbyrecommend);
+          : -1,
+      )
+      return setDataCopy(sortbyrecommend)
     }
-  };
+  }
 
   return (
     <>
@@ -340,7 +340,10 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               </div>
 
               <div className="paginate">
-                {console.log('dataCopy.length: ', Math.ceil(dataCopy.length / nbr_of_card_per_page))}
+                {console.log(
+                  'dataCopy.length: ',
+                  Math.ceil(dataCopy.length / nbr_of_card_per_page),
+                )}
                 {Array.from({
                   length: Math.ceil(dataCopy.length / nbr_of_card_per_page),
                 }).map((el, index) => (
@@ -367,27 +370,29 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
     </>
   )
 }
-Coaches.getInitialProps = async () => {
-  const coachesRes = await fetch(`${API}users/coaches/all`);
-  const jobsRes = await fetch(`${API}jobs`);
-  const sportsRes = await fetch(`${API}sports`);
-  const danceRes = await fetch(`${API}dances/`);
-  const regionsRes = await fetch(`${API}regions/`);
-  const jsonCoachesRes = await coachesRes.json();
-  let jsonJobsRes = await jobsRes.json();
+Coaches.getInitialProps = async ({ req }) => {
+  const coachesRes = await fetch(
+    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
+  )
+  const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
+  const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
+  const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
+  const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
+  const jsonCoachesRes = await coachesRes.json()
+  let jsonJobsRes = await jobsRes.json()
 
   if (jsonJobsRes) {
     jsonJobsRes = jsonJobsRes
       .filter((job) => job.isPublic)
-      .sort((a, b) => a.order - b.order);
+      .sort((a, b) => a.order - b.order)
   }
 
-  let jsonSportsRes = await sportsRes.json();
+  let jsonSportsRes = await sportsRes.json()
   if (jsonSportsRes) {
-    jsonSportsRes = jsonSportsRes.filter((sport) => sport.type !== undefined);
+    jsonSportsRes = jsonSportsRes.filter((sport) => sport.type !== undefined)
   }
-  const jsonDancesRes = await danceRes.json();
-  const jsonRegionsRes = await regionsRes.json();
+  const jsonDancesRes = await danceRes.json()
+  const jsonRegionsRes = await regionsRes.json()
 
   return {
     coachesList: jsonCoachesRes,
@@ -395,5 +400,5 @@ Coaches.getInitialProps = async () => {
     sports: jsonSportsRes,
     dances: jsonDancesRes,
     regions: jsonRegionsRes,
-  };
-};
+  }
+}
