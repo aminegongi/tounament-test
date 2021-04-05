@@ -14,7 +14,7 @@ export const SERVER_SIDE_API_BASE_URL = (req) => {
   return `${
     !origin.includes('localhost:3001')
       ? publicRuntimeConfig.PROD_API_URL
-      : 'https://app.isporit.com/api/'
+      : 'https://dev.isporit.com/api/'
   }/`
 }
 export const CLIENT_SIDE_API_BASE_URL = () => {
@@ -24,7 +24,7 @@ export const CLIENT_SIDE_API_BASE_URL = () => {
   if (host && !host.includes('localhost:3001')) {
     return publicRuntimeConfig.PROD_API_URL
   }
-  return 'https://app.isporit.com/api'
+  return 'https://dev.isporit.com/api'
 }
 export const PRIVATECOACH = 'privatecoach'
 export const PRIVATESESSION = 'Privatesession'
