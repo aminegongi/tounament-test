@@ -7,17 +7,14 @@ export const RECOMMEND = 'recommander'
 export const EXPERIENCE = 'experience'
 export const AVATAR =
   'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairFrizzle&accessoriesType=Prescription02&hairColor=PastelPink&facialHairType=BeardMedium&facialHairColor=Black&clotheType=Hoodie&clotheColor=Blue03&eyeType=Close&eyebrowType=AngryNatural&mouthType=Twinkle&skinColor=Light'
-// export const API = {
-//   PROD: 'https://app.isporit.com/api/',
-//   DEV: 'https://dev.isporit.com/api/',
-// }
+
 export const SERVER_SIDE_API_BASE_URL = (req) => {
   const { publicRuntimeConfig } = getConfig()
   const { origin } = absoluteUrl(req)
   return `${
     !origin.includes('localhost:3001')
       ? publicRuntimeConfig.PROD_API_URL
-      : 'https://dev.isporit.com/api/'
+      : 'https://app.isporit.com/api/'
   }/`
 }
 export const CLIENT_SIDE_API_BASE_URL = () => {
@@ -27,7 +24,7 @@ export const CLIENT_SIDE_API_BASE_URL = () => {
   if (host && !host.includes('localhost:3001')) {
     return publicRuntimeConfig.PROD_API_URL
   }
-  return 'https://dev.isporit.com/api'
+  return 'https://app.isporit.com/api'
 }
 export const PRIVATECOACH = 'privatecoach'
 export const PRIVATESESSION = 'Privatesession'

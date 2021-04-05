@@ -94,7 +94,7 @@ export default function CardProfileCoach({
             }
             <div className="card_profil_coach__information__yearexperience">
               {coachProfile.coachData &&
-                coachProfile.coachData.experiencesYearsNumber >= 1 &&
+                coachProfile.coachData.experiencesYearsNumber > 1 &&
                 `${
                   coachProfile.coachData &&
                   coachProfile.coachData.experiencesYearsNumber

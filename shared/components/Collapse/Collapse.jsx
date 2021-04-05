@@ -11,9 +11,13 @@ function Collapse({ title, iconblock, data }) {
     <div className="biographieblock">
       <CoachProfileSection title={title} icon={iconblock} isVerticalLine>
         <div className="collapseblock">
-          {data.sort((a,b)=>a.date.from>b.date.from?-1:1).map((coach) => {
-            return <CollapseContenu coach={coach} />
-          })}
+          {data
+            .sort((a, b) =>
+              (a.year || a.date.from) > (b.year || b.date.from) ? -1 : 1,
+            )
+            .map((coach) => {
+              return <CollapseContenu coach={coach} />
+            })}
         </div>
       </CoachProfileSection>
     </div>
