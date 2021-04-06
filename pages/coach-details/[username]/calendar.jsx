@@ -182,7 +182,7 @@ export default function Calendar({
                     .
                     <div>
                       <a
-                        href="https://dev.isporit.com/dashboard"
+                        href={`https://${SERVER_SIDE_API_BASE_URL}/dashboard`}
                         className="isporit-primary-button link-platform"
                         target="_blank"
                       >

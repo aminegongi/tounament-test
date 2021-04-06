@@ -4,6 +4,7 @@ import moment from 'moment'
 import down from '../../../public/icon/icondown.png'
 import left from '../../../public/icon/iconleft.png'
 import './collapseContenu.scss'
+import { nl2br } from '../../../utils/string.utils'
 
 export default function CollapseContenu({ coach }) {
   const [icon, setIcon] = useState(left)
@@ -62,7 +63,12 @@ export default function CollapseContenu({ coach }) {
             )}
           </div>
           {icon === down && (
-            <div className="biographieblock__biographie__contenu__collapse__contenuShow">
+            <div
+              className="biographieblock__biographie__contenu__collapse__contenuShow"
+              dangerouslySetInnerHTML={{
+                __html: nl2br(coach.description),
+              }}
+            >
               {coach.description}
             </div>
           )}

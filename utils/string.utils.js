@@ -33,4 +33,13 @@ export const isYoutubeLinkValid = (url) => {
   return match
 }
 
+export function nl2br(str, isXhtml) {
+  if (typeof str === 'undefined' || str === null) {
+    return ''
+  }
+  const breakTag = isXhtml || typeof isXhtml === 'undefined' ? '<br />' : '<br>'
+  const str2 = str.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, `$1 ${breakTag} $2`)
+  return str2
+}
+
 export default getUserProfilePicture

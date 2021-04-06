@@ -33,7 +33,6 @@ export default function Experiencefilter({
     <div className="experience">
       <div className="experience__title">ANNEES D'EXPERIENCES</div>
       <div className="experience__marks">
-        {console.log('object,', dataCopy)}{' '}
         <Slider
           styele={{ backgroudColor: 'red' }}
           class="experience__marks__line"
