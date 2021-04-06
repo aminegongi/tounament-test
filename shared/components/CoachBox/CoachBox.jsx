@@ -134,7 +134,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                 !isEmpty(coachData.privateCourseData.ages) && (
                   <div className="coachBox__content">
                     <div className="coachBox__content__title ">
-                      Catégories d'ages:{' '}
+                      Catégories d'âges:{' '}
                       <span className="coachBox__content__value">
                         {coachData.privateCourseData.ages
                           .map((age) => ages[age].label)

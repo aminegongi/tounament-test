@@ -9,11 +9,13 @@ import formation from '../../../public/icon/formation.png'
 import certification from '../../../public/icon/certification.png'
 import palmares from '../../../public/icon/palmares.png'
 import CoachProfileSection from '../CoachProfileSection'
+import { nl2br } from '../../../utils/string.utils'
 
 function Biography({ coachProfile }) {
   return (
     <div className="biographyblock">
-      {!coachProfile.coachData && !coachProfile.coachData.aboutMe &&
+      {!coachProfile.coachData &&
+      !coachProfile.coachData.aboutMe &&
       !isEmpty(coachProfile.experiences) &&
       !isEmpty(coachProfile.education) &&
       !isEmpty(coachProfile.certification) &&
@@ -29,9 +31,10 @@ function Biography({ coachProfile }) {
         <div className="biographyblock__blocks">
           {coachProfile.coachData && coachProfile.coachData.aboutMe && (
             <CoachProfileSection title="Biographie" icon={bio}>
-              <div className="biographieblock__biographie__contenu">
-                {coachProfile.coachData.aboutMe}
-              </div>
+              <div
+                className="biographieblock__biographie__contenu"
+                dangerouslySetInnerHTML={{ __html:nl2br(coachProfile.coachData.aboutMe)}}
+              />
             </CoachProfileSection>
           )}
           {coachProfile.coachData &&

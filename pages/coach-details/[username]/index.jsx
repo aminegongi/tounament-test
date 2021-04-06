@@ -23,7 +23,7 @@ import ReservationCours from '../../../shared/components/ReservationCours/Reserv
 import AuthContext from '../../../utils/context.utils'
 import Layout from '../../../shared/components/layout/Layout'
 import routes from '../../../utils/routes'
-import { getUserProfilePicture } from '../../../utils/string.utils'
+import { getUserProfilePicture, nl2br } from '../../../utils/string.utils'
 
 export default function CoachDetails({ coach, jobs, sports, dances }) {
   const router = useRouter()
@@ -147,7 +147,7 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
         </title>
         <meta
           name="description"
-          content={coach.coachData && coach.coachData.aboutMe}
+          content={coach.coachData && nl2br(coach.coachData.aboutMe)}
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
