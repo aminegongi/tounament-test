@@ -48,7 +48,7 @@ export default function Coaches({
   const [selectedRegions, setSelectedRegions] = useState([])
     const router = useRouter()
   const {query: {job, specialty, region}}=router
-  const nbr_of_card_per_page = 12
+  const nbr_of_card_per_page = 15
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const [pageNumber, setPageNumber] = useState(1)
