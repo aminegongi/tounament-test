@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState } from 'react'
+import React from 'react'
 import './experiencefilter.scss'
 import { Slider } from 'antd'
 
 export default function Experiencefilter({
-  setDataCopy,
-  coachesList,
-  dataCopy,
+  selectedExperienceYears,
+  setSelectedExperienceYears,
 }) {
   const marks = {
     0: '0',
@@ -17,17 +16,14 @@ export default function Experiencefilter({
       style: {
         color: '#000000',
         fontsize: '14px',
-        lineheight: '1.21',
+        lineHeight: '1.21',
       },
       label: <b className="label">20ans</b>,
     },
   }
   const onChange = (value) => {
-    window.scrollTo(400, 350)
-
-    setDataCopy(
-      dataCopy.filter((e) => e.coachData.experiencesYearsNumber >= value),
-    )
+    // window.scrollTo(400, 350)
+    setSelectedExperienceYears(value)
   }
 
   return (
@@ -35,9 +31,8 @@ export default function Experiencefilter({
       <div className="experience__title">ANNEES D'EXPERIENCES</div>
       <div className="experience__marks">
         <Slider
-          styele={{ backgroudColor: 'red' }}
-          class="experience__marks__line"
           onChange={onChange}
+          value={selectedExperienceYears || 0}
           marks={marks}
           max={20}
         />

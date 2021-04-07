@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './coachType.scss'
 import { Radio, Slider, Checkbox } from 'antd'
-import { PRIVATECOACH, PRIVATESESSION } from '../../constants'
 
-export default function CoachType({ setDataCopy, dataCopy, coachesList }) {
+export default function CoachType({
+  // setDataCopy, dataCopy, coachesList
+  selectedLevel,
+  setSelectedLevel,
+  setSelectedAges,
+}) {
   const marks = {
     1: {
       style: {
         color: '#000000',
         fontsize: '14px',
-        lineheight: '1.21',
+        lineHeight: '1.21',
       },
       label: <strong>1</strong>,
     },
@@ -17,7 +21,7 @@ export default function CoachType({ setDataCopy, dataCopy, coachesList }) {
       style: {
         color: '#000000',
         fontsize: '14px',
-        lineheight: '1.21',
+        lineHeight: '1.21',
       },
       label: <strong>5</strong>,
     },
@@ -26,41 +30,19 @@ export default function CoachType({ setDataCopy, dataCopy, coachesList }) {
       style: {
         color: '#000000',
         fontsize: '14px',
-        lineheight: '1.21',
+        lineHeight: '1.21',
       },
       label: <strong>10</strong>,
     },
   }
-  const [value, setValue] = useState()
-  const [level, setLevel] = useState()
-  const [selectedRate, setSelectedRate] = useState('-1')
 
-  const searchbylevel = (level) => {
+  const searchByLevel = (level) => {
     // window.scrollTo(400, 350);
-    if (level.target.value == selectedRate) {
-      setSelectedRate('')
-      setDataCopy(dataCopy)
-    } else {
-      setSelectedRate(level.target.value)
-      setLevel(level.target.value)
-      setDataCopy(
-        dataCopy.filter((coach) =>
-          coach.coachData.privateCourseData.level.includes(level.target.value),
-        ),
-      )
-    }
+    setSelectedLevel(level.target.value)
   }
-  const searchbybyAge = (age) => {
+  const searchByAge = (ages) => {
     // window.scrollTo(400, 350);
-    // setDataCopy(coachesList.filter(coach => coach.coachData.privateCourseData.ages.includes(age)))
-    if (age.length !== 0) {
-      return setDataCopy(
-        dataCopy.filter((coach) =>
-          coach.coachData.privateCourseData.ages.find((el) => age.includes(el)),
-        ),
-      )
-    }
-    return setDataCopy(dataCopy)
+    setSelectedAges(ages)
   }
   const onChange = (personNumber) => {
     setDataCopy(
@@ -74,28 +56,34 @@ export default function CoachType({ setDataCopy, dataCopy, coachesList }) {
 
   const options = [
     { label: 'Enfants', value: 'kids' },
-    { label: 'Juniors', value: 'Junior' },
+    { label: 'Juniors', value: 'junior' },
     { label: 'Séniors', value: 'senior' },
-    { label: 'Adultes', value: 'Adult' },
+    { label: 'Adultes', value: 'adult' },
   ]
 
   return (
     <div className="coach_type">
-      <div className="coach_type__title">FILTRE PAR</div>
+      <div className="coach_type__title">FILTRER PAR</div>
       <div className="coach_type__rate">
-        <Radio.Group value={String(selectedRate)}>
-          <Radio onClick={searchbylevel} className="radio" value="beginner" />
+        <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber">
+          Niveaux 
+        </div>
+        <br/>
+        <Radio.Group value={String(selectedLevel)}>
+          <Radio onClick={searchByLevel} className="radio" value="" />
+          <span className="coach_type__rate__plus">Tous</span> <br />
+          <Radio onClick={searchByLevel} className="radio" value="beginner" />
           <span className="coach_type__rate__plus">Débutant</span> <br />
           <Radio
-            onClick={searchbylevel}
+            onClick={searchByLevel}
             className="radio"
             value="intermediate"
           />
           <span className="coach_type__rate__plus">Intermédiaire</span> <br />
-          <Radio onClick={searchbylevel} className="radio" value="confirmed" />
+          <Radio onClick={searchByLevel} className="radio" value="confirmed" />
           <span className="coach_type__rate__plus">Confirmé</span> <br />
         </Radio.Group>
-        <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber">
+        {/* <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber">
           Nombre de personnes <br />
           <Slider
             class="coach_type__rate__plus__privatesessionfilter__filterby__marks"
@@ -105,12 +93,15 @@ export default function CoachType({ setDataCopy, dataCopy, coachesList }) {
             min={1}
           />
           <br />
+        </div> */}
+        <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber">
+          Ages
         </div>
-
+        <br />
         <Checkbox.Group
           className="checkbox"
           options={options}
-          onChange={searchbybyAge}
+          onChange={searchByAge}
         />
       </div>
     </div>

@@ -22,7 +22,7 @@ export default function Experiencefilter({
     },
   }
   const onChange = (value) => {
-    window.scrollTo(400, 350)
+    // window.scrollTo(400, 350)
 
     setDataCopy(
       dataCopy.filter((e) => e.coachData.experiencesYearsNumber >= value),
