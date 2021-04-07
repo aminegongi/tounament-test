@@ -160,7 +160,7 @@ export default function Coaches({
   const handleChange = (value) => {
     if (value.key === 'alphabetique') {
       const sortByAlphabetical = [...dataCopy].sort((a, b) =>
-        a.firstName - b.firstName ? 1 : -1,
+        (a.firstName +a.lastName)< (b.firstName+b.lastName) ? -1 : 1,
       )
       return setDataCopy(sortByAlphabetical)
     }
