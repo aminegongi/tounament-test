@@ -4,76 +4,70 @@ import './filterCoach.scss'
 import { Empty } from 'antd'
 import down from '../../../public/icon/down.png'
 import left from '../../../public/icon/left.png'
+import { getFilteredCoaches } from './../../../utils/arrays.utils'
+import { isEmpty } from 'lodash'
 
 export default function FilterCoach({
   title,
   jobs,
-  coachSpecialty,
-  setCoachSpecialty,
-  setCoachSpecialtyFilter,
-  coachSpecialtyFilter,
-  setDataCopy,
-  dataCopy,
-  coachesList,
   dances,
   sports,
+  selectedJob,
+  setSelectedJob,
+  selectedSpecialty,
+  setSelectedSpecialty,
 }) {
-  const [icon, seticon] = useState(left)
-  const [selectedJobId, setSelectedJobId] = useState()
-  const [selectedSpecialtyId, setSelectedSpecialtyId] = useState()
-  const [professionId, setProfessionId] = useState()
+  const [icon, setIcon] = useState(down)
+  const [specialties, setSpecialties] = useState('')
+
   const changeIcon = () => {
     if (icon === down) {
-      seticon(left)
+      setIcon(left)
     }
     if (icon === left) {
-      seticon(down)
+      setIcon(down)
     }
   }
   const filterSpecialty = () => {
-    if (coachSpecialty === 'sport') {
-      return setCoachSpecialtyFilter(sports)
+    if (!isEmpty(selectedJob)) {
+      if (selectedJob.specialty.type === 'sport') {
+        setSpecialties(sports)
+      } else if (selectedJob.specialty.type === 'dance') {
+        setSpecialties(dances)
+      } else {
+        setSpecialties('')
+      }
+    } else {
+      setSpecialties(sports)
     }
-    if (coachSpecialty === 'dances') {
-      return setCoachSpecialtyFilter(dances)
-    }
-    return setCoachSpecialtyFilter('')
   }
+
   useEffect(() => {
     filterSpecialty()
-  }, [coachSpecialty])
-  const filterBySpecialty = (el) => {
-    const filteredCoachesList = dataCopy.filter((e) =>
-      e.coachData.specialty.includes(el),
-    )
-    setDataCopy(filteredCoachesList)
-  }
+  }, [selectedJob])
 
-  const handleProfession = (Profession) => {
+
+  const handleJob = (job) => {
     // window.scrollTo(400, 350)
-    setProfessionId(Profession._id)
 
-    if (Profession._id == professionId) {
-      setDataCopy(coachesList)
-      setProfessionId('')
+    if (job._id === selectedJob._id) {
+      setSelectedJob({})
     } else {
-      setDataCopy(dataCopy.filter((e) => e.coachData.job == Profession._id))
+      setSelectedJob(job)
     }
   }
 
   const handleSpecialty = (specialty) => {
     // window.scrollTo(400, 350)
 
-    if (specialty._id === selectedSpecialtyId) {
-      setSelectedSpecialtyId('')
-      setDataCopy(coachesList)
+    if (specialty._id === selectedSpecialty._id) {
+      setSelectedSpecialty({})
     } else {
-      filterBySpecialty(specialty._id)
-      setSelectedSpecialtyId(specialty._id)
+      setSelectedSpecialty(specialty)
     }
   }
 
-  const displayProfessions = () => {
+  const displayJobs = () => {
     if (icon === down) {
       return (
         <div
@@ -84,7 +78,6 @@ export default function FilterCoach({
           }
         >
           {jobs
-            // .sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
             .map((job) => {
               return (
                 <>
@@ -97,34 +90,18 @@ export default function FilterCoach({
                   >
                     <button
                       type="button"
-                      className="isporit-unset-button-css"
+                      className={
+                        selectedJob && job._id === selectedJob._id
+                          ? 'isporit-unset-button-css filter_coach__filter_type__title__Professions__items__iteam__iteamshow'
+                          : 'isporit-unset-button-css '
+                      }
                       style={{ textAlign: 'left' }}
                       onClick={() => {
-                        handleProfession(job)
-                        if (
-                          coachSpecialty === job.specialty.type &&
-                          selectedJobId === job._id
-                        ) {
-                          setCoachSpecialty('')
-                          setSelectedJobId('')
-                        } else {
-                          setCoachSpecialty(job.specialty.type)
-                          setSelectedJobId(job._id)
-                        }
+                        handleJob(job)
                       }}
                     >
-                      <button
-                        type="button"
-                        onClick={() => setSelectedSpecialtyId('')}
-                        style={{ textAlign: 'left' }}
-                        className={
-                          job._id === selectedJobId
-                            ? 'isporit-unset-button-css filter_coach__filter_type__title__Professions__items__iteam__iteamshow'
-                            : 'isporit-unset-button-css '
-                        }
-                      >
-                        {job.translations.fr}
-                      </button>
+                      
+                      {job.translations.fr}
                     </button>
                   </div>
                 </>
@@ -136,7 +113,7 @@ export default function FilterCoach({
   }
 
   const displaySpecialties = () => {
-    if (icon === down && coachSpecialtyFilter !== '') {
+    if (icon === down && specialties !== '') {
       return (
         <div
           className={
@@ -152,23 +129,24 @@ export default function FilterCoach({
                 : 'filter_coach__filter_type__title__Professions__items__iteamnotvisible'
             }
           >
-            {coachSpecialtyFilter
+            {specialties
               .sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
-              .map((coach) => {
+              .map((specialty) => {
                 return (
                   <button
                     type="button"
                     className="isporit-unset-button-css filter_coach__filter_type__title__Professions__items__iteam"
-                    onClick={() => handleSpecialty(coach)}
+                    onClick={() => handleSpecialty(specialty)}
                   >
                     <div
                       className={
-                        coach._id == selectedSpecialtyId
+                        selectedSpecialty &&
+                        specialty._id == selectedSpecialty._id
                           ? 'filter_coach__filter_type__title__Professions__items__iteam__iteamshow'
                           : ''
                       }
                     >
-                      {coach.translations.fr}
+                      {specialty.translations.fr}
                     </div>
                   </button>
                 )
@@ -177,7 +155,7 @@ export default function FilterCoach({
         </div>
       )
     }
-    if (icon === down && coachSpecialtyFilter === '') {
+    if (icon === down && specialties === '') {
       return (
         <>
           <Empty
@@ -209,7 +187,7 @@ export default function FilterCoach({
             </div>
           </button>
           {title === 'PROFESSIONS'
-            ? displayProfessions()
+            ? displayJobs()
             : displaySpecialties()}
         </div>
       </div>

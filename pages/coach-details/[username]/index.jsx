@@ -152,7 +152,7 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           property="og:url"
-          content={`https://isporit.com/coaches/${coach.username}`}
+          content={`https://isporit.com/coach-details/${coach.username}`}
         />
         <meta property="og:description" content={coach.coachData.aboutMe} />
         <meta
@@ -161,7 +161,7 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
         />
         <link
           rel="canonical"
-          href={`https://isporit.com/coaches/${coach.username}`}
+          href={`https://isporit.com/coach-details/${coach.username}`}
         />
       </Head>
       <Layout>

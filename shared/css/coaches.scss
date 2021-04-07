@@ -18,7 +18,7 @@
             padding-bottom: 12px;
             max-width: 299px;
 
-            &__input_searsh {
+            &__input_search {
                 padding: 7px !important;
 
                 .ant-input-suffix {
@@ -33,7 +33,7 @@
                 }
             }
 
-            &__input_searshmobile {
+            &__input_search-mobile {
                 display: none;
             }
         }
@@ -163,6 +163,7 @@
 
         .ant-input-affix-wrapper .ant-input-suffix {
             left: 33px;
+            width:20px;
         }
 
         .lineprofilecoach {
@@ -192,7 +193,7 @@
 
             &__filter {
 
-                &__input_searshmobile {
+                &__input_search-mobile {
                     display: block !important;
                     padding-top: 13px !important;
                     padding-left: 26px !important;

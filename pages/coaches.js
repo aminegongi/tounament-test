@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Input, Select, Modal } from 'antd'
 import '../shared/css/coaches.scss'
 import '../shared/global-style.scss'
@@ -23,6 +23,9 @@ import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion'
 import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach'
 import affiche from '../public/icon/Banniere.png'
 import Layout from '../shared/components/layout/Layout'
+import { getFilteredCoaches } from './../utils/arrays.utils'
+import { getFormattedNumber } from '../utils/number.utils'
+import { useRouter } from 'next/router'
 
 const { Search } = Input
 
@@ -34,9 +37,18 @@ export default function Coaches({
   regions,
 }) {
   const [dataCopy, setDataCopy] = useState(coachesList)
-  const [coachSpecialty, setCoachSpecialty] = useState()
-  const [coachSpecialtyFilter, setCoachSpecialtyFilter] = useState('')
-  const nbr_of_card_per_page = 9
+  const [selectedName, setSelectedName] = useState()
+
+  const [selectedJob, setSelectedJob] = useState({})
+  const [selectedSpecialty, setSelectedSpecialty] = useState({})
+  const [selectedExperienceYears, setSelectedExperienceYears] = useState()
+  const [selectedReviewsRate, setSelectedReviewsRate] = useState()
+  const [selectedLevel, setSelectedLevel] = useState('')
+  const [selectedAges, setSelectedAges] = useState([])
+  const [selectedRegions, setSelectedRegions] = useState([])
+    const router = useRouter()
+  const {query: {job, specialty, region}}=router
+  const nbr_of_card_per_page = 12
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const [pageNumber, setPageNumber] = useState(1)
@@ -82,6 +94,53 @@ export default function Coaches({
     )
   }
   const [isModalVisible, setIsModalVisible] = useState(false)
+  useEffect(() => {
+    if(job){
+      const foundJob=jobs.find(elem=>elem._id===job)
+      if(foundJob) {
+        setSelectedJob(foundJob)
+      }
+    }
+    if (specialty) {
+      const foundSpecialty = sports.concat(dances).find((elem) => (elem._id === specialty))
+       if (foundSpecialty) {
+         setSelectedSpecialty(foundSpecialty)
+       }       
+    }
+    if (region) {
+      
+        setSelectedRegions([region])
+    }
+
+  }, [ job, specialty, region ])
+
+  useEffect(() => {
+    setDataCopy(
+      getFilteredCoaches(
+        coachesList,
+
+        {
+          name: selectedName,
+          job: selectedJob._id,
+          specialty: selectedSpecialty._id,
+          experienceYears: selectedExperienceYears,
+          reviewRate: selectedReviewsRate,
+          coachingLevel: selectedLevel,
+          coachingAges: selectedAges,
+          regions: selectedRegions,
+        },
+      ),
+    )
+  }, [
+    selectedName,
+    selectedJob,
+    selectedSpecialty,
+    selectedExperienceYears,
+    selectedReviewsRate,
+    selectedLevel,
+    selectedAges,
+    selectedRegions,
+  ])
   const showModal = () => {
     setIsModalVisible(true)
   }
@@ -95,47 +154,77 @@ export default function Coaches({
   }
 
   const onSearch = (value) => {
-    setDataCopy(
-      dataCopy.filter(
-        (e) => e.firstName.includes(value) || e.lastName.includes(value),
-      ),
-    )
+    setSelectedName(value)
   }
   const { Option } = Select
   const handleChange = (value) => {
     if (value.key === 'alphabetique') {
-      const sortbyalphabetical = [...dataCopy].sort((a, b) =>
+      const sortByAlphabetical = [...dataCopy].sort((a, b) =>
         a.firstName - b.firstName ? 1 : -1,
       )
-      return setDataCopy(sortbyalphabetical)
+      return setDataCopy(sortByAlphabetical)
     }
 
     if (value.key === 'Tout') {
       return setDataCopy(coachesList)
     }
     if (value.key === 'experience') {
-      const sortbyexperience = [...dataCopy].sort((a, b) =>
+      const sortByExperience = [...dataCopy].sort((a, b) =>
         a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber
           ? 1
           : -1,
       )
-      return setDataCopy(sortbyexperience)
+      return setDataCopy(sortByExperience)
     }
     if (value.key === 'recommander') {
-      const sortbyrecommend = [...coachesList].sort((a, b) =>
-        Math.round(
-          a.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-            a.coachData.reviews.length,
-        ) <
-        Math.round(
-          b.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-            b.coachData.reviews.length,
-        )
-          ? 1
-          : -1,
+      const sortByRecommend = [...coachesList].sort((a, b) =>
+        a.averageRate < b.averageRate ? 1 : -1,
       )
-      return setDataCopy(sortbyrecommend)
+      return setDataCopy(sortByRecommend)
     }
+  }
+  const renderFilter =()=>{
+    return (
+      <>
+        
+
+        <FilterCoach
+          title="PROFESSIONS"
+          jobs={jobs}
+          dances={dances}
+          sports={sports}
+          setSelectedJob={setSelectedJob}
+          selectedJob={selectedJob}
+        />
+        <FilterCoach
+          title="SPECIALITES"
+          jobs={jobs}
+          dances={dances}
+          sports={sports}
+          setSelectedSpecialty={setSelectedSpecialty}
+          selectedSpecialty={selectedSpecialty}
+        />
+        <Experiencefilter
+          selectedExperienceYears={selectedExperienceYears}
+          setSelectedExperienceYears={setSelectedExperienceYears}
+        />
+        <Recommendation
+          selectedReviewsRate={selectedReviewsRate}
+          setSelectedReviewsRate={setSelectedReviewsRate}
+        />
+        <CoachType
+          selectedLevel={selectedLevel}
+          setSelectedLevel={setSelectedLevel}
+          selectedAges={selectedAges}
+          setSelectedAges={setSelectedAges}
+        />
+        <CoachRegion
+          regions={regions}
+          selectedRegions={selectedRegions}
+          setSelectedRegions={setSelectedRegions}
+        />
+      </>
+    )
   }
 
   return (
@@ -167,79 +256,20 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
           </div>
           <div className="coaches__coach_details">
             <div className="coaches__coach_details__filter">
-              {!isMobile && (
-                <Search
-                  className="coaches__coach_details__filter__input_searsh"
-                  placeholder="RECHERCHE PAR NOM"
-                  onChange={(e) => onSearch(e.target.value)}
-                />
-              )}
-
-              {/* <div className="lineprofilecoach" /> */}
-
-              <FilterCoach
-                coachSpecialty={coachSpecialty}
-                setCoachSpecialty={setCoachSpecialty}
-                setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                coachSpecialtyFilter={coachSpecialtyFilter}
-                dances={dances}
-                sports={sports}
-                title="PROFESSIONS"
-                jobs={jobs}
-                setDataCopy={setDataCopy}
-                dataCopy={dataCopy}
-                coachesList={coachesList}
+              <Search
+                className="coaches__coach_details__filter__input_search"
+                placeholder="RECHERCHE PAR NOM"
+                onChange={(e) => onSearch(e.target.value)}
               />
-              {/* <div className="lineprofilecoach" /> */}
-              <FilterCoach
-                dances={dances}
-                sports={sports}
-                setDataCopy={setDataCopy}
-                dataCopy={dataCopy}
-                coachesList={coachesList}
-                coachSpecialty={coachSpecialty}
-                setCoachSpecialty={setCoachSpecialty}
-                setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                coachSpecialtyFilter={coachSpecialtyFilter}
-                jobs={jobs}
-                title="SPECIALITES"
-              />
-              {/* <div className="lineprofilecoach" /> */}
-              <Experiencefilter
-                setDataCopy={setDataCopy}
-                dataCopy={dataCopy}
-                coachesList={coachesList}
-              />
-              {/* <div className="lineprofilecoach" /> */}
-              <Recommendation
-                dataCopy={dataCopy}
-                setDataCopy={setDataCopy}
-                coachesList={coachesList}
-              />
-              {/* <div className="lineprofilecoach" /> */}
-              <CoachType
-                setDataCopy={setDataCopy}
-                dataCopy={dataCopy}
-                coachesList={coachesList}
-              />
-              {/* <div className="lineprofilecoach" /> */}
-              <CoachRegion
-                regions={regions}
-                setDataCopy={setDataCopy}
-                dataCopy={dataCopy}
-                coachesList={coachesList}
-              />
+              {renderFilter()}
             </div>
 
             <div className="coaches__coach_details__list_of_coach">
               {isMobile && (
                 <Search
-                  className="coaches__coach_details__filter__input_searshmobile"
+                  className="coaches__coach_details__filter__input_search-mobile"
                   placeholder="RECHERCHE PAR NOM"
                   onChange={(e) => onSearch(e.target.value)}
-                  // style={{
-                  //     width: 270,
-                  // }}
                 />
               )}
               <div className="coaches__coach_details__list_of_coach__lenght_sortby">
@@ -257,57 +287,8 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    <FilterCoach
-                      coachSpecialty={coachSpecialty}
-                      setCoachSpecialty={setCoachSpecialty}
-                      setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                      coachSpecialtyFilter={coachSpecialtyFilter}
-                      dances={dances}
-                      sports={sports}
-                      title="PROFESSIONS"
-                      jobs={jobs}
-                      setDataCopy={setDataCopy}
-                      dataCopy={dataCopy}
-                      coachesList={dataCopy}
-                    />
-                    <FilterCoach
-                      dances={dances}
-                      sports={sports}
-                      setDataCopy={setDataCopy}
-                      dataCopy={dataCopy}
-                      coachesList={dataCopy}
-                      coachSpecialty={coachSpecialty}
-                      setCoachSpecialty={setCoachSpecialty}
-                      setCoachSpecialtyFilter={setCoachSpecialtyFilter}
-                      coachSpecialtyFilter={coachSpecialtyFilter}
-                      jobs={jobs}
-                      title="SPECIALITES"
-                    />
-                    <div className="lineprofilecoach" />
-                    <Experiencefilter
-                      setDataCopy={setDataCopy}
-                      dataCopy={dataCopy}
-                      coachesList={coachesList}
-                    />
-                    <div className="lineprofilecoach" />
-                    <Recommendation
-                      dataCopy={dataCopy}
-                      setDataCopy={setDataCopy}
-                      coachesList={coachesList}
-                    />
-                    <div className="lineprofilecoach" />
-                    <CoachType
-                      setDataCopy={setDataCopy}
-                      dataCopy={dataCopy}
-                      coachesList={coachesList}
-                    />
-                    <div className="lineprofilecoach" />
-                    <CoachRegion
-                      regions={regions}
-                      setDataCopy={setDataCopy}
-                      dataCopy={dataCopy}
-                      coachesList={coachesList}
-                    />
+                    {renderFilter()}
+                    {}
                   </Modal>
                 </div>
                 <div className="coaches__coach_details__list_of_coach__lenght_sortby__lenght">
@@ -340,7 +321,6 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               </div>
 
               <div className="paginate">
-                
                 {Array.from({
                   length: Math.ceil(dataCopy.length / nbr_of_card_per_page),
                 }).map((el, index) => (
@@ -375,7 +355,23 @@ Coaches.getInitialProps = async ({ req }) => {
   const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
   const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
   const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
-  const jsonCoachesRes = await coachesRes.json()
+  let jsonCoachesRes = await coachesRes.json()
+  if (jsonCoachesRes) {
+    jsonCoachesRes = jsonCoachesRes.map((coach) => {
+      let averageRate = 0
+      if (
+        coach.coachData &&
+        coach.coachData.reviews &&
+        coach.coachData.reviews.length !== 0
+      ) {
+        averageRate = getFormattedNumber(
+          coach.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
+            coach.coachData.reviews.length,
+        )
+      }
+      return { ...coach, averageRate }
+    })
+  }
   let jsonJobsRes = await jobsRes.json()
 
   if (jsonJobsRes) {

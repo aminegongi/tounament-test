@@ -6,26 +6,16 @@ import down from '../../../public/icon/down.png'
 import left from '../../../public/icon/left.png'
 
 export default function CoachRegion({
-  setDataCopy,
-  dataCopy,
-  coachesList,
   regions,
+  selectedRegions,
+  setSelectedRegions,
 }) {
-  const onChange = (region) => {
+  const onChange = (regions) => {
     // window.scrollTo(400, 350)
-    if (region.length !== 0) {
-      return setDataCopy(
-        coachesList.filter((coach) =>
-          coach.coachData.privateCourseData.regions.find((el) =>
-            region.includes(el),
-          ),
-        ),
-      )
-    }
-    return setDataCopy(coachesList)
+    setSelectedRegions(regions)
   }
 
-  const [icon, setIcon] = useState(left)
+  const [icon, setIcon] = useState(down)
   const changeIcon = () => {
     if (icon === down) {
       setIcon(left)
@@ -44,6 +34,7 @@ export default function CoachRegion({
         {icon == down && (
           <Checkbox.Group
             className="coach_region__checkbox"
+            value={selectedRegions}
             options={regions
               .sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
               .map((region) => {
