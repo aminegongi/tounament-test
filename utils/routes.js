@@ -50,6 +50,6 @@ export default {
 
   ISPORIT_PLATFORM: {
     linkTo: (token = localStorage.getItem('token')) =>
-      `https://dev.isporit.com/?accessToken=${token}`,
+      `https://app.isporit.com/?accessToken=${token}`,
   },
 }
