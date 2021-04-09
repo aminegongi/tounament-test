@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="24" viewBox="0 0 26 24">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 79 72">
+      <image width="79" height="72" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE8AAABICAYAAAC3Mag+AAAABHNCSVQICAgIfAhkiAAAAjlJREFUeF7t2VmSwyAMBNDx/Q/tKbvKKQ8DSKiFWNL5jmx4NEvIcZ7nDz82gYN4Nririnh2O+IBdsQjHiIA1HLNIx4gAJR6JW/Fw+IBuN2lxAMEieeIt+L0A7pvLr2nfJo84uk8iadzyn6LeMQDBIBSJi8KTzpQrrjRSH26bEv9akoe8iJggLuWSn2qwrUcVaQX1UapqwDwcKlPzXhiVCuNXW3qEs+YPAlOFaLcb1sxroUGr5Q8Ca/Wl09tC969RgojvQqgtR9/6oiXT4Nq9pWupFTFmffukDzVlK1dhqofkACugOcyZaWb5F0Ba3hNfa7dJDc96JXA2dNXwpPa/a9Ouoa3AEqNMB7NXMrcUidNW81PLusoukgYHmJpbxFcSp4VcNb0pRCadkJ4GsD0AK1plCE4UMkbQdu+6s6sSZ4WD+rZhMXSkabpT2/taE3o0NwkEU6zYaRv/QZAFZwF78HcFVENh+Dttg42oT0J0m4Y0qKxahJNaN54M+JeMM+gQkilznklT8KLnuZdsNJORuJFAm6JFwEYAofutpqpWvpOrw0mDG4knncCQ9Gid9taStEUDoEbnTz0p98wtJmS90bUpnA43GzJa1kHiZdZCJk84AxDPOIBAkApk0c8QAAoZfKIBwgYS7Wpu8+nxne4lkXc57WguHauNzLxgOEiHvGKAl3XRiaPydsreSN32FqWXKdxr2lLPGA5IB7x6gLfNG1d17sZ/8MAwh5f2it58T0Z8EbiAejEA/B+AcZkNIBygKAGAAAAAElFTkSuQmCC"/>
+    </pattern>
+    <clipPath id="clip-palmares">
+      <rect width="26" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="palmares" clip-path="url(#clip-palmares)">
+    <rect id="palmarès_Plan_de_travail_1" data-name="palmarès_Plan de travail 1" width="20" height="18" transform="translate(2.5 2)" fill="url(#pattern)"/>
+  </g>
+</svg>

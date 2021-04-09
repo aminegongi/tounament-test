@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import './biography.scss'
 import { isEmpty } from 'lodash'
 import Collapse from '../Collapse/Collapse'
-import bio from '../../../public/icon/bio.png'
 import opps from '../../../public/icon/opps.png'
-import experience from '../../../public/icon/experience.png'
-import formation from '../../../public/icon/formation.png'
-import certification from '../../../public/icon/certification.png'
-import palmares from '../../../public/icon/palmares.png'
+import bio from '../../../public/coachBio/bio.svg'
+import experience from '../../../public/coachBio/experience.svg'
+import formation from '../../../public/coachBio/formation.svg'
+import certification from '../../../public/coachBio/certification.svg'
+import palmares from '../../../public/coachBio/palmares.svg'
 import CoachProfileSection from '../CoachProfileSection'
 import { nl2br } from '../../../utils/string.utils'
 
@@ -33,7 +33,9 @@ function Biography({ coachProfile }) {
             <CoachProfileSection title="Biographie" icon={bio}>
               <div
                 className="biographieblock__biographie__contenu"
-                dangerouslySetInnerHTML={{ __html:nl2br(coachProfile.coachData.aboutMe)}}
+                dangerouslySetInnerHTML={{
+                  __html: nl2br(coachProfile.coachData.aboutMe),
+                }}
               />
             </CoachProfileSection>
           )}

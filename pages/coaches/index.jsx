@@ -2,8 +2,8 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react'
 import { Input, Select, Modal } from 'antd'
-import '../shared/css/coaches.scss'
-import '../shared/global-style.scss'
+import '../../shared/css/coaches.scss'
+import '../../shared/global-style.scss'
 import Head from 'next/head'
 
 import fetch from 'isomorphic-unfetch'
@@ -14,15 +14,15 @@ import {
   RECOMMEND,
   EXPERIENCE,
   SERVER_SIDE_API_BASE_URL,
-} from '../shared/constants'
-import FilterCoach from '../shared/components/FilterCoach/FilterCoach'
-import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter'
-import Recommendation from '../shared/components/RecommendationFilter/Recommendation'
-import CoachType from '../shared/components/CoachTypeFilter/CoachType'
-import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion'
-import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach'
-import affiche from '../public/icon/Banniere.png'
-import Layout from '../shared/components/layout/Layout'
+} from '../../shared/constants'
+import FilterCoach from '../../shared/components/FilterCoach/FilterCoach'
+import Experiencefilter from '../../shared/components/Experiencefilter/Experiencefilter'
+import Recommendation from '../../shared/components/RecommendationFilter/Recommendation'
+import CoachType from '../../shared/components/CoachTypeFilter/CoachType'
+import CoachRegion from '../../shared/components/CoachRegionFilter/CoachRegion'
+import CardProfileCoach from '../../shared/components/CardProfileCoachFilter/CardProfileCoach'
+import affiche from '../../public/icon/Banniere.png'
+import Layout from '../../shared/components/layout/Layout'
 
 const { Search } = Input
 
@@ -340,7 +340,6 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               </div>
 
               <div className="paginate">
-                
                 {Array.from({
                   length: Math.ceil(dataCopy.length / nbr_of_card_per_page),
                 }).map((el, index) => (

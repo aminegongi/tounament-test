@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head, Main, NextScript, Html } from 'next/document'
 import { Manifest } from 'next-manifest'
 
 export default class extends Document {
@@ -13,7 +13,7 @@ export default class extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <link rel="icon" href="icon/logoindexpage.png" />
           <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
@@ -27,7 +27,7 @@ export default class extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }

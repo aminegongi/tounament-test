@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { Button, Radio } from 'antd'
@@ -15,7 +16,7 @@ const LoginModal = ({
   isSignUpModal,
   onLogin,
   loading,
-  role
+  role,
 }) => {
   const [isSignUp, setIsSignUp] = useState(isSignUpModal)
   const [data, setData] = useState({
@@ -59,8 +60,8 @@ const LoginModal = ({
         <div className="login-modal__title">Créer un compte</div>
         <form
           onSubmit={(e) => {
-            if(role){
-              data.userType=role
+            if (role) {
+              data.userType = role
             }
             if (!loading && data.userType !== CLUB) {
               onSignUp(data)
@@ -71,42 +72,48 @@ const LoginModal = ({
           }}
           className="login-modal__body"
         >
-          {!role &&<center className="login-modal__user-type">
-            <Radio.Group
-              size="default"
-              value={data.userType}
-              onChange={(e) => setData({ ...data, userType: e.target.value })}
-              buttonStyle="solid"
-            >
-              <Radio.Button
-                className={
-                  data.userType === PLAYER && 'login-modal__radio-group-button'
-                }
-                value="player"
+          {!role && (
+            <center className="login-modal__user-type">
+              <Radio.Group
+                size="default"
+                value={data.userType}
+                onChange={(e) => setData({ ...data, userType: e.target.value })}
+                buttonStyle="solid"
               >
-                Joueur
-              </Radio.Button>
-              <Radio.Button
-                className={
-                  data.userType === COACH && 'login-modal__radio-group-button'
-                }
-                value="coach"
-              >
-                Entraineur
-              </Radio.Button>
-              <Radio.Button
-                className={
-                  data.userType === CLUB && 'login-modal__radio-group-button'
-                }
-                value="club"
-              >
-                Organisation
-              </Radio.Button>
-            </Radio.Group>
-          </center>
-         }
-        {role && 
-        <div className="isporit-note">Certaines informations vont être envoyées au coach pour connaître votre profil </div>}
+                <Radio.Button
+                  className={
+                    data.userType === PLAYER &&
+                    'login-modal__radio-group-button'
+                  }
+                  value="player"
+                >
+                  Joueur
+                </Radio.Button>
+                <Radio.Button
+                  className={
+                    data.userType === COACH && 'login-modal__radio-group-button'
+                  }
+                  value="coach"
+                >
+                  Entraineur
+                </Radio.Button>
+                <Radio.Button
+                  className={
+                    data.userType === CLUB && 'login-modal__radio-group-button'
+                  }
+                  value="club"
+                >
+                  Organisation
+                </Radio.Button>
+              </Radio.Group>
+            </center>
+          )}
+          {role && (
+            <div className="isporit-note">
+              Certaines informations vont être envoyées au coach pour connaître
+              votre profil{' '}
+            </div>
+          )}
 
           <div className="login-modal__body__signup-inputs">
             <input
@@ -125,17 +132,16 @@ const LoginModal = ({
               className="isporit-input"
               required
             />
-             
-              
-              <input
-                type="number"
-                onChange={onChangeInput}
-                placeholder="Numéro de télèphone"
-                name="phoneNumber"
-                className="isporit-input"
-                required
-              />
-              
+
+            <input
+              type="number"
+              onChange={onChangeInput}
+              placeholder="Numéro de télèphone"
+              name="phoneNumber"
+              className="isporit-input"
+              required
+            />
+
             <input
               type="email"
               onChange={onChangeInput}
@@ -160,11 +166,15 @@ const LoginModal = ({
               className="isporit-input"
               required
             />
-           <div className="login-modal__input-label">
-               <label className="" htmlFor="gender">
+            <div className="login-modal__input-label">
+              <label className="" htmlFor="gender">
                 Sexe
               </label>
-               <select  name="gender" onChange={onChangeInput} className="isporit-input">
+              <select
+                name="gender"
+                onChange={onChangeInput}
+                className="isporit-input"
+              >
                 <option value="M">Masculin</option>
                 <option value="F">Féminin</option>
               </select>
@@ -184,8 +194,7 @@ const LoginModal = ({
               />
             </div>
           </div>
-          
-          
+
           <center>
             <button type="submit" className="isporit-unset-button-css">
               <Button
@@ -258,8 +267,8 @@ const LoginModal = ({
             <button type="submit" className="isporit-unset-button-css">
               <Button
                 loading={loading}
-                className="isporit-primary-button login-modal__body__submit"
                 type="submit"
+                className="login-modal__body__submit isporit-primary-button"
               >
                 Se connecter
               </Button>
@@ -307,7 +316,11 @@ LoginModal.propTypes = {
   isSignUpModal: PropTypes.bool.isRequired,
   onLogin: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  role: PropTypes.string
+  role: PropTypes.string,
+}
+
+LoginModal.defaultProps = {
+  role: '',
 }
 
 export default LoginModal

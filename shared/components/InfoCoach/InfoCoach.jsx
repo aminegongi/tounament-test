@@ -14,7 +14,12 @@ import { getUserProfilePicture } from '../../../utils/string.utils'
 
 import routes from '../../../utils/routes'
 
-export default function InfoCoach({ coachProfile, job, specialty }) {
+export default function InfoCoach({
+  coachProfile,
+  job,
+  specialty,
+  onOpenCalendar,
+}) {
   const isMobile = useMediaPredicate('(max-width: 992px)')
   const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
     false,
@@ -113,11 +118,7 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
           </div>
           {isMobile && (
             <button
-              onClick={() =>
-                router.push(
-                  routes.COACH_DETAILS.CALENDAR.linkTo(router.query.username),
-                )
-              }
+              onClick={onOpenCalendar}
               type="submit"
               className="buttoncontactcoach"
             >
@@ -137,6 +138,11 @@ export default function InfoCoach({ coachProfile, job, specialty }) {
 
 InfoCoach.propTypes = {
   coachProfile: PropTypes.objectOf(PropTypes.any).isRequired,
-  job: PropTypes.arrayOf(PropTypes.any).isRequired,
-  specialty: PropTypes.arrayOf(PropTypes.any).isRequired,
+  job: PropTypes.objectOf(PropTypes.any),
+  specialty: PropTypes.arrayOf(PropTypes.any),
+}
+
+InfoCoach.defaultProps = {
+  job: { translations: {} },
+  specialty: [],
 }
