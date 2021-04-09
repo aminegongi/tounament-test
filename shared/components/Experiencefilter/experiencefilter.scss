@@ -13,17 +13,18 @@
 
     &__marks {
         margin: 30px 35px 47px 36px;
+
         &__line {
-            background: #47c8c0 !important;
+            background: red !important;
         }
     }
 
     .ant-slider-track {
         background: #47c8c0;
     }
-    
+
     .ant-slider-step {
-        background: #47c8c0;
+        // background: #47c8c0;
     }
 }
 

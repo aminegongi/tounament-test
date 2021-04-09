@@ -69,7 +69,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
   const levels = {
     beginner: { label: 'débutant', value: 'beginner' },
     intermediate: { label: 'intermédiaire', value: 'intermediate' },
-    confirmed: { label: 'confirmé(e)', value: 'confirmed' },
+    confirmed: { label: 'confirmé', value: 'confirmed' },
   }
 
   return (
