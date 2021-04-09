@@ -2,30 +2,30 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react'
 import { Input, Select, Modal } from 'antd'
-import '../shared/css/coaches.scss'
-import '../shared/global-style.scss'
+import '../../shared/css/coaches.scss'
+import '../../shared/global-style.scss'
 import Head from 'next/head'
 
 import fetch from 'isomorphic-unfetch'
 import { useMediaPredicate } from 'react-media-hook'
+import { useRouter } from 'next/router'
 import {
   ALL,
   ALPHABETICAL,
   RECOMMEND,
   EXPERIENCE,
   SERVER_SIDE_API_BASE_URL,
-} from '../shared/constants'
-import FilterCoach from '../shared/components/FilterCoach/FilterCoach'
-import Experiencefilter from '../shared/components/Experiencefilter/Experiencefilter'
-import Recommendation from '../shared/components/RecommendationFilter/Recommendation'
-import CoachType from '../shared/components/CoachTypeFilter/CoachType'
-import CoachRegion from '../shared/components/CoachRegionFilter/CoachRegion'
-import CardProfileCoach from '../shared/components/CardProfileCoachFilter/CardProfileCoach'
-import affiche from '../public/icon/Banniere.png'
-import Layout from '../shared/components/layout/Layout'
-import { getFilteredCoaches } from './../utils/arrays.utils'
-import { getFormattedNumber } from '../utils/number.utils'
-import { useRouter } from 'next/router'
+} from '../../shared/constants'
+import FilterCoach from '../../shared/components/FilterCoach/FilterCoach'
+import Experiencefilter from '../../shared/components/Experiencefilter/Experiencefilter'
+import Recommendation from '../../shared/components/RecommendationFilter/Recommendation'
+import CoachType from '../../shared/components/CoachTypeFilter/CoachType'
+import CoachRegion from '../../shared/components/CoachRegionFilter/CoachRegion'
+import CardProfileCoach from '../../shared/components/CardProfileCoachFilter/CardProfileCoach'
+import affiche from '../../public/icon/Banniere.png'
+import Layout from '../../shared/components/layout/Layout'
+import { getFilteredCoaches } from '../../utils/arrays.utils'
+import { getFormattedNumber } from '../../utils/number.utils'
 
 const { Search } = Input
 
@@ -46,8 +46,10 @@ export default function Coaches({
   const [selectedLevel, setSelectedLevel] = useState('')
   const [selectedAges, setSelectedAges] = useState([])
   const [selectedRegions, setSelectedRegions] = useState([])
-    const router = useRouter()
-  const {query: {job, specialty, region}}=router
+  const router = useRouter()
+  const {
+    query: { job, specialty, region },
+  } = router
   const nbr_of_card_per_page = 15
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
@@ -95,24 +97,24 @@ export default function Coaches({
   }
   const [isModalVisible, setIsModalVisible] = useState(false)
   useEffect(() => {
-    if(job){
-      const foundJob=jobs.find(elem=>elem._id===job)
-      if(foundJob) {
+    if (job) {
+      const foundJob = jobs.find((elem) => elem._id === job)
+      if (foundJob) {
         setSelectedJob(foundJob)
       }
     }
     if (specialty) {
-      const foundSpecialty = sports.concat(dances).find((elem) => (elem._id === specialty))
-       if (foundSpecialty) {
-         setSelectedSpecialty(foundSpecialty)
-       }       
+      const foundSpecialty = sports
+        .concat(dances)
+        .find((elem) => elem._id === specialty)
+      if (foundSpecialty) {
+        setSelectedSpecialty(foundSpecialty)
+      }
     }
     if (region) {
-      
-        setSelectedRegions([region])
+      setSelectedRegions([region])
     }
-
-  }, [ job, specialty, region ])
+  }, [job, specialty, region])
 
   useEffect(() => {
     setDataCopy(
@@ -186,11 +188,9 @@ export default function Coaches({
       return setDataCopy(sortByRecommend)
     }
   }
-  const renderFilter =()=>{
+  const renderFilter = () => {
     return (
       <>
-        
-
         <FilterCoach
           title="PROFESSIONS"
           jobs={jobs}

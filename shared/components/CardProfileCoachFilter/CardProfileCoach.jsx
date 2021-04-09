@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import './cardProfileCoach.scss'
 import { Rate } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { AVATAR } from '../../constants'
+// import { AVATAR } from '../../constants'
 import ShareLink from '../ShareLink/ShareLink'
-import getUserProfilePicture from '../../../utils/string.utils'
+import { getUserProfilePicture } from '../../../utils/string.utils'
 import routes from '../../../utils/routes'
-import ReservationCours from '../ReservationCours/ReservationCours'
+// import ReservationCours from '../ReservationCours/ReservationCours'
 import shareIcon from '../../../public/icon/profileShare.png'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 
-export default function CardProfileCoach({
-  coachProfile,
-  key,
-  job,
-  specialty,
-}) {
+export default function CardProfileCoach({ coachProfile, job, specialty }) {
   const router = useRouter()
 
   const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
@@ -138,4 +134,9 @@ export default function CardProfileCoach({
       /> */}
     </div>
   )
+}
+CardProfileCoach.propTypes = {
+  coachProfile: PropTypes.objectOf(PropTypes.any).isRequired,
+  job: PropTypes.arrayOf(PropTypes.any).isRequired,
+  specialty: PropTypes.arrayOf(PropTypes.any).isRequired,
 }

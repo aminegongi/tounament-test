@@ -1,6 +1,6 @@
 export default {
-  HOME:{
-     path: '/',
+  HOME: {
+    path: '/',
   },
   CONTACT_US: {
     path: '/contact-us',
@@ -13,12 +13,12 @@ export default {
   },
   COACH_DETAILS: {
     CALENDAR: {
-      path: `/coach-details/[username]/calendar`,
-      linkTo: (username) => `/coach-details/${username}/calendar`,
+      path: `/coaches/[username]/calendar`,
+      linkTo: (username) => `/coaches/${username}/calendar`,
     },
     PROFILE: {
-      path: `/coach-details/[username]`,
-      linkTo: (username) => `/coach-details/${username}`,
+      path: `/coaches/[username]`,
+      linkTo: (username) => `/coaches/${username}`,
     },
   },
   LOG_IN: {

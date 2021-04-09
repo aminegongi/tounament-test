@@ -1,6 +1,6 @@
 .coachBoxiteam {
     display: grid;
-    grid-template-columns: 56% 38%;
+    grid-template-columns: 63% 35%;
     column-gap: 2%;
     padding-bottom: 46px;
 
@@ -177,7 +177,7 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
     .coachBoxiteam {
         display: grid;
         grid-template-columns: 100%;

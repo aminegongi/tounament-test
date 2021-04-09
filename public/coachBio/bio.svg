@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="21" viewBox="0 0 28 21">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 143 128">
+      <image width="143" height="128" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI8AAACACAYAAAAyNTpGAAAABHNCSVQICAgIfAhkiAAABMBJREFUeF7t3cFW4zAMheH27YblcM7wkCzY8nid00IhbRJbliXHtn62dRMsf7lKaBPOf/7+O/X08/nx3vrXuVTu8Fz5/qK3v7y+FY3PDa6p9zkgnlosqfVwhwSeRPlrjoTMUeaJ5nnXbojA0xZPSzTuiMDTBs+RaNwQgccfT09wlrOtbmfg8cPTKxozQODxwTMCnPvM1QkEHns8I8GpSiHw2OIZFY4qhcBjh2d0OMWAwGODZxY4RYDAU49nNjjXiohOosFTh2dGOOL0AY8ez8xwRIDAA57cNyV2Wxh4dHgipE42fcBTjicSnCQg8IAn17Z2AYGnDE/E1AGP9PBajtv4JmFkPKu//5A88uSJDgc8JQn0lDzg+Srez6U7ySNLHuD81gk8kgRaJA94wCMh8zsGPLv1uqUPbSvftkiddY3Ak8uh7+QBD3hyVNavgydZszNti7ZVflR9X7KDJ42HlrVfH5Inddh9fryDBzy6ZAYP5zw6OafTCTzgAY+6Auk3vry+ie6ykO6+5nlIPT4ZjHOexMqDh6staTCsxoEHPOBRVwA86tKRPOABj7oC4FGXjuQBD3jUFQCPunQkD3i0ePhglA9GtXZO4AEPeNQVAI+6dCRPBs/1ZT7f2i4SeMCjSh7unsiVjS/A71YIPEI8tK51ocADnlwFSB51hbjdeLN0POhAIopHrIBH4mRzDHhWZXn4zjI3/aU/21q+yt97nv6tAHjkeKJfda3ulAAPeKRtHTzSSl3H7dxHFLF9bd6fRfKUJc99dDRA4ClJnUTyRDv34R+XlMLJ4IkCKHk7MW1L17aitC/waFJHkDyzp0/2IQYkT13yzAooC+c6cfDU45kNkAgOeDL9rPB5MTNcvovhgMcWz+gJVAQHPPZ4RgVUDAc8PnhGu4xXwQGPL54RUkgNBzz+eHoFVIXmXjYu1W0u1SV/h+zhaswEDXgEy114qS7Y4m3IUYhM4dC22rStvb20QGQOZjkZ2la7tpWiag3JFQ1tS9BknNpWbs8aSE2wPP/iJE9uKXm9WQVqDtbz5aI56JrNrfWOJMU4JHFaF0Kyvyh4JCgk9SoZMz2y2fAcgaQE1HXsNKhGxzMClhyuYTGNiGcGMHughoI0Cp6ZwQwLqWc8EcEMBak3PIDJnSF1dMLdCx7Q5NE8jzj8/OhoPKApR9MNoqPwgKYezeGIWuMBjT2awxC1xAMcfzj3PTQ5H2qBBzTt0DRNIU88oDkOzXLPbinkhQc4fcBxReSBBzj9wXE5F7LEA5p+0bgkkBUe4IwBxxSRBR7gjAfHpI3V4gHOuHCqAdXgAc74cKoAafEAZx44akAaPMCZD44KUCke4MwLpxhQCR7gzA+nCJAUD3DiwBEDkuABTjw41xlnP1AFT0wY0lknAeXwkDrSMs87bhdQCg9w5gVROrNNQOApLWPM8UV4SJ2YSFKzXgHaSh7gAGerAuDBRVUFHgA9Jw+pU1Xb6d8MnumX2HeCP4BIHt9Cz7j1TTy0rBmX2mdON0DL5AGPT6Fn3OoDHuDMuMR+cwKPX21DbPl8b1skT4j1Np0keEzLGWtjNzykTqxFN5steMxKGW9D4Im35mYzBo9ZKeNtCDzx1txsxuAxK2W8Df0H5/zlGUD83CAAAAAASUVORK5CYII="/>
+    </pattern>
+    <clipPath id="clip-bio">
+      <rect width="28" height="21"/>
+    </clipPath>
+  </defs>
+  <g id="bio" clip-path="url(#clip-bio)">
+    <rect id="icone-person-1" width="20" height="18" transform="translate(4 2)" fill="url(#pattern)"/>
+  </g>
+</svg>

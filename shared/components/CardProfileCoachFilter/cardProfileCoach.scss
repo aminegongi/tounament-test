@@ -170,6 +170,10 @@
 
         &__information {
             margin: auto;
+
+            &__worktype, &__sporttype, &__yearexperience {
+                height: unset;
+            }
         }
     }
 }

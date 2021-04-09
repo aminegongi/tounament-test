@@ -334,5 +334,9 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
 
 CoachAboutBoxes.propTypes = {
   coachData: PropTypes.objectOf(PropTypes.any).isRequired,
-  specialty: PropTypes.arrayOf(PropTypes.any).isRequired,
+  specialty: PropTypes.arrayOf(PropTypes.any),
+}
+
+CoachAboutBoxes.defaultProps = {
+  specialty: [],
 }

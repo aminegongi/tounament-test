@@ -9,15 +9,16 @@
         background-color: #f8f8f8;
         padding-bottom: 167px;
 
-        >div:first-child {
+        > div:first-child {
             padding-top: 106px;
 
             @media only screen and (max-width: 850px) {
-                    padding-top: 20px !important;
+                padding-top: 20px !important;
+                &.gerer_iluustateur {
+                    padding-top: 100px !important;
+                }
             }
         }
-
-
     }
 
     &__footer {

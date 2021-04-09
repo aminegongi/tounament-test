@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
@@ -5,49 +6,48 @@ import PropTypes from 'prop-types'
 import fetch from 'isomorphic-unfetch'
 
 import { useRouter } from 'next/router'
-import Axios from 'axios'
-import { Collapse, Icon, Button } from 'antd'
+import { Button } from 'antd'
 import Link from 'next/link'
 import Countdown from 'antd/lib/statistic/Countdown'
 import moment from 'moment'
 import { useMediaPredicate } from 'react-media-hook'
 import Layout from '../shared/components/layout/Layout'
 import '../shared/css/home.scss'
-import Clublogo from '../shared/components/clublogo/Clublogo'
-import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro'
-import TrustUs from '../shared/components/TrustUs/TrustUs'
-import InterfacesExample from '../shared/components/InterfacesExample/InterfacesExample'
-import Feature from '../shared/components/Feature/Feature'
-import BecomePartner from '../shared/components/BecomePartner/BecomePartner'
-import Title from '../shared/components/TitleSection/TitleSection'
+// import Clublogo from '../shared/components/clublogo/Clublogo'
+// import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro'
+// import TrustUs from '../shared/components/TrustUs/TrustUs'
+// import InterfacesExample from '../shared/components/InterfacesExample/InterfacesExample'
+// import Feature from '../shared/components/Feature/Feature'
+// import BecomePartner from '../shared/components/BecomePartner/BecomePartner'
+// import Title from '../shared/components/TitleSection/TitleSection'
 import Join from '../shared/components/joinplatforme/Join'
 
-import Demo from '../shared/components/DemoSection/DemoSection'
-import Functionclub from '../shared/components/Functionclub/Functionclub'
-import Navbar from '../shared/components/navbar/Navbar'
-import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage'
-import performance from '../public/icon/performance.png'
+// import Demo from '../shared/components/DemoSection/DemoSection'
+// import Functionclub from '../shared/components/Functionclub/Functionclub'
+// import Navbar from '../shared/components/navbar/Navbar'
+// import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage'
+// import performance from '../public/icon/performance.png'
 import { SERVER_SIDE_API_BASE_URL } from '../shared/constants'
 import { i18n, withTranslation } from '../i18n'
 import '../shared/global-style.scss'
 import routes from '../utils/routes'
 // import Countdown from '../shared/components/CountDown'
 
-const { Panel } = Collapse
+// const { Panel } = Collapse
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`
+// const text = `
+//   A dog is a type of domesticated animal.
+//   Known for its loyalty and faithfulness,
+//   it can be found as a welcome guest in many households across the world.
+// `
 
-const customPanelStyle = {
-  background: '#f7f7f7',
-  borderRadius: 4,
-  marginBottom: 24,
-  border: 0,
-  overflow: 'hidden',
-}
+// const customPanelStyle = {
+//   background: '#f7f7f7',
+//   borderRadius: 4,
+//   marginBottom: 24,
+//   border: 0,
+//   overflow: 'hidden',
+// }
 
 const Index = ({ coachesList, jobs, sports, dances, regions }) => {
   const [lang, setLang] = useState(undefined)
@@ -172,7 +172,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
       >
         <div
           className={`${'gerer_iluustateur'}`}
-          style={!isMobile ? { paddingTop: '11rem' } : {}}
+          style={!isMobile ? { paddingTop: '225px' } : {}}
         >
           <div
             className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
@@ -189,11 +189,12 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 </div>
               </div>
               <Link href={routes.COACHES_LIST.path}>
-                <button className="gerer_team">Réservez vos entraîneurs</button>
+                <button type="button" className="gerer_team">
+                  Réservez vos entraîneurs
+                </button>
               </Link>
             </div>
             <img
-              alt="image"
               className="img_illustration"
               src="icon/coachesBanner.png"
               alt=""
@@ -218,7 +219,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 </div>
               </div>
               <Link href={routes.CLUB_FEATURES.path}>
-                <button className="gerer_team">
+                <button type="button" className="gerer_team">
                   Gérer mon équipe gratuitement
                 </button>
               </Link>
@@ -227,7 +228,6 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               </div>
             </div>
             <img
-              alt="image"
               className="img_illustration"
               src="icon/illustration.png"
               alt=""

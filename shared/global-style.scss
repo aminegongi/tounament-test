@@ -98,17 +98,17 @@ input:focus {
 }
 
 .isporit-primary-button {
-    border-radius: 10px;
-    box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16);
-    background-color: #26beb5;
-    font-weight: 500;
+    border-radius: 10px !important;
+    box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16) !important;
+    background-color: #26beb5 !important;
+    font-weight: 500 !important;
 
-    cursor: pointer;
+    cursor: pointer !important;
 
-    color: #ffffff;
+    color: #ffffff !important;
 
     &:focus {
-        outline: none;
+        outline: none !important;
     }
 }
 
@@ -183,7 +183,7 @@ input:focus {
 }
 
 .isporit-search-bar {
-    width: 700px;
+    // width: 700px;
     height: 63px;
     padding: 10.5px 10px 8.5px 25px;
     border-radius: 43px;
@@ -192,6 +192,12 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    input {
+        &::placeholder {
+            color: #bfbfbf ;
+        }
+    }
 
     >div {
         border-right: 1px solid gray;
@@ -207,7 +213,7 @@ input:focus {
 
 
 
-        select {
+        select, input {
             border: none !important;
             width: 100%;
 
@@ -239,8 +245,13 @@ input:focus {
 
 
 .isporit-search-bar2 {
-    width: 300px;
+    // width: 300px;
     height: 63px;
+    margin: 20px 0;
+    width: 300px;
+    @media only screen and (max-width: 850px) {
+        width: 100%;
+    }
     padding: 10.5px 10px 8.5px 25px;
     border-radius: 43px;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);

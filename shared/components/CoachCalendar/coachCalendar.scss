@@ -1,5 +1,7 @@
 .coach-calendar {
-    padding-bottom: 50px;
+    width: 732px;
+
+    padding-bottom: 20px;
 
     &__request-succeeded {
         border-radius: 10px;
@@ -44,13 +46,9 @@
     }
 
     &__body {
-        padding-top: 52px;
-        max-width: 1142px;
+        padding-top: 30px;
+        max-width: 100%;
         margin: auto;
-        display: grid;
-        column-gap: 2%;
-        grid-template-columns: 267px 723px;
-
         &__profile-information {
             &__card {
                 margin-bottom: 32px;
@@ -148,9 +146,10 @@
 
 @media only screen and (max-width: 992px) {
     .coach-calendar {
+        width: 100%;
         &__body {
             display: grid;
-            padding: 15px 21px 21px 21px;
+            // padding: 15px 21px 21px 21px;
 
             row-gap: 6px;
             grid-template-columns: unset;

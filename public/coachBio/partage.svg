@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23" height="25" viewBox="0 0 23 25">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 72 68">
+      <image width="72" height="68" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABECAYAAAAiL3M8AAAABHNCSVQICAgIfAhkiAAAAd9JREFUeF7tmm0SgiAURXOp7aIltIuWauM0DKbA+wzycfuNAcfDlYcu67re8KsTWACorQcAEcsHgADIlrAwCAbBIBsBGGTjhwyCQb0Met5tPfld3aqNllM3j5epZ/4SGw9IUjRmUJMAksBJxnwgTQBIAydDAiAiYh6vcy4JUunfM8hizwcDAMEgwYIoNIVBMAgGVQjYAzpoSPuASdSDZZAvnEAG1cBsmzwLtOXqpQa3MtdCGgqIM+jWNr9lTSm3Of3trxtarEoGe4QkBbOfNKff7/4GFKucQR4NaGWJtpjcj6P+H50BaeC0NnpaOPzN40UB/R5M3gfxYRZaSo47POzpBwaAmGJ0XGIwqHlPnncAAqAzAYQ0EWW9AW3D6fsk6xjS2+Q8cqgvpIsCSmL/3qbOgLQWUec6ElDcI5L0Xoy5YSo3k2SQtKquWSKbYO5Vsrz/5uMFatBe50FUP6XbP/Q8yKTt4WLqfEgDJ9s7IIM84aT/skBojwdvNYj7FQyQv1FBAfmBAqA5lxgMYj4K7U83LLG5l5i29svUghtkBTT03TwzRlyaabNoGkAak8IUqxLFOCYN+nhBMo1AbfkHZoEmLZkKABG0AAiAJAvq3BYGwSAYZCMAg2z8kEEwyGbQG+n2ZIiflM6MAAAAAElFTkSuQmCC"/>
+    </pattern>
+    <clipPath id="clip-partage">
+      <rect width="23" height="25"/>
+    </clipPath>
+  </defs>
+  <g id="partage" clip-path="url(#clip-partage)">
+    <rect id="p1-05" width="29" height="27" transform="translate(-3 -1)" fill="url(#pattern)"/>
+  </g>
+</svg>

@@ -218,6 +218,8 @@
                     &__sortby {
                         grid-column: 3;
                         margin-right: 30px;
+                        display: grid;
+                        justify-self: flex-end;
                     }
 
                     &__filter {
@@ -265,6 +267,7 @@
                     &__sortby {
                         grid-row: 2;
                         grid-column: 1;
+                        justify-self: flex-start !important;
                     }
 
                     &__sortby__select {}

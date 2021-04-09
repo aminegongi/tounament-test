@@ -1,36 +1,42 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-pascal-case */
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import '../../global-style.scss'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import moment from 'moment'
-import { Menu, Dropdown, Icon, Button, Select } from 'antd'
+import { Menu, Dropdown, Icon, Button, Select, Input } from 'antd'
+import PropTypes from 'prop-types'
 import 'antd/dist/antd.css'
-import routes from '../../../utils/routes'
 
 import { useMediaPredicate } from 'react-media-hook'
 import BurgerMenu from 'react-burger-menu'
-import SubMenu from 'antd/lib/menu/SubMenu'
-import { getUserProfilePicture } from '../../../utils/string.utils'
+// import SubMenu from 'antd/lib/menu/SubMenu'
+import routes from '../../../utils/routes'
 import logoImg from '../../../public/icon/logoindexpage.png'
-import coach from '../../../public/icon/subforcoach.svg'
-import player from '../../../public/icon/subforplayer.svg'
-import coachesIcon from '../../../public/icon/features/coaches.svg'
-import playersIcon from '../../../public/icon/features/players.svg'
-import clubsIcon from '../../../public/icon/features/clubs.svg'
+import { getUserProfilePicture } from '../../../utils/string.utils'
+// import coach from '../../../public/icon/subforcoach.svg'
+// import player from '../../../public/icon/subforplayer.svg'
+// import coachesIcon from '../../../public/icon/features/coaches.svg'
+// import playersIcon from '../../../public/icon/features/players.svg'
+// import clubsIcon from '../../../public/icon/features/clubs.svg'
 
-import club from '../../../public/icon/subforclub.svg'
+// import club from '../../../public/icon/subforclub.svg'
 import './navbar.scss'
 import { AuthContext } from '../../../utils/context.utils'
+import { isEmpty } from 'lodash'
+import FilterCoachIndexModal from './FilterModal'
+
 const { Option } = Select
 
 function NavbarIndex({
   searchBar,
   setSearchBar,
-  buttontwo,
+  // buttontwo,
+  // clubmanagement,
+  // coachesList,
   isFooter,
-  clubmanagement,
-  coachesList,
   jobs,
   sports,
   dances,
@@ -38,6 +44,10 @@ function NavbarIndex({
 }) {
   const router = useRouter()
   const mobile = useMediaPredicate('(max-width: 850px)')
+
+  const [searchByDate, setSearchByDate] = useState()
+
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
 
   const [isMobile, setIsMobile] = useState(false)
   const [job, setJob] = useState()
@@ -231,6 +241,25 @@ function NavbarIndex({
             </Menu>
           </BurgerMenu.slide>
         </div>
+        <button
+          type="submit"
+          className="isporit-unset-button-css isporit-search-bar2"
+          style={
+            router.pathname !== routes.HOME.path ? { display: 'none' } : {}
+          }
+          onClick={() => setIsFilterModalOpen(true)}
+        >
+          Rechercher un coach
+          <Button type="primary" shape="circle" icon="search" />
+        </button>
+        <FilterCoachIndexModal
+          sports={sports}
+          dances={dances}
+          jobs={jobs}
+          regions={regions}
+          onCancel={() => setIsFilterModalOpen(false)}
+          isVisible={isFilterModalOpen}
+        />
       </div>
     )
   }
@@ -248,19 +277,19 @@ function NavbarIndex({
               </a>
             </Link>
           </div>
-          <div style={searchBar ? { position: 'relative', top: '30px' } : {}}>
+          <div>
             <div
               className="items_container"
               style={!searchBar ? { width: '100%' } : {}}
             >
-              <div className="sup"></div>
+              <div className="sup" />
 
               {searchBar && (
                 <div className="item">
                   {/* <Link href={routes.COACHES_LIST.path}> */}
                   {/* <a href={routes.COACHES_LIST.path}> */}
-                    Réservez votre coach
-                    {/* </a> */}
+                  Réservez votre coach
+                  {/* </a> */}
                   {/* </Link> */}
                 </div>
               )}
@@ -280,97 +309,6 @@ function NavbarIndex({
               )}
             </div>
             {/* {router.pathname === routes.HOME.path && */}
-            {searchBar && (
-              <div className="isporit-search-bar">
-                <div>
-                  <Select
-                    showSearch
-                    style={{ width: '100%' }}
-                    placeholder="Quel métier?"
-                    optionFilterProp="children"
-                    onChange={(e) => {
-                      setJob(e)
-                    }}
-                    // onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      option.props.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                  >
-                    {jobs.map((job) => {
-                      return (
-                        <Option value={job._id}>{job.translations.fr}</Option>
-                      )
-                    })}
-                  </Select>
-                </div>
-                <div>
-                  <Select
-                    showSearch
-                    style={{ width: '100%' }}
-                    placeholder="Quelle spécialité?"
-                    optionFilterProp="children"
-                    onChange={(e) => {
-                      console.log('e: ', e)
-                      setSpecialty(e)
-                    }}
-                    // onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      option.props.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                  >
-                    {sports.concat(dances).map((elt) => {
-                      return (
-                        <Option value={elt._id}>{elt.translations.fr}</Option>
-                      )
-                    })}
-                  </Select>
-                </div>
-                <div className="last">
-                  <Select
-                    showSearch
-                    style={{ width: '100%' }}
-                    placeholder="Quelle zone?"
-                    optionFilterProp="children"
-                    onChange={(e) => {
-                      setRegion(e)
-                    }}
-                    // onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      option.props.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                  >
-                    {regions.concat(regions).map((elt) => {
-                      return (
-                        <Option value={elt._id}>{elt.translations.fr}</Option>
-                      )
-                    })}
-                  </Select>
-                </div>
-                <div className="svg last">
-                  <Button
-                    type="primary"
-                    shape="circle"
-                    icon="search"
-                    onClick={() => {
-                      router.push({
-                        pathname: '/coaches',
-                        query: {
-                          job,
-                          specialty,
-                          region,
-                        },
-                      })
-                    }}
-                  />
-                </div>
-              </div>
-            )}
           </div>
           <div
             className="navbar_container__button-container"
@@ -378,7 +316,7 @@ function NavbarIndex({
           >
             {!authContext.isLoggedIn &&
               authContext.fetchUserProfileLoading === false && (
-                <div className="isporit-flex-h-end-v-center">
+                <div className="isporit-flex-stqrt-end-v-center">
                   {/* <button
                     onClick={() => authContext.toggleLogInModal(null, true)}
                     type="submit"
@@ -425,11 +363,130 @@ function NavbarIndex({
                 </div>
               )}
           </div>
+          {searchBar && (
+            <div className="isporit-search-bar">
+              <div>
+                <input
+                  onFocus={(e) => {
+                    e.target.type = 'datetime-local'
+                  }}
+                  onBlur={(e) => {
+                    if (isEmpty(e.target.value)) {
+                      e.target.type = 'text'
+                    } else {
+                      e.target.type = 'datetime-local'
+                    }
+                  }}
+                  type="text"
+                  value={searchByDate}
+                  onChange={(e) => setSearchByDate(e.target.value)}
+                  style={{ width: '100%', maxWidth: 211 }}
+                  placeholder="Quel date?"
+                />
+              </div>
+              <div>
+                <Select
+                  showSearch
+                  style={{ width: '100%' }}
+                  placeholder="Quel métier?"
+                  optionFilterProp="children"
+                  onChange={(e) => {
+                    setJob(e)
+                  }}
+                  // onSearch={onSearch}
+                  filterOption={(input, option) =>
+                    option.props.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  {jobs.map((job) => {
+                    return (
+                      <Option value={job._id}>{job.translations.fr}</Option>
+                    )
+                  })}
+                </Select>
+              </div>
+              <div>
+                <Select
+                  showSearch
+                  style={{ width: '100%' }}
+                  placeholder="Quelle spécialité?"
+                  optionFilterProp="children"
+                  onChange={(e) => {
+                    setSpecialty(e)
+                  }}
+                  // onSearch={onSearch}
+                  filterOption={(input, option) =>
+                    option.props.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  {sports.concat(dances).map((elt) => {
+                    return (
+                      <Option value={elt._id}>{elt.translations.fr}</Option>
+                    )
+                  })}
+                </Select>
+              </div>
+              <div className="last">
+                <Select
+                  showSearch
+                  style={{ width: '100%' }}
+                  placeholder="Quelle zone?"
+                  optionFilterProp="children"
+                  onChange={(e) => {
+                    setRegion(e)
+                  }}
+                  // onSearch={onSearch}
+                  filterOption={(input, option) =>
+                    option.props.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
+                >
+                  {regions.map((elt) => {
+                    return (
+                      <Option value={elt._id}>{elt.translations.fr}</Option>
+                    )
+                  })}
+                </Select>
+              </div>
+              <div className="svg last">
+                <Button
+                  type="primary"
+                  shape="circle"
+                  icon="search"
+                  onClick={() => {
+                    router.push({
+                      pathname: '/coaches',
+                      query: {
+                        job,
+                        specialty,
+                        region,
+                      },
+                    })
+                  }}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )
   }
   return <></>
+}
+
+NavbarIndex.propTypes = {
+  isFooter: PropTypes.bool.isRequired,
+  jobs: PropTypes.arrayOf(PropTypes.any).isRequired,
+  sports: PropTypes.arrayOf(PropTypes.any).isRequired,
+  dances: PropTypes.arrayOf(PropTypes.any).isRequired,
+  regions: PropTypes.arrayOf(PropTypes.any).isRequired,
+  searchBar: PropTypes.bool.isRequired,
+  setSearchBar: PropTypes.func.isRequired,
 }
 
 export default NavbarIndex
