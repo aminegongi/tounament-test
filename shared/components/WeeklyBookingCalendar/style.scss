@@ -10,13 +10,13 @@
     padding: 18px 10px 44px;
 
     &__calendar {
-        border: none;
+        border: none !important;
         .react-calendar__tile--active {
             color: #000000a6;
         }
         &__day {
-            background-color: #ff8760;
-            color: white;
+            background-color: #ff8760 !important;
+            color: white  !important;
             &.react-calendar__tile--active {
                 color: white;
             }

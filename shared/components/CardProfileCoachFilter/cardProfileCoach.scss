@@ -7,6 +7,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-bottom: 52px;
 
         &__avatar {
             padding-top: 1.063rem;
@@ -29,7 +30,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-
         }
 
         &__share {
@@ -50,7 +50,7 @@
             font-weight: bold;
             text-align: center;
             color: #000000;
-            height: 65px;
+            // height: 65px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -moz-box-orient: vertical;
@@ -72,7 +72,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            height: 25px;
+            // height: 25px;
         }
 
         &__yearexperience {
@@ -83,11 +83,13 @@
             text-align: left;
             color: #000000;
             padding-bottom: 0.406rem;
-            height: 32px;
+            // height: 32px;
         }
     }
 
     &__button {
+        position: absolute;
+        bottom: 0;
         display: flex;
         justify-content: space-around;
         padding-top: 0.656rem;
@@ -171,9 +173,11 @@
         &__information {
             margin: auto;
 
-            &__worktype, &__sporttype, &__yearexperience {
-                height: unset;
-            }
+            // &__worktype,
+            // &__sporttype,
+            // &__yearexperience {
+            //     height: unset;
+            // }
         }
     }
 }

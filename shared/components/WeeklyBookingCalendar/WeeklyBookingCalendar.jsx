@@ -49,6 +49,7 @@ const WeeklyBookingCalendar = ({
         }}
         tileClassName={({ date }) => {
           if (
+            moment().isSameOrBefore(moment(date, 'DD-MM-YYYY')) &&
             availabilitiesByDate[
               moment(date, 'DD-MM-YYYY').format('DD-MM-YYYY')
             ]

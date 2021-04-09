@@ -11,20 +11,24 @@ export const AVATAR =
 export const SERVER_SIDE_API_BASE_URL = (req) => {
   const { publicRuntimeConfig } = getConfig()
   const { origin } = absoluteUrl(req)
-  return `${
-    !origin.includes('localhost:3001')
-      ? publicRuntimeConfig.PROD_API_URL
-      : 'https://dev.isporit.com/api/'
-  }/`
+  return 'https://dev.isporit.com/api/'
+  if (origin.includes('localhost:3001') || origin.includes('localhost:3000')) {
+    return 'https://dev.isporit.com/api/'
+  }
+  return `${publicRuntimeConfig.PROD_API_URL}/`
 }
 export const CLIENT_SIDE_API_BASE_URL = () => {
   const { publicRuntimeConfig } = getConfig()
 
   const { host } = typeof window !== 'undefined' && window.location
-  if (host && !host.includes('localhost:3001')) {
-    return publicRuntimeConfig.PROD_API_URL
-  }
   return 'https://dev.isporit.com/api'
+  if (
+    host &&
+    (host.includes('localhost:3001') || host.includes('localhost:3000'))
+  ) {
+    return 'https://dev.isporit.com/api'
+  }
+  return publicRuntimeConfig.PROD_API_URL
 }
 export const PRIVATECOACH = 'privatecoach'
 export const PRIVATESESSION = 'Privatesession'

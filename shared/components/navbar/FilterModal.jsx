@@ -216,7 +216,7 @@ const FilterCoachIndexModal = ({
                 onClick={() => {
                   setFilterData({
                     ...filterData,
-                    specialty: el,
+                    region: el,
                   })
                   setStep(AVAILABILITY_STEP)
                   setFilterInputs(INITIAL_FILTER_INPUT)

@@ -11,7 +11,6 @@ import InfoCoach from '../../shared/components/InfoCoach/InfoCoach'
 import '../../shared/css/coachDetails.scss'
 import { SERVER_SIDE_API_BASE_URL, CLUB } from '../../shared/constants'
 import CoachAboutBoxes from '../../shared/components/ContactCoach/ContactCoach'
-
 import CoachBox from '../../shared/components/CoachBox/CoachBox'
 import CoachAvis from '../../shared/components/CoachAvis/CoachAvis'
 import Biography from '../../shared/components/Biography/Biography'
@@ -22,6 +21,7 @@ import { AuthContext } from '../../utils/context.utils'
 import Layout from '../../shared/components/layout/Layout'
 import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
+import Error from '../../shared/components/PageError'
 
 const ABOUT_TAB = 1
 const RECOMMENDATION_TAB = 2
@@ -29,7 +29,13 @@ const BIOGRAPHY_TAB = 3
 const CALENDAR_TAB = 4
 const SUCCESS_BOOKING_TAB = 5
 
-export default function CoachDetails({ coach, jobs, sports, dances }) {
+export default function CoachDetails({
+  coach,
+  jobs,
+  sports,
+  dances,
+  userNotFound,
+}) {
   const router = useRouter()
   // const [coachData, setCoachData] = useState()
   const [specialty, setSpecialty] = useState()
@@ -183,6 +189,10 @@ export default function CoachDetails({ coach, jobs, sports, dances }) {
     setJob(job)
   }, [router.query.id])
 
+  if (userNotFound) {
+    return <Error statusCode={404} />
+  }
+
   if (isEmpty(coach.coachData)) {
     return <h1>coach data is missing in the coach object</h1>
   }
@@ -324,5 +334,6 @@ CoachDetails.getInitialProps = async ({ query, req }) => {
     sports: jsonSportsRes,
     dances: jsonDancesRes,
     regions: jsonRegionsRes,
+    userNotFound: coachRes.status === 404,
   }
 }

@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react'
 
 function Error({ statusCode }) {
+  console.log('statusCode: ', statusCode)
   return (
     <p>
       {statusCode

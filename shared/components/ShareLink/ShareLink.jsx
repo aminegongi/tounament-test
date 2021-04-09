@@ -18,7 +18,7 @@ export default function ShareLink({ coachProfile }) {
             <Icon onClick={onCopy} type="link" className="sharelinkicon" />
           }
           ref={inputRef}
-          value={`http://www.isporit.com/coach-details/${coachProfile.username}`}
+          value={`http://www.isporit.com/coaches/${coachProfile.username}`}
           defaultValue="mysite"
           className="sharelink__input"
         />

@@ -10,7 +10,7 @@ export const getFilteredCoaches = (
     coachingAges,
     regions,
   },
-  ) => {
+) => {
   let filteredCoaches = coaches
   if (name) {
     filteredCoaches = filteredCoaches.filter(
@@ -68,3 +68,5 @@ export const getFilteredCoaches = (
   }
   return filteredCoaches
 }
+
+export default getFilteredCoaches

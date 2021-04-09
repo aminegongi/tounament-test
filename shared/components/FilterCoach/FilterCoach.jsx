@@ -1,11 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react'
+import { isEmpty } from 'lodash'
 import './filterCoach.scss'
+import { useRouter } from 'next/router'
 import { Empty } from 'antd'
 import down from '../../../public/icon/down.png'
 import left from '../../../public/icon/left.png'
-import { getFilteredCoaches } from './../../../utils/arrays.utils'
-import { isEmpty } from 'lodash'
 
 export default function FilterCoach({
   title,
@@ -46,7 +46,6 @@ export default function FilterCoach({
     filterSpecialty()
   }, [selectedJob])
 
-
   const handleJob = (job) => {
     // window.scrollTo(400, 350)
 
@@ -77,36 +76,34 @@ export default function FilterCoach({
               : 'filter_coach__show'
           }
         >
-          {jobs
-            .map((job) => {
-              return (
-                <>
-                  <div
+          {jobs.map((job) => {
+            return (
+              <>
+                <div
+                  className={
+                    icon === down
+                      ? 'filter_coach__filter_type__title__Professions__items__iteam'
+                      : 'filter_coach__filter_type__title__Professions__items__iteamnotvisible'
+                  }
+                >
+                  <button
+                    type="button"
                     className={
-                      icon === down
-                        ? 'filter_coach__filter_type__title__Professions__items__iteam'
-                        : 'filter_coach__filter_type__title__Professions__items__iteamnotvisible'
+                      selectedJob && job._id === selectedJob._id
+                        ? 'isporit-unset-button-css filter_coach__filter_type__title__Professions__items__iteam__iteamshow'
+                        : 'isporit-unset-button-css '
                     }
+                    style={{ textAlign: 'left' }}
+                    onClick={() => {
+                      handleJob(job)
+                    }}
                   >
-                    <button
-                      type="button"
-                      className={
-                        selectedJob && job._id === selectedJob._id
-                          ? 'isporit-unset-button-css filter_coach__filter_type__title__Professions__items__iteam__iteamshow'
-                          : 'isporit-unset-button-css '
-                      }
-                      style={{ textAlign: 'left' }}
-                      onClick={() => {
-                        handleJob(job)
-                      }}
-                    >
-                      
-                      {job.translations.fr}
-                    </button>
-                  </div>
-                </>
-              )
-            })}
+                    {job.translations.fr}
+                  </button>
+                </div>
+              </>
+            )
+          })}
         </div>
       )
     }
@@ -186,9 +183,7 @@ export default function FilterCoach({
               />
             </div>
           </button>
-          {title === 'PROFESSIONS'
-            ? displayJobs()
-            : displaySpecialties()}
+          {title === 'PROFESSIONS' ? displayJobs() : displaySpecialties()}
         </div>
       </div>
     </div>
