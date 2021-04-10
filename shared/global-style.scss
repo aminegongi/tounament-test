@@ -84,6 +84,11 @@ input:focus {
     align-items: center;
 }
 
+.isporit-flex-h-start-v-center {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
 
 .isporit-flex-h-end-v-center {
     display: flex;
@@ -195,7 +200,7 @@ input:focus {
 
     input {
         &::placeholder {
-            color: #bfbfbf ;
+            color: #bfbfbf;
         }
     }
 
@@ -213,7 +218,8 @@ input:focus {
 
 
 
-        select, input {
+        select,
+        input {
             border: none !important;
             width: 100%;
 
@@ -249,9 +255,11 @@ input:focus {
     height: 63px;
     margin: 20px 0;
     width: 300px;
+
     @media only screen and (max-width: 850px) {
         width: 100%;
     }
+
     padding: 10.5px 10px 8.5px 25px;
     border-radius: 43px;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
@@ -311,6 +319,22 @@ input:focus {
     }
 }
 
+.isporit-modal-with-fixed-footer {
+    .ant-modal-footer {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 63px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+
+    }
+
+}
 
 @media only screen and (max-width: 992px) {
     .isporit-primary-button {

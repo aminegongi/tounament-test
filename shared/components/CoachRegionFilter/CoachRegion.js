@@ -11,7 +11,7 @@ export default function CoachRegion({
   setSelectedRegions,
 }) {
   const onChange = (regions) => {
-    // window.scrollTo(400, 350)
+    window.scrollTo(400, 250)
     setSelectedRegions(regions)
   }
 

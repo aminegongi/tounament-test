@@ -11,6 +11,7 @@ import routes from '../../../utils/routes'
 // import ReservationCours from '../ReservationCours/ReservationCours'
 import shareIcon from '../../../public/icon/profileShare.png'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
+import { cutString } from './../../../utils/string.utils';
 
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
   const router = useRouter()
@@ -61,7 +62,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
             </div>
 
             <div className="card_profil_coach__information__name">
-              {coachProfile.firstName} {coachProfile.lastName}
+              {cutString(coachProfile.firstName + ' '+ coachProfile.lastName, 15)}
             </div>
 
             <div className="card_profil_coach__information__rate">

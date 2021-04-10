@@ -6,7 +6,10 @@ export default function CoachType({
   // setDataCopy, dataCopy, coachesList
   selectedLevel,
   setSelectedLevel,
+  selectedAges,
   setSelectedAges,
+  selectedDate,
+  setSelectedDate,
 }) {
   const marks = {
     1: {
@@ -37,21 +40,12 @@ export default function CoachType({
   }
 
   const searchByLevel = (level) => {
-    // window.scrollTo(400, 350);
+    window.scrollTo(400, 250)
     setSelectedLevel(level.target.value)
   }
   const searchByAge = (ages) => {
-    // window.scrollTo(400, 350);
+    window.scrollTo(400, 250)
     setSelectedAges(ages)
-  }
-  const onChange = (personNumber) => {
-    setDataCopy(
-      dataCopy.filter(
-        (coach) =>
-          coach.coachData.privateCourseData.personsNumberPerSession >=
-          personNumber,
-      ),
-    )
   }
 
   const options = [
@@ -65,23 +59,59 @@ export default function CoachType({
     <div className="coach_type">
       <div className="coach_type__title">FILTRER PAR</div>
       <div className="coach_type__rate">
-        <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber">
-          Niveaux 
+        <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber isporit-no-padding">
+          Disponibilités
         </div>
-        <br/>
+        <input
+          onFocus={(e) => {
+            e.target.type = 'datetime-local'
+          }}
+          onBlur={(e) => {
+            if (!e.target.value) {
+              e.target.type = 'text'
+            } else {
+              e.target.type = 'datetime-local'
+            }
+          }}
+          type="text"
+          value={selectedDate}
+          step="3600"
+          onChange={(e) => {
+            window.scrollTo(400, 250)
+            setSelectedDate(
+              e.target.value.slice(0, e.target.value.length - 3) + ':00',
+            )
+          }}
+          style={{
+            width: '100%',
+            maxWidth: 211,
+            marginTop: '1.438rem',
+            marginBottom: '10px',
+            padding: '10px',
+            border: '1px solid #ccc',
+          }}
+          placeholder="Quelle date?"
+        />
+        <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber">
+          Niveaux
+        </div>
+        <br />
         <Radio.Group value={String(selectedLevel)}>
-          <Radio onClick={searchByLevel} className="radio" value="" />
-          <span className="coach_type__rate__plus">Tous</span> <br />
-          <Radio onClick={searchByLevel} className="radio" value="beginner" />
-          <span className="coach_type__rate__plus">Débutant</span> <br />
-          <Radio
-            onClick={searchByLevel}
-            className="radio"
-            value="intermediate"
-          />
-          <span className="coach_type__rate__plus">Intermédiaire</span> <br />
-          <Radio onClick={searchByLevel} className="radio" value="confirmed" />
-          <span className="coach_type__rate__plus">Confirmé</span> <br />
+          <Radio onClick={searchByLevel} className="radio" value="">
+            <span className="coach_type__rate__plus">Tous</span>
+          </Radio>
+            <br />
+          <Radio onClick={searchByLevel} className="radio" value="beginner">
+            <span className="coach_type__rate__plus">Débutant</span> <br />
+          </Radio>
+          <Radio onClick={searchByLevel} className="radio" value="intermediate">
+            <span className="coach_type__rate__plus">Intermédiaire</span>
+          </Radio>
+          <br />
+          <Radio onClick={searchByLevel} className="radio" value="confirmed">
+            <span className="coach_type__rate__plus">Confirmé</span>
+          </Radio>
+          <br />
         </Radio.Group>
         {/* <div className="coach_type__rate__plus__privatesessionfilter__filterby_personnumber">
           Nombre de personnes <br />
@@ -101,6 +131,7 @@ export default function CoachType({
         <Checkbox.Group
           className="checkbox"
           options={options}
+          value={selectedAges}
           onChange={searchByAge}
         />
       </div>

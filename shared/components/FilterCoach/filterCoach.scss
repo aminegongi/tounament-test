@@ -2,6 +2,7 @@
     &__filter_type {
         &__title {
             border-bottom: solid 2px #f5f4f4;
+
             &__Professions {
                 cursor: pointer;
                 font-size: 1.125rem;
@@ -23,12 +24,12 @@
                     color: #000000;
 
                     &__iteam {
-                        margin-bottom: 0.625rem;
+                        margin-bottom: 0.625rem !important;
                         width: 100%;
                         text-align: left !important;
 
                         &__iteamshow {
-                            color: #26beb5;
+                            color: #26beb5 !important;
                         }
                     }
 
@@ -50,17 +51,19 @@
     }
 
     .filter_coach__show {
-        height: 13rem;
+        height: 9.2rem;
         overflow: auto;
         cursor: pointer;
-        margin-top: 12px;
+        // margin-top: 12px;
         margin-left: 46px;
         margin-bottom: 12px;
         font-size: 1rem;
         color: #000000;
+
         &::-webkit-scrollbar {
             width: 5px;
         }
+
         &::-webkit-scrollbar-thumb {
             background-color: #47c8c0;
             outline: 1px solid #47c8c0;

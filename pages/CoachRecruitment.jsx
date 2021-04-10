@@ -20,7 +20,7 @@ function CoachRecruitment() {
         </div>
         <div className="recruitment__message">
           <div className="recruitment__message__title">
-            Nous sommes l'equipe de " Isporit "
+            Nous sommes l'equipe de " iSporit "
           </div>
           <div className="recruitment__message__bodyMessage">
             Nous voullons prendre contact avec vous pour fixer un entretien ...
