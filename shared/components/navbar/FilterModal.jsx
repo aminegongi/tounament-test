@@ -171,7 +171,7 @@ const FilterCoachIndexModal = ({
       )}
       {step === JOB_STEP && (
         <div className="filter-coach-index-modal__sports">
-          {jobs
+          {[{id:"-1", translations:{fr:"Tous", en:"all"}}, ...jobs]
             .filter((el) =>
               el.translations.fr.toLowerCase().includes(filterInputs.job),
             )

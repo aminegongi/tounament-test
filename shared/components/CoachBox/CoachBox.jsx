@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import './coachBox.scss'
 import moment from 'moment'
 import { Modal } from 'antd'
-
 import { useMediaPredicate } from 'react-media-hook'
 import { isEmpty } from 'lodash'
 import { getUserProfilePicture } from '../../../utils/string.utils'
@@ -19,6 +18,7 @@ import video from '../../../public/icon/video.png'
 import photoicon from '../../../public/icon/photoicon.png'
 import CoachProfileSection from '../CoachProfileSection'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
+import { ages, levels } from './../../constants';
 
 export default function CoachAboutBoxes({ coachData, specialty }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
@@ -59,18 +59,18 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
     }
     return false
   }
-  const ages = {
-    kids: { label: 'enfants', value: 'kids' },
-    junior: { label: 'juniors', value: 'junior' },
-    senior: { label: 'séniors', value: 'senior' },
-    adult: { label: 'adultes', value: 'adult' },
-  }
+  // const ages = {
+  //   kids: { label: 'enfants', value: 'kids' },
+  //   junior: { label: 'juniors', value: 'junior' },
+  //   senior: { label: 'séniors', value: 'senior' },
+  //   adult: { label: 'adultes', value: 'adult' },
+  // }
 
-  const levels = {
-    beginner: { label: 'débutant', value: 'beginner' },
-    intermediate: { label: 'intermédiaire', value: 'intermediate' },
-    confirmed: { label: 'confirmé', value: 'confirmed' },
-  }
+  // const levels = {
+  //   beginner: { label: 'débutant', value: 'beginner' },
+  //   intermediate: { label: 'intermédiaire', value: 'intermediate' },
+  //   confirmed: { label: 'confirmé', value: 'confirmed' },
+  // }
 
   return (
     <div className="coachBoxiteam">

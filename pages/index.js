@@ -31,7 +31,10 @@ import { SERVER_SIDE_API_BASE_URL } from '../shared/constants'
 import { i18n, withTranslation } from '../i18n'
 import '../shared/global-style.scss'
 import routes from '../utils/routes'
-// import Countdown from '../shared/components/CountDown'
+import {
+  getJobsList,
+  getSpecialtiesList, getRegionsList,
+} from '../utils/arrays.utils'
 
 // const { Panel } = Collapse
 
@@ -179,11 +182,11 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
           >
             <div className={`${'gerer_equipe_img'} `}>
               <h1 className="gerer_equipe_title">
-                Réservez dès maintenant votre entraîneur Isporit
+                Réservez dès maintenant votre entraîneur iSporit
               </h1>
               <div className="gerer_time_title" id="cv">
                 <div>
-                  Avec Isporit, vous trouverez des entraîneurs qualifiés et
+                  Avec iSporit, vous trouverez des entraîneurs qualifiés et
                   expérimentés, vous pouvez planifier votre séance avec un
                   professionnel en sport et yoga.
                 </div>
@@ -210,6 +213,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               <h1 className="gerer_equipe_title">
                 Gérez vos équipes sportives efficacement et simplement n'importe
                 où vous soyez
+
               </h1>
               <div className="gerer_time_title">
                 <div>
@@ -427,19 +431,27 @@ Index.getInitialProps = async ({ req }) => {
   const jsonCoachesRes = await coachesRes.json()
   let jsonJobsRes = await jobsRes.json()
 
+  let jsonSportsRes = await sportsRes.json()
+
+  let jsonDancesRes = await danceRes.json()
+  let jsonRegionsRes = await regionsRes.json()
   if (jsonJobsRes) {
+    jsonJobsRes = getJobsList(jsonCoachesRes, jsonJobsRes)
     jsonJobsRes = jsonJobsRes
       .filter((job) => job.isPublic)
       .sort((a, b) => a.order - b.order)
   }
 
-  let jsonSportsRes = await sportsRes.json()
   if (jsonSportsRes) {
     jsonSportsRes = jsonSportsRes.filter((sport) => sport.type !== undefined)
+    jsonSportsRes = getSpecialtiesList(jsonCoachesRes, jsonSportsRes)
   }
-  const jsonDancesRes = await danceRes.json()
-  const jsonRegionsRes = await regionsRes.json()
-
+  if (jsonDancesRes) {
+    jsonDancesRes = getSpecialtiesList(jsonCoachesRes, jsonDancesRes)
+  }
+  if (jsonRegionsRes) {
+    jsonRegionsRes = getRegionsList(jsonCoachesRes, jsonRegionsRes)
+  }
   return {
     coachesList: jsonCoachesRes,
     jobs: jsonJobsRes,

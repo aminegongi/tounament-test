@@ -47,7 +47,7 @@ export default function FilterCoach({
   }, [selectedJob])
 
   const handleJob = (job) => {
-    // window.scrollTo(400, 350)
+    window.scrollTo(400, 250)
 
     if (job._id === selectedJob._id) {
       setSelectedJob({})
@@ -57,7 +57,7 @@ export default function FilterCoach({
   }
 
   const handleSpecialty = (specialty) => {
-    // window.scrollTo(400, 350)
+    window.scrollTo(400, 250)
 
     if (specialty._id === selectedSpecialty._id) {
       setSelectedSpecialty({})

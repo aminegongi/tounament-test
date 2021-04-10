@@ -9,7 +9,7 @@ export default function Recommendation({
 }) {
  
   const handleClick = (e) => {
-    // window.scrollTo(400, 350);
+    window.scrollTo(400, 250)
     console.log('e.target.value: ', e.target.value);
     setSelectedReviewsRate(e.target.value)
   }

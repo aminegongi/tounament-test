@@ -45,7 +45,7 @@ function NavbarIndex({
   const router = useRouter()
   const mobile = useMediaPredicate('(max-width: 850px)')
 
-  const [searchByDate, setSearchByDate] = useState()
+  const [availabilityDate, setAvailabilityDate] = useState()
 
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
 
@@ -378,10 +378,16 @@ function NavbarIndex({
                     }
                   }}
                   type="text"
-                  value={searchByDate}
-                  onChange={(e) => setSearchByDate(e.target.value)}
-                  style={{ width: '100%', maxWidth: 211 }}
-                  placeholder="Quel date?"
+                  value={availabilityDate}
+                  step="3600"
+                  onChange={(e) =>
+                    setAvailabilityDate(
+                      e.target.value.slice(0, e.target.value.length - 3) +
+                        ':00',
+                    )
+                  }
+                  style={{ width: '100%', maxWidth: 211, padding: '10px' }}
+                  placeholder="Quelle date?"
                 />
               </div>
               <div>
@@ -465,6 +471,7 @@ function NavbarIndex({
                         job,
                         specialty,
                         region,
+                        availabilityDate,
                       },
                     })
                   }}
