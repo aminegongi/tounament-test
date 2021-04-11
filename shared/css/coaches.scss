@@ -70,6 +70,16 @@
             background-color: #ffffff;
             padding-bottom: 20px;
 
+            &__result-number {
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #646464;
+                text-align: left;
+                margin-right: 29px;
+
+
+            }
+
             &__lenght_sortby {
                 padding: 25px 16px 14.5px 15.5px;
                 display: flex;
@@ -281,7 +291,7 @@
     }
 }
 
-@media only screen and (max-width : 450px) {
+@media only screen and (max-width : 550px) {
     .coaches {
         &__coach_details {
             &__list_of_coach {
@@ -294,12 +304,14 @@
                         // grid-column: 1;
                         // grid-row: 3;
                         // justify-self: flex-start;
+                        text-align: left;
+                        width: 100%;
 
                     }
 
                     &__filter {
                         display: flex;
-                        justify-content: center;
+                        justify-content: start;
                         margin-right: 27px;
                         width: 100%;
                     }
@@ -310,8 +322,11 @@
                         // justify-self: flex-start !important;
                         width: 100%;
                         display: flex;
-                        justify-content: center;
+                        justify-content: start;
                         margin-right: 27px;
+                        div {
+                            width: 100% !important;
+                        }
                     }
 
                     &__sortby__select {}
