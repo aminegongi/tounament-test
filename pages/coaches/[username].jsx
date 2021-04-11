@@ -241,24 +241,25 @@ export default function CoachDetails({
             <img className="affiche__img" src={affiche} alt="affiche" />
           </div>
 
+          {isMobile && (
+           <div style={{margin: "10px 10px 10px 16px"}}>
+           <Breadcrumb separator=">">
+              <Breadcrumb.Item
+                href="/coaches"
+                className="isporit-breadcrumb-link"
+              >
+                Tous les coachs
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                {`${
+                  coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
+                } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(1)}`}
+              </Breadcrumb.Item>
+            </Breadcrumb>
+            </div>
+          )}
+
           <div className="coach__coachdetails">
-            {isMobile && (
-              <Breadcrumb separator=">" style={{ marginTop: '10px' }}>
-                <Breadcrumb.Item
-                  href="/coaches"
-                  className="isporit-breadcrumb-link"
-                >
-                  Tous les coachs
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                  {`${
-                    coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
-                  } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
-                    1,
-                  )}`}
-                </Breadcrumb.Item>
-              </Breadcrumb>
-            )}
             <div className="coach__cordonneBlock">
               <div className="coach__coachdetails__contact">
                 {coach && jobs && renderCoachProfile(coach)}
