@@ -17,6 +17,7 @@ import {
   EXPERIENCE,
   SERVER_SIDE_API_BASE_URL,
   levels,
+  ages,
 } from '../../shared/constants'
 import FilterCoach from '../../shared/components/FilterCoach/FilterCoach'
 import Experiencefilter from '../../shared/components/Experiencefilter/Experiencefilter'
@@ -30,10 +31,9 @@ import {
   getFilteredCoaches,
   getJobsList,
   getRegionsList,
+  getSpecialtiesList,
 } from '../../utils/arrays.utils'
 import { getFormattedNumber } from '../../utils/number.utils'
-import { getSpecialtiesList } from './../../utils/arrays.utils'
-import { ages } from './../../shared/constants'
 
 const { Search } = Input
 
@@ -274,7 +274,7 @@ export default function Coaches({
           selectedRegions={selectedRegions}
           setSelectedRegions={setSelectedRegions}
         />
-        <div></div>
+        <div />
       </>
     )
   }
@@ -309,13 +309,13 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
           <div className="coaches__coach_details">
             <div className="coaches__coach_details__filter">
               <div
-                class="filterbutton isporit-flex-h-space-v-center"
+                className="filterbutton isporit-flex-h-space-v-center"
                 style={{ fontSize: '15px' }}
               >
                 <div>
                   <img src="../../../icon/filtre.png" alt=" " />
                   Nb. filtres{' '}
-                  <span class="count--filter js-count--filter">
+                  <span className="count--filter js-count--filter">
                     ({filteredItemsNumber})
                   </span>
                 </div>
@@ -327,7 +327,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 </div>
               </div>
               <div className="isporit-flex-h-start-v-center">
-                <ul class="coaches__selected-filtered-items">
+                <ul className="coaches__selected-filtered-items">
                   {selectedName && (
                     <li className="coaches__selected-filtered-item">
                       <span>{selectedName}</span>
@@ -474,8 +474,8 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 title="FILTRES"
                 visible={isModalVisible}
                 onOk={handleOk}
-                okText={'Filtrer'}
-                cancelText={'Réinitialiser les filtres'}
+                okText="Filtrer"
+                cancelText="Réinitialiser les filtres"
                 onCancel={handleCancel}
                 className="isporit-modal-with-fixed-footer"
               >
@@ -497,10 +497,10 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 </div>
                 {!isMobile && (
                   <div
-                    className="coaches__coach_details__list_of_coach__lenght_sortby__lenght"
+                    key="desktop"
                     style={{
-                      textAlign: 'center',
-                      paddingBottom: '10px',
+                      fontSize: '1rem',
+                      color: '#646464',
                     }}
                   >
                     {dataCopy.length} résultat(s)
@@ -522,21 +522,22 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                     <Option value={EXPERIENCE}>Années d'expérience</Option>
                   </Select>
                 </div>
+                {isMobile && (
+                  <div
+                    key="mobile"
+                    style={{
+                      fontSize: '0.875rem',
+                      color: '#646464',
+                      textAlign: 'left',
+                      marginRight: '29px',
+                    }}
+                  >
+                    {dataCopy.length} résultat(s)
+                  </div>
+                )}
               </div>
-              {isMobile && (
-                <div
-                  className="coaches__coach_details__list_of_coach__lenght_sortby__lenght"
-                  style={{
-                    textAlign: 'center',
-                    borderBottom: 'solid 3px #f5f4f4',
-                    paddingBottom: '10px',
-                  }}
-                >
-                  {dataCopy.length} résultat(s)
-                </div>
-              )}
 
-              <div className="lineprofilecoach" />
+              {/* <div className="lineprofilecoach" /> */}
               <div className="coaches__coach_details__list_of_coach__card">
                 {paginate(
                   dataCopy,

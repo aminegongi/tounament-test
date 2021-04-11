@@ -42,15 +42,15 @@ export const CLUB = 'club'
 export const COACH = 'coach'
 export const PLAYER = 'player'
 
- export const ages = {
-   kids: { label: 'enfants', value: 'kids' },
-   junior: { label: 'juniors', value: 'junior' },
-   senior: { label: 'séniors', value: 'senior' },
-   adult: { label: 'adultes', value: 'adult' },
- }
+export const ages = {
+  kids: { label: 'enfants', value: 'kids' },
+  junior: { label: 'juniors', value: 'junior' },
+  senior: { label: 'séniors', value: 'senior' },
+  adult: { label: 'adultes', value: 'adult' },
+}
 
- export const levels = {
-   beginner: { label: 'débutant', value: 'beginner' },
-   intermediate: { label: 'intermédiaire', value: 'intermediate' },
-   confirmed: { label: 'confirmé', value: 'confirmed' },
- }
+export const levels = {
+  beginner: { label: 'débutant', value: 'beginner' },
+  intermediate: { label: 'intermédiaire', value: 'intermediate' },
+  confirmed: { label: 'confirmé', value: 'confirmed' },
+}
