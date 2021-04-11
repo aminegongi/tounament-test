@@ -242,16 +242,8 @@ export default function CoachDetails({
           </div>
 
           <div className="coach__coachdetails">
-            <div className="coach__cordonneBlock">
-              <div className="coach__coachdetails__contact">
-                {coach && jobs && renderCoachProfile(coach)}
-              </div>
-              <div className="coach__coachdetails__information">
-                {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
-              </div>
-            </div>
-            <div className="tabsinfo">
-              <Breadcrumb separator=">">
+            {isMobile && (
+              <Breadcrumb separator=">" style={{ marginTop: '10px' }}>
                 <Breadcrumb.Item
                   href="/coaches"
                   className="isporit-breadcrumb-link"
@@ -266,6 +258,34 @@ export default function CoachDetails({
                   )}`}
                 </Breadcrumb.Item>
               </Breadcrumb>
+            )}
+            <div className="coach__cordonneBlock">
+              <div className="coach__coachdetails__contact">
+                {coach && jobs && renderCoachProfile(coach)}
+              </div>
+              <div className="coach__coachdetails__information">
+                {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
+              </div>
+            </div>
+            <div className="tabsinfo">
+              {!isMobile && (
+                <Breadcrumb separator=">">
+                  <Breadcrumb.Item
+                    href="/coaches"
+                    className="isporit-breadcrumb-link"
+                  >
+                    Tous les coachs
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item>
+                    {`${
+                      coach.firstName[0].toUpperCase() +
+                      coach.firstName.slice(1)
+                    } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
+                      1,
+                    )}`}
+                  </Breadcrumb.Item>
+                </Breadcrumb>
+              )}
               <div className="tabs">
                 <div className="tabs__button">
                   <button

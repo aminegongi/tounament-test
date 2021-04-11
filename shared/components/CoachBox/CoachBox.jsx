@@ -19,12 +19,30 @@ import video from '../../../public/icon/video.png'
 import photoicon from '../../../public/icon/photoicon.png'
 import CoachProfileSection from '../CoachProfileSection'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
-import { ages, levels } from './../../constants';
+import { ages, levels } from './../../constants'
 
 export default function CoachAboutBoxes({ coachData, specialty }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
+  const isThereVideo =
+    coachData &&
+    coachData &&
+    coachData.videosLinks &&
+    coachData.videosLinks.length !== 0
+
+  const isTherePhoto =
+    coachData &&
+    coachData &&
+    coachData.coachingPhotos &&
+    coachData.coachingPhotos.length !== 0
+  const minimumPhotosNumber = 3
+
+  const isThereALotOfPhotos =
+    coachData &&
+    coachData &&
+    coachData.coachingPhotos &&
+    coachData.coachingPhotos.length >= minimumPhotosNumber
 
   const isLocationEmpty = () => {
     if (
@@ -60,18 +78,126 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
     }
     return false
   }
-  // const ages = {
-  //   kids: { label: 'enfants', value: 'kids' },
-  //   junior: { label: 'juniors', value: 'junior' },
-  //   senior: { label: 'séniors', value: 'senior' },
-  //   adult: { label: 'adultes', value: 'adult' },
-  // }
 
-  // const levels = {
-  //   beginner: { label: 'débutant', value: 'beginner' },
-  //   intermediate: { label: 'intermédiaire', value: 'intermediate' },
-  //   confirmed: { label: 'confirmé', value: 'confirmed' },
-  // }
+  const renderVideos = () => {
+    if (isThereVideo) {
+      return (
+        <CoachProfileSection
+          title="Vidéos"
+          isVerticalLine={!isInformationEmpty()}
+          icon={videoicon}
+        >
+          <div className="coachBoxiteam__video-section">
+            {coachData &&
+              coachData &&
+              coachData.videosLinks &&
+              coachData.videosLinks.slice(0, 1).map((v) => {
+                return (
+                  <div className="coachBoxiteam__video-section__first-video">
+                    <YoutubeVideoCard
+                      title="caoch-video"
+                      width="100%"
+                      className="coachBoxiteam__video-section__first-video__video"
+                      src={v.link}
+                      height="250px"
+                    />
+                    <div className="coachBoxiteam__video-section__first-video__title">
+                      {v.title}
+                    </div>
+                    <div className="coachBoxiteam__video-section__first-video__date">
+                      {moment(v.videoDate).format('LL')}
+                    </div>
+                  </div>
+                )
+              })}
+            <div className="coachBoxiteam__video-section__other-videos">
+              {coachData &&
+                coachData &&
+                coachData.videosLinks &&
+                coachData.videosLinks.slice(1).map((v) => {
+                  return (
+                    <div className="coachBoxiteam__video-section__other-videos__container">
+                      <YoutubeVideoCard
+                        title={v.title}
+                        width="100%"
+                        className="coachBoxiteam__video-section__other-videos__video"
+                        src={v.link}
+                        height="194px"
+                      />
+                      <div className="">
+                        <div className="coachBoxiteam__video-section__other-videos__title">
+                          {v.title}
+                        </div>
+                        <div className="coachBoxiteam__video-section__other-videos__date">
+                          {moment(v.videoDate).format('LL')}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+            </div>
+          </div>
+        </CoachProfileSection>
+      )
+    }
+    if (isThereALotOfPhotos) {
+      return (
+        <CoachProfileSection
+          title="Photos"
+          isVerticalLine={!isLocationEmpty()}
+          icon={picturesIcon}
+        >
+          <div className="coachBoxiteam__pictures-section">
+            {coachData &&
+              coachData &&
+              coachData.coachingPhotos &&
+              coachData.coachingPhotos.slice(0, 1).map((photo) => {
+                return (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPreviewImage(getUserProfilePicture(photo))
+                      setPreviewVisible(true)
+                    }}
+                    style={{
+                      backgroundImage: `url(${getUserProfilePicture(photo)})`,
+                    }}
+                    className="coachBoxiteam__pictures-section__first-picture"
+                  />
+                )
+              })}
+            <div className="coachBoxiteam__pictures-section__other-pictures">
+              {coachData &&
+                coachData &&
+                coachData.coachingPhotos &&
+                coachData.coachingPhotos.slice(1, 3).map((photo) => {
+                  return (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPreviewImage(getUserProfilePicture(photo))
+                        setPreviewVisible(true)
+                      }}
+                      className="isporit-unset-button-css"
+                    >
+                      <img src={`${getUserProfilePicture(photo)}`} alt="" />
+                    </button>
+                  )
+                })}
+            </div>
+          </div>
+        </CoachProfileSection>
+      )
+    }
+    if (!isTherePhoto && !isMobile) {
+      return (
+        <div className="coachBoxiteam__video__noVideo">
+          <img src={video} alt="video" />
+          <span>Aucune Vidéo publiée</span>
+        </div>
+      )
+    }
+  }
 
   return (
     <div className="coachBoxiteam">
@@ -162,70 +288,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
             </div>
           </CoachProfileSection>
         )}
-
-        {coachData && coachData && coachData.videosLinks.length !== 0 ? (
-          <CoachProfileSection
-            title="Vidéos"
-            isVerticalLine={!isInformationEmpty()}
-            icon={videoicon}
-          >
-            <div className="coachBoxiteam__video-section">
-              {coachData &&
-                coachData &&
-                coachData.videosLinks &&
-                coachData.videosLinks.slice(0, 1).map((v) => {
-                  return (
-                    <div className="coachBoxiteam__video-section__first-video">
-                      <YoutubeVideoCard
-                        title="caoch-video"
-                        width="100%"
-                        className="coachBoxiteam__video-section__first-video__video"
-                        src={v.link}
-                        height="250px"
-                      />
-                      <div className="coachBoxiteam__video-section__first-video__title">
-                        {v.title}
-                      </div>
-                      <div className="coachBoxiteam__video-section__first-video__date">
-                        {moment(v.videoDate).format('LL')}
-                      </div>
-                    </div>
-                  )
-                })}
-              <div className="coachBoxiteam__video-section__other-videos">
-                {coachData &&
-                  coachData &&
-                  coachData.videosLinks &&
-                  coachData.videosLinks.slice(1).map((v) => {
-                    return (
-                      <div className="coachBoxiteam__video-section__other-videos__container">
-                        <YoutubeVideoCard
-                          title={v.title}
-                          width="100%"
-                          className="coachBoxiteam__video-section__other-videos__video"
-                          src={v.link}
-                          height="194px"
-                        />
-                        <div className="">
-                          <div className="coachBoxiteam__video-section__other-videos__title">
-                            {v.title}
-                          </div>
-                          <div className="coachBoxiteam__video-section__other-videos__date">
-                            {moment(v.videoDate).format('LL')}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  })}
-              </div>
-            </div>
-          </CoachProfileSection>
-        ) : (
-          <div className="coachBoxiteam__video__noVideo">
-            <img src={video} alt="video" />
-            <span>Aucune Vidéo publiée</span>
-          </div>
-        )}
+        {renderVideos()}
       </div>
 
       <div className="coachBoxiteam__column">
@@ -267,9 +330,9 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
           </CoachProfileSection>
         )}
 
-        {coachData && coachData && coachData.coachingPhotos.length !== 0 ? (
+        {isTherePhoto && coachData.coachingPhotos.length > minimumPhotosNumber && (
           <CoachProfileSection
-            title="Photos"
+            title={isThereALotOfPhotos ? 'Autres photos' : 'Photos'}
             isVerticalLine={!isLocationEmpty()}
             icon={picturesIcon}
           >
@@ -277,26 +340,12 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
               {coachData &&
                 coachData &&
                 coachData.coachingPhotos &&
-                coachData.coachingPhotos.slice(0, 1).map((photo) => {
-                  return (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setPreviewImage(getUserProfilePicture(photo))
-                        setPreviewVisible(true)
-                      }}
-                      style={{
-                        backgroundImage: `url(${getUserProfilePicture(photo)})`,
-                      }}
-                      className="coachBoxiteam__pictures-section__first-picture"
-                    />
+                coachData.coachingPhotos
+                  .slice(
+                    isThereALotOfPhotos ? minimumPhotosNumber : 0,
+                    isThereALotOfPhotos ? minimumPhotosNumber + 1 : 1,
                   )
-                })}
-              <div className="coachBoxiteam__pictures-section__other-pictures">
-                {coachData &&
-                  coachData &&
-                  coachData.coachingPhotos &&
-                  coachData.coachingPhotos.slice(1).map((photo) => {
+                  .map((photo) => {
                     return (
                       <button
                         type="button"
@@ -304,16 +353,40 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                           setPreviewImage(getUserProfilePicture(photo))
                           setPreviewVisible(true)
                         }}
-                        className="isporit-unset-button-css"
-                      >
-                        <img src={`${getUserProfilePicture(photo)}`} alt="" />
-                      </button>
+                        style={{
+                          backgroundImage: `url(${getUserProfilePicture(
+                            photo,
+                          )})`,
+                        }}
+                        className="coachBoxiteam__pictures-section__first-picture"
+                      />
                     )
                   })}
+              <div className="coachBoxiteam__pictures-section__other-pictures">
+                {coachData &&
+                  coachData &&
+                  coachData.coachingPhotos &&
+                  coachData.coachingPhotos
+                    .slice(isThereALotOfPhotos ? 4 : 1)
+                    .map((photo) => {
+                      return (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setPreviewImage(getUserProfilePicture(photo))
+                            setPreviewVisible(true)
+                          }}
+                          className="isporit-unset-button-css"
+                        >
+                          <img src={`${getUserProfilePicture(photo)}`} alt="" />
+                        </button>
+                      )
+                    })}
               </div>
             </div>
           </CoachProfileSection>
-        ) : (
+        )}
+        {!isTherePhoto && (
           <div className="coachBoxiteam__photo__noPhoto">
             <img src={photoicon} alt="" />
             <span>Aucune photo publiée</span>
