@@ -63,17 +63,17 @@ export default function CoachType({
           Disponibilités
         </div>
         <input
-          onFocus={(e) => {
-            e.target.type = 'datetime-local'
-          }}
-          onBlur={(e) => {
-            if (!e.target.value) {
-              e.target.type = 'text'
-            } else {
-              e.target.type = 'datetime-local'
-            }
-          }}
-          type="text"
+          // onFocus={(e) => {
+          //   e.target.type = 'datetime-local'
+          // }}
+          // onBlur={(e) => {
+          //   if (!e.target.value) {
+          //     e.target.type = 'text'
+          //   } else {
+          //     e.target.type = 'datetime-local'
+          //   }
+          // }}
+          type="datetime-local"
           value={selectedDate}
           step="3600"
           onChange={(e) => {
@@ -100,7 +100,7 @@ export default function CoachType({
           <Radio onClick={searchByLevel} className="radio" value="">
             <span className="coach_type__rate__plus">Tous</span>
           </Radio>
-            <br />
+          <br />
           <Radio onClick={searchByLevel} className="radio" value="beginner">
             <span className="coach_type__rate__plus">Débutant</span> <br />
           </Radio>

@@ -9,7 +9,8 @@ import { useMediaPredicate } from 'react-media-hook'
 import { isEmpty } from 'lodash'
 import { getUserProfilePicture } from '../../../utils/string.utils'
 import dataMap from '../../../pages/dataMap.json'
-import localisationicon from '../../../public/icon/locationSectionIcon.svg'
+import localisationIcon from '../../../public/icon/locationSectionIcon.svg'
+import localisation from '../../../public/icon/localisation.png'
 import videoicon from '../../../public/icon/videoicon.png'
 import exclamationIcon from '../../../public/icon/exclamation.png'
 import picturesIcon from '../../../public/icon/photoSectionIcon.png'
@@ -232,7 +233,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
           <CoachProfileSection
             title="Lieux"
             isVerticalLine={isMobile}
-            icon={localisationicon}
+            icon={localisationIcon}
           >
             {coachData &&
               coachData &&
@@ -255,7 +256,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                 coachData.privateCourseData &&
                 coachData.privateCourseData.location.map((location) => (
                   <div className="coachBoxiteam__locations-container__location">
-                    <img src={localisationicon} alt="icon" />
+                    <img src={localisation} alt="icon" />
 
                     <div className="coachBoxiteam__locations-container__location__text">
                       {location.title}
