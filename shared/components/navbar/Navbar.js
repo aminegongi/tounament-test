@@ -121,13 +121,28 @@ function NavbarIndex({
   if (isMobile) {
     return (
       <div className="mobile_burger_menu">
-        <div className="logo">
+        <div className="logo isporit-flex-h-space-v-center">
           <Link href="/">
             <a href="/">
               <img src={logoImg} alt="logo" />
             </a>
           </Link>
+          {authContext.isLoggedIn &&
+            authContext.fetchUserProfileLoading === false && (
+              <button
+                // onClick={() => setIsModalVisibleReservation(true)}
+                onClick={() => {
+                  window.location.href = routes.ISPORIT_PLATFORM.linkTo()
+                }}
+                type="button"
+                className="isporit-primary-button"
+                style={{ marginRight: '50px', padding: '10px' }}
+              >
+                Mes réservations
+              </button>
+            )}
         </div>
+
         <div className="">
           <BurgerMenu.slide
             styles={{
@@ -136,7 +151,7 @@ function NavbarIndex({
                 height: '30px',
                 width: '30px',
                 right: '15px',
-                top: '15px',
+                top: '25px',
               },
               bmMenu: {
                 background: 'white',
@@ -198,7 +213,7 @@ function NavbarIndex({
                 onClick={() => onChangeLocation(routes.COACHES_LIST.path)}
                 className="menu_item"
               >
-                Réserver votre coach
+                Réservez votre coach
               </Menu.Item>
 
               <Menu.Item
@@ -310,6 +325,7 @@ function NavbarIndex({
             </div>
             {/* {router.pathname === routes.HOME.path && */}
           </div>
+
           <div
             className="navbar_container__button-container"
             style={!searchBar ? { marginTop: '0px' } : {}}
@@ -339,6 +355,18 @@ function NavbarIndex({
             {authContext.isLoggedIn &&
               authContext.fetchUserProfileLoading === false && (
                 <div className="isporit-flex-h-end-v-center">
+                  <button
+                    // onClick={() => setIsModalVisibleReservation(true)}
+                    onClick={() => {
+                      window.location.href = routes.ISPORIT_PLATFORM.linkTo()
+                    }}
+                    type="button"
+                    className="isporit-primary-button"
+                    style={{ marginRight: '50px', padding: '10px' }}
+                  >
+                    Mes réservations
+                  </button>
+
                   <Dropdown overlay={menu}>
                     <div className="isporit-flex-h-any-v-center">
                       <div className="navbar_container__user-card">
