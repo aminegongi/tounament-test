@@ -139,7 +139,10 @@ function NavbarIndex({
                 className="isporit-primary-button"
                 style={{ marginRight: '50px', padding: '10px' }}
               >
-                Mes réservations
+                {authContext.userType === COACH ||
+                authContext.userType === PLAYER
+                  ? 'Mes réservations'
+                  : 'Mon profil'}
               </button>
             )}
         </div>
