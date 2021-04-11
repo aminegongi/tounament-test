@@ -102,6 +102,12 @@ input:focus {
     justify-content: space-between;
 }
 
+.isporit-flex-h-center-v-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .isporit-primary-button {
     border-radius: 10px !important;
     box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16) !important;
