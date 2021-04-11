@@ -149,6 +149,8 @@ export default function Coaches({
     }).length
     setFilteredItemsNumber(number)
     setDataCopy(getFilteredCoaches(coachesList, filter))
+    setPageNumber(1)
+    setPageActiveNumber(0)
   }, [
     selectedName,
     selectedJob,
@@ -544,24 +546,27 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               </div>
 
               <div className="paginate">
-                {Array.from({
-                  length: Math.ceil(dataCopy.length / nbr_of_card_per_page),
-                }).map((el, index) => (
-                  <div
-                    className={
-                      pageActiveNumber == index || index + 1 == pageNumber
-                        ? 'paginate__page'
-                        : ''
-                    }
-                    key={index}
-                    type="submit"
-                    onClick={() => {
-                      setPageNumber(index + 1), setPageActiveNumber(index)
-                    }}
-                  >
-                    {index + 1}
-                  </div>
-                ))}
+                {dataCopy.length > nbr_of_card_per_page &&
+                  Array.from({
+                    length: Math.ceil(dataCopy.length / nbr_of_card_per_page),
+                  }).map((el, index) => (
+                    <div
+                      className={
+                        pageActiveNumber == index || index + 1 == pageNumber
+                          ? 'paginate__page'
+                          : ''
+                      }
+                      key={index}
+                      type="submit"
+                      onClick={() => {
+                        window.scrollTo(400, !isMobile ? 250 : 220)
+
+                        setPageNumber(index + 1), setPageActiveNumber(index)
+                      }}
+                    >
+                      {index + 1}
+                    </div>
+                  ))}
               </div>
             </div>
           </div>

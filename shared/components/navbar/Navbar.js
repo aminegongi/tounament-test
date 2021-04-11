@@ -27,6 +27,7 @@ import './navbar.scss'
 import { AuthContext } from '../../../utils/context.utils'
 import { isEmpty } from 'lodash'
 import FilterCoachIndexModal from './FilterModal'
+import { COACH, PLAYER } from './../../constants';
 
 const { Option } = Select
 
@@ -364,7 +365,9 @@ function NavbarIndex({
                     className="isporit-primary-button"
                     style={{ marginRight: '50px', padding: '10px' }}
                   >
-                    Mes réservations
+                    {(authContext.userType === COACH ||
+                      authContext.userType === PLAYER) ?
+                      'Mes réservations': "Mon profil"}
                   </button>
 
                   <Dropdown overlay={menu}>

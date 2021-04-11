@@ -202,7 +202,7 @@ export default function CoachDetails({
   }, [router.query.calendar])
 
   if (userNotFound) {
-    return <Error statusCode={404} />
+    return <Error statusCode={404} description={"Oops!!! Ce coach n'existe pas"} />
   }
 
   if (isEmpty(coach.coachData)) {
