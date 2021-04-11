@@ -332,7 +332,7 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
 
         {isTherePhoto && coachData.coachingPhotos.length > minimumPhotosNumber && (
           <CoachProfileSection
-            title={isThereALotOfPhotos ? 'Autres photos' : 'Photos'}
+            title={isThereALotOfPhotos && !isThereVideo ? 'Autres photos' : 'Photos'}
             isVerticalLine={!isLocationEmpty()}
             icon={picturesIcon}
           >
