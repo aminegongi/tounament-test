@@ -22,6 +22,7 @@ import Layout from '../../shared/components/layout/Layout'
 import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
+import { useMediaPredicate } from 'react-media-hook'
 
 const ABOUT_TAB = 1
 const RECOMMENDATION_TAB = 2
@@ -42,6 +43,7 @@ export default function CoachDetails({
   const [job, setJob] = useState()
   const [tab, setTab] = useState(ABOUT_TAB)
   const [isContactModalVisible, setIsContactModalVisible] = useState(false)
+  const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const authContext = useContext(AuthContext)
 
@@ -84,7 +86,10 @@ export default function CoachDetails({
         coachProfile={coach}
         job={job}
         specialty={specialty}
-        onOpenCalendar={() => setTab(CALENDAR_TAB)}
+        onOpenCalendar={() => {
+          window.scrollTo(400, !isMobile ? 250 : 650)
+          setTab(CALENDAR_TAB)
+        }}
       />
     )
   }
@@ -189,6 +194,13 @@ export default function CoachDetails({
     setJob(job)
   }, [router.query.id])
 
+  useEffect(() => {
+    if (router.query.calendar) {
+      window.scrollTo(400, !isMobile ? 250 : 650)
+      setTab(CALENDAR_TAB)
+    }
+  }, [router.query.calendar])
+
   if (userNotFound) {
     return <Error statusCode={404} />
   }
@@ -285,7 +297,11 @@ export default function CoachDetails({
                   </button>
                 </div>
                 <button
-                  onClick={() => setTab(CALENDAR_TAB)}
+                  onClick={() => {
+                    window.scrollTo(400, !isMobile ? 250 : 650)
+
+                    setTab(CALENDAR_TAB)
+                  }}
                   type="button"
                   className="isporit-primary-button tabs__contact"
                 >

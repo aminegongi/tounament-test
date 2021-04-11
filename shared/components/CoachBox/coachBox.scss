@@ -185,9 +185,9 @@
             row-gap: 7px;
         }
         &__pictures-section {
-            display: grid;
-            grid-template-columns: repeat(2, 49%);
-            column-gap: 2%;
+            // display: grid;
+            // grid-template-columns: repeat(2, 49%);
+            // column-gap: 2%;
             &__first-picture {
                 max-height: 100%;
                 border-radius: 10px;

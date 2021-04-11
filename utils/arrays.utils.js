@@ -16,24 +16,12 @@ export const getFilteredCoaches = (
   },
 ) => {
   let filteredCoaches = coaches
-  console.log('coaches: ', coaches[0].coachData);
-  console.log('sessionDate: ', sessionDate);
   if(sessionDate){
     filteredCoaches = filteredCoaches.filter(
       (coach) =>
         coach.coachData &&
         coach.coachData.availabilities.find(
           (availability) =>{
-            console.log(coach.lastName)
-            console.log(
-              moment(availability.startTime, 'YYYY-MM-DD HH:mm').format(
-                'YYYYMMDDHH',
-              ),
-            )
-            console.log(
-              moment(sessionDate, 'YYYY-MM-DD HH:mm').format('YYYYMMDDHH'),
-            )
-            console.log("------")
             return (
               moment(availability.startTime, 'YYYY-MM-DD HH:mm').format(
                 'YYYYMMDDHH',
@@ -104,15 +92,11 @@ export const getJobsList = (coaches, jobs) => {
   const jobsList = Array.from(
     new Set(
       coaches.map((coach) => {
-        if (coach.coachData.job === 'pilatesCoach'){
-          console.log('coach: ', coach);
-
-        }
+        
           if (coach.coachData && coach.coachData.job) return coach.coachData.job
       }),
     ),
   )
-  console.log('jobsList: ', jobsList)
   jobs.forEach((job) => {
     if (jobsList.includes(job._id)) {
       list.push(job)
@@ -133,7 +117,6 @@ export const getSpecialtiesList = (coaches, specialties) => {
       ),
     ),
   )
-  console.log('specialtiesList: ', specialtiesList)
   specialties.forEach((specialty) => {
     if (specialtiesList.includes(specialty._id)) {
       list.push(specialty)
@@ -171,7 +154,6 @@ export const getRegionsList = (coaches, regions) => {
       ),
     ),
   )
-  console.log('regionsList: ', regionsList)
   regions.forEach((region) => {
     if (regionsList.includes(region._id)) {
       list.push(region)

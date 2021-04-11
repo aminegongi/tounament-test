@@ -108,7 +108,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
           // onClick={() => setIsModalVisibleReservation(true)}
           onClick={() =>
             router.push(
-              routes.COACH_DETAILS.CALENDAR.linkTo(coachProfile.username),
+              routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)+"?calendar=display"
             )
           }
           type="button"

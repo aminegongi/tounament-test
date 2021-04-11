@@ -7,7 +7,6 @@ import './collapseContenu.scss'
 import { nl2br } from '../../../utils/string.utils'
 
 export default function CollapseContenu({ coach }) {
-  console.log('coach: ', coach)
   const [icon, setIcon] = useState(left)
 
   const [iconExperience, setIconExperience] = useState(left)

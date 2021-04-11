@@ -60,7 +60,6 @@ export default function Coaches({
   const {
     query: { job, specialty, region, availabilityDate },
   } = router
-  console.log('availabilityDate: ', availabilityDate)
   const nbr_of_card_per_page = 15
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
@@ -69,7 +68,6 @@ export default function Coaches({
   function paginate(array, page_size, page_number) {
     return array.slice((page_number - 1) * page_size, page_number * page_size)
   }
-  // console.log('coachProfile.coachData.specialty: ', coachProfile.coachData.specialty);
   const renderCoachProfile = (coachProfile) => {
     const job = jobs.find(
       (j) => j._id === (coachProfile.coachData && coachProfile.coachData.job),
@@ -109,7 +107,6 @@ export default function Coaches({
   }
   const [isModalVisible, setIsModalVisible] = useState(false)
   useEffect(() => {
-    console.log(selectedDate, availabilityDate, 'ddd')
     if (job) {
       const foundJob = jobs.find((elem) => elem._id === job)
       if (foundJob) {
@@ -183,7 +180,6 @@ export default function Coaches({
   }
   const { Option } = Select
   const handleChange = (value) => {
-    console.log('value.key: ', value.key)
     if (value.key === 'alphabetique') {
       const sortByAlphabetical = [...dataCopy].sort((a, b) =>
         (a.firstName + a.lastName).toLowerCase() <
