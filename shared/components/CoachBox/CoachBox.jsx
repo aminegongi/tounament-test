@@ -29,7 +29,6 @@ export default function CoachAboutBoxes({
   mainJob,
   allSpecialties,
 }) {
-  console.log('coachData: ', allJobs)
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
@@ -308,7 +307,7 @@ export default function CoachAboutBoxes({
               {specialty && !isEmpty(specialty) && (
                 <div className="coachBox__content">
                   <div className="coachBox__content__title ">
-                    Métier :{' '}
+                    Métier(s):{' '}
                     <span className="coachBox__content__value">
                       {mainJob && (
                         <>
