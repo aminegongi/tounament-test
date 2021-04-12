@@ -110,7 +110,8 @@ export default function CoachAboutBoxes({
     if (
       coachData &&
       coachData.privateCourseData &&
-      coachData.privateCourseData.sessionPrices
+      coachData.privateCourseData.sessionPrices && 
+      coachData.privateCourseData.sessionPrices.length!==0      
     ) {
       return false
     }
