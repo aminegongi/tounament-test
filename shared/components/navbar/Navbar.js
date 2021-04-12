@@ -27,7 +27,7 @@ import './navbar.scss'
 import { AuthContext } from '../../../utils/context.utils'
 import { isEmpty } from 'lodash'
 import FilterCoachIndexModal from './FilterModal'
-import { COACH, PLAYER } from './../../constants';
+import { COACH, PLAYER } from '../../constants'
 
 const { Option } = Select
 
@@ -44,7 +44,7 @@ function NavbarIndex({
   regions,
 }) {
   const router = useRouter()
-  const mobile = useMediaPredicate('(max-width: 850px)')
+  const mobile = useMediaPredicate('(max-width: 992px)')
 
   const [availabilityDate, setAvailabilityDate] = useState()
 
@@ -368,9 +368,10 @@ function NavbarIndex({
                     className="isporit-primary-button"
                     style={{ marginRight: '50px', padding: '10px' }}
                   >
-                    {(authContext.userType === COACH ||
-                      authContext.userType === PLAYER) ?
-                      'Mes réservations': "Mon profil"}
+                    {authContext.userType === COACH ||
+                    authContext.userType === PLAYER
+                      ? 'Mes réservations'
+                      : 'Mon profil'}
                   </button>
 
                   <Dropdown overlay={menu}>
@@ -416,8 +417,10 @@ function NavbarIndex({
                   step="3600"
                   onChange={(e) =>
                     setAvailabilityDate(
-                      e.target.value.slice(0, e.target.value.length - 3) +
-                        ':00',
+                      `${e.target.value.slice(
+                        0,
+                        e.target.value.length - 3,
+                      )}:00`,
                     )
                   }
                   style={{ width: '100%', maxWidth: 211, padding: '10px' }}

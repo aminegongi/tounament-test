@@ -108,6 +108,16 @@ input:focus {
     justify-content: center;
 }
 
+.isporit-password-input-with-icon {
+    position: relative;
+    i {
+        font-size: 18px;
+        position: absolute;
+        right: 17px;
+        top: 15px;
+    }
+}
+
 .isporit-primary-button {
     border-radius: 10px !important;
     box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16) !important;

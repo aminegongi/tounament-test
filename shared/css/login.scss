@@ -10,6 +10,14 @@ body {
     grid-template-columns: auto 29rem;
     row-gap: 124px;
 
+    // form {
+    //     width: 100%;
+
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    // }
+
     .modal_container {
         position: fixed;
         width: 100vw;
@@ -106,9 +114,8 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-top: 3rem;
+        padding-top: 80px;
         padding-bottom: 3rem;
-
 
         .error {
             color: red;
@@ -125,17 +132,9 @@ body {
             text-align: center;
         }
 
-        .select_input {
-            width: 390px;
-            margin-top: 15px;
-            font-size: 1rem !important;
-            // height: 20px;
-        }
-
         .radio_group_button {
             background-color: #26beb5 !important;
         }
-       
 
         .create_account_btn {
             border-top: 1px solid #dadde1;
@@ -152,16 +151,32 @@ body {
         }
         .already_have_account {
             margin-top: 20px;
+            text-align: center;
+            a {
+                color: #26beb5;
+            }
+        }
+        .select_input {
+            width: 390px;
+            margin-top: 15px;
+            font-size: 1rem !important;
+            // height: 20px;
         }
 
-        .input {
+        .isporit-input {
             padding: 15px;
             display: block;
             width: 390px;
-            height: 50px;
             margin-top: 15px;
+            height: 50px;
             font-size: 15px;
             color: #717171;
+        }
+        .isporit-password-input-with-icon {
+            margin-top: 15px;
+            .isporit-input {
+                margin-top: 0;
+            }
         }
 
         .signup_btn_container {
@@ -197,8 +212,10 @@ body {
             p {
                 // display: none !important;
             }
-            .input, .select_input, .create_account_btn {
-                width: calc(100vw - 100px);
+            .isporit-input,
+            .select_input,
+            .create_account_btn {
+                width: calc(100vw - 50px);
             }
 
             .page_title {

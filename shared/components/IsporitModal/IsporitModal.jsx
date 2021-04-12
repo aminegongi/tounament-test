@@ -7,6 +7,8 @@ const IsporitModal = ({
   onCancel,
   children,
   className,
+  footer,
+  title,
   ...restProps
 }) => {
   return (
@@ -14,8 +16,8 @@ const IsporitModal = ({
       className={`isporit-modal ${className}`}
       visible={isVisible}
       onCancel={onCancel}
-      footer={false}
-      title={false}
+      footer={footer}
+      title={title}
       closeIcon={
         <div className="isporit-modal__close-icon-container">
           <Icon className="isporit-modal__close-icon" type="close" />
@@ -26,6 +28,11 @@ const IsporitModal = ({
       {children}
     </Modal>
   )
+}
+
+IsporitModal.defaultProps = {
+  footer: false,
+  title: false,
 }
 
 export default IsporitModal

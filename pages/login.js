@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { isEmpty, isNumber } from 'lodash'
 import { useRouter } from 'next/router'
 import Axios from 'axios'
-import { Input } from 'antd'
+import { Icon, Input } from 'antd'
 import Layout from '../shared/components/layout/Layout'
 import routes from '../utils/routes'
 
@@ -18,6 +18,9 @@ const Login = (props) => {
   const [email, setEmail] = useState(
     router.query.email ? router.query.email : '',
   )
+
+  const [showPassword, setShowPassword] = useState(false)
+
   const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
   const [password, setPassword] = useState('')
   const [localErrors, setLocalErrors] = useState({
@@ -81,25 +84,38 @@ const Login = (props) => {
       </Head>
       <Layout>
         <div className="login_container">
-          <form className="left_side">
+          <form onSubmit={onLogin} className="left_side">
             <h1 className="page_title">Connectez-vous</h1>
-            <Input
+            <input
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input"
-              placeholder="Email"
+              maxLength={40}
               type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              name="email"
+              className="isporit-input"
+              required
             />
             {localErrors.inputErrors && isEmpty(email) && (
               <span className="error">Champ obligatoire</span>
             )}
-            <Input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="input"
-              placeholder="Mot de passe"
-              type="password"
-            />
+
+            <div className="isporit-password-input-with-icon">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Mot de passe "
+                value={password}
+                name="password"
+                className="isporit-input"
+                required
+              />
+              <Icon
+                type={showPassword ? 'eye' : 'eye-invisible'}
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            </div>
+
             <center className="forgot_password">
               <Link href={{ pathname: '/forgot-password' }}>
                 <a style={{ color: '#26beb5' }}>Mot de passe oublié?</a>
@@ -115,7 +131,7 @@ const Login = (props) => {
                 'E-mail ou mot de passe incorrect'}
             </div>
             <div className="signup_btn_container">
-              <button onClick={onLogin} className="primary_button">
+              <button type="submit" className="primary_button">
                 Se Connecter
               </button>
             </div>

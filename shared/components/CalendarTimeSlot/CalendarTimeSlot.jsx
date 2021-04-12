@@ -1,7 +1,8 @@
+import { Icon } from 'antd'
 import React, { useState } from 'react'
 import './style.scss'
 
-const CalendarTimeSlot = ({ onConfirm, time }) => {
+const CalendarTimeSlot = ({ onConfirm, time, maxPlayers }) => {
   const [isSlotClicked, setIsSlotClicked] = useState(false)
   return (
     <div
@@ -16,7 +17,16 @@ const CalendarTimeSlot = ({ onConfirm, time }) => {
         }`}
         type="submit"
       >
-        {time}
+        {time}{' '}
+        {maxPlayers === 1 ? (
+          <Icon type="user" style={{ color: '#26beb5' }} />
+        ) : (
+          <>
+            <Icon type="user" style={{ color: '#26beb5' }} />
+            <Icon type="user" style={{ color: '#26beb5' }} />
+            <Icon type="user" style={{ color: '#26beb5' }} />
+          </>
+        )}
       </button>
       <a
         onClick={onConfirm}
