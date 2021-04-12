@@ -148,7 +148,7 @@ export default function CoachDetails({
               vous serez contacté par téléphone pour confirmer votre cours .
               <div>
                 <a
-                  href={`https://${SERVER_SIDE_API_BASE_URL()}/dashboard`}
+                  href={`https://app.isporit.com/dashboard`}
                   className="isporit-primary-button link-platform"
                   target="_blank"
                   rel="noreferrer"
