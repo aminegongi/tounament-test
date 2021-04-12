@@ -64,6 +64,8 @@ export default function CoachAboutBoxes({
     coachData.coachingPhotos &&
     coachData.coachingPhotos.length >= minimumPhotosNumber
 
+  
+
   const isLocationEmpty = () => {
     if (
       coachData &&
@@ -104,13 +106,22 @@ export default function CoachAboutBoxes({
     }
     return false
   }
-
+  const isSessionPricesEmpty = () => {
+    if (
+      coachData &&
+      coachData.privateCourseData &&
+      coachData.privateCourseData.sessionPrices
+    ) {
+      return false
+    }
+    return true
+  }
   const renderVideos = () => {
     if (isThereVideo) {
       return (
         <CoachProfileSection
           title="Vidéos"
-          isVerticalLine={!isInformationEmpty()}
+          isVerticalLine={!isInformationEmpty() || !isSessionPricesEmpty()}
           icon={videoicon}
         >
           <div className="coachBoxiteam__video-section">
@@ -346,6 +357,51 @@ export default function CoachAboutBoxes({
             </div>
           </CoachProfileSection>
         )}
+        {!isSessionPricesEmpty() && (
+          <CoachProfileSection
+            title="Packs offerts"
+            icon={exclamationIcon}
+            isVerticalLine={!isInformationEmpty()}
+          >
+            <div className="coachBox">
+              {coachData.privateCourseData.sessionPrices.map((offer, index) => {
+                return (
+                  <div className="coachBox__content">
+                    <div
+                      style={{
+                        marginBottom: '10px',
+                      }}
+                    >
+                      Pack {index + 1} :{' '}
+                    </div>
+                    <span className="coachBox__content__title">
+                      {offer.type === 'onsite' && (
+                        <span className="coachBox__content__value">
+                          {offer.price} DT pour {offer.onSiteSessionsNumber}{' '}
+                          séance(s) sur place
+                        </span>
+                      )}
+                      {offer.type === 'online' && (
+                        <span className="coachBox__content__value">
+                          {offer.price} DT pour {offer.onlineSessionsNumber}{' '}
+                          séance(s) en ligne
+                        </span>
+                      )}
+                      {offer.type === 'mixed' && (
+                        <span className="coachBox__content__value">
+                          {offer.price} DT pour {offer.onSiteSessionsNumber}{' '}
+                          séance(s) sur place et {offer.onlineSessionsNumber}{' '}
+                          séance(s) en ligne
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          </CoachProfileSection>
+        )}
+
         {renderVideos()}
       </div>
 
