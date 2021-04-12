@@ -11,6 +11,7 @@ import './coachCalendar.scss'
 import WeeklyBookingCalendar from '../WeeklyBookingCalendar/WeeklyBookingCalendar'
 import { createCoachingRequest } from '../../services/coachDetails.service'
 import { AuthContext } from '../../../utils/context.utils'
+import IsporitModal from '../IsporitModal/IsporitModal'
 
 export default function CoachCalendar({ coach, onSuccess }) {
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
@@ -161,6 +162,25 @@ export default function CoachCalendar({ coach, onSuccess }) {
           </div>
         </div>
       </div>
+
+      {/* <IsporitModal
+        className={`coach-calendar__modal `}
+        isVisible
+        footer={
+          <div className="isporit-lex-h-center-v-center coach-calendar__modal">
+            <Button>Annuler</Button>
+            <Button className="coach-calendar__modal__confirm-btn">
+              Confirmer
+            </Button>
+          </div>
+        }
+        // onCancel={() => {
+        //   setIsCreateClubStep(false)
+        //   onCancel()
+        // }}
+      >
+        qq
+      </IsporitModal> */}
     </div>
   )
 }

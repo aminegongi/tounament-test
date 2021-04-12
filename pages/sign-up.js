@@ -1,20 +1,20 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-filename-extension */
 import getConfig from 'next/config'
 import Head from 'next/head'
 import '../shared/css/login.scss'
-import { useState, useEffect, Fragment } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
-import { isEmpty, isNumber } from 'lodash'
-import moment from 'moment'
+// import PropTypes from 'prop-types'
+import { isEmpty } from 'lodash'
 import Axios from 'axios'
-import { DatePicker, Input, Modal, Radio, Select } from 'antd'
+import { Icon, Modal, Radio } from 'antd'
 import randomId from 'random-id'
 import { useMediaPredicate } from 'react-media-hook'
 import Layout from '../shared/components/layout/Layout'
-import Navbar from '../shared/components/navbar/Navbar'
-import { i18n, withTranslation } from '../i18n'
 import routes from '../utils/routes'
+import { CLIENT_SIDE_API_BASE_URL } from '../shared/constants'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -25,10 +25,10 @@ function validateEmail(email) {
   return re.test(email.toLowerCase())
 }
 
-function validateUsername(string) {
-  const re = /^[a-z][a-z\-0-9]+[a-z0-9]$/i
-  return re.test(string)
-}
+// function validateUsername(string) {
+//   const re = /^[a-z][a-z\-0-9]+[a-z0-9]$/i
+//   return re.test(string)
+// }
 
 function validatePhoneNumber(string) {
   const re = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g
@@ -61,16 +61,20 @@ const SignUp = () => {
     password: '',
     confirmPassword: '',
     address: '',
-    userType: 'club',
+    userType: 'player',
     sport: [],
     country: 'Tunisia',
     timezone: 'Africa/Tunis',
     phoneNumber: router.query.phoneNumber || '',
     facebookLink: '',
-    timezone: 'Africa/Tunis',
+    gender: 'M',
     locale: 'fr',
   })
-  const [lang, setLang] = useState(router.query.lang ? router.query.lang : '')
+
+  const [showPassword, setShowPassword] = useState({
+    password1: false,
+    password2: false,
+  })
 
   const [localErrors, setLocalErrors] = useState({
     usernameAlreadyExists: false,
@@ -79,16 +83,6 @@ const SignUp = () => {
   })
 
   const isSizeUnder360 = useMediaPredicate('(max-width: 360px)')
-
-  useEffect(() => {
-    if (!(router.query.type === '' || router.query.type === undefined)) {
-      setModal(false)
-    }
-  }, [router.query.type])
-
-  useEffect(() => {
-    setLang(i18n.language)
-  }, [i18n.language])
 
   const {
     redirectTo = publicRuntimeConfig.LOGIN_REDIRECT_URL,
@@ -99,19 +93,34 @@ const SignUp = () => {
 
   const loginApiUrl = `${apiUrl}/auth/login`
 
+  const onLogin = async () => {
+    try {
+      const result = await Axios.post(loginApiUrl, {
+        email: data.email,
+        password: data.password,
+      })
+      localStorage.setItem('token', result.data.token)
+      window.location.href = `${redirectTo}?accessToken=${result.data.token}`
+    } catch (error) {
+      router.push({
+        pathname: '/login',
+        query: {
+          ...router.query,
+          email: data.email,
+          verifyEmail: true,
+        },
+      })
+    }
+  }
+
   const onRegister = async (e) => {
     e.preventDefault()
 
     if (
-      // data.username.length < 6 ||
-      // isNumber(data.username.slice(0, 1)) ||
-      // data.username.includes(" ") ||
-      // !validateUsername(data.username) ||
       isEmpty(data.firstName) ||
       isEmpty(data.lastName) ||
       isEmpty(data.email) ||
       !validateEmail(data.email) ||
-      isEmpty(data.birthday) ||
       isEmpty(data.password) ||
       isEmpty(data.confirmPassword) ||
       !validatePhoneNumber(data.phoneNumber) ||
@@ -190,26 +199,7 @@ const SignUp = () => {
         })
       }
     }
-  }
-
-  const onLogin = async () => {
-    try {
-      const result = await Axios.post(loginApiUrl, {
-        email: data.email,
-        password: data.password,
-      })
-      localStorage.setItem('token', result.data.token)
-      window.location.href = `${redirectTo}?accessToken=${result.data.token}`
-    } catch (error) {
-      router.push({
-        pathname: '/login',
-        query: {
-          ...router.query,
-          email: data.email,
-          verifyEmail: true,
-        },
-      })
-    }
+    return ''
   }
 
   return (
@@ -289,130 +279,189 @@ const SignUp = () => {
               <span className="error">Nom d'utilisateur existe déjà</span>
             )}
 
-            <Input
-              value={data.firstName}
-              onChange={(e) => setData({ ...data, firstName: e.target.value })}
-              className="input"
-              placeholder="Prénom"
-              type="text"
-            />
-            {localErrors.inputErrors && isEmpty(data.firstName) && (
-              <span className="error">Champ obligatoire</span>
-            )}
-
-            <Input
-              value={data.lastName}
-              onChange={(e) => setData({ ...data, lastName: e.target.value })}
-              className="input"
-              placeholder="Nom de famille"
-              type="text"
-            />
-            {localErrors.inputErrors && isEmpty(data.lastName) && (
-              <span className="error">Champ obligatoire</span>
-            )}
-
-            <Input
-              maxLength={40}
-              value={data.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
-              className="input"
-              placeholder="Email"
-              type="email"
-              disabled={!isEmpty(router.query.email)}
-            />
-            {localErrors.inputErrors && isEmpty(data.email) && (
-              <span className="error">Champ obligatoire</span>
-            )}
-
-            {localErrors.inputErrors && !validateEmail(data.email) && (
-              <span className="error">
-                Cette adresse email n'est pas valide
-              </span>
-            )}
-
-            {localErrors.emailAlreadyExists && (
-              <span className="error">Email existe déjà</span>
-            )}
-
-            <DatePicker
-              size="large"
-              disabledDate={(current) =>
-                current && current > moment().endOf('day')
-              }
-              value={data.birthday}
-              onChange={(e) => setData({ ...data, birthday: e })}
-              className="select_input"
-              placeholder="Date de naissance"
-              type="date"
-            />
-            {localErrors.inputErrors && isEmpty(data.birthday) && (
-              <span className="error">Champ obligatoire</span>
-            )}
-            {localErrors.inputErrors && moment().isBefore(data.birthday) && (
-              <span className="error">Date n'est pas valid</span>
-            )}
-
-            <Input
-              maxLength={40}
-              value={data.phoneNumber}
-              onChange={(e) =>
-                setData({ ...data, phoneNumber: e.target.value })
-              }
-              className="input"
-              placeholder="Numéro de téléphone"
-            />
-            {localErrors.inputErrors && isEmpty(data.phoneNumber) && (
-              <span className="error">Champ obligatoire</span>
-            )}
-
-            {localErrors.inputErrors &&
-              !validatePhoneNumber(data.phoneNumber) && (
-                <span className="error">
-                  Numéro de téléphone n'est pas valide
-                </span>
+            <form onSubmit={onRegister}>
+              <input
+                type="text"
+                value={data.firstName}
+                onChange={(e) =>
+                  setData({ ...data, firstName: e.target.value })
+                }
+                placeholder="Prénom"
+                name="firstName"
+                className="isporit-input"
+                maxLength={20}
+                required
+              />
+              {localErrors.inputErrors && isEmpty(data.firstName) && (
+                <span className="error">Champ obligatoire</span>
               )}
-            {localErrors.inputErrors && data.phoneNumber.length < 7 && (
-              <span className="error">Au moins 8 numéros</span>
-            )}
+              <input
+                type="text"
+                value={data.lastName}
+                onChange={(e) => setData({ ...data, lastName: e.target.value })}
+                placeholder="Nom de famille"
+                name="lastname"
+                className="isporit-input"
+                maxLength={20}
+                required
+              />
+              {localErrors.inputErrors && isEmpty(data.lastName) && (
+                <span className="error">Champ obligatoire</span>
+              )}
 
-            <Input
-              value={data.password}
-              onChange={(e) => setData({ ...data, password: e.target.value })}
-              className="input"
-              placeholder="Mot de passe"
-              type="password"
-            />
-            {localErrors.inputErrors && isEmpty(data.password) && (
-              <span className="error">Champ obligatoire</span>
-            )}
+              <input
+                maxLength={40}
+                type="email"
+                onChange={(e) => setData({ ...data, email: e.target.value })}
+                placeholder="Email"
+                name="email"
+                className="isporit-input"
+                disabled={!isEmpty(router.query.email)}
+                required
+              />
 
-            <Input
-              value={data.confirmPassword}
-              onChange={(e) =>
-                setData({ ...data, confirmPassword: e.target.value })
-              }
-              className="input"
-              placeholder="Confirmation mot de passe"
-              type="password"
-            />
-            {localErrors.inputErrors && isEmpty(data.confirmPassword) && (
-              <span className="error">Champ obligatoire</span>
-            )}
-            {localErrors.inputErrors &&
-              data.password !== data.confirmPassword && (
+              {localErrors.inputErrors && isEmpty(data.email) && (
+                <span className="error">Champ obligatoire</span>
+              )}
+
+              {localErrors.inputErrors && !validateEmail(data.email) && (
                 <span className="error">
-                  Deux mots de passe ne sont pas égaux
+                  Cette adresse email n'est pas valide
                 </span>
               )}
 
-            <div className="signup_btn_container">
-              <button onClick={onRegister} className="primary_button">
-                S'INSCRIRE
-              </button>
-            </div>
-            <div className="already_have_account">
-              <Link href={routes.LOG_IN.path}>Vous avez déjà un compte ?</Link>
-            </div>
+              {localErrors.emailAlreadyExists && (
+                <span className="error">Email existe déjà</span>
+              )}
+
+              <div className="login-modal__input-label">
+                <label className="" htmlFor="gender">
+                  Sexe
+                </label>{' '}
+                <select
+                  name="gender"
+                  onChange={(e) => setData({ ...data, gender: e.target.value })}
+                  className="isporit-input select_input"
+                  id="gender"
+                >
+                  <option value="M">Masculin</option>
+                  <option value="F">Féminin</option>
+                </select>
+              </div>
+
+              <div className="login-modal__input-label">
+                <label className="" htmlFor="date">
+                  Date de naissance
+                </label>
+                <input
+                  type="date"
+                  onChange={(e) =>
+                    setData({ ...data, birthday: e.target.value })
+                  }
+                  id="date"
+                  placeholder="Date de naissance "
+                  value={data.birthday}
+                  name="birthday"
+                  className="isporit-input"
+                />
+              </div>
+
+              <input
+                type="number"
+                maxLength={40}
+                onChange={(e) =>
+                  setData({ ...data, phoneNumber: e.target.value })
+                }
+                value={data.phoneNumber}
+                placeholder="Numéro de télèphone"
+                name="phoneNumber"
+                className="isporit-input"
+                required
+              />
+
+              {localErrors.inputErrors && isEmpty(data.phoneNumber) && (
+                <span className="error">Champ obligatoire</span>
+              )}
+
+              {localErrors.inputErrors &&
+                !validatePhoneNumber(data.phoneNumber) && (
+                  <span className="error">
+                    Numéro de téléphone n'est pas valide
+                  </span>
+                )}
+              {localErrors.inputErrors && data.phoneNumber.length < 7 && (
+                <span className="error">Au moins 8 numéros</span>
+              )}
+
+              <div className="isporit-password-input-with-icon">
+                <input
+                  type={showPassword.password1 ? 'text' : 'password'}
+                  onChange={(e) =>
+                    setData({ ...data, password: e.target.value })
+                  }
+                  placeholder="Mot de passe "
+                  value={data.password}
+                  name="password"
+                  className="isporit-input"
+                  required
+                />
+                <Icon
+                  type={showPassword.password1 ? 'eye' : 'eye-invisible'}
+                  onClick={() =>
+                    setShowPassword({
+                      ...showPassword,
+                      password1: !showPassword.password1,
+                    })
+                  }
+                />
+              </div>
+
+              {localErrors.inputErrors && isEmpty(data.password) && (
+                <span className="error">Champ obligatoire</span>
+              )}
+              <div className="isporit-password-input-with-icon">
+                <input
+                  type={showPassword.password2 ? 'text' : 'password'}
+                  onChange={(e) =>
+                    setData({ ...data, confirmPassword: e.target.value })
+                  }
+                  placeholder="Confirmation mot de passe"
+                  value={data.confirmPassword}
+                  name="password"
+                  className="isporit-input"
+                  required
+                />
+                <Icon
+                  type={showPassword.password2 ? 'eye' : 'eye-invisible'}
+                  onClick={() =>
+                    setShowPassword({
+                      ...showPassword,
+                      password2: !showPassword.password2,
+                    })
+                  }
+                />
+              </div>
+              {localErrors.inputErrors && isEmpty(data.confirmPassword) && (
+                <span className="error">Champ obligatoire</span>
+              )}
+              {localErrors.inputErrors &&
+                data.password !== data.confirmPassword && (
+                  <span className="error">
+                    Deux mots de passe ne sont pas égaux
+                  </span>
+                )}
+
+              <div className="signup_btn_container">
+                <button type="submit" className="primary_button">
+                  S'INSCRIRE
+                </button>
+              </div>
+              <div className="already_have_account">
+                <Link href={routes.LOG_IN.path}>
+                  Vous avez déjà un compte ?
+                </Link>
+              </div>
+            </form>
           </div>
 
           <div
@@ -444,11 +493,7 @@ const SignUp = () => {
   )
 }
 
-SignUp.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-})
+SignUp.getInitialProps = async () => ({})
 
-SignUp.propTypes = {
-  t: PropTypes.func.isRequired,
-}
-export default withTranslation('common')(SignUp)
+SignUp.propTypes = {}
+export default SignUp

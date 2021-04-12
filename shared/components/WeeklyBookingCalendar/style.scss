@@ -16,7 +16,7 @@
         }
         &__day {
             background-color: #ff8760 !important;
-            color: white  !important;
+            color: white !important;
             &.react-calendar__tile--active {
                 color: white;
             }
@@ -42,9 +42,24 @@
 
     &__time-slots {
         &__date {
+            @media only screen and (min-width: 992px) {
+                max-width: 340px;
+            }
             margin: 12px 0 25px;
             font-weight: 500;
-            font-size: 16px;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            &__labels {
+                display: flex;
+                &__icon {
+                    color: #26beb5;
+                }
+                &__separator {
+                    margin: 0 10px;
+                }
+            }
         }
         &__slot {
             margin-bottom: 5px;

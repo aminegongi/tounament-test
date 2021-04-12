@@ -2,6 +2,7 @@
 import moment from 'moment'
 import React, { useState } from 'react'
 import Calendar from 'react-calendar'
+import { Icon } from 'antd'
 import { sortBy } from 'lodash'
 import CalendarTimeSlot from '../CalendarTimeSlot/CalendarTimeSlot'
 import 'react-calendar/dist/Calendar.css'
@@ -64,6 +65,33 @@ const WeeklyBookingCalendar = ({
       <div className="weekly-booking-calendar__time-slots">
         <div className="weekly-booking-calendar__time-slots__date">
           {moment(selectedDate).format('dddd, MMMM DD')}
+          <div className="weekly-booking-calendar__time-slots__date__labels">
+            <div className="">
+              <Icon
+                type="user"
+                className="weekly-booking-calendar__time-slots__date__labels__icon"
+              />
+              <Icon
+                type="user"
+                className="weekly-booking-calendar__time-slots__date__labels__icon"
+              />
+              <Icon
+                type="user"
+                className="weekly-booking-calendar__time-slots__date__labels__icon"
+              />{' '}
+              Collectif
+            </div>
+            <div className="weekly-booking-calendar__time-slots__date__labels__separator">
+              -
+            </div>
+            <div className="">
+              <Icon
+                type="user"
+                className="weekly-booking-calendar__time-slots__date__labels__icon"
+              />{' '}
+              Individuel
+            </div>
+          </div>
         </div>
 
         {getSelectedDayAvailabilities().map((el) => (
@@ -72,6 +100,7 @@ const WeeklyBookingCalendar = ({
             className="weekly-booking-calendar__time-slots__slot"
           >
             <CalendarTimeSlot
+              maxPlayers={el.maxPlayers}
               time={moment(el.startTime, 'YYYY-MM-DD HH:mm').format('HH:mm')}
               onConfirm={() => setSelectedTimeSlots([...selectedTimeSlots, el])}
             />

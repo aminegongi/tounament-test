@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { isEmpty } from 'lodash'
 import Head from 'next/head'
 import { Breadcrumb, Icon } from 'antd'
+import { useMediaPredicate } from 'react-media-hook'
 import InfoCoach from '../../shared/components/InfoCoach/InfoCoach'
 import '../../shared/css/coachDetails.scss'
 import { SERVER_SIDE_API_BASE_URL, CLUB } from '../../shared/constants'
@@ -22,7 +23,6 @@ import Layout from '../../shared/components/layout/Layout'
 import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
-import { useMediaPredicate } from 'react-media-hook'
 
 const ABOUT_TAB = 1
 const RECOMMENDATION_TAB = 2
@@ -100,6 +100,9 @@ export default function CoachDetails({
         return (
           <div className="tabsinfo__title">
             <CoachBox
+              mainJob={job}
+              allJobs={jobs}
+              allSpecialties={dances.concat(sports)}
               coachData={coach.coachData}
               iconExclamation={exclamation}
               specialty={specialty}
@@ -202,7 +205,9 @@ export default function CoachDetails({
   }, [router.query.calendar])
 
   if (userNotFound) {
-    return <Error statusCode={404} description={"Oops!!! Ce coach n'existe pas"} />
+    return (
+      <Error statusCode={404} description={"Oops!!! Ce coach n'existe pas"} />
+    )
   }
 
   if (isEmpty(coach.coachData)) {
@@ -242,20 +247,22 @@ export default function CoachDetails({
           </div>
 
           {isMobile && (
-           <div style={{margin: "10px 10px 10px 16px"}}>
-           <Breadcrumb separator=">">
-              <Breadcrumb.Item
-                href="/coaches"
-                className="isporit-breadcrumb-link"
-              >
-                Tous les coachs
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                {`${
-                  coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
-                } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(1)}`}
-              </Breadcrumb.Item>
-            </Breadcrumb>
+            <div style={{ margin: '10px 10px 10px 16px' }}>
+              <Breadcrumb separator=">">
+                <Breadcrumb.Item
+                  href="/coaches"
+                  className="isporit-breadcrumb-link"
+                >
+                  Tous les coachs
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  {`${
+                    coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
+                  } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
+                    1,
+                  )}`}
+                </Breadcrumb.Item>
+              </Breadcrumb>
             </div>
           )}
 

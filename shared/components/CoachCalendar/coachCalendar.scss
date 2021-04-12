@@ -2,6 +2,12 @@
     width: 732px;
 
     padding-bottom: 20px;
+    &__modal {
+        &__confirm-btn, &__confirm-btn:hover, &__confirm-btn:focus {
+            background-color: #26beb5;
+            color: white;
+        }
+    }
 
     &__request-succeeded {
         border-radius: 10px;

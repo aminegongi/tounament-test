@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react'
 // import CoachMap from '../CoachMap/CoachMap'
@@ -19,12 +20,31 @@ import video from '../../../public/icon/video.png'
 import photoicon from '../../../public/icon/photoicon.png'
 import CoachProfileSection from '../CoachProfileSection'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
-import { ages, levels } from './../../constants'
+import { ages, levels } from '../../constants'
 
-export default function CoachAboutBoxes({ coachData, specialty }) {
+export default function CoachAboutBoxes({
+  coachData,
+  specialty,
+  allJobs,
+  mainJob,
+  allSpecialties,
+}) {
+  console.log('coachData: ', allJobs)
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
+  const otherJobs = coachData.otherJobs
+    ? coachData.otherJobs.map((el) => {
+        const currentJob = allJobs.find((j) => j._id === el.name)
+        const currentSpecialties = el.specialties.map((s) =>
+          allSpecialties.find((as) => as._id === s),
+        )
+        return {
+          job: currentJob,
+          specialties: currentSpecialties,
+        }
+      })
+    : []
   const isThereVideo =
     coachData &&
     coachData &&
@@ -72,6 +92,12 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
       !(
         coachData.privateCourseData &&
         !isEmpty(coachData.privateCourseData.ages)
+      ) &&
+      !(mainJob && !isEmpty(mainJob)) &&
+      !(otherJobs && !isEmpty(otherJobs)) &&
+      !(
+        coachData.privateCourseData &&
+        !isEmpty(coachData.privateCourseData.sportsEquipment)
       )
     ) {
       return true
@@ -273,18 +299,50 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
               {specialty && !isEmpty(specialty) && (
                 <div className="coachBox__content">
                   <div className="coachBox__content__title ">
-                    Spécialités:{' '}
+                    Métier :{' '}
                     <span className="coachBox__content__value">
-                      {specialty.map((el, index) => {
-                        if (index !== specialty.length - 1) {
-                          return `${el.translations.fr}, `
-                        }
-                        return el.translations.fr
-                      })}
+                      {mainJob && (
+                        <>
+                          <b>{mainJob.translations.fr}</b> (
+                          {specialty.map((el, index) => {
+                            if (index !== specialty.length - 1) {
+                              return `${el.translations.fr}, `
+                            }
+                            return el.translations.fr
+                          })}
+                          ){!isEmpty(otherJobs) && ','}{' '}
+                        </>
+                      )}
+                      {otherJobs &&
+                        otherJobs.map((oj) => (
+                          <>
+                            <b>{oj.job.translations.fr}</b> (
+                            {oj.specialties.map((el, index) => {
+                              if (index !== specialty.length - 1) {
+                                return `${el.translations.fr}, `
+                              }
+                              return el.translations.fr
+                            })}
+                            )
+                          </>
+                        ))}
                     </span>
                   </div>
                 </div>
               )}
+              {coachData.privateCourseData &&
+                !isEmpty(coachData.privateCourseData.sportsEquipment) && (
+                  <div className="coachBox__content">
+                    <div className="coachBox__content__title ">
+                      Matériel:{' '}
+                      <span className="coachBox__content__value">
+                        {coachData.privateCourseData.sportsEquipment
+                          .map((equip) => equip.name)
+                          .join(', ')}
+                      </span>
+                    </div>
+                  </div>
+                )}
             </div>
           </CoachProfileSection>
         )}
@@ -299,7 +357,6 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
             icon={localisationIcon}
           >
             {coachData &&
-              coachData &&
               coachData.privateCourseData &&
               coachData.privateCourseData.regions.map((region) => {
                 if (dataMap[region]) {
@@ -315,7 +372,6 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
 
             <div className="coachBoxiteam__locations-container">
               {coachData &&
-                coachData &&
                 coachData.privateCourseData &&
                 coachData.privateCourseData.location.map((location) => (
                   <div className="coachBoxiteam__locations-container__location">
@@ -327,18 +383,45 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                   </div>
                 ))}
             </div>
+            {coachData &&
+              coachData.privateCourseData &&
+              coachData.privateCourseData.otherRegions.map((region) => {
+                if (dataMap[region.name]) {
+                  return (
+                    <div className="">
+                      <iframe
+                        className="coachBoxiteam__location-map"
+                        src={dataMap[region.name]}
+                        title="coach-region"
+                      />
+                      <div className="coachBoxiteam__locations-container">
+                        {region.locations.map((location) => (
+                          <div className="coachBoxiteam__locations-container__location">
+                            <img src={localisation} alt="icon" />
+
+                            <div className="coachBoxiteam__locations-container__location__text">
+                              {location}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                }
+              })}
           </CoachProfileSection>
         )}
 
         {isTherePhoto && coachData.coachingPhotos.length > minimumPhotosNumber && (
           <CoachProfileSection
-            title={isThereALotOfPhotos && !isThereVideo ? 'Autres photos' : 'Photos'}
+            title={
+              isThereALotOfPhotos && !isThereVideo ? 'Autres photos' : 'Photos'
+            }
             isVerticalLine={!isLocationEmpty()}
             icon={picturesIcon}
           >
             <div className="coachBoxiteam__pictures-section">
               {coachData &&
-                coachData &&
                 coachData.coachingPhotos &&
                 coachData.coachingPhotos
                   .slice(
@@ -364,7 +447,6 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
                   })}
               <div className="coachBoxiteam__pictures-section__other-pictures">
                 {coachData &&
-                  coachData &&
                   coachData.coachingPhotos &&
                   coachData.coachingPhotos
                     .slice(isThereALotOfPhotos ? 4 : 1)
