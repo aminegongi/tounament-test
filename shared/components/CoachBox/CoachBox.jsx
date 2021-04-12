@@ -64,8 +64,6 @@ export default function CoachAboutBoxes({
     coachData.coachingPhotos &&
     coachData.coachingPhotos.length >= minimumPhotosNumber
 
-  
-
   const isLocationEmpty = () => {
     if (
       coachData &&
@@ -441,6 +439,7 @@ export default function CoachAboutBoxes({
             </div>
             {coachData &&
               coachData.privateCourseData &&
+              coachData.privateCourseData.otherRegions &&
               coachData.privateCourseData.otherRegions.map((region) => {
                 if (dataMap[region.name]) {
                   return (
