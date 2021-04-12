@@ -29,7 +29,6 @@ export default function CoachAboutBoxes({
   mainJob,
   allSpecialties,
 }) {
-  console.log('coachData: ', allJobs)
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
@@ -63,8 +62,6 @@ export default function CoachAboutBoxes({
     coachData &&
     coachData.coachingPhotos &&
     coachData.coachingPhotos.length >= minimumPhotosNumber
-
-  
 
   const isLocationEmpty = () => {
     if (
@@ -311,7 +308,7 @@ export default function CoachAboutBoxes({
               {specialty && !isEmpty(specialty) && (
                 <div className="coachBox__content">
                   <div className="coachBox__content__title ">
-                    Métier :{' '}
+                    Métier(s):{' '}
                     <span className="coachBox__content__value">
                       {mainJob && (
                         <>
@@ -442,6 +439,7 @@ export default function CoachAboutBoxes({
             </div>
             {coachData &&
               coachData.privateCourseData &&
+              coachData.privateCourseData.otherRegions &&
               coachData.privateCourseData.otherRegions.map((region) => {
                 if (dataMap[region.name]) {
                   return (
