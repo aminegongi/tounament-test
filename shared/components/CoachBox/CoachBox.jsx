@@ -84,7 +84,8 @@ export default function CoachAboutBoxes({ coachData, specialty }) {
     if (
       coachData &&
       coachData.privateCourseData &&
-      coachData.privateCourseData.sessionPrices
+      coachData.privateCourseData.sessionPrices && 
+      coachData.privateCourseData.sessionPrices.length!==0      
     ) {
       return false
     }
