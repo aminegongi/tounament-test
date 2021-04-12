@@ -310,7 +310,7 @@ const SignUp = () => {
               )}
 
               <input
-                maxLength={40}
+                maxLength={70}
                 type="email"
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 placeholder="Email"
