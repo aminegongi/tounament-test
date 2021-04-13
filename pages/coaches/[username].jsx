@@ -154,7 +154,11 @@ export default function CoachDetails({
               vous serez contacté par téléphone pour confirmer votre cours .
               <div>
                 <a
-                  href={FRONT_END_PLATFORM_URL()}
+                  href={FRONT_END_PLATFORM_URL(
+                    typeof window !== 'undefined' &&
+                      window.localStorage &&
+                      window.localStorage.getItem('token'),
+                  )}
                   className="isporit-primary-button link-platform"
                   target="_blank"
                   rel="noreferrer"

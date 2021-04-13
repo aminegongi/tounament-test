@@ -1,13 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import App from 'next/app'
-import Router, {
-  useRouter,
-  onRouteChangeComplete,
-  onRouteChangeError,
-} from 'next/router'
-import Head from 'next/head'
-import Axios from 'axios'
+import Router, { useRouter } from 'next/router'
 import moment from 'moment'
 
 import { hotjar } from 'react-hotjar'
@@ -26,7 +20,6 @@ import {
 import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../shared/constants'
 import LoginModal from '../shared/components/LoginModal/LoginModal'
 import routes from '../utils/routes'
-import Layout from '../shared/components/layout/Layout'
 import CoachDetailsPageLoading from '../shared/components/CoachDetailsPageLoading/CoachDetailsPageLoading'
 import CoachesPageLoading from '../shared/components/CoachesPageLoading/CoachesPageLoading'
 
