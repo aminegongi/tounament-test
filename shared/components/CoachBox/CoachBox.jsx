@@ -175,7 +175,7 @@ export default function CoachAboutBoxes({
         </CoachProfileSection>
       )
     }
-    if (isThereALotOfPhotos) {
+    if (isTherePhoto) {
       return (
         <CoachProfileSection
           title="Photos"
@@ -480,8 +480,12 @@ export default function CoachAboutBoxes({
                 coachData.coachingPhotos &&
                 coachData.coachingPhotos
                   .slice(
-                    isThereALotOfPhotos ? minimumPhotosNumber : 0,
-                    isThereALotOfPhotos ? minimumPhotosNumber + 1 : 1,
+                    isThereALotOfPhotos && !isThereVideo
+                      ? minimumPhotosNumber
+                      : 0,
+                    isThereALotOfPhotos && !isThereVideo
+                      ? minimumPhotosNumber + 1
+                      : 1,
                   )
                   .map((photo) => {
                     return (
@@ -504,7 +508,7 @@ export default function CoachAboutBoxes({
                 {coachData &&
                   coachData.coachingPhotos &&
                   coachData.coachingPhotos
-                    .slice(isThereALotOfPhotos ? 4 : 1)
+                    .slice(isThereALotOfPhotos && !isThereVideo ? 4 : 1)
                     .map((photo) => {
                       return (
                         <button
