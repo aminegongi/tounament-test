@@ -48,6 +48,14 @@ export default {
     path: '/forgot-password',
   },
 
+  TERMS_AND_CONDITIONS: {
+    path: '/terms-and-conditions',
+  },
+
+  PRIVACY_AND_POLICY: {
+    path: '/privacy-and-policy',
+  },
+
   ISPORIT_PLATFORM: {
     linkTo: (token = localStorage.getItem('token')) =>
       `https://app.isporit.com/?accessToken=${token}`,
