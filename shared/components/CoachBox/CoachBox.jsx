@@ -272,7 +272,7 @@ export default function CoachAboutBoxes({
                 coachData.privateCourseData.personsNumberPerSession && (
                   <div className="coachBox__content">
                     <div className="coachBox__content__title">
-                      Nombre de personnes par séance:
+                      Nombre de personnes par séance :
                       <span className="coachBox__content__value">
                         {coachData.privateCourseData.personsNumberPerSession}
                       </span>
