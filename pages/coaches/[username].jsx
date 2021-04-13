@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import fetch from 'isomorphic-unfetch'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { isEmpty } from 'lodash'
 import Head from 'next/head'
@@ -10,8 +11,12 @@ import { Breadcrumb, Icon } from 'antd'
 import { useMediaPredicate } from 'react-media-hook'
 import InfoCoach from '../../shared/components/InfoCoach/InfoCoach'
 import '../../shared/css/coachDetails.scss'
-import { SERVER_SIDE_API_BASE_URL, CLUB } from '../../shared/constants'
-import CoachAboutBoxes from '../../shared/components/ContactCoach/ContactCoach'
+import {
+  SERVER_SIDE_API_BASE_URL,
+  CLUB,
+  FRONT_END_PLATFORM_URL,
+} from '../../shared/constants'
+// import CoachAboutBoxes from '../../shared/components/ContactCoach/ContactCoach'
 import CoachBox from '../../shared/components/CoachBox/CoachBox'
 import CoachAvis from '../../shared/components/CoachAvis/CoachAvis'
 import Biography from '../../shared/components/Biography/Biography'
@@ -23,6 +28,7 @@ import Layout from '../../shared/components/layout/Layout'
 import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
+import routes from '../../utils/routes'
 
 const ABOUT_TAB = 1
 const RECOMMENDATION_TAB = 2
@@ -148,7 +154,11 @@ export default function CoachDetails({
               vous serez contacté par téléphone pour confirmer votre cours .
               <div>
                 <a
-                  href={`https://app.isporit.com/dashboard`}
+                  href={FRONT_END_PLATFORM_URL(
+                    typeof window !== 'undefined' &&
+                      window.localStorage &&
+                      window.localStorage.getItem('token'),
+                  )}
                   className="isporit-primary-button link-platform"
                   target="_blank"
                   rel="noreferrer"
@@ -211,7 +221,9 @@ export default function CoachDetails({
   }
 
   if (isEmpty(coach.coachData)) {
-    return <h1>coach data is missing in the coach object</h1>
+    return (
+      <Error statusCode={404} description={"Oops!!! Ce coach n'existe pas"} />
+    )
   }
 
   return (
@@ -249,11 +261,10 @@ export default function CoachDetails({
           {isMobile && (
             <div style={{ margin: '10px 10px 10px 16px' }}>
               <Breadcrumb separator=">">
-                <Breadcrumb.Item
-                  href="/coaches"
-                  className="isporit-breadcrumb-link"
-                >
-                  Tous les coachs
+                <Breadcrumb.Item className="isporit-breadcrumb-link">
+                  <Link href={routes.COACHES_LIST.path}>
+                    <a href={routes.COACHES_LIST.path}>Tous les coachs</a>
+                  </Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
                   {`${
@@ -271,18 +282,17 @@ export default function CoachDetails({
               <div className="coach__coachdetails__contact">
                 {coach && jobs && renderCoachProfile(coach)}
               </div>
-              <div className="coach__coachdetails__information">
+              {/* <div className="coach__coachdetails__information">
                 {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
-              </div>
+              </div> */}
             </div>
             <div className="tabsinfo">
               {!isMobile && (
                 <Breadcrumb separator=">">
-                  <Breadcrumb.Item
-                    href="/coaches"
-                    className="isporit-breadcrumb-link"
-                  >
-                    Tous les coachs
+                  <Breadcrumb.Item className="isporit-breadcrumb-link">
+                    <Link href={routes.COACHES_LIST.path}>
+                      <a href={routes.COACHES_LIST.path}>Tous les coachs</a>
+                    </Link>
                   </Breadcrumb.Item>
                   <Breadcrumb.Item>
                     {`${

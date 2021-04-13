@@ -308,7 +308,6 @@ const SignUp = () => {
               {localErrors.inputErrors && isEmpty(data.lastName) && (
                 <span className="error">Champ obligatoire</span>
               )}
-
               <input
                 maxLength={70}
                 type="email"
@@ -319,22 +318,18 @@ const SignUp = () => {
                 disabled={!isEmpty(router.query.email)}
                 required
               />
-
               {localErrors.inputErrors && isEmpty(data.email) && (
                 <span className="error">Champ obligatoire</span>
               )}
-
               {localErrors.inputErrors && !validateEmail(data.email) && (
                 <span className="error">
                   Cette adresse email n'est pas valide
                 </span>
               )}
-
               {localErrors.emailAlreadyExists && (
                 <span className="error">Email existe déjà</span>
               )}
-
-              <div className="login-modal__input-label">
+              <div className="input-with-label">
                 <label className="" htmlFor="gender">
                   Sexe
                 </label>{' '}
@@ -348,8 +343,7 @@ const SignUp = () => {
                   <option value="F">Féminin</option>
                 </select>
               </div>
-
-              <div className="login-modal__input-label">
+              <div className="input-with-label">
                 <label className="" htmlFor="date">
                   Date de naissance
                 </label>
@@ -365,7 +359,6 @@ const SignUp = () => {
                   className="isporit-input"
                 />
               </div>
-
               <input
                 type="number"
                 maxLength={40}
@@ -378,11 +371,9 @@ const SignUp = () => {
                 className="isporit-input"
                 required
               />
-
               {localErrors.inputErrors && isEmpty(data.phoneNumber) && (
                 <span className="error">Champ obligatoire</span>
               )}
-
               {localErrors.inputErrors &&
                 !validatePhoneNumber(data.phoneNumber) && (
                   <span className="error">
@@ -392,7 +383,6 @@ const SignUp = () => {
               {localErrors.inputErrors && data.phoneNumber.length < 7 && (
                 <span className="error">Au moins 8 numéros</span>
               )}
-
               <div className="isporit-password-input-with-icon">
                 <input
                   type={showPassword.password1 ? 'text' : 'password'}
@@ -415,7 +405,6 @@ const SignUp = () => {
                   }
                 />
               </div>
-
               {localErrors.inputErrors && isEmpty(data.password) && (
                 <span className="error">Champ obligatoire</span>
               )}
@@ -450,7 +439,21 @@ const SignUp = () => {
                     Deux mots de passe ne sont pas égaux
                   </span>
                 )}
-
+              <div className="login_container__terms" style={{ marginTop: 20 }}>
+                En vous inscrivant, vous acceptez{' '}
+                <Link href={routes.TERMS_AND_CONDITIONS.path}>
+                  <a href={routes.TERMS_AND_CONDITIONS.path}>
+                    <u>les Conditions d’utilisation</u>
+                  </a>
+                </Link>{' '}
+                et{' '}
+                <Link href={routes.PRIVACY_AND_POLICY.path}>
+                  <a href={routes.PRIVACY_AND_POLICY.path}>
+                    <u>la Politique de confidentialité</u>
+                  </a>
+                </Link>{' '}
+                de iSporit
+              </div>
               <div className="signup_btn_container">
                 <button type="submit" className="primary_button">
                   S'INSCRIRE

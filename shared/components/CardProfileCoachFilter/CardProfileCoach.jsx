@@ -6,12 +6,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 // import { AVATAR } from '../../constants'
 import ShareLink from '../ShareLink/ShareLink'
-import { getUserProfilePicture } from '../../../utils/string.utils'
+import { getUserProfilePicture, cutString } from '../../../utils/string.utils'
 import routes from '../../../utils/routes'
 // import ReservationCours from '../ReservationCours/ReservationCours'
 import shareIcon from '../../../public/icon/profileShare.png'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
-import { cutString } from './../../../utils/string.utils';
 
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
   const router = useRouter()
@@ -62,7 +61,10 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
             </div>
 
             <div className="card_profil_coach__information__name">
-              {cutString(coachProfile.firstName + ' '+ coachProfile.lastName, 15)}
+              {cutString(
+                `${coachProfile.firstName} ${coachProfile.lastName}`,
+                15,
+              )}
             </div>
 
             <div className="card_profil_coach__information__rate">
@@ -108,7 +110,9 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
           // onClick={() => setIsModalVisibleReservation(true)}
           onClick={() =>
             router.push(
-              routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)+"?calendar=display"
+              `${routes.COACH_DETAILS.PROFILE.linkTo(
+                coachProfile.username,
+              )}?calendar=display`,
             )
           }
           type="button"

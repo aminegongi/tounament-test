@@ -158,7 +158,6 @@ input:focus {
     user-select: none;
 }
 
-
 .global_light_button {
     cursor: pointer;
     padding: 20px 32px;
@@ -191,16 +190,17 @@ input:focus {
 }
 
 .isporit-no-padding {
-    padding: 0 !important
+    padding: 0 !important;
 }
 
 .isporit-breadcrumb-link {
     color: #26beb5 !important;
-
+    a {
+        color: #26beb5 !important;
+    }
     &:hover {
         color: #26beb5 !important;
     }
-
 }
 
 .isporit-search-bar {
@@ -220,7 +220,7 @@ input:focus {
         }
     }
 
-    >div {
+    > div {
         border-right: 1px solid gray;
         width: 100%;
         padding-right: 10px;
@@ -232,13 +232,10 @@ input:focus {
             border: none;
         }
 
-
-
         select,
         input {
             border: none !important;
             width: 100%;
-
         }
 
         &.svg {
@@ -264,7 +261,6 @@ input:focus {
         }
     }
 }
-
 
 .isporit-search-bar2 {
     // width: 300px;
@@ -292,7 +288,7 @@ input:focus {
     // opacity 50ms ease 20ms,
     // pointer-events 0ms 150ms !important;
 
-    >div {
+    > div {
         border-right: 1px solid gray;
         width: 100%;
         padding-right: 20px;
@@ -303,12 +299,9 @@ input:focus {
             border: none;
         }
 
-
-
         select {
             border: none !important;
             width: 100%;
-
         }
 
         &.svg {
@@ -347,9 +340,7 @@ input:focus {
         justify-content: center;
         align-items: center;
         background-color: #ffffff;
-
     }
-
 }
 
 @media only screen and (max-width: 992px) {

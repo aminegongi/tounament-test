@@ -190,11 +190,24 @@ const LoginModal = ({
                 placeholder="Date de naissance "
                 name="birthday"
                 className="isporit-input"
-                required
               />
             </div>
           </div>
-
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            En vous inscrivant, vous acceptez{' '}
+            <Link href={routes.TERMS_AND_CONDITIONS.path}>
+              <a href={routes.TERMS_AND_CONDITIONS.path}>
+                <u>les Conditions d’utilisation</u>
+              </a>
+            </Link>{' '}
+            et{' '}
+            <Link href={routes.PRIVACY_AND_POLICY.path}>
+              <a href={routes.PRIVACY_AND_POLICY.path}>
+                <u>la Politique de confidentialité</u>
+              </a>
+            </Link>{' '}
+            de iSporit
+          </div>
           <center>
             <button type="submit" className="isporit-unset-button-css">
               <Button

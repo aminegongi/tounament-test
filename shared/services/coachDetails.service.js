@@ -11,6 +11,7 @@ export const createCoachingRequest = async (values, setLoading) => {
       URL.baseApiUrl + URL.coachingRequest.create,
       {
         coach: values.coachId,
+        note: values.note,
         requests: values.requests,
       },
       apiHeader(),

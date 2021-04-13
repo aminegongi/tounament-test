@@ -1,15 +1,13 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import App from 'next/app'
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import Axios from 'axios'
+import Router, { useRouter } from 'next/router'
 import moment from 'moment'
 
 import { hotjar } from 'react-hotjar'
 import { message } from 'antd'
 import { MOMENT_FRENCH_I18N } from '../utils/moment.utils'
-import AuthContext from '../utils/context.utils'
+import { AuthContext } from '../utils/context.utils'
 import { initGA, logPageView } from '../utils/analytics'
 import { appWithTranslation } from '../i18n'
 import '../shared/global-style.scss'
@@ -21,6 +19,9 @@ import {
 } from '../shared/services/auth.service'
 import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../shared/constants'
 import LoginModal from '../shared/components/LoginModal/LoginModal'
+import routes from '../utils/routes'
+import CoachDetailsPageLoading from '../shared/components/CoachDetailsPageLoading/CoachDetailsPageLoading'
+import CoachesPageLoading from '../shared/components/CoachesPageLoading/CoachesPageLoading'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -91,11 +92,11 @@ function MyApp({ Component, pageProps }) {
   const toggleLogInModal = (
     cbAfterLogin = () => {},
     isSignUp = false,
-    role,
+    userRole,
   ) => {
     setCallbackAfterLogin(cbAfterLogin)
-    if (role) {
-      setRole(role)
+    if (userRole) {
+      setRole(userRole)
     }
     setIsLoginModalOpen(true)
     setIsSignUpModal(isSignUp)
@@ -163,6 +164,66 @@ function MyApp({ Component, pageProps }) {
     localStorage.setItem('token', '')
   }
 
+  const [pageChangingLoading, setPageChangingLoading] = useState({
+    coaches: false,
+    coachDetails: false,
+  })
+  Router.onRouteChangeStart = (url) => {
+    if (url.includes(routes.COACHES_LIST.path)) {
+      if (url.length > 8) {
+        return setPageChangingLoading({
+          ...pageChangingLoading,
+          coachDetails: true,
+        })
+      }
+      return setPageChangingLoading({
+        ...pageChangingLoading,
+        coaches: true,
+      })
+    }
+    return null
+  }
+  Router.onRouteChangeComplete = (url) => {
+    if (url.includes(routes.COACHES_LIST.path)) {
+      if (url.length > 8) {
+        return setPageChangingLoading({
+          ...pageChangingLoading,
+          coachDetails: false,
+        })
+      }
+      return setPageChangingLoading({
+        ...pageChangingLoading,
+        coaches: false,
+      })
+    }
+    return null
+  }
+  Router.onRouteChangeError = (url) => {
+    if (url.includes(routes.COACHES_LIST.path)) {
+      if (url.length > 8) {
+        return setPageChangingLoading({
+          ...pageChangingLoading,
+          coachDetails: false,
+        })
+      }
+      return setPageChangingLoading({
+        ...pageChangingLoading,
+        coaches: false,
+      })
+    }
+    return null
+  }
+
+  const renderComponent = () => {
+    if (pageChangingLoading.coaches) {
+      return <CoachesPageLoading />
+    }
+    if (pageChangingLoading.coachDetails) {
+      return <CoachDetailsPageLoading />
+    }
+    return <Component isLoggedIn={isLoggedIn} {...pageProps} />
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -174,8 +235,7 @@ function MyApp({ Component, pageProps }) {
         logOut,
       }}
     >
-      <Component isLoggedIn={isLoggedIn} {...pageProps} />
-
+      {renderComponent()}
       <LoginModal
         isSignUpModal={isSignUpModal}
         loading={loginLoading}

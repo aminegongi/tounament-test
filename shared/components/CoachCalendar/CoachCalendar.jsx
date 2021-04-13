@@ -16,8 +16,21 @@ import IsporitModal from '../IsporitModal/IsporitModal'
 export default function CoachCalendar({ coach, onSuccess }) {
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
   const [confirmationLoading, setConfirmationLoading] = useState(false)
+  const [requestNote, setRequestNote] = useState('')
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
   // const [coachingRequestApi, setCoachingRequestApi] = useState()
   const authContext = useContext(AuthContext)
+
+  const onOpenConfirmModal = () => {
+    if (!authContext.isLoggedIn) {
+      return authContext.toggleLogInModal(
+        () => () => setIsConfirmModalOpen(true),
+        false,
+        'player',
+      )
+    }
+    setIsConfirmModalOpen(true)
+  }
 
   const onCreateCoachingRequest = () => {
     if (authContext.userType === CLUB) {
@@ -29,6 +42,7 @@ export default function CoachCalendar({ coach, onSuccess }) {
       const result = await createCoachingRequest(
         {
           coachId: coach._id,
+          note: isEmpty(requestNote) ? undefined : requestNote,
           requests: selectedTimeSlots.map((el) => ({ availabilityId: el._id })),
         },
         setConfirmationLoading,
@@ -53,6 +67,24 @@ export default function CoachCalendar({ coach, onSuccess }) {
             'Vous ne pouvez pas réserver plus que 4 cours privés par jour!',
           )
         }
+        if (typeof result.data.message === 'string') {
+          const notFoundAvailability = coach.coachData.availabilities.find(
+            (el) =>
+              result.data.message.slice(0, result.data.message.indexOf(' ')) ===
+              el._id,
+          )
+          if (notFoundAvailability) {
+            return message.error(
+              `${coach.firstName} ${
+                coach.lastName
+              } n'est plus disponible a ${moment(
+                notFoundAvailability.startTime,
+                'YYYY-MM-DD HH:mm',
+              ).format('LLLL')}`,
+            )
+          }
+        }
+
         return message.error(
           "Ahhh! quelque chose s'est mal passé, réessayez plus tard. Merci",
         )
@@ -129,7 +161,7 @@ export default function CoachCalendar({ coach, onSuccess }) {
                       {moment(el.startTime, 'YYYY-MM-DD').format('dddd')}
                     </div>
                     <div className="coach-calendar__body__calendar-section__footer__item__date">
-                      {moment(el.startTime, 'YYYY-MM-DD').format('DD-MM-YYYY')}
+                      {moment(el.startTime, 'YYYY-MM-DD').format('LL')}
                     </div>
                     <div className="coach-calendar__body__calendar-section__footer__item__time">
                       {moment(el.startTime, 'YYYY-MM-DD HH:mm').format('HH:mm')}
@@ -150,8 +182,7 @@ export default function CoachCalendar({ coach, onSuccess }) {
                   <Button
                     type="submit"
                     id="coach-calendar-footer-confirm-button"
-                    loading={confirmationLoading}
-                    onClick={onCreateCoachingRequest}
+                    onClick={onOpenConfirmModal}
                     className="coach-calendar__body__calendar-section__footer__confirm-button"
                   >
                     Confirmer
@@ -163,24 +194,36 @@ export default function CoachCalendar({ coach, onSuccess }) {
         </div>
       </div>
 
-      {/* <IsporitModal
+      <IsporitModal
         className={`coach-calendar__modal `}
-        isVisible
+        isVisible={isConfirmModalOpen}
         footer={
           <div className="isporit-lex-h-center-v-center coach-calendar__modal">
-            <Button>Annuler</Button>
-            <Button className="coach-calendar__modal__confirm-btn">
+            <Button onClick={() => setIsConfirmModalOpen(false)}>
+              Annuler
+            </Button>
+            <Button
+              onClick={onCreateCoachingRequest}
+              loading={confirmationLoading}
+              className="coach-calendar__modal__confirm-btn"
+            >
               Confirmer
             </Button>
           </div>
         }
-        // onCancel={() => {
-        //   setIsCreateClubStep(false)
-        //   onCancel()
-        // }}
+        title="Note"
+        onCancel={() => {
+          return setIsConfirmModalOpen(false)
+        }}
       >
-        qq
-      </IsporitModal> */}
+        <textarea
+          onChange={(e) => setRequestNote(e.target.value)}
+          value={requestNote}
+          placeholder="Note pour l'entraineur"
+          rows={5}
+          className="isporit-input"
+        />
+      </IsporitModal>
     </div>
   )
 }

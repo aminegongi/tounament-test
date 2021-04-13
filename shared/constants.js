@@ -8,10 +8,29 @@ export const EXPERIENCE = 'experience'
 export const AVATAR =
   'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairFrizzle&accessoriesType=Prescription02&hairColor=PastelPink&facialHairType=BeardMedium&facialHairColor=Black&clotheType=Hoodie&clotheColor=Blue03&eyeType=Close&eyebrowType=AngryNatural&mouthType=Twinkle&skinColor=Light'
 
+export const FRONT_END_PLATFORM_URL = (token) => {
+  const { publicRuntimeConfig } = getConfig()
+
+  const { location } = typeof window !== 'undefined' && window
+  // return 'https://dev.isporit.com'
+  // if (localStorage) {
+  if (
+    location &&
+    location.host &&
+    (location.host.includes('localhost:3001') ||
+      location.host.includes('localhost:3000'))
+  ) {
+    return `https://dev.isporit.com?accessToken=${token}`
+  }
+  return `${publicRuntimeConfig.LOGIN_REDIRECT_URL}?accessToken=${token}`
+  // }
+  // return publicRuntimeConfig.LOGIN_REDIRECT_URL
+}
+
 export const SERVER_SIDE_API_BASE_URL = (req) => {
   const { publicRuntimeConfig } = getConfig()
   const { origin } = absoluteUrl(req)
-  // return 'https://app.isporit.com/api/'
+  // return 'https://dev.isporit.com/api/'
   if (origin.includes('localhost:3001') || origin.includes('localhost:3000')) {
     return 'https://dev.isporit.com/api/'
   }
@@ -21,7 +40,7 @@ export const CLIENT_SIDE_API_BASE_URL = () => {
   const { publicRuntimeConfig } = getConfig()
 
   const { host } = typeof window !== 'undefined' && window.location
-  // return 'https://app.isporit.com/api'
+  // return 'https://dev.isporit.com/api'
   if (
     host &&
     (host.includes('localhost:3001') || host.includes('localhost:3000'))

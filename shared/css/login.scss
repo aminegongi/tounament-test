@@ -18,6 +18,17 @@ body {
     //     align-items: center;
     // }
 
+    &__terms {
+        width: 390px;
+    }
+
+    .input-with-label {
+        margin-top: 15px;
+        input, select {
+            margin-top: 5px !important;
+        }
+    }
+
     .modal_container {
         position: fixed;
         width: 100vw;
@@ -202,6 +213,9 @@ body {
     .login_container {
         display: unset;
 
+        &__terms {
+            width: calc(100vw - 50px);
+        }
         .right_side {
             display: none;
         }
