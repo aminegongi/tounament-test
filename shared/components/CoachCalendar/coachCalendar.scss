@@ -2,10 +2,18 @@
     width: 732px;
 
     padding-bottom: 20px;
+
+    
     &__modal {
         &__confirm-btn, &__confirm-btn:hover, &__confirm-btn:focus {
             background-color: #26beb5;
             color: white;
+        }
+        textarea::placeholder {
+            color: rgb(187, 187, 187) !important;
+        }
+        .ant-modal-footer {
+            padding: 10px 13px !important;
         }
     }
 

@@ -207,11 +207,11 @@ export default function CoachCalendar({ coach, onSuccess }) {
               loading={confirmationLoading}
               className="coach-calendar__modal__confirm-btn"
             >
-              Confirmer
+              {isEmpty(requestNote) ? 'Envoyer sans remarque' : 'Envoyer'}
             </Button>
           </div>
         }
-        title="Note"
+        title="Remarque"
         onCancel={() => {
           return setIsConfirmModalOpen(false)
         }}
@@ -219,7 +219,7 @@ export default function CoachCalendar({ coach, onSuccess }) {
         <textarea
           onChange={(e) => setRequestNote(e.target.value)}
           value={requestNote}
-          placeholder="Remarque pour l'entraineur"
+          placeholder="si vous le voulez, vous pouvez envoyer au coach certaines informations vos concernant"
           rows={5}
           className="isporit-input"
         />

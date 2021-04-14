@@ -439,21 +439,18 @@ const SignUp = () => {
                     Deux mots de passe ne sont pas égaux
                   </span>
                 )}
-              <div className="login_container__terms" style={{ marginTop: 20 }}>
-                En vous inscrivant, vous acceptez{' '}
+              {/* <div className="login_container__terms" style={{ marginTop: 20 }}>
+                <input type="checkbox" /> En cochant cette case, j'accepte{' '}
                 <Link href={routes.TERMS_AND_CONDITIONS.path}>
                   <a href={routes.TERMS_AND_CONDITIONS.path}>
-                    <u>les Conditions d’utilisation</u>
+                    <u>
+                      les Conditions d’utilisation et Politique de
+                      confidentialité
+                    </u>
                   </a>
                 </Link>{' '}
-                et{' '}
-                <Link href={routes.PRIVACY_AND_POLICY.path}>
-                  <a href={routes.PRIVACY_AND_POLICY.path}>
-                    <u>la Politique de confidentialité</u>
-                  </a>
-                </Link>{' '}
-                de iSporit
-              </div>
+                de iSporit!
+              </div> */}
               <div className="signup_btn_container">
                 <button type="submit" className="primary_button">
                   S'INSCRIRE
