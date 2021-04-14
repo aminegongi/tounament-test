@@ -56,6 +56,10 @@
             &__filter {
                 display: none;
             }
+            &__coaches-list {
+            grid-template-columns: 100%;
+
+            }
         }
     }
 }
