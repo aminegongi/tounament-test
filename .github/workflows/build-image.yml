@@ -1,8 +1,10 @@
-name: Build image
+name: Push image
 
 on:
   push:
-    branches: [ master ]
+    branches:
+    - dev
+    - test
 
 jobs:
 
@@ -12,36 +14,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Set SERVER_IP, IMAGE_TAG and SERVICE_NAME
+    - name: Set BUILD_ID
       run: |
-        echo "SERVER_IP=$(curl -s https://config.isporit.com/ip)" >> $GITHUB_ENV
-        echo "IMAGE_TAG=latest" >> $GITHUB_ENV 
-        echo "SERVICE_NAME=prod_isporit_website" >> $GITHUB_ENV
+        branch=${GITHUB_REF##*/}
+        sha=${GITHUB_SHA::8}
+        ts=$(date +%s)
+        echo "BUILD_ID=${branch}-${sha}-${ts},latest-${branch}" >> $GITHUB_ENV
     
     - name: Build docker images using cache
       uses: whoan/docker-build-with-cache-action@v5
       with:
         # Name of the image to build
         image_name: isporit-website
-        image_tag: ${{env.IMAGE_TAG}}
+        image_tag: ${{env.BUILD_ID}}
         username: isporit
         password: ${{secrets.ISPORIT_ORG_TOKEN}} 
-        registry: ghcr.io 
-        
-    - name: Deploy to swarm
-      run: |
-        eval $(ssh-agent -s)
-        mkdir -m 0700 -p ~/.ssh/
-        ssh-keyscan ${{env.SERVER_IP}} >> ~/.ssh/known_hosts
-        ssh-add - <<< "$SSH_PRIVATE_KEY"
-        docker --host "ssh://root@${{env.SERVER_IP}}" \
-          service update --force --image ghcr.io/isporit/isporit-website:${{env.IMAGE_TAG}} ${{env.SERVICE_NAME}}
-      env:
-        SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
-        
-#     - uses: danielr1996/kubectl-action@1.0.0
-#       name: Deploy
-#       with:
-#           kubeconfig: ${{ SECRETS.KUBE_CONFIG_DATA }}
-#           args: rollout restart deployment/website-isporit -n website-isporit
-
+        registry: ghcr.io
