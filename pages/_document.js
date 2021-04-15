@@ -21,7 +21,7 @@ export default class extends Document {
             href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.15/antd.min.css"
             rel="stylesheet"
           />
-          {/* <Manifest href="/manifest.json" themeColor="#F0F0F0"/> */}
+          <Manifest href="/manifest.json" themeColor="#F0F0F0" />
         </Head>
         <body>
           <Main />
