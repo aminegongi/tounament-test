@@ -176,9 +176,9 @@ export default function Coaches({
   }
 
   const onSearch = (value) => {
-    if (value) {
-      setSelectedName(value.toLowerCase())
-    }
+    // if (value) {
+    setSelectedName(value.toLowerCase())
+    // }
   }
   const { Option } = Select
   const handleChange = (value) => {
