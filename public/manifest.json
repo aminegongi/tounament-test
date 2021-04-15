@@ -1,21 +1,67 @@
 {
-	"name": "Hello PWA",
-	"short_name": "Isporit",
+	"name": "iSporit",
+	"short_name": "iSporit",
 	"icons": [
 		{
-			"src": "/squash.png",
-			"sizes": "192x192",
-			"type": "image/png"
+		  "src": "/isporit-logo/72.png",
+		  "sizes": "72x72",
+		  "type": "image/png"
 		},
 		{
-			"src": "/topSectionTennisImage.png",
-			"sizes": "512x512",
-			"type": "image/png"
+		  "src": "/isporit-logo/96.png",
+		  "sizes": "96x96",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/120.png",
+		  "sizes": "120x120",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/128.png",
+		  "sizes": "128x128",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/144.png",
+		  "sizes": "144x144",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/152.png",
+		  "sizes": "152x152",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/167.png",
+		  "sizes": "167x167",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/180.png",
+		  "sizes": "180x180",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/192.png",
+		  "sizes": "192x192",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/384.png",
+		  "sizes": "384x384",
+		  "type": "image/png"
+		},
+		{
+		  "src": "/isporit-logo/512.png",
+		  "sizes": "512x512",
+		  "type": "image/png"
 		}
-	],
+	  ],
 	"start_url": ".",
 	"display": "standalone",
 	"orientation": "natural",
-	"background_color": "#FFFFFF",
-	"theme_color": "#FFFFFF"
+	"background_color": "#ffffff",
+	"theme_color": "#ffffff"
 }
+
