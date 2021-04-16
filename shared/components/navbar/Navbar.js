@@ -113,7 +113,16 @@ function NavbarIndex({
           </div>
         </section>
         <div className={`${'copyright'}`}>
-          © {moment().format('YYYY')} iSporit. All rights reserved
+          © {moment().format('YYYY')} iSporit. All rights reserved{' '}
+          <Link href={routes.TERMS_AND_CONDITIONS.path}>
+            <a href={routes.TERMS_AND_CONDITIONS.path}>
+              <b>
+                <u style={{ color: '#26beb5' }}>
+                  Terms & Conditions, Privacy Policy
+                </u>
+              </b>
+            </a>
+          </Link>
         </div>
       </div>
     )

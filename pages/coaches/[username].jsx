@@ -43,6 +43,7 @@ export default function CoachDetails({
   dances,
   userNotFound,
 }) {
+  console.log('coach: ', coach)
   const router = useRouter()
   // const [coachData, setCoachData] = useState()
   const [specialty, setSpecialty] = useState()
@@ -116,9 +117,9 @@ export default function CoachDetails({
           </div>
         )
       }
-      if (tab === RECOMMENDATION_TAB) {
-        return <CoachAvis coach={coach} />
-      }
+      // if (tab === RECOMMENDATION_TAB) {
+      //   return <CoachAvis coach={coach} />
+      // }
       if (tab === BIOGRAPHY_TAB) {
         return (
           <Biography
@@ -315,7 +316,7 @@ export default function CoachDetails({
                   >
                     A propos
                   </button>
-                  <button
+                  {/* <button
                     type="button"
                     className={`isporit-unset-button-css tabs__button__not-active ${
                       tab === 2 ? 'tabs__button__active' : ''
@@ -323,7 +324,7 @@ export default function CoachDetails({
                     onClick={() => setTab(RECOMMENDATION_TAB)}
                   >
                     Avis
-                  </button>
+                  </button> */}
                   <button
                     type="button"
                     className={`isporit-unset-button-css tabs__button__not-active ${

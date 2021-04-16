@@ -580,6 +580,7 @@ Coaches.getInitialProps = async ({ req }) => {
   const coachesRes = await fetch(
     `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
   )
+  console.log('coachesRes: ', coachesRes)
   const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
   const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
   const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)

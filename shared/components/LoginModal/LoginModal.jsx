@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import { Button, Radio } from 'antd'
+import { Button, message, Radio } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { CLUB, COACH, PLAYER } from '../../constants'
 import IsporitModal from '../IsporitModal/IsporitModal'
@@ -43,6 +43,23 @@ const LoginModal = ({
       [e.target.name]: e.target.value,
     })
 
+  const onUserSignUp = () => {
+    if (!data.isAcceptedTermsAndConditions) {
+      return message.error({
+        content:
+          'Vous devez accepter les Conditions d’utilisation et Politique de confidentialité pour vous inscrire',
+      })
+    }
+    if (role) {
+      data.userType = role
+    }
+    if (!loading && data.userType !== CLUB) {
+      onSignUp(data)
+    } else {
+      setIsCreateClubStep(true)
+    }
+  }
+
   const signUpUI = () => {
     if (isCreateClubStep) {
       return (
@@ -60,14 +77,7 @@ const LoginModal = ({
         <div className="login-modal__title">Créer un compte</div>
         <form
           onSubmit={(e) => {
-            if (role) {
-              data.userType = role
-            }
-            if (!loading && data.userType !== CLUB) {
-              onSignUp(data)
-            } else {
-              setIsCreateClubStep(true)
-            }
+            onUserSignUp()
             e.preventDefault()
           }}
           className="login-modal__body"
@@ -194,19 +204,25 @@ const LoginModal = ({
             </div>
           </div>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            En vous inscrivant, vous acceptez{' '}
+            <input
+              value={data.isAcceptedTermsAndConditions}
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  isAcceptedTermsAndConditions: !data.isAcceptedTermsAndConditions,
+                })
+              }
+              type="checkbox"
+            />{' '}
+            En cochant cette case, j'accepte{' '}
             <Link href={routes.TERMS_AND_CONDITIONS.path}>
               <a href={routes.TERMS_AND_CONDITIONS.path}>
-                <u>les Conditions d’utilisation</u>
+                <u>
+                  les Conditions d’utilisation et Politique de confidentialité
+                </u>
               </a>
             </Link>{' '}
-            et{' '}
-            <Link href={routes.PRIVACY_AND_POLICY.path}>
-              <a href={routes.PRIVACY_AND_POLICY.path}>
-                <u>la Politique de confidentialité</u>
-              </a>
-            </Link>{' '}
-            de iSporit
+            de iSporit!
           </div>
           <center>
             <button type="submit" className="isporit-unset-button-css">

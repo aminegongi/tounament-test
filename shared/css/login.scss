@@ -19,7 +19,11 @@ body {
     // }
 
     &__terms {
-        width: 390px;
+            width: 390px;
+            &__error {
+            width: 390px;
+            
+        }
     }
 
     .input-with-label {
@@ -215,6 +219,9 @@ body {
 
         &__terms {
             width: calc(100vw - 50px);
+            &__error {
+                width: calc(100vw - 50px);
+            }
         }
         .right_side {
             display: none;

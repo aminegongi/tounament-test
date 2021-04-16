@@ -3,7 +3,16 @@ import React from 'react'
 import './layout.scss'
 import Navbar from '../navbar/Navbar'
 
-export default function Layout({ searchBar, setSearchBar, children, coachesList, jobs, sports, dances, regions }) {
+export default function Layout({
+  searchBar,
+  setSearchBar,
+  children,
+  coachesList,
+  jobs,
+  sports,
+  dances,
+  regions,
+}) {
   return (
     <div className="layout_container">
       <div className="layout_container__navbar">
