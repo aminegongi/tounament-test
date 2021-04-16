@@ -33,7 +33,8 @@ import '../shared/global-style.scss'
 import routes from '../utils/routes'
 import {
   getJobsList,
-  getSpecialtiesList, getRegionsList,
+  getSpecialtiesList,
+  getRegionsList,
 } from '../utils/arrays.utils'
 
 // const { Panel } = Collapse
@@ -99,36 +100,36 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
-  if (!router.query.draft) {
-    return (
-      <div className="home_page">
-        <div className="home_page__counter-page">
-          <img
-            width="400px"
-            src="../../../icon/coachIsporit.png"
-            alt="iSporit"
-          />
-          <h1 className="home_page__counter-page__counter">
-            <Countdown
-              title=""
-              value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
-              format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
-            />
-          </h1>
-          <Link href={routes.CONTACT_US.path}>
-            <a href={routes.CONTACT_US.path}>
-              <Button
-                className="home_page__counter-page__contact"
-                type="primary"
-              >
-                Contact
-              </Button>
-            </a>
-          </Link>
-        </div>
-      </div>
-    )
-  }
+  // if (!router.query.draft) {
+  //   return (
+  //     <div className="home_page">
+  //       <div className="home_page__counter-page">
+  //         <img
+  //           width="400px"
+  //           src="../../../icon/coachIsporit.png"
+  //           alt="iSporit"
+  //         />
+  //         <h1 className="home_page__counter-page__counter">
+  //           <Countdown
+  //             title=""
+  //             value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
+  //             format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+  //           />
+  //         </h1>
+  //         <Link href={routes.CONTACT_US.path}>
+  //           <a href={routes.CONTACT_US.path}>
+  //             <Button
+  //               className="home_page__counter-page__contact"
+  //               type="primary"
+  //             >
+  //               Contact
+  //             </Button>
+  //           </a>
+  //         </Link>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="home_page">
@@ -213,7 +214,6 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               <h1 className="gerer_equipe_title">
                 Gérez vos équipes sportives efficacement et simplement n'importe
                 où vous soyez
-
               </h1>
               <div className="gerer_time_title">
                 <div>

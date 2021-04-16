@@ -31,7 +31,7 @@ import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
 
 const ABOUT_TAB = 1
-const RECOMMENDATION_TAB = 2
+// const RECOMMENDATION_TAB = 2
 const BIOGRAPHY_TAB = 3
 const CALENDAR_TAB = 4
 const SUCCESS_BOOKING_TAB = 5
@@ -116,9 +116,9 @@ export default function CoachDetails({
           </div>
         )
       }
-      if (tab === RECOMMENDATION_TAB) {
-        return <CoachAvis coach={coach} />
-      }
+      // if (tab === RECOMMENDATION_TAB) {
+      //   return <CoachAvis coach={coach} />
+      // }
       if (tab === BIOGRAPHY_TAB) {
         return (
           <Biography
@@ -315,7 +315,7 @@ export default function CoachDetails({
                   >
                     A propos
                   </button>
-                  <button
+                  {/* <button
                     type="button"
                     className={`isporit-unset-button-css tabs__button__not-active ${
                       tab === 2 ? 'tabs__button__active' : ''
@@ -323,7 +323,7 @@ export default function CoachDetails({
                     onClick={() => setTab(RECOMMENDATION_TAB)}
                   >
                     Avis
-                  </button>
+                  </button> */}
                   <button
                     type="button"
                     className={`isporit-unset-button-css tabs__button__not-active ${
