@@ -247,7 +247,7 @@ const SignUp = () => {
                   className={data.userType === 'player' && 'radio_group_button'}
                   value="player"
                 >
-                  Adherent/Joueur
+                  Adhérent/Joueur
                 </Radio.Button>
                 <Radio.Button
                   className={data.userType === 'coach' && 'radio_group_button'}
