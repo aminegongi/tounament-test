@@ -87,7 +87,7 @@ const LoginModal = ({
                   }
                   value="player"
                 >
-                  Joueur/Adhérent
+                  Joueur/Autre
                 </Radio.Button>
                 <Radio.Button
                   className={
