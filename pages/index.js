@@ -33,7 +33,8 @@ import '../shared/global-style.scss'
 import routes from '../utils/routes'
 import {
   getJobsList,
-  getSpecialtiesList, getRegionsList,
+  getSpecialtiesList,
+  getRegionsList,
 } from '../utils/arrays.utils'
 
 // const { Panel } = Collapse
@@ -99,36 +100,36 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
   }, [])
-  if (!router.query.draft) {
-    return (
-      <div className="home_page">
-        <div className="home_page__counter-page">
-          <img
-            width="400px"
-            src="../../../icon/coachIsporit.png"
-            alt="iSporit"
-          />
-          <h1 className="home_page__counter-page__counter">
-            <Countdown
-              title=""
-              value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
-              format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
-            />
-          </h1>
-          <Link href={routes.CONTACT_US.path}>
-            <a href={routes.CONTACT_US.path}>
-              <Button
-                className="home_page__counter-page__contact"
-                type="primary"
-              >
-                Contact
-              </Button>
-            </a>
-          </Link>
-        </div>
-      </div>
-    )
-  }
+  // if (!router.query.draft) {
+  //   return (
+  //     <div className="home_page">
+  //       <div className="home_page__counter-page">
+  //         <img
+  //           width="400px"
+  //           src="../../../icon/coachIsporit.png"
+  //           alt="iSporit"
+  //         />
+  //         <h1 className="home_page__counter-page__counter">
+  //           <Countdown
+  //             title=""
+  //             value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
+  //             format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+  //           />
+  //         </h1>
+  //         <Link href={routes.CONTACT_US.path}>
+  //           <a href={routes.CONTACT_US.path}>
+  //             <Button
+  //               className="home_page__counter-page__contact"
+  //               type="primary"
+  //             >
+  //               Contact
+  //             </Button>
+  //           </a>
+  //         </Link>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="home_page">
@@ -147,8 +148,8 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
         <meta name="author" content="iSporit" /> */}
         <meta
           name="description"
-          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
-iSporit vous offre la possibilité de choisir votre coach selon vos propres critères."
+          content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. Trouvez votre coach en Tunisie en seulement 3 clics"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:url" content="https://isporit.com/coaches" />
@@ -182,7 +183,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
           >
             <div className={`${'gerer_equipe_img'} `}>
               <h1 className="gerer_equipe_title">
-                Réservez dès maintenant votre entraîneur iSporit
+                Réservez dès maintenant votre coach iSporit
               </h1>
               <div className="gerer_time_title" id="cv">
                 <div>
@@ -210,10 +211,10 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
             className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
           >
             <div className={`${'gerer_equipe_img'} `}>
-              <h1 className="gerer_equipe_title">
+              <div className="gerer_equipe_title">
                 Gérez vos équipes sportives efficacement et simplement n'importe
                 où vous soyez
-              </h1>
+              </div>
               <div className="gerer_time_title">
                 <div>
                   iSporit vous fera gagner du temps pour gérer la présence de
