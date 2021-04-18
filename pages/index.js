@@ -148,8 +148,8 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
         <meta name="author" content="iSporit" /> */}
         <meta
           name="description"
-          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
-iSporit vous offre la possibilité de choisir votre coach selon vos propres critères."
+          content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. Trouvez votre coach en Tunisie en seulement 3 clics"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:url" content="https://isporit.com/coaches" />
@@ -183,7 +183,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
           >
             <div className={`${'gerer_equipe_img'} `}>
               <h1 className="gerer_equipe_title">
-                Réservez dès maintenant votre entraîneur iSporit
+                Réservez dès maintenant votre coach iSporit
               </h1>
               <div className="gerer_time_title" id="cv">
                 <div>
@@ -211,10 +211,10 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
             className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
           >
             <div className={`${'gerer_equipe_img'} `}>
-              <h1 className="gerer_equipe_title">
+              <div className="gerer_equipe_title">
                 Gérez vos équipes sportives efficacement et simplement n'importe
                 où vous soyez
-              </h1>
+              </div>
               <div className="gerer_time_title">
                 <div>
                   iSporit vous fera gagner du temps pour gérer la présence de
