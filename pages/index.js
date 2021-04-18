@@ -133,7 +133,7 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
   return (
     <div className="home_page">
       <Head>
-        <title>Accueil</title>
+        <title>iSporit - trouver un coach - réserver un coach</title>
 
         {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
@@ -213,7 +213,6 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
               <h1 className="gerer_equipe_title">
                 Gérez vos équipes sportives efficacement et simplement n'importe
                 où vous soyez
-
               </h1>
               <div className="gerer_time_title">
                 <div>
