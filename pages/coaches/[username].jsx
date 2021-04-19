@@ -31,7 +31,7 @@ import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
 
 const ABOUT_TAB = 1
-const RECOMMENDATION_TAB = 2
+// const RECOMMENDATION_TAB = 2
 const BIOGRAPHY_TAB = 3
 const CALENDAR_TAB = 4
 const SUCCESS_BOOKING_TAB = 5

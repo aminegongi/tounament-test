@@ -92,15 +92,6 @@ const LoginModal = ({
               >
                 <Radio.Button
                   className={
-                    data.userType === PLAYER &&
-                    'login-modal__radio-group-button'
-                  }
-                  value="player"
-                >
-                  Joueur
-                </Radio.Button>
-                <Radio.Button
-                  className={
                     data.userType === COACH && 'login-modal__radio-group-button'
                   }
                   value="coach"
@@ -114,6 +105,15 @@ const LoginModal = ({
                   value="club"
                 >
                   Organisation
+                </Radio.Button>
+                <Radio.Button
+                  className={
+                    data.userType === PLAYER &&
+                    'login-modal__radio-group-button'
+                  }
+                  value="player"
+                >
+                  Autre
                 </Radio.Button>
               </Radio.Group>
             </center>

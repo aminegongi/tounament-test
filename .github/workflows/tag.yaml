@@ -1,0 +1,26 @@
+name: Tag Image for production
+
+on:
+  release:
+    types:
+    - released
+
+env:
+  IMAGE_NAME: isporit-website
+  REGISTRY_NAME: ghcr.io/isporit
+
+jobs:
+  retag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Docker image retag
+        uses: tinact/docker.image-retag@1.0.2
+        with:
+          image_name: ${{ env.IMAGE_NAME }}
+          image_old_tag: latest-test
+          image_new_tag: ${{ github.event.release.tag_name }}
+          registry: ${{ env.REGISTRY_NAME }}
+          registry_username: isporit
+          registry_password: ${{ secrets.ISPORIT_ORG_TOKEN }}
