@@ -68,7 +68,6 @@ function MyApp({ Component, pageProps }) {
     fetchProfile()
     hotjar.initialize(1813801, 6)
 
-    console.log('window.location.href: ', window.location.href);
     if (window.location.href.includes('//isporit.com') || window.location.href.includes('//wwww.isporit.com')) {
       if (!window.GA_INITIALIZED) {
         initGA()
