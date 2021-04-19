@@ -147,6 +147,10 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
         />
         <meta name="author" content="iSporit" /> */}
         <meta
+          name="google-site-verification"
+          content="SmKuXG_ogrnKatGF5G46Au9BwdldAcL8wusBFFM9_ms"
+        />
+        <meta
           name="description"
           content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
 iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. Trouvez votre coach en Tunisie en seulement 3 clics"
@@ -192,11 +196,13 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                   professionnel en sport et yoga.
                 </div>
               </div>
-              <Link href={routes.COACHES_LIST.path}>
-                <button type="button" className="gerer_team">
-                  Réservez vos entraîneurs
-                </button>
-              </Link>
+              <div style={{marginTop:"50px"}}>
+                <Link href={routes.COACHES_LIST.path}>
+                  <a href={routes.COACHES_LIST.path} className="gerer_team">
+                    Réservez vos entraîneurs
+                  </a>
+                </Link>
+              </div>
             </div>
             <img
               className="img_illustration"
