@@ -219,7 +219,7 @@ export default function CoachCalendar({ coach, onSuccess }) {
         <textarea
           onChange={(e) => setRequestNote(e.target.value)}
           value={requestNote}
-          placeholder="si vous le voulez, vous pouvez envoyer au coach certaines informations vos concernant"
+          placeholder="si vous le voulez, vous pouvez envoyer au coach certaines informations vous concernant"
           rows={5}
           className="isporit-input"
         />

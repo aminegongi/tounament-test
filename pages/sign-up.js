@@ -244,23 +244,24 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, userType: e.target.value })}
                 buttonStyle="solid"
               >
-                <Radio.Button
-                  className={data.userType === 'player' && 'radio_group_button'}
-                  value="player"
-                >
-                  Adhérent/Joueur
-                </Radio.Button>
+                
                 <Radio.Button
                   className={data.userType === 'coach' && 'radio_group_button'}
                   value="coach"
                 >
-                  Entraineur
+                  Entraîneur
                 </Radio.Button>
                 <Radio.Button
                   className={data.userType === 'club' && 'radio_group_button'}
                   value="club"
                 >
                   Directeur de club
+                </Radio.Button>
+                <Radio.Button
+                  className={data.userType === 'player' && 'radio_group_button'}
+                  value="player"
+                >
+                  Autre
                 </Radio.Button>
               </Radio.Group>
             )}
@@ -291,7 +292,7 @@ const SignUp = () => {
                 name="firstName"
                 className="isporit-input"
                 maxLength={20}
-                // required
+                required
               />
               {localErrors.inputErrors && isEmpty(data.firstName) && (
                 <span className="error">Champ obligatoire</span>
@@ -304,7 +305,7 @@ const SignUp = () => {
                 name="lastname"
                 className="isporit-input"
                 maxLength={20}
-                // required
+                required
               />
               {localErrors.inputErrors && isEmpty(data.lastName) && (
                 <span className="error">Champ obligatoire</span>
@@ -317,7 +318,7 @@ const SignUp = () => {
                 name="email"
                 className="isporit-input"
                 disabled={!isEmpty(router.query.email)}
-                // required
+                required
               />
               {localErrors.inputErrors && isEmpty(data.email) && (
                 <div className="error">Champ obligatoire</div>
@@ -370,7 +371,7 @@ const SignUp = () => {
                 placeholder="Numéro de télèphone"
                 name="phoneNumber"
                 className="isporit-input"
-                // required
+                required
               />
               {localErrors.inputErrors && isEmpty(data.phoneNumber) && (
                 <div className="error">Champ obligatoire</div>
@@ -394,7 +395,7 @@ const SignUp = () => {
                   value={data.password}
                   name="password"
                   className="isporit-input"
-                  // required
+                  required
                 />
                 <Icon
                   type={showPassword.password1 ? 'eye' : 'eye-invisible'}
@@ -419,7 +420,7 @@ const SignUp = () => {
                   value={data.confirmPassword}
                   name="password"
                   className="isporit-input"
-                  // required
+                  required
                 />
                 <Icon
                   type={showPassword.password2 ? 'eye' : 'eye-invisible'}
@@ -453,7 +454,7 @@ const SignUp = () => {
                 />{' '}
                 En cochant cette case, j'accepte{' '}
                 <Link href={routes.TERMS_AND_CONDITIONS.path}>
-                  <a href={routes.TERMS_AND_CONDITIONS.path}>
+                  <a href={routes.TERMS_AND_CONDITIONS.path} target="_blank">
                     <u>
                       les Conditions d’utilisation et Politique de
                       confidentialité
