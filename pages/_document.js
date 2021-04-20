@@ -22,6 +22,10 @@ export default class extends Document {
             rel="stylesheet"
           />
           <Manifest href="/manifest.json" themeColor="#F0F0F0" />
+          <meta
+            name="google-site-verification"
+            content="SmKuXG_ogrnKatGF5G46Au9BwdldAcL8wusBFFM9_ms"
+          />
         </Head>
         <body>
           <Main />

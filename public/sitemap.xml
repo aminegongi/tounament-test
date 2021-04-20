@@ -1,53 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-   <url>
-
-      <loc>http://www.isporit.com/</loc>
-
-      <lastmod>2019-09-07</lastmod>
-
-      <changefreq>monthly</changefreq>
-
-      <priority>1.0</priority>
-
-   </url>
-    
-    <url>
-
-      <loc>http://www.isporit.com/contact-us</loc>
-
-      <lastmod>2019-09-07</lastmod>
-
-      <changefreq>monthly</changefreq>
-
-      <priority>1.0</priority>
-
-   </url>
-   
-    <url>
-
-      <loc>http://www.isporit.com/sign-up</loc>
-
-      <lastmod>2019-09-07</lastmod>
-
-      <changefreq>monthly</changefreq>
-
-      <priority>0.8</priority>
-
-   </url>
-
-    <url>
-
-      <loc>http://www.isporit.com/login</loc>
-
-      <lastmod>2019-09-07</lastmod>
-
-      <changefreq>monthly</changefreq>
-
-      <priority>0.8</priority>
-
-   </url>
-
-</urlset> 
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://isporit.com/</loc>
+	<lastmod>2021-04-19T12:58:03+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches</loc>
+	<lastmod>2021-04-19T12:58:06+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://isporit.com/sign-up</loc>
+	<lastmod>2021-04-19T12:58:10+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://isporit.com/terms-and-conditions</loc>
+	<lastmod>2021-04-19T12:58:10+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/malekkarbia8n3lfu6wzcmmz9hzaxnwda0vppgrngtcbcoue9frki5o3rwtr</loc>
+	<lastmod>2021-04-19T12:58:14+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/mohamedkharhv6jsyh55jo06urpicyylbuli5y7inrhv5tzvytrajgtftktj</loc>
+	<lastmod>2021-04-19T12:58:13+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/eyabenjeba4qpttk1eflrmcqvkhyw0bvincc0scfssi8tqewkp7e3lh6rn8u</loc>
+	<lastmod>2021-04-19T12:58:15+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/mohamedousxerjcwvhahlbm7g8j2wtzdzzw1iyczji2zf5w0gu4qxllfhuj3</loc>
+	<lastmod>2021-04-19T12:58:15+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/seifdridi2im6zvijmw0setbvngvosw7nhhujojsyaxgw7m4ieqenwtvzcue</loc>
+	<lastmod>2021-04-19T12:58:16+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/ramymnejacukc5uoounuh3dxqwpyene4xldhfveyyuxrgtnjql5lfuumukvb</loc>
+	<lastmod>2021-04-19T12:58:17+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/yassinedeb064ojoqcyhgl0rjzicy0vh3anxgqnahyqvbw5pyjkk8r6rtyr5</loc>
+	<lastmod>2021-04-19T12:58:20+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/samirnouriynr26sicshiqqrqwvypov8ikehmosmo5xjawxwljxkoedg41kq</loc>
+	<lastmod>2021-04-19T12:58:17+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/asmafoudhafmmqi0o5o4sjs0un5qexezfxjtkxsn8kaodmt4lvk0aqdppo6z</loc>
+	<lastmod>2021-04-19T12:58:19+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/salmenderb5yna19idjn6mqgsxoldf7bqasvzdin2vaym7xmtb9czr1pb0gx</loc>
+	<lastmod>2021-04-19T12:58:18+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/rymbelkhodwbpgtzk0kzac9ybh4mw5envcygkgq76yrfaoiv6rrlkhhuc6xq</loc>
+	<lastmod>2021-04-19T12:58:20+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/souhakoukiubyx9yhyvjtepfrw8oj6py9libj9leis9smh4ip0kzx9zk203l</loc>
+	<lastmod>2021-04-19T12:58:20+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/tabbendaliplbvebrviydj2gzb2tytcwmdyhpi1ag2sdtgzzjdbzez0gkfuu</loc>
+	<lastmod>2021-04-19T12:58:21+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/waelkhazrimdnmdwkm45yrzzvustxuhtr0kwrvqestrmhzgect4wlfiy2iob</loc>
+	<lastmod>2021-04-19T12:58:20+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/coaches/nedirtouheg5bpptzdq6vdbw11i4qusublvdexytdrhynemjc6wbc839p3ti</loc>
+	<lastmod>2021-04-19T12:58:20+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://isporit.com/login</loc>
+	<lastmod>2021-04-19T12:58:21+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://isporit.com/login?email=&amp;isLocalhost=&amp;env=</loc>
+	<lastmod>2021-04-19T12:58:21+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://isporit.com/forgot-password</loc>
+	<lastmod>2021-04-19T12:58:21+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://isporit.com/sign-up?email=&amp;isLocalhost=&amp;env=</loc>
+	<lastmod>2021-04-19T12:58:22+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+</urlset>

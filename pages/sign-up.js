@@ -125,7 +125,8 @@ const SignUp = () => {
       isEmpty(data.confirmPassword) ||
       !validatePhoneNumber(data.phoneNumber) ||
       data.phoneNumber.length < 7 ||
-      data.password !== data.confirmPassword
+      data.password !== data.confirmPassword ||
+      !data.isAcceptedTermsAndConditions
     ) {
       return setLocalErrors({ ...localErrors, inputErrors: true })
     }
@@ -243,23 +244,24 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, userType: e.target.value })}
                 buttonStyle="solid"
               >
-                <Radio.Button
-                  className={data.userType === 'player' && 'radio_group_button'}
-                  value="player"
-                >
-                  Adhérent/Joueur
-                </Radio.Button>
+                
                 <Radio.Button
                   className={data.userType === 'coach' && 'radio_group_button'}
                   value="coach"
                 >
-                  Entraineur
+                  Entraîneur
                 </Radio.Button>
                 <Radio.Button
                   className={data.userType === 'club' && 'radio_group_button'}
                   value="club"
                 >
                   Directeur de club
+                </Radio.Button>
+                <Radio.Button
+                  className={data.userType === 'player' && 'radio_group_button'}
+                  value="player"
+                >
+                  Autre
                 </Radio.Button>
               </Radio.Group>
             )}
@@ -319,12 +321,12 @@ const SignUp = () => {
                 required
               />
               {localErrors.inputErrors && isEmpty(data.email) && (
-                <span className="error">Champ obligatoire</span>
+                <div className="error">Champ obligatoire</div>
               )}
               {localErrors.inputErrors && !validateEmail(data.email) && (
-                <span className="error">
+                <div className="error">
                   Cette adresse email n'est pas valide
-                </span>
+                </div>
               )}
               {localErrors.emailAlreadyExists && (
                 <span className="error">Email existe déjà</span>
@@ -372,16 +374,16 @@ const SignUp = () => {
                 required
               />
               {localErrors.inputErrors && isEmpty(data.phoneNumber) && (
-                <span className="error">Champ obligatoire</span>
+                <div className="error">Champ obligatoire</div>
               )}
               {localErrors.inputErrors &&
                 !validatePhoneNumber(data.phoneNumber) && (
-                  <span className="error">
+                  <div className="error">
                     Numéro de téléphone n'est pas valide
-                  </span>
+                  </div>
                 )}
               {localErrors.inputErrors && data.phoneNumber.length < 7 && (
-                <span className="error">Au moins 8 numéros</span>
+                <div className="error">Au moins 8 numéros</div>
               )}
               <div className="isporit-password-input-with-icon">
                 <input
@@ -431,18 +433,28 @@ const SignUp = () => {
                 />
               </div>
               {localErrors.inputErrors && isEmpty(data.confirmPassword) && (
-                <span className="error">Champ obligatoire</span>
+                <div className="error">Champ obligatoire</div>
               )}
               {localErrors.inputErrors &&
                 data.password !== data.confirmPassword && (
-                  <span className="error">
+                  <div className="error">
                     Deux mots de passe ne sont pas égaux
-                  </span>
+                  </div>
                 )}
-              {/* <div className="login_container__terms" style={{ marginTop: 20 }}>
-                <input type="checkbox" /> En cochant cette case, j'accepte{' '}
+              <div className="login_container__terms" style={{ marginTop: 20 }}>
+                <input
+                  value={data.isAcceptedTermsAndConditions}
+                  onChange={(e) =>
+                    setData({
+                      ...data,
+                      isAcceptedTermsAndConditions: !data.isAcceptedTermsAndConditions,
+                    })
+                  }
+                  type="checkbox"
+                />{' '}
+                En cochant cette case, j'accepte{' '}
                 <Link href={routes.TERMS_AND_CONDITIONS.path}>
-                  <a href={routes.TERMS_AND_CONDITIONS.path}>
+                  <a href={routes.TERMS_AND_CONDITIONS.path} target="_blank">
                     <u>
                       les Conditions d’utilisation et Politique de
                       confidentialité
@@ -450,7 +462,14 @@ const SignUp = () => {
                   </a>
                 </Link>{' '}
                 de iSporit!
-              </div> */}
+              </div>
+              {localErrors.inputErrors &&
+                isEmpty(data.isAcceptedTermsAndConditions) && (
+                  <div className="error login_container__terms__error">
+                    Vous devez accepter les Conditions d’utilisation et
+                    Politique de confidentialité pour vous inscrire
+                  </div>
+                )}
               <div className="signup_btn_container">
                 <button type="submit" className="primary_button">
                   S'INSCRIRE

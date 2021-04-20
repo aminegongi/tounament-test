@@ -260,7 +260,7 @@ export default function CoachAboutBoxes({
                 coachData.playerData.experiencesYearsNumber && (
                   <div className="coachBox__content">
                     <div className="coachBox__content__title">
-                      Années en tant que joueur:{' '}
+                      Années à jouer (ou à pratiquer) :{' '}
                       <span className="coachBox__content__value">
                         {coachData.playerData.experiencesYearsNumber} ans
                       </span>

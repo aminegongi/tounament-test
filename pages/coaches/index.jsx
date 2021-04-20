@@ -282,18 +282,19 @@ export default function Coaches({
   return (
     <>
       <Head>
-        <title>Liste des coaches</title>
+        <title>
+          iSporit - trouver un coach de tennis, natation, fitness, yoga,
+          football, boxe en en Tunisie
+        </title>
         <meta
           name="description"
-          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
-iSporit vous offre la possibilité de choisir votre coach selon vos propres critères."
+          content="Trouvez et réservez en Tunisie votre coach de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:url" content="https://isporit.com/coaches" />
         <meta
           property="og:description"
-          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
-iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. "
+          content="Trouvez et réservez en Tunisie votre coach de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
         />
         <meta
           property="og:image"
@@ -580,6 +581,7 @@ Coaches.getInitialProps = async ({ req }) => {
   const coachesRes = await fetch(
     `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
   )
+  console.log('coachesRes: ', coachesRes)
   const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
   const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
   const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
