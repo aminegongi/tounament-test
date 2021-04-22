@@ -102,7 +102,7 @@ const Index = () => {
               imgthere="feature/club/siteweb.svg"
               content={[
                 {
-                  title: 'Gérez des joueur et des entraîneurs',
+                  title: 'Gérez des joueurs et des entraîneurs',
                   description:
                     'Suivez les performances de vos joueurs et le travail de vos entraîneurs en quelques clics.',
                 },
