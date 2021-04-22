@@ -2,7 +2,7 @@
 import React from 'react'
 
 function Error({ statusCode }) {
-  console.log('statusCode: ', statusCode)
+  // console.log('statusCode: ', statusCode)
   return (
     <p>
       {statusCode

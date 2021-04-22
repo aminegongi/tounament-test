@@ -43,7 +43,6 @@ export default function CoachDetails({
   dances,
   userNotFound,
 }) {
-  console.log('coach: ', coach)
   const router = useRouter()
   // const [coachData, setCoachData] = useState()
   const [specialty, setSpecialty] = useState()
