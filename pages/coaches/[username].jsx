@@ -43,7 +43,6 @@ export default function CoachDetails({
   dances,
   userNotFound,
 }) {
-  console.log('coach: ', coach)
   const router = useRouter()
   // const [coachData, setCoachData] = useState()
   const [specialty, setSpecialty] = useState()
@@ -378,6 +377,7 @@ CoachDetails.getInitialProps = async ({ query, req }) => {
   const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
   const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
   const jsonCoachRes = await coachRes.json()
+  // console.log("username",jsonCoachRes.find(coach=>coach.username==="chahidsouhsmuwpl79vaczgaefhtb3yrr6reumjy09ic0mjtdaem91uzi5f5"))
   const jsonJobsRes = await jobsRes.json()
   const jsonSportsRes = await sportsRes.json()
   const jsonDancesRes = await danceRes.json()
