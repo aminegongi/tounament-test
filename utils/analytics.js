@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+// import { useRouter } from 'next/router'
+// import { useEffect } from 'react'
 import ReactGA from 'react-ga'
-import { FB_PIXEL_ID } from '../shared/constants'
+// import { FB_PIXEL_ID } from '../shared/constants'
 // import ReactPixel from 'react-facebook-pixel'
 // import { FB_PIXEL_ID } from '../shared/constants'
 
@@ -16,33 +16,6 @@ export const logEvent = (category = '', action = '') => {
   if (category && action) {
     ReactGA.event({ category, action })
   }
-}
-
-export const useFbPixelAnalytics = () => {
-  const router = useRouter()
-  useEffect(() => {
-    let fb
-
-    function onRouteChange(url) {
-      fb.pageView()
-    }
-
-    import('react-facebook-pixel')
-      .then((module) => (fb = module.default))
-      .then(() => {
-        fb.init(FB_PIXEL_ID, {
-          autoConfig: true,
-          debug: true,
-        })
-        fb.pageView()
-      })
-
-    router.events.on('routeChangeComplete', onRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChange)
-    }
-  }, [])
-  return null
 }
 
 // export const initFBPIXEL = () => {
