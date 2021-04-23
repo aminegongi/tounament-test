@@ -62,7 +62,6 @@ export default function CoachAboutBoxes({
     coachData &&
     coachData.coachingPhotos &&
     coachData.coachingPhotos.length >= minimumPhotosNumber
-
   const isLocationEmpty = () => {
     if (
       coachData &&
@@ -107,8 +106,8 @@ export default function CoachAboutBoxes({
     if (
       coachData &&
       coachData.privateCourseData &&
-      coachData.privateCourseData.sessionPrices && 
-      coachData.privateCourseData.sessionPrices.length!==0      
+      coachData.privateCourseData.sessionPrices &&
+      coachData.privateCourseData.sessionPrices.length !== 0
     ) {
       return false
     }
@@ -260,7 +259,7 @@ export default function CoachAboutBoxes({
                 coachData.playerData.experiencesYearsNumber && (
                   <div className="coachBox__content">
                     <div className="coachBox__content__title">
-                      Années en tant que joueur:{' '}
+                      Années à jouer (ou à pratiquer) :{' '}
                       <span className="coachBox__content__value">
                         {coachData.playerData.experiencesYearsNumber} ans
                       </span>
@@ -312,27 +311,38 @@ export default function CoachAboutBoxes({
                     <span className="coachBox__content__value">
                       {mainJob && (
                         <>
-                          <b>{mainJob.translations.fr}</b> (
+                          <b>{mainJob.translations.fr}</b>
                           {specialty.map((el, index) => {
-                            if (index !== specialty.length - 1) {
-                              return `${el.translations.fr}, `
+                            let str = ''
+                            if (index === 0) {
+                              str += ' ('
                             }
-                            return el.translations.fr
+                            if (index !== specialty.length - 1) {
+                              str += `${el.translations.fr}, `
+                            } else {
+                              str += `${el.translations.fr})`
+                            }
+                            return str
                           })}
-                          ){!isEmpty(otherJobs) && ','}{' '}
+                          {!isEmpty(otherJobs) && ','}{' '}
                         </>
                       )}
                       {otherJobs &&
                         otherJobs.map((oj) => (
                           <>
-                            <b>{oj.job.translations.fr}</b> (
+                            <b>{oj.job.translations.fr}</b>
                             {oj.specialties.map((el, index) => {
-                              if (index !== specialty.length - 1) {
-                                return `${el.translations.fr}, `
+                              let str = ''
+                              if (index === 0) {
+                                str += ' ('
                               }
-                              return el.translations.fr
+                              if (index !== oj.specialties.length - 1) {
+                                str += `${el.translations.fr}, `
+                              } else {
+                                str += `${el.translations.fr})`
+                              }
+                              return str
                             })}
-                            )
                           </>
                         ))}
                     </span>

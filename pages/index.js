@@ -134,7 +134,7 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
   return (
     <div className="home_page">
       <Head>
-        <title>Accueil</title>
+        <title>iSporit - trouver un coach - réserver un coach</title>
 
         {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
@@ -146,6 +146,7 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
           content="sport,clubs,coaches,players,tennis,football"
         />
         <meta name="author" content="iSporit" /> */}
+       
         <meta
           name="description"
           content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
@@ -192,16 +193,18 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                   professionnel en sport et yoga.
                 </div>
               </div>
-              <Link href={routes.COACHES_LIST.path}>
-                <button type="button" className="gerer_team">
-                  Réservez vos entraîneurs
-                </button>
-              </Link>
+              <div style={{marginTop:"50px"}}>
+                <Link href={routes.COACHES_LIST.path}>
+                  <a href={routes.COACHES_LIST.path} className="gerer_team">
+                    Réservez vos entraîneurs
+                  </a>
+                </Link>
+              </div>
             </div>
             <img
               className="img_illustration"
               src="icon/coachesBanner.png"
-              alt=""
+              alt="trouver un coach, réserver un coach"
             />
           </div>
         </div>
