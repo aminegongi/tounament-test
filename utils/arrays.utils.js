@@ -1,5 +1,20 @@
-import { flatten, isEmpty } from 'lodash'
+import { flatten, isEmpty, orderBy } from 'lodash'
 import moment from 'moment'
+
+export const coachesListOrderBy = (coachesList) =>
+  orderBy(
+    coachesList.map((el) => ({
+      ...el,
+      coachData: {
+        ...el.coachData,
+        availabilities: el.coachData.availabilities.filter((s) =>
+          moment().isSameOrBefore(s.startTime),
+        ),
+      },
+    })),
+    ['recommandAsCoach', (o) => o.coachData.availabilities.length],
+    ['desc', 'desc'],
+  )
 
 export const getFilteredCoaches = (
   coaches,
@@ -12,29 +27,28 @@ export const getFilteredCoaches = (
     coachingLevel,
     coachingAges,
     regions,
-    sessionDate
+    sessionDate,
   },
 ) => {
   let filteredCoaches = coaches
-  if(sessionDate){
+  if (sessionDate) {
     filteredCoaches = filteredCoaches.filter(
       (coach) =>
         coach.coachData &&
-        coach.coachData.availabilities.find(
-          (availability) =>{
-            return (
-              moment(availability.startTime, 'YYYY-MM-DD HH:mm').format(
-                'YYYYMMDDHH',
-              ) === moment(sessionDate, 'YYYY-MM-DD HH:mm').format('YYYYMMDDHH')
-            )
-          }
-        ),
+        coach.coachData.availabilities.find((availability) => {
+          return (
+            moment(availability.startTime, 'YYYY-MM-DD HH:mm').format(
+              'YYYYMMDDHH',
+            ) === moment(sessionDate, 'YYYY-MM-DD HH:mm').format('YYYYMMDDHH')
+          )
+        }),
     )
   }
   if (name) {
     filteredCoaches = filteredCoaches.filter(
       (coach) =>
-        coach.firstName.toLowerCase().includes(name) || coach.lastName.toLowerCase().includes(name),
+        coach.firstName.toLowerCase().includes(name) ||
+        coach.lastName.toLowerCase().includes(name),
     )
   }
   if (job) {
@@ -85,15 +99,14 @@ export const getFilteredCoaches = (
         ),
     )
   }
-  return filteredCoaches
+  return coachesListOrderBy(filteredCoaches)
 }
 export const getJobsList = (coaches, jobs) => {
-  let list = []
+  const list = []
   const jobsList = Array.from(
     new Set(
       coaches.map((coach) => {
-        
-          if (coach.coachData && coach.coachData.job) return coach.coachData.job
+        if (coach.coachData && coach.coachData.job) return coach.coachData.job
       }),
     ),
   )
@@ -106,7 +119,7 @@ export const getJobsList = (coaches, jobs) => {
 }
 
 export const getSpecialtiesList = (coaches, specialties) => {
-  let list = []
+  const list = []
   const specialtiesList = Array.from(
     new Set(
       flatten(
@@ -125,7 +138,7 @@ export const getSpecialtiesList = (coaches, specialties) => {
   return list
 }
 export const getRegionsList = (coaches, regions) => {
-  let list = []
+  const list = []
   const regionsList = Array.from(
     new Set(
       flatten(

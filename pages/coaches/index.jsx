@@ -6,7 +6,7 @@ import { Input, Select, Modal } from 'antd'
 import '../../shared/css/coaches.scss'
 import '../../shared/global-style.scss'
 import Head from 'next/head'
-import { isEmpty } from 'lodash'
+import { isEmpty, orderBy, sortBy } from 'lodash'
 import fetch from 'isomorphic-unfetch'
 import { useMediaPredicate } from 'react-media-hook'
 import { useRouter } from 'next/router'
@@ -28,6 +28,7 @@ import CardProfileCoach from '../../shared/components/CardProfileCoachFilter/Car
 import affiche from '../../public/icon/Banniere.png'
 import Layout from '../../shared/components/layout/Layout'
 import {
+  coachesListOrderBy,
   getFilteredCoaches,
   getJobsList,
   getRegionsList,
@@ -44,7 +45,8 @@ export default function Coaches({
   dances,
   regions,
 }) {
-  const [dataCopy, setDataCopy] = useState(coachesList)
+  const [dataCopy, setDataCopy] = useState(coachesListOrderBy(coachesList))
+
   const [selectedName, setSelectedName] = useState()
 
   const [selectedJob, setSelectedJob] = useState({})
@@ -189,7 +191,7 @@ export default function Coaches({
           ? -1
           : 1,
       )
-      setDataCopy(sortByAlphabetical)
+      setDataCopy(coachesListOrderBy(sortByAlphabetical))
     } else if (value.key === 'Tout') {
       setDataCopy(
         getFilteredCoaches(
@@ -214,12 +216,12 @@ export default function Coaches({
           ? 1
           : -1,
       )
-      setDataCopy(sortByExperience)
+      setDataCopy(coachesListOrderBy(sortByExperience))
     } else if (value.key === 'recommander') {
       const sortByRecommend = [...dataCopy].sort((a, b) =>
         a.averageRate < b.averageRate ? 1 : -1,
       )
-      setDataCopy(sortByRecommend)
+      setDataCopy(coachesListOrderBy(sortByRecommend))
     }
   }
   const deleteFilter = () => {
@@ -541,6 +543,10 @@ export default function Coaches({
               {/* <div className="lineprofilecoach" /> */}
               <div className="coaches__coach_details__list_of_coach__card">
                 {paginate(
+                  // [
+                  //   ...dataCopy.filter((el) => el.recommandAsCoach),
+                  //   ...dataCopy.filter((el) => !el.recommandAsCoach),
+                  // ],
                   dataCopy,
                   nbr_of_card_per_page,
                   pageNumber,
@@ -581,7 +587,6 @@ Coaches.getInitialProps = async ({ req }) => {
   const coachesRes = await fetch(
     `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
   )
-  console.log('coachesRes: ', coachesRes)
   const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
   const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
   const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
