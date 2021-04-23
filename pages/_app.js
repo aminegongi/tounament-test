@@ -22,6 +22,7 @@ import LoginModal from '../shared/components/LoginModal/LoginModal'
 import routes from '../utils/routes'
 import CoachDetailsPageLoading from '../shared/components/CoachDetailsPageLoading/CoachDetailsPageLoading'
 import CoachesPageLoading from '../shared/components/CoachesPageLoading/CoachesPageLoading'
+import FacebookPixel from '../shared/components/FacebookPixel'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -68,7 +69,10 @@ function MyApp({ Component, pageProps }) {
     fetchProfile()
     hotjar.initialize(1813801, 6)
 
-    if (window.location.href.includes('//isporit.com') || window.location.href.includes('//wwww.isporit.com')) {
+    if (
+      window.location.href.includes('//isporit.com') ||
+      window.location.href.includes('//wwww.isporit.com')
+    ) {
       if (!window.GA_INITIALIZED) {
         initGA()
         window.GA_INITIALIZED = true
@@ -226,27 +230,29 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <AuthContext.Provider
-      value={{
-        userProfile,
-        isLoggedIn,
-        userType,
-        fetchUserProfileLoading,
-        toggleLogInModal,
-        logOut,
-      }}
-    >
-      {renderComponent()}
-      <LoginModal
-        isSignUpModal={isSignUpModal}
-        loading={loginLoading}
-        onLogin={onLogin}
-        onSignUp={onSignUp}
-        role={role}
-        isVisible={isLoginModalOpen}
-        onCancel={() => setIsLoginModalOpen(false)}
-      />
-    </AuthContext.Provider>
+    <FacebookPixel>
+      <AuthContext.Provider
+        value={{
+          userProfile,
+          isLoggedIn,
+          userType,
+          fetchUserProfileLoading,
+          toggleLogInModal,
+          logOut,
+        }}
+      >
+        {renderComponent()}
+        <LoginModal
+          isSignUpModal={isSignUpModal}
+          loading={loginLoading}
+          onLogin={onLogin}
+          onSignUp={onSignUp}
+          role={role}
+          isVisible={isLoginModalOpen}
+          onCancel={() => setIsLoginModalOpen(false)}
+        />
+      </AuthContext.Provider>
+    </FacebookPixel>
   )
 }
 

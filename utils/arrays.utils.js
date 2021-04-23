@@ -12,7 +12,7 @@ export const coachesListOrderBy = (coachesList) =>
         ),
       },
     })),
-    ['recommandAsCoach', (o) => o.coachData.availabilities.length],
+    ['recommendAsCoach', (o) => o.coachData.availabilities.length],
     ['desc', 'desc'],
   )
 

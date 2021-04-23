@@ -1,6 +1,8 @@
 import getConfig from 'next/config'
 import absoluteUrl from 'next-absolute-url'
 
+export const FB_PIXEL_ID = 475658260248334
+
 export const ALL = 'Tout'
 export const ALPHABETICAL = 'alphabetique'
 export const RECOMMEND = 'recommander'
