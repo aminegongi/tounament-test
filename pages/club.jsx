@@ -13,6 +13,8 @@ import Join from '../shared/components/joinplatforme/Join'
 import '../shared/global-style.scss'
 
 import routes from '../utils/routes'
+import { FB_PIXEL_ID } from '../shared/constants'
+import FacebookPixel from '../shared/components/FacebookPixel'
 
 const Index = () => {
   // const [lang, setLang] = useState(undefined)
@@ -37,6 +39,7 @@ const Index = () => {
           content="sport,clubs,coaches,players,tennis,football..."
         />
         <meta name="author" content="iSporit" />
+        <FacebookPixel />
       </Head>
       <Layout>
         <div className="postplatforme">

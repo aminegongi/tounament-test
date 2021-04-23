@@ -18,6 +18,7 @@ import {
   SERVER_SIDE_API_BASE_URL,
   levels,
   ages,
+  FB_PIXEL_ID,
 } from '../../shared/constants'
 import FilterCoach from '../../shared/components/FilterCoach/FilterCoach'
 import Experiencefilter from '../../shared/components/Experiencefilter/Experiencefilter'
@@ -35,6 +36,7 @@ import {
   getSpecialtiesList,
 } from '../../utils/arrays.utils'
 import { getFormattedNumber } from '../../utils/number.utils'
+import FacebookPixel from '../../shared/components/FacebookPixel'
 
 const { Search } = Input
 
@@ -303,6 +305,7 @@ export default function Coaches({
           content="https://isporit.com/icon/coachIsporit.png"
         />
         <link rel="canonical" href="https://isporit.com/coaches" />
+        <FacebookPixel />
       </Head>
       <Layout>
         <div className="coaches ">

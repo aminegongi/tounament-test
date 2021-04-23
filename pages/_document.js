@@ -2,6 +2,7 @@
 import React from 'react'
 import Document, { Head, Main, NextScript, Html } from 'next/document'
 import { Manifest } from 'next-manifest'
+import { FB_PIXEL_ID } from '../shared/constants'
 
 export default class extends Document {
   //   static getInitialProps({renderPage}) {
