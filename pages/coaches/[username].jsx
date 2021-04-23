@@ -15,6 +15,7 @@ import {
   SERVER_SIDE_API_BASE_URL,
   CLUB,
   FRONT_END_PLATFORM_URL,
+  FB_PIXEL_ID,
 } from '../../shared/constants'
 // import CoachAboutBoxes from '../../shared/components/ContactCoach/ContactCoach'
 import CoachBox from '../../shared/components/CoachBox/CoachBox'
@@ -29,6 +30,7 @@ import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
+import FacebookPixel from '../../shared/components/FacebookPixel'
 
 const ABOUT_TAB = 1
 // const RECOMMENDATION_TAB = 2
@@ -251,6 +253,7 @@ export default function CoachDetails({
           rel="canonical"
           href={`https://isporit.com/coaches/${coach.username}`}
         />
+        <FacebookPixel />
       </Head>
       <Layout>
         <div className="coach">

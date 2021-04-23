@@ -22,7 +22,7 @@ import LoginModal from '../shared/components/LoginModal/LoginModal'
 import routes from '../utils/routes'
 import CoachDetailsPageLoading from '../shared/components/CoachDetailsPageLoading/CoachDetailsPageLoading'
 import CoachesPageLoading from '../shared/components/CoachesPageLoading/CoachesPageLoading'
-import FacebookPixel from '../shared/components/FacebookPixel'
+// import FacebookPixel from '../shared/components/FacebookPixel'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -230,29 +230,27 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <FacebookPixel>
-      <AuthContext.Provider
-        value={{
-          userProfile,
-          isLoggedIn,
-          userType,
-          fetchUserProfileLoading,
-          toggleLogInModal,
-          logOut,
-        }}
-      >
-        {renderComponent()}
-        <LoginModal
-          isSignUpModal={isSignUpModal}
-          loading={loginLoading}
-          onLogin={onLogin}
-          onSignUp={onSignUp}
-          role={role}
-          isVisible={isLoginModalOpen}
-          onCancel={() => setIsLoginModalOpen(false)}
-        />
-      </AuthContext.Provider>
-    </FacebookPixel>
+    <AuthContext.Provider
+      value={{
+        userProfile,
+        isLoggedIn,
+        userType,
+        fetchUserProfileLoading,
+        toggleLogInModal,
+        logOut,
+      }}
+    >
+      {renderComponent()}
+      <LoginModal
+        isSignUpModal={isSignUpModal}
+        loading={loginLoading}
+        onLogin={onLogin}
+        onSignUp={onSignUp}
+        role={role}
+        isVisible={isLoginModalOpen}
+        onCancel={() => setIsLoginModalOpen(false)}
+      />
+    </AuthContext.Provider>
   )
 }
 

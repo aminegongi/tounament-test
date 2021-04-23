@@ -7,8 +7,10 @@ export const coachesListOrderBy = (coachesList) =>
       ...el,
       coachData: {
         ...el.coachData,
-        availabilities: el.coachData.availabilities.filter((s) =>
-          moment().isSameOrBefore(s.startTime),
+        availabilities: el.coachData.availabilities.filter(
+          (s) =>
+            moment(s.startTime).isSameOrBefore(moment().add('day', 7)) &&
+            moment().isSameOrBefore(s.startTime),
         ),
       },
     })),

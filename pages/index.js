@@ -6,10 +6,7 @@ import PropTypes from 'prop-types'
 import fetch from 'isomorphic-unfetch'
 
 import { useRouter } from 'next/router'
-import { Button } from 'antd'
 import Link from 'next/link'
-import Countdown from 'antd/lib/statistic/Countdown'
-import moment from 'moment'
 import { useMediaPredicate } from 'react-media-hook'
 import Layout from '../shared/components/layout/Layout'
 import '../shared/css/home.scss'
@@ -36,6 +33,7 @@ import {
   getSpecialtiesList,
   getRegionsList,
 } from '../utils/arrays.utils'
+import FacebookPixel from '../shared/components/FacebookPixel'
 
 // const { Panel } = Collapse
 
@@ -64,17 +62,6 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
   const mobile = useMediaPredicate('(max-width: 850px)')
 
   const [isMobile, setIsMobile] = useState(false)
-  useEffect(() => {
-    if (mobile !== isMobile) {
-      setIsMobile(mobile)
-    }
-  }, [mobile])
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   const isVisibleElement = (el) => {
     if (!el) return false
@@ -96,6 +83,18 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
       setSearchBar(false)
     }
   }
+  useEffect(() => {
+    if (mobile !== isMobile) {
+      setIsMobile(mobile)
+    }
+  }, [mobile])
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   useEffect(() => {
     // window.location.href = "/contact-us";
     // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
@@ -146,7 +145,7 @@ const Index = ({ coachesList, jobs, sports, dances, regions }) => {
           content="sport,clubs,coaches,players,tennis,football"
         />
         <meta name="author" content="iSporit" /> */}
-       
+
         <meta
           name="description"
           content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
@@ -164,6 +163,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
           content="https://isporit.com/logo_isporit_final.png"
         />
         <link rel="canonical" href="https://isporit.com" />
+        <FacebookPixel />
       </Head>
 
       <Layout
@@ -193,7 +193,7 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                   professionnel en sport et yoga.
                 </div>
               </div>
-              <div style={{marginTop:"50px"}}>
+              <div style={{ marginTop: '50px' }}>
                 <Link href={routes.COACHES_LIST.path}>
                   <a href={routes.COACHES_LIST.path} className="gerer_team">
                     Réservez vos entraîneurs
