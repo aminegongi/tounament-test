@@ -110,6 +110,7 @@ input:focus {
 
 .isporit-password-input-with-icon {
     position: relative;
+
     i {
         font-size: 18px;
         position: absolute;
@@ -195,9 +196,11 @@ input:focus {
 
 .isporit-breadcrumb-link {
     color: #26beb5 !important;
+
     a {
         color: #26beb5 !important;
     }
+
     &:hover {
         color: #26beb5 !important;
     }
@@ -220,7 +223,7 @@ input:focus {
         }
     }
 
-    > div {
+    >div {
         border-right: 1px solid gray;
         width: 100%;
         padding-right: 10px;
@@ -288,7 +291,7 @@ input:focus {
     // opacity 50ms ease 20ms,
     // pointer-events 0ms 150ms !important;
 
-    > div {
+    >div {
         border-right: 1px solid gray;
         width: 100%;
         padding-right: 20px;
@@ -340,6 +343,9 @@ input:focus {
         justify-content: center;
         align-items: center;
         background-color: #ffffff;
+        .ant-btn-primary{
+            background-color: #019da9 !important;
+        }
     }
 }
 

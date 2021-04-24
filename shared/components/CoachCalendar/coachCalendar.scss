@@ -3,15 +3,20 @@
 
     padding-bottom: 20px;
 
-    
+
     &__modal {
-        &__confirm-btn, &__confirm-btn:hover, &__confirm-btn:focus {
+
+        &__confirm-btn,
+        &__confirm-btn:hover,
+        &__confirm-btn:focus {
             background-color: #26beb5;
             color: white;
         }
+
         textarea::placeholder {
             color: rgb(187, 187, 187) !important;
         }
+
         .ant-modal-footer {
             padding: 10px 13px !important;
         }
@@ -63,6 +68,7 @@
         padding-top: 30px;
         max-width: 100%;
         margin: auto;
+
         &__profile-information {
             &__card {
                 margin-bottom: 32px;
@@ -103,16 +109,18 @@
                     padding: 8px 35px;
                     font-size: 17px;
                     font-weight: 500;
-                    color: #ffffff;
+                    color: #ffffff !important;
                     width: max-content;
                     border-radius: 10px;
                     box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16);
-                    background-color: #26beb5;
+                    background-color: #26beb5 !important;
+                    ;
                     margin-top: 7px;
                     height: unset;
 
                     &:hover {
-                        background-color: #26beb5;
+                        background-color: #26beb5 !important;
+                        border-color: #26beb5 !important;
                         color: #ffffff;
                     }
                 }
@@ -164,6 +172,7 @@
 @media only screen and (max-width: 992px) {
     .coach-calendar {
         width: 100%;
+
         &__body {
             display: grid;
             // padding: 15px 21px 21px 21px;
