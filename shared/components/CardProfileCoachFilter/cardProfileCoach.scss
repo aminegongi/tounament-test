@@ -10,14 +10,14 @@
         padding-bottom: 52px;
 
         &__avatar {
-            padding-top: 1.063rem;
-            img {
-                width: 143px;
-                height: 143px;
-                height: 143px;
-                object-fit: contain;
 
-                border-radius: 50%;
+            img {
+                width: 100%;
+                height: 275px;
+                object-fit: cover;
+                border-top-left-radius: 0.625rem;
+                border-top-right-radius: 0.625rem;
+                margin-bottom:5px;
             }
         }
 
@@ -36,6 +36,7 @@
             position: absolute;
             top: 0;
             right: 0;
+
             img {
                 position: absolute;
                 top: 9px;
