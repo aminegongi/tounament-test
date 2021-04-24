@@ -1,83 +1,139 @@
 .weekly-booking-calendar {
-    border-radius: 10px;
     box-shadow: 3px 3px 20px 0 rgba(190, 190, 190, 0.16);
     border: solid 1px #d5d5d5;
     background-color: #ffffff;
-    display: grid;
-    grid-template-columns: repeat(2, 2fr);
-    column-gap: 20px;
-    overflow: hidden;
     padding: 18px 10px 44px;
+    border-radius: 10px;
 
-    &__calendar {
-        border: none !important;
-        .react-calendar__tile--active {
-            color: #000000a6;
+    &__legend {
+        &__free {
+            width: 25px;
+            height: 25px;
+            background-color: #26beb5;
+            display: inline-block;
+            margin-right: 5px;
         }
-        &__day {
-            background-color: #ff8760 !important;
-            color: white !important;
-            &.react-calendar__tile--active {
-                color: white;
-            }
-            &.react-calendar__tile:disabled {
-                color: #000000a6;
-            }
+
+        &__free {
+            width: 25px;
+            height: 25px;
+            background-color: #26beb5;
+            display: inline-block;
+            margin-right: 5px;
         }
-        .react-calendar__tile--active {
-            background-color: #26beb5 !important;
-            color: white;
-        }
-        .react-calendar__tile:disabled {
-            background-color: white;
-        }
-        .react-calendar__navigation__next2-button,
-        .react-calendar__navigation__prev2-button {
-            display: none;
-        }
-        .react-calendar__navigation__label {
-            pointer-events: none;
-        }
+
     }
 
-    &__time-slots {
-        &__date {
-            @media only screen and (min-width: 992px) {
-                max-width: 340px;
+    &__box {
+
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        column-gap: 20px;
+        overflow: hidden;
+
+
+        &__calendar {
+            border: none !important;
+
+            .react-calendar__tile--active {
+                color: #000000a6;
             }
-            margin: 12px 0 25px;
-            font-weight: 500;
-            font-size: 15px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            &__labels {
-                display: flex;
-                &__icon {
-                    color: #26beb5;
+
+            &__day {
+                background-color: #26beb5 !important;
+                color: white !important;
+
+                &.react-calendar__tile--active {
+                    color: white;
                 }
-                &__separator {
-                    margin: 0 10px;
+
+                &.react-calendar__tile:disabled {
+                    color: #000000a6;
                 }
+            }
+
+            &__full {
+                background-color: #D3D3D3 !important;
+                color: white !important;
+                opacity: 0.5;
+                cursor: default !important;
+
+                &.react-calendar__tile--active {
+                    color: white;
+                }
+
+                &.react-calendar__tile:disabled {
+                    color: #000000a6;
+                }
+            }
+
+
+
+            .react-calendar__tile--active {
+                background-color: #F0E68C !important;
+                color: black !important;
+            }
+
+            .react-calendar__tile:disabled {
+                background-color: white;
+            }
+
+            .react-calendar__navigation__next2-button,
+            .react-calendar__navigation__prev2-button {
+                display: none;
+            }
+
+            .react-calendar__navigation__label {
+                pointer-events: none;
             }
         }
-        &__slot {
-            margin-bottom: 5px;
-            padding-right: 20px;
+
+        &__time-slots {
+            &__date {
+                @media only screen and (min-width: 992px) {
+                    max-width: 340px;
+                }
+
+                margin: 12px 0 25px;
+                font-weight: 500;
+                font-size: 15px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                &__labels {
+                    display: flex;
+
+                    &__icon {
+                        color: #26beb5;
+                    }
+
+                    &__separator {
+                        margin: 0 10px;
+                    }
+                }
+            }
+
+            &__slot {
+                margin-bottom: 5px;
+                padding-right: 20px;
+            }
         }
     }
 }
 
 @media only screen and (max-width: 992px) {
     .weekly-booking-calendar {
-        display: grid;
-        row-gap: 6px;
-        grid-template-columns: unset;
-        width: 100%;
-        &__calendar {
+        &__box {
+            display: grid;
+            row-gap: 6px;
+            grid-template-columns: unset;
             width: 100%;
-        }
-        &__body {
+
+            &__calendar {
+                width: 100%;
+            }
+
         }
     }
 }

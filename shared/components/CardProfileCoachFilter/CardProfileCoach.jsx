@@ -11,6 +11,7 @@ import routes from '../../../utils/routes'
 // import ReservationCours from '../ReservationCours/ReservationCours'
 import shareIcon from '../../../public/icon/profileShare.png'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
+import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
 
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
   const router = useRouter()
@@ -33,10 +34,12 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
       setLinkShow(false)
     } else setLinkShow(true)
   }
+  const picture = getUserProfilePicture(coachProfile.profilePicture)
+  const isDefaultAvatar = picture===DEFAULT_USER_AVATAR
   return (
     <div className="card_profil_coach">
       <div className="card_profil_coach__information__share">
-        <button
+        {/* <button
           type="button"
           onClick={ShowLink}
           className="isporit-unset-button-css"
@@ -48,21 +51,18 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
             <div />
             <ShareLink coachProfile={coachProfile} />
           </>
-        )}
+        )} */}
       </div>
       <Link href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
         <a href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
           <div className="card_profil_coach__information">
             <div className="card_profil_coach__information__avatar">
-              <img
-                src={getUserProfilePicture(coachProfile.profilePicture)}
-                alt="avatar"
-              />
+              <img src={picture} alt="avatar" style={ isDefaultAvatar ? {width:"180px", objectFit: "contain"}:{} } />
             </div>
 
             <div className="card_profil_coach__information__name">
               {cutString(
-                `${coachProfile.firstName} ${coachProfile.lastName}`,
+                `${coachProfile.firstName}`,
                 15,
               )}
             </div>

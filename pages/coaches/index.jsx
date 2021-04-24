@@ -193,10 +193,10 @@ export default function Coaches({
           ? -1
           : 1,
       )
-      setDataCopy(coachesListOrderBy(sortByAlphabetical))
+      setDataCopy(sortByAlphabetical)
     } else if (value.key === 'Tout') {
       setDataCopy(
-        getFilteredCoaches(
+        coachesListOrderBy(getFilteredCoaches(
           coachesList,
 
           {
@@ -210,7 +210,7 @@ export default function Coaches({
             regions: selectedRegions,
             sessionDate: selectedDate,
           },
-        ),
+        )),
       )
     } else if (value.key === 'experience') {
       const sortByExperience = [...dataCopy].sort((a, b) =>
@@ -218,12 +218,12 @@ export default function Coaches({
           ? 1
           : -1,
       )
-      setDataCopy(coachesListOrderBy(sortByExperience))
+      setDataCopy(sortByExperience)
     } else if (value.key === 'recommander') {
       const sortByRecommend = [...dataCopy].sort((a, b) =>
         a.averageRate < b.averageRate ? 1 : -1,
       )
-      setDataCopy(coachesListOrderBy(sortByRecommend))
+      setDataCopy(sortByRecommend)
     }
   }
   const deleteFilter = () => {
@@ -497,7 +497,8 @@ export default function Coaches({
                       onClick={showModal}
                       style={{ fontSize: '15px' }}
                     >
-                      Filtrer ({filteredItemsNumber})
+                      {!isMobile && (<>Filtrer({ filteredItemsNumber })</>)}
+                      {isMobile && (<>Cliquer pour filtrer ({ filteredItemsNumber })</>)}
                     </div>
                   </div>
                 </div>
@@ -524,7 +525,7 @@ export default function Coaches({
                   >
                     <Option value={ALL}>Tout</Option>
                     <Option value={ALPHABETICAL}>Ordre alphabétique</Option>
-                    <Option value={RECOMMEND}>Les plus recommandés</Option>
+                    {/* <Option value={RECOMMEND}>Les plus recommandés</Option> */}
                     <Option value={EXPERIENCE}>Années d'expérience</Option>
                   </Select>
                 </div>
