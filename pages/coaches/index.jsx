@@ -477,10 +477,10 @@ export default function Coaches({
                 />
               )}
               <Modal
-                title="FILTRES"
+                title="Choisissez vos critères"
                 visible={isModalVisible}
                 onOk={handleOk}
-                okText="Filtrer"
+                okText="Voir les coachs"
                 cancelText="Réinitialiser les filtres"
                 onCancel={handleCancel}
                 className="isporit-modal-with-fixed-footer"
