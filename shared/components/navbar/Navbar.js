@@ -114,6 +114,7 @@ function NavbarIndex({
         </section>
         <div className={`${'copyright'}`}>
           © {moment().format('YYYY')} iSporit. All rights reserved{' '}
+          <div>
           <Link href={routes.TERMS_AND_CONDITIONS.path}>
             <a href={routes.TERMS_AND_CONDITIONS.path}>
               <b>
@@ -123,6 +124,7 @@ function NavbarIndex({
               </b>
             </a>
           </Link>
+          </div>
         </div>
       </div>
     )
