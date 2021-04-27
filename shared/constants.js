@@ -14,7 +14,7 @@ export const FRONT_END_PLATFORM_URL = (token) => {
   const { publicRuntimeConfig } = getConfig()
 
   const { location } = typeof window !== 'undefined' && window
-  // return 'https://dev.isporit.com'
+  return 'https://isporit.com'
   // if (localStorage) {
   if (
     location &&

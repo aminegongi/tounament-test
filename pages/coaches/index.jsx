@@ -6,19 +6,17 @@ import { Input, Select, Modal } from 'antd'
 import '../../shared/css/coaches.scss'
 import '../../shared/global-style.scss'
 import Head from 'next/head'
-import { isEmpty, orderBy, sortBy } from 'lodash'
+import { isEmpty } from 'lodash'
 import fetch from 'isomorphic-unfetch'
 import { useMediaPredicate } from 'react-media-hook'
 import { useRouter } from 'next/router'
 import {
   ALL,
   ALPHABETICAL,
-  RECOMMEND,
   EXPERIENCE,
   SERVER_SIDE_API_BASE_URL,
   levels,
   ages,
-  FB_PIXEL_ID,
 } from '../../shared/constants'
 import FilterCoach from '../../shared/components/FilterCoach/FilterCoach'
 import Experiencefilter from '../../shared/components/Experiencefilter/Experiencefilter'
@@ -196,21 +194,23 @@ export default function Coaches({
       setDataCopy(sortByAlphabetical)
     } else if (value.key === 'Tout') {
       setDataCopy(
-        coachesListOrderBy(getFilteredCoaches(
-          coachesList,
+        coachesListOrderBy(
+          getFilteredCoaches(
+            coachesList,
 
-          {
-            name: selectedName,
-            job: selectedJob._id,
-            specialty: selectedSpecialty._id,
-            experienceYears: selectedExperienceYears,
-            reviewRate: selectedReviewsRate,
-            coachingLevel: selectedLevel,
-            coachingAges: selectedAges,
-            regions: selectedRegions,
-            sessionDate: selectedDate,
-          },
-        )),
+            {
+              name: selectedName,
+              job: selectedJob._id,
+              specialty: selectedSpecialty._id,
+              experienceYears: selectedExperienceYears,
+              reviewRate: selectedReviewsRate,
+              coachingLevel: selectedLevel,
+              coachingAges: selectedAges,
+              regions: selectedRegions,
+              sessionDate: selectedDate,
+            },
+          ),
+        ),
       )
     } else if (value.key === 'experience') {
       const sortByExperience = [...dataCopy].sort((a, b) =>
@@ -497,8 +497,10 @@ export default function Coaches({
                       onClick={showModal}
                       style={{ fontSize: '15px' }}
                     >
-                      {!isMobile && (<>Filtrer({ filteredItemsNumber })</>)}
-                      {isMobile && (<>Cliquer pour filtrer ({ filteredItemsNumber })</>)}
+                      {!isMobile && <>Filtrer({filteredItemsNumber})</>}
+                      {isMobile && (
+                        <>Cliquer pour filtrer ({filteredItemsNumber})</>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -636,7 +638,17 @@ Coaches.getInitialProps = async ({ req }) => {
   }
 
   return {
-    coachesList: jsonCoachesRes,
+    coachesList: jsonCoachesRes.map((el) => ({
+      ...el,
+      coachData: {
+        ...el.coachData,
+        availabilities: el.coachData.availabilities.filter(
+          (s) =>
+            moment(s.startTime).isSameOrBefore(moment().add(7, 'day')) &&
+            moment().isSameOrBefore(s.startTime),
+        ),
+      },
+    })),
     jobs: jsonJobsRes,
     sports: jsonSportsRes,
     dances: jsonDancesRes,

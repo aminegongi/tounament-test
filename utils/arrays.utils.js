@@ -3,17 +3,7 @@ import moment from 'moment'
 
 export const coachesListOrderBy = (coachesList) =>
   orderBy(
-    coachesList.map((el) => ({
-      ...el,
-      coachData: {
-        ...el.coachData,
-        availabilities: el.coachData.availabilities.filter(
-          (s) =>
-            moment(s.startTime).isSameOrBefore(moment().add('day', 7)) &&
-            moment().isSameOrBefore(s.startTime),
-        ),
-      },
-    })),
+    coachesList,
     ['recommendAsCoach', (o) => o.coachData.availabilities.length],
     ['desc', 'desc'],
   )
