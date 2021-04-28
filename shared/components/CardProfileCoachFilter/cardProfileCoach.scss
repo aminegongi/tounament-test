@@ -7,7 +7,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 52px;
+        padding-bottom: 40px;
 
         &__avatar {
             img {
@@ -93,12 +93,16 @@
         bottom: 0;
         display: flex;
         justify-content: space-around;
-        padding-top: 0.656rem;
-        padding-bottom: 0.656rem;
+        // padding-top: 0.656rem;
+        // padding-bottom: 0.656rem;
         border-top: solid 2px #f5f4f4;
         width: 100%;
 
         align-items: center;
+        a {
+            width: 100%;
+
+        }
 
         &__contact {
             font-size: 1.125rem;
