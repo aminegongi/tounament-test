@@ -21,6 +21,7 @@ const FacebookPixel = ({ children }) => {
   // }, [router.events])
 
   // return children
+  return ''
   return (
     <>
       <script

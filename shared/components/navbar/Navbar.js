@@ -115,15 +115,15 @@ function NavbarIndex({
         <div className={`${'copyright'}`}>
           © {moment().format('YYYY')} iSporit. All rights reserved{' '}
           <div>
-          <Link href={routes.TERMS_AND_CONDITIONS.path}>
-            <a href={routes.TERMS_AND_CONDITIONS.path}>
-              <b>
-                <u style={{ color: '#26beb5' }}>
-                  Terms & Conditions, Privacy Policy
-                </u>
-              </b>
-            </a>
-          </Link>
+            <Link href={routes.TERMS_AND_CONDITIONS.path}>
+              <a href={routes.TERMS_AND_CONDITIONS.path}>
+                <b>
+                  <u style={{ color: '#26beb5' }}>
+                    Terms & Conditions, Privacy Policy
+                  </u>
+                </b>
+              </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -254,7 +254,7 @@ function NavbarIndex({
                 authContext.fetchUserProfileLoading === false && (
                   <Menu.Item
                     onClick={() => {
-                      authContext.toggleLogInModal()
+                      authContext.toggleLogInModal(() => {}, false)
                       setIsMenuOpen(false)
                     }}
                     className="menu_item"

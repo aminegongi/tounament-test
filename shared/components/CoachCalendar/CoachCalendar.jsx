@@ -25,7 +25,7 @@ export default function CoachCalendar({ coach, onSuccess }) {
     if (!authContext.isLoggedIn) {
       return authContext.toggleLogInModal(
         () => () => setIsConfirmModalOpen(true),
-        false,
+        true,
         'player',
       )
     }
@@ -97,7 +97,7 @@ export default function CoachCalendar({ coach, onSuccess }) {
     if (!authContext.isLoggedIn) {
       return authContext.toggleLogInModal(
         () => () => createRequest(),
-        false,
+        true,
         'player',
       )
     }

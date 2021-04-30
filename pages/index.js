@@ -1,15 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState, useEffect } from 'react'
-import Head from 'next/head'
-import PropTypes from 'prop-types'
-import fetch from 'isomorphic-unfetch'
-
 import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { useMediaPredicate } from 'react-media-hook'
-import Layout from '../shared/components/layout/Layout'
-import '../shared/css/home.scss'
+import React, { useState, useEffect } from 'react'
+import routes from '../utils/routes'
+// import Head from 'next/head'
+// import PropTypes from 'prop-types'
+// import fetch from 'isomorphic-unfetch'
+
+// import { useRouter } from 'next/router'
+// import Link from 'next/link'
+// import { useMediaPredicate } from 'react-media-hook'
+// import Layout from '../shared/components/layout/Layout'
+// import '../shared/css/home.scss'
 // import Clublogo from '../shared/components/clublogo/Clublogo'
 // import PlatformIntro from '../shared/components/PlatformIntro/PlatformIntro'
 // import TrustUs from '../shared/components/TrustUs/TrustUs'
@@ -17,23 +19,23 @@ import '../shared/css/home.scss'
 // import Feature from '../shared/components/Feature/Feature'
 // import BecomePartner from '../shared/components/BecomePartner/BecomePartner'
 // import Title from '../shared/components/TitleSection/TitleSection'
-import Join from '../shared/components/joinplatforme/Join'
+// import Join from '../shared/components/joinplatforme/Join'
 
 // import Demo from '../shared/components/DemoSection/DemoSection'
 // import Functionclub from '../shared/components/Functionclub/Functionclub'
 // import Navbar from '../shared/components/navbar/Navbar'
 // import FooterIndexPage from '../shared/components/footerIndexPage/footerIndexPage'
 // import performance from '../public/icon/performance.png'
-import { SERVER_SIDE_API_BASE_URL } from '../shared/constants'
-import { i18n, withTranslation } from '../i18n'
-import '../shared/global-style.scss'
-import routes from '../utils/routes'
-import {
-  getJobsList,
-  getSpecialtiesList,
-  getRegionsList,
-} from '../utils/arrays.utils'
-import FacebookPixel from '../shared/components/FacebookPixel'
+// import { SERVER_SIDE_API_BASE_URL } from '../shared/constants'
+// import { i18n, withTranslation } from '../i18n'
+// import '../shared/global-style.scss'
+// import routes from '../utils/routes'
+// import {
+//   getJobsList,
+//   getSpecialtiesList,
+//   getRegionsList,
+// } from '../utils/arrays.utils'
+// import FacebookPixel from '../shared/components/FacebookPixel'
 
 // const { Panel } = Collapse
 
@@ -51,199 +53,214 @@ import FacebookPixel from '../shared/components/FacebookPixel'
 //   overflow: 'hidden',
 // }
 
-const Index = ({ coachesList, jobs, sports, dances, regions }) => {
-  const [lang, setLang] = useState(undefined)
-  const [searchBar, setSearchBar] = useState(true)
+/* coachesList, jobs, sports, dances, regions */
+const Index = () => {
+  const route = useRouter()
   useEffect(() => {
-    setLang(i18n.language)
-  }, [i18n.language])
-  const router = useRouter()
-
-  const mobile = useMediaPredicate('(max-width: 850px)')
-
-  const [isMobile, setIsMobile] = useState(false)
-
-  const isVisibleElement = (el) => {
-    if (!el) return false
-    const rect = el.getBoundingClientRect()
-    const elemTop = rect.top
-    const elemBottom = rect.bottom
-    // Only completely visible elements return true:
-    // const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-    // Partially visible elements return true:
-    const isVisibleC = elemTop < window.innerHeight && elemBottom >= 0
-    return isVisibleC
-  }
-  const handleScroll = () => {
-    const el = document.getElementById('cv')
-    const isVisibleC = isVisibleElement(el)
-    if (isVisibleC) {
-      setSearchBar(true)
-    } else {
-      setSearchBar(false)
-    }
-  }
-  useEffect(() => {
-    if (mobile !== isMobile) {
-      setIsMobile(mobile)
-    }
-  }, [mobile])
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
+    window.location.href = routes.COACHES_LIST.path
+    // route.push(routes.COACHES_LIST.path)
   }, [])
+  return <div />
+}
 
-  useEffect(() => {
-    // window.location.href = "/contact-us";
-    // Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
-  }, [])
-  // if (!router.query.draft) {
-  //   return (
-  //     <div className="home_page">
-  //       <div className="home_page__counter-page">
-  //         <img
-  //           width="400px"
-  //           src="../../../icon/coachIsporit.png"
-  //           alt="iSporit"
-  //         />
-  //         <h1 className="home_page__counter-page__counter">
-  //           <Countdown
-  //             title=""
-  //             value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
-  //             format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
-  //           />
-  //         </h1>
-  //         <Link href={routes.CONTACT_US.path}>
-  //           <a href={routes.CONTACT_US.path}>
-  //             <Button
-  //               className="home_page__counter-page__contact"
-  //               type="primary"
-  //             >
-  //               Contact
-  //             </Button>
-  //           </a>
-  //         </Link>
-  //       </div>
-  //     </div>
-  //   )
-  // }
+export default Index
 
-  return (
-    <div className="home_page">
-      <Head>
-        <title>iSporit - trouver un coach - réserver un coach</title>
+// const [lang, setLang] = useState(undefined)
+// const [searchBar, setSearchBar] = useState(true)
+// useEffect(() => {
+//   setLang(i18n.language)
+// }, [i18n.language])
+// const router = useRouter()
 
-        {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta
-          name="description"
-          content="Notre plateforme vous offrira des outils puissants et simples qui vous permettront non seulement de gérer parfaitement vos plannings et collaborateurs mais aussi de gagner du temps."
-        />
-        <meta
-          name="keywords"
-          content="sport,clubs,coaches,players,tennis,football"
-        />
-        <meta name="author" content="iSporit" /> */}
+// const mobile = useMediaPredicate('(max-width: 850px)')
 
-        <meta
-          name="description"
-          content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
-iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. Trouvez votre coach en Tunisie en seulement 3 clics"
-        />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta property="og:url" content="https://isporit.com/coaches" />
-        <meta
-          property="og:description"
-          content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
-iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. "
-        />
-        <meta
-          property="og:image"
-          content="https://isporit.com/logo_isporit_final.png"
-        />
-        <link rel="canonical" href="https://isporit.com" />
-        <FacebookPixel />
-      </Head>
+// const [isMobile, setIsMobile] = useState(false)
 
-      <Layout
-        searchBar={searchBar}
-        setSearchBar={setSearchBar}
-        coachesList={coachesList}
-        jobs={jobs}
-        sports={sports}
-        dances={dances}
-        regions={regions}
-      >
-        <div
-          className={`${'gerer_iluustateur'}`}
-          style={!isMobile ? { paddingTop: '225px' } : {}}
-        >
-          <div
-            className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
-          >
-            <div className={`${'gerer_equipe_img'} `}>
-              <h1 className="gerer_equipe_title">
-                Réservez dès maintenant votre coach iSporit
-              </h1>
-              <div className="gerer_time_title" id="cv">
-                <div>
-                  Avec iSporit, vous trouverez des entraîneurs qualifiés et
-                  expérimentés, vous pouvez planifier votre séance avec un
-                  professionnel en sport et yoga.
-                </div>
-              </div>
-              <div style={{ marginTop: '50px' }}>
-                <Link href={routes.COACHES_LIST.path}>
-                  <a href={routes.COACHES_LIST.path} className="gerer_team">
-                    Réservez vos entraîneurs
-                  </a>
-                </Link>
-              </div>
-            </div>
-            <img
-              className="img_illustration"
-              src="icon/coachesBanner.png"
-              alt="trouver un coach, réserver un coach"
-            />
-          </div>
-        </div>
+// const isVisibleElement = (el) => {
+//   if (!el) return false
+//   const rect = el.getBoundingClientRect()
+//   const elemTop = rect.top
+//   const elemBottom = rect.bottom
+//   // Only completely visible elements return true:
+//   // const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+//   // Partially visible elements return true:
+//   const isVisibleC = elemTop < window.innerHeight && elemBottom >= 0
+//   return isVisibleC
+// }
+// const handleScroll = () => {
+//   const el = document.getElementById('cv')
+//   const isVisibleC = isVisibleElement(el)
+//   if (isVisibleC) {
+//     setSearchBar(true)
+//   } else {
+//     setSearchBar(false)
+//   }
+// }
+// useEffect(() => {
+//   if (mobile !== isMobile) {
+//     setIsMobile(mobile)
+//   }
+// }, [mobile])
+// useEffect(() => {
+//   window.addEventListener('scroll', handleScroll)
+//   return () => {
+//     window.removeEventListener('scroll', handleScroll)
+//   }
+// }, [])
 
-        <div className={`${'gerer_iluustateur'}`} id="reste">
-          <div
-            className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
-          >
-            <div className={`${'gerer_equipe_img'} `}>
-              <div className="gerer_equipe_title">
-                Gérez vos équipes sportives efficacement et simplement n'importe
-                où vous soyez
-              </div>
-              <div className="gerer_time_title">
-                <div>
-                  iSporit vous fera gagner du temps pour gérer la présence de
-                  vos groupes, l'organisation de vos calendriers, événements et
-                  plus encore.
-                </div>
-              </div>
-              <Link href={routes.CLUB_FEATURES.path}>
-                <button type="button" className="gerer_team">
-                  Gérer mon équipe gratuitement
-                </button>
-              </Link>
-              <div className="for_windows">
-                Pour Windows, Mac, Android et iOS
-              </div>
-            </div>
-            <img
-              className="img_illustration"
-              src="icon/illustration.png"
-              alt=""
-            />
-          </div>
-        </div>
+// useEffect(() => {
+// window.location.href = "/contact-us";
+// Axios.get('https://api.isporit.com/auth/me', { withCredentials: true }).then(res => console.log('res ', res)).catch(e => console.log('e ,', e))
+// }, [])
+// if (!router.query.draft) {
+//   return (
+//     <div className="home_page">
+//       <div className="home_page__counter-page">
+//         <img
+//           width="400px"
+//           src="../../../icon/coachIsporit.png"
+//           alt="iSporit"
+//         />
+//         <h1 className="home_page__counter-page__counter">
+//           <Countdown
+//             title=""
+//             value={moment('2021 04 16 18:00', 'YYYY MM DD HH:mm')}
+//             format="DD [Jours] HH [Heures] mm [Minutes] ss [Secondes] "
+//           />
+//         </h1>
+//         <Link href={routes.CONTACT_US.path}>
+//           <a href={routes.CONTACT_US.path}>
+//             <Button
+//               className="home_page__counter-page__contact"
+//               type="primary"
+//             >
+//               Contact
+//             </Button>
+//           </a>
+//         </Link>
+//       </div>
+//     </div>
+//   )
+// }
 
-        <div className="club_logo_and_title">
-          {/* <Clublogo
+/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <meta
+    name="description"
+    content="Notre plateforme vous offrira des outils puissants et simples qui vous permettront non seulement de gérer parfaitement vos plannings et collaborateurs mais aussi de gagner du temps."
+  />
+  <meta
+    name="keywords"
+    content="sport,clubs,coaches,players,tennis,football"
+  />
+  <meta name="author" content="iSporit" /> */
+
+//     return (
+//       <div className="home_page">
+//         <Head>
+//           <title>iSporit - trouver un coach - réserver un coach</title>
+
+//           <meta
+//             name="description"
+//             content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+// iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. Trouvez votre coach en Tunisie en seulement 3 clics"
+//           />
+//           <meta
+//             name="viewport"
+//             content="initial-scale=1.0, width=device-width"
+//           />
+//           <meta property="og:url" content="https://isporit.com/coaches" />
+//           <meta
+//             property="og:description"
+//             content="A la recherche d'un coach? Vous voulez faire du sport ou de la dance mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+// iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. "
+//           />
+//           <meta
+//             property="og:image"
+//             content="https://isporit.com/logo_isporit_final.png"
+//           />
+//           <link rel="canonical" href="https://isporit.com" />
+//           <FacebookPixel />
+//         </Head>
+
+//         <Layout
+//           searchBar={searchBar}
+//           setSearchBar={setSearchBar}
+//           coachesList={coachesList}
+//           jobs={jobs}
+//           sports={sports}
+//           dances={dances}
+//           regions={regions}
+//         >
+//           <div
+//             className={`${'gerer_iluustateur'}`}
+//             style={!isMobile ? { paddingTop: '225px' } : {}}
+//           >
+//             <div
+//               className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
+//             >
+//               <div className={`${'gerer_equipe_img'} `}>
+//                 <h1 className="gerer_equipe_title">
+//                   Réservez dès maintenant votre coach iSporit
+//                 </h1>
+//                 <div className="gerer_time_title" id="cv">
+//                   <div>
+//                     Avec iSporit, vous trouverez des entraîneurs qualifiés et
+//                     expérimentés, vous pouvez planifier votre séance avec un
+//                     professionnel en sport et yoga.
+//                   </div>
+//                 </div>
+//                 <div style={{ marginTop: '50px' }}>
+//                   <Link href={routes.COACHES_LIST.path}>
+//                     <a href={routes.COACHES_LIST.path} className="gerer_team">
+//                       Réservez vos entraîneurs
+//                     </a>
+//                   </Link>
+//                 </div>
+//               </div>
+//               <img
+//                 className="img_illustration"
+//                 src="icon/coachesBanner.png"
+//                 alt="trouver un coach, réserver un coach"
+//               />
+//             </div>
+//           </div>
+
+//           <div className={`${'gerer_iluustateur'}`} id="reste">
+//             <div
+//               className={`${'gerer_iluustateur_container'} ${'isporit_max_width'}`}
+//             >
+//               <div className={`${'gerer_equipe_img'} `}>
+//                 <div className="gerer_equipe_title">
+//                   Gérez vos équipes sportives efficacement et simplement
+//                   n'importe où vous soyez
+//                 </div>
+//                 <div className="gerer_time_title">
+//                   <div>
+//                     iSporit vous fera gagner du temps pour gérer la présence de
+//                     vos groupes, l'organisation de vos calendriers, événements
+//                     et plus encore.
+//                   </div>
+//                 </div>
+//                 <Link href={routes.CLUB_FEATURES.path}>
+//                   <button type="button" className="gerer_team">
+//                     Gérer mon équipe gratuitement
+//                   </button>
+//                 </Link>
+//                 <div className="for_windows">
+//                   Pour Windows, Mac, Android et iOS
+//                 </div>
+//               </div>
+//               <img
+//                 className="img_illustration"
+//                 src="icon/illustration.png"
+//                 alt=""
+//               />
+//             </div>
+//           </div>
+
+//           <div className="club_logo_and_title">
+
+/* <Clublogo
             images={[
               {
                 alt: 'club',
@@ -262,9 +279,9 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 src: 'clubLogo/green_park.png',
               },
             ]}
-          /> */}
+          /> */
 
-          {/* <Title
+/* <Title
             title="Regagnez votre temps à nouveau"
             sub_title="Gérer les plannings et les absences avec iSporit est plus efficace
             que de le faire"
@@ -365,9 +382,8 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 </button>
               </Link>
             </div>
-          </div> */}
-
-          {/* <Title
+          </div> */
+/* <Title
             title=" Questions souvent posées"
             sub_title="Vous trouverez ci-dessous les questions auxquelles nous avons fait face plusieurs "
             sub_title_two="fois et les réponses nécessaires"
@@ -408,64 +424,63 @@ iSporit vous offre la possibilité de choisir votre coach selon vos propres crit
                 {text}
               </div>
             </Panel>
-          </Collapse> */}
+          </Collapse> */
 
-          <div className={`${'isporit_max_width'} ${'join'} `}>
-            <Join
-              link={routes.CONTACT_US.clubPath}
-              buttonone="Connexion"
-              buttontwo="Contactez notre service commercial"
-            />
-          </div>
-        </div>
-      </Layout>
-    </div>
-  )
-}
+//           <div className={`${'isporit_max_width'} ${'join'} `}>
+//             <Join
+//               link={routes.CONTACT_US.clubPath}
+//               buttonone="Connexion"
+//               buttontwo="Contactez notre service commercial"
+//             />
+//           </div>
+//         </div>
+//       </Layout>
+//     </div>
+//   )
+// }
 
-Index.getInitialProps = async ({ req }) => {
-  const coachesRes = await fetch(
-    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
-  )
-  const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
-  const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
-  const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
-  const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
-  const jsonCoachesRes = await coachesRes.json()
-  let jsonJobsRes = await jobsRes.json()
+// Index.getInitialProps = async ({ req }) => {
+//   const coachesRes = await fetch(
+//     `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
+//   )
+//   const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
+//   const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
+//   const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
+//   const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
+//   const jsonCoachesRes = await coachesRes.json()
+//   let jsonJobsRes = await jobsRes.json()
 
-  let jsonSportsRes = await sportsRes.json()
+//   let jsonSportsRes = await sportsRes.json()
 
-  let jsonDancesRes = await danceRes.json()
-  let jsonRegionsRes = await regionsRes.json()
-  if (jsonJobsRes) {
-    jsonJobsRes = getJobsList(jsonCoachesRes, jsonJobsRes)
-    jsonJobsRes = jsonJobsRes
-      .filter((job) => job.isPublic)
-      .sort((a, b) => a.order - b.order)
-  }
+//   let jsonDancesRes = await danceRes.json()
+//   let jsonRegionsRes = await regionsRes.json()
+//   if (jsonJobsRes) {
+//     jsonJobsRes = getJobsList(jsonCoachesRes, jsonJobsRes)
+//     jsonJobsRes = jsonJobsRes
+//       .filter((job) => job.isPublic)
+//       .sort((a, b) => a.order - b.order)
+//   }
 
-  if (jsonSportsRes) {
-    jsonSportsRes = jsonSportsRes.filter((sport) => sport.type !== undefined)
-    jsonSportsRes = getSpecialtiesList(jsonCoachesRes, jsonSportsRes)
-  }
-  if (jsonDancesRes) {
-    jsonDancesRes = getSpecialtiesList(jsonCoachesRes, jsonDancesRes)
-  }
-  if (jsonRegionsRes) {
-    jsonRegionsRes = getRegionsList(jsonCoachesRes, jsonRegionsRes)
-  }
-  return {
-    coachesList: jsonCoachesRes,
-    jobs: jsonJobsRes,
-    sports: jsonSportsRes,
-    dances: jsonDancesRes,
-    regions: jsonRegionsRes,
-    namespacesRequired: ['common'],
-  }
-}
+//   if (jsonSportsRes) {
+//     jsonSportsRes = jsonSportsRes.filter((sport) => sport.type !== undefined)
+//     jsonSportsRes = getSpecialtiesList(jsonCoachesRes, jsonSportsRes)
+//   }
+//   if (jsonDancesRes) {
+//     jsonDancesRes = getSpecialtiesList(jsonCoachesRes, jsonDancesRes)
+//   }
+//   if (jsonRegionsRes) {
+//     jsonRegionsRes = getRegionsList(jsonCoachesRes, jsonRegionsRes)
+//   }
+//   return {
+//     coachesList: jsonCoachesRes,
+//     jobs: jsonJobsRes,
+//     sports: jsonSportsRes,
+//     dances: jsonDancesRes,
+//     regions: jsonRegionsRes,
+//     namespacesRequired: ['common'],
+//   }
 
-Index.propTypes = {
-  t: PropTypes.func.isRequired,
-}
-export default withTranslation('common')(Index)
+// Index.propTypes = {
+//   t: PropTypes.func.isRequired,
+// }
+// export default withTranslation('common')(Index)
