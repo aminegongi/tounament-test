@@ -33,12 +33,13 @@ export default function CoachCalendar({ coach, onSuccess }) {
   }
 
   const onCreateCoachingRequest = () => {
-    if (authContext.userType === CLUB) {
-      return message.error(
-        "une organisation n'est pas autorisée à réserver un cours privé avec un entraîneur",
-      )
-    }
+    
     const createRequest = async () => {
+      if (authContext.userType === CLUB) {
+        return message.error(
+          "une organisation n'est pas autorisée à réserver un cours privé avec un entraîneur",
+        )
+      }
       const result = await createCoachingRequest(
         {
           coachId: coach._id,
@@ -179,14 +180,24 @@ export default function CoachCalendar({ coach, onSuccess }) {
                   </div>
                 ))}
                 {authContext.userProfile._id !== coach._id && (
-                  <Button
-                    type="submit"
-                    id="coach-calendar-footer-confirm-button"
-                    onClick={onOpenConfirmModal}
-                    className="coach-calendar__body__calendar-section__footer__confirm-button"
-                  >
-                    Confirmer
-                  </Button>
+                  <>
+                    <textarea
+                      onChange={(e) => setRequestNote(e.target.value)}
+                      value={requestNote}
+                      placeholder="si vous le voulez, écrivez dans ce champ des informations que vous voulez envoyer au coach (niveau de jeu, problèmes de santé, ...)"
+                      rows={5}
+                      className="isporit-input"
+                    />
+
+                    <Button
+                      type="submit"
+                      id="coach-calendar-footer-confirm-button"
+                      onClick={onCreateCoachingRequest}
+                      className="coach-calendar__body__calendar-section__footer__confirm-button"
+                    >
+                      Confirmer
+                    </Button>
+                  </>
                 )}
               </div>
             )}
