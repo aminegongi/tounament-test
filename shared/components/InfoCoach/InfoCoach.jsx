@@ -59,7 +59,7 @@ export default function InfoCoach({
           src={getUserProfilePicture(coachProfile.profilePicture)}
           alt=""
         />
-        <div className="infocoach_coach__information__name infocoach__firstblock__coach-name">
+        {/* <div className="infocoach_coach__information__name infocoach__firstblock__coach-name">
           {router.pathname !== routes.COACH_DETAILS.PROFILE.path ? (
             <Link
               href={routes.COACH_DETAILS.PROFILE.linkTo(router.query.username)}
@@ -75,6 +75,11 @@ export default function InfoCoach({
           ) : (
             `${coachProfile.firstName} ${coachProfile.lastName}`
           )}
+        </div> */}
+      </div>
+      <div className="infocoach__secondblock">
+        <div className="infocoach_coach__information__name infocoach__firstblock__coach-name">
+          {coachProfile.firstName} {coachProfile.lastName}
         </div>
         <div className="infocoach_coach__information__rate">
           <Rate
@@ -82,10 +87,10 @@ export default function InfoCoach({
             disabled
             allowHalf
             defaultValue={getRoundedRate(sum)}
+            style={{fontSize:"12px"}}
           />
         </div>
-      </div>
-      <div className="infocoach__secondblock">
+
         {job && (
           <div className="infocoach_coach__information__worktype">
             {job.translations.fr}
@@ -105,8 +110,9 @@ export default function InfoCoach({
         <div className="infocoach_coach__information__yearexperience">
           {getYearsOfExperience()}
         </div>
+
         <div className="suggestcoachdetails">
-          <div className="suggestcoachdetails__suggestPrivateCourse">
+          {/* <div className="suggestcoachdetails__suggestPrivateCourse">
             <img
               className={`suggestcoachdetails__suggestPrivateCourse__img `}
               src={circleIcon}
@@ -115,8 +121,8 @@ export default function InfoCoach({
             <div className="suggestcoachdetails__suggestPrivateCourse__propose">
               Propose des cours privés{' '}
             </div>
-          </div>
-          {isMobile && (
+          </div> */}
+          {/* {isMobile && (
             <button
               onClick={onOpenCalendar}
               type="submit"
@@ -124,7 +130,7 @@ export default function InfoCoach({
             >
               Réserver
             </button>
-          )}
+          )} */}
         </div>
       </div>
       <ReservationCours

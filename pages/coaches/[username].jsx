@@ -35,7 +35,7 @@ import FacebookPixel from '../../shared/components/FacebookPixel'
 const ABOUT_TAB = 1
 // const RECOMMENDATION_TAB = 2
 const BIOGRAPHY_TAB = 3
-const CALENDAR_TAB = 4
+export const CALENDAR_TAB = 4
 const SUCCESS_BOOKING_TAB = 5
 
 export default function CoachDetails({
@@ -114,6 +114,7 @@ export default function CoachDetails({
               coachData={coach.coachData}
               iconExclamation={exclamation}
               specialty={specialty}
+              setTab={setTab}
             />
           </div>
         )
@@ -337,7 +338,7 @@ export default function CoachDetails({
                     Biographie
                   </button>
                 </div>
-                <button
+                {/* <button
                   onClick={() => {
                     window.scrollTo(400, !isMobile ? 250 : 650)
 
@@ -347,7 +348,7 @@ export default function CoachDetails({
                   className="isporit-primary-button tabs__contact"
                 >
                   Réserver
-                </button>
+                </button> */}
               </div>
               {/* <div className="linetabs" /> */}
               {displayTabs()}
