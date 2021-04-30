@@ -38,7 +38,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
   const picture = getUserProfilePicture(coachProfile.profilePicture)
   const isDefaultAvatar = picture === DEFAULT_USER_AVATAR
   return (
-    <div className="card_profil_coach">
+    <div className="card_profil_coach" >
       <div className="card_profil_coach__information__share">
         {/* <button
           type="button"
