@@ -24,7 +24,9 @@ export default function BookingBox({
   setPricePackage,
 }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
-  const [selectedOffer, setSelectedOffer] = useState(sessionPrices[0])
+  const [selectedOffer, setSelectedOffer] = useState(
+    sessionPrices.slice().sort((a, b) => a.price - b.price)[0],
+  )
   
   return (
     <CoachProfileSection

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './cardProfileCoach.scss'
 import { Rate } from 'antd'
@@ -13,6 +13,7 @@ import routes from '../../../utils/routes'
 // import shareIcon from '../../../public/icon/profileShare.png'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
+import { isSessionPricesEmpty } from './../CoachBox/CoachBox'
 
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
   // const router = useRouter()
@@ -20,6 +21,8 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
   // const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
   //   false,
   // )
+  const [cheapestPrice, setCheapestPrice] = useState()
+  const [firstSessionPrice, setFirstSessionPrice] = useState(-1)
   const sum =
     coachProfile.coachData && coachProfile.coachData.reviews
       ? getFormattedNumber(
@@ -37,6 +40,42 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
   // }
   const picture = getUserProfilePicture(coachProfile.profilePicture)
   const isDefaultAvatar = picture === DEFAULT_USER_AVATAR
+
+  const getPackagesAndFirstSession = () => {
+    let cheapestPrice
+    if (!isSessionPricesEmpty(coachProfile.coachData)) {
+      cheapestPrice = coachProfile.coachData.privateCourseData.sessionPrices
+        .slice()
+        .sort((a, b) => a.price - b.price)[0].price
+      let firstSessionPrice = 
+        coachProfile.coachData.privateCourseData.isporitPriceFirstSession
+      console.log(
+        'firstSessionPrice: ',
+        firstSessionPrice,
+        coachProfile.lastName,
+      )
+      if (firstSessionPrice===undefined) {
+        firstSessionPrice = -1
+      } else if (firstSessionPrice === 0) {
+        firstSessionPrice = ' Gratuite'
+      } else {
+        firstSessionPrice += ' DT'
+      }
+      // if (firstSessionPrice !== undefined && firstSessionPrice !== -1) {
+      // }
+      return { cheapestPrice, firstSessionPrice }
+    }
+  }
+
+  useEffect(() => {
+    if (coachProfile) {
+      const result = getPackagesAndFirstSession()
+      if (result) {
+        setCheapestPrice(result.cheapestPrice)
+        setFirstSessionPrice(result.firstSessionPrice)
+      }
+    }
+  }, [coachProfile])
   return (
     <div className="card_profil_coach">
       <div className="card_profil_coach__information__share">
@@ -58,6 +97,17 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
         <a href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
           <div className="card_profil_coach__information">
             <div className="card_profil_coach__information__avatar">
+              <div className="card_profil_coach__information__avatar__available">
+                {coachProfile.coachData &&
+                coachProfile.coachData.availabilities &&
+                coachProfile.coachData.availabilities.length ? (
+                  // <img src="" />
+                  <></>
+                ) : (
+                  // <img src="" />
+                  <></>
+                )}
+              </div>
               <img
                 src={picture}
                 alt="avatar"
@@ -114,6 +164,36 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 coachProfile.coachData.experiencesYearsNumber === 1 &&
                 `1 an d'expérience`}
             </div>
+            {(cheapestPrice || firstSessionPrice !== -1) && (
+              <div
+                style={{
+                  display: 'flex',
+                  color: 'black',
+                  fontSize: '10px',
+                  fontSize: '11px',
+                  justifyContent: 'center',
+                  padding: '10px 10px 10px 10px',
+                }}
+              >
+                {cheapestPrice && (
+                  <div className="">
+                    Dès{' '}
+                    <span style={{ color: '#26beb5', fontSize: '11px' }}>
+                      <b>{cheapestPrice} DT</b>
+                    </span>
+                  </div>
+                )}
+                {firstSessionPrice !== -1 && cheapestPrice && <> - </>}
+                {firstSessionPrice !== -1 && (
+                  <div className="">
+                    1ère séance{' '}
+                    <span style={{ color: '#26beb5', fontSize: '11px' }}>
+                      <b> {firstSessionPrice}</b>
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </a>
       </Link>
