@@ -5,29 +5,27 @@ import { CALENDAR_TAB } from './../../../pages/coaches/[username]'
 import CoachProfileSection from '../CoachProfileSection'
 import { useMediaPredicate } from 'react-media-hook'
 import { Select } from 'antd'
-
+export const getPrices = (offer) => ({
+  onsite: {
+    value: `${offer.onSiteSessionsNumber} séance${offer.onSiteSessionsNumber > 1 ? 's' : ''} sur place`,
+  },
+  online: {
+    value: `${offer.onlineSessionsNumber} séance${offer.onlineSessionsNumber > 1 ? 's' : ''} en ligne`,
+  },
+  mixed: {
+    value: `${offer.onSiteSessionsNumber + offer.onlineSessionsNumber} séances (${offer.onlineSessionsNumber} en ligne)`,
+  },
+})
 export default function BookingBox({
   sessionPrices,
   isporitPriceFirstSession,
   setTab,
   isVerticalLine,
+  setPricePackage,
 }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [selectedOffer, setSelectedOffer] = useState(sessionPrices[0])
-  const getPrices = (offer) => ({
-    onsite: {
-      value: `${offer.onSiteSessionsNumber}
-        séance${offer.onSiteSessionsNumber > 1 ? 's' : ''} sur place`,
-    },
-    online: {
-      value: `${offer.onlineSessionsNumber}
-      séance${offer.onlineSessionsNumber > 1 ? 's' : ''} en ligne`,
-    },
-    mixed: {
-      value: `${offer.onSiteSessionsNumber + offer.onlineSessionsNumber}
-      séances (${offer.onlineSessionsNumber} en ligne)`,
-    },
-  })
+  
   return (
     <CoachProfileSection
       title="Réservations"
@@ -75,7 +73,9 @@ export default function BookingBox({
                 </h3>
 
                 <div className="booking-box__content__first-session">
-                  <div>Essayez votre 1ère séance <br/> (prix iSporit) </div>
+                  <div>
+                    Essayez votre 1ère séance <br /> (prix iSporit){' '}
+                  </div>
                   <div className="booking-box__content__first-session__price">
                     {isporitPriceFirstSession === 0
                       ? 'GRATUITE'
@@ -89,7 +89,7 @@ export default function BookingBox({
           <button
             onClick={() => {
               window.scrollTo(400, !isMobile ? 250 : 650)
-
+              setPricePackage(selectedOffer)
               setTab(CALENDAR_TAB)
             }}
             type="button"

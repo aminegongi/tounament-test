@@ -22,7 +22,17 @@ import CoachProfileSection from '../CoachProfileSection'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
 import { ages, levels } from '../../constants'
 import BookingBox from '../bookingBox/BookingBox'
-
+ export const isSessionPricesEmpty = (coachDataParameter) => {
+   if (
+     coachDataParameter &&
+     coachDataParameter.privateCourseData &&
+     coachDataParameter.privateCourseData.sessionPrices &&
+     coachDataParameter.privateCourseData.sessionPrices.length !== 0
+     ) {
+     return false
+   }
+   return true
+ }
 export default function CoachAboutBoxes({
   coachData,
   specialty,
@@ -30,6 +40,7 @@ export default function CoachAboutBoxes({
   mainJob,
   allSpecialties,
   setTab,
+  setPricePackage,
 }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
@@ -111,23 +122,13 @@ export default function CoachAboutBoxes({
     }
     return false
   }
-  const isSessionPricesEmpty = () => {
-    if (
-      coachData &&
-      coachData.privateCourseData &&
-      coachData.privateCourseData.sessionPrices &&
-      coachData.privateCourseData.sessionPrices.length !== 0
-    ) {
-      return false
-    }
-    return true
-  }
+ 
   const renderVideos = () => {
     if (isThereVideo) {
       return (
         <CoachProfileSection
           title="Vidéos"
-          isVerticalLine={!isInformationEmpty() || !isSessionPricesEmpty()}
+          isVerticalLine={!isInformationEmpty() || !isSessionPricesEmpty(coachData)}
           icon={videoicon}
         >
           <div className="coachBoxiteam__video-section">
@@ -259,7 +260,7 @@ export default function CoachAboutBoxes({
   return (
     <div className="coachBoxiteam">
       <div className="coachBoxiteam__column">
-        {!isSessionPricesEmpty() && isMobile && (
+        {!isSessionPricesEmpty(coachData) && isMobile && (
           <BookingBox
             sessionPrices={coachData.privateCourseData.sessionPrices}
             isporitPriceFirstSession={
@@ -267,6 +268,7 @@ export default function CoachAboutBoxes({
             }
             setTab={setTab}
             isVerticalLine={false}
+            setPricePackage={setPricePackage}
           />
         )}
 
@@ -274,7 +276,7 @@ export default function CoachAboutBoxes({
           <CoachProfileSection
             title="Informations sportives"
             icon={exclamationIcon}
-            isVerticalLine={isMobile &&  !isSessionPricesEmpty()}
+            isVerticalLine={isMobile && !isSessionPricesEmpty(coachData)}
           >
             <div className="coachBox">
               {coachData.experiencesYearsNumber ? (
@@ -405,7 +407,7 @@ export default function CoachAboutBoxes({
       </div>
 
       <div className="coachBoxiteam__column">
-        {!isSessionPricesEmpty() && !isMobile && (
+        {!isSessionPricesEmpty(coachData) && !isMobile && (
           <BookingBox
             sessionPrices={coachData.privateCourseData.sessionPrices}
             isporitPriceFirstSession={
@@ -413,13 +415,14 @@ export default function CoachAboutBoxes({
             }
             setTab={setTab}
             isVerticalLine={false}
+            setPricePackage={setPricePackage}
           />
         )}
 
         {!isLocationEmpty() && (
           <CoachProfileSection
             title="Lieux"
-            isVerticalLine={isMobile || !isSessionPricesEmpty()}
+            isVerticalLine={isMobile || !isSessionPricesEmpty(coachData)}
             icon={localisationIcon}
           >
             {coachData &&

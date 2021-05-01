@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { isEmpty } from 'lodash'
 import Head from 'next/head'
-import { Breadcrumb, Icon } from 'antd'
+import { Breadcrumb, Icon, Affix } from 'antd'
 import { useMediaPredicate } from 'react-media-hook'
 import InfoCoach from '../../shared/components/InfoCoach/InfoCoach'
 import '../../shared/css/coachDetails.scss'
@@ -31,6 +31,7 @@ import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
 import FacebookPixel from '../../shared/components/FacebookPixel'
+import { isSessionPricesEmpty } from './../../shared/components/CoachBox/CoachBox'
 
 const ABOUT_TAB = 1
 // const RECOMMENDATION_TAB = 2
@@ -51,6 +52,7 @@ export default function CoachDetails({
   const [job, setJob] = useState()
   const [tab, setTab] = useState(ABOUT_TAB)
   const [isContactModalVisible, setIsContactModalVisible] = useState(false)
+  const [pricePackage, setPricePackage] = useState()
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const authContext = useContext(AuthContext)
@@ -115,6 +117,7 @@ export default function CoachDetails({
               iconExclamation={exclamation}
               specialty={specialty}
               setTab={setTab}
+              setPricePackage={setPricePackage}
             />
           </div>
         )
@@ -137,6 +140,7 @@ export default function CoachDetails({
           <CoachCalendar
             onSuccess={() => setTab(SUCCESS_BOOKING_TAB)}
             coach={coach}
+            pricePackage={pricePackage}
           />
         )
       }
@@ -263,7 +267,7 @@ export default function CoachDetails({
           </div>
 
           {isMobile && (
-            <div style={{ margin: '10px 10px 10px 16px' }}>
+            <div style={{ margin: '20px 10px 10px 16px' }}>
               <Breadcrumb separator=">">
                 <Breadcrumb.Item className="isporit-breadcrumb-link">
                   <Link href={routes.COACHES_LIST.path}>
@@ -290,6 +294,22 @@ export default function CoachDetails({
                 {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
               </div> */}
             </div>
+            {isMobile && isSessionPricesEmpty(coach.coachData) && (
+              <Affix offsetTop={65}>
+                <button
+                  onClick={() => {
+                    window.scrollTo(400, !isMobile ? 250 : 650)
+
+                    setTab(CALENDAR_TAB)
+                  }}
+                  type="button"
+                  className="isporit-primary-button tabs__contact"
+                  style={{ marginTop: '10px', padding: '5px 34px', width:"100%" }}
+                >
+                  Réserver
+                </button>
+              </Affix>
+            )}
             <div className="tabsinfo">
               {!isMobile && (
                 <Breadcrumb separator=">">
@@ -338,17 +358,19 @@ export default function CoachDetails({
                     Biographie
                   </button>
                 </div>
-                {/* <button
-                  onClick={() => {
-                    window.scrollTo(400, !isMobile ? 250 : 650)
+                {!isMobile && isSessionPricesEmpty(coach.coachData) && (
+                  <button
+                    onClick={() => {
+                      window.scrollTo(400, !isMobile ? 250 : 650)
 
-                    setTab(CALENDAR_TAB)
-                  }}
-                  type="button"
-                  className="isporit-primary-button tabs__contact"
-                >
-                  Réserver
-                </button> */}
+                      setTab(CALENDAR_TAB)
+                    }}
+                    type="button"
+                    className="isporit-primary-button tabs__contact"
+                  >
+                    Réserver
+                  </button>
+                )}
               </div>
               {/* <div className="linetabs" /> */}
               {displayTabs()}
@@ -381,7 +403,6 @@ CoachDetails.getInitialProps = async ({ query, req }) => {
   const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
   const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
   const jsonCoachRes = await coachRes.json()
-  // console.log("username",jsonCoachRes.find(coach=>coach.username==="chahidsouhsmuwpl79vaczgaefhtb3yrr6reumjy09ic0mjtdaem91uzi5f5"))
   const jsonJobsRes = await jobsRes.json()
   const jsonSportsRes = await sportsRes.json()
   const jsonDancesRes = await danceRes.json()
