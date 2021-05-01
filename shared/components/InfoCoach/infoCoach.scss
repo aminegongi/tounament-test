@@ -135,6 +135,7 @@
                 text-align: left;
                 color: #000000;
                 padding-bottom: 0.406rem;
+                text-align: center;
             }
         }
     }
@@ -187,10 +188,10 @@
         grid-template-columns: repeat(2, 1fr);
         column-gap: 5%;
 
-        &__secondblock {
-            justify-self: flex-start;
-            align-items: flex-start;
-        }
+        // &__secondblock {
+        //     justify-self: flex-start;
+        //     align-items: flex-start;
+        // }
 
         &__firstblock {
             justify-self: flex-end;
@@ -204,7 +205,7 @@
             &__information {
                 &__worktype {
                     font-size: 12px;
-                    text-align: left;
+                    // text-align: left;
                 }
 
                 &__yearexperience {
@@ -212,7 +213,7 @@
                 }
 
                 &__sporttype {
-                    text-align: left;
+                    // text-align: left;
                 }
             }
         }

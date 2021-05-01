@@ -288,7 +288,7 @@ export default function Coaches({
       <Head>
         <title>
           iSporit - trouver un coach de tennis, natation, fitness, yoga,
-          football, boxe en en Tunisie
+          football, boxe en Tunisie
         </title>
         <meta
           name="description"

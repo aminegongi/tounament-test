@@ -13,7 +13,7 @@ const WeeklyBookingCalendar = ({
   setSelectedTimeSlots,
   selectedTimeSlots,
 }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState()
 
   const getSelectedDayAvailabilities = () => {
     const items =
@@ -57,9 +57,9 @@ const WeeklyBookingCalendar = ({
           }}
           tileClassName={({ date }) => {
             if (
-              moment().isSameOrBefore(moment(date, 'DD-MM-YYYY')) &&
+              moment().startOf('day').isSameOrBefore(moment(date, 'day')) &&
               availabilitiesByDate[
-                moment(date, 'DD-MM-YYYY').format('DD-MM-YYYY')
+                moment(date, 'YYYY-MM-DD').format('DD-MM-YYYY')
               ]
             ) {
               return 'weekly-booking-calendar__box__calendar__day'

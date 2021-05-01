@@ -21,17 +21,37 @@ import photoicon from '../../../public/icon/photoicon.png'
 import CoachProfileSection from '../CoachProfileSection'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
 import { ages, levels } from '../../constants'
-
+import BookingBox from '../bookingBox/BookingBox'
+ export const isSessionPricesEmpty = (coachDataParameter) => {
+   if (
+     coachDataParameter &&
+     coachDataParameter.privateCourseData &&
+     coachDataParameter.privateCourseData.sessionPrices &&
+     coachDataParameter.privateCourseData.sessionPrices.length !== 0
+     ) {
+     return false
+   }
+   return true
+ }
 export default function CoachAboutBoxes({
   coachData,
   specialty,
   allJobs,
   mainJob,
   allSpecialties,
+  setTab,
+  setPricePackage,
 }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
+  const [selectedOffer, setSelectedOffer] = useState(
+    coachData &&
+      coachData.privateCourseData &&
+      coachData.privateCourseData.sessionPrices &&
+      coachData.privateCourseData.sessionPrices.length !== 0 &&
+      coachData.privateCourseData.sessionPrices[0],
+  )
   const otherJobs = coachData.otherJobs
     ? coachData.otherJobs.map((el) => {
         const currentJob = allJobs.find((j) => j._id === el.name)
@@ -102,23 +122,13 @@ export default function CoachAboutBoxes({
     }
     return false
   }
-  const isSessionPricesEmpty = () => {
-    if (
-      coachData &&
-      coachData.privateCourseData &&
-      coachData.privateCourseData.sessionPrices &&
-      coachData.privateCourseData.sessionPrices.length !== 0
-    ) {
-      return false
-    }
-    return true
-  }
+ 
   const renderVideos = () => {
     if (isThereVideo) {
       return (
         <CoachProfileSection
           title="Vidéos"
-          isVerticalLine={!isInformationEmpty() || !isSessionPricesEmpty()}
+          isVerticalLine={!isInformationEmpty() || !isSessionPricesEmpty(coachData)}
           icon={videoicon}
         >
           <div className="coachBoxiteam__video-section">
@@ -232,14 +242,41 @@ export default function CoachAboutBoxes({
       )
     }
   }
+  const getPrices = (offer) => ({
+    onsite: {
+      value: `${offer.onSiteSessionsNumber}
+        séance${offer.onSiteSessionsNumber > 1 ? 's' : ''} sur place`,
+    },
+    online: {
+      value: `${offer.onlineSessionsNumber}
+      séance${offer.onlineSessionsNumber > 1 ? 's' : ''} en ligne`,
+    },
+    mixte: {
+      value: `${offer.onSiteSessionsNumber + offer.onlineSessionsNumber}
+      séances (${offer.onlineSessionsNumber} en ligne)`,
+    },
+  })
 
   return (
     <div className="coachBoxiteam">
       <div className="coachBoxiteam__column">
+        {!isSessionPricesEmpty(coachData) && isMobile && (
+          <BookingBox
+            sessionPrices={coachData.privateCourseData.sessionPrices}
+            isporitPriceFirstSession={
+              coachData.privateCourseData.isporitPriceFirstSession
+            }
+            setTab={setTab}
+            isVerticalLine={false}
+            setPricePackage={setPricePackage}
+          />
+        )}
+
         {!isInformationEmpty() && (
           <CoachProfileSection
             title="Informations sportives"
             icon={exclamationIcon}
+            isVerticalLine={isMobile && !isSessionPricesEmpty(coachData)}
           >
             <div className="coachBox">
               {coachData.experiencesYearsNumber ? (
@@ -365,59 +402,27 @@ export default function CoachAboutBoxes({
             </div>
           </CoachProfileSection>
         )}
-        {!isSessionPricesEmpty() && (
-          <CoachProfileSection
-            title="Packs offerts"
-            icon={exclamationIcon}
-            isVerticalLine={!isInformationEmpty()}
-          >
-            <div className="coachBox">
-              {coachData.privateCourseData.sessionPrices.map((offer, index) => {
-                return (
-                  <div className="coachBox__content">
-                    <div
-                      style={{
-                        marginBottom: '10px',
-                      }}
-                    >
-                      Pack {index + 1} :{' '}
-                    </div>
-                    <span className="coachBox__content__title">
-                      {offer.type === 'onsite' && (
-                        <span className="coachBox__content__value">
-                          {offer.price} DT pour {offer.onSiteSessionsNumber}{' '}
-                          séance(s) sur place
-                        </span>
-                      )}
-                      {offer.type === 'online' && (
-                        <span className="coachBox__content__value">
-                          {offer.price} DT pour {offer.onlineSessionsNumber}{' '}
-                          séance(s) en ligne
-                        </span>
-                      )}
-                      {offer.type === 'mixed' && (
-                        <span className="coachBox__content__value">
-                          {offer.price} DT pour {offer.onSiteSessionsNumber}{' '}
-                          séance(s) sur place et {offer.onlineSessionsNumber}{' '}
-                          séance(s) en ligne
-                        </span>
-                      )}
-                    </span>
-                  </div>
-                )
-              })}
-            </div>
-          </CoachProfileSection>
-        )}
 
         {renderVideos()}
       </div>
 
       <div className="coachBoxiteam__column">
+        {!isSessionPricesEmpty(coachData) && !isMobile && (
+          <BookingBox
+            sessionPrices={coachData.privateCourseData.sessionPrices}
+            isporitPriceFirstSession={
+              coachData.privateCourseData.isporitPriceFirstSession
+            }
+            setTab={setTab}
+            isVerticalLine={false}
+            setPricePackage={setPricePackage}
+          />
+        )}
+
         {!isLocationEmpty() && (
           <CoachProfileSection
             title="Lieux"
-            isVerticalLine={isMobile}
+            isVerticalLine={isMobile || !isSessionPricesEmpty(coachData)}
             icon={localisationIcon}
           >
             {coachData &&

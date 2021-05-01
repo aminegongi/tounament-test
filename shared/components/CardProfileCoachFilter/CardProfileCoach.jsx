@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import './cardProfileCoach.scss'
 import { Rate } from 'antd'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 // import { AVATAR } from '../../constants'
 // import ShareLink from '../ShareLink/ShareLink'
-import { isEmpty } from 'lodash'
+// import { isEmpty } from 'lodash'
 import { getUserProfilePicture, cutString } from '../../../utils/string.utils'
 import routes from '../../../utils/routes'
 // import ReservationCours from '../ReservationCours/ReservationCours'
@@ -15,7 +15,7 @@ import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
 
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
-  const router = useRouter()
+  // const router = useRouter()
 
   // const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
   //   false,
@@ -29,7 +29,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
         )
       : 0
 
-  const [linkShow, setLinkShow] = useState(false)
+  // const [linkShow, setLinkShow] = useState(false)
   // const ShowLink = () => {
   //   if (linkShow) {
   //     setLinkShow(false)
@@ -70,15 +70,6 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
             </div>
 
             <div className="card_profil_coach__information__name">
-              <img
-                src={picture}
-                alt="avatar"
-                style={
-                  isDefaultAvatar
-                    ? { display: 'none', width: '180px', objectFit: 'contain' }
-                    : { display: 'none' }
-                }
-              />
               <span>{cutString(`${coachProfile.firstName}`, 15)}</span>
               <span
                 className="card_profil_coach__information__name__mobile"
@@ -102,21 +93,6 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
               </div>
             }
             {
-              <span
-                style={{ display: 'none' }}
-                className="card_profil_coach__information__worktype card_profil_coach__information__work-type-mobile"
-              >
-                {job && job.translations.fr} {!isEmpty(specialty) && '-'}{' '}
-                {specialty &&
-                  specialty.map((el, index) => {
-                    if (index !== specialty.length - 1) {
-                      return `${el.translations.fr}, `
-                    }
-                    return el.translations.fr
-                  })}
-              </span>
-            }
-            {
               <div className="card_profil_coach__information__sporttype">
                 {specialty &&
                   specialty.map((el, index) => {
@@ -138,39 +114,10 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 coachProfile.coachData.experiencesYearsNumber === 1 &&
                 `1 an d'expérience`}
             </div>
-            <div
-              style={{ display: 'none' }}
-              className="card_profil_coach__information__coach-about-me-mobile"
-            >
-              <span>
-                <b style={{ textTransform: 'capitalize' }}>
-                  {coachProfile.firstName} {coachProfile.lastName}
-                </b>{' '}
-                {coachProfile.coachData &&
-                  coachProfile.coachData.aboutMe &&
-                  cutString(`${coachProfile.coachData.aboutMe}`, 100)}
-                ...
-                <span style={{ color: '#8E8E8E' }}>voir plus</span>
-              </span>
-            </div>
           </div>
         </a>
       </Link>
       <div className="card_profil_coach__button">
-        {/* <button
-          // onClick={() => setIsModalVisibleReservation(true)}
-          onClick={() =>
-            router.push(
-              `${routes.COACH_DETAILS.PROFILE.linkTo(
-                coachProfile.username,
-              )}?calendar=display`,
-            )
-          }
-          type="button"
-          className="card_profil_coach__button__contact"
-        >
-          Réserver
-        </button> */}
         <Link href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
           <a href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
             <button

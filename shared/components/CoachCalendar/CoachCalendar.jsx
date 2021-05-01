@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-underscore-dangle */
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import moment from 'moment'
@@ -12,15 +12,26 @@ import WeeklyBookingCalendar from '../WeeklyBookingCalendar/WeeklyBookingCalenda
 import { createCoachingRequest } from '../../services/coachDetails.service'
 import { AuthContext } from '../../../utils/context.utils'
 import IsporitModal from '../IsporitModal/IsporitModal'
+import { getPrices } from './../bookingBox/BookingBox'
 
-export default function CoachCalendar({ coach, onSuccess }) {
+export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
+ 
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
   const [confirmationLoading, setConfirmationLoading] = useState(false)
   const [requestNote, setRequestNote] = useState('')
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState()
   // const [coachingRequestApi, setCoachingRequestApi] = useState()
   const authContext = useContext(AuthContext)
-
+  useEffect(() => {
+    if (pricePackage) {
+      console.log('pricePackage: ', pricePackage)
+      const prices = getPrices(pricePackage)
+      setSelectedPackage(
+        prices[pricePackage.type].value + ' (' + pricePackage.price + ' DT)',
+      )
+    }
+  }, [pricePackage])
   const onOpenConfirmModal = () => {
     if (!authContext.isLoggedIn) {
       return authContext.toggleLogInModal(
@@ -31,18 +42,22 @@ export default function CoachCalendar({ coach, onSuccess }) {
     }
     setIsConfirmModalOpen(true)
   }
-
+  const getNote = () => {
+    if (isEmpty(requestNote)) return selectedPackage
+    if (selectedPackage) return selectedPackage + '*-+*+-?***' + requestNote
+    return requestNote
+  }
   const onCreateCoachingRequest = () => {
-    if (authContext.userType === CLUB) {
-      return message.error(
-        "une organisation n'est pas autorisée à réserver un cours privé avec un entraîneur",
-      )
-    }
     const createRequest = async () => {
+      if (authContext.userType === CLUB) {
+        return message.error(
+          "une organisation n'est pas autorisée à réserver un cours privé avec un entraîneur",
+        )
+      }
       const result = await createCoachingRequest(
         {
           coachId: coach._id,
-          note: isEmpty(requestNote) ? undefined : requestNote,
+          note: getNote(),
           requests: selectedTimeSlots.map((el) => ({ availabilityId: el._id })),
         },
         setConfirmationLoading,
@@ -51,12 +66,12 @@ export default function CoachCalendar({ coach, onSuccess }) {
         if (result.data.message === 'coachingRequestAlreadyExists') {
           // if (result.data.details && result.data.details.coachingRequests) {
           return message.error(
-            `Vous ne pouvez pas réserver la même disponibilité 2 fois! ( ${
+            `Vous ne pouvez pas réserver la même disponibilité 2 fois! (${
               result.data.details &&
               result.data.details.coachingRequests &&
               result.data.details.coachingRequests.map(
                 (el) =>
-                  `${moment(el.startTime, 'YYYY-MM-DD HH:mm').format('LLLL')} `,
+                  `${moment(el.startTime, 'YYYY-MM-DD HH:mm').format('LLLL')}`,
               )
             })`,
           )
@@ -179,14 +194,24 @@ export default function CoachCalendar({ coach, onSuccess }) {
                   </div>
                 ))}
                 {authContext.userProfile._id !== coach._id && (
-                  <Button
-                    type="submit"
-                    id="coach-calendar-footer-confirm-button"
-                    onClick={onOpenConfirmModal}
-                    className="coach-calendar__body__calendar-section__footer__confirm-button"
-                  >
-                    Confirmer
-                  </Button>
+                  <>
+                    <textarea
+                      onChange={(e) => setRequestNote(e.target.value)}
+                      value={requestNote}
+                      placeholder="si vous le voulez, écrivez dans ce champ des informations que vous voulez envoyer au coach (niveau de jeu, problèmes de santé, ...)"
+                      rows={5}
+                      className="isporit-input"
+                    />
+
+                    <Button
+                      type="submit"
+                      id="coach-calendar-footer-confirm-button"
+                      onClick={onCreateCoachingRequest}
+                      className="coach-calendar__body__calendar-section__footer__confirm-button"
+                    >
+                      Confirmer
+                    </Button>
+                  </>
                 )}
               </div>
             )}

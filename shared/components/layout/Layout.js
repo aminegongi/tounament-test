@@ -2,6 +2,7 @@
 import React from 'react'
 import './layout.scss'
 import Navbar from '../navbar/Navbar'
+import Footer from './../footer/footer';
 
 export default function Layout({
   searchBar,
@@ -29,7 +30,7 @@ export default function Layout({
       <div className="children isporit_max_width">{children}</div>
 
       <div className="layout_container__footer">
-        <Navbar isFooter />
+        <Footer/>
       </div>
     </div>
   )
