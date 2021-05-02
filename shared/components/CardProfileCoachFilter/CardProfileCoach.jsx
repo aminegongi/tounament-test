@@ -175,8 +175,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 style={{
                   display: 'flex',
                   color: 'black',
-                  fontSize: '10px',
-                  fontSize: '11px',
+                  fontSize: '12px',
                   justifyContent: 'center',
                   padding: '10px 10px 10px 10px',
                 }}
@@ -184,7 +183,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {cheapestPrice && (
                   <div className="">
                     Dès{' '}
-                    <span style={{ color: '#26beb5', fontSize: '11px' }}>
+                    <span style={{ color: '#ff8760', fontSize: '12px' }}>
                       <b>{cheapestPrice} DT</b>
                     </span>
                   </div>
@@ -193,7 +192,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {firstSessionPrice !== -1 && (
                   <div className="">
                     1ère séance{' '}
-                    <span style={{ color: '#26beb5', fontSize: '11px' }}>
+                    <span style={{ color: '#ff8760', fontSize: '12px' }}>
                       <b> {firstSessionPrice}</b>
                     </span>
                   </div>
