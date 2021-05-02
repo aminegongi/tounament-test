@@ -63,7 +63,7 @@ export default function Coaches({
   const {
     query: { job, specialty, region, availabilityDate },
   } = router
-  const nbr_of_card_per_page = 15
+  const nbr_of_card_per_page = 100
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const [pageNumber, setPageNumber] = useState(1)
