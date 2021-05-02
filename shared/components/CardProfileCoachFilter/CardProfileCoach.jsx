@@ -14,7 +14,8 @@ import routes from '../../../utils/routes'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
 import { isSessionPricesEmpty } from './../CoachBox/CoachBox'
-
+import availableIcon from '../../../public/icon/available.png'
+import notAvailableIcon from '../../../public/icon/notAvailable.png'
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
   // const router = useRouter()
 
@@ -47,14 +48,14 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
       cheapestPrice = coachProfile.coachData.privateCourseData.sessionPrices
         .slice()
         .sort((a, b) => a.price - b.price)[0].price
-      let firstSessionPrice = 
+      let firstSessionPrice =
         coachProfile.coachData.privateCourseData.isporitPriceFirstSession
       console.log(
         'firstSessionPrice: ',
         firstSessionPrice,
         coachProfile.lastName,
       )
-      if (firstSessionPrice===undefined) {
+      if (firstSessionPrice === undefined) {
         firstSessionPrice = -1
       } else if (firstSessionPrice === 0) {
         firstSessionPrice = ' Gratuite'
@@ -101,19 +102,24 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {coachProfile.coachData &&
                 coachProfile.coachData.availabilities &&
                 coachProfile.coachData.availabilities.length ? (
-                  // <img src="" />
-                  <></>
+                  <img
+                    src={availableIcon}
+                    className="card_profil_coach__information__avatar__available__img"
+                  />
                 ) : (
-                  // <img src="" />
-                  <></>
+                  <img
+                    src={notAvailableIcon}
+                    className="card_profil_coach__information__avatar__available__img"
+                  />
                 )}
               </div>
               <img
+                className="card_profil_coach__information__avatar__img"
                 src={picture}
                 alt="avatar"
                 style={
                   isDefaultAvatar
-                    ? { width: '180px', objectFit: 'contain' }
+                    ? { width: '180px !important', objectFit: 'contain' , objectPosition: "unset" }
                     : {}
                 }
               />

@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import { Input, Select, Modal } from 'antd'
+import { Input, Select, Modal, Popover } from 'antd'
 import '../../shared/css/coaches.scss'
 import '../../shared/global-style.scss'
 import Head from 'next/head'
@@ -35,6 +35,7 @@ import {
 } from '../../utils/arrays.utils'
 import { getFormattedNumber } from '../../utils/number.utils'
 import FacebookPixel from '../../shared/components/FacebookPixel'
+import FilterMobile from './../../shared/components/FilterMobile/FilterMobile';
 
 const { Search } = Input
 
@@ -488,22 +489,34 @@ export default function Coaches({
                 {renderFilter()}
                 {}
               </Modal>
-              <div className="coaches__coach_details__list_of_coach__lenght_sortby">
-                <div className="coaches__coach_details__list_of_coach__lenght_sortby__filter">
-                  <div className="filerblock">
-                    <img src="../../../icon/filtre.png" alt=" " />
-                    <div
-                      className="filterbutton"
-                      onClick={showModal}
-                      style={{ fontSize: '15px' }}
-                    >
-                      {!isMobile && <>Filtrer({filteredItemsNumber})</>}
-                      {isMobile && (
-                        <>Cliquer pour filtrer ({filteredItemsNumber})</>
-                      )}
+              <div className="coaches__coach_details__list_of_coach__length_sort-by">
+                {isMobile && (
+                  <div className="coaches__coach_details__list_of_coach__length_sort-by__filter">
+                    <div className="filerblock">
+                      {/* <img src="../../../icon/filtre.png" alt=" " /> */}
+                      {/* <div
+                        className="filterbutton"
+                        onClick={showModal}
+                        style={{ fontSize: '15px' }}
+                      > */}
+                      {/* <>Cliquer pour filtrer ({filteredItemsNumber})</> */}
+
+                      {/* </div> */}
+                      <FilterMobile
+                        jobs={jobs}
+                        dances={dances}
+                        sports={sports}
+                        regions={regions}
+                        selectedJob={selectedJob}
+                        setSelectedJob={setSelectedJob}
+                        selectedSpecialty={selectedSpecialty}
+                        setSelectedSpecialty={setSelectedSpecialty}
+                        selectedRegions={selectedRegions}
+                        setSelectedRegions={setSelectedRegions}
+                      />
                     </div>
                   </div>
-                </div>
+                )}
                 {!isMobile && (
                   <div
                     key="desktop"
@@ -515,23 +528,27 @@ export default function Coaches({
                     {dataCopy.length} résultat(s)
                   </div>
                 )}
-                <div className="coaches__coach_details__list_of_coach__lenght_sortby__sortby">
-                  <span>Trier par : </span>
-                  <Select
-                    labelInValue
-                    placeholder={ALL}
-                    style={{ width: 200 }}
-                    bordered={false}
-                    className="coaches__coach_details__list_of_coach__lenght_sortby__sortby__select"
-                    onChange={handleChange}
-                  >
-                    <Option value={ALL}>Tout</Option>
-                    <Option value={ALPHABETICAL}>Ordre alphabétique</Option>
-                    {/* <Option value={RECOMMEND}>Les plus recommandés</Option> */}
-                    <Option value={EXPERIENCE}>Années d'expérience</Option>
-                  </Select>
-                </div>
+                {!isMobile && (
+                  <div className="coaches__coach_details__list_of_coach__length_sort-by__sortby">
+                    <span>Trier par : </span>
+                    <Select
+                      labelInValue
+                      placeholder={ALL}
+                      style={{ width: 200 }}
+                      bordered={false}
+                      className="coaches__coach_details__list_of_coach__length_sort-by__sortby__select"
+                      onChange={handleChange}
+                    >
+                      <Option value={ALL}>Tout</Option>
+                      <Option value={ALPHABETICAL}>Ordre alphabétique</Option>
+                      <Option value={EXPERIENCE}>Années d'expérience</Option>
+                    </Select>
+                  </div>
+                )}
+                {/* <Option value={RECOMMEND}>Les plus recommandés</Option> */}
                 {isMobile && (
+                  <>
+                  <br/>
                   <div
                     key="mobile"
                     style={{
@@ -543,6 +560,7 @@ export default function Coaches({
                   >
                     {dataCopy.length} résultat(s)
                   </div>
+                  </>
                 )}
               </div>
 
