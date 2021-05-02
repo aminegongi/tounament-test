@@ -30,6 +30,15 @@ module.exports = withCss(
       webpack(config, options) {
         return config
       },
+      async redirects() {
+        return [
+          {
+            source: '/',
+            destination: '/coaches',
+            permanent: false,
+          },
+        ]
+      },
     }),
   ),
 )
