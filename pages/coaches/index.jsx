@@ -662,7 +662,7 @@ Coaches.getInitialProps = async ({ req }) => {
         ...el.coachData,
         availabilities: el.coachData.availabilities.filter(
           (s) =>
-            moment(s.startTime).isSameOrBefore(moment().add(7, 'day')) &&
+            moment(s.startTime).isSameOrBefore(moment().add(14, 'day')) &&
             moment().isSameOrBefore(s.startTime),
         ),
         isAvailable: !!el.coachData.availabilities.find(
