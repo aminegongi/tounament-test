@@ -100,8 +100,8 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
             <div className="card_profil_coach__information__avatar">
               <div className="card_profil_coach__information__avatar__available">
                 {coachProfile.coachData &&
-                coachProfile.coachData.availabilities &&
-                coachProfile.coachData.availabilities.length ? (
+                coachProfile.coachData.isAvailable ?
+                 (
                   <img
                     src={availableIcon}
                     className="card_profil_coach__information__avatar__available__img"
@@ -119,7 +119,11 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 alt="avatar"
                 style={
                   isDefaultAvatar
-                    ? { width: '180px !important', objectFit: 'contain' , objectPosition: "unset" }
+                    ? {
+                        width: '180px !important',
+                        objectFit: 'contain',
+                        objectPosition: 'unset',
+                      }
                     : {}
                 }
               />

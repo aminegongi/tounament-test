@@ -665,6 +665,10 @@ Coaches.getInitialProps = async ({ req }) => {
             moment(s.startTime).isSameOrBefore(moment().add(7, 'day')) &&
             moment().isSameOrBefore(s.startTime),
         ),
+        isAvailable: !!el.coachData.availabilities.find(
+          (s) =>
+            moment(s.startTime).isSameOrAfter(moment()) 
+        ),
       },
     })),
     jobs: jsonJobsRes,
