@@ -108,6 +108,9 @@ export const getJobsList = (coaches, jobs) => {
     }
   })
   return list
+  //.sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
+
+
 }
 
 export const getSpecialtiesList = (coaches, specialties) => {
@@ -128,6 +131,7 @@ export const getSpecialtiesList = (coaches, specialties) => {
     }
   })
   return list
+  
 }
 export const getRegionsList = (coaches, regions) => {
   const list = []
@@ -164,6 +168,6 @@ export const getRegionsList = (coaches, regions) => {
       list.push(region)
     }
   })
-  return list
+  return list.sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
 }
 export default getFilteredCoaches

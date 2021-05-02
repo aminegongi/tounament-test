@@ -75,7 +75,7 @@
                 margin-right: 29px;
             }
 
-            &__lenght_sortby {
+            &__length_sort-by {
                 padding: 25px 16px 14.5px 15.5px;
                 display: flex;
                 justify-content: space-between;
@@ -86,9 +86,9 @@
                     color: #646464;
                 }
 
-                &__filter {
-                    display: none;
-                }
+                // &__filter {
+                //     display: none;
+                // }
 
                 &__sortby {
                     span {
@@ -212,9 +212,6 @@
         &__coach_details {
             margin: 11px 0;
 
-            &__list_of_coach {
-                margin-left: 0;
-            }
 
             &__filter {
                 &__input_search-mobile {
@@ -227,13 +224,16 @@
             }
 
             &__list_of_coach {
-                &__lenght_sortby {
+                margin-left: 0;
+
+              
+
+
+                &__length_sort-by {
                     padding: 0;
 
-                    display: flex;
-                    justify-content: space-between;
+                    display: block;
                     row-gap: 7px;
-                    align-items: center;
                     margin-left: 27px;
                     padding-bottom: 8.8px;
 
@@ -242,7 +242,7 @@
                         display: grid;
                         justify-self: flex-end;
 
-                        > span {
+                        >span {
                             display: none;
                         }
                     }
@@ -273,28 +273,34 @@
 @media only screen and (max-width: 600px) {
     .coaches {
         padding: 0;
+
         &__coach_details {
             &__filter {
                 &__input_search-mobile {
                     padding-right: 12px !important;
                     padding-left: 12px !important;
+
                     input {
                         padding-left: 42px !important;
                     }
                 }
             }
+
             &__list_of_coach {
                 border: none;
                 background-color: transparent;
+
                 &__card {
                     padding: 0;
                 }
-                &__lenght_sortby {
+
+                &__length_sort-by {
                     flex-wrap: wrap;
                     justify-content: flex-start;
                     margin: 0 !important;
                     padding-right: 16px !important;
                     padding-left: 16px !important;
+
                     &__lenght {
                         text-align: left;
                         width: 100%;

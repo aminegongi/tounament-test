@@ -13,8 +13,9 @@ import routes from '../../../utils/routes'
 // import shareIcon from '../../../public/icon/profileShare.png'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
-import { isSessionPricesEmpty } from '../CoachBox/CoachBox'
-
+import { isSessionPricesEmpty } from './../CoachBox/CoachBox'
+import availableIcon from '../../../public/icon/available.png'
+import notAvailableIcon from '../../../public/icon/notAvailable.png'
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
   // const router = useRouter()
 
@@ -101,19 +102,24 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {coachProfile.coachData &&
                 coachProfile.coachData.availabilities &&
                 coachProfile.coachData.availabilities.length ? (
-                  // <img src="" />
-                  <></>
+                  <img
+                    src={availableIcon}
+                    className="card_profil_coach__information__avatar__available__img"
+                  />
                 ) : (
-                  // <img src="" />
-                  <></>
+                  <img
+                    src={notAvailableIcon}
+                    className="card_profil_coach__information__avatar__available__img"
+                  />
                 )}
               </div>
               <img
+                className="card_profil_coach__information__avatar__img"
                 src={picture}
                 alt="avatar"
                 style={
                   isDefaultAvatar
-                    ? { width: '180px', objectFit: 'contain' }
+                    ? { width: '180px !important', objectFit: 'contain' , objectPosition: "unset" }
                     : {}
                 }
               />
@@ -169,7 +175,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 style={{
                   display: 'flex',
                   color: 'black',
-                  fontSize: '12px',
+                  fontSize: '13px',
                   justifyContent: 'center',
                   padding: '10px 10px 10px 10px',
                 }}
@@ -177,7 +183,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {cheapestPrice && (
                   <div className="">
                     Dès{' '}
-                    <span style={{ color: '#ff8760', fontSize: '12px' }}>
+                    <span style={{ color: '#ff8760', fontSize: '13px' }}>
                       <b>{cheapestPrice} DT</b>
                     </span>
                   </div>
@@ -186,7 +192,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {firstSessionPrice !== -1 && (
                   <div className="">
                     1ère séance{' '}
-                    <span style={{ color: '#ff8760', fontSize: '12px' }}>
+                    <span style={{ color: '#ff8760', fontSize: '13px' }}>
                       <b> {firstSessionPrice}</b>
                     </span>
                   </div>
