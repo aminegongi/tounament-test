@@ -56,10 +56,10 @@ import routes from '../utils/routes'
 /* coachesList, jobs, sports, dances, regions */
 const Index = () => {
   const route = useRouter()
-  useEffect(() => {
-    window.location.href = routes.COACHES_LIST.path
-    // route.push(routes.COACHES_LIST.path)
-  }, [])
+  // useEffect(() => {
+  //   window.location.href = routes.COACHES_LIST.path
+  //   // route.push(routes.COACHES_LIST.path)
+  // }, [])
   return <div />
 }
 
