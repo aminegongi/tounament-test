@@ -22,17 +22,18 @@ import CoachProfileSection from '../CoachProfileSection'
 import YoutubeVideoCard from '../YoutubeVideoCard/YoutubeVideoCard'
 import { ages, levels } from '../../constants'
 import BookingBox from '../bookingBox/BookingBox'
- export const isSessionPricesEmpty = (coachDataParameter) => {
-   if (
-     coachDataParameter &&
-     coachDataParameter.privateCourseData &&
-     coachDataParameter.privateCourseData.sessionPrices &&
-     coachDataParameter.privateCourseData.sessionPrices.length !== 0
-     ) {
-     return false
-   }
-   return true
- }
+
+export const isSessionPricesEmpty = (coachDataParameter) => {
+  if (
+    coachDataParameter &&
+    coachDataParameter.privateCourseData &&
+    coachDataParameter.privateCourseData.sessionPrices &&
+    coachDataParameter.privateCourseData.sessionPrices.length !== 0
+  ) {
+    return false
+  }
+  return true
+}
 export default function CoachAboutBoxes({
   coachData,
   specialty,
@@ -122,13 +123,15 @@ export default function CoachAboutBoxes({
     }
     return false
   }
- 
+
   const renderVideos = () => {
     if (isThereVideo) {
       return (
         <CoachProfileSection
           title="Vidéos"
-          isVerticalLine={!isInformationEmpty() || !isSessionPricesEmpty(coachData)}
+          isVerticalLine={
+            !isInformationEmpty() || !isSessionPricesEmpty(coachData)
+          }
           icon={videoicon}
         >
           <div className="coachBoxiteam__video-section">
@@ -149,7 +152,7 @@ export default function CoachAboutBoxes({
                       {v.title}
                     </div>
                     <div className="coachBoxiteam__video-section__first-video__date">
-                      {moment(v.videoDate).format('LL')}
+                      {v.videoDate && moment(v.videoDate).format('LL')}
                     </div>
                   </div>
                 )
@@ -173,7 +176,7 @@ export default function CoachAboutBoxes({
                           {v.title}
                         </div>
                         <div className="coachBoxiteam__video-section__other-videos__date">
-                          {moment(v.videoDate).format('LL')}
+                          {v.videoDate && moment(v.videoDate).format('LL')}
                         </div>
                       </div>
                     </div>
@@ -293,7 +296,7 @@ export default function CoachAboutBoxes({
               )}
 
               {coachData.playerData &&
-                coachData.playerData.experiencesYearsNumber && (
+                coachData.playerData.experiencesYearsNumber > 0 && (
                   <div className="coachBox__content">
                     <div className="coachBox__content__title">
                       Années à jouer (ou à pratiquer) :{' '}

@@ -13,7 +13,7 @@ import routes from '../../../utils/routes'
 // import shareIcon from '../../../public/icon/profileShare.png'
 import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
-import { isSessionPricesEmpty } from './../CoachBox/CoachBox'
+import { isSessionPricesEmpty } from '../CoachBox/CoachBox'
 
 export default function CardProfileCoach({ coachProfile, job, specialty }) {
   // const router = useRouter()
@@ -47,14 +47,14 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
       cheapestPrice = coachProfile.coachData.privateCourseData.sessionPrices
         .slice()
         .sort((a, b) => a.price - b.price)[0].price
-      let firstSessionPrice = 
+      let firstSessionPrice =
         coachProfile.coachData.privateCourseData.isporitPriceFirstSession
       console.log(
         'firstSessionPrice: ',
         firstSessionPrice,
         coachProfile.lastName,
       )
-      if (firstSessionPrice===undefined) {
+      if (firstSessionPrice === undefined) {
         firstSessionPrice = -1
       } else if (firstSessionPrice === 0) {
         firstSessionPrice = ' Gratuite'
@@ -169,8 +169,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 style={{
                   display: 'flex',
                   color: 'black',
-                  fontSize: '10px',
-                  fontSize: '11px',
+                  fontSize: '12px',
                   justifyContent: 'center',
                   padding: '10px 10px 10px 10px',
                 }}
@@ -178,7 +177,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {cheapestPrice && (
                   <div className="">
                     Dès{' '}
-                    <span style={{ color: '#26beb5', fontSize: '11px' }}>
+                    <span style={{ color: '#ff8760', fontSize: '12px' }}>
                       <b>{cheapestPrice} DT</b>
                     </span>
                   </div>
@@ -187,7 +186,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 {firstSessionPrice !== -1 && (
                   <div className="">
                     1ère séance{' '}
-                    <span style={{ color: '#26beb5', fontSize: '11px' }}>
+                    <span style={{ color: '#ff8760', fontSize: '12px' }}>
                       <b> {firstSessionPrice}</b>
                     </span>
                   </div>
