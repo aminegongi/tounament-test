@@ -25,7 +25,7 @@ const Index = () => {
   return (
     <div className="club_page">
       <Head>
-        <title>Club</title>
+        <title>{process.env.NODE_ENV}</title>
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
