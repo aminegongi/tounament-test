@@ -153,7 +153,7 @@ const Login = (props) => {
             <h2 className="title">Rejoignez notre platforme</h2>
 
             <span className="description">
-              Entrez vos information et débutez avec nous votre parcours
+              Entrez vos informations et débutez avec nous votre parcours
             </span>
             <Link href={{ pathname: '/sign-up', query: router.query }}>
               <a>
