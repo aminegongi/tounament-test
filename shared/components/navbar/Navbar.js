@@ -87,8 +87,8 @@ function NavbarIndex({
       <div className="footer_container">
         <section className={`${'footer_bar'}  ${'isporit_max_width'}`}>
           <div className="logo">
-            <Link href="/">
-              <a href="/">
+            <Link href="/coaches">
+              <a href="/coaches">
                 <img src="../../../icon/logoindexpage.png" alt="iSporit" />
               </a>
             </Link>
@@ -134,8 +134,8 @@ function NavbarIndex({
     return (
       <div className="mobile_burger_menu">
         <div className="logo isporit-flex-h-space-v-center">
-          <Link href="/">
-            <a href="/">
+          <Link href="/coaches">
+            <a href="/coaches">
               <img src={logoImg} alt="logo" />
             </a>
           </Link>
@@ -301,8 +301,8 @@ function NavbarIndex({
           style={!searchBar ? { paddingBottom: '0px' } : {}}
         >
           <div className="logo" style={!searchBar ? { marginTop: '0px' } : {}}>
-            <Link href="/">
-              <a href="/">
+            <Link href="/coaches">
+              <a href="/coaches">
                 <img src="../../../icon/logoindexpage.png" alt="logo" />
               </a>
             </Link>
