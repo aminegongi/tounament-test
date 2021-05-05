@@ -34,6 +34,7 @@ const Index = () => {
                         dans une seule plateforme. Vous pouvez personnaliser votre site Web avec vos propres informations 
                         afin que les intéressés puissent vous contacter directement depuis votre site Web."
         />
+        
         <meta
           name="keywords"
           content="sport,clubs,coaches,players,tennis,football..."
