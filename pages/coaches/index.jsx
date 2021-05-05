@@ -212,7 +212,7 @@ export default function Coaches({
               sessionDate: selectedDate,
             },
           ),
-        ),
+        )
       // )
     } else if (value.key === 'experience') {
       const sortByExperience = [...dataCopy].sort((a, b) =>
