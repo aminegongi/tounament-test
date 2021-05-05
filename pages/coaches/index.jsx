@@ -35,7 +35,7 @@ import {
 } from '../../utils/arrays.utils'
 import { getFormattedNumber } from '../../utils/number.utils'
 import FacebookPixel from '../../shared/components/FacebookPixel'
-import FilterMobile from './../../shared/components/FilterMobile/FilterMobile';
+import FilterMobile from './../../shared/components/FilterMobile/FilterMobile'
 
 const { Search } = Input
 
@@ -46,7 +46,8 @@ export default function Coaches({
   dances,
   regions,
 }) {
-  const [dataCopy, setDataCopy] = useState(coachesListOrderBy(coachesList))
+  // const [dataCopy, setDataCopy] = useState(coachesListOrderBy(coachesList))
+  const [dataCopy, setDataCopy] = useState(coachesList)
 
   const [selectedName, setSelectedName] = useState()
 
@@ -195,7 +196,7 @@ export default function Coaches({
       setDataCopy(sortByAlphabetical)
     } else if (value.key === 'Tout') {
       setDataCopy(
-        coachesListOrderBy(
+        // coachesListOrderBy(
           getFilteredCoaches(
             coachesList,
 
@@ -212,7 +213,7 @@ export default function Coaches({
             },
           ),
         ),
-      )
+      // )
     } else if (value.key === 'experience') {
       const sortByExperience = [...dataCopy].sort((a, b) =>
         a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber
@@ -548,18 +549,18 @@ export default function Coaches({
                 {/* <Option value={RECOMMEND}>Les plus recommandés</Option> */}
                 {isMobile && (
                   <>
-                  <br/>
-                  <div
-                    key="mobile"
-                    style={{
-                      fontSize: '0.875rem',
-                      color: '#646464',
-                      textAlign: 'left',
-                      marginRight: '29px',
-                    }}
-                  >
-                    {dataCopy.length} résultat(s)
-                  </div>
+                    <br />
+                    <div
+                      key="mobile"
+                      style={{
+                        fontSize: '0.875rem',
+                        color: '#646464',
+                        textAlign: 'left',
+                        marginRight: '29px',
+                      }}
+                    >
+                      {dataCopy.length} résultat(s)
+                    </div>
                   </>
                 )}
               </div>
@@ -608,13 +609,27 @@ export default function Coaches({
   )
 }
 Coaches.getInitialProps = async ({ req }) => {
-  const coachesRes = await fetch(
-    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
-  )
-  const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
-  const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
-  const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
-  const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
+  // const coachesRes = await fetch(
+  //   `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
+  // )
+  // const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
+  // const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
+  // const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
+  // const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
+  const [
+    coachesRes,
+    jobsRes,
+    sportsRes,
+    danceRes,
+    regionsRes,
+  ] = await Promise.all([
+    fetch(`${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`),
+    fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`),
+    fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`),
+    fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`),
+    fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`),
+  ])
+
   let jsonCoachesRes = await coachesRes.json()
   if (jsonCoachesRes) {
     jsonCoachesRes = jsonCoachesRes.map((coach) => {
@@ -632,11 +647,22 @@ Coaches.getInitialProps = async ({ req }) => {
       return { ...coach, averageRate }
     })
   }
-  let jsonJobsRes = await jobsRes.json()
-  let jsonSportsRes = await sportsRes.json()
-  let jsonDancesRes = await danceRes.json()
-  let jsonRegionsRes = await regionsRes.json()
 
+  // let jsonJobsRes = await jobsRes.json()
+  // let jsonSportsRes = await sportsRes.json()
+  // let jsonDancesRes = await danceRes.json()
+  // let jsonRegionsRes = await regionsRes.json()
+let [
+  jsonJobsRes,
+  jsonSportsRes,
+  jsonDancesRes,
+  jsonRegionsRes,
+] = await Promise.all([
+  jobsRes.json(),
+  sportsRes.json(),
+  danceRes.json(),
+  regionsRes.json(),
+])
   if (jsonJobsRes) {
     jsonJobsRes = getJobsList(jsonCoachesRes, jsonJobsRes)
     jsonJobsRes = jsonJobsRes
@@ -665,9 +691,8 @@ Coaches.getInitialProps = async ({ req }) => {
             moment(s.startTime).isSameOrBefore(moment().add(14, 'day')) &&
             moment().isSameOrBefore(s.startTime),
         ),
-        isAvailable: !!el.coachData.availabilities.find(
-          (s) =>
-            moment(s.startTime).isSameOrAfter(moment()) 
+        isAvailable: !!el.coachData.availabilities.find((s) =>
+          moment(s.startTime).isSameOrAfter(moment()),
         ),
       },
     })),

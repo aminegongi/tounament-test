@@ -91,7 +91,9 @@ export const getFilteredCoaches = (
         ),
     )
   }
-  return coachesListOrderBy(filteredCoaches)
+  // return coachesListOrderBy(filteredCoaches)
+  return filteredCoaches
+
 }
 export const getJobsList = (coaches, jobs) => {
   const list = []
