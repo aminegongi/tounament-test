@@ -48,6 +48,7 @@ export default function Coaches({
 }) {
   // const [dataCopy, setDataCopy] = useState(coachesListOrderBy(coachesList))
   const [dataCopy, setDataCopy] = useState(coachesList)
+  console.log('coachesList: ', coachesList);
 
   const [selectedName, setSelectedName] = useState()
 
