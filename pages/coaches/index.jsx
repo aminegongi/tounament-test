@@ -48,7 +48,7 @@ export default function Coaches({
 }) {
   // const [dataCopy, setDataCopy] = useState(coachesListOrderBy(coachesList))
   const [dataCopy, setDataCopy] = useState(coachesList)
-  console.log('coachesList: ', coachesList);
+  // console.log('coachesList: ', coachesList);
 
   const [selectedName, setSelectedName] = useState()
 
@@ -632,6 +632,7 @@ Coaches.getInitialProps = async ({ req }) => {
   ])
 
   let jsonCoachesRes = await coachesRes.json()
+  // console.log('jsonCoachesRes: ', jsonCoachesRes[0]);
   if (jsonCoachesRes) {
     jsonCoachesRes = jsonCoachesRes.map((coach) => {
       let averageRate = 0
