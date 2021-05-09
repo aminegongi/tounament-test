@@ -25,7 +25,7 @@ export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
   const authContext = useContext(AuthContext)
   useEffect(() => {
     if (pricePackage) {
-      console.log('pricePackage: ', pricePackage)
+      // console.log('pricePackage: ', pricePackage)
       const prices = getPrices(pricePackage)
       setSelectedPackage(
         prices[pricePackage.type].value + ' (' + pricePackage.price + ' DT)',

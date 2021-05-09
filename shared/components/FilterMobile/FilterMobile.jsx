@@ -14,7 +14,7 @@ export default function FilterMobile({
   selectedRegions,
   setSelectedRegions,
 }) {
-  console.log('selectedJob: ', selectedJob)
+  // console.log('selectedJob: ', selectedJob)
   const [specialties, setSpecialties] = useState('')
   const [jobVisible, setJobVisible] = useState(false)
   const [specialtyVisible, setSpecialtyVisible] = useState(false)

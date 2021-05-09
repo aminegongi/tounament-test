@@ -51,10 +51,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
       let firstSessionPrice =
         coachProfile.coachData.privateCourseData.isporitPriceFirstSession
       console.log(
-        'firstSessionPrice: ',
-        firstSessionPrice,
-        coachProfile.lastName,
-      )
+        'firstSessionPrice: ')
       if (firstSessionPrice === undefined) {
         firstSessionPrice = -1
       } else if (firstSessionPrice === 0) {
