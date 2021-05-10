@@ -290,18 +290,18 @@ export default function Coaches({
     <>
       <Head>
         <title>
-          iSporit - trouver un coach de tennis, natation, fitness, yoga,
-          football, boxe en Tunisie
+          iSporit - trouver un coach/entraîneur de tennis, natation, fitness,
+          yoga, football, boxe en Tunisie (tunis, bizerte, sousse, monastir)
         </title>
         <meta
           name="description"
-          content="Trouvez et réservez en Tunisie votre coach de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
+          content="Trouvez et réservez en Tunisie (tunis, bizerte, sousse, monastir) votre coach/entraîneur de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:url" content="https://isporit.com/coaches" />
         <meta
           property="og:description"
-          content="Trouvez et réservez en Tunisie votre coach de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
+          content="Trouvez et réservez en Tunisie (tunis, bizerte, sousse, monastir) votre coach/entraîneur de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
         />
         <meta
           property="og:image"

@@ -14,7 +14,7 @@ export const FRONT_END_PLATFORM_URL = (token) => {
   const { publicRuntimeConfig } = getConfig()
 
   const { location } = typeof window !== 'undefined' && window
-  return 'https://isporit.com'
+  return 'https://dev.isporit.com'
   // if (localStorage) {
   if (
     location &&
@@ -32,7 +32,7 @@ export const FRONT_END_PLATFORM_URL = (token) => {
 export const SERVER_SIDE_API_BASE_URL = (req) => {
   const { publicRuntimeConfig } = getConfig()
   const { origin } = absoluteUrl(req)
-  return 'https://isporit.com/api/'
+  return 'https://dev.isporit.com/api/'
   if (origin.includes('localhost:3001') || origin.includes('localhost:3000')) {
     return 'https://dev.isporit.com/api/'
   }
@@ -42,7 +42,7 @@ export const CLIENT_SIDE_API_BASE_URL = () => {
   const { publicRuntimeConfig } = getConfig()
 
   const { host } = typeof window !== 'undefined' && window.location
-  return 'https://isporit.com/api'
+  return 'https://dev.isporit.com/api'
   if (
     host &&
     (host.includes('localhost:3001') || host.includes('localhost:3000'))
