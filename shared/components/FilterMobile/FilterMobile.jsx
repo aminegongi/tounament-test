@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './FilterMobile.scss'
 import { Popover, Empty } from 'antd'
 import { isEmpty } from 'lodash'
+
 export default function FilterMobile({
   jobs,
   dances,
@@ -14,7 +15,6 @@ export default function FilterMobile({
   selectedRegions,
   setSelectedRegions,
 }) {
-  // console.log('selectedJob: ', selectedJob)
   const [specialties, setSpecialties] = useState('')
   const [jobVisible, setJobVisible] = useState(false)
   const [specialtyVisible, setSpecialtyVisible] = useState(false)
@@ -53,13 +53,13 @@ export default function FilterMobile({
       setSelectedSpecialty(specialty)
     }
   }
-const handleRegions = (region) => {
-  if (!isEmpty(selectedRegions) && region._id === selectedRegions[0]) {
-    setSelectedRegions([])
-  } else {
-    setSelectedRegions([region._id])
+  const handleRegions = (region) => {
+    if (!isEmpty(selectedRegions) && region._id === selectedRegions[0]) {
+      setSelectedRegions([])
+    } else {
+      setSelectedRegions([region._id])
+    }
   }
-}
   const displayJobs = () => {
     return jobs.map((job) => {
       return (
@@ -79,7 +79,7 @@ const handleRegions = (region) => {
       )
     })
   }
-  
+
   const displayRegions = () => {
     return regions.map((region) => {
       return (
@@ -90,7 +90,7 @@ const handleRegions = (region) => {
             'filter-mobile__active'
           }
           onClick={() => {
-           handleRegions(region)
+            handleRegions(region)
             setRegionVisible(false)
           }}
         >
@@ -134,12 +134,6 @@ const handleRegions = (region) => {
       )
     }
   }
-  const content = (
-    <div>
-      <p>Content</p>
-      <p>Content</p>
-    </div>
-  )
   return (
     <div className="filter-mobile">
       <Popover
@@ -184,12 +178,14 @@ const handleRegions = (region) => {
         onVisibleChange={(visible) => setRegionVisible(visible)}
       >
         <span className="filter-mobile__mobile-filter">
-          {/* {!isEmpty(selectedJob) && selectedJob.translations.fr} */}
-          {/* {!isEmpty(selectedJob) && <span> 1 Profession </span>} */}
           {!isEmpty(selectedRegions) && (
-            <span> Région : {regions.find(
-                              (elem) => elem._id === selectedRegions[0],
-                            ).translations.fr} </span>
+            <span>
+              Région :{' '}
+              {
+                regions.find((elem) => elem._id === selectedRegions[0])
+                  .translations.fr
+              }{' '}
+            </span>
           )}
 
           {isEmpty(selectedRegions) && <span> Régions </span>}

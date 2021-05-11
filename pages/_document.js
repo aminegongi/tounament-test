@@ -2,7 +2,6 @@
 import React from 'react'
 import Document, { Head, Main, NextScript, Html } from 'next/document'
 import { Manifest } from 'next-manifest'
-import { FB_PIXEL_ID } from '../shared/constants'
 
 export default class extends Document {
   //   static getInitialProps({renderPage}) {
@@ -16,7 +15,12 @@ export default class extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href="icon/logoindexpage.png" />
+          <link
+            className="document__light-favicon"
+            rel="icon"
+            href="icon/favicone.png"
+          />
+
           <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
           <link
             href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.15/antd.min.css"

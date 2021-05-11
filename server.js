@@ -1,10 +1,10 @@
-const express = require('express')
+// const express = require('express')
 const next = require('next')
-const nextI18NextMiddleware = require('next-i18next/middleware').default
+// const nextI18NextMiddleware = require('next-i18next/middleware').default
 
-const nextI18next = require('./i18n')
+// const nextI18next = require('./i18n')
 
-const port = process.env.PORT || 3000
+// const port = process.env.PORT || 3000
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
 
@@ -25,9 +25,9 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true)
     const { pathname } = parsedUrl
 
-    const server = express()
+    // const server = express()
 
-    server.use(nextI18NextMiddleware(nextI18next))
+    // server.use(nextI18NextMiddleware(nextI18next))
 
     // handle GET request to /service-worker.js
     if (pathname === '/service-worker.js') {

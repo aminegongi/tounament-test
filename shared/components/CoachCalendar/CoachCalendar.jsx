@@ -6,45 +6,32 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, Icon, message } from 'antd'
+import { getPrices } from '../bookingBox/BookingBox'
 import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../../constants'
 import './coachCalendar.scss'
 import WeeklyBookingCalendar from '../WeeklyBookingCalendar/WeeklyBookingCalendar'
 import { createCoachingRequest } from '../../services/coachDetails.service'
 import { AuthContext } from '../../../utils/context.utils'
 import IsporitModal from '../IsporitModal/IsporitModal'
-import { getPrices } from './../bookingBox/BookingBox'
 
 export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
- 
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
   const [confirmationLoading, setConfirmationLoading] = useState(false)
   const [requestNote, setRequestNote] = useState('')
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState()
-  // const [coachingRequestApi, setCoachingRequestApi] = useState()
   const authContext = useContext(AuthContext)
   useEffect(() => {
     if (pricePackage) {
-      // console.log('pricePackage: ', pricePackage)
       const prices = getPrices(pricePackage)
       setSelectedPackage(
-        prices[pricePackage.type].value + ' (' + pricePackage.price + ' DT)',
+        `${prices[pricePackage.type].value} (${pricePackage.price} DT)`,
       )
     }
   }, [pricePackage])
-  const onOpenConfirmModal = () => {
-    if (!authContext.isLoggedIn) {
-      return authContext.toggleLogInModal(
-        () => () => setIsConfirmModalOpen(true),
-        true,
-        'player',
-      )
-    }
-    setIsConfirmModalOpen(true)
-  }
   const getNote = () => {
     if (isEmpty(requestNote)) return selectedPackage
-    if (selectedPackage) return selectedPackage + '*-+*+-?***' + requestNote
+    if (selectedPackage) return `${selectedPackage}*-+*+-?***${requestNote}`
     return requestNote
   }
   const onCreateCoachingRequest = () => {

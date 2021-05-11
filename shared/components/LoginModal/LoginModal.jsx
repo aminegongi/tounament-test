@@ -23,6 +23,8 @@ const LoginModal = ({
     email: '',
     password: '',
     userType: 'player',
+    timezone: 'Africa/Tunis',
+    locale: 'fr',
   })
   const [clubData, setClubData] = useState({
     title: '',

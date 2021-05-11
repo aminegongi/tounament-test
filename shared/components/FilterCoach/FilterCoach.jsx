@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { isEmpty } from 'lodash'
 import './filterCoach.scss'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { Empty } from 'antd'
 import down from '../../../public/icon/down.png'
 import left from '../../../public/icon/left.png'
@@ -44,7 +44,7 @@ export default function FilterCoach({
 
   useEffect(() => {
     filterSpecialty()
-  }, [selectedJob])
+  }, [selectedJob, sports])
 
   const handleJob = (job) => {
     window.scrollTo(400, 250)
@@ -108,6 +108,7 @@ export default function FilterCoach({
       )
     }
   }
+  console.log('specialties: ', specialties)
 
   const displaySpecialties = () => {
     if (icon === down && specialties !== '') {
