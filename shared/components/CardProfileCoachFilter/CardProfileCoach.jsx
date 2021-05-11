@@ -1,44 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './cardProfileCoach.scss'
-import { Rate } from 'antd'
+// import { Rate } from 'antd'
 import Link from 'next/link'
-// import { useRouter } from 'next/router'
-// import { AVATAR } from '../../constants'
-// import ShareLink from '../ShareLink/ShareLink'
-// import { isEmpty } from 'lodash'
+import moment from 'moment'
 import { getUserProfilePicture, cutString } from '../../../utils/string.utils'
 import routes from '../../../utils/routes'
-// import ReservationCours from '../ReservationCours/ReservationCours'
-// import shareIcon from '../../../public/icon/profileShare.png'
-import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
+// import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
-import { isSessionPricesEmpty } from './../CoachBox/CoachBox'
+import { isSessionPricesEmpty } from '../CoachBox/CoachBox'
 import availableIcon from '../../../public/icon/available.png'
 import notAvailableIcon from '../../../public/icon/notAvailable.png'
-export default function CardProfileCoach({ coachProfile, job, specialty }) {
-  // const router = useRouter()
 
-  // const [isModalVisibleReservation, setIsModalVisibleReservation] = useState(
-  //   false,
-  // )
+export default function CardProfileCoach({ coachProfile, job, specialty }) {
   const [cheapestPrice, setCheapestPrice] = useState()
   const [firstSessionPrice, setFirstSessionPrice] = useState(-1)
-  const sum =
-    coachProfile.coachData && coachProfile.coachData.reviews
-      ? getFormattedNumber(
-          coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-            coachProfile.coachData.reviews.length,
-          2,
-        )
-      : 0
-
-  // const [linkShow, setLinkShow] = useState(false)
-  // const ShowLink = () => {
-  //   if (linkShow) {
-  //     setLinkShow(false)
-  //   } else setLinkShow(true)
-  // }
+  // const sum =
+  //   coachProfile.coachData && coachProfile.coachData.reviews
+  //     ? getFormattedNumber(
+  //         coachProfile.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
+  //           coachProfile.coachData.reviews.length,
+  //         2,
+  //       )
+  //     : 0
   const picture = getUserProfilePicture(coachProfile.profilePicture)
   const isDefaultAvatar = picture === DEFAULT_USER_AVATAR
 
@@ -50,11 +34,6 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
         .sort((a, b) => a.price - b.price)[0].price
       let firstSessionPrice =
         coachProfile.coachData.privateCourseData.isporitPriceFirstSession
-      console.log(
-        'firstSessionPrice: ',
-        firstSessionPrice,
-        coachProfile.lastName,
-      )
       if (firstSessionPrice === undefined) {
         firstSessionPrice = -1
       } else if (firstSessionPrice === 0) {
@@ -62,8 +41,6 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
       } else {
         firstSessionPrice += ' DT'
       }
-      // if (firstSessionPrice !== undefined && firstSessionPrice !== -1) {
-      // }
       return { cheapestPrice, firstSessionPrice }
     }
   }
@@ -77,37 +54,60 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
       }
     }
   }, [coachProfile])
+
+  const displayAvailbleFrom = () => {
+    const firstAvailability =
+      coachProfile.coachData && coachProfile.coachData.firstAvailability
+    if (firstAvailability) {
+      return (
+        <div className="card_profil_coach__available-from">
+          Disponible a partir du
+          <div className="card_profil_coach__available-from__value">
+            {moment(firstAvailability.startTime).format('dddd LL')}
+          </div>
+        </div>
+      )
+    }
+    return ''
+  }
+
+  const displayAvaialbleForOnlineSession = () => {
+    const isHasOnlineSessions = () => {
+      if (!isSessionPricesEmpty(coachProfile.coachData)) {
+        return coachProfile.coachData.privateCourseData.sessionPrices.find(
+          (el) => el.type === 'online',
+        )
+      }
+      return false
+    }
+    if (isHasOnlineSessions()) {
+      return (
+        <div className="card_profil_coach__available-for-online-session">
+          Disponible pour des cours en ligne
+        </div>
+      )
+    }
+    return ''
+  }
+
   return (
     <div className="card_profil_coach">
-      <div className="card_profil_coach__information__share">
-        {/* <button
-          type="button"
-          onClick={ShowLink}
-          className="isporit-unset-button-css"
-        >
-          <img src={shareIcon} alt="share icon" className="sharelinkicon" />
-        </button>
-        {linkShow && (
-          <>
-            <div />
-            <ShareLink coachProfile={coachProfile} />
-          </>
-        )} */}
-      </div>
+      <div className="card_profil_coach__information__share" />
       <Link href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
         <a href={routes.COACH_DETAILS.PROFILE.linkTo(coachProfile.username)}>
           <div className="card_profil_coach__information">
             <div className="card_profil_coach__information__avatar">
               <div className="card_profil_coach__information__avatar__available">
                 {coachProfile.coachData &&
-                coachProfile.coachData.isAvailable ?
-                 (
+                coachProfile.coachData.firstAvailability ? (
                   <img
+                    alt="disponible"
                     src={availableIcon}
                     className="card_profil_coach__information__avatar__available__img"
                   />
                 ) : (
                   <img
+                    alt="no disponible"
                     src={notAvailableIcon}
                     className="card_profil_coach__information__avatar__available__img"
                   />
@@ -139,17 +139,17 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
               </span>
             </div>
 
-            <div className="card_profil_coach__information__rate">
+            {/* <div className="card_profil_coach__information__rate">
               <Rate
                 allowHalf
                 disabled
                 defaultValue={getRoundedRate(sum)}
                 className="rate"
               />
-            </div>
+            </div> */}
             {
               <div className="card_profil_coach__information__worktype">
-                {job && job.translations.fr}{' '}
+                {job && job.translations && job.translations.fr}{' '}
               </div>
             }
             {
@@ -203,6 +203,8 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
                 )}
               </div>
             )}
+            {displayAvailbleFrom()}
+            {displayAvaialbleForOnlineSession()}
           </div>
         </a>
       </Link>
@@ -218,17 +220,16 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
           </a>
         </Link>
       </div>
-
-      {/* <ReservationCours
-        coachProfile={coachProfile}
-        isModalVisibleReservation={isModalVisibleReservation}
-        setIsModalVisibleReservation={setIsModalVisibleReservation}
-      /> */}
     </div>
   )
 }
 CardProfileCoach.propTypes = {
   coachProfile: PropTypes.objectOf(PropTypes.any).isRequired,
-  job: PropTypes.arrayOf(PropTypes.any).isRequired,
-  specialty: PropTypes.arrayOf(PropTypes.any).isRequired,
+  job: PropTypes.objectOf(PropTypes.any),
+  specialty: PropTypes.arrayOf(PropTypes.any),
+}
+
+CardProfileCoach.defaultProps = {
+  job: {},
+  specialty: [],
 }

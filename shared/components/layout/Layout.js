@@ -2,35 +2,18 @@
 import React from 'react'
 import './layout.scss'
 import Navbar from '../navbar/Navbar'
-import Footer from './../footer/footer';
+import Footer from '../footer/footer'
 
-export default function Layout({
-  searchBar,
-  setSearchBar,
-  children,
-  coachesList,
-  jobs,
-  sports,
-  dances,
-  regions,
-}) {
+export default function Layout({ children }) {
   return (
     <div className="layout_container">
       <div className="layout_container__navbar">
-        <Navbar
-          searchBar={searchBar}
-          setSearchBar={setSearchBar}
-          coachesList={coachesList}
-          jobs={jobs}
-          sports={sports}
-          dances={dances}
-          regions={regions}
-        />
+        <Navbar />
       </div>
       <div className="children isporit_max_width">{children}</div>
 
       <div className="layout_container__footer">
-        <Footer/>
+        <Footer />
       </div>
     </div>
   )

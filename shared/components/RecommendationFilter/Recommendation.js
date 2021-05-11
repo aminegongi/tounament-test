@@ -7,7 +7,6 @@ export default function Recommendation({
   selectedReviewsRate,
   setSelectedReviewsRate,
 }) {
- 
   const handleClick = (e) => {
     window.scrollTo(400, 250)
     setSelectedReviewsRate(e.target.value)
@@ -19,13 +18,13 @@ export default function Recommendation({
         <Radio.Group value={Number(selectedReviewsRate)}>
           {[5, 4, 3, 2, 1, 0].map((value) => {
             return (
-              <div>
+              <div key={value}>
                 <Radio value={value} className="radio" onClick={handleClick} />
                 <Rate disabled defaultValue={value} className="rate" />
                 <span className="recommendation__rate__plus">et plus</span>
               </div>
             )
-          })}          
+          })}
         </Radio.Group>
       </div>
     </div>

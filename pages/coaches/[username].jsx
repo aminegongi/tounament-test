@@ -1,29 +1,29 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-underscore-dangle */
 import React, { useContext, useEffect, useState } from 'react'
-import fetch from 'isomorphic-unfetch'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { isEmpty } from 'lodash'
+import { intersection, isEmpty } from 'lodash'
 import Head from 'next/head'
 import { Breadcrumb, Icon, Affix } from 'antd'
 import { useMediaPredicate } from 'react-media-hook'
+import Axios from 'axios'
 import InfoCoach from '../../shared/components/InfoCoach/InfoCoach'
 import '../../shared/css/coachDetails.scss'
 import {
   SERVER_SIDE_API_BASE_URL,
   CLUB,
   FRONT_END_PLATFORM_URL,
-  FB_PIXEL_ID,
+  CLIENT_SIDE_API_BASE_URL,
 } from '../../shared/constants'
-// import CoachAboutBoxes from '../../shared/components/ContactCoach/ContactCoach'
-import CoachBox from '../../shared/components/CoachBox/CoachBox'
+import CoachBox, {
+  isSessionPricesEmpty,
+} from '../../shared/components/CoachBox/CoachBox'
 import CoachAvis from '../../shared/components/CoachAvis/CoachAvis'
 import Biography from '../../shared/components/Biography/Biography'
 import affiche from '../../public/icon/Banniere.png'
 import exclamation from '../../public/icon/exclamation.png'
-// import ReservationCours from '../../../shared/components/ReservationCours/ReservationCours'
 import { AuthContext } from '../../utils/context.utils'
 import Layout from '../../shared/components/layout/Layout'
 import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
@@ -31,7 +31,7 @@ import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
 import FacebookPixel from '../../shared/components/FacebookPixel'
-import { isSessionPricesEmpty } from './../../shared/components/CoachBox/CoachBox'
+import CardProfileCoach from '../../shared/components/CardProfileCoachFilter/CardProfileCoach'
 
 const ABOUT_TAB = 1
 // const RECOMMENDATION_TAB = 2
@@ -39,56 +39,82 @@ const BIOGRAPHY_TAB = 3
 export const CALENDAR_TAB = 4
 const SUCCESS_BOOKING_TAB = 5
 
+export async function getServerSideProps({ query, req }) {
+  const coachRes = await fetch(
+    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/slug/${query.username}`,
+  )
+
+  const jsonCoachRes = await coachRes.json()
+
+  return {
+    props: {
+      coach: jsonCoachRes,
+      userNotFound: coachRes.status === 404,
+    },
+  }
+}
 export default function CoachDetails({
   coach,
-  jobs,
-  sports,
-  dances,
   userNotFound,
+  appCoachesList,
+  setAppCoachesList,
 }) {
   const router = useRouter()
   // const [coachData, setCoachData] = useState()
   const [specialty, setSpecialty] = useState()
   const [job, setJob] = useState()
   const [tab, setTab] = useState(ABOUT_TAB)
-  const [isContactModalVisible, setIsContactModalVisible] = useState(false)
   const [pricePackage, setPricePackage] = useState()
+  const [similarCoaches, setSimilarCoaches] = useState([])
+
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
-  const authContext = useContext(AuthContext)
+  const [jobs, setJobs] = useState([])
+  const [sports, setSports] = useState([])
+  const [dances, setDances] = useState([])
 
-  const isCoachOpenForWork = () => {
-    if (authContext.isLoggedIn) {
-      if (
-        authContext.userType === CLUB &&
-        coach.coachData &&
-        !coach.coachData.lookingForJob
-      ) {
-        return false
-      }
-      if (
-        authContext.userType !== CLUB &&
-        coach.coachData &&
-        coach.coachData.privateCourseData &&
-        !coach.coachData.privateCourseData.givePrivateCourse
-      ) {
-        return false
-      }
+  useEffect(() => {
+    Axios.all([
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/jobs`),
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/sports`),
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/dances`),
+    ]).then((res) => {
+      setDances(res[2].data)
+      setSports(res[1].data)
+      setJobs(res[0].data)
+    })
+    if (isEmpty(appCoachesList)) {
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/users/coaches/all`).then(
+        (res) => {
+          setAppCoachesList(res.data)
+          setSimilarCoaches(
+            res.data.filter(
+              (el) =>
+                (!isEmpty(
+                  intersection(
+                    coach.coachData.specialty,
+                    el.coachData.specialty,
+                  ),
+                ) ||
+                  el.coachData.job === coach.coachData.job) &&
+                router.query.username !== el.username,
+            ),
+          )
+        },
+      )
+    } else {
+      setSimilarCoaches(
+        appCoachesList.filter(
+          (el) =>
+            (!isEmpty(
+              intersection(coach.coachData.specialty, el.coachData.specialty),
+            ) ||
+              el.coachData.job === coach.coachData.job) &&
+            router.query.username !== el.username,
+        ),
+      )
     }
-    if (!authContext.isLoggedIn) {
-      return true
-    }
-    return true
-  }
-  // const onOpenContactModal = () => {
-  //   // if (!authContext.isLoggedIn) {
-  //   //   return authContext.toggleLogInModal()
-  //   // }
-  //   if (isCoachOpenForWork()) {
-  //     return setIsContactModalVisible(true)
-  //   }
-  //   return null
-  // }
+  }, [])
 
   const renderCoachProfile = () => {
     return (
@@ -186,7 +212,7 @@ export default function CoachDetails({
       (j) => j._id === (coach.coachData && coach.coachData.job),
     )
 
-    let specialty = ''
+    let specialty = []
     if (job) {
       if (job.specialty && job.specialty.type === 'sport') {
         specialty = coach.coachData.specialty
@@ -212,7 +238,7 @@ export default function CoachDetails({
     }
     setSpecialty(specialty)
     setJob(job)
-  }, [router.query.id])
+  }, [router.query.id, jobs])
 
   useEffect(() => {
     if (router.query.calendar) {
@@ -230,6 +256,44 @@ export default function CoachDetails({
   if (isEmpty(coach.coachData)) {
     return (
       <Error statusCode={404} description={"Oops!!! Ce coach n'existe pas"} />
+    )
+  }
+
+  const coachProfileCard = (el) => {
+    const j = jobs.find((j) => j._id === (el.coachData && el.coachData.job))
+    let sp = []
+    if (j) {
+      if (j.specialty && j.specialty.type === 'sport') {
+        sp = el.coachData.specialty
+          ? el.coachData.specialty.reduce((acc, val) => {
+              const element = sports.find((dance) => dance._id === val)
+              if (element) {
+                acc = [...acc, element]
+              }
+              return acc
+            }, [])
+          : []
+      } else if (j.specialty && j.specialty.type === 'dance') {
+        sp = el.coachData.specialty
+          ? el.coachData.specialty.reduce((acc, val) => {
+              const element = dances.find((dance) => dance._id === val)
+              if (element) {
+                acc = [...acc, element]
+              }
+              return acc
+            }, [])
+          : []
+      }
+    }
+    return (
+      <div>
+        <CardProfileCoach
+          coachProfile={el}
+          key={el._id}
+          job={j}
+          specialty={sp}
+        />
+      </div>
     )
   }
 
@@ -290,9 +354,6 @@ export default function CoachDetails({
               <div className="coach__coachdetails__contact">
                 {coach && jobs && renderCoachProfile(coach)}
               </div>
-              {/* <div className="coach__coachdetails__information">
-                {coach ? <CoachAboutBoxes coachData={coach} /> : ''}
-              </div> */}
             </div>
             {isMobile && isSessionPricesEmpty(coach.coachData) && (
               <Affix offsetTop={65}>
@@ -304,7 +365,11 @@ export default function CoachDetails({
                   }}
                   type="button"
                   className="isporit-primary-button tabs__contact"
-                  style={{ marginTop: '10px', padding: '5px 34px', width:"100%" }}
+                  style={{
+                    marginTop: '10px',
+                    padding: '5px 34px',
+                    width: '100%',
+                  }}
                 >
                   Réserver
                 </button>
@@ -339,15 +404,6 @@ export default function CoachDetails({
                   >
                     A propos
                   </button>
-                  {/* <button
-                    type="button"
-                    className={`isporit-unset-button-css tabs__button__not-active ${
-                      tab === 2 ? 'tabs__button__active' : ''
-                    }`}
-                    onClick={() => setTab(RECOMMENDATION_TAB)}
-                  >
-                    Avis
-                  </button> */}
                   <button
                     type="button"
                     className={`isporit-unset-button-css tabs__button__not-active ${
@@ -372,15 +428,16 @@ export default function CoachDetails({
                   </button>
                 )}
               </div>
-              {/* <div className="linetabs" /> */}
               {displayTabs()}
             </div>
           </div>
-          {/* <ReservationCours
-          coachProfile={coach}
-          isModalVisibleReservation={isContactModalVisible}
-          setIsModalVisibleReservation={setIsContactModalVisible}
-        /> */}
+        </div>
+
+        <h2 className="coach__similar-coaches__title">
+          Autres coachs qui peuvent vous intéresser
+        </h2>
+        <div className="coach__similar-coaches">
+          {similarCoaches.map((el) => coachProfileCard(el))}
         </div>
       </Layout>
     </>
@@ -389,31 +446,4 @@ export default function CoachDetails({
 
 CoachDetails.propTypes = {
   coach: PropTypes.objectOf(PropTypes.any).isRequired,
-  jobs: PropTypes.arrayOf(PropTypes.any).isRequired,
-  sports: PropTypes.arrayOf(PropTypes.any).isRequired,
-  dances: PropTypes.arrayOf(PropTypes.any).isRequired,
-}
-
-CoachDetails.getInitialProps = async ({ query, req }) => {
-  const coachRes = await fetch(
-    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/slug/${query.username}`,
-  )
-  const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
-  const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
-  const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
-  const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
-  const jsonCoachRes = await coachRes.json()
-  const jsonJobsRes = await jobsRes.json()
-  const jsonSportsRes = await sportsRes.json()
-  const jsonDancesRes = await danceRes.json()
-  const jsonRegionsRes = await regionsRes.json()
-
-  return {
-    coach: jsonCoachRes,
-    jobs: jsonJobsRes,
-    sports: jsonSportsRes,
-    dances: jsonDancesRes,
-    regions: jsonRegionsRes,
-    userNotFound: coachRes.status === 404,
-  }
 }
