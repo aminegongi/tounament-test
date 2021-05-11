@@ -2,14 +2,17 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import { Input, Select, Modal, Popover } from 'antd'
+import { Input, Select, Modal } from 'antd'
 import '../../shared/css/coaches.scss'
 import '../../shared/global-style.scss'
 import Head from 'next/head'
 import { isEmpty } from 'lodash'
-import fetch from 'isomorphic-unfetch'
+
+// import fetch from 'isomorphic-unfetch'
 import { useMediaPredicate } from 'react-media-hook'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Axios from 'axios'
 import {
   ALL,
   ALPHABETICAL,
@@ -17,38 +20,75 @@ import {
   SERVER_SIDE_API_BASE_URL,
   levels,
   ages,
+  CLIENT_SIDE_API_BASE_URL,
 } from '../../shared/constants'
+
 import FilterCoach from '../../shared/components/FilterCoach/FilterCoach'
 import Experiencefilter from '../../shared/components/Experiencefilter/Experiencefilter'
-import Recommendation from '../../shared/components/RecommendationFilter/Recommendation'
-import CoachType from '../../shared/components/CoachTypeFilter/CoachType'
+// import Recommendation from '../../shared/components/RecommendationFilter/Recommendation'
+// import CoachType from '../../shared/components/CoachTypeFilter/CoachType'
 import CoachRegion from '../../shared/components/CoachRegionFilter/CoachRegion'
 import CardProfileCoach from '../../shared/components/CardProfileCoachFilter/CardProfileCoach'
 import affiche from '../../public/icon/Banniere.png'
+import mobileBanner from '../../public/icon/banniere_mobile.png'
 import Layout from '../../shared/components/layout/Layout'
 import {
-  coachesListOrderBy,
+  // coachesListOrderBy,
   getFilteredCoaches,
-  getJobsList,
   getRegionsList,
-  getSpecialtiesList,
+  // getJobsList,
+  // getRegionsList,Cyqrn r
+  // getSpecialtiesList,
 } from '../../utils/arrays.utils'
-import { getFormattedNumber } from '../../utils/number.utils'
+// import { getFormattedNumber } from '../../utils/number.utils'
 import FacebookPixel from '../../shared/components/FacebookPixel'
-import FilterMobile from './../../shared/components/FilterMobile/FilterMobile'
+import FilterMobile from '../../shared/components/FilterMobile/FilterMobile'
 
 const { Search } = Input
 
-export default function Coaches({
-  coachesList,
-  jobs,
-  sports,
-  dances,
-  regions,
-}) {
+export async function getServerSideProps({ req }) {
+  const coachesRes = await fetch(
+    `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
+  )
+  const jsonCoachesRes = await coachesRes.json()
+
+  return {
+    props: {
+      coachesList: jsonCoachesRes,
+    },
+  }
+}
+
+function Coaches({ coachesList, setAppCoachesList }) {
+  console.log('coachesList: ', coachesList)
   // const [dataCopy, setDataCopy] = useState(coachesListOrderBy(coachesList))
   const [dataCopy, setDataCopy] = useState(coachesList)
-  console.log('coachesList: ', coachesList);
+  const [jobs, setJobs] = useState([])
+  const [sports, setSports] = useState([])
+  const [dances, setDances] = useState([])
+  const [regions, setRegions] = useState([])
+
+  useEffect(() => {
+    Axios.all([
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/jobs`),
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/sports`),
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/dances`),
+      Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/regions`),
+    ]).then((res) => {
+      setJobs(res[0].data)
+      setSports(res[1].data)
+      setDances(res[2].data)
+      setRegions(getRegionsList(coachesList, res[3].data))
+    })
+    setAppCoachesList(coachesList)
+  }, [])
+  // console.log('coachesList: ', coachesList)
+
+  // useEffect(() => {
+  //   Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/users/coaches/all`).then((res) => {
+  //     return setDataCopy(res.data)
+  //   })
+  // }, [])
 
   const [selectedName, setSelectedName] = useState()
 
@@ -65,22 +105,23 @@ export default function Coaches({
   const {
     query: { job, specialty, region, availabilityDate },
   } = router
-  const nbr_of_card_per_page = 15
+  const nbrOfCardPerPage = 15
   const isMobile = useMediaPredicate('(max-width: 992px)')
+  const isMobileLessThan700 = useMediaPredicate('(max-width: 700px)')
 
   const [pageNumber, setPageNumber] = useState(1)
   const [pageActiveNumber, setPageActiveNumber] = useState()
-  function paginate(array, page_size, page_number) {
-    return array.slice((page_number - 1) * page_size, page_number * page_size)
+  function paginate(array, pageSize, pageNb) {
+    return array.slice((pageNb - 1) * pageSize, pageNb * pageSize)
   }
   const renderCoachProfile = (coachProfile) => {
-    const job = jobs.find(
+    const j = jobs.find(
       (j) => j._id === (coachProfile.coachData && coachProfile.coachData.job),
     )
-    let specialty = ''
-    if (job) {
-      if (job.specialty && job.specialty.type === 'sport') {
-        specialty = coachProfile.coachData.specialty
+    let sp = []
+    if (j) {
+      if (j.specialty && j.specialty.type === 'sport') {
+        sp = coachProfile.coachData.specialty
           ? coachProfile.coachData.specialty.reduce((acc, val) => {
               const element = sports.find((dance) => dance._id === val)
               if (element) {
@@ -89,8 +130,8 @@ export default function Coaches({
               return acc
             }, [])
           : []
-      } else if (job.specialty && job.specialty.type === 'dance') {
-        specialty = coachProfile.coachData.specialty
+      } else if (j.specialty && j.specialty.type === 'dance') {
+        sp = coachProfile.coachData.specialty
           ? coachProfile.coachData.specialty.reduce((acc, val) => {
               const element = dances.find((dance) => dance._id === val)
               if (element) {
@@ -105,12 +146,11 @@ export default function Coaches({
       <CardProfileCoach
         coachProfile={coachProfile}
         key={coachProfile._id}
-        job={job}
-        specialty={specialty}
+        job={j}
+        specialty={sp}
       />
     )
   }
-  const [isModalVisible, setIsModalVisible] = useState(false)
   useEffect(() => {
     if (job) {
       const foundJob = jobs.find((elem) => elem._id === job)
@@ -167,23 +207,9 @@ export default function Coaches({
     selectedRegions,
     selectedDate,
   ])
-  const showModal = () => {
-    setIsModalVisible(true)
-  }
-
-  const handleOk = () => {
-    setIsModalVisible(false)
-  }
-
-  const handleCancel = () => {
-    setIsModalVisible(false)
-    deleteFilter()
-  }
 
   const onSearch = (value) => {
-    // if (value) {
     setSelectedName(value.toLowerCase())
-    // }
   }
   const { Option } = Select
   const handleChange = (value) => {
@@ -197,24 +223,22 @@ export default function Coaches({
       setDataCopy(sortByAlphabetical)
     } else if (value.key === 'Tout') {
       setDataCopy(
-        // coachesListOrderBy(
-          getFilteredCoaches(
-            coachesList,
+        getFilteredCoaches(
+          coachesList,
 
-            {
-              name: selectedName,
-              job: selectedJob._id,
-              specialty: selectedSpecialty._id,
-              experienceYears: selectedExperienceYears,
-              reviewRate: selectedReviewsRate,
-              coachingLevel: selectedLevel,
-              coachingAges: selectedAges,
-              regions: selectedRegions,
-              sessionDate: selectedDate,
-            },
-          ),
-        )
-      // )
+          {
+            name: selectedName,
+            job: selectedJob._id,
+            specialty: selectedSpecialty._id,
+            experienceYears: selectedExperienceYears,
+            reviewRate: selectedReviewsRate,
+            coachingLevel: selectedLevel,
+            coachingAges: selectedAges,
+            regions: selectedRegions,
+            sessionDate: selectedDate,
+          },
+        ),
+      )
     } else if (value.key === 'experience') {
       const sortByExperience = [...dataCopy].sort((a, b) =>
         a.coachData.experiencesYearsNumber < b.coachData.experiencesYearsNumber
@@ -264,24 +288,23 @@ export default function Coaches({
           selectedExperienceYears={selectedExperienceYears}
           setSelectedExperienceYears={setSelectedExperienceYears}
         />
-        <Recommendation
+        {/* <Recommendation
           selectedReviewsRate={selectedReviewsRate}
           setSelectedReviewsRate={setSelectedReviewsRate}
-        />
-        <CoachType
+        /> */}
+        {/* <CoachType
           selectedLevel={selectedLevel}
           setSelectedLevel={setSelectedLevel}
           selectedAges={selectedAges}
           setSelectedAges={setSelectedAges}
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
-        />
+        /> */}
         <CoachRegion
           regions={regions}
           selectedRegions={selectedRegions}
           setSelectedRegions={setSelectedRegions}
         />
-        <div />
       </>
     )
   }
@@ -313,7 +336,18 @@ export default function Coaches({
       <Layout>
         <div className="coaches ">
           <div className="affiche">
-            <img className="affiche__img" src={affiche} alt="affiche" />
+            {isMobileLessThan700 ? (
+              // <img className="affiche__img" src={mobileBanner} alt="affiche" />
+              <Image
+                src={mobileBanner}
+                alt="affiche"
+                width={1142}
+                height={500}
+              />
+            ) : (
+              <Image src={affiche} alt="affiche" width={1142} height={266} />
+            )}
+            {/* <img className="affiche__img" src={affiche} alt="affiche" /> */}
           </div>
           <div className="coaches__coach_details">
             <div className="coaches__coach_details__filter">
@@ -328,12 +362,14 @@ export default function Coaches({
                     ({filteredItemsNumber})
                   </span>
                 </div>
-                <div
+                <button
+                  type="button"
+                  className="isporit-unset-button-css"
                   onClick={deleteFilter}
                   style={{ fontSize: '12px', paddingRight: '15px' }}
                 >
                   Réinitialiser les filtres
-                </div>
+                </button>
               </div>
               <div className="isporit-flex-h-start-v-center">
                 <ul className="coaches__selected-filtered-items">
@@ -341,6 +377,7 @@ export default function Coaches({
                     <li className="coaches__selected-filtered-item">
                       <span>{selectedName}</span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedName('')}
                       >
@@ -352,6 +389,7 @@ export default function Coaches({
                     <li className="coaches__selected-filtered-item">
                       <span>{selectedJob.translations.fr}</span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedJob({})}
                       >
@@ -363,6 +401,7 @@ export default function Coaches({
                     <li className="coaches__selected-filtered-item">
                       <span>{selectedSpecialty.translations.fr}</span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedSpecialty({})}
                       >
@@ -374,6 +413,7 @@ export default function Coaches({
                     <li className="coaches__selected-filtered-item">
                       <span> > {selectedExperienceYears} année(s)</span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedExperienceYears()}
                       >
@@ -385,6 +425,7 @@ export default function Coaches({
                     <li className="coaches__selected-filtered-item">
                       <span>{selectedReviewsRate} / 5</span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedReviewsRate()}
                       >
@@ -398,6 +439,7 @@ export default function Coaches({
                         {moment(selectedDate).format('DD-MM-YYYY HH:mm')}
                       </span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedDate()}
                       >
@@ -412,6 +454,7 @@ export default function Coaches({
                           levels[selectedLevel].label.slice(1)}
                       </span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedLevel()}
                       >
@@ -431,6 +474,7 @@ export default function Coaches({
                           .join(', ')}
                       </span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedAges([])}
                       >
@@ -451,6 +495,7 @@ export default function Coaches({
                           .join(', ')}
                       </span>
                       <button
+                        type="button"
                         className="coaches__delete-filtered-item"
                         onClick={() => setSelectedRegions()}
                       >
@@ -479,31 +524,10 @@ export default function Coaches({
                   onChange={(e) => onSearch(e.target.value)}
                 />
               )}
-              <Modal
-                title="Choisissez vos critères"
-                visible={isModalVisible}
-                onOk={handleOk}
-                okText="Voir les coachs"
-                cancelText="Réinitialiser les filtres"
-                onCancel={handleCancel}
-                className="isporit-modal-with-fixed-footer"
-              >
-                {renderFilter()}
-                {}
-              </Modal>
               <div className="coaches__coach_details__list_of_coach__length_sort-by">
                 {isMobile && (
                   <div className="coaches__coach_details__list_of_coach__length_sort-by__filter">
                     <div className="filerblock">
-                      {/* <img src="../../../icon/filtre.png" alt=" " /> */}
-                      {/* <div
-                        className="filterbutton"
-                        onClick={showModal}
-                        style={{ fontSize: '15px' }}
-                      > */}
-                      {/* <>Cliquer pour filtrer ({filteredItemsNumber})</> */}
-
-                      {/* </div> */}
                       <FilterMobile
                         jobs={jobs}
                         dances={dances}
@@ -547,7 +571,6 @@ export default function Coaches({
                     </Select>
                   </div>
                 )}
-                {/* <Option value={RECOMMEND}>Les plus recommandés</Option> */}
                 {isMobile && (
                   <>
                     <br />
@@ -566,23 +589,16 @@ export default function Coaches({
                 )}
               </div>
 
-              {/* <div className="lineprofilecoach" /> */}
               <div className="coaches__coach_details__list_of_coach__card">
-                {paginate(
-                  // [
-                  //   ...dataCopy.filter((el) => el.recommandAsCoach),
-                  //   ...dataCopy.filter((el) => !el.recommandAsCoach),
-                  // ],
-                  dataCopy,
-                  nbr_of_card_per_page,
-                  pageNumber,
-                ).map((el, key) => renderCoachProfile(el))}
+                {paginate(dataCopy, nbrOfCardPerPage, pageNumber).map((el) =>
+                  renderCoachProfile(el),
+                )}
               </div>
 
               <div className="paginate">
-                {dataCopy.length > nbr_of_card_per_page &&
+                {dataCopy.length > nbrOfCardPerPage &&
                   Array.from({
-                    length: Math.ceil(dataCopy.length / nbr_of_card_per_page),
+                    length: Math.ceil(dataCopy.length / nbrOfCardPerPage),
                   }).map((el, index) => (
                     <div
                       className={
@@ -609,97 +625,23 @@ export default function Coaches({
     </>
   )
 }
-Coaches.getInitialProps = async ({ req }) => {
-  // const coachesRes = await fetch(
-  //   `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
-  // )
-  // const jobsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`)
-  // const sportsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`)
-  // const danceRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`)
-  // const regionsRes = await fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`)
-  const [
-    coachesRes,
-    jobsRes,
-    sportsRes,
-    danceRes,
-    regionsRes,
-  ] = await Promise.all([
-    fetch(`${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`),
-    fetch(`${SERVER_SIDE_API_BASE_URL(req)}jobs`),
-    fetch(`${SERVER_SIDE_API_BASE_URL(req)}sports`),
-    fetch(`${SERVER_SIDE_API_BASE_URL(req)}dances/`),
-    fetch(`${SERVER_SIDE_API_BASE_URL(req)}regions/`),
-  ])
 
-  let jsonCoachesRes = await coachesRes.json()
-  if (jsonCoachesRes) {
-    jsonCoachesRes = jsonCoachesRes.map((coach) => {
-      let averageRate = 0
-      if (
-        coach.coachData &&
-        coach.coachData.reviews &&
-        coach.coachData.reviews.length !== 0
-      ) {
-        averageRate = getFormattedNumber(
-          coach.coachData.reviews.reduce((a, v) => (a += v.rating), 0) /
-            coach.coachData.reviews.length,
-        )
-      }
-      return { ...coach, averageRate }
-    })
-  }
+export default Coaches
 
-  // let jsonJobsRes = await jobsRes.json()
-  // let jsonSportsRes = await sportsRes.json()
-  // let jsonDancesRes = await danceRes.json()
-  // let jsonRegionsRes = await regionsRes.json()
-let [
-  jsonJobsRes,
-  jsonSportsRes,
-  jsonDancesRes,
-  jsonRegionsRes,
-] = await Promise.all([
-  jobsRes.json(),
-  sportsRes.json(),
-  danceRes.json(),
-  regionsRes.json(),
-])
-  if (jsonJobsRes) {
-    jsonJobsRes = getJobsList(jsonCoachesRes, jsonJobsRes)
-    jsonJobsRes = jsonJobsRes
-      .filter((job) => job.isPublic)
-      .sort((a, b) => a.order - b.order)
-  }
+// Coaches.getServerSideProps = async ({ req }) => {
+//   const coachesRes = await fetch(
+//     `${SERVER_SIDE_API_BASE_URL(req)}users/coaches/all`,
+//   )
 
-  if (jsonSportsRes) {
-    jsonSportsRes = jsonSportsRes.filter((sport) => sport.type !== undefined)
-    jsonSportsRes = getSpecialtiesList(jsonCoachesRes, jsonSportsRes)
-  }
-  if (jsonDancesRes) {
-    jsonDancesRes = getSpecialtiesList(jsonCoachesRes, jsonDancesRes)
-  }
-  if (jsonRegionsRes) {
-    jsonRegionsRes = getRegionsList(jsonCoachesRes, jsonRegionsRes)
-  }
+//   const jsonCoachesRes = await coachesRes.json()
 
-  return {
-    coachesList: jsonCoachesRes.map((el) => ({
-      ...el,
-      coachData: {
-        ...el.coachData,
-        availabilities: el.coachData.availabilities.filter(
-          (s) =>
-            moment(s.startTime).isSameOrBefore(moment().add(14, 'day')) &&
-            moment().isSameOrBefore(s.startTime),
-        ),
-        isAvailable: !!el.coachData.availabilities.find((s) =>
-          moment(s.startTime).isSameOrAfter(moment()),
-        ),
-      },
-    })),
-    jobs: jsonJobsRes,
-    sports: jsonSportsRes,
-    dances: jsonDancesRes,
-    regions: jsonRegionsRes,
-  }
-}
+//   return {
+//     props: {
+//       coachesList: jsonCoachesRes,
+//       jobs: [],
+//       sports: [],
+//       dances: [],
+//       regions: [],
+//     },
+//   }
+// }
