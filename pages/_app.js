@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useEffect, useState } from 'react'
-import App from 'next/app'
 import Router, { useRouter } from 'next/router'
 import moment from 'moment'
 
@@ -9,7 +8,6 @@ import { message } from 'antd'
 import { MOMENT_FRENCH_I18N } from '../utils/moment.utils'
 import { AuthContext } from '../utils/context.utils'
 import { initGA, logPageView } from '../utils/analytics'
-import { appWithTranslation } from '../i18n'
 import '../shared/global-style.scss'
 import {
   fetchUserProfile,
@@ -27,6 +25,8 @@ import CoachesPageLoading from '../shared/components/CoachesPageLoading/CoachesP
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const { pathname } = router
+
+  const [coachesList, setCoachesList] = useState([])
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
@@ -226,7 +226,14 @@ function MyApp({ Component, pageProps }) {
     if (pageChangingLoading.coachDetails) {
       return <CoachDetailsPageLoading />
     }
-    return <Component isLoggedIn={isLoggedIn} {...pageProps} />
+    return (
+      <Component
+        {...pageProps}
+        appCoachesList={coachesList}
+        setAppCoachesList={setCoachesList}
+        isLoggedIn={isLoggedIn}
+      />
+    )
   }
 
   return (
@@ -254,9 +261,9 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-MyApp.getInitialProps = async function (appContext) {
-  const appProps = await App.getInitialProps(appContext)
-  return { ...appProps }
-}
+// MyApp.getInitialProps = async function (appContext) {
+//   const appProps = await App.getInitialProps(appContext)
+//   return { ...appProps }
+// }
 
-export default appWithTranslation(MyApp)
+export default MyApp
