@@ -10,7 +10,10 @@ import { getPrices } from '../../../utils/string.utils'
 import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../../constants'
 import './coachCalendar.scss'
 import WeeklyBookingCalendar from '../WeeklyBookingCalendar/WeeklyBookingCalendar'
-import { createCoachingRequest } from '../../services/coachDetails.service'
+import {
+  createCoachingRequest,
+  createRecruitmentRequest,
+} from '../../services/coachDetails.service'
 import { AuthContext } from '../../../utils/context.utils'
 import IsporitModal from '../IsporitModal/IsporitModal'
 
@@ -34,6 +37,57 @@ export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
     if (selectedPackage) return `${selectedPackage}*-+*+-?***${requestNote}`
     return requestNote
   }
+
+  const [contactInformation, setContactInformation] = useState({
+    time: '09:00',
+    numberOfPlayers: 1,
+    message: '',
+    loading: false,
+  })
+
+  const onSendMessage = async (date) => {
+    const toSendMessage = () => {
+      const proposedDate = `date: ${moment(date).format('YYYY-MM-DD')} ${
+        contactInformation.time
+      }`
+      const numberOfPlayers = `players: ${contactInformation.numberOfPlayers}`
+      const theMessage = `message: ${contactInformation.message}`
+      const selectedPricePackage = selectedPackage
+        ? `package: ${selectedPackage}`
+        : undefined
+      return `${proposedDate}*-+*+-?***${
+        selectedPricePackage ? `${selectedPricePackage}*-+*+-?***` : ''
+      }${numberOfPlayers}*-+*+-?***${theMessage}`
+    }
+    const onSend = async () => {
+      const result = await createRecruitmentRequest(
+        {
+          coachId: coach._id,
+          emailBody: toSendMessage(),
+        },
+        (loading) => setContactInformation({ ...contactInformation, loading }),
+      )
+      if (result.type === REQUEST_FAILED) {
+        if (result.data.message === 'youAreNotAClub') {
+          return message.error(
+            "Cette fonctionnalité n'est disponible que pour les organisations et les clubs",
+          )
+        }
+        return message.error(
+          "Ahhh! quelque chose s'est mal passé, réessayez plus tard. Merci",
+        )
+      }
+      if (result.type === REQUEST_SUCCEEDED) {
+        window.scrollTo(0, 250)
+        return onSuccess()
+      }
+    }
+    if (!authContext.isLoggedIn) {
+      return authContext.toggleLogInModal(() => () => onSend())
+    }
+    return onSend()
+  }
+
   const onCreateCoachingRequest = () => {
     const createRequest = async () => {
       if (authContext.userType === CLUB) {
@@ -116,14 +170,14 @@ export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
         return []
       }
       return coach.coachData.availabilities.reduce((acc, val) => {
-        // if (moment().isSameOrBefore(val.startTime)) {
-        const date = moment(val.startTime).format('DD-MM-YYYY')
-        if (acc[date]) {
-          acc[date] = [...acc[date], val]
-        } else {
-          acc[date] = [val]
+        if (moment().isBefore(val.startTime)) {
+          const date = moment(val.startTime).format('DD-MM-YYYY')
+          if (acc[date]) {
+            acc[date] = [...acc[date], val]
+          } else {
+            acc[date] = [val]
+          }
         }
-        // }
         return acc
       }, {})
     }
@@ -148,6 +202,10 @@ export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
                 availabilitiesByDate={getCoachAvailabilities()}
                 setSelectedTimeSlots={setSelectedTimeSlots}
                 selectedTimeSlots={selectedTimeSlots}
+                contactInformation={contactInformation}
+                setContactInformation={setContactInformation}
+                onContactCoach={onSendMessage}
+                contactCoachLoading={contactInformation.loading}
               />
             </div>
             {!isEmpty(selectedTimeSlots) && (

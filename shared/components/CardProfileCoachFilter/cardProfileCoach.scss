@@ -6,6 +6,9 @@
         text-align: center;
         color: black;
         font-weight: bold;
+        span {
+            color: rgb(255, 135, 96);
+        }
     }
 
     &__available-from {

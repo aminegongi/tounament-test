@@ -3,7 +3,7 @@
 html {
     font-family: "Inter", sans-serif;
     font-size: 16px;
-    scroll-behavior:smooth
+    scroll-behavior: smooth;
 }
 
 // @media only screen and (max-width: 1350px) {
@@ -120,6 +120,19 @@ input:focus {
     }
 }
 
+.isporit-input-with-label {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: 13px;
+        font-weight: 500;
+        color: #969696;
+        // text-transform: capitalize;
+        margin-bottom: 10px;
+    }
+}
+
 .isporit-primary-button {
     border-radius: 10px !important;
     box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16) !important;
@@ -134,7 +147,6 @@ input:focus {
         outline: none !important;
     }
 }
-
 
 .isporit-secondary-button {
     border-radius: 10px !important;
@@ -160,6 +172,15 @@ input:focus {
     font-size: 14px;
     font-weight: 500;
     width: 100%;
+    &__antd-number {
+        width: 100% !important;
+        padding: 5px 9px !important;
+        height: unset !important;
+        padding: 8px 8px!important;
+        border-radius: 10px!important;
+        border: solid 1px #26beb5!important;
+        outline: none!important;
+    }
 }
 
 .isporit-unset-button-css {
@@ -241,7 +262,7 @@ input:focus {
         }
     }
 
-    >div {
+    > div {
         border-right: 1px solid gray;
         width: 100%;
         padding-right: 10px;
@@ -309,7 +330,7 @@ input:focus {
     // opacity 50ms ease 20ms,
     // pointer-events 0ms 150ms !important;
 
-    >div {
+    > div {
         border-right: 1px solid gray;
         width: 100%;
         padding-right: 20px;
@@ -350,7 +371,7 @@ input:focus {
 }
 
 .isporit-modal-with-fixed-footer {
-    top:7px !important;
+    top: 7px !important;
     .ant-modal-footer {
         position: fixed;
         bottom: 0;
