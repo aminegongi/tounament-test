@@ -6,6 +6,11 @@
     // &__cordonneBlock {
     //     flex: 20%;
     // }
+    &__contact-modal-open {
+        &__booking-btn {
+            margin-bottom: 20px;
+        }
+    }
 
     &__similar-coaches {
         // display: flex;

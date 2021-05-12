@@ -13,18 +13,24 @@ import InfoCoach from '../../shared/components/InfoCoach/InfoCoach'
 import '../../shared/css/coachDetails.scss'
 import {
   SERVER_SIDE_API_BASE_URL,
-  CLUB,
+  // CLUB,
   FRONT_END_PLATFORM_URL,
   CLIENT_SIDE_API_BASE_URL,
+  ABOUT_TAB,
+  BIOGRAPHY_TAB,
+  CALENDAR_TAB,
+  SUCCESS_BOOKING_TAB,
+  CONTACT_TAB,
+  SUCCESS_CONTACT_TAB,
 } from '../../shared/constants'
 import CoachBox, {
   isSessionPricesEmpty,
 } from '../../shared/components/CoachBox/CoachBox'
-import CoachAvis from '../../shared/components/CoachAvis/CoachAvis'
+// import CoachAvis from '../../shared/components/CoachAvis/CoachAvis'
 import Biography from '../../shared/components/Biography/Biography'
 import affiche from '../../public/icon/Banniere.png'
 import exclamation from '../../public/icon/exclamation.png'
-import { AuthContext } from '../../utils/context.utils'
+// import { AuthContext } from '../../utils/context.utils'
 import Layout from '../../shared/components/layout/Layout'
 import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
@@ -32,12 +38,8 @@ import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
 import FacebookPixel from '../../shared/components/FacebookPixel'
 import CardProfileCoach from '../../shared/components/CardProfileCoachFilter/CardProfileCoach'
-
-const ABOUT_TAB = 1
-// const RECOMMENDATION_TAB = 2
-const BIOGRAPHY_TAB = 3
-export const CALENDAR_TAB = 4
-const SUCCESS_BOOKING_TAB = 5
+import CoachProfileContactTab from '../../shared/components/CoachProfileContactTab'
+import IsporitModal from '../../shared/components/IsporitModal/IsporitModal'
 
 export async function getServerSideProps({ query, req }) {
   const coachRes = await fetch(
@@ -66,6 +68,7 @@ export default function CoachDetails({
   const [tab, setTab] = useState(ABOUT_TAB)
   const [pricePackage, setPricePackage] = useState()
   const [similarCoaches, setSimilarCoaches] = useState([])
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
@@ -203,6 +206,48 @@ export default function CoachDetails({
           </div>
         )
       }
+      if (tab === SUCCESS_CONTACT_TAB) {
+        return (
+          <div className="coach-calendar__request-succeeded">
+            <div className="coach-calendar__request-succeeded__icon">
+              <Icon type="check-circle" />
+            </div>
+            <div className="coach-calendar__request-succeeded__title">
+              Confirmation
+            </div>
+            <div className="coach-calendar__request-succeeded__description">
+              votre message a été envoyer
+            </div>
+            <div className="coach-calendar__request-succeeded__sub-description">
+              {coach.firstName} vous contactera par téléphone ou par e-mail.
+              <div>
+                <a
+                  href={FRONT_END_PLATFORM_URL(
+                    typeof window !== 'undefined' &&
+                      window.localStorage &&
+                      window.localStorage.getItem('token'),
+                  )}
+                  className="isporit-primary-button link-platform"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Voir mon profil
+                </a>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      if (tab === CONTACT_TAB) {
+        return (
+          <CoachProfileContactTab
+            onSuccess={() => setTab(SUCCESS_CONTACT_TAB)}
+            coach={coach}
+            pricePackage={pricePackage}
+          />
+        )
+      }
     }
   }
 
@@ -297,6 +342,14 @@ export default function CoachDetails({
     )
   }
 
+  const onClickContactButton = () => {
+    setIsContactModalOpen(true)
+
+    // window.scrollTo(400, !isMobile ? 250 : 650)
+
+    // setTab(CALENDAR_TAB)
+  }
+
   return (
     <>
       <Head>
@@ -358,11 +411,7 @@ export default function CoachDetails({
             {isMobile && isSessionPricesEmpty(coach.coachData) && (
               <Affix offsetTop={65}>
                 <button
-                  onClick={() => {
-                    window.scrollTo(400, !isMobile ? 250 : 650)
-
-                    setTab(CALENDAR_TAB)
-                  }}
+                  onClick={onClickContactButton}
                   type="button"
                   className="isporit-primary-button tabs__contact"
                   style={{
@@ -371,7 +420,7 @@ export default function CoachDetails({
                     width: '100%',
                   }}
                 >
-                  Réserver
+                  Contact
                 </button>
               </Affix>
             )}
@@ -416,15 +465,11 @@ export default function CoachDetails({
                 </div>
                 {!isMobile && isSessionPricesEmpty(coach.coachData) && (
                   <button
-                    onClick={() => {
-                      window.scrollTo(400, !isMobile ? 250 : 650)
-
-                      setTab(CALENDAR_TAB)
-                    }}
+                    onClick={onClickContactButton}
                     type="button"
                     className="isporit-primary-button tabs__contact"
                   >
-                    Réserver
+                    Contact
                   </button>
                 )}
               </div>
@@ -433,9 +478,56 @@ export default function CoachDetails({
           </div>
         </div>
 
-        <h2 className="coach__similar-coaches__title">
-          Autres coachs qui peuvent vous intéresser
-        </h2>
+        <IsporitModal
+          isVisible={isContactModalOpen}
+          onCancel={() => setIsContactModalOpen(false)}
+          footer={false}
+          title={false}
+          className="coach__contact-modal-open"
+        >
+          <div className="isporit-flex-h-center-v-center">
+            <button
+              onClick={() => {
+                window.scrollTo(400, !isMobile ? 250 : 550)
+                setTab(CALENDAR_TAB)
+                setIsContactModalOpen(false)
+              }}
+              type="button"
+              className="isporit-primary-button coach__contact-modal-open__booking-btn"
+              style={{
+                padding: '13px 36px',
+                // marginTop: '16px',
+                // backgroundColor:"#ff8760 !important",
+                width: !isMobile ? 'fit-content' : '100%',
+              }}
+            >
+              Réserver des séances
+            </button>
+          </div>
+          <div className="isporit-flex-h-center-v-center">
+            <button
+              onClick={() => {
+                window.scrollTo(400, !isMobile ? 250 : 140)
+                setTab(CONTACT_TAB)
+                setIsContactModalOpen(false)
+              }}
+              type="button"
+              className="isporit-secondary-button"
+              style={{
+                padding: '13px 36px',
+                width: !isMobile ? 'fit-content' : '100%',
+              }}
+            >
+              Envoyer un message
+            </button>
+          </div>
+        </IsporitModal>
+
+        {!isEmpty(similarCoaches) && (
+          <h2 className="coach__similar-coaches__title">
+            Autres coachs qui peuvent vous intéresser
+          </h2>
+        )}
         <div className="coach__similar-coaches">
           {similarCoaches.map((el) => coachProfileCard(el))}
         </div>

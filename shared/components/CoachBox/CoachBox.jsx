@@ -46,13 +46,13 @@ export default function CoachAboutBoxes({
   const isMobile = useMediaPredicate('(max-width: 768px)')
   const [previewVisible, setPreviewVisible] = useState(false)
   const [previewImage, setPreviewImage] = useState('')
-  const [selectedOffer, setSelectedOffer] = useState(
-    coachData &&
-      coachData.privateCourseData &&
-      coachData.privateCourseData.sessionPrices &&
-      coachData.privateCourseData.sessionPrices.length !== 0 &&
-      coachData.privateCourseData.sessionPrices[0],
-  )
+  // const [selectedOffer, setSelectedOffer] = useState(
+  //   coachData &&
+  //     coachData.privateCourseData &&
+  //     coachData.privateCourseData.sessionPrices &&
+  //     coachData.privateCourseData.sessionPrices.length !== 0 &&
+  //     coachData.privateCourseData.sessionPrices[0],
+  // )
   const otherJobs = coachData.otherJobs
     ? coachData.otherJobs.map((el) => {
         const currentJob = allJobs.find((j) => j._id === el.name)
@@ -245,20 +245,20 @@ export default function CoachAboutBoxes({
       )
     }
   }
-  const getPrices = (offer) => ({
-    onsite: {
-      value: `${offer.onSiteSessionsNumber}
-        séance${offer.onSiteSessionsNumber > 1 ? 's' : ''} sur place`,
-    },
-    online: {
-      value: `${offer.onlineSessionsNumber}
-      séance${offer.onlineSessionsNumber > 1 ? 's' : ''} en ligne`,
-    },
-    mixte: {
-      value: `${offer.onSiteSessionsNumber + offer.onlineSessionsNumber}
-      séances (${offer.onlineSessionsNumber} en ligne)`,
-    },
-  })
+  // const getPrices = (offer) => ({
+  //   onsite: {
+  //     value: `${offer.onSiteSessionsNumber}
+  //       séance${offer.onSiteSessionsNumber > 1 ? 's' : ''} sur place`,
+  //   },
+  //   online: {
+  //     value: `${offer.onlineSessionsNumber}
+  //     séance${offer.onlineSessionsNumber > 1 ? 's' : ''} en ligne`,
+  //   },
+  //   mixte: {
+  //     value: `${offer.onSiteSessionsNumber + offer.onlineSessionsNumber}
+  //     séances (${offer.onlineSessionsNumber} en ligne)`,
+  //   },
+  // })
 
   return (
     <div className="coachBoxiteam">

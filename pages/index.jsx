@@ -8,7 +8,6 @@ import '../shared/css/index.scss'
 import routes from '../utils/routes'
 
 const Index = () => {
-  console.log('Index: ')
   const data = [
     {
       link: `${routes.COACHES_LIST.path}?onlineOffers=true`,

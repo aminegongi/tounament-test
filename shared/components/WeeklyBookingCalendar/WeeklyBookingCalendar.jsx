@@ -3,7 +3,7 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import Calendar from 'react-calendar'
 import { Icon } from 'antd'
-import { sortBy } from 'lodash'
+import { isEmpty, sortBy } from 'lodash'
 import CalendarTimeSlot from '../CalendarTimeSlot/CalendarTimeSlot'
 import 'react-calendar/dist/Calendar.css'
 import './style.scss'
@@ -42,7 +42,7 @@ const WeeklyBookingCalendar = ({
     <div className="weekly-booking-calendar">
       <div className="weekly-booking-calendar__legend">
         <div className="isporit-flex-h-end-v-center">
-          <span className="weekly-booking-calendar__legend__free"></span>
+          <span className="weekly-booking-calendar__legend__free" />
           Séances libres
         </div>
       </div>
@@ -63,10 +63,8 @@ const WeeklyBookingCalendar = ({
               ]
             ) {
               return 'weekly-booking-calendar__box__calendar__day'
-            } else {
-              return 'weekly-booking-calendar__box__calendar__full'
             }
-            return null
+            return 'weekly-booking-calendar__box__calendar__full'
           }}
           className="weekly-booking-calendar__box__calendar"
           minDate={new Date()}
@@ -100,10 +98,13 @@ const WeeklyBookingCalendar = ({
                 />{' '}
                 Individuel
               </div>
+              {isEmpty(getSelectedDayAvailabilities()) && (
+                <div id="coach-calendar-footer-confirm-section" />
+              )}
             </div>
           </div>
 
-          {getSelectedDayAvailabilities().map((el) => (
+          {getSelectedDayAvailabilities().map((el, index) => (
             <div
               key={el._id}
               className="weekly-booking-calendar__box__time-slots__slot"
@@ -115,6 +116,9 @@ const WeeklyBookingCalendar = ({
                   setSelectedTimeSlots([...selectedTimeSlots, el])
                 }
               />
+              {getSelectedDayAvailabilities().length - 1 === index && (
+                <div id="coach-calendar-footer-confirm-section" />
+              )}
             </div>
           ))}
         </div>

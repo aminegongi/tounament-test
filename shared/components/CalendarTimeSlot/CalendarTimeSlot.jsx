@@ -13,7 +13,7 @@ const CalendarTimeSlot = ({ onConfirm, time, maxPlayers }) => {
     >
       <a
         onClick={onConfirm}
-        href="#coach-calendar-footer-confirm-button"
+        href="#coach-calendar-footer-confirm-section"
         // onClick={() => setIsSlotClicked(!isSlotClicked)}
         // className={`isporit-unset-button-css calendar-time-slot__time ${
         //   isSlotClicked ? 'calendar-time-slot__time__active' : ''

@@ -1,0 +1,22 @@
+.coach-profile-contact-tab {
+    &__input-label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #26beb5;
+        margin-top: 16px;
+
+    }
+    &__input {
+        margin-top: 16px;
+
+    }
+    &__send-btn {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 16px;
+        button {
+            padding: 7px 36px;
+            height: unset;
+        }
+    }
+}

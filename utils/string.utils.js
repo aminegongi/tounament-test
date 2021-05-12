@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react'
 import { isEmpty } from 'lodash'
 import randomId from 'random-id'
 import { Tooltip } from 'antd'
@@ -55,5 +57,22 @@ export const cutString = (text, maxLength) => {
   return text
 }
 
+export const getPrices = (offer) => ({
+  onsite: {
+    value: `${offer.onSiteSessionsNumber} séance${
+      offer.onSiteSessionsNumber > 1 ? 's' : ''
+    } sur place`,
+  },
+  online: {
+    value: `${offer.onlineSessionsNumber} séance${
+      offer.onlineSessionsNumber > 1 ? 's' : ''
+    } en ligne`,
+  },
+  mixed: {
+    value: `${
+      offer.onSiteSessionsNumber + offer.onlineSessionsNumber
+    } séances (${offer.onlineSessionsNumber} en ligne)`,
+  },
+})
 
 export default getUserProfilePicture

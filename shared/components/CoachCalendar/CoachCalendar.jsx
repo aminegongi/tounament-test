@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
 import { Button, Icon, message } from 'antd'
-import { getPrices } from '../bookingBox/BookingBox'
+import { getPrices } from '../../../utils/string.utils'
 import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../../constants'
 import './coachCalendar.scss'
 import WeeklyBookingCalendar from '../WeeklyBookingCalendar/WeeklyBookingCalendar'
@@ -192,7 +192,6 @@ export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
 
                     <Button
                       type="submit"
-                      id="coach-calendar-footer-confirm-button"
                       onClick={onCreateCoachingRequest}
                       className="coach-calendar__body__calendar-section__footer__confirm-button"
                     >

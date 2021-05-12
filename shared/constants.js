@@ -1,6 +1,14 @@
 import getConfig from 'next/config'
 import absoluteUrl from 'next-absolute-url'
 
+export const ABOUT_TAB = 1
+// const RECOMMENDATION_TAB = 2
+export const BIOGRAPHY_TAB = 3
+export const CALENDAR_TAB = 4
+export const SUCCESS_BOOKING_TAB = 5
+export const CONTACT_TAB = 6
+export const SUCCESS_CONTACT_TAB = 7
+
 export const FB_PIXEL_ID = 475658260248334
 
 export const ALL = 'Tout'

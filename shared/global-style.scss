@@ -3,6 +3,7 @@
 html {
     font-family: "Inter", sans-serif;
     font-size: 16px;
+    scroll-behavior:smooth
 }
 
 // @media only screen and (max-width: 1350px) {
@@ -128,6 +129,23 @@ input:focus {
     cursor: pointer !important;
 
     color: #ffffff !important;
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+
+.isporit-secondary-button {
+    border-radius: 10px !important;
+    box-shadow: 0 3px 6px 0 rgba(207, 207, 207, 0.16) !important;
+    background-color: transparent !important;
+    border: 1px solid #26beb5;
+    font-weight: 500 !important;
+
+    cursor: pointer !important;
+
+    color: #26beb5 !important;
 
     &:focus {
         outline: none !important;

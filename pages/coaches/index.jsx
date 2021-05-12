@@ -60,7 +60,6 @@ export async function getServerSideProps({ req }) {
 }
 
 function Coaches({ coachesList, setAppCoachesList }) {
-  console.log('coachesList: ', coachesList)
   // const [dataCopy, setDataCopy] = useState(coachesListOrderBy(coachesList))
   const [dataCopy, setDataCopy] = useState(coachesList)
   const [jobs, setJobs] = useState([])
@@ -107,7 +106,6 @@ function Coaches({ coachesList, setAppCoachesList }) {
   } = router
   const nbrOfCardPerPage = 15
   const isMobile = useMediaPredicate('(max-width: 992px)')
-  const isMobileLessThan700 = useMediaPredicate('(max-width: 700px)')
 
   const [pageNumber, setPageNumber] = useState(1)
   const [pageActiveNumber, setPageActiveNumber] = useState()
@@ -336,18 +334,7 @@ function Coaches({ coachesList, setAppCoachesList }) {
       <Layout>
         <div className="coaches ">
           <div className="affiche">
-            {isMobileLessThan700 ? (
-              // <img className="affiche__img" src={mobileBanner} alt="affiche" />
-              <Image
-                src={mobileBanner}
-                alt="affiche"
-                width={1142}
-                height={500}
-              />
-            ) : (
-              <Image src={affiche} alt="affiche" width={1142} height={266} />
-            )}
-            {/* <img className="affiche__img" src={affiche} alt="affiche" /> */}
+            <Image src={affiche} alt="affiche" width={1142} height={266} />
           </div>
           <div className="coaches__coach_details">
             <div className="coaches__coach_details__filter">
