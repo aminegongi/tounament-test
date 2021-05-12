@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react'
 // import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
 import FacebookPixel from '../shared/components/FacebookPixel'
-import Layout from '../shared/components/layout/Layout'
 import '../shared/css/index.scss'
+import Layout from '../shared/components/layout/Layout'
 import routes from '../utils/routes'
 
 const Index = () => {
