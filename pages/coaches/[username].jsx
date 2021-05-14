@@ -32,7 +32,12 @@ import affiche from '../../public/icon/Banniere.png'
 import exclamation from '../../public/icon/exclamation.png'
 // import { AuthContext } from '../../utils/context.utils'
 import Layout from '../../shared/components/layout/Layout'
-import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
+import {
+  cutString,
+  getPackagesAndFirstSession,
+  getUserProfilePicture,
+  nl2br,
+} from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
@@ -69,6 +74,7 @@ export default function CoachDetails({
   const [pricePackage, setPricePackage] = useState()
   const [similarCoaches, setSimilarCoaches] = useState([])
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [nbDisplayedSimilarCoaches, setBbDisplayedSimilarCoaches] = useState(3)
 
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
@@ -304,7 +310,7 @@ export default function CoachDetails({
     )
   }
 
-  const coachProfileCard = (el) => {
+  const coachProfileCard = (el, isLast) => {
     const j = jobs.find((j) => j._id === (el.coachData && el.coachData.job))
     let sp = []
     if (j) {
@@ -330,15 +336,48 @@ export default function CoachDetails({
           : []
       }
     }
+
+    const sessionPrices = getPackagesAndFirstSession(el)
+
     return (
-      <div>
-        <CardProfileCoach
-          coachProfile={el}
-          key={el._id}
-          job={j}
-          specialty={sp}
-        />
-      </div>
+      <Link href={routes.COACH_DETAILS.PROFILE.linkTo(el.username)}>
+        <a
+          className={`text-unset-color flex py-2  border-gray-200  md:border-none md:w-6/12 w-full px-3 md:py-4 lg:w-4/12 hover:text-unset-color ${
+            isLast ? '' : 'border-b-2'
+          }`}
+          href={routes.COACH_DETAILS.PROFILE.linkTo(el.username)}
+        >
+          <div className="min-w-max mr-2">
+            <img
+              className="w-28 h-28 rounded-full object-cover"
+              src={getUserProfilePicture(el.profilePicture)}
+              alt={`${el.firstName} ${el.lastName}`}
+            />
+          </div>
+          <div className="w-auto">
+            <div className="text-base font-bold text-black capitalize">
+              {cutString(`${el.firstName} ${el.lastName}`, 30)}
+            </div>
+            <div className="text-base font-medium text-gray-600">
+              {j && j.translations && j.translations.fr}
+            </div>
+            <div className="">
+              {sp && cutString(sp.map((s) => s.translations.fr).join(', '), 30)}
+            </div>
+            {sessionPrices && sessionPrices.cheapestPrice && (
+              <div className="">
+                {sessionPrices.cheapestPrice} DT -{' '}
+                {sessionPrices.cheapestPriceSessions} seance(s)
+              </div>
+            )}
+            {sessionPrices && sessionPrices.firstSessionPrice !== -1 && (
+              <div className="text-primary font-semibold">
+                1ère séance {sessionPrices.firstSessionPrice}
+              </div>
+            )}
+          </div>
+        </a>
+      </Link>
     )
   }
 
@@ -524,13 +563,29 @@ export default function CoachDetails({
         </IsporitModal>
 
         {!isEmpty(similarCoaches) && (
-          <h2 className="coach__similar-coaches__title">
+          <h2 className="text-2xl px-3 font-light">
             Autres coachs qui peuvent vous intéresser
           </h2>
         )}
-        <div className="coach__similar-coaches">
-          {similarCoaches.map((el) => coachProfileCard(el))}
+        <div className="flex flex-wrap">
+          {similarCoaches
+            .slice(0, nbDisplayedSimilarCoaches)
+            .map((el, index) =>
+              coachProfileCard(
+                el,
+                similarCoaches.slice(0, nbDisplayedSimilarCoaches).length -
+                  1 ===
+                  index,
+              ),
+            )}
         </div>
+        <button
+          type="submit"
+          onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
+          className="text-center text-black text-lg w-full underline my-4"
+        >
+          Voir plus
+        </button>
       </Layout>
     </>
   )

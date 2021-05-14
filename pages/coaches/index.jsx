@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import { Input, Select, Modal } from 'antd'
+import { Input, Select, Modal, message } from 'antd'
 import '../../shared/css/coaches.scss'
 import '../../shared/global-style.scss'
 import Head from 'next/head'
@@ -21,6 +21,7 @@ import {
   levels,
   ages,
   CLIENT_SIDE_API_BASE_URL,
+  COACH_FILTER_SESSION_TYPE,
 } from '../../shared/constants'
 
 import FilterCoach from '../../shared/components/FilterCoach/FilterCoach'
@@ -36,13 +37,14 @@ import {
   // coachesListOrderBy,
   getFilteredCoaches,
   getRegionsList,
-  // getJobsList,
-  // getRegionsList,Cyqrn r
-  // getSpecialtiesList,
+  getJobsList,
+  // getRegionsList,
+  getSpecialtiesList,
 } from '../../utils/arrays.utils'
 // import { getFormattedNumber } from '../../utils/number.utils'
 import FacebookPixel from '../../shared/components/FacebookPixel'
 import FilterMobile from '../../shared/components/FilterMobile/FilterMobile'
+import CoachSessionType from '../../shared/components/CoachSessionType'
 
 const { Search } = Input
 
@@ -74,9 +76,14 @@ function Coaches({ coachesList, setAppCoachesList }) {
       Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/dances`),
       Axios.get(`${CLIENT_SIDE_API_BASE_URL()}/regions`),
     ]).then((res) => {
-      setJobs(res[0].data)
-      setSports(res[1].data)
-      setDances(res[2].data)
+      setJobs(getJobsList(coachesList, res[0].data))
+      setSports(
+        getSpecialtiesList(
+          coachesList,
+          res[1].data.filter((sport) => sport.type !== undefined),
+        ),
+      )
+      setDances(getSpecialtiesList(coachesList, res[2].data))
       setRegions(getRegionsList(coachesList, res[3].data))
     })
     setAppCoachesList(coachesList)
@@ -100,9 +107,17 @@ function Coaches({ coachesList, setAppCoachesList }) {
   const [selectedRegions, setSelectedRegions] = useState([])
   const [selectedDate, setSelectedDate] = useState()
   const [filteredItemsNumber, setFilteredItemsNumber] = useState(0)
+  const [selectedSessionTypeFilter, setSelectedSessionTypeFilter] = useState([])
   const router = useRouter()
   const {
-    query: { job, specialty, region, availabilityDate },
+    query: {
+      job,
+      specialty,
+      region,
+      availabilityDate,
+      searchByName,
+      onlineSession,
+    },
   } = router
   const nbrOfCardPerPage = 15
   const isMobile = useMediaPredicate('(max-width: 992px)')
@@ -150,13 +165,13 @@ function Coaches({ coachesList, setAppCoachesList }) {
     )
   }
   useEffect(() => {
-    if (job) {
+    if (job && isEmpty(selectedJob)) {
       const foundJob = jobs.find((elem) => elem._id === job)
       if (foundJob) {
         setSelectedJob(foundJob)
       }
     }
-    if (specialty) {
+    if (specialty && isEmpty(selectedSpecialty)) {
       const foundSpecialty = sports
         .concat(dances)
         .find((elem) => elem._id === specialty)
@@ -164,14 +179,42 @@ function Coaches({ coachesList, setAppCoachesList }) {
         setSelectedSpecialty(foundSpecialty)
       }
     }
-    if (region) {
+    if (region && isEmpty(selectedRegions)) {
       setSelectedRegions([region])
     }
-    if (availabilityDate) {
-      setSelectedDate(availabilityDate)
+    // if (availabilityDate && isEmpty(selectedSpecialty)) {
+    //   setSelectedDate(availabilityDate)
+    // }
+    if (searchByName && isEmpty(selectedName)) {
+      setSelectedName(searchByName)
     }
-  }, [job, specialty, region, availabilityDate])
+    if (onlineSession && isEmpty(selectedSessionTypeFilter)) {
+      setSelectedSessionTypeFilter([COACH_FILTER_SESSION_TYPE.ONLINE])
+    }
+  }, [
+    job,
+    specialty,
+    region,
+    availabilityDate,
+    searchByName,
+    onlineSession,
+    jobs,
+    sports,
+    dances,
+  ])
 
+  const deleteFilter = () => {
+    setSelectedName()
+    setSelectedJob({})
+    setSelectedSpecialty({})
+    setSelectedExperienceYears()
+    setSelectedReviewsRate()
+    setSelectedLevel()
+    setSelectedAges([])
+    setSelectedRegions()
+    setSelectedDate()
+    setSelectedSessionTypeFilter([])
+  }
   useEffect(() => {
     const filter = {
       name: selectedName,
@@ -183,6 +226,7 @@ function Coaches({ coachesList, setAppCoachesList }) {
       coachingAges: selectedAges,
       regions: selectedRegions,
       sessionDate: selectedDate,
+      pricesType: selectedSessionTypeFilter,
     }
     const number = Object.values(filter).filter((item) => {
       return (
@@ -191,7 +235,16 @@ function Coaches({ coachesList, setAppCoachesList }) {
       )
     }).length
     setFilteredItemsNumber(number)
-    setDataCopy(getFilteredCoaches(coachesList, filter))
+    const newCoacheslist = getFilteredCoaches(coachesList, filter)
+    if (isEmpty(newCoacheslist)) {
+      Modal.warning({
+        content: "Nous n'avons trouvé aucun coach avec ce filtre",
+      })
+      deleteFilter()
+    } else {
+      setDataCopy(newCoacheslist)
+    }
+
     setPageNumber(1)
     setPageActiveNumber(0)
   }, [
@@ -204,12 +257,14 @@ function Coaches({ coachesList, setAppCoachesList }) {
     selectedAges,
     selectedRegions,
     selectedDate,
+    selectedSessionTypeFilter,
   ])
 
   const onSearch = (value) => {
     setSelectedName(value.toLowerCase())
   }
   const { Option } = Select
+
   const handleChange = (value) => {
     if (value.key === 'alphabetique') {
       const sortByAlphabetical = [...dataCopy].sort((a, b) =>
@@ -250,17 +305,6 @@ function Coaches({ coachesList, setAppCoachesList }) {
       )
       setDataCopy(sortByRecommend)
     }
-  }
-  const deleteFilter = () => {
-    setSelectedName()
-    setSelectedJob({})
-    setSelectedSpecialty({})
-    setSelectedExperienceYears()
-    setSelectedReviewsRate()
-    setSelectedLevel()
-    setSelectedAges([])
-    setSelectedRegions()
-    setSelectedDate()
   }
   const renderFilter = () => {
     return (
@@ -303,6 +347,10 @@ function Coaches({ coachesList, setAppCoachesList }) {
           selectedRegions={selectedRegions}
           setSelectedRegions={setSelectedRegions}
         />
+        <CoachSessionType
+          selectedType={selectedSessionTypeFilter}
+          setSelectedType={setSelectedSessionTypeFilter}
+        />
       </>
     )
   }
@@ -342,7 +390,7 @@ function Coaches({ coachesList, setAppCoachesList }) {
                 className="filterbutton isporit-flex-h-space-v-center"
                 style={{ fontSize: '15px' }}
               >
-                <div>
+                <div className="flex items-center">
                   <img src="../../../icon/filtre.png" alt=" " />
                   Nb. filtres{' '}
                   <span className="count--filter js-count--filter">
@@ -490,6 +538,18 @@ function Coaches({ coachesList, setAppCoachesList }) {
                       </button>
                     </li>
                   )}
+                  {!isEmpty(selectedSessionTypeFilter) && (
+                    <li className="coaches__selected-filtered-item">
+                      <span>{selectedSessionTypeFilter.join(', ')}</span>
+                      <button
+                        type="button"
+                        className="coaches__delete-filtered-item"
+                        onClick={() => setSelectedSessionTypeFilter([])}
+                      >
+                        ✕
+                      </button>
+                    </li>
+                  )}
                 </ul>
               </div>
 
@@ -526,6 +586,8 @@ function Coaches({ coachesList, setAppCoachesList }) {
                         setSelectedSpecialty={setSelectedSpecialty}
                         selectedRegions={selectedRegions}
                         setSelectedRegions={setSelectedRegions}
+                        selectedType={selectedSessionTypeFilter}
+                        setSelectedType={setSelectedSessionTypeFilter}
                       />
                     </div>
                   </div>

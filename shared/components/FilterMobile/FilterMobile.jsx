@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './FilterMobile.scss'
 import { Popover, Empty } from 'antd'
 import { isEmpty } from 'lodash'
+import { COACH_FILTER_SESSION_TYPE } from '../../constants'
 
 export default function FilterMobile({
   jobs,
@@ -14,11 +15,14 @@ export default function FilterMobile({
   setSelectedSpecialty,
   selectedRegions,
   setSelectedRegions,
+  selectedType,
+  setSelectedType,
 }) {
   const [specialties, setSpecialties] = useState('')
   const [jobVisible, setJobVisible] = useState(false)
   const [specialtyVisible, setSpecialtyVisible] = useState(false)
   const [regionVisible, setRegionVisible] = useState(false)
+  const [typeVisible, setTypeVisible] = useState(false)
 
   const filterSpecialty = () => {
     if (!isEmpty(selectedJob)) {
@@ -75,6 +79,35 @@ export default function FilterMobile({
           }}
         >
           {job.translations.fr}
+        </div>
+      )
+    })
+  }
+
+  const displayType = () => {
+    const typeData = [
+      COACH_FILTER_SESSION_TYPE.ONLINE,
+      COACH_FILTER_SESSION_TYPE.HOME,
+      COACH_FILTER_SESSION_TYPE.ON_SITE,
+    ]
+    return typeData.map((type) => {
+      return (
+        <div
+          className={
+            !isEmpty(selectedType) &&
+            type === selectedType[0] &&
+            'filter-mobile__active'
+          }
+          onClick={() => {
+            if (type === selectedType[0]) {
+              setSelectedType([])
+            } else {
+              setSelectedType([type])
+            }
+            setTypeVisible(false)
+          }}
+        >
+          {type}
         </div>
       )
     })
@@ -148,27 +181,29 @@ export default function FilterMobile({
           {/* {!isEmpty(selectedJob) && selectedJob.translations.fr} */}
           {/* {!isEmpty(selectedJob) && <span> 1 Profession </span>} */}
           {!isEmpty(selectedJob) && (
-            <span> Profession : {selectedJob.translations.fr} </span>
+            <span> Profession: {selectedJob.translations.fr} </span>
           )}
 
           {isEmpty(selectedJob) && <span> Professions </span>}
         </span>
       </Popover>
-      <Popover
-        placement="bottom"
-        title="Spécialités"
-        content={displaySpecialties()}
-        trigger="click"
-        visible={specialtyVisible}
-        onVisibleChange={(visible) => setSpecialtyVisible(visible)}
-      >
-        <span className="filter-mobile__mobile-filter">
-          {!isEmpty(selectedSpecialty) && (
-            <span> Spécialité : {selectedSpecialty.translations.fr} </span>
-          )}
-          {isEmpty(selectedSpecialty) && <span> Spécialités </span>}
-        </span>
-      </Popover>
+      {specialties !== '' && (
+        <Popover
+          placement="bottom"
+          title="Spécialités"
+          content={displaySpecialties()}
+          trigger="click"
+          visible={specialtyVisible}
+          onVisibleChange={(visible) => setSpecialtyVisible(visible)}
+        >
+          <span className="filter-mobile__mobile-filter">
+            {!isEmpty(selectedSpecialty) && (
+              <span> Spécialité: {selectedSpecialty.translations.fr} </span>
+            )}
+            {isEmpty(selectedSpecialty) && <span> Spécialités </span>}
+          </span>
+        </Popover>
+      )}
       <Popover
         placement="bottom"
         title="Régions"
@@ -180,7 +215,7 @@ export default function FilterMobile({
         <span className="filter-mobile__mobile-filter">
           {!isEmpty(selectedRegions) && (
             <span>
-              Région :{' '}
+              Région:{' '}
               {
                 regions.find((elem) => elem._id === selectedRegions[0])
                   .translations.fr
@@ -189,6 +224,20 @@ export default function FilterMobile({
           )}
 
           {isEmpty(selectedRegions) && <span> Régions </span>}
+        </span>
+      </Popover>
+      <Popover
+        placement="bottom"
+        title="Type"
+        content={displayType()}
+        trigger="click"
+        visible={typeVisible}
+        onVisibleChange={(visible) => setTypeVisible(visible)}
+      >
+        <span className="filter-mobile__mobile-filter">
+          {!isEmpty(selectedType) && <span>Type: {selectedType} </span>}
+
+          {isEmpty(selectedType) && <span> Type </span>}
         </span>
       </Popover>
     </div>
