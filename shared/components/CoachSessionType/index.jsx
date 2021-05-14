@@ -23,7 +23,7 @@ export default ({ selectedType, setSelectedType }) => {
         className="border-0 border-l-2 border-primary border-solid  color-black flex justify-between w-full m-5 pl-3  text-left font-medium text-lg"
       >
         Type
-        <img src={icon} className={`mr-10 `} alt="" />
+        <img src={icon} className="mr-10" alt="" />
       </button>
       <div>
         {icon === down && (
