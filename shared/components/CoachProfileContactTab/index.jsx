@@ -4,7 +4,10 @@ import { Button, message as messageAlert } from 'antd'
 import { AuthContext } from '../../../utils/context.utils'
 import { getPrices } from '../../../utils/string.utils'
 import { REQUEST_FAILED, REQUEST_SUCCEEDED } from '../../constants'
-import { createRecruitmentRequest } from '../../services/coachDetails.service'
+import {
+  createContactRequest,
+  createRecruitmentRequest,
+} from '../../services/coachDetails.service'
 import './style.scss'
 
 const CoachProfileContactTab = ({ onSuccess, coach, pricePackage }) => {
@@ -30,7 +33,7 @@ const CoachProfileContactTab = ({ onSuccess, coach, pricePackage }) => {
 
   const onSendMessage = async () => {
     const onSend = async () => {
-      const result = await createRecruitmentRequest(
+      const result = await createContactRequest(
         {
           coachId: coach._id,
           emailBody: getNote(),

@@ -12,6 +12,7 @@ import './coachCalendar.scss'
 import WeeklyBookingCalendar from '../WeeklyBookingCalendar/WeeklyBookingCalendar'
 import {
   createCoachingRequest,
+  createContactRequest,
   createRecruitmentRequest,
 } from '../../services/coachDetails.service'
 import { AuthContext } from '../../../utils/context.utils'
@@ -60,7 +61,7 @@ export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
       }${numberOfPlayers}*-+*+-?***${theMessage}`
     }
     const onSend = async () => {
-      const result = await createRecruitmentRequest(
+      const result = await createContactRequest(
         {
           coachId: coach._id,
           emailBody: toSendMessage(),

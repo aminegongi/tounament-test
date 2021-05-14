@@ -189,7 +189,7 @@ function Coaches({ coachesList, setAppCoachesList }) {
       setSelectedName(searchByName)
     }
     if (onlineSession && isEmpty(selectedSessionTypeFilter)) {
-      setSelectedSessionTypeFilter([COACH_FILTER_SESSION_TYPE.ONLINE])
+      setSelectedSessionTypeFilter([COACH_FILTER_SESSION_TYPE.online])
     }
   }, [
     job,

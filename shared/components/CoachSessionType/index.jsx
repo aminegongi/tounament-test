@@ -31,10 +31,10 @@ export default ({ selectedType, setSelectedType }) => {
             className="coach_region__checkbox"
             value={selectedType}
             options={[
-              { value: COACH_FILTER_SESSION_TYPE.ONLINE, label: 'En ligne' },
-              { value: COACH_FILTER_SESSION_TYPE.HOME, label: 'A domicile' },
+              { value: COACH_FILTER_SESSION_TYPE.online, label: 'En ligne' },
+              { value: COACH_FILTER_SESSION_TYPE.atHome, label: 'A domicile' },
               {
-                value: COACH_FILTER_SESSION_TYPE.ON_SITE,
+                value: COACH_FILTER_SESSION_TYPE.onsite,
                 label: 'Salle/terrain',
               },
             ]}

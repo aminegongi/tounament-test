@@ -4,7 +4,10 @@ import './reservationCours.scss'
 import { Button, message } from 'antd'
 import IsporitModal from '../IsporitModal/IsporitModal'
 import routes from '../../../utils/routes'
-import { createRecruitmentRequest } from '../../services/coachDetails.service'
+import {
+  createContactRequest,
+  createRecruitmentRequest,
+} from '../../services/coachDetails.service'
 import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../../constants'
 import AuthContext from '../../../utils/context.utils'
 
@@ -29,7 +32,7 @@ const ReservationCours = ({
   }
   const onSendRecruitmentRequest = () => {
     const onSend = async () => {
-      const result = await createRecruitmentRequest(
+      const result = await createContactRequest(
         {
           coachId: coachProfile._id,
           emailBody: recruitmentEmail,
