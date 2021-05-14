@@ -4,7 +4,11 @@ import './cardProfileCoach.scss'
 // import { Rate } from 'antd'
 import Link from 'next/link'
 import moment from 'moment'
-import { getUserProfilePicture, cutString } from '../../../utils/string.utils'
+import {
+  getUserProfilePicture,
+  cutString,
+  getPackagesAndFirstSession,
+} from '../../../utils/string.utils'
 import routes from '../../../utils/routes'
 // import { getFormattedNumber, getRoundedRate } from '../../../utils/number.utils'
 import DEFAULT_USER_AVATAR from '../../../public/default_user_avatar.png'
@@ -26,29 +30,9 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
   const picture = getUserProfilePicture(coachProfile.profilePicture)
   const isDefaultAvatar = picture === DEFAULT_USER_AVATAR
 
-  const getPackagesAndFirstSession = () => {
-    let cheapestPrice
-    if (!isSessionPricesEmpty(coachProfile.coachData)) {
-      cheapestPrice = coachProfile.coachData.privateCourseData.sessionPrices
-        .slice()
-        .sort((a, b) => a.price - b.price)[0].price
-      let firstSessionPrice =
-        coachProfile.coachData.privateCourseData.isporitPriceFirstSession
-
-      if (firstSessionPrice === undefined) {
-        firstSessionPrice = -1
-      } else if (firstSessionPrice === 0) {
-        firstSessionPrice = ' Gratuite'
-      } else {
-        firstSessionPrice += ' DT'
-      }
-      return { cheapestPrice, firstSessionPrice }
-    }
-  }
-
   useEffect(() => {
     if (coachProfile) {
-      const result = getPackagesAndFirstSession()
+      const result = getPackagesAndFirstSession(coachProfile)
       if (result) {
         setCheapestPrice(result.cheapestPrice)
         setFirstSessionPrice(result.firstSessionPrice)
@@ -64,7 +48,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
         <div className="card_profil_coach__available-from">
           Disponible a partir du
           <div className="card_profil_coach__available-from__value">
-            {moment(firstAvailability.startTime).format('dddd LL')}
+            {moment(firstAvailability.startTime).format('dddd DD MMMM')}
           </div>
         </div>
       )
@@ -76,7 +60,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
     const isHasOnlineSessions = () => {
       if (!isSessionPricesEmpty(coachProfile.coachData)) {
         return coachProfile.coachData.privateCourseData.sessionPrices.find(
-          (el) => el.type === 'online',
+          (el) => el.type === 'online' || el.type === 'mixed',
         )
       }
       return false
@@ -84,7 +68,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
     if (isHasOnlineSessions()) {
       return (
         <div className="card_profil_coach__available-for-online-session">
-          Disponible pour des cours en ligne
+          Disponible pour des cours <span>en ligne</span>
         </div>
       )
     }

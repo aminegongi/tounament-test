@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Router, { useRouter } from 'next/router'
 import moment from 'moment'
+import App from 'next/app'
 
 import { hotjar } from 'react-hotjar'
 import { message } from 'antd'
@@ -261,9 +262,9 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-// MyApp.getInitialProps = async function (appContext) {
-//   const appProps = await App.getInitialProps(appContext)
-//   return { ...appProps }
-// }
+MyApp.getInitialProps = async function (appContext) {
+  const appProps = await App.getInitialProps(appContext)
+  return { ...appProps }
+}
 
 export default MyApp

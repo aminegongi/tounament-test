@@ -12,7 +12,7 @@
         > div:first-child {
             padding-top: 106px;
 
-            @media only screen and (max-width: 850px) {
+            @media only screen and (max-width: 1024px) {
                 padding-top: 20px !important;
                 &.gerer_iluustateur {
                     padding-top: 100px !important;
@@ -28,7 +28,7 @@
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1024px) {
     .children {
         padding-top: 55px !important;
     }

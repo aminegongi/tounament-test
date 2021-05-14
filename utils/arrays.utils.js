@@ -20,6 +20,7 @@ export const getFilteredCoaches = (
     coachingAges,
     regions,
     sessionDate,
+    pricesType,
   },
 ) => {
   let filteredCoaches = coaches
@@ -91,9 +92,18 @@ export const getFilteredCoaches = (
         ),
     )
   }
+  if (pricesType && !isEmpty(pricesType)) {
+    filteredCoaches = filteredCoaches.filter(
+      (coach) =>
+        coach.coachData &&
+        coach.coachData.privateCourseData.sessionPrices &&
+        coach.coachData.privateCourseData.sessionPrices.find(
+          (price) => price.type === price || price.type === 'mixed',
+        ),
+    )
+  }
   // return coachesListOrderBy(filteredCoaches)
   return filteredCoaches
-
 }
 export const getJobsList = (coaches, jobs) => {
   const list = []
@@ -110,9 +120,7 @@ export const getJobsList = (coaches, jobs) => {
     }
   })
   return list
-  //.sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
-
-
+  // .sort((a, b) => (a.translations.fr > b.translations.fr ? 1 : -1))
 }
 
 export const getSpecialtiesList = (coaches, specialties) => {
@@ -133,7 +141,6 @@ export const getSpecialtiesList = (coaches, specialties) => {
     }
   })
   return list
-  
 }
 export const getRegionsList = (coaches, regions) => {
   const list = []

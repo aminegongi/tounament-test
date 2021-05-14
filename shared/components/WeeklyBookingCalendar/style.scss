@@ -5,6 +5,15 @@
     padding: 18px 10px 44px;
     border-radius: 10px;
 
+    &__new-time-slot {
+        > div {
+            margin-bottom: 10px;
+        }
+        .ant-input-number {
+            width: 100%;
+        }
+    }
+
     &__legend {
         &__free {
             width: 25px;

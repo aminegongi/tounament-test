@@ -1,21 +1,13 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState } from 'react'
 import './BookingBox.scss'
-import moneyIcon from '../../../public/icon/money.png'
-import { CALENDAR_TAB } from './../../../pages/coaches/[username]'
-import CoachProfileSection from '../CoachProfileSection'
 import { useMediaPredicate } from 'react-media-hook'
 import { Select } from 'antd'
-export const getPrices = (offer) => ({
-  onsite: {
-    value: `${offer.onSiteSessionsNumber} séance${offer.onSiteSessionsNumber > 1 ? 's' : ''} sur place`,
-  },
-  online: {
-    value: `${offer.onlineSessionsNumber} séance${offer.onlineSessionsNumber > 1 ? 's' : ''} en ligne`,
-  },
-  mixed: {
-    value: `${offer.onSiteSessionsNumber + offer.onlineSessionsNumber} séances (${offer.onlineSessionsNumber} en ligne)`,
-  },
-})
+import { CALENDAR_TAB, CONTACT_TAB } from '../../constants'
+import moneyIcon from '../../../public/icon/money.png'
+import CoachProfileSection from '../CoachProfileSection'
+import { getPrices } from '../../../utils/string.utils'
+
 export default function BookingBox({
   sessionPrices,
   isporitPriceFirstSession,
@@ -27,7 +19,7 @@ export default function BookingBox({
   const [selectedOffer, setSelectedOffer] = useState(
     sessionPrices.slice().sort((a, b) => a.price - b.price)[0],
   )
-  
+
   return (
     <CoachProfileSection
       title="Réservations"
@@ -64,7 +56,7 @@ export default function BookingBox({
           </div>
         </div>
         <div className="booking-box__content__price">
-          <div>{selectedOffer && selectedOffer.price + ' DT'}</div>
+          <div>{selectedOffer && `${selectedOffer.price} DT`}</div>
         </div>
         <div>
           {isporitPriceFirstSession !== undefined &&
@@ -81,7 +73,7 @@ export default function BookingBox({
                   <div className="booking-box__content__first-session__price">
                     {isporitPriceFirstSession === 0
                       ? 'GRATUITE'
-                      : isporitPriceFirstSession + ' DT'}
+                      : `${isporitPriceFirstSession} DT`}
                   </div>
                 </div>
               </>
@@ -104,6 +96,23 @@ export default function BookingBox({
             }}
           >
             Réserver des séances
+          </button>
+        </div>
+        <div className="isporit-flex-h-center-v-center">
+          <button
+            onClick={() => {
+              window.scrollTo(400, !isMobile ? 250 : 90)
+              setPricePackage(selectedOffer)
+              setTab(CONTACT_TAB)
+            }}
+            type="button"
+            className="isporit-secondary-button"
+            style={{
+              padding: '13px 36px',
+              width: '100%',
+            }}
+          >
+            Envoyer un message
           </button>
         </div>
       </div>

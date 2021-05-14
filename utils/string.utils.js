@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react'
 import { isEmpty } from 'lodash'
 import randomId from 'random-id'
 import { Tooltip } from 'antd'
@@ -7,6 +9,7 @@ import {
   MAX_USERNAME_LENGTH,
 } from '../shared/constants'
 import DEFAULT_USER_AVATAR from '../public/default_user_avatar.png'
+import { isSessionPricesEmpty } from '../shared/components/CoachBox/CoachBox'
 
 export const getUserProfilePicture = (picture) => {
   if (!isEmpty(picture)) {
@@ -55,5 +58,47 @@ export const cutString = (text, maxLength) => {
   return text
 }
 
+export const getPrices = (offer) => ({
+  onsite: {
+    value: `${offer.onSiteSessionsNumber} séance${
+      offer.onSiteSessionsNumber > 1 ? 's' : ''
+    } sur place`,
+  },
+  online: {
+    value: `${offer.onlineSessionsNumber} séance${
+      offer.onlineSessionsNumber > 1 ? 's' : ''
+    } en ligne`,
+  },
+  mixed: {
+    value: `${
+      offer.onSiteSessionsNumber + offer.onlineSessionsNumber
+    } séances (${offer.onlineSessionsNumber} en ligne)`,
+  },
+})
+
+export const getPackagesAndFirstSession = (coachProfile) => {
+  let cheapestPrice
+  if (!isSessionPricesEmpty(coachProfile.coachData)) {
+    cheapestPrice = coachProfile.coachData.privateCourseData.sessionPrices
+      .slice()
+      .sort((a, b) => a.price - b.price)[0]
+    let firstSessionPrice =
+      coachProfile.coachData.privateCourseData.isporitPriceFirstSession
+    if (firstSessionPrice === undefined) {
+      firstSessionPrice = -1
+    } else if (firstSessionPrice === 0) {
+      firstSessionPrice = ' Gratuite'
+    } else {
+      firstSessionPrice += ' DT'
+    }
+    return {
+      cheapestPrice: cheapestPrice.price,
+      cheapestPriceSessions:
+        (cheapestPrice.onSiteSessionsNumber || 0) +
+        (cheapestPrice.onlineSessionsNumber || 0),
+      firstSessionPrice,
+    }
+  }
+}
 
 export default getUserProfilePicture

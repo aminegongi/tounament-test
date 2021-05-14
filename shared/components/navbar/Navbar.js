@@ -55,8 +55,8 @@ function NavbarIndex() {
     return (
       <div className="mobile_burger_menu">
         <div className="logo isporit-flex-h-space-v-center">
-          <Link href="/coaches">
-            <a href="/coaches">
+          <Link href={routes.HOME.path}>
+            <a href={routes.HOME.path}>
               <img src={logoImg} alt="logo" />
             </a>
           </Link>
@@ -203,8 +203,8 @@ function NavbarIndex() {
           style={{ paddingBottom: '0px' }}
         >
           <div className="logo" style={{ marginTop: '0px' }}>
-            <Link href="/coaches">
-              <a href="/coaches">
+            <Link href={routes.HOME.path}>
+              <a href={routes.HOME.path}>
                 <img src="../../../icon/logoindexpage.png" alt="logo" />
               </a>
             </Link>

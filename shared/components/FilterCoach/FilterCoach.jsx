@@ -108,7 +108,6 @@ export default function FilterCoach({
       )
     }
   }
-  console.log('specialties: ', specialties)
 
   const displaySpecialties = () => {
     if (icon === down && specialties !== '') {

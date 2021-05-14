@@ -13,31 +13,38 @@ import InfoCoach from '../../shared/components/InfoCoach/InfoCoach'
 import '../../shared/css/coachDetails.scss'
 import {
   SERVER_SIDE_API_BASE_URL,
-  CLUB,
+  // CLUB,
   FRONT_END_PLATFORM_URL,
   CLIENT_SIDE_API_BASE_URL,
+  ABOUT_TAB,
+  BIOGRAPHY_TAB,
+  CALENDAR_TAB,
+  SUCCESS_BOOKING_TAB,
+  CONTACT_TAB,
+  SUCCESS_CONTACT_TAB,
 } from '../../shared/constants'
 import CoachBox, {
   isSessionPricesEmpty,
 } from '../../shared/components/CoachBox/CoachBox'
-import CoachAvis from '../../shared/components/CoachAvis/CoachAvis'
+// import CoachAvis from '../../shared/components/CoachAvis/CoachAvis'
 import Biography from '../../shared/components/Biography/Biography'
 import affiche from '../../public/icon/Banniere.png'
 import exclamation from '../../public/icon/exclamation.png'
-import { AuthContext } from '../../utils/context.utils'
+// import { AuthContext } from '../../utils/context.utils'
 import Layout from '../../shared/components/layout/Layout'
-import { getUserProfilePicture, nl2br } from '../../utils/string.utils'
+import {
+  cutString,
+  getPackagesAndFirstSession,
+  getUserProfilePicture,
+  nl2br,
+} from '../../utils/string.utils'
 import CoachCalendar from '../../shared/components/CoachCalendar/CoachCalendar'
 import Error from '../../shared/components/PageError'
 import routes from '../../utils/routes'
 import FacebookPixel from '../../shared/components/FacebookPixel'
 import CardProfileCoach from '../../shared/components/CardProfileCoachFilter/CardProfileCoach'
-
-const ABOUT_TAB = 1
-// const RECOMMENDATION_TAB = 2
-const BIOGRAPHY_TAB = 3
-export const CALENDAR_TAB = 4
-const SUCCESS_BOOKING_TAB = 5
+import CoachProfileContactTab from '../../shared/components/CoachProfileContactTab'
+import IsporitModal from '../../shared/components/IsporitModal/IsporitModal'
 
 export async function getServerSideProps({ query, req }) {
   const coachRes = await fetch(
@@ -66,6 +73,8 @@ export default function CoachDetails({
   const [tab, setTab] = useState(ABOUT_TAB)
   const [pricePackage, setPricePackage] = useState()
   const [similarCoaches, setSimilarCoaches] = useState([])
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [nbDisplayedSimilarCoaches, setBbDisplayedSimilarCoaches] = useState(3)
 
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
@@ -203,6 +212,48 @@ export default function CoachDetails({
           </div>
         )
       }
+      if (tab === SUCCESS_CONTACT_TAB) {
+        return (
+          <div className="coach-calendar__request-succeeded">
+            <div className="coach-calendar__request-succeeded__icon">
+              <Icon type="check-circle" />
+            </div>
+            <div className="coach-calendar__request-succeeded__title">
+              Confirmation
+            </div>
+            <div className="coach-calendar__request-succeeded__description">
+              votre message a été envoyer
+            </div>
+            <div className="coach-calendar__request-succeeded__sub-description">
+              {coach.firstName} vous contactera par téléphone ou par e-mail.
+              <div>
+                <a
+                  href={FRONT_END_PLATFORM_URL(
+                    typeof window !== 'undefined' &&
+                      window.localStorage &&
+                      window.localStorage.getItem('token'),
+                  )}
+                  className="isporit-primary-button link-platform"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Voir mon profil
+                </a>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      if (tab === CONTACT_TAB) {
+        return (
+          <CoachProfileContactTab
+            onSuccess={() => setTab(SUCCESS_CONTACT_TAB)}
+            coach={coach}
+            pricePackage={pricePackage}
+          />
+        )
+      }
     }
   }
 
@@ -259,7 +310,7 @@ export default function CoachDetails({
     )
   }
 
-  const coachProfileCard = (el) => {
+  const coachProfileCard = (el, isLast) => {
     const j = jobs.find((j) => j._id === (el.coachData && el.coachData.job))
     let sp = []
     if (j) {
@@ -285,23 +336,63 @@ export default function CoachDetails({
           : []
       }
     }
+
+    const sessionPrices = getPackagesAndFirstSession(el)
+
     return (
-      <div>
-        <CardProfileCoach
-          coachProfile={el}
-          key={el._id}
-          job={j}
-          specialty={sp}
-        />
-      </div>
+      <Link href={routes.COACH_DETAILS.PROFILE.linkTo(el.username)}>
+        <a
+          className={`text-unset-color flex py-2  border-gray-200  md:border-none md:w-6/12 w-full px-3 md:py-4 lg:w-4/12 hover:text-unset-color ${
+            isLast ? '' : 'border-b-2'
+          }`}
+          href={routes.COACH_DETAILS.PROFILE.linkTo(el.username)}
+        >
+          <div className="min-w-max mr-2">
+            <img
+              className="w-28 h-28 rounded-full object-cover"
+              src={getUserProfilePicture(el.profilePicture)}
+              alt={`${el.firstName} ${el.lastName}`}
+            />
+          </div>
+          <div className="w-auto">
+            <div className="text-base font-bold text-black capitalize">
+              {cutString(`${el.firstName} ${el.lastName}`, 30)}
+            </div>
+            <div className="text-base font-medium text-gray-600">
+              {j && j.translations && j.translations.fr}
+            </div>
+            <div className="">
+              {sp && cutString(sp.map((s) => s.translations.fr).join(', '), 30)}
+            </div>
+            {sessionPrices && sessionPrices.cheapestPrice && (
+              <div className="">
+                {sessionPrices.cheapestPrice} DT -{' '}
+                {sessionPrices.cheapestPriceSessions} seance(s)
+              </div>
+            )}
+            {sessionPrices && sessionPrices.firstSessionPrice !== -1 && (
+              <div className="text-primary font-semibold">
+                1ère séance {sessionPrices.firstSessionPrice}
+              </div>
+            )}
+          </div>
+        </a>
+      </Link>
     )
+  }
+
+  const onClickContactButton = () => {
+    setIsContactModalOpen(true)
+
+    // window.scrollTo(400, !isMobile ? 250 : 650)
+
+    // setTab(CALENDAR_TAB)
   }
 
   return (
     <>
       <Head>
         <title>
-          {job&& job.translations.fr} {specialty && specialty[0].translations.fr}{' - '} 
           {coach.firstName[0].toUpperCase() + coach.firstName.slice(1)}{' '}
           {coach.lastName[0].toUpperCase() + coach.lastName.slice(1)}
         </title>
@@ -359,11 +450,7 @@ export default function CoachDetails({
             {isMobile && isSessionPricesEmpty(coach.coachData) && (
               <Affix offsetTop={65}>
                 <button
-                  onClick={() => {
-                    window.scrollTo(400, !isMobile ? 250 : 650)
-
-                    setTab(CALENDAR_TAB)
-                  }}
+                  onClick={onClickContactButton}
                   type="button"
                   className="isporit-primary-button tabs__contact"
                   style={{
@@ -372,7 +459,7 @@ export default function CoachDetails({
                     width: '100%',
                   }}
                 >
-                  Réserver
+                  Contact
                 </button>
               </Affix>
             )}
@@ -417,15 +504,11 @@ export default function CoachDetails({
                 </div>
                 {!isMobile && isSessionPricesEmpty(coach.coachData) && (
                   <button
-                    onClick={() => {
-                      window.scrollTo(400, !isMobile ? 250 : 650)
-
-                      setTab(CALENDAR_TAB)
-                    }}
+                    onClick={onClickContactButton}
                     type="button"
                     className="isporit-primary-button tabs__contact"
                   >
-                    Réserver
+                    Contact
                   </button>
                 )}
               </div>
@@ -434,12 +517,75 @@ export default function CoachDetails({
           </div>
         </div>
 
-        <h2 className="coach__similar-coaches__title">
-          Autres coachs qui peuvent vous intéresser
-        </h2>
-        <div className="coach__similar-coaches">
-          {similarCoaches.map((el) => coachProfileCard(el))}
+        <IsporitModal
+          isVisible={isContactModalOpen}
+          onCancel={() => setIsContactModalOpen(false)}
+          footer={false}
+          title={false}
+          className="coach__contact-modal-open"
+        >
+          <div className="isporit-flex-h-center-v-center">
+            <button
+              onClick={() => {
+                window.scrollTo(400, !isMobile ? 250 : 550)
+                setTab(CALENDAR_TAB)
+                setIsContactModalOpen(false)
+              }}
+              type="button"
+              className="isporit-primary-button coach__contact-modal-open__booking-btn"
+              style={{
+                padding: '13px 36px',
+                // marginTop: '16px',
+                // backgroundColor:"#ff8760 !important",
+                width: !isMobile ? 'fit-content' : '100%',
+              }}
+            >
+              Réserver des séances
+            </button>
+          </div>
+          <div className="isporit-flex-h-center-v-center">
+            <button
+              onClick={() => {
+                window.scrollTo(400, !isMobile ? 250 : 140)
+                setTab(CONTACT_TAB)
+                setIsContactModalOpen(false)
+              }}
+              type="button"
+              className="isporit-secondary-button"
+              style={{
+                padding: '13px 36px',
+                width: !isMobile ? 'fit-content' : '100%',
+              }}
+            >
+              Envoyer un message
+            </button>
+          </div>
+        </IsporitModal>
+
+        {!isEmpty(similarCoaches) && (
+          <h2 className="text-2xl px-3 font-light">
+            Autres coachs qui peuvent vous intéresser
+          </h2>
+        )}
+        <div className="flex flex-wrap">
+          {similarCoaches
+            .slice(0, nbDisplayedSimilarCoaches)
+            .map((el, index) =>
+              coachProfileCard(
+                el,
+                similarCoaches.slice(0, nbDisplayedSimilarCoaches).length -
+                  1 ===
+                  index,
+              ),
+            )}
         </div>
+        <button
+          type="submit"
+          onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
+          className="text-center text-black text-lg w-full underline my-4"
+        >
+          Voir plus
+        </button>
       </Layout>
     </>
   )
