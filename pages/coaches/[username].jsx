@@ -355,7 +355,9 @@ export default function CoachDetails({
             />
           </div>
           <div className="w-auto">
-            <div className="text-base font-bold text-black capitalize">
+            <div
+              className="text-base font-bold text-black capitalize"
+            >
               {cutString(`${el.firstName} ${el.lastName}`, 30)}
             </div>
             <div className="text-base font-medium text-gray-600">
@@ -469,7 +471,7 @@ export default function CoachDetails({
                     width: '100%',
                   }}
                 >
-                  Contact
+                  Contacter
                 </button>
               </Affix>
             )}
@@ -518,7 +520,7 @@ export default function CoachDetails({
                     type="button"
                     className="isporit-primary-button tabs__contact"
                   >
-                    Contact
+                    Contacter
                   </button>
                 )}
               </div>
@@ -573,7 +575,7 @@ export default function CoachDetails({
         </IsporitModal>
 
         {!isEmpty(similarCoaches) && (
-          <h2 className="text-2xl px-3 font-light">
+          <h2 className="text-xl px-4 font-light">
             Autres coachs qui peuvent vous intéresser
           </h2>
         )}
@@ -589,15 +591,17 @@ export default function CoachDetails({
               ),
             )}
         </div>
-        {!isEmpty(similarCoaches) && (
-          <button
-            type="submit"
-            onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
-            className="text-center text-black text-lg w-full underline my-4"
-          >
-            Voir plus
-          </button>
-        )}
+        {!isEmpty(similarCoaches) &&
+          similarCoaches.length >
+            nbDisplayedSimilarCoaches && (
+              <button
+                type="submit"
+                onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
+                className="text-center text-black text-lg w-full underline my-4"
+              >
+                Voir plus
+              </button>
+            )}
       </Layout>
     </>
   )

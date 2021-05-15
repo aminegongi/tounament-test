@@ -58,7 +58,49 @@ export const cutString = (text, maxLength) => {
   return text
 }
 
-export const getPrices = (offer) => ({
+export const cutStringWithoutTooltip = (text, maxLength) => {
+  if (text && text.length > maxLength) {
+    return text.slice(0, maxLength) + '...'
+  }
+  return text
+}
+
+const isZeroOrUndefined = (str) => {
+  return str === 0 || str === undefined
+}
+const getSessionTypes = (offer, isCutString) => {
+  let str = ''
+  if (!isZeroOrUndefined(offer.onlineSessionsNumber)) {
+    str += '30' + ' en ligne'
+  }
+  let sessionNotOnLine = 20
+  if (!isZeroOrUndefined(offer.atHomeSessionsNumber)) {
+    sessionNotOnLine += offer.atHomeSessionsNumber
+  }
+  if (!isZeroOrUndefined(offer.onSiteSessionsNumber)) {
+    sessionNotOnLine += offer.onSiteSessionsNumber
+  }
+  if (str !== '') {
+    str += ' - '
+  }
+  str += sessionNotOnLine
+  if (!isZeroOrUndefined(offer.atHomeSessionsNumber)) {
+    str += ' à domicile'
+  }
+  if (!isZeroOrUndefined(offer.onSiteSessionsNumber)) {
+    if (!isZeroOrUndefined(offer.atHomeSessionsNumber)) {
+      str += '/terrain/salle'
+    } else {
+      str += ' sur terrain/salle'
+    }
+  }
+  // offer.atHomeSessionsNumber + offer.onSiteSessionsNumber
+
+  return isCutString ? cutStringWithoutTooltip(str, 36) : str
+  // return  cutStringWithoutTooltip (str,25)
+}
+
+export const getPrices = (offer, isCutString = false) => ({
   onsite: {
     value: `${offer.onSiteSessionsNumber} séance${
       offer.onSiteSessionsNumber > 1 ? 's' : ''
@@ -72,12 +114,10 @@ export const getPrices = (offer) => ({
   atHome: {
     value: `${offer.atHomeSessionsNumber} séance${
       offer.atHomeSessionsNumber > 1 ? 's' : ''
-    } a domicile`,
+    } à domicile`,
   },
   mixed: {
-    value: `${
-      offer.onSiteSessionsNumber + offer.onlineSessionsNumber
-    } séances (${offer.onlineSessionsNumber} en ligne)`,
+    value: getSessionTypes(offer, isCutString),
   },
 })
 

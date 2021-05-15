@@ -81,7 +81,7 @@ const WeeklyBookingCalendar = ({
           <div className="weekly-booking-calendar__box__time-slots__date">
             {moment(selectedDate).format('dddd, MMMM DD')}
             <div className="weekly-booking-calendar__box__time-slots__date__labels">
-              <div className="">
+              <div className="isporit-flex-h-any-v-center">
                 <Icon
                   type="user"
                   className="weekly-booking-calendar__box__time-slots__date__labels__icon"
@@ -94,17 +94,17 @@ const WeeklyBookingCalendar = ({
                   type="user"
                   className="weekly-booking-calendar__box__time-slots__date__labels__icon"
                 />{' '}
-                Collectif
+                <div>Collectif</div>
               </div>
               <div className="weekly-booking-calendar__box__time-slots__date__labels__separator">
                 -
               </div>
-              <div className="">
+              <div className="isporit-flex-h-any-v-center">
                 <Icon
                   type="user"
                   className="weekly-booking-calendar__box__time-slots__date__labels__icon"
                 />{' '}
-                Individuel
+                <div>Individuel</div>
               </div>
               {isEmpty(getSelectedDayAvailabilities()) && (
                 <div id="coach-calendar-footer-confirm-section" />
