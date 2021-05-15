@@ -40,7 +40,7 @@ export default function FilterMobile({
 
   useEffect(() => {
     filterSpecialty()
-  }, [selectedJob])
+  }, [selectedJob, dances, sports])
 
   const handleJob = (job) => {
     if (job._id === selectedJob._id) {
