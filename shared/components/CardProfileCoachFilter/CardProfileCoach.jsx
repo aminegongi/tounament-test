@@ -68,7 +68,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
     if (isHasOnlineSessions()) {
       return (
         <div className="card_profil_coach__available-for-online-session">
-          Disponible pour des cours <span>en ligne</span>
+          Donne des cours <span>en ligne</span>
         </div>
       )
     }

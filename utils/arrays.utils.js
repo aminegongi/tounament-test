@@ -1,5 +1,6 @@
 import { flatten, isEmpty, orderBy } from 'lodash'
 import moment from 'moment'
+import { COACH_FILTER_SESSION_TYPE } from '../shared/constants'
 
 export const coachesListOrderBy = (coachesList) =>
   orderBy(
@@ -97,12 +98,29 @@ export const getFilteredCoaches = (
       (coach) =>
         coach.coachData &&
         coach.coachData.privateCourseData.sessionPrices &&
-        coach.coachData.privateCourseData.sessionPrices.find(
-          (price) => price.type === price || price.type === 'mixed',
-        ),
+        coach.coachData.privateCourseData.sessionPrices.find((price) => {
+          if (pricesType.includes(COACH_FILTER_SESSION_TYPE[price.type]))
+            return price
+          if (price.type === 'mixed') {
+            if (
+              pricesType.includes(COACH_FILTER_SESSION_TYPE.online) &&
+              price.onlineSessionsNumber > 1
+            )
+              return price
+            if (
+              pricesType.includes(COACH_FILTER_SESSION_TYPE.onsite) &&
+              price.onSiteSessionsNumber > 1
+            )
+              return price
+            if (
+              pricesType.includes(COACH_FILTER_SESSION_TYPE.atHome) &&
+              price.atHomeSessionsNumber > 1
+            )
+              return price
+          }
+        }),
     )
   }
-  // return coachesListOrderBy(filteredCoaches)
   return filteredCoaches
 }
 export const getJobsList = (coaches, jobs) => {

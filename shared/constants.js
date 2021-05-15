@@ -10,9 +10,9 @@ export const CONTACT_TAB = 6
 export const SUCCESS_CONTACT_TAB = 7
 
 export const COACH_FILTER_SESSION_TYPE = {
-  ONLINE: 'En ligne',
-  HOME: 'A domicile',
-  ON_SITE: 'Salle/terrain',
+  online: 'En ligne',
+  atHome: 'A domicile',
+  onsite: 'Salle/terrain',
 }
 
 export const FB_PIXEL_ID = 475658260248334

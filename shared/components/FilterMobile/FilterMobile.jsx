@@ -86,9 +86,9 @@ export default function FilterMobile({
 
   const displayType = () => {
     const typeData = [
-      COACH_FILTER_SESSION_TYPE.ONLINE,
-      COACH_FILTER_SESSION_TYPE.HOME,
-      COACH_FILTER_SESSION_TYPE.ON_SITE,
+      COACH_FILTER_SESSION_TYPE.online,
+      COACH_FILTER_SESSION_TYPE.atHome,
+      COACH_FILTER_SESSION_TYPE.onsite,
     ]
     return typeData.map((type) => {
       return (

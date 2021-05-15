@@ -69,6 +69,11 @@ export const getPrices = (offer) => ({
       offer.onlineSessionsNumber > 1 ? 's' : ''
     } en ligne`,
   },
+  atHome: {
+    value: `${offer.atHomeSessionsNumber} séance${
+      offer.atHomeSessionsNumber > 1 ? 's' : ''
+    } a domicile`,
+  },
   mixed: {
     value: `${
       offer.onSiteSessionsNumber + offer.onlineSessionsNumber

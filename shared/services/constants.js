@@ -8,6 +8,10 @@ const recruitmentRequest = {
   create: 'recruitmentRequests/create',
 }
 
+const contactRequest = {
+  create: 'contactRequests/create',
+}
+
 const auth = {
   fetchUserProfile: 'auth/me',
   login: 'auth/login',
@@ -24,4 +28,5 @@ export default {
   recruitmentRequest,
   auth,
   club,
+  contactRequest,
 }

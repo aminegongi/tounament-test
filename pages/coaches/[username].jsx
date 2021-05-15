@@ -359,6 +359,16 @@ export default function CoachDetails({
               {cutString(`${el.firstName} ${el.lastName}`, 30)}
             </div>
             <div className="text-base font-medium text-gray-600">
+              {el.coachData &&
+                el.coachData.experiencesYearsNumber > 1 &&
+                `${
+                  el.coachData && el.coachData.experiencesYearsNumber
+                } ans d'expérience`}
+              {el.coachData &&
+                el.coachData.experiencesYearsNumber === 1 &&
+                `1 an d'expérience`}
+            </div>
+            <div className="text-base font-medium text-gray-600">
               {j && j.translations && j.translations.fr}
             </div>
             <div className="">
@@ -579,13 +589,15 @@ export default function CoachDetails({
               ),
             )}
         </div>
-        <button
-          type="submit"
-          onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
-          className="text-center text-black text-lg w-full underline my-4"
-        >
-          Voir plus
-        </button>
+        {!isEmpty(similarCoaches) && (
+          <button
+            type="submit"
+            onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
+            className="text-center text-black text-lg w-full underline my-4"
+          >
+            Voir plus
+          </button>
+        )}
       </Layout>
     </>
   )

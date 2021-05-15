@@ -60,4 +60,33 @@ export const createRecruitmentRequest = async (values, setLoading) => {
   }
 }
 
+export const createContactRequest = async (values, setLoading) => {
+  try {
+    setLoading(true)
+    const result = await Axios.post(
+      URL.baseApiUrl + URL.contactRequest.create,
+      {
+        coach: values.coachId,
+        applicantEmail: {
+          emailBody: values.emailBody,
+          emailDate: moment(),
+        },
+      },
+      apiHeader(),
+    )
+    setLoading(false)
+    return {
+      type: REQUEST_SUCCEEDED,
+      data: result.data,
+    }
+  } catch (error) {
+    setLoading(false)
+
+    return {
+      type: REQUEST_FAILED,
+      data: error.response.data,
+    }
+  }
+}
+
 export default createCoachingRequest
