@@ -76,6 +76,7 @@ const CoachProfileContactTab = ({ onSuccess, coach, pricePackage }) => {
           type="button"
           loading={loading}
           className="isporit-primary-button"
+          style={{marginBottom:"50px"}}
         >
           Envoyer
         </Button>

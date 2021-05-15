@@ -46,7 +46,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
     if (firstAvailability) {
       return (
         <div className="card_profil_coach__available-from">
-          disponible a partir du
+          disponible à partir du
           <div className="card_profil_coach__available-from__value">
             {moment(firstAvailability.startTime).format('dddd DD MMMM')}
           </div>

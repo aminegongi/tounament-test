@@ -152,7 +152,7 @@ const Index = () => {
           <div className="text-base text-right font-medium mr-1">
             <Link href={routes.COACHES_LIST.path}>
               <a className="text-black " href={routes.COACHES_LIST.path}>
-                Voir plus
+                Voir tous
               </a>
             </Link>
           </div>
