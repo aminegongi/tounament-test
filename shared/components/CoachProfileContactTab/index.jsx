@@ -4,10 +4,7 @@ import { Button, message as messageAlert } from 'antd'
 import { AuthContext } from '../../../utils/context.utils'
 import { getPrices } from '../../../utils/string.utils'
 import { REQUEST_FAILED, REQUEST_SUCCEEDED } from '../../constants'
-import {
-  createContactRequest,
-  createRecruitmentRequest,
-} from '../../services/coachDetails.service'
+import { createContactRequest } from '../../services/coachDetails.service'
 import './style.scss'
 
 const CoachProfileContactTab = ({ onSuccess, coach, pricePackage }) => {
@@ -25,9 +22,10 @@ const CoachProfileContactTab = ({ onSuccess, coach, pricePackage }) => {
   }, [pricePackage])
 
   const getNote = () => {
-    if (isEmpty(message)) return selectedPackage
-    if (selectedPackage) return `${selectedPackage}*-+*+-?***${message}`
-    return message
+    if (isEmpty(message)) return `package:${selectedPackage}`
+    if (selectedPackage)
+      return `package:${selectedPackage}*-+*+-?***message:${message}`
+    return `message:${message}`
   }
   const authContext = useContext(AuthContext)
 

@@ -589,13 +589,15 @@ export default function CoachDetails({
               ),
             )}
         </div>
-        <button
-          type="submit"
-          onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
-          className="text-center text-black text-lg w-full underline my-4"
-        >
-          Voir plus
-        </button>
+        {!isEmpty(similarCoaches) && (
+          <button
+            type="submit"
+            onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
+            className="text-center text-black text-lg w-full underline my-4"
+          >
+            Voir plus
+          </button>
+        )}
       </Layout>
     </>
   )

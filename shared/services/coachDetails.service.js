@@ -67,7 +67,7 @@ export const createContactRequest = async (values, setLoading) => {
       URL.baseApiUrl + URL.contactRequest.create,
       {
         coach: values.coachId,
-        clubEmail: {
+        applicantEmail: {
           emailBody: values.emailBody,
           emailDate: moment(),
         },

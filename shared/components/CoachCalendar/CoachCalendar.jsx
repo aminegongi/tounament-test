@@ -48,7 +48,7 @@ export default function CoachCalendar({ coach, onSuccess, pricePackage }) {
 
   const onSendMessage = async (date) => {
     const toSendMessage = () => {
-      const proposedDate = `date: ${moment(date).format('YYYY-MM-DD')} ${
+      const proposedDate = `date: ${moment(date).format('LL')} ${
         contactInformation.time
       }`
       const numberOfPlayers = `players: ${contactInformation.numberOfPlayers}`
