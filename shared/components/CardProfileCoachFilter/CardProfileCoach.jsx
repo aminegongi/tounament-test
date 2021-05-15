@@ -46,7 +46,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
     if (firstAvailability) {
       return (
         <div className="card_profil_coach__available-from">
-          Disponible a partir du
+          disponible a partir du
           <div className="card_profil_coach__available-from__value">
             {moment(firstAvailability.startTime).format('dddd DD MMMM')}
           </div>
@@ -68,7 +68,7 @@ export default function CardProfileCoach({ coachProfile, job, specialty }) {
     if (isHasOnlineSessions()) {
       return (
         <div className="card_profil_coach__available-for-online-session">
-          Donne des cours <span>en ligne</span>
+          donne des cours <span>en ligne</span>
         </div>
       )
     }
