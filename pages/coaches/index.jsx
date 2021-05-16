@@ -215,6 +215,9 @@ function Coaches({ coachesList, setAppCoachesList }) {
     setSelectedDate()
     setSelectedSessionTypeFilter([])
   }
+  const [isNotFoundMessageVisible, setIsNotFoundMessageVisible] = useState(
+    false,
+  )
   useEffect(() => {
     const filter = {
       name: selectedName,
@@ -237,9 +240,13 @@ function Coaches({ coachesList, setAppCoachesList }) {
     setFilteredItemsNumber(number)
     const newCoacheslist = getFilteredCoaches(coachesList, filter)
     if (isEmpty(newCoacheslist)) {
-      Modal.warning({
-        content: "Nous n'avons trouvé aucun coach avec ce filtre",
-      })
+      if (!isNotFoundMessageVisible) {
+        setIsNotFoundMessageVisible(true)
+        message.warning({
+          content: "Nous n'avons trouvé aucun coach avec ce filtre",
+          onClose: () => setIsNotFoundMessageVisible(false),
+        })
+      }
       deleteFilter()
     } else {
       setDataCopy(newCoacheslist)

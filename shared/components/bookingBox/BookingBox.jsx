@@ -92,7 +92,7 @@ export default function BookingBox({
               padding: '13px 36px',
               // marginTop: '16px',
               // backgroundColor:"#ff8760 !important",
-              width: !isMobile ? 'fit-content' : '100%',
+              width: '100%',
             }}
           >
             Réserver des séances
