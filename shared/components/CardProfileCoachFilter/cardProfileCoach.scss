@@ -5,6 +5,8 @@
     &__available-for-online-session {
         text-align: center;
         color: black;
+        font-size: 13px;
+
         span {
             font-weight: bold;
             color: rgb(255, 135, 96);
@@ -20,6 +22,7 @@
         // font-weight: 400;
         padding: 5px;
         text-align: center;
+
         &__value {
             // text-transform: capitalize;
             display: inline;
@@ -268,7 +271,7 @@
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
 
-            > div {
+            >div {
                 width: 100%;
                 max-width: 100%;
             }

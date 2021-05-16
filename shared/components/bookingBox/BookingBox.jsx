@@ -16,6 +16,7 @@ export default function BookingBox({
   setPricePackage,
 }) {
   const isMobile = useMediaPredicate('(max-width: 768px)')
+  const isUnder360 = useMediaPredicate('(max-width: 360px)')
   const [selectedOffer, setSelectedOffer] = useState(
     sessionPrices.slice().sort((a, b) => a.price - b.price)[0],
   )
@@ -48,7 +49,7 @@ export default function BookingBox({
                 .map((offer, index) => {
                   return (
                     <Select.Option value={offer._id}>
-                      {getPrices(offer)[offer.type].value}
+                      {getPrices(offer, isUnder360)[offer.type].value}
                     </Select.Option>
                   )
                 })}

@@ -4,6 +4,7 @@
     background-color: #ffffff;
     padding: 18px 10px 44px;
     border-radius: 10px;
+    margin-bottom: 50px;
 
     &__new-time-slot {
         > div {
@@ -115,6 +116,7 @@
 
                     &__icon {
                         color: #26beb5;
+                        margin-right: 5px;
                     }
 
                     &__separator {
