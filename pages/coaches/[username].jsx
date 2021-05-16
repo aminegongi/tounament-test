@@ -222,7 +222,7 @@ export default function CoachDetails({
               Confirmation
             </div>
             <div className="coach-calendar__request-succeeded__description">
-              votre message a été envoyer
+              votre message a été envoyé
             </div>
             <div className="coach-calendar__request-succeeded__sub-description">
               {coach.firstName} vous contactera par téléphone ou par e-mail.
