@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Router, { useRouter } from 'next/router'
 import moment from 'moment'
 import App from 'next/app'
+import TagManager from 'react-gtm-module'
 
 import { hotjar } from 'react-hotjar'
 import { message } from 'antd'
@@ -76,6 +77,8 @@ function MyApp({ Component, pageProps }) {
     ) {
       if (!window.GA_INITIALIZED) {
         initGA()
+        TagManager.initialize({ gtmId: 'GTM-5C9H79B' })
+
         window.GA_INITIALIZED = true
       }
       logPageView()
@@ -89,6 +92,8 @@ function MyApp({ Component, pageProps }) {
     ) {
       if (!window.GA_INITIALIZED) {
         initGA()
+        TagManager.initialize({ gtmId: 'GTM-5C9H79B' })
+
         window.GA_INITIALIZED = true
       }
       logPageView()
