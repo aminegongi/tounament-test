@@ -366,7 +366,7 @@ function Coaches({ coachesList, setAppCoachesList }) {
     <>
       <Head>
         <title>
-          iSporit - trouver un coach/entraîneur de tennis, natation, fitness,
+          iSporit - trouver un coach sportif, entraineur de tennis, natation, fitness,
           yoga, football, boxe en Tunisie (tunis, bizerte, sousse, monastir,
           mahdia, kairouan, sfax, gabes, médenine, nabeul, kélibia, tataouine)
         </title>
