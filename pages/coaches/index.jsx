@@ -119,7 +119,7 @@ function Coaches({ coachesList, setAppCoachesList }) {
       onlineSession,
     },
   } = router
-  const nbrOfCardPerPage = 100
+  const nbrOfCardPerPage = 15
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const [pageNumber, setPageNumber] = useState(1)
