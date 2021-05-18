@@ -405,7 +405,7 @@ export default function CoachDetails({
     <>
       <Head>
         <title>
-          {job && job._id === 'yogaTeacher' ? 'coach de yoga' : 'coach sportif'}
+          {job && job._id === 'yogaTeacher' ? 'Coach de Yoga' : 'Coach Sportif'}
           {' - '}
           {job && job.translations && job.translations.fr}{' '}
           {specialty && specialty.length!==0 &&  specialty[0].translations.fr}
