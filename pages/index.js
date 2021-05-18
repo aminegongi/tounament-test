@@ -125,11 +125,11 @@ const Index = () => {
   return (
     <>
       <Head>
-         <title>iSporit - trouver un coach/entraîneur - réserver un coach/entraîneur</title>
+         <title>iSporit - trouver un coach sportif ou un coach de yoga</title>
 
            <meta
              name="description"
-             content="A la recherche d'un coach en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+             content="A la recherche d'un coach sportif en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
  iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. Trouvez votre coach/entraîneur en Tunisie en seulement 3 clics"
            />
            <meta
@@ -139,7 +139,7 @@ const Index = () => {
            <meta property="og:url" content="https://isporit.com" />
            <meta
              property="og:description"
-             content="A la recherche d'un coach? Vous voulez faire du sport mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+             content="A la recherche d'un coach sportif? Vous voulez faire du sport mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
  iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. "
            />
            <meta
