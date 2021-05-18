@@ -119,7 +119,7 @@ function Coaches({ coachesList, setAppCoachesList }) {
       onlineSession,
     },
   } = router
-  const nbrOfCardPerPage = 15
+  const nbrOfCardPerPage = 100
   const isMobile = useMediaPredicate('(max-width: 992px)')
 
   const [pageNumber, setPageNumber] = useState(1)
@@ -367,17 +367,18 @@ function Coaches({ coachesList, setAppCoachesList }) {
       <Head>
         <title>
           iSporit - trouver un coach/entraîneur de tennis, natation, fitness,
-          yoga, football, boxe en Tunisie (tunis, bizerte, sousse, monastir)
+          yoga, football, boxe en Tunisie (tunis, bizerte, sousse, monastir,
+          mahdia, kairouan, sfax, gabes, médenine, nabeul, kélibia, tataouine)
         </title>
         <meta
           name="description"
-          content="Trouvez et réservez en Tunisie (tunis, bizerte, sousse, monastir) votre coach/entraîneur de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
+          content="Trouvez et réservez en Tunisie (tunis, bizerte, sousse, monastir, mahdia, kairouan, sfax, gabes, médenine, nabeul, kélibia, tataouine) votre coach/entraîneur de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:url" content="https://isporit.com/coaches" />
         <meta
           property="og:description"
-          content="Trouvez et réservez en Tunisie (tunis, bizerte, sousse, monastir) votre coach/entraîneur de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
+          content="Trouvez et réservez en Tunisie (tunis, bizerte, sousse, monastir, mahdia, kairouan, sfax, gabes, médenine, nabeul, kélibia, tataouine) votre coach/entraîneur de tennis, natation, fitness, yoga, boxe, football, volley-ball, et réservez une séance en seulement 3 clics"
         />
         <meta
           property="og:image"
