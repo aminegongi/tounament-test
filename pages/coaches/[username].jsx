@@ -405,10 +405,9 @@ export default function CoachDetails({
     <>
       <Head>
         <title>
-          {job && job._id === 'yogaTeacher' ? 'Coach de Yoga' : 'Coach Sportif'}
-          {' - '}
-          {job && job.translations && job.translations.fr}{' '}
-          {specialty && specialty.length!==0 &&  specialty[0].translations.fr}
+          {coach.coachData && coach.coachData.job === 'yogaTeacher'
+            ? 'Coach de Yoga'
+            : 'Coach Sportif'}
           {' - '}
           {coach.firstName[0].toUpperCase() + coach.firstName.slice(1)}{' '}
           {coach.lastName[0].toUpperCase() + coach.lastName.slice(1)}
