@@ -405,6 +405,10 @@ export default function CoachDetails({
     <>
       <Head>
         <title>
+          {coach.coachData && coach.coachData.job === 'yogaTeacher'
+            ? 'Coach de Yoga'
+            : 'Coach Sportif'}
+          {' - '}
           {coach.firstName[0].toUpperCase() + coach.firstName.slice(1)}{' '}
           {coach.lastName[0].toUpperCase() + coach.lastName.slice(1)}
         </title>
@@ -592,16 +596,15 @@ export default function CoachDetails({
             )}
         </div>
         {!isEmpty(similarCoaches) &&
-          similarCoaches.length >
-            nbDisplayedSimilarCoaches && (
-              <button
-                type="submit"
-                onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
-                className="text-center text-black text-lg w-full underline my-4"
-              >
-                Voir plus
-              </button>
-            )}
+          similarCoaches.length > nbDisplayedSimilarCoaches && (
+            <button
+              type="submit"
+              onClick={() => setBbDisplayedSimilarCoaches((nb) => nb + 3)}
+              className="text-center text-black text-lg w-full underline my-4"
+            >
+              Voir plus
+            </button>
+          )}
       </Layout>
     </>
   )
