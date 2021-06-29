@@ -80,6 +80,7 @@ export default function FilterCoach({
             return (
               <>
                 <div
+                  key={job._id}
                   className={
                     icon === down
                       ? 'filter_coach__filter_type__title__Professions__items__iteam'

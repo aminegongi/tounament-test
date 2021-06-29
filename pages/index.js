@@ -158,7 +158,7 @@ const Index = () => {
           </div>
           <div className="flex mt-4 justify-between flex-wrap  ">
             {data.map((el) => (
-              <Link href={el.link}>
+              <Link key={el.title} href={el.link}>
                 <a
                   className="relative w-48 h-48 rounded-xl flex justify-center items-center flex-col  bg-cover bg-center  mx-1 my-2 flex-auto "
                   style={{
