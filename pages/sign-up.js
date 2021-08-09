@@ -14,7 +14,6 @@ import randomId from 'random-id'
 import { useMediaPredicate } from 'react-media-hook'
 import Layout from '../shared/components/layout/Layout'
 import routes from '../utils/routes'
-import { CLIENT_SIDE_API_BASE_URL } from '../shared/constants'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -61,7 +60,7 @@ const SignUp = () => {
     password: '',
     confirmPassword: '',
     address: '',
-    userType: 'player',
+    userType: 'club',
     sport: [],
     country: 'Tunisia',
     timezone: 'Africa/Tunis',
@@ -100,7 +99,7 @@ const SignUp = () => {
         password: data.password,
       })
       localStorage.setItem('token', result.data.token)
-      window.location.href = `${redirectTo}?accessToken=${result.data.token}`
+      window.location.href = `${redirectTo}?accessToken=${result.data.token}&env=${env}`
     } catch (error) {
       router.push({
         pathname: '/login',
@@ -244,7 +243,6 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, userType: e.target.value })}
                 buttonStyle="solid"
               >
-                
                 <Radio.Button
                   className={data.userType === 'coach' && 'radio_group_button'}
                   value="coach"
@@ -476,7 +474,9 @@ const SignUp = () => {
                 </button>
               </div>
               <div className="already_have_account">
-                <Link href={routes.LOG_IN.path}>
+                <Link
+                  href={{ pathname: routes.LOG_IN.path, query: router.query }}
+                >
                   Vous avez déjà un compte ?
                 </Link>
               </div>
@@ -489,16 +489,17 @@ const SignUp = () => {
           >
             <h2 className="title">Vous avez déjà un compte</h2>
 
-            <Link
+            <Link href={{ pathname: routes.LOG_IN.path, query: router.query }}>
+              {/* <Link
               href={{
-                pathname: '/login',
+                pathname: '',
                 query: {
                   email: data.email,
                   isLocalhost: router.query.isLocalhost || '',
                   env: router.query.env || '',
                 },
               }}
-            >
+            > */}
               <a>
                 <button className="button" type="submit">
                   SE CONNECTER

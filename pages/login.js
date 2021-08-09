@@ -51,7 +51,7 @@ const Login = (props) => {
         password,
       })
       localStorage.setItem('token', result.data.token)
-      window.location.href = `${redirectTo}?accessToken=${result.data.token}`
+      window.location.href = `${redirectTo}?accessToken=${result.data.token}&env=${env}`
     } catch (error) {
       if (
         error.response &&
@@ -136,7 +136,9 @@ const Login = (props) => {
               </button>
             </div>
             <div className="create_account_btn">
-              <Link href={routes.SIGN_UP.path}>
+              <Link
+                href={{ pathname: routes.SIGN_UP.path, query: router.query }}
+              >
                 <a>
                   <button className="button" type="submit">
                     Créer un compte
@@ -155,7 +157,7 @@ const Login = (props) => {
             <span className="description">
               Entrez vos informations et débutez avec nous votre parcours
             </span>
-            <Link href={{ pathname: '/sign-up', query: router.query }}>
+            <Link href={{ pathname: routes.SIGN_UP.path, query: router.query }}>
               <a>
                 <button className="button" type="submit">
                   S'INSCRIRE
