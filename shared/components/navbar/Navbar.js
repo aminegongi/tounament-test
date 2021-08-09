@@ -199,24 +199,51 @@ function NavbarIndex() {
     return (
       <div style={{ backgroundColor: 'white' }}>
         <div
-          className={`${'navbar_container'} ${'isporit_max_width'}`}
+          className={`${'navbar_container'} flex justify-between`}
           style={{ paddingBottom: '0px' }}
         >
-          <div className="logo" style={{ marginTop: '0px' }}>
-            <Link href={routes.HOME.path}>
-              <a href={routes.HOME.path}>
-                <img src="../../../icon/logoindexpage.png" alt="logo" />
-              </a>
-            </Link>
-          </div>
-          <div>
-            <div className="items_container" style={{ width: '100%' }}>
-              <div className="sup" />
+          <div className="flex ">
+            <div className="logo" style={{ marginTop: '0px' }}>
+              <Link href={routes.HOME.path}>
+                <a href={routes.HOME.path}>
+                  <img src="../../../icon/logoindexpage.png" alt="logo" />
+                </a>
+              </Link>
+            </div>
+            <div className="">
+              <Link href={routes.HOME.path}>
+                <a
+                  className="text-base text-black font-medium ml-20"
+                  href={routes.HOME.path}
+                >
+                  Products
+                </a>
+              </Link>
+            </div>
+            <div className="">
+              <Link href={routes.HOME.path}>
+                <a
+                  className="text-base text-black font-medium mx-9"
+                  href={routes.COACHES_SELECT_SPORT.path}
+                >
+                  Find your coach
+                </a>
+              </Link>
+            </div>
+            <div className="">
+              <Link href={routes.HOME.path}>
+                <a
+                  className="text-base text-black font-medium"
+                  href={routes.HOME.path}
+                >
+                  Support
+                </a>
+              </Link>
             </div>
           </div>
 
           <div
-            className="navbar_container__button-container"
+            className="navbar_container__button-container justify-end"
             style={{ marginTop: '0px' }}
           >
             {!authContext.isLoggedIn &&

@@ -1,5 +1,13 @@
 .index-page {
-    padding: 10px;
+    // padding: 10px;
+
+
+    &__radio-button {
+        .ant-radio-inner:after {
+            width: 20px !important;
+            height: 20px !important;
+        }
+    }
 
     &__all-sports {
         &__head {
