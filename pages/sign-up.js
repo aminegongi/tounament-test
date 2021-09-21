@@ -14,6 +14,7 @@ import randomId from 'random-id'
 import { useMediaPredicate } from 'react-media-hook'
 import Layout from '../shared/components/layout/Layout'
 import routes from '../utils/routes'
+import { CLIENT_SIDE_API_BASE_URL } from '../shared/constants'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -60,7 +61,8 @@ const SignUp = () => {
     password: '',
     confirmPassword: '',
     address: '',
-    userType: 'club',
+    // userType: 'player',
+    userType: '',
     sport: [],
     country: 'Tunisia',
     timezone: 'Africa/Tunis',
@@ -99,7 +101,7 @@ const SignUp = () => {
         password: data.password,
       })
       localStorage.setItem('token', result.data.token)
-      window.location.href = `${redirectTo}?accessToken=${result.data.token}&env=${env}`
+      window.location.href = `${redirectTo}?accessToken=${result.data.token}`
     } catch (error) {
       router.push({
         pathname: '/login',
@@ -114,6 +116,10 @@ const SignUp = () => {
 
   const onRegister = async (e) => {
     e.preventDefault()
+
+    if (data.userType !== "player" && data.userType !== "coach" && data.userType !== "club" && data.userType !== "association") {
+      return alert('Erreur, vous avez oublié de sélectionner le type de compte ( Entraîneur, Joueur, Directeur )')
+    }
 
     if (
       isEmpty(data.firstName) ||
@@ -243,6 +249,7 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, userType: e.target.value })}
                 buttonStyle="solid"
               >
+                
                 <Radio.Button
                   className={data.userType === 'coach' && 'radio_group_button'}
                   value="coach"
@@ -250,16 +257,39 @@ const SignUp = () => {
                   Entraîneur
                 </Radio.Button>
                 <Radio.Button
-                  className={data.userType === 'club' && 'radio_group_button'}
-                  value="club"
+                  className={(data.userType === 'director' || data.userType === 'club' || data.userType === 'association')  && 'radio_group_button'}
+                  value="director"
                 >
-                  Directeur de club
+                  Directeur
                 </Radio.Button>
                 <Radio.Button
                   className={data.userType === 'player' && 'radio_group_button'}
                   value="player"
                 >
                   Autre
+                </Radio.Button>
+              </Radio.Group>
+            )}
+            {(data.userType === 'director' || data.userType === 'club' || data.userType === 'association') && (
+              <Radio.Group
+                size={isSizeUnder360 ? 'small' : 'large'}
+                defaultValue="club"
+                value={data.userType}
+                onChange={(e) => setData({ ...data, userType: e.target.value })}
+                buttonStyle="solid"
+              >
+                
+                <Radio.Button
+                  className={data.userType === 'club' && 'radio_group_button'}
+                  value="club"
+                >
+                  Un club
+                </Radio.Button>
+                <Radio.Button
+                  className={data.userType === 'association' && 'radio_group_button'}
+                  value="association"
+                > 
+                  Plusieurs clubs
                 </Radio.Button>
               </Radio.Group>
             )}
@@ -314,6 +344,7 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, email: e.target.value })}
                 placeholder="Email"
                 name="email"
+                value={data.email}
                 className="isporit-input"
                 disabled={!isEmpty(router.query.email)}
                 required
@@ -474,9 +505,7 @@ const SignUp = () => {
                 </button>
               </div>
               <div className="already_have_account">
-                <Link
-                  href={{ pathname: routes.LOG_IN.path, query: router.query }}
-                >
+                <Link href={routes.LOG_IN.path}>
                   Vous avez déjà un compte ?
                 </Link>
               </div>
@@ -489,17 +518,16 @@ const SignUp = () => {
           >
             <h2 className="title">Vous avez déjà un compte</h2>
 
-            <Link href={{ pathname: routes.LOG_IN.path, query: router.query }}>
-              {/* <Link
+            <Link
               href={{
-                pathname: '',
+                pathname: '/login',
                 query: {
                   email: data.email,
                   isLocalhost: router.query.isLocalhost || '',
                   env: router.query.env || '',
                 },
               }}
-            > */}
+            >
               <a>
                 <button className="button" type="submit">
                   SE CONNECTER
