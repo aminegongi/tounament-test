@@ -89,7 +89,9 @@ const SignUp = () => {
     redirectTo = publicRuntimeConfig.LOGIN_REDIRECT_URL,
     env = 'prod',
   } = router.query
-  const apiUrl = publicRuntimeConfig[`${env.toUpperCase()}_API_URL`]
+  const apiUrl =
+    'https://dev.isporit.com/api' ||
+    publicRuntimeConfig[`${env.toUpperCase()}_API_URL`]
   const registerApiUrl = `${apiUrl}/auth/register`
 
   const loginApiUrl = `${apiUrl}/auth/login`
@@ -151,6 +153,7 @@ const SignUp = () => {
       }
       result = await Axios.post(`${registerApiUrl}?${query}`, {
         ...data,
+        userType: data.userType || 'player',
         username:
           data.firstName && data.lastName
             ? removeSpaceInString(`${data.firstName}${data.lastName}`).slice(
