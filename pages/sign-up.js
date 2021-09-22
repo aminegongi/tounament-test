@@ -117,8 +117,16 @@ const SignUp = () => {
   const onRegister = async (e) => {
     e.preventDefault()
 
-    if (data.userType !== "player" && data.userType !== "coach" && data.userType !== "club" && data.userType !== "association") {
-      return alert('Erreur, vous avez oublié de sélectionner le type de compte ( Entraîneur, Joueur, Directeur )')
+    if (
+      !router.query.invitationToken &&
+      data.userType !== 'player' &&
+      data.userType !== 'coach' &&
+      data.userType !== 'club' &&
+      data.userType !== 'association'
+    ) {
+      return alert(
+        'Erreur, vous avez oublié de sélectionner le type de compte ( Entraîneur, Joueur, Directeur )',
+      )
     }
 
     if (
@@ -249,7 +257,6 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, userType: e.target.value })}
                 buttonStyle="solid"
               >
-                
                 <Radio.Button
                   className={data.userType === 'coach' && 'radio_group_button'}
                   value="coach"
@@ -257,7 +264,12 @@ const SignUp = () => {
                   Entraîneur
                 </Radio.Button>
                 <Radio.Button
-                  className={(data.userType === 'director' || data.userType === 'club' || data.userType === 'association')  && 'radio_group_button'}
+                  className={
+                    (data.userType === 'director' ||
+                      data.userType === 'club' ||
+                      data.userType === 'association') &&
+                    'radio_group_button'
+                  }
                   value="director"
                 >
                   Directeur
@@ -270,7 +282,9 @@ const SignUp = () => {
                 </Radio.Button>
               </Radio.Group>
             )}
-            {(data.userType === 'director' || data.userType === 'club' || data.userType === 'association') && (
+            {(data.userType === 'director' ||
+              data.userType === 'club' ||
+              data.userType === 'association') && (
               <Radio.Group
                 size={isSizeUnder360 ? 'small' : 'large'}
                 defaultValue="club"
@@ -278,7 +292,6 @@ const SignUp = () => {
                 onChange={(e) => setData({ ...data, userType: e.target.value })}
                 buttonStyle="solid"
               >
-                
                 <Radio.Button
                   className={data.userType === 'club' && 'radio_group_button'}
                   value="club"
@@ -286,9 +299,11 @@ const SignUp = () => {
                   Un club
                 </Radio.Button>
                 <Radio.Button
-                  className={data.userType === 'association' && 'radio_group_button'}
+                  className={
+                    data.userType === 'association' && 'radio_group_button'
+                  }
                   value="association"
-                > 
+                >
                   Plusieurs clubs
                 </Radio.Button>
               </Radio.Group>
