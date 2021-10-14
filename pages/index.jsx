@@ -219,7 +219,7 @@ const Index = () => {
               style={{ color: '#212121' }}
             >
               iSporit offre une panoplie d'outils pour le club allant de la
-              simple gestion des groupes et des présence des joueurs jusqu'à une
+              simple gestion des groupes et des présences des joueurs jusqu'à une
               anlayse détaillée des performances basée sur les vidéos.
             </div>
             <ScrollLink to="contact" smooth={true} duration={800}>
@@ -252,7 +252,7 @@ const Index = () => {
           >
             iSporit vise à aider les clubs et les coachs pour la détection des
             talents grâce à une base de données riche décrivant les performances
-            de chaque joueur tout au long des années de la vis sportive du
+            de chaque joueur tout au long des années de la vie sportive du
             joueur.
           </div>
           <ScrollLink to="contact" smooth={true} duration={800}>
@@ -288,7 +288,7 @@ const Index = () => {
           >
             Notre plateforme vous permet d'extraire entre les mi-temps les
             statistiques sur les balles jouées, les zones de récupération de
-            balles, les performances de chaque joueur
+            balles, les performances de chaque joueur...
           </div>
 
           <div className="flex justify-between w-full max-w-2xl mt-3">
@@ -350,7 +350,7 @@ const Index = () => {
                     <div>
                       <img src="\radio.png" className="mr-1" />
                     </div>
-                    <div>Clubs civils (circuit professionnel)</div>
+                    <div>Club civil (circuit professionnel)</div>
                   </div>
                 </div>
                 <ScrollLink to="contact" smooth={true} duration={800}>
@@ -413,7 +413,7 @@ const Index = () => {
             <div>
               <PlatformDetails
                 title="Suivi de toute académie sportive quelque soit le sport"
-                description="Notre plateforme permet la gestion de tout club sportif: tennis, natation, football, gymnastique, arts martiaux, ..."
+                description="Notre plateforme permet la gestion de tout club sportif : tennis, natation, football, gymnastique, arts martiaux, ..."
                 image="\dashboard.png"
               >
                 {/* <Radio.Group
