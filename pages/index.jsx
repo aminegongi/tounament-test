@@ -74,7 +74,7 @@ const Index = () => {
                 placeholder="Ville"
               />
               <button
-                className="w-full bg-primary  text-white text-xl py-2 rounded-xl"
+                className="w-full bg-primary text-white text-base md:text-xl py-2 rounded-xl"
                 type="submit"
               >
                 Contactez nous
@@ -229,7 +229,7 @@ const Index = () => {
         </div>
         <div className=" " style={{ background: '#f8f8f8' }}>
           <div className="py-12 m-auto max-w-7xl px-9">
-            <div className="mb-24">
+            <div className="mb-12">
               <PlatformDetails
                 title="S'adapte à tout club de football"
                 description="iSporit travaille avec des équipes amateurs ou professionnelles, 
@@ -269,7 +269,7 @@ const Index = () => {
                 </ScrollLink>
               </PlatformDetails>
             </div>
-            <div className="mb-24">
+            <div className="mb-12">
               <PlatformDetails
                 reversed={!isMobile}
                 title="Chaque détail compte dans le football"
@@ -303,7 +303,7 @@ const Index = () => {
                 <ScrollLink to="contact" smooth={true} duration={800}>
                   <button
                     type="button"
-                    className="bg-primary  text-white text-xl py-2.5 rounded-xl px-11 mt-5"
+                    className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-11 mt-5"
                   >
                     Contactez nous
                   </button>
@@ -342,7 +342,7 @@ const Index = () => {
                 <ScrollLink to="contact" smooth={true} duration={800}>
                   <button
                     type="button"
-                    className="bg-primary  text-white text-xl py-2.5 rounded-xl px-11 mt-5"
+                    className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-11 mt-5"
                   >
                     Contactez nous
                   </button>
@@ -351,7 +351,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className="m-auto max-w-7xl" id="contact">
+        <div className="m-auto max-w-7xl py-12" id="contact">
           <ContactUs />
         </div>
       </Layout>

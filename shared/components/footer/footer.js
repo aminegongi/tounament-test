@@ -34,14 +34,14 @@ export default function Footer() {
           </Link>
         </div> */}
       </section>
-      <div className={`${'copyright'}`}>
+      <div className={`${'copyright'} text-xs md:text-sm`}>
         © {moment().format('YYYY')} iSporit. Tous droits réservés{' '}
         <div>
           <Link href={routes.TERMS_AND_CONDITIONS.path}>
             <a href={routes.TERMS_AND_CONDITIONS.path}>
               <b>
                 <u style={{ color: '#26beb5' }}>
-                  Termes & Conditions, Politique de confidentialité
+                  Termes & Conditions - Politique de confidentialité
                 </u>
               </b>
             </a>
