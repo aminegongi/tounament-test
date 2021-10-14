@@ -5,8 +5,11 @@ import PlatformDetails from '../shared/components/IndexPage/PlatformDetails'
 import Layout from '../shared/components/layout/Layout'
 import { Link as ScrollLink } from 'react-scroll'
 import '../shared/css/index.scss'
+import { useMediaPredicate } from 'react-media-hook'
 
 const Index = () => {
+  const isMobile = useMediaPredicate('(max-width: 992px)')
+
   return (
     <div className="index-page">
       <Layout childrenClassName="bg-white ">
@@ -18,7 +21,7 @@ const Index = () => {
         >
           <div
             className="max-w-7xl m-auto flex justify-between 
-          py-14 px:4 md:px-16 items-center"
+          py-12 px:4 md:px-16 items-center"
           >
             <div className="hidden md:block max-w-lg">
               <div
@@ -40,11 +43,15 @@ const Index = () => {
             <div
               style={{ backgroundColor: 'rgba(26, 26, 26, 0.8)' }}
               className="z-10 m-auto md:m-0
-              md:ml-10 max-w-sm pt-10 pb-16 px-9  rounded-xl relative"
+              md:ml-10 max-w-sm pt-9 pb-9 px-9  rounded-xl relative"
             >
               {/* <div className="absolute top-0 left-0 w-full h-full  bg-gray-700" /> */}
-              <div className="text-3xl  text-white text-center font-bold mb-4">
-                Essai gratuit <br /> 15 jours
+              <div className=" text-white text-center font-bold mb-4">
+                <div className="text-sm">Essayez</div>
+                <div className="text-2xl ">gratuitement</div>
+                <div className="text-sm">notre application de</div>
+                <div className="text-xl">gestion des clubs sportifs</div>
+                <br />
               </div>
               <input
                 className="isporit-input rounded-xl mb-5 "
@@ -83,11 +90,14 @@ const Index = () => {
               className="rounded-xl mb-4 h-60"
             />
             <img src="/index-icons/coach.png" alt="" />
-            <div className="text-3xl font-bold " style={{ color: '#212121' }}>
+            <div
+              className="text-2xl md:text-3xl font-bold "
+              style={{ color: '#212121' }}
+            >
               Pour le coach
             </div>
             <div
-              className="max-w-md font-medium text-lg text-justify mb-4 mt-4"
+              className="max-w-md font-medium text-base md:text-lg text-justify mb-4 mt-4"
               style={{ color: '#212121' }}
             >
               iSporit offre au coach sportif une plateforme de suivi détaillé de
@@ -97,7 +107,7 @@ const Index = () => {
             <ScrollLink to="contact" smooth={true} duration={800}>
               <button
                 type="button"
-                className="bg-primary  text-white text-xl py-2.5 rounded-xl px-8"
+                className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-8"
               >
                 Demander une démo
               </button>
@@ -110,11 +120,14 @@ const Index = () => {
               className="rounded-xl mb-4 h-60"
             />
             <img src="/index-icons/team.png" alt="" />
-            <div className="text-3xl font-bold " style={{ color: '#212121' }}>
+            <div
+              className="text-2xl md:text-3xl font-bold "
+              style={{ color: '#212121' }}
+            >
               Pour les clubs / académies
             </div>
             <div
-              className="max-w-md font-medium text-lg text-justify mb-4  mt-4"
+              className="max-w-md font-medium text-base md:text-lg text-justify mb-4  mt-4"
               style={{ color: '#212121' }}
             >
               iSporit offre une panoplie d'outils pour le club allant de la
@@ -124,7 +137,7 @@ const Index = () => {
             <ScrollLink to="contact" smooth={true} duration={800}>
               <button
                 type="button"
-                className="bg-primary  text-white text-xl py-2.5 rounded-xl px-8"
+                className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-8"
               >
                 Demander une démo
               </button>
@@ -132,10 +145,13 @@ const Index = () => {
           </div>
         </div>
         <div
-          className=" pt-6 pb-12 flex flex-col items-center px-9"
+          className=" py-12 pb-12 flex flex-col items-center px-9"
           style={{ background: '#f8f8f8' }}
         >
-          <div className="text-3xl font-medium text-center" style={{ color: '#212121' }}>
+          <div
+            className="text-2xl md:text-3xl font-bold text-center"
+            style={{ color: '#212121' }}
+          >
             La meilleure plateforme pour la gestion des talents
           </div>
           <div
@@ -143,7 +159,7 @@ const Index = () => {
             style={{ borderColor: '#ffc651' }}
           />
           <div
-            className="max-w-2xl font-medium text-lg mb-2 text-center"
+            className="max-w-2xl font-medium text-base md:text-lg mb-2 text-center"
             style={{ color: '#212121' }}
           >
             iSporit vise à aider les clubs et les coachs pour la détection des
@@ -154,21 +170,24 @@ const Index = () => {
           <ScrollLink to="contact" smooth={true} duration={800}>
             <button
               type="button"
-              className="bg-primary text-white text-xl py-2.5 rounded-xl px-8"
+              className="bg-primary text-white text-base md:text-xl py-2.5 rounded-xl px-8"
             >
               Contactez-nous pour une prise de rendez-vous
             </button>
           </ScrollLink>
-          <div className="mt-8">
+          <div className="mt-8 hidden md:block">
             <img
               src="/mobile_interfaces.png"
               alt=""
-              className="rounded-xl mb-4 h-60 hidden md:block"
+              className="rounded-xl mb-4 h-60 "
             />
           </div>
         </div>
-        <div className=" pt-6 pb-12 flex flex-col items-center px-9">
-          <div className="text-3xl font-medium text-center" style={{ color: '#212121' }}>
+        <div className="py-12 pb-12 flex flex-col items-center px-9">
+          <div
+            className="text-2xl md:text-3xl font-bold text-center"
+            style={{ color: '#212121' }}
+          >
             Une plateforme d'analyse des matchs de football
           </div>
           <div
@@ -176,7 +195,7 @@ const Index = () => {
             style={{ borderColor: '#ffc651' }}
           />
           <div
-            className="max-w-2xl font-medium text-lg mb-2 text-center"
+            className="max-w-2xl font-medium text-base md:text-lg mb-2 text-center"
             style={{ color: '#212121' }}
           >
             Notre plateforme vous permet d'extraire entre les mi-temps les
@@ -189,27 +208,27 @@ const Index = () => {
               style={{ color: '#ff8760' }}
               className="  font-bold text-center"
             >
-              <div className="text-3xl mb-1">+20</div>
-              <div className="text-xl ">types de statistiques</div>
+              <div className="text-lg md:text-3xl mb-1">+20</div>
+              <div className="text-sm md:text-2xl">types de statistiques</div>
             </div>
             <div
               style={{ color: '#ff8760' }}
               className="  font-bold text-center"
             >
-              <div className="text-3xl mb-1">+20</div>
-              <div className="text-xl ">heures de stockage</div>
+              <div className="text-lg md:text-3xl mb-1">+25</div>
+              <div className="text-sm md:text-2xl">heures de stockage</div>
             </div>
             <div
               style={{ color: '#ff8760' }}
               className="  font-bold text-center"
             >
-              <div className="text-3xl mb-1">+5</div>
-              <div className="text-xl ">Rapports / match</div>
+              <div className="text-lg md:text-3xl mb-1">+5</div>
+              <div className="text-sm md:text-2xl">rapports de match</div>
             </div>
           </div>
         </div>
         <div className=" " style={{ background: '#f8f8f8' }}>
-          <div className="py-11 m-auto max-w-7xl px-20">
+          <div className="py-12 m-auto max-w-7xl px-9">
             <div className="mb-24">
               <PlatformDetails
                 title="S'adapte à tout club de football"
@@ -243,7 +262,7 @@ const Index = () => {
                 <ScrollLink to="contact" smooth={true} duration={800}>
                   <button
                     type="button"
-                    className="bg-primary  text-white text-xl py-2.5 rounded-xl px-11 mt-5"
+                    className="bg-primary  text-white  text-base md:text-xl py-2.5 rounded-xl px-11 mt-5"
                   >
                     Contactez nous
                   </button>
@@ -252,7 +271,7 @@ const Index = () => {
             </div>
             <div className="mb-24">
               <PlatformDetails
-                reversed
+                reversed={!isMobile}
                 title="Chaque détail compte dans le football"
                 description="Suivez tous les détails des matchs à partir 
                 d'une seule et unique plateforme accessible à tout moment, n'importe où"
