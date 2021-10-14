@@ -143,10 +143,10 @@ const Index = () => {
           property="og:image"
           content="https://isporit.com/logo_isporit_final.png"
         />
-        <link rel="canonical" href="https://isporit.com" />
+        <link rel="canonical" href="https://isporit.com/coaches/sport" />
         <FacebookPixel />
       </Head>
-      <Layout isCoachNav={true}>
+      <Layout>
         <section className="lg:pt-28 sm:mx-8 mx-2 pt-8 ">
           <h1 className="sm:text-4xl text-center mt-4 font-semibold text-2xl">
             Trouvez votre coach

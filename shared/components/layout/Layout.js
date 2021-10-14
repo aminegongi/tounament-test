@@ -5,11 +5,11 @@ import Navbar from '../navbar/Navbar'
 import Footer from '../footer/footer'
 import NavbarCoach from '../navbarCoach/NavbarCoach'
 
-export default function Layout({ children, childrenClassName, isCoachNav }) {
+export default function Layout({ children, childrenClassName, isMainPage }) {
   return (
     <div className="layout_container">
       <div className="layout_container__navbar">
-        {isCoachNav?<NavbarCoach />:<Navbar />}
+        {isMainPage ? <Navbar /> : <NavbarCoach />}
       </div>
       <div className={`children ${childrenClassName}`}>{children}</div>
 
