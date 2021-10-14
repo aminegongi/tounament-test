@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react'
 import Document, { Head, Main, NextScript, Html } from 'next/document'
 import { Manifest } from 'next-manifest'

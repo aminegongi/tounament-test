@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Menu, Dropdown, Icon } from 'antd'
 import 'antd/dist/antd.css'
+import { Link as ScrollLink } from 'react-scroll'
 
 import { useMediaPredicate } from 'react-media-hook'
 import BurgerMenu from 'react-burger-menu'
@@ -60,35 +61,16 @@ function NavbarIndex() {
               <img src={logoImg} alt="logo" />
             </a>
           </Link>
-          {authContext.isLoggedIn &&
-            authContext.fetchUserProfileLoading === false && (
-              <button
-                onClick={() => {
-                  window.location.href = routes.ISPORIT_PLATFORM.linkTo()
-                }}
-                type="button"
-                className="isporit-primary-button"
-                style={{ marginRight: '50px', padding: '10px' }}
-              >
-                {authContext.userType === COACH ||
-                authContext.userType === PLAYER
-                  ? 'Mes réservations'
-                  : 'Mon profil'}
-              </button>
-            )}
-          {!authContext.isLoggedIn &&
-            authContext.fetchUserProfileLoading === false && (
-              <button
-                onClick={() => {
-                  authContext.toggleLogInModal(() => {}, true)
-                }}
-                type="button"
-                className="isporit-primary-button"
-                style={{ marginRight: '50px', padding: '10px' }}
-              >
-                Inscription
-              </button>
-            )}
+          
+
+          <button
+            onClick={() => onChangeLocation(routes.COACHES_SELECT_SPORT.path)}
+            type="button"
+            className="isporit-primary-button"
+            style={{ marginRight: '50px', padding: '10px' }}
+          >
+            Réservez votre coach
+          </button>
         </div>
 
         <div className="">
@@ -132,63 +114,23 @@ function NavbarIndex() {
               defaultOpenKeys={['sub1']}
               style={{ border: 'none' }}
             >
-              {authContext.isLoggedIn &&
-                authContext.fetchUserProfileLoading === false && (
-                  <Menu.Item
-                    onClick={() => {
-                      window.location.href = routes.ISPORIT_PLATFORM.linkTo()
-                    }}
-                    className="menu_item"
-                  >
-                    <div className="isporit-flex-h-any-v-center">
-                      <div className="navbar_container__user-card">
-                        <img
-                          src={getUserProfilePicture(
-                            authContext.userProfile.profilePicture,
-                          )}
-                          alt=""
-                        />
-                        <div className="navbar_container__user-card__name">
-                          {authContext.userProfile.firstName}{' '}
-                          {authContext.userProfile.lastName}
-                        </div>
-                      </div>
-                    </div>
-                  </Menu.Item>
-                )}
+              
 
               <Menu.Item
-                onClick={() => onChangeLocation(routes.COACHES_LIST.path)}
+                onClick={() =>
+                  onChangeLocation(routes.COACHES_SELECT_SPORT.path)
+                }
                 className="menu_item"
               >
                 Réservez votre coach
               </Menu.Item>
 
               <Menu.Item
-                onClick={() => onChangeLocation('/contact-us')}
+                onClick={() => onChangeLocation(routes.HOME.path+"#contact")}
                 className="menu_item"
               >
                 Contact
               </Menu.Item>
-
-              {!authContext.isLoggedIn &&
-                authContext.fetchUserProfileLoading === false && (
-                  <Menu.Item
-                    onClick={() => {
-                      authContext.toggleLogInModal(() => {}, false)
-                      setIsMenuOpen(false)
-                    }}
-                    className="menu_item"
-                  >
-                    Se connecter
-                  </Menu.Item>
-                )}
-              {authContext.isLoggedIn &&
-                authContext.fetchUserProfileLoading === false && (
-                  <Menu.Item onClick={authContext.logOut} className="menu_item">
-                    Déconnexion
-                  </Menu.Item>
-                )}
             </Menu>
           </BurgerMenu.slide>
         </div>
@@ -211,6 +153,16 @@ function NavbarIndex() {
               </Link>
             </div>
             <div className="">
+               <ScrollLink to="contact" smooth={true} duration={800}>
+                <a
+                  className="text-base text-black font-medium ml-20"
+                  href='/contact'
+                >
+                  Contact
+                </a>
+              </ScrollLink>
+            </div>
+            {/* <div className="">
               <Link href={routes.HOME.path}>
                 <a
                   className="text-base text-black font-medium ml-20"
@@ -219,18 +171,9 @@ function NavbarIndex() {
                   Products
                 </a>
               </Link>
-            </div>
-            <div className="">
-              <Link href={routes.HOME.path}>
-                <a
-                  className="text-base text-black font-medium mx-9"
-                  href={routes.COACHES_SELECT_SPORT.path}
-                >
-                  Find your coach
-                </a>
-              </Link>
-            </div>
-            <div className="">
+            </div> */}
+
+            {/* <div className="">
               <Link href={routes.HOME.path}>
                 <a
                   className="text-base text-black font-medium"
@@ -239,65 +182,22 @@ function NavbarIndex() {
                   Support
                 </a>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           <div
             className="navbar_container__button-container justify-end"
             style={{ marginTop: '0px' }}
           >
-            {!authContext.isLoggedIn &&
-              authContext.fetchUserProfileLoading === false && (
-                <div className="isporit-flex-stqrt-end-v-center">
-                  <button
-                    onClick={authContext.toggleLogInModal}
-                    type="submit"
-                    className="sign_in"
-                  >
-                    Se connecter
-                  </button>
-                </div>
-              )}
-            {authContext.isLoggedIn &&
-              authContext.fetchUserProfileLoading === false && (
-                <div className="isporit-flex-h-end-v-center">
-                  <button
-                    onClick={() => {
-                      window.location.href = routes.ISPORIT_PLATFORM.linkTo()
-                    }}
-                    type="button"
-                    className="isporit-primary-button"
-                    style={{ marginRight: '50px', padding: '10px' }}
-                  >
-                    {authContext.userType === COACH ||
-                    authContext.userType === PLAYER
-                      ? 'Mes réservations'
-                      : 'Mon profil'}
-                  </button>
-
-                  <Dropdown overlay={menu}>
-                    <div className="isporit-flex-h-any-v-center">
-                      <div className="navbar_container__user-card">
-                        <img
-                          src={getUserProfilePicture(
-                            authContext.userProfile.profilePicture,
-                          )}
-                          alt=""
-                        />
-                        <div className="navbar_container__user-card__name">
-                          {authContext.userProfile.firstName}{' '}
-                          {authContext.userProfile.lastName}
-                        </div>
-                      </div>
-
-                      <Icon
-                        type="down"
-                        className="navbar_container__user-card__down-icon"
-                      />
-                    </div>
-                  </Dropdown>
-                </div>
-              )}
+            <div className="isporit-flex-stqrt-end-v-center">
+              <a
+                className="text-base font-medium mx-9 sign_in"
+                href={routes.COACHES_SELECT_SPORT.path}
+                target="_blank"
+              >
+                Réservez votre coach
+              </a>
+            </div>
           </div>
         </div>
       </div>

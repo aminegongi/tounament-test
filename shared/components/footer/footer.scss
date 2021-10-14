@@ -14,14 +14,14 @@
 
     .footer_bar {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 15px;
+        grid-template-columns: 1fr 1fr;
+        padding: 15px 40px;
         border-bottom: 1px solid #eeeeee;
         align-items: center;
 
         .social_media {
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-end;
         }
 
         .button_container {
@@ -40,6 +40,6 @@
 
 @media only screen and (max-width : 1500px) {
     .footer_container {
-        padding: 0 7.2%;
+        // padding: 0 7.2%;
     }
 }

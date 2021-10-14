@@ -45,6 +45,7 @@ const ContactUs = () => {
         })
       })
       .catch((e) => {
+        console.log('e: ', e);
         if (
           e.response &&
           e.response.data &&

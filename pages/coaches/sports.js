@@ -146,8 +146,11 @@ const Index = () => {
         <link rel="canonical" href="https://isporit.com" />
         <FacebookPixel />
       </Head>
-      <Layout>
+      <Layout isCoachNav={true}>
         <section className="lg:pt-28 sm:mx-8 mx-2 pt-8 ">
+          <h1 className="sm:text-4xl text-center mt-4 font-semibold text-2xl">
+            Trouvez votre coach
+          </h1>
           <section className="flex justify-center">
             <form onSubmit={onSubmit} className="w-full relative">
               <input
@@ -164,13 +167,11 @@ const Index = () => {
               </button>
             </form>
           </section>
-          <h1 className="sm:text-4xl text-center mt-4 font-semibold text-2xl">
-            Trouvez votre coach
-          </h1>
-          <div className="text-base text-right font-medium mr-1">
+
+          <div className="text-base text-center font-medium mr-1 mt-5">
             <Link href={routes.COACHES_LIST.path}>
               <a className="text-black " href={routes.COACHES_LIST.path}>
-                Voir tous
+                Voir tous les coachs
               </a>
             </Link>
           </div>
