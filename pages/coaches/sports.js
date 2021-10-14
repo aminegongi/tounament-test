@@ -5,34 +5,34 @@ import Link from 'next/link'
 import Head from 'next/head'
 import { Icon } from 'antd'
 import { useRouter } from 'next/router'
-import FacebookPixel from '../shared/components/FacebookPixel'
-import '../shared/css/index.scss'
-import Layout from '../shared/components/layout/Layout'
-import routes from '../utils/routes'
+import FacebookPixel from '../../shared/components/FacebookPixel'
+import '../../shared/css/index.scss'
+import Layout from '../../shared/components/layout/Layout'
+import routes from '../../utils/routes'
 
-import onLigneIcon from '../public/index-icons/en ligne.png'
-import boxeIcon from '../public/index-icons/boxe.png'
-import basketIcon from '../public/index-icons/basket.png'
-import fitnessIcon from '../public/index-icons/fitness.png'
-import footIcon from '../public/index-icons/foot.png'
-import natationIcon from '../public/index-icons/natation.png'
-import pilateIcon from '../public/index-icons/pilate.png'
-import prepPhycon from '../public/index-icons/prep phy.png'
-import tennisIcon from '../public/index-icons/tennis.png'
-import volleyIcon from '../public/index-icons/volley.png'
-import yogaIcon from '../public/index-icons/yoga.png'
+import onLigneIcon from '../../public/index-icons/en ligne.png'
+import boxeIcon from '../../public/index-icons/boxe.png'
+import basketIcon from '../../public/index-icons/basket.png'
+import fitnessIcon from '../../public/index-icons/fitness.png'
+import footIcon from '../../public/index-icons/foot.png'
+import natationIcon from '../../public/index-icons/natation.png'
+import pilateIcon from '../../public/index-icons/pilate.png'
+import prepPhycon from '../../public/index-icons/prep phy.png'
+import tennisIcon from '../../public/index-icons/tennis.png'
+import volleyIcon from '../../public/index-icons/volley.png'
+import yogaIcon from '../../public/index-icons/yoga.png'
 
-import basketBg from '../public/index-icons/basketBg.png'
-import boxeBg from '../public/index-icons/boxeBg.png'
-import footBg from '../public/index-icons/footBg.png'
-import onLigneBg from '../public/index-icons/onlineBg.png'
-import pilateBg from '../public/index-icons/pilateBg.png'
-import fitnessBg from '../public/index-icons/fitnessBg.png'
-import tennisBg from '../public/index-icons/tennisBg.png'
-import natationBg from '../public/index-icons/natationBg.png'
-import prepPhyBg from '../public/index-icons/prepPhyBg.png'
-import yogaBg from '../public/index-icons/yogaBg.jpg'
-import volleyBg from '../public/index-icons/volleyBg.png'
+import basketBg from '../../public/index-icons/basketBg.png'
+import boxeBg from '../../public/index-icons/boxeBg.png'
+import footBg from '../../public/index-icons/footBg.png'
+import onLigneBg from '../../public/index-icons/onlineBg.png'
+import pilateBg from '../../public/index-icons/pilateBg.png'
+import fitnessBg from '../../public/index-icons/fitnessBg.png'
+import tennisBg from '../../public/index-icons/tennisBg.png'
+import natationBg from '../../public/index-icons/natationBg.png'
+import prepPhyBg from '../../public/index-icons/prepPhyBg.png'
+import yogaBg from '../../public/index-icons/yogaBg.jpg'
+import volleyBg from '../../public/index-icons/volleyBg.png'
 
 const Index = () => {
   const data = [
@@ -125,32 +125,32 @@ const Index = () => {
   return (
     <>
       <Head>
-         <title>iSporit - trouver un coach sportif ou un coach de yoga</title>
+        <title>iSporit - trouver un coach sportif ou un coach de yoga</title>
 
-           <meta
-             name="description"
-             content="A la recherche d'un coach sportif en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+        <meta
+          name="description"
+          content="A la recherche d'un coach sportif en Tunisie? Vous voulez faire du sport (tennis, natation, fitness, boxe, football, volley-ball, ...) mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
  iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. Trouvez votre coach/entraîneur en Tunisie en seulement 3 clics"
-           />
-           <meta
-             name="viewport"
-             content="initial-scale=1.0, width=device-width"
-           />
-           <meta property="og:url" content="https://isporit.com" />
-           <meta
-             property="og:description"
-             content="A la recherche d'un coach sportif? Vous voulez faire du sport mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
+        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta property="og:url" content="https://isporit.com" />
+        <meta
+          property="og:description"
+          content="A la recherche d'un coach sportif? Vous voulez faire du sport mais vous ne savez pas par où commencer? Vous voulez faire du yoga mais vous ne savez pas qui contacter?
  iSporit vous offre la possibilité de choisir votre coach selon vos propres critères. "
-           />
-           <meta
-             property="og:image"
-             content="https://isporit.com/logo_isporit_final.png"
-           />
-           <link rel="canonical" href="https://isporit.com" />
+        />
+        <meta
+          property="og:image"
+          content="https://isporit.com/logo_isporit_final.png"
+        />
+        <link rel="canonical" href="https://isporit.com" />
         <FacebookPixel />
       </Head>
-      <Layout>
+      <Layout isCoachNav={true}>
         <section className="lg:pt-28 sm:mx-8 mx-2 pt-8 ">
+          <h1 className="sm:text-4xl text-center mt-4 font-semibold text-2xl">
+            Trouvez votre coach
+          </h1>
           <section className="flex justify-center">
             <form onSubmit={onSubmit} className="w-full relative">
               <input
@@ -167,13 +167,11 @@ const Index = () => {
               </button>
             </form>
           </section>
-          <h1 className="sm:text-4xl text-center mt-4 font-semibold text-2xl">
-            Trouvez votre coach
-          </h1>
-          <div className="text-base text-right font-medium mr-1">
+
+          <div className="text-base text-center font-medium mr-1 mt-5">
             <Link href={routes.COACHES_LIST.path}>
               <a className="text-black " href={routes.COACHES_LIST.path}>
-                Voir tous
+                Voir tous les coachs
               </a>
             </Link>
           </div>

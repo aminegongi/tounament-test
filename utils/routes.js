@@ -11,6 +11,9 @@ export default {
   COACHES_LIST: {
     path: '/coaches',
   },
+  COACHES_SELECT_SPORT: {
+    path: '/coaches/sports',
+  },
   COACH_DETAILS: {
     CALENDAR: {
       path: `/coaches/[username]/calendar`,

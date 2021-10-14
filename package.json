@@ -40,7 +40,8 @@
     "react-hotjar": "^2.2.0",
     "react-media-hook": "^0.4.7",
     "react-player": "^2.9.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-scroll": "^1.8.4"
   },
   "devDependencies": {
     "autoprefixer": "9",

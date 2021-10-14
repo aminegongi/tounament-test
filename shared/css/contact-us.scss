@@ -38,7 +38,7 @@
 
         .form_container {
             display: grid;
-            grid-template-rows: repeat(6, max-content);
+            grid-template-rows: repeat(3, max-content);
             grid-template-columns: repeat(2, auto);
             row-gap: 1.5625rem;
             column-gap: 1.875rem;

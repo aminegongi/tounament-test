@@ -8,7 +8,7 @@ import routes from '../../../utils/routes'
 export default function Footer() {
   return (
     <div className="footer_container">
-      <section className="footer_bar isporit_max_width">
+      <section className="footer_bar">
         <div className="logo">
           <Link href={routes.COACHES_LIST.path}>
             <a href={routes.COACHES_LIST.path}>
@@ -20,28 +20,28 @@ export default function Footer() {
           <a href="https://www.facebook.com/iSporitOfficial">
             <img src="/Facebook_logo.png" alt="facebook" />
           </a>
-          <a href="https://www.instagram.com/isporit_com/">
+          <a href="https://www.instagram.com/isporit_com/" style={{marginLeft: "20px"}}>
             <img src="/Instagram_logo.png" alt="instagram" />
           </a>
         </div>
-        <div className="button_container">
+        {/* <div className="button_container">
           <Link href={routes.SIGN_UP.path}>
             <a href={routes.SIGN_UP.path}>
               <button type="submit" className="sign_up">
-                Devenez partenaire
+                Devenir partenaire
               </button>
             </a>
           </Link>
-        </div>
+        </div> */}
       </section>
       <div className={`${'copyright'}`}>
-        © {moment().format('YYYY')} iSporit. All rights reserved{' '}
+        © {moment().format('YYYY')} iSporit. Tous droits réservés{' '}
         <div>
           <Link href={routes.TERMS_AND_CONDITIONS.path}>
             <a href={routes.TERMS_AND_CONDITIONS.path}>
               <b>
                 <u style={{ color: '#26beb5' }}>
-                  Terms & Conditions, Privacy Policy
+                  Termes & Conditions, Politique de confidentialité
                 </u>
               </b>
             </a>

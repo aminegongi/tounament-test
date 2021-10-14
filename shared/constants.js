@@ -46,6 +46,7 @@ export const FRONT_END_PLATFORM_URL = (token) => {
 export const SERVER_SIDE_API_BASE_URL = (req) => {
   const { publicRuntimeConfig } = getConfig()
   const { origin } = absoluteUrl(req)
+  return 'https://dev.isporit.com/api/'
   return 'https://isporit.com/api/'
   if (origin.includes('localhost:3001') || origin.includes('localhost:3000')) {
     return 'https://dev.isporit.com/api/'
@@ -56,6 +57,7 @@ export const CLIENT_SIDE_API_BASE_URL = () => {
   const { publicRuntimeConfig } = getConfig()
 
   const { host } = typeof window !== 'undefined' && window.location
+  return 'https://dev.isporit.com/api'
   return 'https://isporit.com/api'
   if (
     host &&
@@ -89,3 +91,30 @@ export const levels = {
   intermediate: { label: 'intermédiaire', value: 'intermediate' },
   confirmed: { label: 'confirmé', value: 'confirmed' },
 }
+
+export const ORGANIZATIONS_TYPE = [
+  {
+    value: 'Amateur club',
+    text: 'Amateur club',
+  },
+  {
+    value: 'Professional club',
+    text: 'Professional club',
+  },
+  {
+    value: 'University',
+    text: 'University',
+  },
+  {
+    value: 'Secondary school',
+    text: 'Secondary school',
+  },
+  {
+    value: 'Federation',
+    text: 'Federation',
+  },
+  {
+    value: 'Other',
+    text: 'Other',
+  },
+]
