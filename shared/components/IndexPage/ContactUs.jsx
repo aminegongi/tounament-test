@@ -83,7 +83,7 @@ export default function ContactUs(params) {
         className="w-16 border-b-4  border-solid mt-2"
         style={{ borderColor: '#ffc651' }}
       />
-      <div className="py-10 px-9 md:px-28  w-full">
+      <div className="pt-10 px-9 md:px-28  w-full">
         <div className="py-12 px-9 md:px-40" style={{ background: '#f8f8f8' }}>
           <form
             className=""
