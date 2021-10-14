@@ -67,7 +67,7 @@ export default function ContactUs(params) {
   }
 
   return (
-    <div className="contact-us-form py-10 w-full flex flex-col items-center">
+    <div className="contact-us-form w-full flex flex-col items-center">
       {/* <div
         className="max-w-md text-3xl font-bold text-center "
         style={{
@@ -76,7 +76,7 @@ export default function ContactUs(params) {
       >
         Take your team to the next level with isporit
       </div> */}
-      <div className="text-3xl font-bold mt-14" style={{ color: '#2a2a2a' }}>
+      <div className="text-3xl font-bold" style={{ color: '#2a2a2a' }}>
         Contact
       </div>
       <div
@@ -166,7 +166,7 @@ export default function ContactUs(params) {
             />
 
             <button
-              className="w-full bg-primary  text-white text-xl py-2 rounded-xl"
+              className="w-full bg-primary text-white text-base md:text-xl py-2 rounded-xl"
               type="submit"
             >
               Contactez nous
