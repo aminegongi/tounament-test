@@ -4,7 +4,7 @@ import Router, { useRouter } from 'next/router'
 import moment from 'moment'
 import App from 'next/app'
 import TagManager from 'react-gtm-module'
-
+import Head from 'next/head'
 import { hotjar } from 'react-hotjar'
 import { message } from 'antd'
 import { MOMENT_FRENCH_I18N } from '../utils/moment.utils'
@@ -243,27 +243,35 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <AuthContext.Provider
-      value={{
-        userProfile,
-        isLoggedIn,
-        userType,
-        fetchUserProfileLoading,
-        toggleLogInModal,
-        logOut,
-      }}
-    >
-      {renderComponent()}
-      <LoginModal
-        isSignUpModal={isSignUpModal}
-        loading={loginLoading}
-        onLogin={onLogin}
-        onSignUp={onSignUp}
-        role={role}
-        isVisible={isLoginModalOpen}
-        onCancel={() => setIsLoginModalOpen(false)}
-      />
-    </AuthContext.Provider>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
+      </Head>
+      <AuthContext.Provider
+        value={{
+          userProfile,
+          isLoggedIn,
+          userType,
+          fetchUserProfileLoading,
+          toggleLogInModal,
+          logOut,
+        }}
+      >
+        {renderComponent()}
+        <LoginModal
+          isSignUpModal={isSignUpModal}
+          loading={loginLoading}
+          onLogin={onLogin}
+          onSignUp={onSignUp}
+          role={role}
+          isVisible={isLoginModalOpen}
+          onCancel={() => setIsLoginModalOpen(false)}
+        />
+      </AuthContext.Provider>
+    </>
   )
 }
 
