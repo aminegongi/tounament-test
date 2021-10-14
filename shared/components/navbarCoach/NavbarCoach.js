@@ -156,6 +156,12 @@ function NavbarCoach() {
                     </div>
                   </Menu.Item>
                 )}
+              <Menu.Item
+                onClick={() => onChangeLocation(routes.HOME.path)}
+                className="menu_item"
+              >
+                Accueil
+              </Menu.Item>
 
               <Menu.Item
                 onClick={() => onChangeLocation(routes.COACHES_LIST.path)}
