@@ -29,8 +29,6 @@ export default function ContactUs(params) {
       subject: `( Demo request - ${model.firstName} ) ${model.organizationName}`,
     })
       .then(() => {
-        // alert(props.t("contactUsOnSubmitSuccess", "Merci! nous vous contacterons dans les prochaines 24h"))
-        // alert('Merci! nous vous contacterons dans les prochaines 24h')
         message.success({
           content: 'E-mail envoyé avec succès. Notre équipe commercial vous contactera dans le plus brefs délais',
           duration:5

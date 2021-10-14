@@ -1,15 +1,75 @@
-import { Radio } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import ContactUs from '../shared/components/IndexPage/ContactUs'
 import PlatformDetails from '../shared/components/IndexPage/PlatformDetails'
 import Layout from '../shared/components/layout/Layout'
 import { Link as ScrollLink } from 'react-scroll'
 import '../shared/css/index.scss'
 import { useMediaPredicate } from 'react-media-hook'
+import Axios from 'axios'
+import { message } from 'antd'
 
 const Index = () => {
   const isMobile = useMediaPredicate('(max-width: 992px)')
+  const [model, setModel] = useState({
+    role: '',
+    email: '',
+    firstName: '-',
+    lastName: '-',
+    phoneNumber: '',
+    subject: 'Demande de demo',
+    body: '-',
+    organizationName: '',
+    organizationType: '',
+    hearAboutUs: '',
+    otherComments: '',
+    city: '',
+    country: 'TN',
+  })
+  const [errors, setErrors] = useState({})
 
+  const onSubmit = () => {
+    const body = `Organization name: ${model.organizationName} \n Contact Person: ${model.firstName} \n Phone number: ${model.phoneNumber} \n City: ${model.city} `
+    Axios.post('https://isporit.com/api/contact/', {
+      ...model,
+      body,
+      subject: `( Demo request - ${model.firstName} ) ${model.organizationName}`,
+    })
+      .then(() => {
+        message.success({
+          content:
+            'E-mail envoyé avec succès. Notre équipe commercial vous contactera dans le plus brefs délais',
+          duration: 5,
+        })
+      })
+      .catch((e) => {
+        if (
+          e.response &&
+          e.response.data &&
+          e.response.data.message === 'Invalid phone number'
+        ) {
+          message.error({
+            content: 'Saisir un numéro de téléphone valide',
+          })
+          return setErrors({ ...errors, phoneNumber: true })
+        }
+        if (
+          e.response &&
+          e.response.data &&
+          e.response.data.message === 'Invalid email'
+        ) {
+          message.error({
+            content: 'Saisir un email valide',
+          })
+          return setErrors({ ...errors, email: true })
+        }
+
+        message.error({
+          content: 'Tous les champs sont obligatoires.',
+        })
+
+        // return alert('something went wrong please try again later!')
+      })
+  }
   return (
     <div className="index-page">
       <Layout childrenClassName="bg-white ">
@@ -53,37 +113,69 @@ const Index = () => {
                 <div className="text-xl">gestion des clubs sportifs</div>
                 <br />
               </div>
-              <input
-                className="isporit-input rounded-xl mb-5 "
-                placeholder="Nom de l'équipe"
-                type="text"
-              />
-              <input
-                className="isporit-input rounded-xl mb-5 "
-                placeholder="Email"
-                type="text"
-              />
-              <input
-                className="isporit-input rounded-xl mb-5 "
-                placeholder="N° téléphone"
-                type="text"
-              />
-              <input
-                className="isporit-input rounded-xl mb-5 "
-                type="text"
-                placeholder="Ville"
-              />
-              <button
-                className="w-full bg-primary text-white text-base md:text-xl py-2 rounded-xl"
-                type="submit"
+              <form
+                className=""
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  onSubmit()
+                }}
               >
-                Contactez nous
-              </button>
+                <input
+                  className={`${
+                    errors['organizationName'] ? 'input_error' : ''
+                  } isporit-input rounded-xl mb-5`}
+                  placeholder="Nom de l'équipe"
+                  type="text"
+                  onChange={(e) => {
+                    setModel({ ...model, organizationName: e.target.value })
+                    setErrors({ ...errors, organizationName: false })
+                  }}
+                />
+                <input
+                  className={`${
+                    errors['email'] ? 'input_error' : ''
+                  } isporit-input rounded-xl mb-5`}
+                  placeholder="Email"
+                  type="email"
+                  onChange={(e) => {
+                    setModel({ ...model, email: e.target.value })
+                    setErrors({ ...errors, email: false })
+                  }}
+                />
+                <input
+                  className={`${
+                    errors['phoneNumber'] ? 'input_error' : ''
+                  } isporit-input rounded-xl mb-5`}
+                  placeholder="N° téléphone"
+                  type="text"
+                  onChange={(e) => {
+                    setModel({ ...model, phoneNumber: e.target.value })
+                    setErrors({ ...errors, phoneNumber: false })
+                  }}
+                />
+                <input
+                  className={`${
+                    errors['city'] ? 'input_error' : ''
+                  } isporit-input rounded-xl mb-5`}
+                  type="text"
+                  placeholder="Ville"
+                  onChange={(e) => {
+                    setModel({ ...model, city: e.target.value })
+                    setErrors({ ...errors, city: false })
+                  }}
+                />
+                <button
+                  className="w-full bg-primary text-white text-base md:text-xl py-2 rounded-xl"
+                  type="submit"
+                >
+                  Contactez nous
+                </button>
+              </form>
             </div>
           </div>
         </div>
         <div className="my-12 flex flex-col md:flex-row max-w-7xl m-auto bg-white px-9">
-          <div className="flex-1  flex flex-col justify-center items-center pb-9">
+          <div className="flex-1 flex flex-col justify-center items-center pb-9 md:pb-0 mr-5">
             <img
               src="/index-coach-player.png"
               alt=""
@@ -91,13 +183,13 @@ const Index = () => {
             />
             <img src="/index-icons/coach.png" alt="" />
             <div
-              className="text-2xl md:text-3xl font-bold "
+              className="text-2xl lg:text-2xl font-bold "
               style={{ color: '#212121' }}
             >
               Pour le coach
             </div>
             <div
-              className="max-w-md font-medium text-base md:text-lg text-justify mb-4 mt-4"
+              className="max-w-sm font-medium text-base lg:text-lg text-justify mb-4 mt-4"
               style={{ color: '#212121' }}
             >
               iSporit offre au coach sportif une plateforme de suivi détaillé de
@@ -107,27 +199,23 @@ const Index = () => {
             <ScrollLink to="contact" smooth={true} duration={800}>
               <button
                 type="button"
-                className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-8"
+                className="bg-primary  text-white text-base lg:text-xl py-2.5 rounded-xl px-8"
               >
                 Demander une démo
               </button>
             </ScrollLink>
           </div>
           <div className="flex-1  flex flex-col justify-center items-center ">
-            <img
-              src="/index-team.png"
-              alt=""
-              className="rounded-xl mb-4 h-60"
-            />
+            <img src="/index-team.png" alt="" className="rounded-xl mb-4" />
             <img src="/index-icons/team.png" alt="" />
             <div
-              className="text-2xl md:text-3xl font-bold "
+              className="text-2xl lg:text-2xl font-bold "
               style={{ color: '#212121' }}
             >
               Pour les clubs / académies
             </div>
             <div
-              className="max-w-md font-medium text-base md:text-lg text-justify mb-4  mt-4"
+              className="max-w-sm font-medium text-base lg:text-lg text-justify mb-4  mt-4"
               style={{ color: '#212121' }}
             >
               iSporit offre une panoplie d'outils pour le club allant de la
@@ -137,7 +225,7 @@ const Index = () => {
             <ScrollLink to="contact" smooth={true} duration={800}>
               <button
                 type="button"
-                className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-8"
+                className="bg-primary  text-white text-base lg:text-xl py-2.5 rounded-xl px-8"
               >
                 Demander une démo
               </button>
@@ -179,7 +267,7 @@ const Index = () => {
             <img
               src="/mobile_interfaces.png"
               alt=""
-              className="rounded-xl mb-4 h-60 "
+              className="rounded-xl mb-4"
             />
           </div>
         </div>
@@ -247,15 +335,21 @@ const Index = () => {
                 /> */}
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
                     <div>Académie mono-site</div>
                   </div>
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
                     <div>Académie multi-sites</div>
                   </div>
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
                     <div>Clubs civils (circuit professionnel)</div>
                   </div>
                 </div>
@@ -288,15 +382,21 @@ const Index = () => {
                 /> */}
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
-                    <div>Système de statistiques simple et détaillé</div>
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
+                    <div>Système de stats simple et détaillé</div>
                   </div>
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
-                    <div>Bibilothèque des vidéos de tous vos matchs</div>
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
+                    <div>Bibilothèque des vidéos des matchs</div>
                   </div>
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
                     <div>Extraction automatique des séquences</div>
                   </div>
                 </div>
@@ -327,15 +427,21 @@ const Index = () => {
                   /> */}
                 <div className="flex flex-col">
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
                     <div>Présence de joueurs</div>
                   </div>
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
                     <div>Programme des séances</div>
                   </div>
                   <div className="flex">
-                    <img src="\radio.png" className="mr-1" />
+                    <div>
+                      <img src="\radio.png" className="mr-1" />
+                    </div>
                     <div>Plans annuels</div>
                   </div>
                 </div>

@@ -156,7 +156,7 @@ function NavbarIndex() {
                <ScrollLink to="contact" smooth={true} duration={800}>
                 <a
                   className="text-base text-black font-medium ml-20"
-                  href='/contact'
+                  // href='/contact'
                 >
                   Contact
                 </a>
