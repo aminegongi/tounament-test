@@ -6,11 +6,13 @@ export default function PlatformDetails({
   description,
   children,
   image,
-  reversed,
+  reversedStyle,
 }) {
   return (
-    <div className="flex flex-col md:flex-row justify-between w-full items-center">
-      {reversed && (
+    <div
+      className={`flex flex-col ${reversedStyle} justify-between w-full items-center`}
+    >
+      {/* {reversed && (
         <div className="flex-1 w-full max-w-md flex justify-end">
           <img
             className="rounded-xl"
@@ -21,9 +23,9 @@ export default function PlatformDetails({
             alt="demo"
           />
         </div>
-      )}
+      )} */}
       <div
-        className={`max-w-md flex-1 ${!reversed && 'mb-10'} md:mb-0`}
+        className={`max-w-md flex-1  mb-10`}
         style={{ color: '#212121' }}
       >
         <div className="text-2xl md:text-3xl font-bold mb-3  ">{title}</div>
@@ -36,18 +38,17 @@ export default function PlatformDetails({
         </div>
         {children}
       </div>
-      {!reversed && (
-        <div className="flex-1 w-full max-w-md flex justify-end">
-          <img
-            className="rounded-xl"
-            style={{
-              boxShadow: '16px -16px 0px 1px rgba(255,135,96,1)',
-            }}
-            src={image}
-            alt=""
-          />
-        </div>
-      )}
+
+      <div className="flex-1 w-full max-w-md flex justify-end">
+        <img
+          className="rounded-xl"
+          style={{
+            boxShadow: '16px -16px 0px 1px rgba(255,135,96,1)',
+          }}
+          src={image}
+          alt=""
+        />
+      </div>
     </div>
   )
 }
