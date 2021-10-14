@@ -1,13 +1,28 @@
 .terms-and-conditions {
+    padding: 80px 80px;
+
+    @media only screen and (max-width: 992px) {
+        padding: 20px 20px;
+
+    }
+
     h1 {
         text-align: center;
-        margin-top: 50px;
+        margin-top: 70px;
         color: #26beb5;
+
+        @media only screen and (max-width: 992px) {
+            margin-top: 50px;
+
+
+        }
     }
+
     p {
         font-size: 11.5pt;
         color: #000;
     }
+
     h2 {
         color: #26beb5;
         font-weight: bold;

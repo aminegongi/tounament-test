@@ -146,7 +146,7 @@ const Index = () => {
         <link rel="canonical" href="https://isporit.com" />
         <FacebookPixel />
       </Head>
-      <Layout isCoachNav={true}>
+      <Layout>
         <section className="lg:pt-28 sm:mx-8 mx-2 pt-8 ">
           <h1 className="sm:text-4xl text-center mt-4 font-semibold text-2xl">
             Trouvez votre coach

@@ -72,7 +72,7 @@ const Index = () => {
   }
   return (
     <div className="index-page">
-      <Layout childrenClassName="bg-white ">
+      <Layout childrenClassName="bg-white " isMainPage>
         <div
           style={{
             backgroundImage: 'url(/index-cover.png)',
@@ -414,6 +414,7 @@ const Index = () => {
             <div>
               <PlatformDetails
                 reversedStyle="sm:flex-row"
+ 
                 title="Suivi de toute académie sportive quelque soit le sport"
                 description="Notre plateforme permet la gestion de tout club sportif : tennis, natation, football, gymnastique, arts martiaux, ..."
                 image="\dashboard.png"
