@@ -219,8 +219,8 @@ const Index = () => {
               style={{ color: '#212121' }}
             >
               iSporit offre une panoplie d'outils pour le club allant de la
-              simple gestion des groupes et des présences des joueurs jusqu'à une
-              anlayse détaillée des performances basée sur les vidéos.
+              simple gestion des groupes et des présences des joueurs jusqu'à
+              une anlayse détaillée des performances basée sur les vidéos.
             </div>
             <ScrollLink to="contact" smooth={true} duration={800}>
               <button
@@ -319,6 +319,7 @@ const Index = () => {
           <div className="py-12 m-auto max-w-7xl px-9">
             <div className="mb-12">
               <PlatformDetails
+                reversedStyle="sm:flex-row"
                 title="S'adapte à tout club de football"
                 description="iSporit travaille avec des équipes amateurs ou professionnelles, 
                 de petites tailles ou de grande tailles."
@@ -365,7 +366,7 @@ const Index = () => {
             </div>
             <div className="mb-12">
               <PlatformDetails
-                reversed={!isMobile}
+                reversedStyle="sm:flex-row-reverse"
                 title="Chaque détail compte dans le football"
                 description="Suivez tous les détails des matchs à partir 
                 d'une seule et unique plateforme accessible à tout moment, n'importe où"
@@ -412,6 +413,7 @@ const Index = () => {
             </div>
             <div>
               <PlatformDetails
+                reversedStyle="sm:flex-row"
                 title="Suivi de toute académie sportive quelque soit le sport"
                 description="Notre plateforme permet la gestion de tout club sportif : tennis, natation, football, gymnastique, arts martiaux, ..."
                 image="\dashboard.png"
