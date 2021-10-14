@@ -26,12 +26,14 @@ export default function PlatformDetails({
         className={`max-w-md flex-1 ${!reversed && 'mb-10'} md:mb-0`}
         style={{ color: '#212121' }}
       >
-        <div className="text-3xl font-bold mb-3  ">{title}</div>
+        <div className="text-2xl md:text-3xl font-bold mb-3  ">{title}</div>
         <div
           className="w-16 border-b-4  border-solid mb-4"
           style={{ borderColor: '#ffc651' }}
         />
-        <div className="max-w-2xl font-medium text-lg mb-2">{description}</div>
+        <div className="max-w-2xl font-medium text-base md:text-lg mb-2">
+          {description}
+        </div>
         {children}
       </div>
       {!reversed && (
