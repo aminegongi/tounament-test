@@ -396,7 +396,7 @@ const Index = () => {
                   title="Chaque détail compte dans le football"
                   description="Suivez tous les détails des matchs à partir 
                 d'une seule et unique plateforme accessible à tout moment, n'importe où"
-                  image="\library.png"
+                  image="\sequences.png"
                 >
                   {/* <Radio.Group
                   className="flex flex-col  mb-4 index-page__radio-button text-lg "
