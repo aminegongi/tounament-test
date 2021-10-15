@@ -194,7 +194,7 @@ const Index = () => {
                     className="w-full bg-primary text-white text-base md:text-xl py-2 rounded-xl"
                     type="submit"
                   >
-                    Contactez nous
+                    Contactez-nous
                   </button>
                 </form>
               </div>
@@ -385,7 +385,7 @@ const Index = () => {
                       type="button"
                       className="bg-primary  text-white  text-base md:text-xl py-2.5 rounded-xl px-11 mt-5"
                     >
-                      Contactez nous
+                      Contactez-nous
                     </button>
                   </ScrollLink>
                 </PlatformDetails>
@@ -432,7 +432,7 @@ const Index = () => {
                       type="button"
                       className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-11 mt-5"
                     >
-                      Contactez nous
+                      Contactez-nous
                     </button>
                   </ScrollLink>
                 </PlatformDetails>
@@ -478,7 +478,7 @@ const Index = () => {
                       type="button"
                       className="bg-primary  text-white text-base md:text-xl py-2.5 rounded-xl px-11 mt-5"
                     >
-                      Contactez nous
+                      Contactez-nous
                     </button>
                   </ScrollLink>
                 </PlatformDetails>
