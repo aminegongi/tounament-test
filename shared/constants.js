@@ -57,8 +57,8 @@ export const CLIENT_SIDE_API_BASE_URL = () => {
   const { publicRuntimeConfig } = getConfig()
 
   const { host } = typeof window !== 'undefined' && window.location
-  return 'http://localhost:8080'
-  return 'https://dev.isporit.com/api'
+  // return 'http://localhost:8080'
+  // return 'https://dev.isporit.com/api'
   return 'https://isporit.com/api'
   if (
     host &&
