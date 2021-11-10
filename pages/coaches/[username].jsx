@@ -198,8 +198,8 @@ export default function CoachDetails({
                 <a
                   href={FRONT_END_PLATFORM_URL(
                     typeof window !== 'undefined' &&
-                      window.localStorage &&
-                      window.localStorage.getItem('token'),
+                    window.localStorage &&
+                    window.localStorage.getItem('token'),
                   )}
                   className="isporit-primary-button link-platform"
                   target="_blank"
@@ -230,8 +230,8 @@ export default function CoachDetails({
                 <a
                   href={FRONT_END_PLATFORM_URL(
                     typeof window !== 'undefined' &&
-                      window.localStorage &&
-                      window.localStorage.getItem('token'),
+                    window.localStorage &&
+                    window.localStorage.getItem('token'),
                   )}
                   className="isporit-primary-button link-platform"
                   target="_blank"
@@ -268,22 +268,22 @@ export default function CoachDetails({
       if (job.specialty && job.specialty.type === 'sport') {
         specialty = coach.coachData.specialty
           ? coach.coachData.specialty.reduce((acc, val) => {
-              const element = sports.find((dance) => dance._id === val)
-              if (element) {
-                acc = [...acc, element]
-              }
-              return acc
-            }, [])
+            const element = sports.find((dance) => dance._id === val)
+            if (element) {
+              acc = [...acc, element]
+            }
+            return acc
+          }, [])
           : []
       } else if (job.specialty && job.specialty.type === 'dance') {
         specialty = coach.coachData.specialty
           ? coach.coachData.specialty.reduce((acc, val) => {
-              const element = dances.find((dance) => dance._id === val)
-              if (element) {
-                acc = [...acc, element]
-              }
-              return acc
-            }, [])
+            const element = dances.find((dance) => dance._id === val)
+            if (element) {
+              acc = [...acc, element]
+            }
+            return acc
+          }, [])
           : []
       }
     }
@@ -317,22 +317,22 @@ export default function CoachDetails({
       if (j.specialty && j.specialty.type === 'sport') {
         sp = el.coachData.specialty
           ? el.coachData.specialty.reduce((acc, val) => {
-              const element = sports.find((dance) => dance._id === val)
-              if (element) {
-                acc = [...acc, element]
-              }
-              return acc
-            }, [])
+            const element = sports.find((dance) => dance._id === val)
+            if (element) {
+              acc = [...acc, element]
+            }
+            return acc
+          }, [])
           : []
       } else if (j.specialty && j.specialty.type === 'dance') {
         sp = el.coachData.specialty
           ? el.coachData.specialty.reduce((acc, val) => {
-              const element = dances.find((dance) => dance._id === val)
-              if (element) {
-                acc = [...acc, element]
-              }
-              return acc
-            }, [])
+            const element = dances.find((dance) => dance._id === val)
+            if (element) {
+              acc = [...acc, element]
+            }
+            return acc
+          }, [])
           : []
       }
     }
@@ -342,9 +342,8 @@ export default function CoachDetails({
     return (
       <Link href={routes.COACH_DETAILS.PROFILE.linkTo(el.username)}>
         <a
-          className={`text-unset-color flex py-2  border-gray-200  md:border-none md:w-6/12 w-full px-3 md:py-4 lg:w-4/12 hover:text-unset-color ${
-            isLast ? '' : 'border-b-2'
-          }`}
+          className={`text-unset-color flex py-2  border-gray-200  md:border-none md:w-6/12 w-full px-3 md:py-4 lg:w-4/12 hover:text-unset-color ${isLast ? '' : 'border-b-2'
+            }`}
           href={routes.COACH_DETAILS.PROFILE.linkTo(el.username)}
         >
           <div className="min-w-max mr-2">
@@ -355,16 +354,13 @@ export default function CoachDetails({
             />
           </div>
           <div className="w-auto">
-            <div
-              className="text-base font-bold text-black capitalize"
-            >
+            <div className="text-base font-bold text-black capitalize">
               {cutString(`${el.firstName} ${el.lastName}`, 30)}
             </div>
             <div className="text-base font-medium text-gray-600">
               {el.coachData &&
                 el.coachData.experiencesYearsNumber > 1 &&
-                `${
-                  el.coachData && el.coachData.experiencesYearsNumber
+                `${el.coachData && el.coachData.experiencesYearsNumber
                 } ans d'expérience`}
               {el.coachData &&
                 el.coachData.experiencesYearsNumber === 1 &&
@@ -447,11 +443,10 @@ export default function CoachDetails({
                   </Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  {`${
-                    coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
-                  } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
-                    1,
-                  )}`}
+                  {`${coach.firstName[0].toUpperCase() + coach.firstName.slice(1)
+                    } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
+                      1,
+                    )}`}
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>
@@ -488,12 +483,11 @@ export default function CoachDetails({
                     </Link>
                   </Breadcrumb.Item>
                   <Breadcrumb.Item>
-                    {`${
-                      coach.firstName[0].toUpperCase() +
+                    {`${coach.firstName[0].toUpperCase() +
                       coach.firstName.slice(1)
-                    } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
-                      1,
-                    )}`}
+                      } ${coach.lastName[0].toUpperCase()}${coach.lastName.slice(
+                        1,
+                      )}`}
                   </Breadcrumb.Item>
                 </Breadcrumb>
               )}
@@ -501,18 +495,16 @@ export default function CoachDetails({
                 <div className="tabs__button">
                   <button
                     type="button"
-                    className={`isporit-unset-button-css tabs__button__not-active ${
-                      tab === 1 ? 'tabs__button__active' : ''
-                    }`}
+                    className={`isporit-unset-button-css tabs__button__not-active ${tab === 1 ? 'tabs__button__active' : ''
+                      }`}
                     onClick={() => setTab(ABOUT_TAB)}
                   >
                     A propos
                   </button>
                   <button
                     type="button"
-                    className={`isporit-unset-button-css tabs__button__not-active ${
-                      tab === 3 ? 'tabs__button__active' : ''
-                    }`}
+                    className={`isporit-unset-button-css tabs__button__not-active ${tab === 3 ? 'tabs__button__active' : ''
+                      }`}
                     onClick={() => setTab(BIOGRAPHY_TAB)}
                   >
                     Biographie
@@ -590,8 +582,8 @@ export default function CoachDetails({
               coachProfileCard(
                 el,
                 similarCoaches.slice(0, nbDisplayedSimilarCoaches).length -
-                  1 ===
-                  index,
+                1 ===
+                index,
               ),
             )}
         </div>

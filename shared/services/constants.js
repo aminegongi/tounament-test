@@ -22,6 +22,11 @@ const club = {
   create: 'clubs/create',
 }
 
+const booking = {
+  create: 'booking/create',
+  delete: 'booking/delete',
+}
+
 export default {
   baseApiUrl: `${CLIENT_SIDE_API_BASE_URL()}/`,
   coachingRequest,
@@ -29,4 +34,5 @@ export default {
   auth,
   club,
   contactRequest,
+  booking,
 }

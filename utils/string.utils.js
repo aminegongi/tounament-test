@@ -60,7 +60,7 @@ export const cutString = (text, maxLength) => {
 
 export const cutStringWithoutTooltip = (text, maxLength) => {
   if (text && text.length > maxLength) {
-    return text.slice(0, maxLength) + '...'
+    return `${text.slice(0, maxLength)}...`
   }
   return text
 }
@@ -144,6 +144,13 @@ export const getPackagesAndFirstSession = (coachProfile) => {
       firstSessionPrice,
     }
   }
+}
+
+export const addZeroToTime = (time) => {
+  if (`${time}`.length === 1) {
+    return `0${time}`
+  }
+  return time
 }
 
 export default getUserProfilePicture
