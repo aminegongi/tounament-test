@@ -22,7 +22,6 @@ export default function ClubReservation() {
     const [selectedLocation, setSelectedLocation] = useState("")
     const [isBookingModalVisible, setIsBookingModalVisible] = useState(false)
     const [loading, setLoading] = useState(false)
-    console.log('bookings: ', locations);
     const authContext = useContext(AuthContext)
     const isMobile = useMediaPredicate('(max-width: 992px)')
 
