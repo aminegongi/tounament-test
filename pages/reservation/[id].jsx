@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable prettier/prettier */
 import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
