@@ -131,8 +131,8 @@ function TournamentDetails() {
   return (
     <div className="bg-white">
       <div className="flex justify-between p-4 items-center">
-        <Link href={routes.HOME.path}>
-          <a href={routes.HOME.path}>
+        <Link href="/dream-africa-cup">
+          <a href="/dream-africa-cup">
             <img src={logoImg} alt="logo" />
           </a>
         </Link>
@@ -146,8 +146,12 @@ function TournamentDetails() {
           Contact
         </button>
       </div>
-      <div className="">
-        <img className="w-full" src={dreamAfricaCup} alt="" />
+      <div className="w-full">
+        <Link href="/dream-africa-cup">
+          <a href="/dream-africa-cup">
+            <img className="w-full" src={dreamAfricaCup} alt="" />
+          </a>
+        </Link>
       </div>
       <div className="">
         <Tabs defaultActiveKey="2">
