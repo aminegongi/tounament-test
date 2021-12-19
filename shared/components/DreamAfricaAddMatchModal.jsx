@@ -80,10 +80,10 @@ export default function DreamAfricaAddMatchModal({
         <div className="">
           {initData && (
             <Button onClick={onDelete} type="danger">
-              Delete
+              Supprimer
             </Button>
           )}
-          <Button onClick={onCancel}>Cancel</Button>
+          <Button onClick={onCancel}>Annuler</Button>
           <Button
             onClick={() =>
               initData
@@ -92,27 +92,28 @@ export default function DreamAfricaAddMatchModal({
             }
             type="primary"
           >
-            Save
+            Sauvegarder
           </Button>
         </div>
       }
-      title="Add match"
+      title="Match"
       visible={visible}
+      onCancel={onCancel}
     >
       <Checkbox
         className="mb-4"
         checked={isGroupStage}
         onClick={() => setGroupStage((v) => !v)}
       >
-        Group stage?
+        Phases de groupes?
       </Checkbox>
       {isGroupStage && (
         <div className="w-full mb-3">
-          <div htmlFor="">Group stage</div>
+          <div htmlFor="">Poule</div>
           <Select
             value={data.groupStage}
             onChange={onChangeGroupStage}
-            placeholder="Group stage"
+            placeholder="Poule"
             className="w-full mt-2"
           >
             {groupStages.map((el) => (
@@ -123,7 +124,7 @@ export default function DreamAfricaAddMatchModal({
       )}
       {!isGroupStage && (
         <div className="w-full mb-3">
-          <div htmlFor="">Title</div>
+          <div htmlFor="">Titre</div>
           <Input
             value={data.title}
             onChange={(e) => setData({ ...data, title: e.target.value })}
@@ -132,11 +133,11 @@ export default function DreamAfricaAddMatchModal({
         </div>
       )}
       <div className="w-full mb-3">
-        <div htmlFor="">Team 1</div>
+        <div htmlFor="">Equipe 1</div>
         <Select
           value={data.team1}
           onChange={(e) => setData((v) => ({ ...v, team1: e }))}
-          placeholder="team 1"
+          placeholder="Equipe 1"
           className="w-full mt-2"
         >
           {groupStageTeams() &&
@@ -146,11 +147,11 @@ export default function DreamAfricaAddMatchModal({
         </Select>
       </div>
       <div className="w-full mb-3">
-        <div htmlFor="">Team 2</div>
+        <div htmlFor="">Equipe 2</div>
         <Select
           value={data.team2}
           onChange={(e) => setData((v) => ({ ...v, team2: e }))}
-          placeholder="team 2"
+          placeholder="Equipe 2"
           className="w-full mt-2"
         >
           {groupStageTeams() &&
@@ -182,7 +183,7 @@ export default function DreamAfricaAddMatchModal({
       </div>
       <Divider>Score</Divider>
       <div className="w-full mb-3">
-        <div htmlFor="">team1</div>
+        <div htmlFor="">Equipe 1</div>
         <InputNumber
           type="number"
           value={data.score && data.score[0]}
@@ -203,7 +204,7 @@ export default function DreamAfricaAddMatchModal({
         />
       </div>
       <div className="w-full mb-3">
-        <div htmlFor="">Title</div>
+        <div htmlFor="">Equipe 2</div>
         <InputNumber
           type="number"
           value={data.score && data.score[1]}

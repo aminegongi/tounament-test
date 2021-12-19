@@ -139,8 +139,8 @@ function TournamentDetails() {
                             (m) =>
                               m.status === 'closed' &&
                               m.round.type === 'groupStages' &&
-                              ((m.team1 === tid && m.score[0] > m.score[1]) ||
-                                (m.team2 === tid && m.score[1] > m.score[0])),
+                              ((m.team1 === tid && m.score[0] < m.score[1]) ||
+                                (m.team2 === tid && m.score[1] < m.score[0])),
                           ).length
 
                       const goalsFor =
