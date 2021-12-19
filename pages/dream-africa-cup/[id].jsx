@@ -1,10 +1,18 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Tabs, Tag, Table } from 'antd'
+
+import { Tabs, Tag, Table, Button, Icon } from 'antd'
 import moment from 'moment'
-import { onSnapshot, collection } from 'firebase/firestore'
+import {
+  onSnapshot,
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+} from 'firebase/firestore'
 import { useMediaPredicate } from 'react-media-hook'
+import DreamAfricaAddMatchModal from '../../shared/components/DreamAfricaAddMatchModal'
 import firebaseDb from '../../firebase.config'
 import routes from '../../utils/routes'
 import dreamAfricaCup from '../../public/dream-africa.png'
@@ -12,15 +20,83 @@ import logoImg from '../../public/icon/logoindexpage.png'
 
 function TournamentDetails() {
   const [tournamentDetails, setTournamentDetails] = useState()
+
+  const [selectedMatch, setSelectedMatch] = useState()
   const [teams, setTeams] = useState([])
-  console.log('tournamentDetails: ', tournamentDetails)
   const isMobile = useMediaPredicate('(max-width: 600px)')
-  console.log('isMobile: ', isMobile)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
   const router = useRouter()
   useEffect(() => {
+    if (localStorage.getItem('isDreamAfricaAdmin')) {
+      setIsAdmin(true)
+    }
+  }, [])
+
+  const onAddMatch = async (values) => {
+    const testTournamentDoc = doc(firebaseDb, 'tournaments', router.query.id)
+    const newField = {
+      matches: [
+        ...(tournamentDetails.matches || []),
+        {
+          status: values.status,
+          score: values.score,
+          round: {
+            type: values.isGroupStage ? 'groupStages' : 'brackets',
+            round_id: values.isGroupStage ? values.groupStage : values.title,
+          },
+          team1: values.team1,
+          team2: values.team2,
+          date: moment(values.date).format(),
+        },
+      ],
+    }
+    await updateDoc(testTournamentDoc, newField)
+    setSelectedMatch(undefined)
+    setIsAddModalOpen(false)
+  }
+  const onDelete = async () => {
+    const testTournamentDoc = doc(firebaseDb, 'tournaments', router.query.id)
+    const newField = {
+      matches: tournamentDetails.matches.filter(
+        (_, index) => selectedMatch.index !== index,
+      ),
+    }
+    await updateDoc(testTournamentDoc, newField)
+    setSelectedMatch(undefined)
+    setIsAddModalOpen(false)
+  }
+
+  const onUpdate = async (values) => {
+    const testTournamentDoc = doc(firebaseDb, 'tournaments', router.query.id)
+    const newField = {
+      matches: tournamentDetails.matches.map((el, index) => {
+        if (selectedMatch.index === index) {
+          return {
+            status: values.status,
+            score: values.score,
+            round: {
+              type: values.isGroupStage ? 'groupStages' : 'brackets',
+              round_id: values.isGroupStage ? values.groupStage : values.title,
+            },
+            team1: values.team1,
+            team2: values.team2,
+            date: moment(values.date).format(),
+          }
+        }
+        return el
+      }),
+    }
+    await updateDoc(testTournamentDoc, newField)
+    setSelectedMatch(undefined)
+    setIsAddModalOpen(false)
+  }
+
+  useEffect(() => {
     onSnapshot(collection(firebaseDb, 'tournaments'), (snap) => {
       const result = snap.docs.find((el) => router.query.id === el.id)
+      localStorage.setItem('tournamentFireBase', JSON.stringify(result.data()))
       if (result) {
         setTournamentDetails({
           ...result.data(),
@@ -154,11 +230,11 @@ function TournamentDetails() {
         </Link>
       </div>
       <div className="">
-        <Tabs defaultActiveKey="2">
+        <Tabs defaultActiveKey="2" className="pb-10">
           <Tabs.TabPane tab="Matchs" key="1">
             {tournamentDetails.matches
               .sort((a, b) => new Date(b.date) - new Date(a.date))
-              .map((el) => {
+              .map((el, index) => {
                 const team1 = teams.find((t) => t.id === el.team1)
                 const team2 = teams.find((t) => t.id === el.team2)
                 const round = () => {
@@ -169,7 +245,13 @@ function TournamentDetails() {
                   }
                 }
                 return (
-                  <div className="border rounded-md m-1 p-4 border-gray-300 mb-10">
+                  <div
+                    onClick={() => {
+                      setSelectedMatch({ ...el, index })
+                      setIsAddModalOpen(true)
+                    }}
+                    className="border rounded-md m-1 p-4 border-gray-300 mb-10"
+                  >
                     <div className="flex justify-between">
                       <div className="">
                         {el.status === 'onGoing' ? (
@@ -179,7 +261,7 @@ function TournamentDetails() {
                         )}
                       </div>
                       <div className="">
-                        {round() && <Tag>{round().title}</Tag>}
+                        <Tag>{round() ? round().title : el.round.round_id}</Tag>
                       </div>
                     </div>
                     <div className="">
@@ -248,7 +330,12 @@ function TournamentDetails() {
                   <div className="">
                     <Table
                       pagination={false}
-                      dataSource={el.teams.sort((a, b) => b.points - a.points)}
+                      dataSource={el.teams.sort((a, b) => {
+                        if (b.points === a.points) {
+                          return b.goalsDifference - a.goalsDifference
+                        }
+                        return b.points - a.points
+                      })}
                       scroll={isMobile ? { x: 500 } : {}}
                       columns={[
                         {
@@ -310,7 +397,6 @@ function TournamentDetails() {
                           key: 'goalsAgainst',
                           width: 55,
                         },
-
                         {
                           title: 'DB',
                           dataIndex: 'goalsDifference',
@@ -324,10 +410,29 @@ function TournamentDetails() {
               </div>
             ))}
           </Tabs.TabPane>
-          {/* <Tabs.TabPane tab="Final" key="3">
-            Content of Tab Pane 3
-          </Tabs.TabPane> */}
         </Tabs>
+        {isAdmin && (
+          <div className="fixed bottom-10 right-10">
+            <Button
+              onClick={() => setIsAddModalOpen(true)}
+              type="primary"
+              shape="circle"
+              size="large"
+            >
+              <Icon className="text-white" type="plus" />
+            </Button>
+          </div>
+        )}
+        <DreamAfricaAddMatchModal
+          initData={selectedMatch}
+          onDelete={onDelete}
+          onUpdate={onUpdate}
+          onSave={onAddMatch}
+          groupStages={tournamentDetails.groupStages}
+          teams={teams}
+          visible={isAddModalOpen}
+          onCancel={() => setIsAddModalOpen(false)}
+        />
       </div>
     </div>
   )
