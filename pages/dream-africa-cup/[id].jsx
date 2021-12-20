@@ -423,16 +423,18 @@ function TournamentDetails() {
             </Button>
           </div>
         )}
-        <DreamAfricaAddMatchModal
-          initData={selectedMatch}
-          onDelete={onDelete}
-          onUpdate={onUpdate}
-          onSave={onAddMatch}
-          groupStages={tournamentDetails.groupStages}
-          teams={teams}
-          visible={isAddModalOpen}
-          onCancel={() => setIsAddModalOpen(false)}
-        />
+        {isAdmin && (
+          <DreamAfricaAddMatchModal
+            initData={selectedMatch}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
+            onSave={onAddMatch}
+            groupStages={tournamentDetails.groupStages}
+            teams={teams}
+            visible={isAddModalOpen}
+            onCancel={() => setIsAddModalOpen(false)}
+          />
+        )}
       </div>
     </div>
   )
