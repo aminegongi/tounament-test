@@ -332,6 +332,12 @@ function TournamentDetails() {
                       pagination={false}
                       dataSource={el.teams.sort((a, b) => {
                         if (b.points === a.points) {
+                          if (b.goalsDifference === a.goalsDifference) {
+                            if (b.goalsFor === a.goalsFor) {
+                              return a.goalsAgainst - b.goalsAgainst
+                            }
+                            return b.goalsFor - a.goalsFor
+                          }
                           return b.goalsDifference - a.goalsDifference
                         }
                         return b.points - a.points
