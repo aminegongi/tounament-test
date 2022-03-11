@@ -18,10 +18,10 @@ import {
   createClub,
 } from '../shared/services/auth.service'
 import { CLUB, REQUEST_FAILED, REQUEST_SUCCEEDED } from '../shared/constants'
-import LoginModal from '../shared/components/LoginModal/LoginModal'
+// import LoginModal from '../shared/components/LoginModal/LoginModal'
 import routes from '../utils/routes'
-import CoachDetailsPageLoading from '../shared/components/CoachDetailsPageLoading/CoachDetailsPageLoading'
-import CoachesPageLoading from '../shared/components/CoachesPageLoading/CoachesPageLoading'
+// import CoachDetailsPageLoading from '../shared/components/CoachDetailsPageLoading/CoachDetailsPageLoading'
+// import CoachesPageLoading from '../shared/components/CoachesPageLoading/CoachesPageLoading'
 // import FacebookPixel from '../shared/components/FacebookPixel'
 
 function MyApp({ Component, pageProps }) {
@@ -226,12 +226,12 @@ function MyApp({ Component, pageProps }) {
   }
 
   const renderComponent = () => {
-    if (pageChangingLoading.coaches) {
-      return <CoachesPageLoading />
-    }
-    if (pageChangingLoading.coachDetails) {
-      return <CoachDetailsPageLoading />
-    }
+    // if (pageChangingLoading.coaches) {
+    //   return <CoachesPageLoading />
+    // }
+    // if (pageChangingLoading.coachDetails) {
+    //   return <CoachDetailsPageLoading />
+    // }
     return (
       <Component
         {...pageProps}
@@ -245,10 +245,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        ></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <AuthContext.Provider
         value={{
@@ -261,7 +258,7 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         {renderComponent()}
-        <LoginModal
+        {/* <LoginModal
           isSignUpModal={isSignUpModal}
           loading={loginLoading}
           onLogin={onLogin}
@@ -269,7 +266,7 @@ function MyApp({ Component, pageProps }) {
           role={role}
           isVisible={isLoginModalOpen}
           onCancel={() => setIsLoginModalOpen(false)}
-        />
+        /> */}
       </AuthContext.Provider>
     </>
   )

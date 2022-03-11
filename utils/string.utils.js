@@ -9,7 +9,7 @@ import {
   MAX_USERNAME_LENGTH,
 } from '../shared/constants'
 import DEFAULT_USER_AVATAR from '../public/default_user_avatar.png'
-import { isSessionPricesEmpty } from '../shared/components/CoachBox/CoachBox'
+// import { isSessionPricesEmpty } from '../shared/components/CoachBox/CoachBox'
 
 export const getUserProfilePicture = (picture) => {
   if (!isEmpty(picture)) {
@@ -123,27 +123,27 @@ export const getPrices = (offer, isCutString = false) => ({
 
 export const getPackagesAndFirstSession = (coachProfile) => {
   let cheapestPrice
-  if (!isSessionPricesEmpty(coachProfile.coachData)) {
-    cheapestPrice = coachProfile.coachData.privateCourseData.sessionPrices
-      .slice()
-      .sort((a, b) => a.price - b.price)[0]
-    let firstSessionPrice =
-      coachProfile.coachData.privateCourseData.isporitPriceFirstSession
-    if (firstSessionPrice === undefined) {
-      firstSessionPrice = -1
-    } else if (firstSessionPrice === 0) {
-      firstSessionPrice = ' Gratuite'
-    } else {
-      firstSessionPrice += ' DT'
-    }
-    return {
-      cheapestPrice: cheapestPrice.price,
-      cheapestPriceSessions:
-        (cheapestPrice.onSiteSessionsNumber || 0) +
-        (cheapestPrice.onlineSessionsNumber || 0),
-      firstSessionPrice,
-    }
-  }
+  // if (!isSessionPricesEmpty(coachProfile.coachData)) {
+  //   cheapestPrice = coachProfile.coachData.privateCourseData.sessionPrices
+  //     .slice()
+  //     .sort((a, b) => a.price - b.price)[0]
+  //   let firstSessionPrice =
+  //     coachProfile.coachData.privateCourseData.isporitPriceFirstSession
+  //   if (firstSessionPrice === undefined) {
+  //     firstSessionPrice = -1
+  //   } else if (firstSessionPrice === 0) {
+  //     firstSessionPrice = ' Gratuite'
+  //   } else {
+  //     firstSessionPrice += ' DT'
+  //   }
+  //   return {
+  //     cheapestPrice: cheapestPrice.price,
+  //     cheapestPriceSessions:
+  //       (cheapestPrice.onSiteSessionsNumber || 0) +
+  //       (cheapestPrice.onlineSessionsNumber || 0),
+  //     firstSessionPrice,
+  //   }
+  // }
 }
 
 export const addZeroToTime = (time) => {

@@ -12,11 +12,11 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { useMediaPredicate } from 'react-media-hook'
-import DreamAfricaAddMatchModal from '../../shared/components/DreamAfricaAddMatchModal'
-import firebaseDb from '../../firebase.config'
-import routes from '../../utils/routes'
-import dreamAfricaCup from '../../public/dream-africa.png'
-import logoImg from '../../public/icon/logoindexpage.png'
+import DreamAfricaAddMatchModal from '../shared/components/DreamAfricaAddMatchModal'
+import firebaseDb from '../firebase.config'
+import routes from '../utils/routes'
+import dreamAfricaCup from '../public/dream-africa.png'
+import logoImg from '../public/icon/logoindexpage.png'
 
 function TournamentDetails() {
   const [tournamentDetails, setTournamentDetails] = useState()
