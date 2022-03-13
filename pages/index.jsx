@@ -12,6 +12,7 @@ import firebaseDb from '../firebase.config'
 function DreamAfricaTournamentPage(params) {
   const router = useRouter()
   const [teams, setTeams] = useState([])
+  const [config, setConfig] = useState([])
   const onChangeLocation = (link) => {
     router.push(link)
   }
@@ -19,6 +20,9 @@ function DreamAfricaTournamentPage(params) {
   useEffect(() => {
     onSnapshot(collection(firebaseDb, 'tournaments'), (snap) => {
       setTournaments(snap.docs.map((el) => ({ ...el.data(), id: el.id })))
+    })
+    onSnapshot(collection(firebaseDb, 'config'), (snap) => {
+      setConfig(snap.docs.map((el) => ({ ...el.data(), id: el.id })))
     })
     onSnapshot(collection(firebaseDb, 'teams'), (snap) => {
       setTeams(snap.docs.map((el) => ({ ...el.data(), id: el.id })))
@@ -33,10 +37,10 @@ function DreamAfricaTournamentPage(params) {
   return (
     <>
       <Head>
-        <title>iSporit - trouver un coach sportif ou un coach de yoga</title>
+        {/* <title>iSporit - trouver un coach sportif ou un coach de yoga</title> */}
       </Head>
       <div className="pb-5 bg-white">
-        <div className="flex justify-between p-4 items-center">
+        {/* <div className="flex justify-between p-4 items-center">
           <Link href={routes.HOME.path}>
             <a href={routes.HOME.path}>
               <img src={logoImg} alt="logo" />
@@ -50,20 +54,16 @@ function DreamAfricaTournamentPage(params) {
           >
             Contact
           </button>
-        </div>
+        </div> */}
         <div className="">
-          <img className="w-full" src={dreamAfricaCup} alt="" />
+          <img className="w-full" src={config[0] && config[0].header} alt="" />
         </div>
         <div className="">
           {tournaments.map((el) => (
-            <Link
-              href={{ pathname: `/dream-africa-cup/${el.id}` }}
-              type="button"
-              key={el.id}
-            >
+            <Link href={{ pathname: `/${el.id}` }} type="button" key={el.id}>
               <a
                 className="flex justify-between items-center border rounded-md m-4 p-4"
-                href={`/dream-africa-cup/${el.id}`}
+                href={`d/${el.id}`}
               >
                 <div className="text-black font-bold">{el.title}</div>
                 <div className="">

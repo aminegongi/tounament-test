@@ -26,6 +26,7 @@ function TournamentDetails() {
   const isMobile = useMediaPredicate('(max-width: 600px)')
   const [isAdmin, setIsAdmin] = useState(false)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const [config, setConfig] = useState([])
 
   const router = useRouter()
   useEffect(() => {
@@ -94,9 +95,12 @@ function TournamentDetails() {
   }
 
   useEffect(() => {
+    onSnapshot(collection(firebaseDb, 'config'), (snap) => {
+      setConfig(snap.docs.map((el) => ({ ...el.data(), id: el.id })))
+    })
     onSnapshot(collection(firebaseDb, 'tournaments'), (snap) => {
       const result = snap.docs.find((el) => router.query.id === el.id)
-      localStorage.setItem('tournamentFireBase', JSON.stringify(result.data()))
+      // localStorage.setItem('tournamentFireBase', JSON.stringify(result.data()))
       if (result) {
         setTournamentDetails({
           ...result.data(),
@@ -206,7 +210,7 @@ function TournamentDetails() {
   }
   return (
     <div className="bg-white">
-      <div className="flex justify-between p-4 items-center">
+      {/* <div className="flex justify-between p-4 items-center">
         <Link href="/dream-africa-cup">
           <a href="/dream-africa-cup">
             <img src={logoImg} alt="logo" />
@@ -221,11 +225,15 @@ function TournamentDetails() {
         >
           Contact
         </button>
-      </div>
+      </div> */}
       <div className="w-full">
-        <Link href="/dream-africa-cup">
-          <a href="/dream-africa-cup">
-            <img className="w-full" src={dreamAfricaCup} alt="" />
+        <Link href="/">
+          <a href="/">
+            <img
+              className="w-full"
+              src={config[0] && config[0].header}
+              alt=""
+            />
           </a>
         </Link>
       </div>
